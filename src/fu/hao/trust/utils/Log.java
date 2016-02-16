@@ -27,6 +27,8 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 
+import javax.management.RuntimeErrorException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -91,6 +93,7 @@ public class Log {
     			.getLogger(tag);
         logger.error(title + " - " + msg);
         writeLog(tag, theLevel, title, msg, err);
+        throw new RuntimeErrorException(null, tag + " - " + msg);
     }
 
     public static void increaseIndent() { indent.set(indent.get() + "  "); }

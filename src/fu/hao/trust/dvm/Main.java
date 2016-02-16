@@ -4,14 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.zip.ZipFile;
 
-import org.jf.dexlib2.DexFileFactory;
-import org.jf.dexlib2.iface.ClassDef;
-import org.jf.dexlib2.iface.DexFile;
-import org.jf.dexlib2.iface.Method;
-import org.jf.dexlib2.iface.MethodImplementation;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import fu.hao.trust.utils.Log;
 import patdroid.core.ClassInfo;
 import patdroid.core.MethodInfo;
@@ -44,7 +36,7 @@ public class Main {
 			ClassInfo c = ClassInfo.findClass("de.ecspride.Activity1");
 			// find all methods with the name "onCreate", most likely there is
 			// only one
-			MethodInfo[] m = c.findMethodsHere("getDevIdWrapperTop");
+			MethodInfo[] m = c.findMethodsHere("getNaturalEvnCtxs");
 			Log.msg(tag,"Start");
 			// print all instructions
 			int counter = 0;
