@@ -27,25 +27,23 @@ public class Main {
 		// pick an apk
 		ZipFile apkFile;
 		try {
-			apkFile = new ZipFile(new File("C:/Users/hao/workspace/Button1/app/app-debug.apk"));
+			apkFile = new ZipFile(new File("C:/Users/hao/workspace/TestDVM/app/app-release.apk"));
 			// load all classes, methods, fields and instructions from an apk
 			// we are using smali as the underlying engine
 			new SmaliClassDetailLoader(apkFile, true).loadAll();
 			// get the class representation for the MainActivity class in the
 			// apk
-			ClassInfo c = ClassInfo.findClass("de.ecspride.Activity1");
+			ClassInfo c = ClassInfo.findClass("fu.hao.testdvm.MainActivity");
 			// find all methods with the name "onCreate", most likely there is
 			// only one
-			MethodInfo[] m = c.findMethodsHere("getNaturalEvnCtxs");
+			MethodInfo[] m = c.findMethodsHere("testSwitch");
 			Log.msg(tag,"Start");
 			// print all instructions
 			int counter = 0;
 			for (Instruction ins : m[0].insns) {
 				Log.msg(tag, "opcode: " + ins.opcode + " " + ins.opcode_aux);
 				Log.msg(tag, "[" + counter + "]" + ins.toString());
-			}
-			
-			
+			}		
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
