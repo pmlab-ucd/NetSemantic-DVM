@@ -1,15 +1,24 @@
 package fu.hao.trust.dvm;
 
-import org.jf.dexlib2.iface.DexFile;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.zip.ZipException;
+import java.util.zip.ZipFile;
 
+import fu.hao.trust.utils.Log;
 import patdroid.core.ClassInfo;
 import patdroid.core.MethodInfo;
+import patdroid.core.ReflectionClassDetailLoader;
 import patdroid.dalvik.Instruction;
+import patdroid.smali.SmaliClassDetailLoader;
 
 public class DalvikVM {
-	private final Logger logger = LoggerFactory.getLogger(DalvikVM.class);
+
+	private final String tag = getClass().toString();
 
 	// ---------------------------------
 	/*
@@ -22,8 +31,10 @@ public class DalvikVM {
 	}
 
 	// Dalvik VM Register Bank
-	public class simple_dvm_register {
+	class simple_dvm_register {
 		ClassInfo type = null;
+		// data can be instance of: PrimitiveInfo, DVMObject and any class
+		// reflection supports
 		Object data = null;
 
 		public void copy(simple_dvm_register y) {
@@ -49,7 +60,7 @@ public class DalvikVM {
 		// in theory, pc should not be here
 		// but it's easier to implement in our case
 		// since we know we do not need pc to cross procedure
-		long pc;
+		int pc;
 		// which reg store the return value of callee called by this method
 		int return_val_reg;
 
@@ -65,43 +76,82 @@ public class DalvikVM {
 		int[] base;
 	}
 
-	/**
-	 * @ClassName: Context/Env
-	 * @Description: TODO
-	 * @author: hao
-	 * @date: Feb 15, 2016 8:47:43 PM
-	 */
-	class JVM_INTERP_ENV {
-		constant_info_st constant_info;
-		JVM_INTERP_ENV prev_env;
-	};
+	class Heap {
+		Map<ClassInfo, DVMClass> dvmClasses = new HashMap<>();
+		Map<ClassInfo, Set<DVMObject>> dvmObjs = new HashMap<>();
+
+		public void setClass(ClassInfo type, DVMClass dvmClass) {
+			dvmClasses.put(type, dvmClass);
+		}
+
+		public DVMClass getClass(ClassInfo type) {
+			return dvmClasses.get(type);
+		}
+
+		public void setObj(ClassInfo type, DVMObject dvmObj) {
+			if (dvmObjs.get(type) == null) {
+				dvmObjs.put(type, new HashSet<DVMObject>());
+			}
+			dvmObjs.get(type).add(dvmObj);
+		}
+	}
 
 	// We directly use underlying jvm who runs this interpreter to manage memory
-	// int[] heap = new int[8192];
-	// int[] object_ref = new int[4];
+	Heap heap;
 	simple_dvm_register[] regs = new simple_dvm_register[65536]; // 32
 	invoke_parameters p;
 	int[] result = new int[8];
-	// since we do not really use pc to guide the inter-procedure
-	// directly bind pc with stack frame for convenience
-	// so this pc is actually useless now.
-	long pc;
+	int pc;
 
-	JVM_INTERP_ENV curr_jvm_interp_env;
 	JVM_STACK_FRAME curr_jvm_stack;
 	int jvm_stack_depth = 0;
 
-	public void start(DexFile dex) {
-		// TODO support running dex
+	Interpreter interpreter = new Interpreter();
+
+	simple_dvm_register test = new simple_dvm_register();
+
+	DalvikVM() {
+		for (int i = 0; i < regs.length; i++) {
+			regs[i] = new simple_dvm_register();
+		}
 	}
 
-	public void runMethod(MethodInfo method) {
-		logger.info("RUN METHOD");
+	public JVM_STACK_FRAME newStackFrame(MethodInfo mi) {
+		JVM_STACK_FRAME newStackFrame = new JVM_STACK_FRAME(mi);
+		// ctx switch
+		newStackFrame.prev_stack = curr_jvm_stack;
+		curr_jvm_stack = newStackFrame;
+		jvm_stack_depth++;
+		return new JVM_STACK_FRAME(mi);
+	}
 
-		JVM_STACK_FRAME jvm_stack_frame = new JVM_STACK_FRAME(method);
-		curr_jvm_stack = jvm_stack_frame;
-		for (Instruction insns : method.insns) {
-			//byte opcode = insns.opcode;
+	public void runMethod(String apk, String main) throws ZipException,
+			IOException {
+		Log.msg(tag, "Begin run " + main + " at " + apk);
+		// for normal java run-time classes
+		// when a class is not loaded, load it with reflection
+		ClassInfo.rootDetailLoader = new ReflectionClassDetailLoader();
+		// pick an apk
+		ZipFile apkFile;
+		apkFile = new ZipFile(new File(apk));
+		// load all classes, methods, fields and instructions from an apk
+		// we are using smali as the underlying engine
+		new SmaliClassDetailLoader(apkFile, true).loadAll();
+		// get the class representation for the MainActivity class in the
+		// apk
+		ClassInfo c = ClassInfo.findClass("fu.hao.testdvm.MainActivity");
+		// find all methods with the name "onCreate", most likely there is
+		// only one
+		MethodInfo[] methods = c.findMethodsHere(main);
+
+		// print all instructions
+		int counter = 0;
+		for (Instruction ins : methods[0].insns) {
+			counter++;
+			System.out.println("opcode: " + ins.opcode + " " + ins.opcode_aux);
+			System.out.println("[" + counter + "]" + ins.toString());
 		}
+
+		interpreter.invocation(this, methods[0]);
 	}
 }

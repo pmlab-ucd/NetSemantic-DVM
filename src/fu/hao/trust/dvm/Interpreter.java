@@ -1,25 +1,19 @@
 package fu.hao.trust.dvm;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
-
-import javax.management.RuntimeErrorException;
-
-import org.jf.dexlib2.Opcode;
-import org.jf.dexlib2.iface.instruction.PayloadInstruction;
-import org.jf.dexlib2.iface.instruction.SwitchPayload;
 
 import fu.hao.trust.dvm.DalvikVM.JVM_STACK_FRAME;
 import fu.hao.trust.dvm.DalvikVM.simple_dvm_register;
 import fu.hao.trust.utils.Log;
 import patdroid.core.ClassInfo;
 import patdroid.core.FieldInfo;
+import patdroid.core.MethodInfo;
 import patdroid.core.PrimitiveInfo;
 import patdroid.dalvik.Instruction;
+import patdroid.util.Pair;
 
 public class Interpreter {
 	private final String TAG = getClass().toString();
@@ -45,7 +39,6 @@ public class Interpreter {
 					+ inst.r1);
 			// vm.pc(), vm.pc + 2;
 			jump(vm, inst, true);
-
 		}
 	}
 
@@ -60,15 +53,9 @@ public class Interpreter {
 		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			if (inst.type != null) {
-				vm.regs[inst.rdst].copy(inst.type, inst.extra);
-			} else {
-				Log.err(getClass().toString(),
-						"Cannot identify target in the inst");
-			}
-
+			Log.debug(TAG, "Mov const begin " + inst);
+			vm.regs[inst.rdst].copy(inst.type, inst.extra);
 			jump(vm, inst, true);
-
 		}
 	}
 
@@ -80,7 +67,7 @@ public class Interpreter {
 			vm.jvm_stack_depth--;
 			vm.curr_jvm_stack = caller;
 			// this is a trick
-
+			jump(vm, inst, true);
 		}
 	}
 
@@ -133,7 +120,7 @@ public class Interpreter {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
 			// TODO Auto-generated method stub
-
+			jump(vm, inst, true);
 		}
 	}
 
@@ -154,7 +141,7 @@ public class Interpreter {
 				Log.err(TAG, "cannot create obj of null class");
 			}
 			vm.regs[inst.rdst].type = inst.type;
-			vm.regs[inst.rdst].data = new DVMObject(inst.type);
+			vm.regs[inst.rdst].data = new DVMObject(vm, inst.type);
 			Log.debug(TAG, "new object of " + inst.type + "created.");
 			jump(vm, inst, true);
 		}
@@ -178,14 +165,14 @@ public class Interpreter {
 			}
 			vm.regs[inst.rdst].type = inst.type;
 			int count = Integer.parseInt(vm.regs[inst.r0].data.toString());
-			
+
 			Object[] newArray;
-			if (inst.type.isPrimitive()) {				
-				newArray = new PrimitiveInfo[count];				
+			if (inst.type.isPrimitive()) {
+				newArray = new PrimitiveInfo[count];
 			} else {
 				newArray = new DVMObject[count];
 			}
-			
+
 			vm.regs[inst.rdst].data = newArray;
 			Log.debug(TAG, "a new array of " + inst.type + " in size " + count
 					+ "created.");
@@ -210,15 +197,13 @@ public class Interpreter {
 			// TODO Auto-generated method stub
 			Log.err(TAG, "stub! " + inst);
 			jump(vm, inst, true);
-
 		}
 	}
 
 	class OP_INVOKE_DIRECT implements ByteCode {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			// TODO Auto-generated method stub
-
+			invocation(vm, inst);
 		}
 	}
 
@@ -231,18 +216,29 @@ public class Interpreter {
 	}
 
 	class OP_INVOKE_VIRTUAL implements ByteCode {
+		/**
+		 * @Title: func
+		 * @Description: invoke-virtual { v4, v0, v1, v2, v3},
+		 *               Test2.method5:(IIII)V // method@0006 Invokes the 6th
+		 *               method in the method table with the following
+		 *               arguments: v4 is the "this" instance, v0, v1, v2, and
+		 *               v3 are the method parameters. The method has 5
+		 *               arguments (4 MSB bits of the second byte)5
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			// TODO Auto-generated method stub
-
+			invocation(vm, inst);
 		}
 	}
 
 	class OP_INVOKE_STATIC implements ByteCode {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			// TODO Auto-generated method stub
-
+			invocation(vm, inst);
 		}
 	}
 
@@ -294,7 +290,7 @@ public class Interpreter {
 		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-
+			// TODO
 		}
 	}
 
@@ -311,28 +307,12 @@ public class Interpreter {
 		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
+			// TODO long-to-int
 			if (!inst.type.isConvertibleTo(vm.regs[inst.rdst].type)) {
 				Log.err(TAG, "not consistent type when cast!");
 			}
 
 			jump(vm, inst, true);
-
-		}
-	}
-
-	class OP_A_NOT implements ByteCode {
-		@Override
-		public void func(DalvikVM vm, Instruction inst) {
-			// TODO Auto-generated method stub
-
-		}
-	}
-
-	class OP_A_NEG implements ByteCode {
-		@Override
-		public void func(DalvikVM vm, Instruction inst) {
-			// TODO Auto-generated method stub
-
 		}
 	}
 
@@ -370,8 +350,8 @@ public class Interpreter {
 	class OP_A_CAST implements ByteCode {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			// TODO Auto-generated method stub
-
+			// TODO primitive and obj (change type is enough?)
+			jump(vm, inst, true);
 		}
 	}
 
@@ -681,9 +661,10 @@ public class Interpreter {
 			Object[] array = (Object[]) vm.regs[inst.r0].data;
 			// index reg
 			int index = ((PrimitiveInfo) vm.regs[inst.r1].data).intValue();
-			
+
 			rdst.type = vm.regs[inst.r0].type.getElementClass();
 			rdst.data = array[index];
+			jump(vm, inst, true);
 		}
 	}
 
@@ -706,98 +687,414 @@ public class Interpreter {
 			Object[] array = (Object[]) vm.regs[inst.r0].data;
 			// index reg
 			int index = ((PrimitiveInfo) vm.regs[inst.r1].data).intValue();
-			if (!rdst.type.isConvertibleTo(vm.regs[inst.r0].type.getElementClass())) {
+			if (!rdst.type.isConvertibleTo(vm.regs[inst.r0].type
+					.getElementClass())) {
 				Log.err(TAG, "inconsistent type " + inst);
 				return;
 			}
 			array[index] = rdst.data;
+			jump(vm, inst, true);
 		}
 	}
 
 	class OP_A_ADD implements ByteCode {
+		/**
+		 * @Title: func
+		 * @Description: add-int/2addr v0,v1 Adds v1 to v0.
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			// TODO Auto-generated method stub
-
+			PrimitiveInfo op0 = (PrimitiveInfo) vm.regs[inst.r0].data;
+			PrimitiveInfo op1;
+			if (inst.r1 != -1) {
+				op1 = (PrimitiveInfo) vm.regs[inst.r1].data;
+			} else {
+				op1 = (PrimitiveInfo) inst.extra;
+			}
+			simple_dvm_register rdst = vm.regs[inst.rdst];
+			if (op1.isInteger()) {
+				rdst.type = ClassInfo.primitiveInt;
+				int res = op0.intValue() + op1.intValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op1.isLong()) {
+				rdst.type = ClassInfo.primitiveLong;
+				long res = op0.longValue() + op1.longValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op1.isFloat()) {
+				rdst.type = ClassInfo.primitiveFloat;
+				float res = op0.floatValue() + op1.floatValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op1.isDouble()) {
+				rdst.type = ClassInfo.primitiveFloat;
+				double res = op0.floatValue() + op1.floatValue();
+				rdst.data = new PrimitiveInfo(res);
+			}
+			jump(vm, inst, true);
 		}
 	}
 
 	class OP_A_SUB implements ByteCode {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			// TODO Auto-generated method stub
-
+			PrimitiveInfo op0 = (PrimitiveInfo) vm.regs[inst.r0].data;
+			PrimitiveInfo op1;
+			if (inst.r1 != -1) {
+				op1 = (PrimitiveInfo) vm.regs[inst.r1].data;
+			} else {
+				op1 = (PrimitiveInfo) inst.extra;
+			}
+			simple_dvm_register rdst = vm.regs[inst.rdst];
+			if (op1.isInteger()) {
+				rdst.type = ClassInfo.primitiveInt;
+				int res = op0.intValue() - op1.intValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op1.isLong()) {
+				rdst.type = ClassInfo.primitiveLong;
+				long res = op0.longValue() - op1.longValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op1.isFloat()) {
+				rdst.type = ClassInfo.primitiveFloat;
+				float res = op0.floatValue() - op1.floatValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op1.isDouble()) {
+				rdst.type = ClassInfo.primitiveFloat;
+				double res = op0.floatValue() - op1.floatValue();
+				rdst.data = new PrimitiveInfo(res);
+			}
+			jump(vm, inst, true);
 		}
 	}
 
 	class OP_A_MUL implements ByteCode {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			// TODO Auto-generated method stub
-
+			PrimitiveInfo op0 = (PrimitiveInfo) vm.regs[inst.r0].data;
+			PrimitiveInfo op1;
+			if (inst.r1 != -1) {
+				op1 = (PrimitiveInfo) vm.regs[inst.r1].data;
+			} else {
+				op1 = (PrimitiveInfo) inst.extra;
+			}
+			simple_dvm_register rdst = vm.regs[inst.rdst];
+			if (op1.isInteger()) {
+				rdst.type = ClassInfo.primitiveInt;
+				int res = op0.intValue() * op1.intValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op1.isLong()) {
+				rdst.type = ClassInfo.primitiveLong;
+				long res = op0.longValue() * op1.longValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op1.isFloat()) {
+				rdst.type = ClassInfo.primitiveFloat;
+				float res = op0.floatValue() * op1.floatValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op1.isDouble()) {
+				rdst.type = ClassInfo.primitiveFloat;
+				double res = op0.floatValue() * op1.floatValue();
+				rdst.data = new PrimitiveInfo(res);
+			}
+			jump(vm, inst, true);
 		}
 	}
 
 	class OP_A_DIV implements ByteCode {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			// TODO Auto-generated method stub
-
+			PrimitiveInfo op0 = (PrimitiveInfo) vm.regs[inst.r0].data;
+			PrimitiveInfo op1;
+			if (inst.r1 != -1) {
+				op1 = (PrimitiveInfo) vm.regs[inst.r1].data;
+			} else {
+				op1 = (PrimitiveInfo) inst.extra;
+			}
+			simple_dvm_register rdst = vm.regs[inst.rdst];
+			if (op1.isInteger()) {
+				rdst.type = ClassInfo.primitiveInt;
+				int res = op0.intValue() / op1.intValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op1.isLong()) {
+				rdst.type = ClassInfo.primitiveLong;
+				long res = op0.longValue() / op1.longValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op1.isFloat()) {
+				rdst.type = ClassInfo.primitiveFloat;
+				float res = op0.floatValue() / op1.floatValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op1.isDouble()) {
+				rdst.type = ClassInfo.primitiveFloat;
+				double res = op0.floatValue() / op1.floatValue();
+				rdst.data = new PrimitiveInfo(res);
+			}
+			jump(vm, inst, true);
 		}
 	}
 
 	class OP_A_REM implements ByteCode {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			// TODO Auto-generated method stub
-
+			PrimitiveInfo op0 = (PrimitiveInfo) vm.regs[inst.r0].data;
+			PrimitiveInfo op1;
+			if (inst.r1 != -1) {
+				op1 = (PrimitiveInfo) vm.regs[inst.r1].data;
+			} else {
+				op1 = (PrimitiveInfo) inst.extra;
+			}
+			simple_dvm_register rdst = vm.regs[inst.rdst];
+			if (op1.isInteger()) {
+				rdst.type = ClassInfo.primitiveInt;
+				int res = op0.intValue() % op1.intValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op1.isLong()) {
+				rdst.type = ClassInfo.primitiveLong;
+				long res = op0.longValue() % op1.longValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op1.isFloat()) {
+				rdst.type = ClassInfo.primitiveFloat;
+				float res = op0.floatValue() % op1.floatValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op1.isDouble()) {
+				rdst.type = ClassInfo.primitiveFloat;
+				double res = op0.floatValue() % op1.floatValue();
+				rdst.data = new PrimitiveInfo(res);
+			}
+			jump(vm, inst, true);
 		}
 	}
 
 	class OP_A_AND implements ByteCode {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			// TODO Auto-generated method stub
+			PrimitiveInfo op0 = (PrimitiveInfo) vm.regs[inst.r0].data;
+			PrimitiveInfo op1;
+			if (inst.r1 != -1) {
+				op1 = (PrimitiveInfo) vm.regs[inst.r1].data;
+			} else {
+				op1 = (PrimitiveInfo) inst.extra;
+			}
+			simple_dvm_register rdst = vm.regs[inst.rdst];
+			if (op1.isInteger()) {
+				rdst.type = ClassInfo.primitiveInt;
+				int res = op0.intValue() & op1.intValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op1.isLong()) {
+				rdst.type = ClassInfo.primitiveLong;
+				long res = op0.longValue() & op1.longValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else {
+				Log.err(TAG, "invalid type! " + inst);
+			}
+			jump(vm, inst, true);
+		}
+	}
 
+	class OP_A_NOT implements ByteCode {
+		@Override
+		public void func(DalvikVM vm, Instruction inst) {
+			// FIXME not sure correct
+			PrimitiveInfo op0 = (PrimitiveInfo) vm.regs[inst.r0].data;
+			simple_dvm_register rdst = vm.regs[inst.rdst];
+			if (op0.isInteger()) {
+				rdst.type = ClassInfo.primitiveInt;
+				int res = ~op0.intValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op0.isLong()) {
+				rdst.type = ClassInfo.primitiveLong;
+				long res = ~op0.longValue();
+				rdst.data = new PrimitiveInfo(res);
+			}
+			jump(vm, inst, true);
+		}
+	}
+
+	class OP_A_NEG implements ByteCode {
+		@Override
+		public void func(DalvikVM vm, Instruction inst) {
+			PrimitiveInfo op0 = (PrimitiveInfo) vm.regs[inst.r0].data;
+			simple_dvm_register rdst = vm.regs[inst.rdst];
+			if (op0.isInteger()) {
+				rdst.type = ClassInfo.primitiveInt;
+				int res = -op0.intValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op0.isLong()) {
+				rdst.type = ClassInfo.primitiveLong;
+				long res = -op0.longValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op0.isFloat()) {
+				rdst.type = ClassInfo.primitiveFloat;
+				float res = -op0.floatValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op0.isDouble()) {
+				rdst.type = ClassInfo.primitiveFloat;
+				double res = -op0.floatValue();
+				rdst.data = new PrimitiveInfo(res);
+			}
+			jump(vm, inst, true);
 		}
 	}
 
 	class OP_A_XOR implements ByteCode {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			// TODO Auto-generated method stub
-
+			PrimitiveInfo op0 = (PrimitiveInfo) vm.regs[inst.r0].data;
+			PrimitiveInfo op1;
+			if (inst.r1 != -1) {
+				op1 = (PrimitiveInfo) vm.regs[inst.r1].data;
+			} else {
+				op1 = (PrimitiveInfo) inst.extra;
+			}
+			simple_dvm_register rdst = vm.regs[inst.rdst];
+			if (op1.isInteger()) {
+				rdst.type = ClassInfo.primitiveInt;
+				int res = op0.intValue() ^ op1.intValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op1.isLong()) {
+				rdst.type = ClassInfo.primitiveLong;
+				long res = op0.longValue() ^ op1.longValue();
+				rdst.data = new PrimitiveInfo(res);
+			}
+			jump(vm, inst, true);
 		}
 	}
 
 	class OP_A_OR implements ByteCode {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			// TODO Auto-generated method stub
-
+			PrimitiveInfo op0 = (PrimitiveInfo) vm.regs[inst.r0].data;
+			PrimitiveInfo op1;
+			if (inst.r1 != -1) {
+				op1 = (PrimitiveInfo) vm.regs[inst.r1].data;
+			} else {
+				op1 = (PrimitiveInfo) inst.extra;
+			}
+			simple_dvm_register rdst = vm.regs[inst.rdst];
+			if (op1.isInteger()) {
+				rdst.type = ClassInfo.primitiveInt;
+				int res = op0.intValue() | op1.intValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op1.isLong()) {
+				rdst.type = ClassInfo.primitiveLong;
+				long res = op0.longValue() | op1.longValue();
+				rdst.data = new PrimitiveInfo(res);
+			}
+			jump(vm, inst, true);
 		}
 	}
 
 	class OP_A_SHL implements ByteCode {
+		/**
+		 * @Title: func
+		 * @Description: shl-int v2, v0, v1 Shift v0 left by the positions
+		 *               specified by v1 and store the result in v2.
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			// TODO Auto-generated method stub
-
+			PrimitiveInfo op0 = (PrimitiveInfo) vm.regs[inst.r0].data;
+			PrimitiveInfo op1;
+			if (inst.r1 != -1) {
+				op1 = (PrimitiveInfo) vm.regs[inst.r1].data;
+			} else {
+				op1 = (PrimitiveInfo) inst.extra;
+			}
+			simple_dvm_register rdst = vm.regs[inst.rdst];
+			if (op0.isInteger()) {
+				rdst.type = ClassInfo.primitiveInt;
+				int res = op0.intValue() << op1.intValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op0.isLong()) {
+				rdst.type = ClassInfo.primitiveLong;
+				long res;
+				if (op1.isInteger()) {
+					res = op0.longValue() << op1.intValue();
+				} else {
+					res = op0.longValue() << op1.longValue();
+				}
+				rdst.data = new PrimitiveInfo(res);
+			}
+			jump(vm, inst, true);
 		}
 	}
 
 	class OP_A_SHR implements ByteCode {
+		/**
+		 * @Title: func
+		 * @Description: shl-int v2, v0, v1 Shift v0 right by the positions
+		 *               specified by v1 and store the result in v2.
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			// TODO Auto-generated method stub
-
+			PrimitiveInfo op0 = (PrimitiveInfo) vm.regs[inst.r0].data;
+			PrimitiveInfo op1;
+			if (inst.r1 != -1) {
+				op1 = (PrimitiveInfo) vm.regs[inst.r1].data;
+			} else {
+				op1 = (PrimitiveInfo) inst.extra;
+			}
+			simple_dvm_register rdst = vm.regs[inst.rdst];
+			if (op0.isInteger()) {
+				rdst.type = ClassInfo.primitiveInt;
+				int res = op0.intValue() >> op1.intValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op0.isLong()) {
+				rdst.type = ClassInfo.primitiveLong;
+				long res;
+				if (op1.isInteger()) {
+					res = op0.longValue() >> op1.intValue();
+				} else {
+					res = op0.longValue() >> op1.longValue();
+				}
+				rdst.data = new PrimitiveInfo(res);
+			}
+			jump(vm, inst, true);
 		}
 	}
 
 	class OP_A_USHR implements ByteCode {
+		/**
+		 * @Title: func
+		 * @Description: ushr-int/2addr v0, v1 Unsigned shift v0 by the
+		 *               positions specified by v1.
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			// TODO Auto-generated method stub
+			PrimitiveInfo op0 = (PrimitiveInfo) vm.regs[inst.r0].data;
+			PrimitiveInfo op1;
+			if (inst.r1 != -1) {
+				op1 = (PrimitiveInfo) vm.regs[inst.r1].data;
+			} else {
+				op1 = (PrimitiveInfo) inst.extra;
+			}
+			simple_dvm_register rdst = vm.regs[inst.rdst];
+			if (op0.isInteger()) {
+				rdst.type = ClassInfo.primitiveInt;
+				int res = op0.intValue() >>> op1.intValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op0.isLong()) {
+				rdst.type = ClassInfo.primitiveLong;
+				long res;
+				if (op1.isInteger()) {
+					res = op0.longValue() >>> op1.intValue();
+				} else {
+					res = op0.longValue() >>> op1.longValue();
+				}
+				rdst.data = new PrimitiveInfo(res);
+			}
+			jump(vm, inst, true);
 
 		}
 	}
@@ -885,7 +1182,6 @@ public class Interpreter {
 			}
 
 			jump(vm, inst, true);
-
 		}
 	}
 
@@ -939,43 +1235,79 @@ public class Interpreter {
 	}
 
 	class OP_STATIC_GET_FIELD implements ByteCode {
+		/**
+		 * @Title: func
+		 * @Description: sget v0, Test3.is1:I // field@0007 Reads field@0007
+		 *               (entry #7 in the field id table) into v0.
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			// TODO Auto-generated method stub
+			@SuppressWarnings("unchecked")
+			Pair<ClassInfo, String> pair = (Pair<ClassInfo, String>) inst.extra;
 
+			try {
+				Class<?> clazz = Class.forName(pair.first.toString());
+				Field field = clazz.getDeclaredField(pair.second
+						.toString());
+				// TODO only support static field now 
+				vm.regs[inst.r0].data = field.get(clazz);
+				vm.regs[inst.r0].type = ClassInfo.findOrCreateClass(vm.regs[inst.r0].data.getClass());
+				Log.debug(TAG, "refleciton " + vm.regs[inst.r0].data);
+			} catch (Exception e) {
+				FieldInfo statFieldInfo = new FieldInfo(pair.first, pair.second);
+				Log.debug(TAG, "sget " + statFieldInfo.getFieldType());
+
+				DVMClass dvmClass = vm.heap.getClass(statFieldInfo
+						.getFieldType());
+				Log.debug(TAG, "sget " + dvmClass);
+				Log.debug(TAG, statFieldInfo.toString());
+				vm.regs[inst.r0].data = dvmClass.getStatField(statFieldInfo);
+				vm.regs[inst.r0].type = statFieldInfo.getFieldType();
+			}
+
+			jump(vm, inst, true);
 		}
 	}
 
 	class OP_STATIC_PUT_FIELD implements ByteCode {
-		/** 
-		 * @Title: func 
-		 * @Description: iput v0,v2, Test2.i6:I // field@0002
-		 * Stores v0 into field@0002 (entry #2 in the field id table). 
-		 * The instance is referenced by v2
+		/**
+		 * @Title: func
+		 * @Description: sput v0, Test2.i5:I // field@0001 Stores v0 into
+		 *               field@0001 (entry #1 in the field id table).
 		 * @param vm
-		 * @param inst 
-		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM, patdroid.dalvik.Instruction) 
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
 		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			FieldInfo fieldInfo = (FieldInfo) inst.extra;
-			DVMObject obj = (DVMObject) vm.regs[inst.r0].data;
-			if (!obj.getType().isConvertibleTo(fieldInfo.getFieldType())) {
+			@SuppressWarnings("unchecked")
+			Pair<ClassInfo, String> pair = (Pair<ClassInfo, String>) inst.extra;
+			FieldInfo statFieldInfo = new FieldInfo(pair.first, pair.second);
+			DVMClass dvmClass = vm.heap.getClass(statFieldInfo.getFieldType());
+			if (!vm.regs[inst.r0].type.isConvertibleTo(statFieldInfo
+					.getFieldType())) {
 				Log.err(TAG, "Type inconsistent! " + inst);
 			}
-			obj.setField(fieldInfo, vm.regs[inst.r1].data);
+			dvmClass.setStatField(statFieldInfo, vm.regs[inst.r0].data);
+			jump(vm, inst, true);
 		}
 	}
-	
+
 	class OP_INSTANCE_GET_FIELD implements ByteCode {
-		/** 
-		 * @Title: func 
-		 * @Description: iget v0, v1, Test2.i6:I // field@0003
-		 * Reads field@0003 into v0 (entry #3 in the field id table). 
-		 * The instance is referenced by v1.
+		/**
+		 * @Title: func
+		 * @Description: iget v0, v1, Test2.i6:I // field@0003 Reads field@0003
+		 *               into v0 (entry #3 in the field id table). The instance
+		 *               is referenced by v1.
 		 * @param vm
-		 * @param inst 
-		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM, patdroid.dalvik.Instruction) 
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
 		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
@@ -986,14 +1318,30 @@ public class Interpreter {
 			}
 			vm.regs[inst.r1].type = fieldInfo.getFieldType();
 			vm.regs[inst.r1].data = obj.getFieldObj(fieldInfo);
+			jump(vm, inst, true);
 		}
 	}
 
 	class OP_INSTANCE_PUT_FIELD implements ByteCode {
+		/**
+		 * @Title: func
+		 * @Description: iput v0,v2, Test2.i6:I // field@0002 Stores v0 into
+		 *               field@0002 (entry #2 in the field id table). The
+		 *               instance is referenced by v2
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			// TODO Auto-generated method stub
-
+			FieldInfo fieldInfo = (FieldInfo) inst.extra;
+			DVMObject obj = (DVMObject) vm.regs[inst.r0].data;
+			if (!obj.getType().isConvertibleTo(fieldInfo.getFieldType())) {
+				Log.err(TAG, "Type inconsistent! " + inst);
+			}
+			obj.setField(fieldInfo, vm.regs[inst.r1].data);
+			jump(vm, inst, true);
 		}
 	}
 
@@ -1001,7 +1349,7 @@ public class Interpreter {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
 			// TODO Auto-generated method stub
-
+			jump(vm, inst, true);
 		}
 	}
 
@@ -1009,7 +1357,7 @@ public class Interpreter {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
 			// TODO Auto-generated method stub
-
+			jump(vm, inst, true);
 		}
 	}
 
@@ -1107,9 +1455,9 @@ public class Interpreter {
 	 * @Title: jump
 	 * @Author: hao
 	 * @Description: GOTO
-	 * @param @param vm
-	 * @param @param inst
-	 * @param @param seq
+	 * @param
+	 * @param
+	 * @param
 	 * @return void
 	 * @throws
 	 */
@@ -1126,30 +1474,93 @@ public class Interpreter {
 			vm.pc = vm.curr_jvm_stack.pc;
 		}
 	}
-	
-	private static final Set<ClassInfo> primitives;
-	static {
-		HashSet<ClassInfo> h = new HashSet<ClassInfo>();
-		h.add(ClassInfo.primitiveWide);
-		h.add(ClassInfo.primitiveVoid);
-		h.add(ClassInfo.primitiveLong);
-		h.add(ClassInfo.primitiveBoolean);
-		h.add(ClassInfo.primitiveByte);
-		h.add(ClassInfo.primitiveInt);
-		h.add(ClassInfo.primitiveShort);
-		h.add(ClassInfo.primitiveChar);
-		h.add(ClassInfo.primitiveDouble);
-		h.add(ClassInfo.primitiveFloat);
-		primitives = Collections.unmodifiableSet(h);
+
+	/**
+	 * @Title: invocation
+	 * @Author: hao
+	 * @Description: invocation helper
+	 * @param @param vm
+	 * @param @param mi
+	 * @return void
+	 * @throws
+	 */
+	public void invocation(DalvikVM vm, Instruction inst) {
+		Object[] extra = (Object[]) inst.extra;
+		MethodInfo mi = (MethodInfo) extra[0];
+		// The register index referred by args
+		int[] args = (int[]) extra[1];
+		invocation(vm, mi, args);
+		jump(vm, inst, true);
+	}
+
+	public void invocation(DalvikVM vm, MethodInfo mi, int[] args) {
+		try {
+			// reflection here
+			Class<?> clazz = Class.forName(mi.myClass.toString());
+			Log.debug(TAG, "reflction " + clazz);
+			@SuppressWarnings("rawtypes")
+			Class[] argsClass = new Class[mi.paramTypes.length];
+			Method method;
+			Object[] params = new Object[args.length - 1];
+			// start from 1 to ignore "this"
+			for (int i = 1; i < args.length; i++) {
+				if (mi.paramTypes[i - 1].isPrimitive()) {
+					Object primitive = resolvePrimitive((PrimitiveInfo) vm.regs[args[i]].data);
+					params[i - 1] = primitive;
+					Class<?> argClass = primClasses.get(primitive.getClass());
+					argsClass[i - 1] = argClass;
+				} else {
+					// TODO use classloader to check exists or not
+					String argClass = mi.paramTypes[i].toString();
+					argsClass[i - 1] = Class.forName(argClass);
+					params[i - 1] = vm.regs[args[i]].data;
+				}
+			}
+
+			method = clazz.getDeclaredMethod(mi.name, argsClass);
+			Object obj = vm.regs[args[0]].data;
+			Log.debug(TAG, obj.getClass().toString());
+			
+			method.invoke(obj, params);
+			Log.msg(TAG, "reflction invocation " + method);
+		} catch (Exception e) {
+			e.printStackTrace();
+			Log.debug(TAG, "not reflction invocation " + mi.myClass);
+			vm.newStackFrame(mi);
+			while (vm.pc < mi.insns.length) {
+				Instruction insns = mi.insns[vm.pc];
+				exec(vm, insns);
+				Log.debug(TAG, "pc " + vm.pc + " " + mi.insns.length);
+			}
+		}
+
+	}
+
+	public void invocation(DalvikVM vm, MethodInfo mi) {
+		vm.newStackFrame(mi);
+		while (vm.pc < mi.insns.length) {
+			Instruction insns = mi.insns[vm.pc];
+			exec(vm, insns);
+			Log.debug(TAG, "pc " + vm.pc + " " + mi.insns.length);
+		}
 	}
 
 	static Map<Integer, ByteCode> byteCodes = new HashMap<>();
 	static Map<Integer, ByteCode> auxByteCodes = new HashMap<>();
 
+	@SuppressWarnings("rawtypes")
+	static Map<Class, Class> primClasses = new HashMap<>();
+
 	/**
 	 * interpret auxiliary opcodes
 	 */
 	Interpreter() {
+		primClasses.put(Integer.class, int.class);
+		primClasses.put(Long.class, long.class);
+		primClasses.put(Float.class, float.class);
+		primClasses.put(Boolean.class, boolean.class);
+		primClasses.put(Double.class, double.class);
+		primClasses.put(Byte.class, byte.class);
 
 		byteCodes.put(0x06, new OP_GOTO());
 		// byteCodes.put(0x07, new OP_CMP());
@@ -1215,4 +1626,41 @@ public class Interpreter {
 		auxByteCodes.put(0x38, new OP_EXCEPTION_TRYCATCH());
 		auxByteCodes.put(0x39, new OP_EXCEPTION_THROW());
 	}
+
+	public void exec(DalvikVM vm, Instruction inst) {
+		Log.debug(TAG, "opcode: " + inst.opcode + " " + inst.opcode_aux);
+		Log.debug(TAG, inst.toString());
+
+		if (byteCodes.containsKey((int) inst.opcode)) {
+			byteCodes.get((int) inst.opcode).func(vm, inst);
+		} else if (auxByteCodes.containsKey((int) inst.opcode_aux)) {
+			auxByteCodes.get((int) inst.opcode_aux).func(vm, inst);
+		} else {
+			Log.err(TAG, "unsupported opcode " + inst);
+		}
+	}
+
+	/**
+	 * @Title: resolvePrimitive
+	 * @Author: hao
+	 * @Description: get true java obj representation of primitive
+	 * @param @param op1
+	 * @param @return
+	 * @return Object
+	 * @throws
+	 */
+	public Object resolvePrimitive(PrimitiveInfo op1) {
+		if (op1.isInteger()) {
+			return new Integer(op1.intValue());
+		} else if (op1.isLong()) {
+			return new Long(op1.longValue());
+		} else if (op1.isFloat()) {
+			return new Float(op1.floatValue());
+		} else if (op1.isDouble()) {
+			return new Double(op1.doubleValue());
+		}
+
+		return null;
+	}
+
 }

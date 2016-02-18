@@ -9,9 +9,15 @@ import patdroid.core.FieldInfo;
 public class DVMObject {
 	private ClassInfo type = null;
 	private Map<FieldInfo, Object> fields = new HashMap<FieldInfo, Object>();
+	private DVMClass dvmClass = null;
 	
-	DVMObject(ClassInfo dvmClass) {
-		this.setType(dvmClass);
+	DVMObject(DalvikVM vm, ClassInfo type) {
+		if (vm.heap.getClass(type) == null) {
+			vm.heap.setClass(type, new DVMClass(type));
+		}
+		DVMClass dvmClass = vm.heap.getClass(type);
+		this.setType(type);
+		this.setDvmClass(dvmClass);
 	}
 
 	public ClassInfo getType() {
@@ -36,6 +42,14 @@ public class DVMObject {
 
 	public void setField(FieldInfo fieldInfo, Object obj) {
 		fields.put(fieldInfo, obj);
+	}
+
+	public DVMClass getDvmClass() {
+		return dvmClass;
+	}
+
+	public void setDvmClass(DVMClass dvmClass) {
+		this.dvmClass = dvmClass;
 	}
 	
 }

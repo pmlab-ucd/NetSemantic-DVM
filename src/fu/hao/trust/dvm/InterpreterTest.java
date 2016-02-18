@@ -15,6 +15,7 @@ import patdroid.core.ReflectionClassDetailLoader;
 import patdroid.dalvik.Instruction;
 import patdroid.smali.SmaliClassDetailLoader;
 import fu.hao.trust.utils.Log;
+import fu.hao.trust.utils.Settings;
 
 public class InterpreterTest {
 
@@ -23,7 +24,7 @@ public class InterpreterTest {
 	//@Test
 	public void testSwitch() {
 		try {
-			MethodInfo m = prepare("testSwitch");
+			prepare("testSwitch");
 		} catch (ZipException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -36,7 +37,7 @@ public class InterpreterTest {
 	//@Test
 	public void testCMP() {
 		try {
-			MethodInfo m = prepare("testCMP");
+			prepare("testCMP");
 		} catch (ZipException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -49,7 +50,33 @@ public class InterpreterTest {
 	//@Test
 	public void testIF() {
 		try {
-			MethodInfo m = prepare("testIF");
+			prepare("testIF");
+		} catch (ZipException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	//@Test
+	public void testArray() {
+		try {
+			prepare("testArray");
+		} catch (ZipException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	//@Test
+	public void testInvoke() {
+		try {
+			prepare("testInvoke");
 		} catch (ZipException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -60,9 +87,9 @@ public class InterpreterTest {
 	}
 	
 	@Test
-	public void testArray() {
+	public void testArith() {
 		try {
-			MethodInfo m = prepare("testArray");
+			prepare("testArith");
 		} catch (ZipException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -72,31 +99,10 @@ public class InterpreterTest {
 		}
 	}
 
-	private MethodInfo prepare(String method) throws ZipException, IOException {
-		// when a class is not loaded, load it with reflection
-		ClassInfo.rootDetailLoader = new ReflectionClassDetailLoader();
-		// pick an apk
-		ZipFile apkFile;
-		apkFile = new ZipFile(new File(
-				"C:/Users/hao/workspace/TestDVM/app/app-release.apk"));
-		// load all classes, methods, fields and instructions from an apk
-		// we are using smali as the underlying engine
-		new SmaliClassDetailLoader(apkFile, true).loadAll();
-		// get the class representation for the MainActivity class in the
-		// apk
-		ClassInfo c = ClassInfo.findClass("fu.hao.testdvm.MainActivity");
-		// find all methods with the name "onCreate", most likely there is
-		// only one
-		MethodInfo[] m = c.findMethodsHere(method);
-
-		// print all instructions
-		int counter = 0;
-		for (Instruction ins : m[0].insns) {
-			Log.msg(tag, "opcode: " + ins.opcode + " " + ins.opcode_aux);
-			Log.msg(tag, "[" + counter + "]" + ins.toString());
-		}
-
-		return m[0];
+	private void prepare(String method) throws ZipException, IOException {
+		DalvikVM vm = new DalvikVM();
+		Settings.logLevel = 1;
+		vm.runMethod("C:/Users/hao/workspace/TestDVM/app/app-release.apk", method);
 	}
 
 }
