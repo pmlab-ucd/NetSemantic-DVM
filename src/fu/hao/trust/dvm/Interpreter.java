@@ -1495,7 +1495,8 @@ public class Interpreter {
 
 	public void invocation(DalvikVM vm, MethodInfo mi, int[] args) {
 		try {
-			// reflection here
+			// If applicable, directly use reflection to run the method,
+			// the method is inside java.lang
 			Class<?> clazz = Class.forName(mi.myClass.toString());
 			Log.debug(TAG, "reflction " + clazz);
 			@SuppressWarnings("rawtypes")
