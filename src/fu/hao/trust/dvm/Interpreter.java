@@ -238,7 +238,60 @@ public class Interpreter {
 	class OP_INVOKE_STATIC implements ByteCode {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			invocation(vm, inst);
+			Object[] extra = (Object[]) inst.extra;
+			MethodInfo mi = (MethodInfo) extra[0];
+			// The register index referred by args
+			int[] args = (int[]) extra[1];
+			try {
+				// If applicable, directly use reflection to run the method,
+				// the method is inside java.lang
+				Class<?> clazz = Class.forName(mi.myClass.toString());
+				Log.debug(TAG, "reflction " + clazz);
+				@SuppressWarnings("rawtypes")
+				Class[] argsClass = new Class[mi.paramTypes.length];
+				Method method;
+				// TODO what is static (no this) but have multiple params
+				// static invocation
+				if (args.length == 0) {
+					method = clazz.getDeclaredMethod(mi.name);
+					method.invoke(null);
+					jump(vm, inst, true);
+					return;
+				}
+
+				Object[] params = new Object[args.length - 1];
+				// start from 0 since no "this"
+				for (int i = 0; i < args.length; i++) {
+					if (mi.paramTypes[i - 1].isPrimitive()) {
+						Object primitive = resolvePrimitive((PrimitiveInfo) vm.regs[args[i]].data);
+						params[i - 1] = primitive;
+						Class<?> argClass = primClasses.get(primitive
+								.getClass());
+						argsClass[i - 1] = argClass;
+					} else {
+						// TODO use classloader to check exists or not
+						String argClass = mi.paramTypes[i].toString();
+						argsClass[i - 1] = Class.forName(argClass);
+						params[i - 1] = vm.regs[args[i]].data;
+					}
+				}
+
+				method = clazz.getDeclaredMethod(mi.name, argsClass);
+
+				method.invoke(null, params);
+				Log.msg(TAG, "reflction invocation " + method);
+			} catch (Exception e) {
+				e.printStackTrace();
+				Log.debug(TAG, "not reflction invocation " + mi.myClass);
+				vm.newStackFrame(mi);
+				while (vm.pc < mi.insns.length) {
+					Instruction insns = mi.insns[vm.pc];
+					exec(vm, insns);
+					Log.debug(TAG, "pc " + vm.pc + " " + mi.insns.length);
+				}
+			}
+
+			jump(vm, inst, true);
 		}
 	}
 
@@ -1251,11 +1304,11 @@ public class Interpreter {
 
 			try {
 				Class<?> clazz = Class.forName(pair.first.toString());
-				Field field = clazz.getDeclaredField(pair.second
-						.toString());
-				// TODO only support static field now 
+				Field field = clazz.getDeclaredField(pair.second.toString());
+				// TODO only support static field now
 				vm.regs[inst.r0].data = field.get(clazz);
-				vm.regs[inst.r0].type = ClassInfo.findOrCreateClass(vm.regs[inst.r0].data.getClass());
+				vm.regs[inst.r0].type = ClassInfo
+						.findOrCreateClass(vm.regs[inst.r0].data.getClass());
 				Log.debug(TAG, "refleciton " + vm.regs[inst.r0].data);
 			} catch (Exception e) {
 				FieldInfo statFieldInfo = new FieldInfo(pair.first, pair.second);
@@ -1502,6 +1555,14 @@ public class Interpreter {
 			@SuppressWarnings("rawtypes")
 			Class[] argsClass = new Class[mi.paramTypes.length];
 			Method method;
+
+			Object obj = vm.regs[args[0]].data;
+			if (args.length == 1) {
+				method = clazz.getDeclaredMethod(mi.name);
+				method.invoke(obj);
+				return;
+			}
+
 			Object[] params = new Object[args.length - 1];
 			// start from 1 to ignore "this"
 			for (int i = 1; i < args.length; i++) {
@@ -1519,9 +1580,8 @@ public class Interpreter {
 			}
 
 			method = clazz.getDeclaredMethod(mi.name, argsClass);
-			Object obj = vm.regs[args[0]].data;
 			Log.debug(TAG, obj.getClass().toString());
-			
+
 			method.invoke(obj, params);
 			Log.msg(TAG, "reflction invocation " + method);
 		} catch (Exception e) {
