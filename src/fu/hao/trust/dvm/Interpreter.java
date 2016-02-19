@@ -55,6 +55,8 @@ public class Interpreter {
 		public void func(DalvikVM vm, Instruction inst) {
 			Log.debug(TAG, "Mov const begin " + inst);
 			vm.regs[inst.rdst].copy(inst.type, inst.extra);
+			Log.debug(TAG, "data: " + vm.regs[inst.rdst].data + " "
+					+ vm.regs[inst.rdst].data.getClass());
 			jump(vm, inst, true);
 		}
 	}
@@ -90,8 +92,9 @@ public class Interpreter {
 
 			// the caller stack of this invocation
 			JVM_STACK_FRAME caller = vm.curr_jvm_stack.prev_stack;
-			caller.return_val_reg = inst.r0;
-
+			vm.return_val_reg.data = vm.regs[inst.r0].data;
+			vm.return_val_reg.type = ClassInfo
+					.findOrCreateClass(vm.regs[inst.r0].data.getClass());
 			// context switch back to the caller
 			vm.jvm_stack_depth--;
 			vm.curr_jvm_stack = caller;
@@ -140,8 +143,13 @@ public class Interpreter {
 			if (inst.type == null) {
 				Log.err(TAG, "cannot create obj of null class");
 			}
+
 			vm.regs[inst.rdst].type = inst.type;
-			vm.regs[inst.rdst].data = new DVMObject(vm, inst.type);
+			// TODO reflection types
+
+			Object newObj = new DVMObject(vm, inst.type);
+			Log.debug(TAG, "begin new object of " + inst.type + "created.");
+			vm.regs[inst.rdst].data = newObj;
 			Log.debug(TAG, "new object of " + inst.type + "created.");
 			jump(vm, inst, true);
 		}
@@ -160,6 +168,7 @@ public class Interpreter {
 		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
+			// TODO reflection obj
 			if (inst.type == null) {
 				Log.err(TAG, "cannot create array of null class");
 			}
@@ -254,31 +263,35 @@ public class Interpreter {
 				// static invocation
 				if (args.length == 0) {
 					method = clazz.getDeclaredMethod(mi.name);
-					method.invoke(null);
-					jump(vm, inst, true);
-					return;
-				}
-
-				Object[] params = new Object[args.length - 1];
-				// start from 0 since no "this"
-				for (int i = 0; i < args.length; i++) {
-					if (mi.paramTypes[i - 1].isPrimitive()) {
-						Object primitive = resolvePrimitive((PrimitiveInfo) vm.regs[args[i]].data);
-						params[i - 1] = primitive;
-						Class<?> argClass = primClasses.get(primitive
-								.getClass());
-						argsClass[i - 1] = argClass;
-					} else {
-						// TODO use classloader to check exists or not
-						String argClass = mi.paramTypes[i].toString();
-						argsClass[i - 1] = Class.forName(argClass);
-						params[i - 1] = vm.regs[args[i]].data;
+					vm.return_val_reg.data = method.invoke(null);
+				} else {
+					Object[] params = new Object[args.length - 1];
+					// start from 0 since no "this"
+					for (int i = 0; i < args.length; i++) {
+						if (mi.paramTypes[i - 1].isPrimitive()) {
+							Object primitive = resolvePrimitive((PrimitiveInfo) vm.regs[args[i]].data);
+							params[i - 1] = primitive;
+							Class<?> argClass = primClasses.get(primitive
+									.getClass());
+							argsClass[i - 1] = argClass;
+						} else {
+							// TODO use classloader to check exists or not
+							String argClass = mi.paramTypes[i].toString();
+							argsClass[i - 1] = Class.forName(argClass);
+							params[i - 1] = vm.regs[args[i]].data;
+						}
 					}
+					method = clazz.getDeclaredMethod(mi.name, argsClass);
+					vm.return_val_reg.data = method.invoke(null, params);
 				}
 
-				method = clazz.getDeclaredMethod(mi.name, argsClass);
-
-				method.invoke(null, params);
+				if (vm.return_val_reg.data != null) {
+					vm.return_val_reg.type = ClassInfo
+							.findOrCreateClass(vm.return_val_reg.data
+									.getClass());
+					Log.debug(TAG, "return data: " + vm.return_val_reg.data
+							+ " " + vm.return_val_reg.data.getClass());
+				}
 				Log.msg(TAG, "reflction invocation " + method);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -384,11 +397,16 @@ public class Interpreter {
 			if (inst.type == null) {
 				Log.err(TAG, "cannot identify res type!");
 			}
+			
+			if (vm.return_val_reg.type.isPrimitive()) {
+				vm.return_val_reg.data = PrimitiveInfo.fromObject(vm.return_val_reg.data);
+			}
+			
 			// type checking before moving?
-			vm.regs[vm.curr_jvm_stack.return_val_reg].copy(inst.type,
-					inst.extra);
+			vm.regs[inst.rdst].copy(vm.return_val_reg);
+			Log.debug(TAG, "data " + vm.regs[inst.rdst].data + " "
+					+ vm.regs[inst.rdst].type);
 			jump(vm, inst, true);
-
 		}
 	}
 
@@ -401,9 +419,24 @@ public class Interpreter {
 	}
 
 	class OP_A_CAST implements ByteCode {
+		/**
+		 * @Title: func
+		 * @Description: int-to-long v6, v0 Converts an integer in v0 into a
+		 *               long in v6,v7.
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			// TODO primitive and obj (change type is enough?)
+			Log.debug(TAG, "cast data " + vm.regs[inst.r0].data);
+			if (!(vm.regs[inst.r0].data instanceof PrimitiveInfo)) {
+				vm.regs[inst.r0].data = PrimitiveInfo.fromObject(vm.regs[inst.r0].data);
+			}
+			PrimitiveInfo primitive = (PrimitiveInfo) vm.regs[inst.r0].data;
+			vm.regs[inst.rdst].data = primitive.castTo(inst.type);
+			vm.regs[inst.rdst].type = inst.type;
 			jump(vm, inst, true);
 		}
 	}
@@ -833,23 +866,30 @@ public class Interpreter {
 				op1 = (PrimitiveInfo) inst.extra;
 			}
 			simple_dvm_register rdst = vm.regs[inst.rdst];
+
+			Object obj = resolvePrimitive(op1);
+			Log.debug(TAG, "" + obj.getClass());
 			if (op1.isInteger()) {
 				rdst.type = ClassInfo.primitiveInt;
 				int res = op0.intValue() * op1.intValue();
 				rdst.data = new PrimitiveInfo(res);
 			} else if (op1.isLong()) {
+				Log.debug(TAG, "here mul long ");
 				rdst.type = ClassInfo.primitiveLong;
-				long res = op0.longValue() * op1.longValue();
-				rdst.data = new PrimitiveInfo(res);
+				double res = op0.longValue() * op1.longValue();
+				Log.debug(TAG, "" + res);
+				rdst.data = new PrimitiveInfo(op0.longValue() * op1.longValue());
 			} else if (op1.isFloat()) {
 				rdst.type = ClassInfo.primitiveFloat;
 				float res = op0.floatValue() * op1.floatValue();
 				rdst.data = new PrimitiveInfo(res);
 			} else if (op1.isDouble()) {
+				Log.debug(TAG, "here mul ");
 				rdst.type = ClassInfo.primitiveFloat;
 				double res = op0.floatValue() * op1.floatValue();
 				rdst.data = new PrimitiveInfo(res);
 			}
+			Log.debug(TAG, "end mul ");
 			jump(vm, inst, true);
 		}
 	}
@@ -1555,34 +1595,41 @@ public class Interpreter {
 			@SuppressWarnings("rawtypes")
 			Class[] argsClass = new Class[mi.paramTypes.length];
 			Method method;
+			Object[] params = new Object[args.length - 1];
+
+			if (mi.isConstructor()) {
+				if (args.length == 1) {
+					vm.regs[args[0]].data = clazz.newInstance();
+					return;
+				}
+
+				getParams(vm, mi, args, argsClass, params);
+				// overwrite previous declared dvmObj
+				vm.regs[args[0]].data = clazz.getConstructor(argsClass)
+						.newInstance(params);
+				vm.regs[args[0]].type = mi.myClass;
+				Log.debug(TAG, "return data: " + vm.regs[args[0]].data + " "
+						+ vm.regs[args[0]].data.getClass());
+				return;
+			}
 
 			Object obj = vm.regs[args[0]].data;
 			if (args.length == 1) {
 				method = clazz.getDeclaredMethod(mi.name);
-				method.invoke(obj);
-				return;
+				vm.return_val_reg.data = method.invoke(obj);
+			} else {
+				getParams(vm, mi, args, argsClass, params);
+				method = clazz.getDeclaredMethod(mi.name, argsClass);
+				Log.debug(TAG, "caller obj: " + obj.getClass().toString());
+				// handle return val
+				vm.return_val_reg.data = method.invoke(obj, params);
 			}
-
-			Object[] params = new Object[args.length - 1];
-			// start from 1 to ignore "this"
-			for (int i = 1; i < args.length; i++) {
-				if (mi.paramTypes[i - 1].isPrimitive()) {
-					Object primitive = resolvePrimitive((PrimitiveInfo) vm.regs[args[i]].data);
-					params[i - 1] = primitive;
-					Class<?> argClass = primClasses.get(primitive.getClass());
-					argsClass[i - 1] = argClass;
-				} else {
-					// TODO use classloader to check exists or not
-					String argClass = mi.paramTypes[i].toString();
-					argsClass[i - 1] = Class.forName(argClass);
-					params[i - 1] = vm.regs[args[i]].data;
-				}
+			if (vm.return_val_reg.data != null) {
+				vm.return_val_reg.type = ClassInfo
+						.findOrCreateClass(vm.return_val_reg.data.getClass());
+				Log.debug(TAG, "return data: " + vm.return_val_reg.data + " "
+						+ vm.return_val_reg.data.getClass());
 			}
-
-			method = clazz.getDeclaredMethod(mi.name, argsClass);
-			Log.debug(TAG, obj.getClass().toString());
-
-			method.invoke(obj, params);
 			Log.msg(TAG, "reflction invocation " + method);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -1594,7 +1641,25 @@ public class Interpreter {
 				Log.debug(TAG, "pc " + vm.pc + " " + mi.insns.length);
 			}
 		}
+	}
 
+	private void getParams(DalvikVM vm, MethodInfo mi, int[] args,
+			Class<?>[] argsClass, Object[] params)
+			throws ClassNotFoundException {
+		// start from 1 to ignore "this"
+		for (int i = 1; i < args.length; i++) {
+			if (mi.paramTypes[i - 1].isPrimitive()) {
+				Object primitive = resolvePrimitive((PrimitiveInfo) vm.regs[args[i]].data);
+				params[i - 1] = primitive;
+				Class<?> argClass = primClasses.get(primitive.getClass());
+				argsClass[i - 1] = argClass;
+			} else {
+				// TODO use classloader to check exists or not
+				String argClass = mi.paramTypes[i - 1].toString();
+				argsClass[i - 1] = Class.forName(argClass);
+				params[i - 1] = vm.regs[args[i]].data;
+			}
+		}
 	}
 
 	public void invocation(DalvikVM vm, MethodInfo mi) {
@@ -1723,5 +1788,7 @@ public class Interpreter {
 
 		return null;
 	}
+	
+
 
 }

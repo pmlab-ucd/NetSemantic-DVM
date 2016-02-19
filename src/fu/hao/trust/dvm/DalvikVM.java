@@ -61,12 +61,12 @@ public class DalvikVM {
 		// but it's easier to implement in our case
 		// since we know we do not need pc to cross procedure
 		int pc;
-		// which reg store the return value of callee called by this method
-		int return_val_reg;
+		
 
 		JVM_STACK_FRAME(MethodInfo method) {
 			this.method = method;
 			pc = 0;
+			return_val_reg = new simple_dvm_register();
 		}
 	}
 
@@ -85,6 +85,10 @@ public class DalvikVM {
 		}
 
 		public DVMClass getClass(ClassInfo type) {
+			Log.debug(tag, "getClass " + type);
+			if (!dvmClasses.containsKey(type)) {
+				return null;
+			}
 			return dvmClasses.get(type);
 		}
 
@@ -99,21 +103,26 @@ public class DalvikVM {
 	// We directly use underlying jvm who runs this interpreter to manage memory
 	Heap heap;
 	simple_dvm_register[] regs = new simple_dvm_register[65536]; // 32
-	invoke_parameters p;
-	int[] result = new int[8];
+	//invoke_parameters p;
+	//int[] result = new int[8];
 	int pc;
 
 	JVM_STACK_FRAME curr_jvm_stack;
 	int jvm_stack_depth = 0;
 
-	Interpreter interpreter = new Interpreter();
+	Interpreter interpreter;
 
 	simple_dvm_register test = new simple_dvm_register();
+	// which reg store the return value of callee called by this method
+	simple_dvm_register return_val_reg;
 
 	DalvikVM() {
+		heap = new Heap();
+		interpreter = new Interpreter();
 		for (int i = 0; i < regs.length; i++) {
 			regs[i] = new simple_dvm_register();
 		}
+		return_val_reg = new simple_dvm_register();
 	}
 
 	public JVM_STACK_FRAME newStackFrame(MethodInfo mi) {
@@ -148,8 +157,8 @@ public class DalvikVM {
 		int counter = 0;
 		for (Instruction ins : methods[0].insns) {
 			counter++;
-			System.out.println("opcode: " + ins.opcode + " " + ins.opcode_aux);
-			System.out.println("[" + counter + "]" + ins.toString());
+			Log.debug(tag, "opcode: " + ins.opcode + " " + ins.opcode_aux);
+			Log.debug(tag, "[" + counter + "]" + ins.toString());
 		}
 
 		interpreter.invocation(this, methods[0]);
