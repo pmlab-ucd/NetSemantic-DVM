@@ -555,12 +555,12 @@ public class Interpreter {
 
 			if (op1.intValue() != op2.intValue()) {
 				jump(vm, inst, false);
-
-				Log.debug(TAG, "not equ: " + inst);
+				Log.debug(TAG, "not equ: " + inst + " " + op1.intValue() + " "
+						+ op2.intValue());
 			} else {
 				jump(vm, inst, true);
-
-				Log.debug(TAG, "equ: " + inst);
+				Log.debug(TAG, "equ: " + inst + " " + op1.intValue() + " "
+						+ op2.intValue());
 			}
 		}
 	}
