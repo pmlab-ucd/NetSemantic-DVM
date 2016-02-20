@@ -122,7 +122,42 @@ public class Interpreter {
 	class OP_SP_ARGUMENTS implements ByteCode {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			// TODO Auto-generated method stub
+			int[] args = (int[]) inst.extra;
+
+			if (vm.calling_ctx == null) {
+				MethodInfo currMethod = vm.curr_jvm_stack.method;
+				int startParam = 0;
+				if (!currMethod.isStatic()) {
+					startParam = 1;
+					vm.regs[args[0]].data = new DVMObject(vm,
+							currMethod.myClass);
+					vm.regs[args[0]].type = currMethod.myClass;
+				}
+
+				int i = startParam;
+				for (ClassInfo paramClass : currMethod.paramTypes) {
+					if (paramClass.isPrimitive()) {
+						// FIXME
+						vm.regs[args[i]].data = new PrimitiveInfo(42);
+						vm.regs[args[i]].type = paramClass;
+					} else if (paramClass.isArray()) {
+						// FIXME
+					} else {
+						vm.regs[args[i]].data = new DVMObject(vm, paramClass);
+						vm.regs[args[i]].type = paramClass;
+					}
+					i++;
+				}
+
+			} else {
+				if (args.length != vm.calling_ctx.length) {
+					Log.err(TAG, "invalid ctx for invocation!");
+					return;
+				}
+				for (int i = 0; i < vm.calling_ctx.length; i++) {
+					vm.regs[args[i]].copy(vm.regs[vm.calling_ctx[i]]);
+				}
+			}
 			jump(vm, inst, true);
 		}
 	}
@@ -397,11 +432,12 @@ public class Interpreter {
 			if (inst.type == null) {
 				Log.err(TAG, "cannot identify res type!");
 			}
-			
+
 			if (vm.return_val_reg.type.isPrimitive()) {
-				vm.return_val_reg.data = PrimitiveInfo.fromObject(vm.return_val_reg.data);
+				vm.return_val_reg.data = PrimitiveInfo
+						.fromObject(vm.return_val_reg.data);
 			}
-			
+
 			// type checking before moving?
 			vm.regs[inst.rdst].copy(vm.return_val_reg);
 			Log.debug(TAG, "data " + vm.regs[inst.rdst].data + " "
@@ -432,7 +468,8 @@ public class Interpreter {
 		public void func(DalvikVM vm, Instruction inst) {
 			Log.debug(TAG, "cast data " + vm.regs[inst.r0].data);
 			if (!(vm.regs[inst.r0].data instanceof PrimitiveInfo)) {
-				vm.regs[inst.r0].data = PrimitiveInfo.fromObject(vm.regs[inst.r0].data);
+				vm.regs[inst.r0].data = PrimitiveInfo
+						.fromObject(vm.regs[inst.r0].data);
 			}
 			PrimitiveInfo primitive = (PrimitiveInfo) vm.regs[inst.r0].data;
 			vm.regs[inst.rdst].data = primitive.castTo(inst.type);
@@ -1405,12 +1442,18 @@ public class Interpreter {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
 			FieldInfo fieldInfo = (FieldInfo) inst.extra;
-			DVMObject obj = (DVMObject) vm.regs[inst.r0].data;
-			if (!obj.getType().isConvertibleTo(fieldInfo.getFieldType())) {
-				Log.err(TAG, "Type inconsistent! " + inst);
+
+			Object obj = vm.regs[inst.r0].data;
+			if (obj instanceof DVMObject) {
+				DVMObject dvmObj = (DVMObject) obj;
+				dvmObj.setField(fieldInfo, vm.regs[inst.r1].data);
+
+				vm.regs[inst.r1].type = fieldInfo.getFieldType();
+				vm.regs[inst.r1].data = dvmObj.getFieldObj(fieldInfo);
+			} else {
+				// TODO reflection set field
 			}
-			vm.regs[inst.r1].type = fieldInfo.getFieldType();
-			vm.regs[inst.r1].data = obj.getFieldObj(fieldInfo);
+
 			jump(vm, inst, true);
 		}
 	}
@@ -1429,11 +1472,14 @@ public class Interpreter {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
 			FieldInfo fieldInfo = (FieldInfo) inst.extra;
-			DVMObject obj = (DVMObject) vm.regs[inst.r0].data;
-			if (!obj.getType().isConvertibleTo(fieldInfo.getFieldType())) {
-				Log.err(TAG, "Type inconsistent! " + inst);
+			Log.debug(TAG, "field " + fieldInfo);
+			Object obj = vm.regs[inst.r0].data;
+			if (obj instanceof DVMObject) {
+				DVMObject dvmObj = (DVMObject) obj;
+				dvmObj.setField(fieldInfo, vm.regs[inst.r1].data);
+			} else {
+				// TODO reflection set field
 			}
-			obj.setField(fieldInfo, vm.regs[inst.r1].data);
 			jump(vm, inst, true);
 		}
 	}
@@ -1522,21 +1568,23 @@ public class Interpreter {
 	 */
 	private PrimitiveInfo[] OP_CMP(DalvikVM vm, Instruction inst, boolean flagZ) {
 		simple_dvm_register r0 = vm.regs[inst.r0], r1 = vm.regs[inst.r1];
-		if (!r0.type.equals(r1.type)) {
-			Log.err(TAG, "incosistent type " + inst);
-			return null;
-		}
+		/*
+		 * if (!r0.type.equals(r1.type)) { Log.err(TAG, "incosistent type " +
+		 * inst); return null; }
+		 */
 
-		PrimitiveInfo op1 = (PrimitiveInfo) vm.regs[inst.r0].data;
+		PrimitiveInfo op1 = (PrimitiveInfo) r0.data;
 		PrimitiveInfo op2;
 		if (flagZ) {
 			op2 = new PrimitiveInfo(0);
 		} else {
-			op2 = (PrimitiveInfo) vm.regs[inst.r1].data;
+			op2 = (PrimitiveInfo) r1.data;
 		}
-		simple_dvm_register rdst = vm.regs[inst.rdst];
-		rdst.type = ClassInfo.primitiveInt;
 
+		if (inst.rdst != -1) {
+			simple_dvm_register rdst = vm.regs[inst.rdst];
+			rdst.type = ClassInfo.primitiveInt;
+		}
 		PrimitiveInfo[] res = new PrimitiveInfo[2];
 		res[0] = op1;
 		res[1] = op2;
@@ -1635,6 +1683,10 @@ public class Interpreter {
 			e.printStackTrace();
 			Log.debug(TAG, "not reflction invocation " + mi.myClass);
 			vm.newStackFrame(mi);
+			for (int i = 0; i < args.length; i++) {
+				vm.calling_ctx = new int[args.length];
+				vm.calling_ctx[i] = args[i];
+			}
 			while (vm.pc < mi.insns.length) {
 				Instruction insns = mi.insns[vm.pc];
 				exec(vm, insns);
@@ -1663,6 +1715,11 @@ public class Interpreter {
 	}
 
 	public void invocation(DalvikVM vm, MethodInfo mi) {
+		/*
+		 * vm.thisObj = null; if (!mi.isStatic() && vm.calling_ctx == null) {
+		 * vm.thisObj = new DVMObject(vm, mi.myClass); }
+		 */
+
 		vm.newStackFrame(mi);
 		while (vm.pc < mi.insns.length) {
 			Instruction insns = mi.insns[vm.pc];
@@ -1788,7 +1845,5 @@ public class Interpreter {
 
 		return null;
 	}
-	
-
 
 }

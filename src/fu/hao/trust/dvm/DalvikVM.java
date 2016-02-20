@@ -115,6 +115,10 @@ public class DalvikVM {
 	simple_dvm_register test = new simple_dvm_register();
 	// which reg store the return value of callee called by this method
 	simple_dvm_register return_val_reg;
+	
+	int[] calling_ctx;
+	// DVMObject thisObj;
+	// DVMClass thisClass;
 
 	DalvikVM() {
 		heap = new Heap();
@@ -131,6 +135,7 @@ public class DalvikVM {
 		newStackFrame.prev_stack = curr_jvm_stack;
 		curr_jvm_stack = newStackFrame;
 		jvm_stack_depth++;
+		pc = 0;
 		return new JVM_STACK_FRAME(mi);
 	}
 

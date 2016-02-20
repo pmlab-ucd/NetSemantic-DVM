@@ -2,19 +2,11 @@ package fu.hao.trust.dvm;
 
 import static org.junit.Assert.*;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.zip.ZipException;
-import java.util.zip.ZipFile;
 
 import org.junit.Test;
 
-import patdroid.core.ClassInfo;
-import patdroid.core.MethodInfo;
-import patdroid.core.ReflectionClassDetailLoader;
-import patdroid.dalvik.Instruction;
-import patdroid.smali.SmaliClassDetailLoader;
-import fu.hao.trust.utils.Log;
 import fu.hao.trust.utils.Settings;
 
 public class InterpreterTest {
@@ -73,7 +65,7 @@ public class InterpreterTest {
 		}
 	}
 	
-	//@Test
+	@Test
 	public void testInvoke() {
 		try {
 			prepare("testInvoke");
@@ -86,7 +78,7 @@ public class InterpreterTest {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void testArith() {
 		try {
 			prepare("testArith");
