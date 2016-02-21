@@ -1,0 +1,1396 @@
+package fu.hao.trust.analysis;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+import patdroid.core.ClassInfo;
+import patdroid.core.FieldInfo;
+import patdroid.core.MethodInfo;
+import patdroid.core.PrimitiveInfo;
+import patdroid.dalvik.Instruction;
+import patdroid.util.Pair;
+import fu.hao.trust.dvm.ByteCode;
+import fu.hao.trust.dvm.DVMClass;
+import fu.hao.trust.dvm.DVMObject;
+import fu.hao.trust.dvm.DalvikVM;
+import fu.hao.trust.dvm.DalvikVM.simple_dvm_register;
+import fu.hao.trust.utils.Log;
+
+public class Taint {
+	private final String TAG = getClass().toString();
+	static Map<Integer, Rule> auxByteCodes = new HashMap<>();
+
+	class TAINT_OP_MOVE_REG implements Rule {
+		/**
+		 * @Title: flow
+		 * @Description: x = y
+		 * @param inst
+		 * @param in
+		 * @return
+		 * @see fu.hao.trust.analysis.Rule#flow(patdroid.dalvik.Instruction,
+		 *      java.util.Set)
+		 */
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			// TODO array
+			Set<Object> out = new HashSet<>(in);
+			if (in.contains(vm.getReg(inst.r0))) {
+				out.add(inst.rdst);
+				out.add(vm.getReg(inst.rdst).getData());
+			} else {
+				if (out.contains(vm.getReg(inst.rdst))) {
+					out.remove(vm.getReg(inst.rdst));
+				}
+			}
+
+			return out;
+		}
+	}
+
+	class TAINT_OP_MOV_CONST implements Rule {
+		/**
+		 * @Title: flow
+		 * @Description: x = y
+		 * @param inst
+		 * @param in
+		 * @return
+		 * @see fu.hao.trust.analysis.Rule#flow(patdroid.dalvik.Instruction,
+		 *      java.util.Set)
+		 */
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			Set<Object> out = new HashSet<>(in);
+			if (in.contains(inst.extra)) {
+				out.add(vm.getReg(inst.rdst));
+				out.add(vm.getReg(inst.rdst).getData());
+			} else {
+				if (out.contains(vm.getReg(inst.rdst))) {
+					out.remove(vm.getReg(inst.rdst));
+				}
+			}
+
+			return out;
+		}
+	}
+
+	class TAINT_OP_SP_ARGUMENTS implements Rule {
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			int[] args = (int[]) inst.extra;
+			int[] callingCtx = vm.getContext();
+			Set<Object> out = new HashSet<>(in);
+			if (vm.getContext() != null) {
+				for (int i = 0; i < vm.getContext().length; i++) {
+					if (in.contains(vm.getReg(callingCtx[i]))) {
+						out.add(vm.getReg(args[i]));
+						out.add(vm.getReg(args[i]).getData());
+					} else {
+						if (out.contains(vm.getReg(inst.rdst))) {
+							out.remove(vm.getReg(inst.rdst));
+						}
+					}
+				}
+			}
+
+			return out;
+		}
+	}
+
+	class TAINT_OP_NEW_INSTANCE implements Rule {
+		/**
+		 * @Title: func
+		 * @Description: x = new T()
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			Set<Object> out = new HashSet<>(in);
+			if (in.contains(inst.rdst)) {
+				out.add(vm.getReg(inst.rdst));
+				out.add(vm.getReg(inst.rdst).getData());
+			} else {
+				if (out.contains(vm.getReg(inst.rdst))) {
+					out.remove(vm.getReg(inst.rdst));
+				}
+			}
+
+			return out;
+		}
+	}
+
+	class TAINT_OP_NEW_ARRAY implements Rule {
+		/**
+		 * @Title: func
+		 * @Description: new-array v2, v1, char[] // type@0025 Generates a new
+		 *               array of type@0025 type and v1 size and puts the
+		 *               reference to the new array into v2.
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			Set<Object> out = new HashSet<>(in);
+			return out;
+		}
+	}
+
+	class TAINT_OP_NEW_FILLED_ARRAY implements Rule {
+		/**
+		 * @Title: func
+		 * @Description: filled-new-array {v0,v0},[I // type@0D53 Generates a
+		 *               new array of type@0D53. The array's size will be 2 and
+		 *               both elements will be filled with the contents of v0
+		 *               register.
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			// TODO Auto-generated method stub
+			Set<Object> out = new HashSet<>(in);
+			return out;
+		}
+	}
+
+	class TAINT_OP_INVOKE_DIRECT implements Rule {
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			return invocation(vm, inst, in);
+		}
+	}
+
+	class TAINT_OP_INVOKE_SUPER implements Rule {
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			// TODO Auto-generated method stub
+			return invocation(vm, inst, in);
+		}
+	}
+
+	class TAINT_OP_INVOKE_VIRTUAL implements Rule {
+		/**
+		 * @Title: func
+		 * @Description: invoke-virtual { v4, v0, v1, v2, v3},
+		 *               Test2.method5:(IIII)V // method@0006 Invokes the 6th
+		 *               method in the method table with the following
+		 *               arguments: v4 is the "this" instance, v0, v1, v2, and
+		 *               v3 are the method parameters. The method has 5
+		 *               arguments (4 MSB bits of the second byte)5
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			return invocation(vm, inst, in);
+		}
+	}
+
+	class TAINT_OP_INVOKE_STATIC implements Rule {
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			return invocation(vm, inst, in);
+		}
+	}
+
+	class TAINT_OP_INVOKE_INTERFACE implements Rule {
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			// TODO Auto-generated method stub
+			return invocation(vm, inst, in);
+		}
+	}
+
+	class TAINT_OP_A_INSTANCEOF implements Rule {
+		/**
+		 * @Title: func
+		 * @Description: instance-of v0, v4, Test3 // type@0001 Checks whether
+		 *               the object reference in v4 is an instance of type@0001
+		 *               (entry #1 in the type id table). Sets v0 to non-zero if
+		 *               v4 is instance of Test3, 0 otherwise.
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			// TODO 
+			Set<Object> out = new HashSet<>(in);
+			return out;
+		}
+	}
+
+	class TAINT_OP_A_ARRAY_LENGTH implements Rule {
+		/**
+		 * @Title: func
+		 * @Description: array-length v1, v1 Calculates the number of elements
+		 *               of the array referenced by v1 and puts the result into
+		 *               v1.
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			// TODO
+			Set<Object> out = new HashSet<>(in);
+			return out;
+		}
+	}
+
+	class TAINT_OP_A_CHECKCAST implements Rule {
+		/**
+		 * @Title: func
+		 * @Description: 1F04 0100 - check-cast v4, Test3 // type@0001 Checks
+		 *               whether the object reference in v4 can be cast to
+		 *               type@0001 (entry #1 in the type id table)
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			// TODO long-to-int
+			Set<Object> out = new HashSet<>(in);
+			return out;
+		}
+	}
+
+	class TAINT_OP_MOV_RESULT implements Rule {
+		/**
+		 * @Title: func
+		 * @Description: move-result v0 Move the return value of a previous
+		 *               method invocation into v0.
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			Set<Object> out = new HashSet<>(in);
+			if (in.contains(vm.getReturnReg())) {
+				out.add(vm.getReg(inst.rdst));
+				out.add(vm.getReg(inst.rdst).getData());
+			} else {
+				if (in.contains(vm.getReg(inst.rdst))) {
+					in.remove(inst.rdst);
+				}
+			}
+			return out;
+		}
+	}
+
+	class TAINT_OP_MOV_EXCEPTION implements Rule {
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			// TODO Auto-generated method stub
+			Set<Object> out = new HashSet<>(in);
+			return out;
+		}
+	}
+
+	class TAINT_OP_A_CAST implements Rule {
+		/**
+		 * @Title: func
+		 * @Description: int-to-long v6, v0 Converts an integer in v0 into a
+		 *               long in v6,v7.
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			Set<Object> out = new HashSet<>(in);
+			if (in.contains(vm.getReg(inst.r0))) {
+				out.add(vm.getReg(inst.rdst));
+				out.add(vm.getReg(inst.rdst).getData());
+			} else {
+				if (in.contains(vm.getReg(inst.rdst))) {
+					in.remove(inst.rdst);
+				}
+			}
+			return out;
+		}
+	}
+
+	class TAINT_OP_IF_EQ implements Rule {
+		/**
+		 * @Title: func
+		 * @Description: if-eq v3, v11, 0080 // +0066 Jumps to the current
+		 *               position+66H words if v3==v11. 0080 is the label of the
+		 *               target instruction.
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			return OP_CMP(vm, inst, in);
+		}
+	}
+
+	class TAINT_OP_IF_LT implements Rule {
+		/**
+		 * @Title: func
+		 * @Description: if-lt v2, v3, 0023 // -0035 Jumps to the current
+		 *               position-35H words if v2<v3. 0023 is the label of the
+		 *               target instruction.
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			return OP_CMP(vm, inst, in);
+		}
+	}
+
+	class TAINT_OP_IF_NE implements Rule {
+		/**
+		 * @Title: func
+		 * @Description: if-ne v3, v10, 002c // +0010 Jumps to the current
+		 *               position+10H words if v3!=v10. 002c is the label of the
+		 *               target instruction.
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			return OP_CMP(vm, inst, in);
+		}
+	}
+
+	class TAINT_OP_IF_GE implements Rule {
+		/**
+		 * @Title: func
+		 * @Description: if-ge v0, v1, 002b // +001b Jumps to the current
+		 *               position+1BH words if v0>=v1. 002b is the label of the
+		 *               target instruction.
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			return OP_CMP(vm, inst, in);
+		}
+	}
+
+	class TAINT_OP_IF_GT implements Rule {
+		/**
+		 * @Title: func
+		 * @Description: if-ge v0, v1, 002b // +001b Jumps to the current
+		 *               position+1BH words if v0>v1. 002b is the label of the
+		 *               target instruction.
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			return OP_CMP(vm, inst, in);
+		}
+	}
+
+	class TAINT_OP_IF_LE implements Rule {
+		/**
+		 * @Title: func
+		 * @Description: if-le v6, v5, 0144 // +000b Jumps to the current
+		 *               position+0BH words if v6<=v5. 0144 is the label of the
+		 *               target instruction.
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			return OP_CMP(vm, inst, in);
+		}
+	}
+
+	class TAINT_OP_IF_EQZ implements Rule {
+		/**
+		 * @Title: func
+		 * @Description: (ú  JavaDoc)
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			return OP_CMP(vm, inst, in);
+		}
+	}
+
+	class TAINT_OP_IF_NEZ implements Rule {
+		/**
+		 * @Title: func
+		 * @Description: (ú  JavaDoc)
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			return OP_CMP(vm, inst, in);
+		}
+	}
+
+	class TAINT_OP_IF_LTZ implements Rule {
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			return OP_CMP(vm, inst, in);
+		}
+	}
+
+	class TAINT_OP_IF_GTZ implements Rule {
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			return OP_CMP(vm, inst, in);
+		}
+	}
+
+	class TAINT_OP_IF_GEZ implements Rule {
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			return OP_CMP(vm, inst, in);
+		}
+	}
+
+	class TAINT_OP_IF_LEZ implements Rule {
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			return OP_CMP(vm, inst, in);
+		}
+	}
+
+	class TAINT_OP_ARRAY_GET implements Rule {
+		/**
+		 * @Title: func
+		 * @Description: aget v7, v3, v6 Gets an integer array element. The
+		 *               array is referenced by v3 and the element is indexed by
+		 *               v6. The element will be put into v7.
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+
+			// array reg
+			Object[] array = (Object[]) vm.getReg(inst.r0).getData();
+			// index reg
+			int index = ((PrimitiveInfo) vm.getReg(inst.r1).getData()).intValue();
+
+			
+			Set<Object> out = new HashSet<>(in);
+			if (in.contains(array[index])) {
+				out.add(vm.getReg(inst.rdst));
+				out.add(vm.getReg(inst.rdst).getData());
+			} 
+			return out;
+		}
+	}
+
+	class TAINT_OP_ARRAY_PUT implements Rule {
+		/**
+		 * @Title: func
+		 * @Description: aput v0, v3, v5 Puts the integer value in v2 into an
+		 *               integer array referenced by v0. The target array
+		 *               element is indexed by v1.
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			// TODO taint all?
+			// dest reg
+			simple_dvm_register rdst = vm.getReg(inst.rdst);			
+			
+			Set<Object> out = new HashSet<>(in);
+			if (in.contains(rdst)) {
+				// array reg
+				Object[] array = (Object[]) vm.getReg(inst.r0).getData();
+				// index reg
+				int index = ((PrimitiveInfo) vm.getReg(inst.r1).getData()).intValue();
+				out.add(array[index]);
+				out.add(array[index]);
+			} 
+			return out;
+		}
+	}
+
+	class TAINT_OP_A_ADD implements Rule {
+		/**
+		 * @Title: func
+		 * @Description: add-int/2addr v0,v1 Adds v1 to v0.
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			PrimitiveInfo op0 = (PrimitiveInfo) vm.regs[inst.r0].data;
+			PrimitiveInfo op1;
+			if (inst.r1 != -1) {
+				op1 = (PrimitiveInfo) vm.regs[inst.r1].data;
+			} else {
+				op1 = (PrimitiveInfo) inst.extra;
+			}
+			simple_dvm_register rdst = vm.regs[inst.rdst];
+			if (op1.isInteger()) {
+				rdst.type = ClassInfo.primitiveInt;
+				int res = op0.intValue() + op1.intValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op1.isLong()) {
+				rdst.type = ClassInfo.primitiveLong;
+				long res = op0.longValue() + op1.longValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op1.isFloat()) {
+				rdst.type = ClassInfo.primitiveFloat;
+				float res = op0.floatValue() + op1.floatValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op1.isDouble()) {
+				rdst.type = ClassInfo.primitiveFloat;
+				double res = op0.floatValue() + op1.floatValue();
+				rdst.data = new PrimitiveInfo(res);
+			}
+
+		}
+	}
+
+	class TAINT_OP_A_SUB implements Rule {
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			PrimitiveInfo op0 = (PrimitiveInfo) vm.regs[inst.r0].data;
+			PrimitiveInfo op1;
+			if (inst.r1 != -1) {
+				op1 = (PrimitiveInfo) vm.regs[inst.r1].data;
+			} else {
+				op1 = (PrimitiveInfo) inst.extra;
+			}
+			simple_dvm_register rdst = vm.regs[inst.rdst];
+			if (op1.isInteger()) {
+				rdst.type = ClassInfo.primitiveInt;
+				int res = op0.intValue() - op1.intValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op1.isLong()) {
+				rdst.type = ClassInfo.primitiveLong;
+				long res = op0.longValue() - op1.longValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op1.isFloat()) {
+				rdst.type = ClassInfo.primitiveFloat;
+				float res = op0.floatValue() - op1.floatValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op1.isDouble()) {
+				rdst.type = ClassInfo.primitiveFloat;
+				double res = op0.floatValue() - op1.floatValue();
+				rdst.data = new PrimitiveInfo(res);
+			}
+
+		}
+	}
+
+	class TAINT_OP_A_MUL implements Rule {
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			PrimitiveInfo op0 = (PrimitiveInfo) vm.regs[inst.r0].data;
+			PrimitiveInfo op1;
+			if (inst.r1 != -1) {
+				op1 = (PrimitiveInfo) vm.regs[inst.r1].data;
+			} else {
+				op1 = (PrimitiveInfo) inst.extra;
+			}
+			simple_dvm_register rdst = vm.regs[inst.rdst];
+
+			Object obj = resolvePrimitive(op1);
+			Log.debug(TAG, "" + obj.getClass());
+			if (op1.isInteger()) {
+				rdst.type = ClassInfo.primitiveInt;
+				int res = op0.intValue() * op1.intValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op1.isLong()) {
+				Log.debug(TAG, "here mul long ");
+				rdst.type = ClassInfo.primitiveLong;
+				double res = op0.longValue() * op1.longValue();
+				Log.debug(TAG, "" + res);
+				rdst.data = new PrimitiveInfo(op0.longValue() * op1.longValue());
+			} else if (op1.isFloat()) {
+				rdst.type = ClassInfo.primitiveFloat;
+				float res = op0.floatValue() * op1.floatValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op1.isDouble()) {
+				Log.debug(TAG, "here mul ");
+				rdst.type = ClassInfo.primitiveFloat;
+				double res = op0.floatValue() * op1.floatValue();
+				rdst.data = new PrimitiveInfo(res);
+			}
+			Log.debug(TAG, "end mul ");
+
+		}
+	}
+
+	class TAINT_OP_A_DIV implements Rule {
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			PrimitiveInfo op0 = (PrimitiveInfo) vm.regs[inst.r0].data;
+			PrimitiveInfo op1;
+			if (inst.r1 != -1) {
+				op1 = (PrimitiveInfo) vm.regs[inst.r1].data;
+			} else {
+				op1 = (PrimitiveInfo) inst.extra;
+			}
+			simple_dvm_register rdst = vm.regs[inst.rdst];
+			if (op1.isInteger()) {
+				rdst.type = ClassInfo.primitiveInt;
+				int res = op0.intValue() / op1.intValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op1.isLong()) {
+				rdst.type = ClassInfo.primitiveLong;
+				long res = op0.longValue() / op1.longValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op1.isFloat()) {
+				rdst.type = ClassInfo.primitiveFloat;
+				float res = op0.floatValue() / op1.floatValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op1.isDouble()) {
+				rdst.type = ClassInfo.primitiveFloat;
+				double res = op0.floatValue() / op1.floatValue();
+				rdst.data = new PrimitiveInfo(res);
+			}
+
+		}
+	}
+
+	class TAINT_OP_A_REM implements Rule {
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			PrimitiveInfo op0 = (PrimitiveInfo) vm.regs[inst.r0].data;
+			PrimitiveInfo op1;
+			if (inst.r1 != -1) {
+				op1 = (PrimitiveInfo) vm.regs[inst.r1].data;
+			} else {
+				op1 = (PrimitiveInfo) inst.extra;
+			}
+			simple_dvm_register rdst = vm.regs[inst.rdst];
+			if (op1.isInteger()) {
+				rdst.type = ClassInfo.primitiveInt;
+				int res = op0.intValue() % op1.intValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op1.isLong()) {
+				rdst.type = ClassInfo.primitiveLong;
+				long res = op0.longValue() % op1.longValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op1.isFloat()) {
+				rdst.type = ClassInfo.primitiveFloat;
+				float res = op0.floatValue() % op1.floatValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op1.isDouble()) {
+				rdst.type = ClassInfo.primitiveFloat;
+				double res = op0.floatValue() % op1.floatValue();
+				rdst.data = new PrimitiveInfo(res);
+			}
+
+		}
+	}
+
+	class TAINT_OP_A_AND implements Rule {
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			PrimitiveInfo op0 = (PrimitiveInfo) vm.regs[inst.r0].data;
+			PrimitiveInfo op1;
+			if (inst.r1 != -1) {
+				op1 = (PrimitiveInfo) vm.regs[inst.r1].data;
+			} else {
+				op1 = (PrimitiveInfo) inst.extra;
+			}
+			simple_dvm_register rdst = vm.regs[inst.rdst];
+			if (op1.isInteger()) {
+				rdst.type = ClassInfo.primitiveInt;
+				int res = op0.intValue() & op1.intValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op1.isLong()) {
+				rdst.type = ClassInfo.primitiveLong;
+				long res = op0.longValue() & op1.longValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else {
+				Log.err(TAG, "invalid type! " + inst);
+			}
+
+		}
+	}
+
+	class TAINT_OP_A_NOT implements Rule {
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			// FIXME not sure correct
+			PrimitiveInfo op0 = (PrimitiveInfo) vm.regs[inst.r0].data;
+			simple_dvm_register rdst = vm.regs[inst.rdst];
+			if (op0.isInteger()) {
+				rdst.type = ClassInfo.primitiveInt;
+				int res = ~op0.intValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op0.isLong()) {
+				rdst.type = ClassInfo.primitiveLong;
+				long res = ~op0.longValue();
+				rdst.data = new PrimitiveInfo(res);
+			}
+
+		}
+	}
+
+	class TAINT_OP_A_NEG implements Rule {
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			PrimitiveInfo op0 = (PrimitiveInfo) vm.regs[inst.r0].data;
+			simple_dvm_register rdst = vm.regs[inst.rdst];
+			if (op0.isInteger()) {
+				rdst.type = ClassInfo.primitiveInt;
+				int res = -op0.intValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op0.isLong()) {
+				rdst.type = ClassInfo.primitiveLong;
+				long res = -op0.longValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op0.isFloat()) {
+				rdst.type = ClassInfo.primitiveFloat;
+				float res = -op0.floatValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op0.isDouble()) {
+				rdst.type = ClassInfo.primitiveFloat;
+				double res = -op0.floatValue();
+				rdst.data = new PrimitiveInfo(res);
+			}
+
+		}
+	}
+
+	class TAINT_OP_A_XOR implements Rule {
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			PrimitiveInfo op0 = (PrimitiveInfo) vm.regs[inst.r0].data;
+			PrimitiveInfo op1;
+			if (inst.r1 != -1) {
+				op1 = (PrimitiveInfo) vm.regs[inst.r1].data;
+			} else {
+				op1 = (PrimitiveInfo) inst.extra;
+			}
+			simple_dvm_register rdst = vm.regs[inst.rdst];
+			if (op1.isInteger()) {
+				rdst.type = ClassInfo.primitiveInt;
+				int res = op0.intValue() ^ op1.intValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op1.isLong()) {
+				rdst.type = ClassInfo.primitiveLong;
+				long res = op0.longValue() ^ op1.longValue();
+				rdst.data = new PrimitiveInfo(res);
+			}
+
+		}
+	}
+
+	class TAINT_OP_A_OR implements Rule {
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			PrimitiveInfo op0 = (PrimitiveInfo) vm.regs[inst.r0].data;
+			PrimitiveInfo op1;
+			if (inst.r1 != -1) {
+				op1 = (PrimitiveInfo) vm.regs[inst.r1].data;
+			} else {
+				op1 = (PrimitiveInfo) inst.extra;
+			}
+			simple_dvm_register rdst = vm.regs[inst.rdst];
+			if (op1.isInteger()) {
+				rdst.type = ClassInfo.primitiveInt;
+				int res = op0.intValue() | op1.intValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op1.isLong()) {
+				rdst.type = ClassInfo.primitiveLong;
+				long res = op0.longValue() | op1.longValue();
+				rdst.data = new PrimitiveInfo(res);
+			}
+
+		}
+	}
+
+	class TAINT_OP_A_SHL implements Rule {
+		/**
+		 * @Title: func
+		 * @Description: shl-int v2, v0, v1 Shift v0 left by the positions
+		 *               specified by v1 and store the result in v2.
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			PrimitiveInfo op0 = (PrimitiveInfo) vm.regs[inst.r0].data;
+			PrimitiveInfo op1;
+			if (inst.r1 != -1) {
+				op1 = (PrimitiveInfo) vm.regs[inst.r1].data;
+			} else {
+				op1 = (PrimitiveInfo) inst.extra;
+			}
+			simple_dvm_register rdst = vm.regs[inst.rdst];
+			if (op0.isInteger()) {
+				rdst.type = ClassInfo.primitiveInt;
+				int res = op0.intValue() << op1.intValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op0.isLong()) {
+				rdst.type = ClassInfo.primitiveLong;
+				long res;
+				if (op1.isInteger()) {
+					res = op0.longValue() << op1.intValue();
+				} else {
+					res = op0.longValue() << op1.longValue();
+				}
+				rdst.data = new PrimitiveInfo(res);
+			}
+
+		}
+	}
+
+	class TAINT_OP_A_SHR implements Rule {
+		/**
+		 * @Title: func
+		 * @Description: shl-int v2, v0, v1 Shift v0 right by the positions
+		 *               specified by v1 and store the result in v2.
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			PrimitiveInfo op0 = (PrimitiveInfo) vm.regs[inst.r0].data;
+			PrimitiveInfo op1;
+			if (inst.r1 != -1) {
+				op1 = (PrimitiveInfo) vm.regs[inst.r1].data;
+			} else {
+				op1 = (PrimitiveInfo) inst.extra;
+			}
+			simple_dvm_register rdst = vm.regs[inst.rdst];
+			if (op0.isInteger()) {
+				rdst.type = ClassInfo.primitiveInt;
+				int res = op0.intValue() >> op1.intValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op0.isLong()) {
+				rdst.type = ClassInfo.primitiveLong;
+				long res;
+				if (op1.isInteger()) {
+					res = op0.longValue() >> op1.intValue();
+				} else {
+					res = op0.longValue() >> op1.longValue();
+				}
+				rdst.data = new PrimitiveInfo(res);
+			}
+
+		}
+	}
+
+	class TAINT_OP_A_USHR implements Rule {
+		/**
+		 * @Title: func
+		 * @Description: ushr-int/2addr v0, v1 Unsigned shift v0 by the
+		 *               positions specified by v1.
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			PrimitiveInfo op0 = (PrimitiveInfo) vm.regs[inst.r0].data;
+			PrimitiveInfo op1;
+			if (inst.r1 != -1) {
+				op1 = (PrimitiveInfo) vm.regs[inst.r1].data;
+			} else {
+				op1 = (PrimitiveInfo) inst.extra;
+			}
+			simple_dvm_register rdst = vm.regs[inst.rdst];
+			if (op0.isInteger()) {
+				rdst.type = ClassInfo.primitiveInt;
+				int res = op0.intValue() >>> op1.intValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op0.isLong()) {
+				rdst.type = ClassInfo.primitiveLong;
+				long res;
+				if (op1.isInteger()) {
+					res = op0.longValue() >>> op1.intValue();
+				} else {
+					res = op0.longValue() >>> op1.longValue();
+				}
+				rdst.data = new PrimitiveInfo(res);
+			}
+
+		}
+	}
+
+	class TAINT_OP_CMP_LONG implements Rule {
+		/**
+		 * @Title: func
+		 * @Description: cmpl-float v0, v6, v7 Compares the float values in v6
+		 *               and v7 then sets v0 accordingly. NaN bias is less-than,
+		 *               the instruction will return -1 if any of the parameters
+		 *               is NaN. Compare operations return positive value if the
+		 *               first operand is greater than the second operand, 0 if
+		 *               they are equal and negative value if the first operand
+		 *               is smaller than the second operand.
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			PrimitiveInfo[] res = OP_CMP(vm, inst, true);
+			PrimitiveInfo op1 = res[0];
+			PrimitiveInfo op2 = res[1];
+			simple_dvm_register rdst = vm.regs[inst.rdst];
+			rdst.type = ClassInfo.primitiveInt;
+
+			if (op1.longValue() > op2.longValue()) {
+				rdst.data = new PrimitiveInfo(1);
+			} else if (op1.longValue() == op2.longValue()) {
+				rdst.data = new PrimitiveInfo(0);
+			} else {
+				rdst.data = new PrimitiveInfo(-1);
+			}
+
+			Log.debug(TAG, "CMPLong " + inst);
+		}
+	}
+
+	class TAINT_OP_CMP_LESS implements Rule {
+		/**
+		 * @Title: func
+		 * @Description: cmpl-float v0, v6, v7 Compares the float values in v6
+		 *               and v7 then sets v0 accordingly. NaN bias is less-than,
+		 *               the instruction will return -1 if any of the parameters
+		 *               is NaN.
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			simple_dvm_register r0 = vm.regs[inst.r0], r1 = vm.regs[inst.r1];
+			if (!r0.type.equals(r1.type)) {
+				Log.err(TAG, "incosistent type " + inst);
+				return;
+			}
+
+			PrimitiveInfo op1 = (PrimitiveInfo) vm.regs[inst.r0].data;
+			PrimitiveInfo op2 = (PrimitiveInfo) vm.regs[inst.r1].data;
+			simple_dvm_register rdst = vm.regs[inst.rdst];
+			rdst.type = ClassInfo.primitiveInt;
+			// FIXME NaN handling
+			if (r0.type.equals(ClassInfo.primitiveFloat)) {
+				if (op1.floatValue() > op2.floatValue()) {
+					rdst.data = new PrimitiveInfo(1);
+				} else if (op1.floatValue() == op2.floatValue()) {
+					rdst.data = new PrimitiveInfo(0);
+				} else {
+					rdst.data = new PrimitiveInfo(-1);
+				}
+			} else if (r0.type.equals(ClassInfo.primitiveDouble)) {
+				if (op1.doubleValue() > op2.doubleValue()) {
+					rdst.data = new PrimitiveInfo(1);
+				} else if (op1.doubleValue() == op2.doubleValue()) {
+					rdst.data = new PrimitiveInfo(0);
+				} else {
+					rdst.data = new PrimitiveInfo(-1);
+				}
+			} else {
+				Log.err(TAG, "unknown type " + inst);
+			}
+
+		}
+	}
+
+	class TAINT_OP_CMP_GREATER implements Rule {
+		/**
+		 * @Title: func
+		 * @Description: cmpg-float v0, v6, v7 Compares the float values in v6
+		 *               and v7 then sets v0 accordingly. NaN bias is
+		 *               greater-than, the instruction will return 1 if any of
+		 *               the parameters is NaN.
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			simple_dvm_register r0 = vm.regs[inst.r0], r1 = vm.regs[inst.r1];
+			if (!r0.type.equals(r1.type)) {
+				Log.err(TAG, "incosistent type " + inst);
+				return;
+			}
+
+			PrimitiveInfo op1 = (PrimitiveInfo) vm.regs[inst.r0].data;
+			PrimitiveInfo op2 = (PrimitiveInfo) vm.regs[inst.r1].data;
+			simple_dvm_register rdst = vm.regs[inst.rdst];
+			rdst.type = ClassInfo.primitiveInt;
+			// FIXME NaN handling
+			if (r0.type.equals(ClassInfo.primitiveFloat)) {
+				if (op1.floatValue() > op2.floatValue()) {
+					rdst.data = new PrimitiveInfo(1);
+				} else if (op1.floatValue() == op2.floatValue()) {
+					rdst.data = new PrimitiveInfo(0);
+				} else {
+					rdst.data = new PrimitiveInfo(-1);
+				}
+			} else if (r0.type.equals(ClassInfo.primitiveDouble)) {
+				if (op1.doubleValue() > op2.doubleValue()) {
+					rdst.data = new PrimitiveInfo(1);
+				} else if (op1.doubleValue() == op2.doubleValue()) {
+					rdst.data = new PrimitiveInfo(0);
+				} else {
+					rdst.data = new PrimitiveInfo(-1);
+				}
+			} else {
+				Log.err(TAG, "unknown type " + inst);
+			}
+
+		}
+	}
+
+	class TAINT_OP_STATIC_GET_FIELD implements Rule {
+		/**
+		 * @Title: func
+		 * @Description: sget v0, Test3.is1:I // field@0007 Reads field@0007
+		 *               (entry #7 in the field id table) into v0.
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			@SuppressWarnings("unchecked")
+			Pair<ClassInfo, String> pair = (Pair<ClassInfo, String>) inst.extra;
+
+			try {
+				Class<?> clazz = Class.forName(pair.first.toString());
+				Field field = clazz.getDeclaredField(pair.second.toString());
+				// TODO only support static field now
+				vm.regs[inst.r0].data = field.get(clazz);
+				vm.regs[inst.r0].type = ClassInfo
+						.findOrCreateClass(vm.regs[inst.r0].data.getClass());
+				Log.debug(TAG, "refleciton " + vm.regs[inst.r0].data);
+			} catch (Exception e) {
+				FieldInfo statFieldInfo = new FieldInfo(pair.first, pair.second);
+				Log.debug(TAG, "sget " + statFieldInfo.getFieldType());
+
+				DVMClass dvmClass = vm.heap.getClass(statFieldInfo
+						.getFieldType());
+				Log.debug(TAG, "sget " + dvmClass);
+				Log.debug(TAG, statFieldInfo.toString());
+				vm.regs[inst.r0].data = dvmClass.getStatField(statFieldInfo);
+				vm.regs[inst.r0].type = statFieldInfo.getFieldType();
+			}
+
+		}
+	}
+
+	class TAINT_OP_STATIC_PUT_FIELD implements Rule {
+		/**
+		 * @Title: func
+		 * @Description: sput v0, Test2.i5:I // field@0001 Stores v0 into
+		 *               field@0001 (entry #1 in the field id table).
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			@SuppressWarnings("unchecked")
+			Pair<ClassInfo, String> pair = (Pair<ClassInfo, String>) inst.extra;
+			FieldInfo statFieldInfo = new FieldInfo(pair.first, pair.second);
+			DVMClass dvmClass = vm.heap.getClass(statFieldInfo.getFieldType());
+			if (!vm.regs[inst.r0].type.isConvertibleTo(statFieldInfo
+					.getFieldType())) {
+				Log.err(TAG, "Type inconsistent! " + inst);
+			}
+			dvmClass.setStatField(statFieldInfo, vm.regs[inst.r0].data);
+
+		}
+	}
+
+	class TAINT_OP_INSTANCE_GET_FIELD implements Rule {
+		/**
+		 * @Title: func
+		 * @Description: iget v0, v1, Test2.i6:I // field@0003 Reads field@0003
+		 *               into v0 (entry #3 in the field id table). The instance
+		 *               is referenced by v1.
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			FieldInfo fieldInfo = (FieldInfo) inst.extra;
+
+			Object obj = vm.regs[inst.r0].data;
+			if (obj instanceof DVMObject) {
+				DVMObject dvmObj = (DVMObject) obj;
+				dvmObj.setField(fieldInfo, vm.regs[inst.r1].data);
+
+				vm.regs[inst.r1].type = fieldInfo.getFieldType();
+				vm.regs[inst.r1].data = dvmObj.getFieldObj(fieldInfo);
+			} else {
+				// TODO reflection set field
+			}
+
+		}
+	}
+
+	class TAINT_OP_INSTANCE_PUT_FIELD implements Rule {
+		/**
+		 * @Title: func
+		 * @Description: iput v0,v2, Test2.i6:I // field@0002 Stores v0 into
+		 *               field@0002 (entry #2 in the field id table). The
+		 *               instance is referenced by v2
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			FieldInfo fieldInfo = (FieldInfo) inst.extra;
+			Log.debug(TAG, "field " + fieldInfo);
+			Object obj = vm.regs[inst.r0].data;
+			if (obj instanceof DVMObject) {
+				DVMObject dvmObj = (DVMObject) obj;
+				dvmObj.setField(fieldInfo, vm.regs[inst.r1].data);
+			} else {
+				// TODO reflection set field
+			}
+
+		}
+	}
+
+	class TAINT_OP_EXCEPTION_TRYCATCH implements Rule {
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			// TODO Auto-generated method stub
+
+		}
+	}
+
+	class TAINT_OP_EXCEPTION_THROW implements Rule {
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			// TODO Auto-generated method stub
+
+		}
+	}
+
+	class TAINT_OP_GOTO implements Rule {
+		/**
+		 * @Title: func
+		 * @Description: goto 0005 // -0010 Jumps to current position-16 words
+		 *               (hex 10). 0005 is the label of the target instruction.
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+
+			Log.debug(TAG, "goto done: " + inst);
+		}
+	}
+
+	/**
+	 * @Title: func
+	 * @Description: helper func for cmp
+	 * @param vm
+	 * @param inst
+	 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+	 *      patdroid.dalvik.Instruction)
+	 */
+	private Set<Object> OP_CMP(DalvikVM vm, Instruction inst, Set<Object> in) {
+		Set<Object> out = new HashSet<>(in);
+		if (in.contains(vm.getReg(inst.r0))) {
+			out.add(vm.getReg(inst.rdst));
+			out.add(vm.getReg(inst.rdst).getData());
+		} else {
+			if (inst.r1 != -1 && in.contains(vm.getReg(inst.r1))) {
+				out.add(vm.getReg(inst.rdst));
+				out.add(vm.getReg(inst.rdst).getData());
+			} else {
+				if (in.contains(vm.getReg(inst.rdst))) {
+					in.remove(inst.rdst);
+				}
+			}
+		}
+		
+		return out;
+	}
+
+	/**
+	 * @Title: invocation
+	 * @Author: hao
+	 * @Description: invocation helper
+	 * @param @param vm
+	 * @param @param mi
+	 * @return void
+	 * @throws
+	 */
+	public Set<Object> invocation(DalvikVM vm, Instruction inst, Set<Object> in) {
+		Object[] extra = (Object[]) inst.extra;
+		MethodInfo mi = (MethodInfo) extra[0];
+		// The register index referred by args
+		int[] args = (int[]) extra[1];
+		return invocation(vm, mi, args, in);
+	}
+
+	public Set<Object> invocation(DalvikVM vm, MethodInfo mi, int[] args,
+			Set<Object> in) {
+		Set<Object> out = new HashSet<>(in);
+		try {
+			// source must be a reflection call;
+			Class<?> clazz = Class.forName(mi.myClass.toString());
+			Log.debug(TAG, "reflction " + clazz);
+			@SuppressWarnings("rawtypes")
+			Class[] argsClass = new Class[mi.paramTypes.length];
+			Method method;
+
+			if (mi.isConstructor()) {
+				if (sources.contains(mi.name)) {
+					out.add(vm.getReg(args[0]));
+					out.add(vm.getReg(args[0]).getData());
+				} else {
+					if (out.contains(vm.getReg(args[0]))) {
+						out.remove(vm.getReg(args[0]));
+					}
+				}
+				return out;
+			}
+
+			if (sources.contains(mi.name)) {
+				out.add(vm.getReturnReg());
+				out.add(vm.getReturnReg().getData());
+			} else {
+				if (out.contains(vm.getReturnReg())) {
+					out.remove(vm.getReturnReg());
+				}
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			Log.debug(TAG, "not reflction invocation " + mi.myClass);
+		}
+
+		return out;
+	}
+
+	Set<String> sources;
+	Set<String> sinks;
+
+	Taint() {
+		// TODO parsing src and sinks
+		sources = new HashSet<>();
+		sources.add("source");
+
+		sinks = new HashSet<>();
+		sinks.add("sink");
+
+		auxByteCodes.put(0x01, new TAINT_OP_MOVE_REG());
+		auxByteCodes.put(0x02, new TAINT_OP_MOV_CONST());
+		// auxByteCodes.put(0x03, new TAINT_OP_RETURN_VOID());
+		// auxByteCodes.put(0x04, new TAINT_OP_RETURN_SOMETHING());
+		// auxByteCodes.put(0x05, new TAINT_OP_MONITOR_ENTER());
+		// auxByteCodes.put(0x06, new TAINT_OP_MONITOR_EXIT());
+		auxByteCodes.put(0x07, new TAINT_OP_SP_ARGUMENTS());
+		auxByteCodes.put(0x08, new TAINT_OP_NEW_INSTANCE());
+		// auxByteCodes.put(0x09, new TAINT_OP_NEW_ARRAY());
+		// auxByteCodes.put(0x0A, new TAINT_OP_NEW_FILLED_ARRAY());
+		auxByteCodes.put(0x0B, new TAINT_OP_INVOKE_DIRECT());
+		auxByteCodes.put(0x0C, new TAINT_OP_INVOKE_SUPER());
+		auxByteCodes.put(0x0D, new TAINT_OP_INVOKE_VIRTUAL());
+		auxByteCodes.put(0x0E, new TAINT_OP_INVOKE_STATIC());
+		auxByteCodes.put(0x0F, new TAINT_OP_INVOKE_INTERFACE());
+		//auxByteCodes.put(0x10, new TAINT_OP_A_INSTANCEOF());
+		//auxByteCodes.put(0x11, new TAINT_OP_A_ARRAY_LENGTH());
+		//auxByteCodes.put(0x12, new TAINT_OP_A_CHECKCAST());
+		auxByteCodes.put(0x13, new TAINT_OP_A_NOT());
+		auxByteCodes.put(0x14, new TAINT_OP_A_NEG());
+		auxByteCodes.put(0x15, new TAINT_OP_MOV_RESULT());
+		//auxByteCodes.put(0x16, new TAINT_OP_MOV_EXCEPTION());
+		auxByteCodes.put(0x17, new TAINT_OP_A_CAST());
+		auxByteCodes.put(0x18, new TAINT_OP_IF_EQ());
+		auxByteCodes.put(0x19, new TAINT_OP_IF_NE());
+		auxByteCodes.put(0x1A, new TAINT_OP_IF_LT());
+		auxByteCodes.put(0x1B, new TAINT_OP_IF_GE());
+		auxByteCodes.put(0x1C, new TAINT_OP_IF_GT());
+		auxByteCodes.put(0x1D, new TAINT_OP_IF_LE());
+		auxByteCodes.put(0x1E, new TAINT_OP_IF_EQZ());
+		auxByteCodes.put(0x1F, new TAINT_OP_IF_NEZ());
+		auxByteCodes.put(0x20, new TAINT_OP_IF_LTZ());
+		auxByteCodes.put(0x21, new TAINT_OP_IF_GEZ());
+		auxByteCodes.put(0x22, new TAINT_OP_IF_GTZ());
+		auxByteCodes.put(0x23, new TAINT_OP_IF_LEZ());
+		auxByteCodes.put(0x24, new TAINT_OP_ARRAY_GET());
+		auxByteCodes.put(0x25, new TAINT_OP_ARRAY_PUT());
+		auxByteCodes.put(0x26, new TAINT_OP_A_ADD());
+		auxByteCodes.put(0x27, new TAINT_OP_A_SUB());
+		auxByteCodes.put(0x28, new TAINT_OP_A_MUL());
+		auxByteCodes.put(0x29, new TAINT_OP_A_DIV());
+		auxByteCodes.put(0x2A, new TAINT_OP_A_REM());
+		auxByteCodes.put(0x2B, new TAINT_OP_A_AND());
+		auxByteCodes.put(0x2C, new TAINT_OP_A_OR());
+		auxByteCodes.put(0x2D, new TAINT_OP_A_XOR());
+		auxByteCodes.put(0x2E, new TAINT_OP_A_SHL());
+		auxByteCodes.put(0x2F, new TAINT_OP_A_SHR());
+		auxByteCodes.put(0x30, new TAINT_OP_A_USHR());
+		auxByteCodes.put(0x31, new TAINT_OP_CMP_LONG());
+		auxByteCodes.put(0x32, new TAINT_OP_CMP_LESS());
+		auxByteCodes.put(0x33, new TAINT_OP_CMP_GREATER());
+		auxByteCodes.put(0x34, new TAINT_OP_STATIC_GET_FIELD());
+		auxByteCodes.put(0x35, new TAINT_OP_STATIC_PUT_FIELD());
+		auxByteCodes.put(0x36, new TAINT_OP_INSTANCE_GET_FIELD());
+		auxByteCodes.put(0x37, new TAINT_OP_INSTANCE_PUT_FIELD());
+		auxByteCodes.put(0x38, new TAINT_OP_EXCEPTION_TRYCATCH());
+		auxByteCodes.put(0x39, new TAINT_OP_EXCEPTION_THROW());
+	}
+
+}

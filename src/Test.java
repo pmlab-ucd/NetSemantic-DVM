@@ -1,5 +1,27 @@
+import java.util.HashSet;
+import java.util.Set;
+
+import patdroid.core.ClassInfo;
+import fu.hao.trust.dvm.DVMObject;
+import fu.hao.trust.dvm.DalvikVM;
+
 public class Test {
 	public static void main(String[] args) {
+		Set<Object> objs = new HashSet<>();
+		objs.add(3);
+		objs.add(42);
+		DalvikVM vm = new DalvikVM();
+		DVMObject obj1 = new DVMObject(vm, ClassInfo.primitiveInt);
+		DVMObject obj2 = new DVMObject(vm, ClassInfo.primitiveLong);
+		objs.add(obj1);
+		System.out.println(objs.contains(42));
+		System.out.println(objs.contains(3));
+		System.out.println(objs.contains(obj1));
+		System.out.println(objs.contains(43));
+		System.out.println(objs.contains(obj2));
+	}
+	
+	public void test() {
 		StringBuilder sb = new StringBuilder("hah");
 		System.out.println(sb.toString());
 		int rand = 8;// (int) (Math.random());
@@ -50,7 +72,6 @@ public class Test {
 		System.out.println("f = " + (d) + " + " + (x) + " + " + (y) + " + "
 				+ (c) + " = " + f);
 		System.out.println("Veri Foo Test By WJY");
-
 	}
 
 }

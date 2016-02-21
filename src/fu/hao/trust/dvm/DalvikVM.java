@@ -31,7 +31,7 @@ public class DalvikVM {
 	}
 
 	// Dalvik VM Register Bank
-	class simple_dvm_register {
+	public class simple_dvm_register {
 		ClassInfo type = null;
 		// data can be instance of: PrimitiveInfo, DVMObject and any class
 		// reflection supports
@@ -45,6 +45,10 @@ public class DalvikVM {
 		public void copy(ClassInfo type, Object data) {
 			this.type = type;
 			this.data = data;
+		}
+		
+		public Object getData() {
+			return data;
 		}
 	}
 
@@ -119,14 +123,49 @@ public class DalvikVM {
 	int[] calling_ctx;
 	// DVMObject thisObj;
 	// DVMClass thisClass;
+	
+	public simple_dvm_register getReg(int i) {
+		return regs[i];
+	}
+	
+	/** 
+	 * @Title: getClass 
+	 * @Description: Get the class in the heap.
+	 * @return 
+	 * @see java.lang.Object#getClass() 
+	 */
+	public DVMClass getClass(ClassInfo type) {
+		return heap.getClass(type);
+	}
+	
+	/**
+	* @Title: getObj
+	* @Author: hao
+	* @Description: TODO
+	* @param @return  
+	* @return DVMObject   
+	* @throws
+	*/
+	public DVMObject getObj() {
+		// TODO
+		return null;
+	}
+	
+	public int[] getContext() {
+		return calling_ctx;
+	}
 
-	DalvikVM() {
+	public DalvikVM() {
 		heap = new Heap();
 		interpreter = new Interpreter();
 		for (int i = 0; i < regs.length; i++) {
 			regs[i] = new simple_dvm_register();
 		}
 		return_val_reg = new simple_dvm_register();
+	}
+	
+	public simple_dvm_register getReturnReg() {
+		return return_val_reg;
 	}
 
 	public JVM_STACK_FRAME newStackFrame(MethodInfo mi) {

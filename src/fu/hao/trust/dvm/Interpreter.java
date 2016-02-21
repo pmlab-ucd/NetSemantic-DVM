@@ -656,7 +656,7 @@ public class Interpreter {
 	class OP_IF_EQZ implements ByteCode {
 		/**
 		 * @Title: func
-		 * @Description: (∑« JavaDoc)
+		 * @Description: (ú  JavaDoc)
 		 * @param vm
 		 * @param inst
 		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
@@ -680,7 +680,7 @@ public class Interpreter {
 	class OP_IF_NEZ implements ByteCode {
 		/**
 		 * @Title: func
-		 * @Description: (∑« JavaDoc)
+		 * @Description: (ú  JavaDoc)
 		 * @param vm
 		 * @param inst
 		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,

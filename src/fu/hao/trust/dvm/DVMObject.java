@@ -13,7 +13,7 @@ public class DVMObject {
 	private DVMClass dvmClass = null;
 	private final String TAG = getClass().toString();
 	
-	DVMObject(DalvikVM vm, ClassInfo type) {
+	public DVMObject(DalvikVM vm, ClassInfo type) {
 		if (vm.heap.getClass(type) == null) {
 			Log.debug(TAG, "new object of " + type);
 			vm.heap.setClass(type, new DVMClass(type));
