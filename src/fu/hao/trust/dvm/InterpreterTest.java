@@ -94,7 +94,7 @@ public class InterpreterTest {
 	private void prepare(String method) throws ZipException, IOException {
 		DalvikVM vm = new DalvikVM();
 		Settings.logLevel = 9;
-		vm.runMethod("C:/Users/hao/workspace/TestDVM/app/app-release.apk", method);
+		vm.runMethod("C:/Users/hao/workspace/TestDVM/app/app-release.apk", method, null);
 	}
 	
 	

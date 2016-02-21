@@ -1809,7 +1809,7 @@ public class Interpreter {
 		auxByteCodes.put(0x38, new OP_EXCEPTION_TRYCATCH());
 		auxByteCodes.put(0x39, new OP_EXCEPTION_THROW());
 	}
-
+	
 	public void exec(DalvikVM vm, Instruction inst) {
 		Log.debug(TAG, "opcode: " + inst.opcode + " " + inst.opcode_aux);
 		Log.debug(TAG, inst.toString());
@@ -1820,6 +1820,10 @@ public class Interpreter {
 			auxByteCodes.get((int) inst.opcode_aux).func(vm, inst);
 		} else {
 			Log.err(TAG, "unsupported opcode " + inst);
+		}
+		
+		if (vm.plugin != null) {
+			vm.plugin.runAnalysis(vm, inst, vm.plugin.getCurrRes());
 		}
 	}
 

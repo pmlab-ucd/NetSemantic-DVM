@@ -19,7 +19,7 @@ import fu.hao.trust.dvm.DalvikVM;
 import fu.hao.trust.dvm.DalvikVM.simple_dvm_register;
 import fu.hao.trust.utils.Log;
 
-public class Taint {
+public class Taint extends Plugin {
 	private final String TAG = getClass().toString();
 	static Map<Integer, Rule> auxByteCodes = new HashMap<>();
 	static Map<Integer, Rule> byteCodes = new HashMap<>();
@@ -646,6 +646,27 @@ public class Taint {
 		auxByteCodes.put(0x37, new TAINT_OP_INSTANCE_PUT_FIELD());
 		// auxByteCodes.put(0x38, new TAINT_OP_EXCEPTION_TRYCATCH());
 		// auxByteCodes.put(0x39, new TAINT_OP_EXCEPTION_THROW());
+	}
+
+	@Override
+	public Set<Object> runAnalysis(DalvikVM vm, Instruction inst, Set<Object> in) {
+		Set<Object> out;
+		if (byteCodes.containsKey((int) inst.opcode)) {
+			out = byteCodes.get((int) inst.opcode).flow(vm, inst, in);
+		} else if (auxByteCodes.containsKey((int) inst.opcode_aux)) {
+			out = auxByteCodes.get((int) inst.opcode_aux).flow(vm, inst, in);
+		} else {
+			Log.debug(TAG, "not a taint op " + inst);
+			out = new HashSet<>(in);
+		}
+		
+		currtRes = out;
+		return out;
+	}
+
+	@Override
+	public Set<Object> getCurrRes() {
+		return currtRes;
 	}
 
 }

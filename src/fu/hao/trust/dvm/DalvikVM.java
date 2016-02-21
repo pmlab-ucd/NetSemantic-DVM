@@ -9,6 +9,7 @@ import java.util.Set;
 import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 
+import fu.hao.trust.analysis.Plugin;
 import fu.hao.trust.utils.Log;
 import patdroid.core.ClassInfo;
 import patdroid.core.MethodInfo;
@@ -124,6 +125,8 @@ public class DalvikVM {
 	// DVMObject thisObj;
 	// DVMClass thisClass;
 	
+	Plugin plugin;
+	
 	public simple_dvm_register getReg(int i) {
 		return regs[i];
 	}
@@ -178,7 +181,7 @@ public class DalvikVM {
 		return new JVM_STACK_FRAME(mi);
 	}
 
-	public void runMethod(String apk, String main) throws ZipException,
+	public void runMethod(String apk, String main, Plugin plugin) throws ZipException,
 			IOException {
 		Log.msg(tag, "Begin run " + main + " at " + apk);
 		// for normal java run-time classes
@@ -204,7 +207,8 @@ public class DalvikVM {
 			Log.debug(tag, "opcode: " + ins.opcode + " " + ins.opcode_aux);
 			Log.debug(tag, "[" + counter + "]" + ins.toString());
 		}
-
+		
+		this.plugin = plugin;
 		interpreter.invocation(this, methods[0]);
 	}
 }
