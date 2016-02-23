@@ -34,4 +34,8 @@ public class Settings {
      * The Android API Level
      */
     public static int apiLevel = 15;
+    
+	public static String apkPath;
+	public static String platformDir;
+	public static String apkName;
 }

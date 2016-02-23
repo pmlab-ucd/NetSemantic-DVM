@@ -2,6 +2,7 @@ package fu.hao.trust.dvm;
 
 import java.io.File;
 import java.io.IOException;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -47,7 +48,7 @@ public class DalvikVM {
 			this.type = type;
 			this.data = data;
 		}
-		
+
 		public Object getData() {
 			return data;
 		}
@@ -66,7 +67,6 @@ public class DalvikVM {
 		// but it's easier to implement in our case
 		// since we know we do not need pc to cross procedure
 		int pc;
-		
 
 		JVM_STACK_FRAME(MethodInfo method) {
 			this.method = method;
@@ -108,8 +108,8 @@ public class DalvikVM {
 	// We directly use underlying jvm who runs this interpreter to manage memory
 	Heap heap;
 	simple_dvm_register[] regs = new simple_dvm_register[65536]; // 32
-	//invoke_parameters p;
-	//int[] result = new int[8];
+	// invoke_parameters p;
+	// int[] result = new int[8];
 	int pc;
 
 	JVM_STACK_FRAME curr_jvm_stack;
@@ -120,40 +120,40 @@ public class DalvikVM {
 	simple_dvm_register test = new simple_dvm_register();
 	// which reg store the return value of callee called by this method
 	simple_dvm_register return_val_reg;
-	
+
 	int[] calling_ctx;
-	// DVMObject thisObj;
+	DVMObject thisObj;
 	// DVMClass thisClass;
-	
+
 	Plugin plugin;
-	
+
 	public simple_dvm_register getReg(int i) {
 		return regs[i];
 	}
-	
-	/** 
-	 * @Title: getClass 
+
+	/**
+	 * @Title: getClass
 	 * @Description: Get the class in the heap.
-	 * @return 
-	 * @see java.lang.Object#getClass() 
+	 * @return
+	 * @see java.lang.Object#getClass()
 	 */
 	public DVMClass getClass(ClassInfo type) {
 		return heap.getClass(type);
 	}
-	
+
 	/**
-	* @Title: getObj
-	* @Author: hao
-	* @Description: TODO
-	* @param @return  
-	* @return DVMObject   
-	* @throws
-	*/
+	 * @Title: getObj
+	 * @Author: hao
+	 * @Description: TODO
+	 * @param @return
+	 * @return DVMObject
+	 * @throws
+	 */
 	public DVMObject getObj() {
 		// TODO
 		return null;
 	}
-	
+
 	public int[] getContext() {
 		return calling_ctx;
 	}
@@ -166,7 +166,7 @@ public class DalvikVM {
 		}
 		return_val_reg = new simple_dvm_register();
 	}
-	
+
 	public simple_dvm_register getReturnReg() {
 		return return_val_reg;
 	}
@@ -180,9 +180,11 @@ public class DalvikVM {
 		pc = 0;
 		return new JVM_STACK_FRAME(mi);
 	}
+	
+	ClassLoader loader;
 
-	public void runMethod(String apk, String main, Plugin plugin) throws ZipException,
-			IOException {
+	public void runMethod(String apk, String className, String main,
+			Plugin plugin) throws ZipException, IOException {
 		Log.msg(tag, "Begin run " + main + " at " + apk);
 		// for normal java run-time classes
 		// when a class is not loaded, load it with reflection
@@ -195,7 +197,7 @@ public class DalvikVM {
 		new SmaliClassDetailLoader(apkFile, true).loadAll();
 		// get the class representation for the MainActivity class in the
 		// apk
-		ClassInfo c = ClassInfo.findClass("fu.hao.testdvm.MainActivity");
+		ClassInfo c = ClassInfo.findClass(className);
 		// find all methods with the name "onCreate", most likely there is
 		// only one
 		MethodInfo[] methods = c.findMethodsHere(main);
@@ -207,7 +209,7 @@ public class DalvikVM {
 			Log.debug(tag, "opcode: " + ins.opcode + " " + ins.opcode_aux);
 			Log.debug(tag, "[" + counter + "]" + ins.toString());
 		}
-		
+
 		this.plugin = plugin;
 		interpreter.invocation(this, methods[0]);
 	}

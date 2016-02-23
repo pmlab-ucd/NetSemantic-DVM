@@ -91,9 +91,13 @@ public class Log {
         }
         Logger logger = LoggerFactory
     			.getLogger(tag);
-        logger.error(title + " - " + msg);
         writeLog(tag, theLevel, title, msg, err);
-        throw new RuntimeErrorException(null, tag + " - " + msg);
+        if (theLevel >= MODE_ERROR) {
+        	logger.error(title + " - " + msg);
+        	throw new RuntimeErrorException(null, tag + " - " + msg);
+        } else {
+        	logger.warn(title + " - " + msg);
+        }
     }
 
     public static void increaseIndent() { indent.set(indent.get() + "  "); }

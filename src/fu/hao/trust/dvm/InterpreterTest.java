@@ -13,7 +13,7 @@ public class InterpreterTest {
 
 	String tag = "TEST DVM";
 
-	//@Test
+	// @Test
 	public void testSwitch() {
 		try {
 			prepare("testSwitch");
@@ -26,7 +26,7 @@ public class InterpreterTest {
 		}
 	}
 
-	//@Test
+	// @Test
 	public void testCMP() {
 		try {
 			prepare("testCMP");
@@ -38,8 +38,8 @@ public class InterpreterTest {
 			e.printStackTrace();
 		}
 	}
-	
-	//@Test
+
+	// @Test
 	public void testIF() {
 		try {
 			prepare("testIF");
@@ -51,8 +51,8 @@ public class InterpreterTest {
 			e.printStackTrace();
 		}
 	}
-	
-	//@Test
+
+	// @Test
 	public void testArray() {
 		try {
 			prepare("testArray");
@@ -64,7 +64,7 @@ public class InterpreterTest {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Test
 	public void testInvoke() {
 		try {
@@ -77,8 +77,8 @@ public class InterpreterTest {
 			e.printStackTrace();
 		}
 	}
-	
-	//@Test
+
+	// @Test
 	public void testArith() {
 		try {
 			prepare("testArith");
@@ -94,9 +94,8 @@ public class InterpreterTest {
 	private void prepare(String method) throws ZipException, IOException {
 		DalvikVM vm = new DalvikVM();
 		Settings.logLevel = 9;
-		vm.runMethod("C:/Users/hao/workspace/TestDVM/app/app-release.apk", method, null);
+		vm.runMethod("C:/Users/hao/workspace/TestDVM/app/app-release.apk",
+				"fu.hao.testdvm.MainActivity", method, null);
 	}
-	
-	
 
 }
