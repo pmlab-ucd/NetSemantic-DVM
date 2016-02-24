@@ -54,7 +54,7 @@ public class Taint extends Plugin {
 			// TODO array
 			Set<Object> out = new HashSet<>(in);
 			if (in.contains(vm.getReg(inst.r0))) {
-				out.add(inst.rdst);
+				out.add(vm.getReg(inst.rdst));
 				out.add(vm.getReg(inst.rdst).getData());
 			} else {
 				if (out.contains(vm.getReg(inst.rdst))) {
