@@ -60,5 +60,16 @@ public class MainTest {
 				"359874043116909");
 		assertEquals(Results.results.contains(res), true);
 	}
+	
+	@Test
+	public void testGeneralJava_StaticInitialization2() {
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_StaticInitialization2/app/app-release.apk";
+		args[1] = "de.ecspride.MainActivity";
+		Main.main(args);
+		Map<String, String> res = new HashMap<>();
+		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
+				"359874043116909");
+		assertEquals(Results.results.contains(res), true);
+	}
 
 }

@@ -17,6 +17,8 @@ import patdroid.dalvik.Instruction;
 import patdroid.util.Pair;
 
 public class Interpreter {
+	boolean running = false;
+
 	// The nested class to implement singleton
 	private static class SingletonHolder {
 		private static final Interpreter instance = new Interpreter();
@@ -80,9 +82,11 @@ public class Interpreter {
 			vm.jvm_stack_depth--;
 			vm.curr_jvm_stack = caller;
 			// this is a trick
-			//jump(vm, inst, true);
+			// jump(vm, inst, true);
 			if (vm.curr_jvm_stack != null) {
 				vm.pc = vm.curr_jvm_stack.pc;
+				jump(vm, inst, true);
+				Log.debug(TAG, "pc " + vm.pc + " " + vm.curr_jvm_stack.pc);
 			} else {
 				vm.pc = Integer.MAX_VALUE;
 			}
@@ -214,7 +218,7 @@ public class Interpreter {
 				Object newObj = new DVMObject(vm, inst.type);
 				Log.debug(TAG, "begin new object of " + inst.type + "created.");
 				vm.regs[inst.rdst].data = newObj;
-				Log.debug(TAG, "new object of " + inst.type + "created.");	
+				Log.debug(TAG, "new object of " + inst.type + "created.");
 			}
 			jump(vm, inst, true);
 		}
@@ -342,13 +346,8 @@ public class Interpreter {
 				Log.debug(TAG, "not reflction invocation " + mi.myClass);
 				vm.newStackFrame(mi);
 				vm.setContext(new int[args.length]);
-				for (int i = 0; i < args.length; i++) {					
+				for (int i = 0; i < args.length; i++) {
 					vm.getContext()[i] = args[i];
-				}
-				while (vm.pc < mi.insns.length) {
-					Instruction insns = mi.insns[vm.pc];
-					exec(vm, insns);
-					Log.debug(TAG, "pc " + vm.pc + " " + mi.insns.length);
 				}
 			}
 
@@ -431,11 +430,6 @@ public class Interpreter {
 				e.printStackTrace();
 				Log.debug(TAG, "not a reflction invocation " + mi);
 				vm.newStackFrame(mi);
-				while (vm.pc < mi.insns.length) {
-					Instruction insns = mi.insns[vm.pc];
-					exec(vm, insns);
-					Log.debug(TAG, "pc " + vm.pc + " " + mi.insns.length);
-				}
 			}
 
 			jump(vm, inst, true);
@@ -1498,8 +1492,9 @@ public class Interpreter {
 			} catch (Exception e) {
 				ClassInfo owner = pair.first;
 				String fieldName = pair.second;
-				//FieldInfo statFieldInfo = new FieldInfo(pair.first, pair.second);
-				//Log.debug(TAG, "sget " + statFieldInfo.getFieldType());
+				// FieldInfo statFieldInfo = new FieldInfo(pair.first,
+				// pair.second);
+				// Log.debug(TAG, "sget " + statFieldInfo.getFieldType());
 
 				DVMClass dvmClass = vm.getClass(owner);
 				Log.debug(TAG, "sget " + fieldName + " from " + dvmClass);
@@ -1529,12 +1524,14 @@ public class Interpreter {
 			Pair<ClassInfo, String> pair = (Pair<ClassInfo, String>) inst.extra;
 			ClassInfo owner = pair.first;
 			String fieldName = pair.second;
-			Log.debug(TAG, "field type " + pair.first.getStaticFieldType(pair.second));
+			Log.debug(TAG,
+					"field type " + pair.first.getStaticFieldType(pair.second));
 			ClassInfo fieldType = owner.getStaticFieldType(fieldName);
 			DVMClass dvmClass = vm.getClass(owner);
 			Log.debug(TAG, "getDvmClass " + dvmClass);
 			if (!vm.regs[inst.r0].type.isConvertibleTo(fieldType)) {
-				Log.err(TAG, "Type inconsistent! " + inst);
+				Log.warn(TAG, "Type inconsistent! " + vm.regs[inst.r0].type
+						+ " " + fieldType);
 			}
 			dvmClass.setStatField(fieldName, vm.regs[inst.r0].data);
 			jump(vm, inst, true);
@@ -1697,7 +1694,7 @@ public class Interpreter {
 	 *      patdroid.dalvik.Instruction)
 	 */
 	private PrimitiveInfo[] OP_CMP(DalvikVM vm, Instruction inst, boolean flagZ) {
-		simple_dvm_register r0 = vm.regs[inst.r0]; 
+		simple_dvm_register r0 = vm.regs[inst.r0];
 		/*
 		 * if (!r0.type.equals(r1.type)) { Log.err(TAG, "incosistent type " +
 		 * inst); return null; }
@@ -1705,7 +1702,7 @@ public class Interpreter {
 		if (!(r0.data instanceof PrimitiveInfo)) {
 			r0.data = PrimitiveInfo.fromObject(r0.data);
 		}
-		
+
 		PrimitiveInfo op1 = (PrimitiveInfo) r0.data;
 		PrimitiveInfo op2;
 		if (flagZ) {
@@ -1721,7 +1718,7 @@ public class Interpreter {
 		PrimitiveInfo[] res = new PrimitiveInfo[2];
 		res[0] = op1;
 		res[1] = op2;
-		
+
 		Log.debug(TAG, "ops: " + op1 + " " + op2);
 		return res;
 	}
@@ -1738,10 +1735,11 @@ public class Interpreter {
 	 */
 	private void jump(DalvikVM vm, Instruction inst, boolean seq) {
 		if (seq) {
-			vm.pc++;
 			if (vm.curr_jvm_stack == null) {
+				vm.pc = Integer.MAX_VALUE;
 				return;
 			}
+			vm.pc++;
 			vm.curr_jvm_stack.pc++;
 		} else {
 			if (inst.extra == null) {
@@ -1767,71 +1765,74 @@ public class Interpreter {
 		MethodInfo mi = (MethodInfo) extra[0];
 		// The register index referred by args
 		int[] args = (int[]) extra[1];
-		invocation(vm, mi, args);
-		jump(vm, inst, true);
-	}
 
-	public void invocation(DalvikVM vm, MethodInfo mi, int[] args) {
+		Object obj = null;
+		Method method = null;
 		try {
 			// If applicable, directly use reflection to run the method,
 			// the method is inside java.lang
 			// Class<?> clazz = Class.forName(mi.myClass.toString());
 			Log.debug(TAG, "" + vm.regs[args[0]].data);
 			Class<?> clazz;
-			//if (vm.regs[args[0]].data == null) {
-				clazz = Class.forName(mi.myClass.toString());
-			//} else {
-				//clazz = vm.regs[args[0]].data.getClass();
-			//}
-			
+			// if (vm.regs[args[0]].data == null) {
+			clazz = Class.forName(mi.myClass.toString());
+			// } else {
+			// clazz = vm.regs[args[0]].data.getClass();
+			// }
+
 			@SuppressWarnings("rawtypes")
 			Class[] argsClass = new Class[mi.paramTypes.length];
-			Method method;
 			Object[] params = new Object[args.length - 1];
 
 			if (mi.isConstructor()) {
-				//clazz = Class.forName(mi.myClass.toString());
+				// clazz = Class.forName(mi.myClass.toString());
 				if (args.length == 1) {
 					vm.regs[args[0]].data = clazz.newInstance();
 					vm.regs[args[0]].type = mi.returnType;
 					Log.debug(TAG, "new instance: " + vm.regs[args[0]].data);
-					return;
+				} else {
+
+					getParams(vm, mi, args, argsClass, params);
+					// overwrite previous declared dvmObj
+					vm.regs[args[0]].data = clazz.getConstructor(argsClass)
+							.newInstance(params);
+					vm.regs[args[0]].type = mi.myClass;
+					Log.debug(TAG, "return data: " + vm.regs[args[0]].data
+							+ " " + vm.regs[args[0]].data.getClass());
 				}
-
-				getParams(vm, mi, args, argsClass, params);
-				// overwrite previous declared dvmObj
-				vm.regs[args[0]].data = clazz.getConstructor(argsClass)
-						.newInstance(params);
-				vm.regs[args[0]].type = mi.myClass;
-				Log.debug(TAG, "return data: " + vm.regs[args[0]].data + " "
-						+ vm.regs[args[0]].data.getClass());
-				return;
-			}
-			
-			Log.debug(TAG, "reflction class: " + clazz);
-
-			Object obj = vm.regs[args[0]].data;
-			if (obj == null) {
-				obj = clazz.newInstance();
-			}
-			if (args.length == 1) {
-				method = clazz.getDeclaredMethod(mi.name);
-				vm.return_val_reg.data = method.invoke(obj);
 			} else {
-				getParams(vm, mi, args, argsClass, params);
-				method = clazz.getDeclaredMethod(mi.name, argsClass);
-				Log.debug(TAG, "caller obj: "  + obj +  ", from class: " + obj.getClass().toString());
-				// handle return val
-				vm.return_val_reg.data = method.invoke(obj, params);
+
+				Log.debug(TAG, "reflction class: " + clazz);
+
+				obj = vm.regs[args[0]].data;
+				if (obj == null) {
+					obj = clazz.newInstance();
+				}
+				if (args.length == 1) {
+					method = clazz.getDeclaredMethod(mi.name);
+					vm.return_val_reg.data = method.invoke(obj);
+				} else {
+					getParams(vm, mi, args, argsClass, params);
+					method = clazz.getDeclaredMethod(mi.name, argsClass);
+					Log.debug(TAG, "caller obj: " + obj + ", from class: "
+							+ obj.getClass().toString());
+					// handle return val
+					vm.return_val_reg.data = method.invoke(obj, params);
+				}
+				if (vm.return_val_reg.data != null) {
+					vm.return_val_reg.type = ClassInfo
+							.findOrCreateClass(vm.return_val_reg.data
+									.getClass());
+					Log.debug(TAG, "return data: " + vm.return_val_reg.data
+							+ " ," + vm.return_val_reg.data.getClass());
+				}
+				Log.msg(TAG, "reflction invocation " + method);
+				vm.plugin.method = method;
 			}
-			if (vm.return_val_reg.data != null) {
-				vm.return_val_reg.type = ClassInfo
-						.findOrCreateClass(vm.return_val_reg.data.getClass());
-				Log.debug(TAG, "return data: " + vm.return_val_reg.data + " ,"
-						+ vm.return_val_reg.data.getClass());
-			}
-			Log.msg(TAG, "reflction invocation " + method);
-			vm.plugin.method = method;
+			jump(vm, inst, true);
+		} catch (java.lang.IllegalArgumentException e) {
+			e.printStackTrace();
+			Log.err(TAG, "obj " + obj + " " + method.getDeclaringClass());
 		} catch (Exception e) {
 			vm.plugin.method = null;
 			e.printStackTrace();
@@ -1841,11 +1842,6 @@ public class Interpreter {
 			for (int i = 0; i < args.length; i++) {
 				vm.getContext()[i] = args[i];
 				Log.debug(TAG, "arg " + vm.regs[vm.getContext()[i]].data);
-			}
-			while (vm.pc < mi.insns.length) {
-				Instruction insns = mi.insns[vm.pc];
-				exec(vm, insns);
-				Log.debug(TAG, "pc " + vm.pc + " " + mi.insns.length);
 			}
 		}
 
@@ -1868,7 +1864,7 @@ public class Interpreter {
 				Object argData = vm.regs[args[i]].data;
 				if (matchType(argData.getClass(), argsClass[i - 1])) {
 					params[i - 1] = argData;
-					//argData.getClass().getInterfaces()
+					// argData.getClass().getInterfaces()
 				} else {
 					// FIXME null
 					Log.warn(TAG, "mismatch type! " + "real para type: "
@@ -1879,18 +1875,18 @@ public class Interpreter {
 			}
 		}
 	}
-	
+
 	public boolean matchType(Class<?> real, Class<?> expected) {
 		if (expected.equals(real) || expected.equals(real.getSuperclass())) {
 			return true;
 		}
-		
+
 		for (Class<?> interf : real.getInterfaces()) {
 			if (interf.equals(expected)) {
 				return true;
 			}
 		}
-		
+
 		return false;
 	}
 
@@ -1920,10 +1916,20 @@ public class Interpreter {
 		}
 
 		vm.newStackFrame(mi);
-		while (vm.pc < mi.insns.length) {
-			Instruction insns = mi.insns[vm.pc];
+		if (!running) {
+			run(vm);
+		}
+	}
+
+	public void run(DalvikVM vm) {
+		running = true;
+		while (vm.curr_jvm_stack != null
+				&& vm.pc < vm.curr_jvm_stack.method.insns.length) {
+			Instruction insns = vm.curr_jvm_stack.method.insns[vm.pc];
 			exec(vm, insns);
 		}
+
+		running = false;
 	}
 
 	static Map<Integer, ByteCode> byteCodes = new HashMap<>();

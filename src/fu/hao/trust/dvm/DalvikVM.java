@@ -205,7 +205,7 @@ public class DalvikVM {
 		curr_jvm_stack = newStackFrame;
 		jvm_stack_depth++;
 		pc = 0;
-		return new JVM_STACK_FRAME(mi);
+		return newStackFrame;
 	}
 
 	ClassLoader loader;
@@ -257,9 +257,9 @@ public class DalvikVM {
 		// print all instructions
 		int counter = 0;
 		for (Instruction ins : method.insns) {
-			counter++;
 			Log.debug(tag, "opcode: " + ins.opcode + " " + ins.opcode_aux);
 			Log.debug(tag, "[" + counter + "]" + ins.toString());
+			counter++;
 		}
 		
 		interpreter.invocation(this, method);
