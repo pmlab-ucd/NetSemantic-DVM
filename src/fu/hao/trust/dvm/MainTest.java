@@ -9,7 +9,7 @@ import fu.hao.trust.utils.Settings;
 public class MainTest {
 	String[] args = new String[2];
 	public MainTest() {
-		Settings.logLevel = 0;
+		Settings.logLevel = 9;
 	}
 
 	@Test

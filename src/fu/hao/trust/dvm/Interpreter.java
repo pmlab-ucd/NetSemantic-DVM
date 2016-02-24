@@ -80,7 +80,12 @@ public class Interpreter {
 			vm.jvm_stack_depth--;
 			vm.curr_jvm_stack = caller;
 			// this is a trick
-			jump(vm, inst, true);
+			//jump(vm, inst, true);
+			if (vm.curr_jvm_stack != null) {
+				vm.pc = vm.curr_jvm_stack.pc;
+			} else {
+				vm.pc = Integer.MAX_VALUE;
+			}
 		}
 	}
 
@@ -757,7 +762,7 @@ public class Interpreter {
 			PrimitiveInfo[] res = OP_CMP(vm, inst, true);
 			PrimitiveInfo op1 = res[0];
 			PrimitiveInfo op2 = res[1];
-			if (op1.equals(op2)) {
+			if (op1.equals(op2) || op1.booleanValue() == false) {
 				jump(vm, inst, false);
 				Log.debug(TAG, "equ: " + inst);
 			} else {
@@ -781,7 +786,7 @@ public class Interpreter {
 			PrimitiveInfo[] res = OP_CMP(vm, inst, true);
 			PrimitiveInfo op1 = res[0];
 			PrimitiveInfo op2 = res[1];
-			if (!op1.equals(op2)) {
+			if (!op1.equals(op2) || op1.booleanValue() == true) {
 				jump(vm, inst, false);
 				Log.debug(TAG, "not equ: " + inst);
 			} else {
@@ -1707,7 +1712,8 @@ public class Interpreter {
 		PrimitiveInfo[] res = new PrimitiveInfo[2];
 		res[0] = op1;
 		res[1] = op2;
-
+		
+		Log.debug(TAG, "ops: " + op1 + " " + op2);
 		return res;
 	}
 
@@ -1775,7 +1781,7 @@ public class Interpreter {
 			Object[] params = new Object[args.length - 1];
 
 			if (mi.isConstructor()) {
-				clazz = Class.forName(mi.myClass.toString());
+				//clazz = Class.forName(mi.myClass.toString());
 				if (args.length == 1) {
 					vm.regs[args[0]].data = clazz.newInstance();
 					vm.regs[args[0]].type = mi.returnType;
