@@ -46,6 +46,7 @@ public class DalvikVM {
 		// data can be instance of: PrimitiveInfo, DVMObject and any class
 		// reflection supports
 		Object data = null;
+		int count = -1;
 
 		public void copy(simple_dvm_register y) {
 			this.type = y.type;
@@ -60,6 +61,11 @@ public class DalvikVM {
 		public Object getData() {
 			return data;
 		}
+		
+		public String toString() {
+			return "reg " + count;
+		}
+		
 	}
 
 	public class JVM_STACK_FRAME {
@@ -171,6 +177,7 @@ public class DalvikVM {
 		interpreter = Interpreter.v();
 		for (int i = 0; i < regs.length; i++) {
 			regs[i] = new simple_dvm_register();
+			regs[i].count = i;
 		}
 		return_val_reg = new simple_dvm_register();
 	}

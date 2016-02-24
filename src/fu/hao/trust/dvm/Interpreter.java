@@ -1974,6 +1974,7 @@ public class Interpreter {
 
 		if (vm.plugin != null) {
 			vm.plugin.runAnalysis(vm, inst, vm.plugin.getCurrRes());
+			Log.debug(TAG, "tainted set: " + vm.plugin.currtRes);
 		}
 	}
 

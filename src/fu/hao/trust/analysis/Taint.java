@@ -199,7 +199,7 @@ public class Taint extends Plugin {
 			signature.append(mi.returnType + " ");
 			signature.append(mi.name + "(");
 			for (int i = 0; i < mi.paramTypes.length - 1; i++) {
-				ClassInfo paramType = mi.paramTypes[i]; 
+				ClassInfo paramType = mi.paramTypes[i];
 				signature.append(paramType + ",");
 			}
 			if (mi.paramTypes.length > 0) {
@@ -207,11 +207,12 @@ public class Taint extends Plugin {
 			}
 			signature.append(")>");
 			String sootSignature = signature.toString();
-			
+
 			if (sinks.contains(sootSignature)) {
 				for (int i = 0; i < args.length; i++) {
 					if (in.contains(vm.getReg(args[i]))) {
-						Log.msg(TAG, "found a sink " + mi.name);
+						Log.warn(TAG, "found a sink " + sootSignature
+								+ " leaking data [" + vm.getReg(args[i]).getData() + "]!!!");
 					}
 				}
 
@@ -234,11 +235,26 @@ public class Taint extends Plugin {
 			}
 
 			if (sources.contains(sootSignature)) {
-				Log.warn(TAG, "found a src!");
+				Log.warn(TAG, "found a taint invokation!");
 				out.add(vm.getReturnReg());
 				out.add(vm.getReturnReg().getData());
 			} else {
-				Log.debug(TAG, "not a src. " + signature);
+				Log.debug(TAG, "not a taint call: " + signature);
+
+			}
+
+			if (vm.getReturnReg().getData() != null) {
+				for (int i = 0; i < args.length; i++) {
+					if (in.contains(vm.getReg(args[i]))) {
+						Log.warn(TAG, "found a taint invokation!");
+						out.add(vm.getReturnReg());
+						out.add(vm.getReturnReg().getData());
+						break;
+					}
+				}
+			}
+
+			if (out.size() == in.size()) {
 				if (out.contains(vm.getReturnReg())) {
 					out.remove(vm.getReturnReg());
 				}
@@ -440,7 +456,7 @@ public class Taint extends Plugin {
 					.intValue();
 
 			Set<Object> out = new HashSet<>(in);
-			if (in.contains(Array.get(array, index))) {
+			if (in.contains(array) || in.contains(Array.get(array, index))) {
 				out.add(vm.getReg(inst.rdst));
 				out.add(vm.getReg(inst.rdst).getData());
 			}
@@ -643,7 +659,7 @@ public class Taint extends Plugin {
 		}
 		sources = parser.getSrcStrs();
 		sinks = parser.getSinkStrs();
-		
+
 		Log.debug(TAG, "srcs: " + sources);
 
 		byteCodes.put(0x07, new TAINT_OP_CMP());

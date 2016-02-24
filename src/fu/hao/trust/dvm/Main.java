@@ -15,7 +15,7 @@ import fu.hao.trust.utils.Settings;
 public class Main {
 	public static void main(String[] args) {
 		DalvikVM vm = DalvikVM.v();
-		Settings.logLevel = 0;
+		Settings.logLevel = 3;
 		Settings.apkPath = "C:/Users/hao/workspace/GeneralJava_Loop1/app/app-debug.apk";
 		Settings.apkName = "app-debug";
 		try {
