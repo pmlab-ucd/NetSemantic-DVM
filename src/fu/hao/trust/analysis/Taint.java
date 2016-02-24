@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.Set;
 
 import patdroid.core.ClassInfo;
-import patdroid.core.FieldInfo;
 import patdroid.core.MethodInfo;
 import patdroid.core.PrimitiveInfo;
 import patdroid.dalvik.Instruction;
@@ -213,6 +212,9 @@ public class Taint extends Plugin {
 					if (in.contains(vm.getReg(args[i]))) {
 						Log.warn(TAG, "found a sink " + sootSignature
 								+ " leaking data [" + vm.getReg(args[i]).getData() + "]!!!");
+						Map<String, String> res = new HashMap<>();
+						res.put(sootSignature, vm.getReg(args[i]).getData().toString());
+						Results.results.add(res);
 					}
 				}
 
@@ -552,13 +554,11 @@ public class Taint extends Plugin {
 				}
 
 			} catch (Exception e) {
-				FieldInfo statFieldInfo = new FieldInfo(pair.first, pair.second);
-				Log.debug(TAG, "sget " + statFieldInfo.getFieldType());
+				ClassInfo owner = pair.first;
+				String fieldName = pair.second;
 
-				DVMClass dvmClass = vm.getClass(statFieldInfo.getFieldType());
-				Log.debug(TAG, "sget " + dvmClass);
-				Log.debug(TAG, statFieldInfo.toString());
-				if (in.contains(dvmClass.getStatField(statFieldInfo))) {
+				DVMClass dvmClass = vm.getClass(owner);
+				if (in.contains(dvmClass.getStatField(fieldName))) {
 					out.add(vm.getReg(inst.r0));
 				} else if (in.contains(vm.getReg(inst.r0))) {
 					out.remove(vm.getReg(inst.r0));
@@ -586,9 +586,10 @@ public class Taint extends Plugin {
 				out.add(vm.getReg(inst.r0));
 				@SuppressWarnings("unchecked")
 				Pair<ClassInfo, String> pair = (Pair<ClassInfo, String>) inst.extra;
-				FieldInfo statFieldInfo = new FieldInfo(pair.first, pair.second);
-				DVMClass dvmClass = vm.getClass(statFieldInfo.getFieldType());
-				out.add(dvmClass.getStatField(statFieldInfo));
+				ClassInfo owner = pair.first;
+				String fieldName = pair.second;
+				DVMClass dvmClass = vm.getClass(owner);
+				out.add(dvmClass.getStatField(fieldName));
 			}
 
 			return out;

@@ -206,12 +206,16 @@ public class Interpreter {
 			}
 
 			vm.regs[inst.rdst].type = inst.type;
-			// Do not need to handle reflection type,
-			// since <init> invocation will replace the newObj
-			Object newObj = new DVMObject(vm, inst.type);
-			Log.debug(TAG, "begin new object of " + inst.type + "created.");
-			vm.regs[inst.rdst].data = newObj;
-			Log.debug(TAG, "new object of " + inst.type + "created.");
+			try {
+				Class.forName(inst.type.toString());
+			} catch (ClassNotFoundException e) {
+				// Do not need to handle reflection type,
+				// since <init> invocation will replace the newObj
+				Object newObj = new DVMObject(vm, inst.type);
+				Log.debug(TAG, "begin new object of " + inst.type + "created.");
+				vm.regs[inst.rdst].data = newObj;
+				Log.debug(TAG, "new object of " + inst.type + "created.");	
+			}
 			jump(vm, inst, true);
 		}
 	}
@@ -1492,15 +1496,16 @@ public class Interpreter {
 						.findOrCreateClass(vm.regs[inst.r0].data.getClass());
 				Log.debug(TAG, "refleciton " + vm.regs[inst.r0].data);
 			} catch (Exception e) {
-				FieldInfo statFieldInfo = new FieldInfo(pair.first, pair.second);
-				Log.debug(TAG, "sget " + statFieldInfo.getFieldType());
+				ClassInfo owner = pair.first;
+				String fieldName = pair.second;
+				//FieldInfo statFieldInfo = new FieldInfo(pair.first, pair.second);
+				//Log.debug(TAG, "sget " + statFieldInfo.getFieldType());
 
-				DVMClass dvmClass = vm.heap.getClass(statFieldInfo
-						.getFieldType());
-				Log.debug(TAG, "sget " + dvmClass);
-				Log.debug(TAG, statFieldInfo.toString());
-				vm.regs[inst.r0].data = dvmClass.getStatField(statFieldInfo);
-				vm.regs[inst.r0].type = statFieldInfo.getFieldType();
+				DVMClass dvmClass = vm.getClass(owner);
+				Log.debug(TAG, "sget " + fieldName + " from " + dvmClass);
+				vm.regs[inst.r0].data = dvmClass.getStatField(fieldName);
+				ClassInfo fieldType = owner.getStaticFieldType(fieldName);
+				vm.regs[inst.r0].type = fieldType;
 			}
 
 			jump(vm, inst, true);
@@ -1519,15 +1524,19 @@ public class Interpreter {
 		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
+			// owner and field.getName
 			@SuppressWarnings("unchecked")
 			Pair<ClassInfo, String> pair = (Pair<ClassInfo, String>) inst.extra;
-			FieldInfo statFieldInfo = new FieldInfo(pair.first, pair.second);
-			DVMClass dvmClass = vm.heap.getClass(statFieldInfo.getFieldType());
-			if (!vm.regs[inst.r0].type.isConvertibleTo(statFieldInfo
-					.getFieldType())) {
+			ClassInfo owner = pair.first;
+			String fieldName = pair.second;
+			Log.debug(TAG, "field type " + pair.first.getStaticFieldType(pair.second));
+			ClassInfo fieldType = owner.getStaticFieldType(fieldName);
+			DVMClass dvmClass = vm.getClass(owner);
+			Log.debug(TAG, "getDvmClass " + dvmClass);
+			if (!vm.regs[inst.r0].type.isConvertibleTo(fieldType)) {
 				Log.err(TAG, "Type inconsistent! " + inst);
 			}
-			dvmClass.setStatField(statFieldInfo, vm.regs[inst.r0].data);
+			dvmClass.setStatField(fieldName, vm.regs[inst.r0].data);
 			jump(vm, inst, true);
 		}
 	}

@@ -61,11 +61,11 @@ public class DalvikVM {
 		public Object getData() {
 			return data;
 		}
-		
+
 		public String toString() {
 			return "reg " + count;
 		}
-		
+
 	}
 
 	public class JVM_STACK_FRAME {
@@ -99,19 +99,19 @@ public class DalvikVM {
 		Map<ClassInfo, DVMClass> dvmClasses = new HashMap<>();
 		Map<ClassInfo, Set<DVMObject>> dvmObjs = new HashMap<>();
 
-		public void setClass(ClassInfo type, DVMClass dvmClass) {
+		private void setClass(ClassInfo type, DVMClass dvmClass) {
 			dvmClasses.put(type, dvmClass);
 		}
 
-		public DVMClass getClass(ClassInfo type) {
+		private DVMClass getClass(DalvikVM vm, ClassInfo type) {
 			Log.debug(tag, "getClass " + type);
 			if (!dvmClasses.containsKey(type)) {
-				return null;
+				dvmClasses.put(type, new DVMClass(vm, type));
 			}
 			return dvmClasses.get(type);
 		}
 
-		public void setObj(ClassInfo type, DVMObject dvmObj) {
+		private void setObj(ClassInfo type, DVMObject dvmObj) {
 			if (dvmObjs.get(type) == null) {
 				dvmObjs.put(type, new HashSet<DVMObject>());
 			}
@@ -152,7 +152,15 @@ public class DalvikVM {
 	 * @see java.lang.Object#getClass()
 	 */
 	public DVMClass getClass(ClassInfo type) {
-		return heap.getClass(type);
+		return heap.getClass(this, type);
+	}
+
+	public void setClass(ClassInfo type, DVMClass dvmClass) {
+		heap.setClass(type, dvmClass);
+	}
+
+	public void setObj(ClassInfo type, DVMObject dvmObj) {
+		heap.setObj(type, dvmObj);
 	}
 
 	/**
@@ -171,7 +179,7 @@ public class DalvikVM {
 	public int[] getContext() {
 		return calling_ctx;
 	}
-	
+
 	public void setContext(int[] is) {
 		calling_ctx = is;
 	}
@@ -202,6 +210,19 @@ public class DalvikVM {
 
 	ClassLoader loader;
 
+	/**
+	* @Title: runMethod
+	* @Author: hao
+	* @Description: For external usage.
+	* @param @param apk
+	* @param @param className
+	* @param @param main
+	* @param @param plugin
+	* @param @throws ZipException
+	* @param @throws IOException  
+	* @return void   
+	* @throws
+	*/
 	public void runMethod(String apk, String className, String main,
 			Plugin plugin) throws ZipException, IOException {
 		Log.msg(tag, "Begin run " + main + " at " + apk);
@@ -220,17 +241,28 @@ public class DalvikVM {
 		// find all methods with the name "onCreate", most likely there is
 		// only one
 		MethodInfo[] methods = c.findMethodsHere(main);
+		this.plugin = plugin;
+		runMethod(methods[0]);
+	}
 
+	/**
+	* @Title: runMethod
+	* @Author: hao
+	* @Description: For internal usage
+	* @param @param method  
+	* @return void   
+	* @throws
+	*/
+	public void runMethod(MethodInfo method) {
 		// print all instructions
 		int counter = 0;
-		for (Instruction ins : methods[0].insns) {
+		for (Instruction ins : method.insns) {
 			counter++;
 			Log.debug(tag, "opcode: " + ins.opcode + " " + ins.opcode_aux);
 			Log.debug(tag, "[" + counter + "]" + ins.toString());
 		}
-
-		this.plugin = plugin;
-		interpreter.invocation(this, methods[0]);
+		
+		interpreter.invocation(this, method);
 	}
 
 }

@@ -22,12 +22,12 @@ public class DVMObject {
 	private Object superObj = null;
 
 	public DVMObject(DalvikVM vm, ClassInfo type) {
-		if (vm.heap.getClass(type) == null) {
+		if (vm.getClass(type) == null) {
 			Log.debug(TAG, "new object of " + type);
-			vm.heap.setClass(type, new DVMClass(type));
+			vm.setClass(type, new DVMClass(vm, type));
 		}
 		Log.debug(TAG, "new object of " + type);
-		DVMClass dvmClass = vm.heap.getClass(type);
+		DVMClass dvmClass = vm.getClass(type);
 		this.setType(type);
 		this.setDvmClass(dvmClass);
 	}

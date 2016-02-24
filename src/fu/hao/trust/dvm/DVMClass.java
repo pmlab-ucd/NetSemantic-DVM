@@ -4,18 +4,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 import patdroid.core.ClassInfo;
-import patdroid.core.FieldInfo;
 import patdroid.core.MethodInfo;
 
 public class DVMClass {
 	// TODO access flag
 	
 	private ClassInfo type = null;
-	private Map<FieldInfo, Object> staticFields = new HashMap<FieldInfo, Object>();
+	private Map<String, Object> staticFields = new HashMap<>();
 	// private Map<MethodInfo, DVMethod> methods = new HashMap<>();
 	
-	DVMClass(ClassInfo type) {
+	DVMClass(DalvikVM vm, ClassInfo type) {
 		this.setType(type);
+		if (type.getStaticInitializer() != null) {
+			vm.runMethod(type.getStaticInitializer());
+		}
 	}
 
 	public ClassInfo getType() {
@@ -26,12 +28,12 @@ public class DVMClass {
 		this.type = type;
 	}
 	
-	public void setStatField(FieldInfo statFieldInfo, Object obj) {
-		staticFields.put(statFieldInfo, obj);
+	public void setStatField(String fieldName, Object obj) {
+		staticFields.put(fieldName, obj);
 	}
 	
-	public Object getStatField(FieldInfo statFieldInfo) {
-		return staticFields.get(statFieldInfo);
+	public Object getStatField(String fieldName) {
+		return staticFields.get(fieldName);
 	}
 	
 	public void invokeStatic(MethodInfo mInfo) {

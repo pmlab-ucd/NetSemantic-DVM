@@ -1,5 +1,5 @@
 /*
-* Copyright 2014 Mingyuan Xia (http://mxia.me) and contributors
+* Copyright 2016 Hao Fu and contributors
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
 * limitations under the License.
 *
 * Contributors:
-*   Mingyuan Xia
+*   Hao Fu
 */
 
 package fu.hao.trust.utils;
@@ -39,4 +39,5 @@ public class Settings {
 	public static String platformDir;
 	public static String apkName;
 	public static String susp;
+	
 }
