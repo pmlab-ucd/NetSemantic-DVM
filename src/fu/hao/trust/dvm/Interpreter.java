@@ -17,6 +17,16 @@ import patdroid.dalvik.Instruction;
 import patdroid.util.Pair;
 
 public class Interpreter {
+	// The nested class to implement singleton
+	private static class SingletonHolder {
+		private static final Interpreter instance = new Interpreter();
+	}
+
+	// Get THE instance
+	public static final Interpreter v() {
+		return SingletonHolder.instance;
+	}
+
 	private final String TAG = getClass().toString();
 
 	class OP_MOVE_REG implements ByteCode {
@@ -583,11 +593,9 @@ public class Interpreter {
 
 			if (op1.equals(op2)) {
 				jump(vm, inst, false);
-
 				Log.debug(TAG, "equ: " + inst);
 			} else {
 				jump(vm, inst, true);
-
 				Log.debug(TAG, "not equ: " + inst);
 			}
 		}
@@ -612,11 +620,9 @@ public class Interpreter {
 
 			if (op1.intValue() < op2.intValue()) {
 				jump(vm, inst, false);
-
 				Log.debug(TAG, "less: " + inst);
 			} else {
 				jump(vm, inst, true);
-
 				Log.debug(TAG, "not lesss: " + inst);
 			}
 		}
@@ -670,11 +676,9 @@ public class Interpreter {
 
 			if (op1.intValue() >= op2.intValue()) {
 				jump(vm, inst, false);
-
 				Log.debug(TAG, "ge: " + inst);
 			} else {
 				jump(vm, inst, true);
-
 				Log.debug(TAG, "not ge: " + inst);
 			}
 
@@ -700,11 +704,9 @@ public class Interpreter {
 
 			if (op1.intValue() > op2.intValue()) {
 				jump(vm, inst, false);
-
 				Log.debug(TAG, "g: " + inst);
 			} else {
 				jump(vm, inst, true);
-
 				Log.debug(TAG, "not g: " + inst);
 			}
 		}
@@ -729,11 +731,9 @@ public class Interpreter {
 
 			if (op1.intValue() <= op2.intValue()) {
 				jump(vm, inst, false);
-
 				Log.debug(TAG, "le: " + inst);
 			} else {
 				jump(vm, inst, true);
-
 				Log.debug(TAG, "not le: " + inst);
 			}
 		}
@@ -875,7 +875,7 @@ public class Interpreter {
 
 				rdst.type = vm.regs[inst.r0].type.getElementClass();
 				Object element = Array.get(array, index);
-				//if (element.getClass().isPrimitive()) {		
+				// if (element.getClass().isPrimitive()) {
 				if (rdst.type.isPrimitive()) {
 					rdst.data = PrimitiveInfo.fromObject(element);
 				} else {
@@ -1720,7 +1720,7 @@ public class Interpreter {
 			if (vm.curr_jvm_stack == null) {
 				return;
 			}
-			vm.curr_jvm_stack.pc++;		
+			vm.curr_jvm_stack.pc++;
 		} else {
 			if (inst.extra == null) {
 				Log.err(TAG, "unresolve dest address in goto: " + inst);
@@ -1797,11 +1797,7 @@ public class Interpreter {
 						+ vm.return_val_reg.data.getClass());
 			}
 			Log.msg(TAG, "reflction invocation " + method);
-		} catch (java.lang.NullPointerException e1) {
-			e1.printStackTrace();
-
-		} catch (java.lang.IllegalArgumentException e) {
-			e.printStackTrace();
+			vm.plugin.method = method;
 		} catch (Exception e) {
 			e.printStackTrace();
 			Log.debug(TAG, "not reflction invocation " + mi.myClass);
@@ -1815,7 +1811,9 @@ public class Interpreter {
 				exec(vm, insns);
 				Log.debug(TAG, "pc " + vm.pc + " " + mi.insns.length);
 			}
-		}
+			vm.plugin.method = null;
+		}	
+		
 	}
 
 	private void getParams(DalvikVM vm, MethodInfo mi, int[] args,
@@ -1837,10 +1835,10 @@ public class Interpreter {
 					params[i - 1] = argData;
 				} else {
 					// FIXME
-					Log.warn(TAG, "mismatch type! "
-							+ "real para type: " + argData.getClass()
-							+ ", expected para type: " + argsClass[i - 1]);
-					params[i - 1] = null;				
+					Log.warn(TAG, "mismatch type! " + "real para type: "
+							+ argData.getClass() + ", expected para type: "
+							+ argsClass[i - 1]);
+					params[i - 1] = null;
 				}
 			}
 		}

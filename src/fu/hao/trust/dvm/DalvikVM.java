@@ -2,7 +2,6 @@ package fu.hao.trust.dvm;
 
 import java.io.File;
 import java.io.IOException;
-
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -19,6 +18,15 @@ import patdroid.dalvik.Instruction;
 import patdroid.smali.SmaliClassDetailLoader;
 
 public class DalvikVM {
+	// The nested class to implement singleton
+	private static class SingletonHolder {
+		private static final DalvikVM instance = new DalvikVM();
+	}
+
+	// Get THE instance
+	public static final DalvikVM v() {
+		return SingletonHolder.instance;
+	}
 
 	private final String tag = getClass().toString();
 
@@ -160,7 +168,7 @@ public class DalvikVM {
 
 	public DalvikVM() {
 		heap = new Heap();
-		interpreter = new Interpreter();
+		interpreter = Interpreter.v();
 		for (int i = 0; i < regs.length; i++) {
 			regs[i] = new simple_dvm_register();
 		}
@@ -180,7 +188,7 @@ public class DalvikVM {
 		pc = 0;
 		return new JVM_STACK_FRAME(mi);
 	}
-	
+
 	ClassLoader loader;
 
 	public void runMethod(String apk, String className, String main,

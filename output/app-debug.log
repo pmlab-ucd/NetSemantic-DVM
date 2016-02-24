@@ -1,0 +1,286 @@
+class fu.hao.trust.dvm.DalvikVM - [MSG]: Begin run onCreate at C:/Users/hao/workspace/GeneralJava_Loop1/app/app-debug.apk
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 3 7
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [1]<SPECIAL,ARGUMENT_SET,extra=[12, 13]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [2]<MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 15 12
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [3]<HALT,SUPER,extra=[null, [12, 13]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [4]<MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 15 13
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [5]<HALT,VIRTUAL,extra=[null, [12, 1]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [6]<MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 15 13
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [7]<HALT,VIRTUAL,extra=[null, [12, 1]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [8]<MOV,RESULT,dst=r11,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 13 18
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [9]<ARITHMETIC,CHECK-AND-CAST,dst=r11,type=android.telephony.TelephonyManager>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 12 13
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [10]<INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [11]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [11]<MOV,RESULT,dst=r9,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [12]<MOV,CONST,dst=r3,type=java.lang.String,extra="">
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 12 13
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [13]<INVOKE,VIRTUAL,extra=[java.lang.String/toCharArray[], [9]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [14]<MOV,RESULT,dst=r6,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 13 17
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [15]<ARITHMETIC,ARRAY_LENGTH,dst=r10,r0=r6,type=int>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [16]<MOV,CONST,dst=r8,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 8 27
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [17]<IF,GE,r0=r8,r1=r10,extra=index:31>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 10 36
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [18]<ARRAY,AGET,dst=r7,r0=r6,r1=r8,type=char>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 4 8
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [19]<NEW,INSTANCE,dst=r1,type=java.lang.StringBuilder>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 12 11
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [20]<INVOKE,DIRECT,extra=[java.lang.StringBuilder/<init>[], [1]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 12 13
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [21]<INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [1, 3]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [22]<MOV,RESULT,dst=r1,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 12 13
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [23]<INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[char], [1, 7]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [24]<MOV,RESULT,dst=r1,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [25]<MOV,CONST,dst=r4,type=java.lang.String,extra="_">
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 12 13
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [26]<INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [1, 4]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [27]<MOV,RESULT,dst=r1,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 12 13
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [28]<INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/toString[], [1]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [29]<MOV,RESULT,dst=r3,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 13 38
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [30]<ARITHMETIC,ADD,dst=r8,r0=r8,extra=class patdroid.core.PrimitiveInfo?1>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 6 0
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [31]<GOTO,extra=index:16>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 12 14
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [32]<INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [33]<MOV,RESULT,dst=r0,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [34]<MOV,CONST,dst=r1,type=java.lang.String,extra="+49 1234">
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 1
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [35]<MOV,REG,dst=r4,r0=r2,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 1
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [36]<MOV,REG,dst=r5,r0=r2,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 12 13
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [37]<INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 2 3
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [38]<RETURN,VOID>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass de.ecspride.LoopExample1
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: new object of de.ecspride.LoopExample1
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: new object of de.ecspride.LoopExample1
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass de.ecspride.LoopExample1
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.app.Activity
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: new object of android.app.Activity
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: new object of android.app.Activity
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.app.Activity
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 3 7
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 0 <SPECIAL,ARGUMENT_SET,extra=[12, 13]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.os.Bundle
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: new object of android.os.Bundle
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: new object of android.os.Bundle
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.os.Bundle
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 1 <MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 15 12
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 2 <HALT,SUPER,extra=[null, [12, 13]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: cannot resolve the invocation
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <HALT,SUPER,extra=[null, [12, 13]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 3 <MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: 2130903040 class patdroid.core.PrimitiveInfo
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 15 13
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 4 <HALT,VIRTUAL,extra=[null, [12, 1]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: cannot resolve the invocation
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <HALT,VIRTUAL,extra=[null, [12, 1]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 5 <MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: phone class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 15 13
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 6 <HALT,VIRTUAL,extra=[null, [12, 1]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: cannot resolve the invocation
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <HALT,VIRTUAL,extra=[null, [12, 1]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 7 <MOV,RESULT,dst=r11,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data null null
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 13 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 8 <ARITHMETIC,CHECK-AND-CAST,dst=r11,type=android.telephony.TelephonyManager>
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <ARITHMETIC,CHECK-AND-CAST,dst=r11,type=android.telephony.TelephonyManager>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 9 <INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [11]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class android.telephony.TelephonyManager
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: return data: fuck class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public java.lang.String android.telephony.TelephonyManager.getDeviceId()
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 10 <MOV,RESULT,dst=r9,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data fuck java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 11 <MOV,CONST,dst=r3,type=java.lang.String,extra="">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r3,type=java.lang.String,extra="">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data:  class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 12 <INVOKE,VIRTUAL,extra=[java.lang.String/toCharArray[], [9]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: return data: [C@6c11e58 class [C
+class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public char[] java.lang.String.toCharArray()
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a src. <java.lang.String: [C toCharArray()>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 13 <MOV,RESULT,dst=r6,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data [C@6c11e58 [C
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 13 17
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 14 <ARITHMETIC,ARRAY_LENGTH,dst=r10,r0=r6,type=int>
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <ARITHMETIC,ARRAY_LENGTH,dst=r10,r0=r6,type=int>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 15 <MOV,CONST,dst=r8,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r8,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 8 27
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 16 <IF,GE,r0=r8,r1=r10,extra=index:31>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: not ge: <IF,GE,r0=r8,r1=r10,extra=index:31>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 10 36
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 17 <ARRAY,AGET,dst=r7,r0=r6,r1=r8,type=char>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 4 8
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 18 <NEW,INSTANCE,dst=r1,type=java.lang.StringBuilder>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass java.lang.StringBuilder
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: new object of java.lang.StringBuilder
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: new object of java.lang.StringBuilder
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: begin new object of java.lang.StringBuildercreated.
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: new object of java.lang.StringBuildercreated.
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 11
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 19 <INVOKE,DIRECT,extra=[java.lang.StringBuilder/<init>[], [1]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class java.lang.StringBuilder
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a src. <java.lang.StringBuilder: void <init>()>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 20 <INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [1, 3]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: caller obj class: class java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: return data:  class java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public java.lang.StringBuilder java.lang.StringBuilder.append(java.lang.String)
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a src. <java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 21 <MOV,RESULT,dst=r1,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data  java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 22 <INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[char], [1, 7]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: para type: char
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: caller obj class: class java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: return data: f class java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public java.lang.StringBuilder java.lang.StringBuilder.append(char)
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a src. <java.lang.StringBuilder: java.lang.StringBuilder append(char)>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 23 <MOV,RESULT,dst=r1,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data f java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 24 <MOV,CONST,dst=r4,type=java.lang.String,extra="_">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r4,type=java.lang.String,extra="_">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: _ class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 25 <INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [1, 4]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: caller obj class: class java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: return data: f_ class java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public java.lang.StringBuilder java.lang.StringBuilder.append(java.lang.String)
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a src. <java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 26 <MOV,RESULT,dst=r1,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data f_ java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 27 <INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/toString[], [1]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: return data: f_ class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public java.lang.String java.lang.StringBuilder.toString()
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a src. <java.lang.StringBuilder: java.lang.String toString()>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 28 <MOV,RESULT,dst=r3,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data f_ java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 13 38
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 29 <ARITHMETIC,ADD,dst=r8,r0=r8,extra=class patdroid.core.PrimitiveInfo?1>
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <ARITHMETIC,ADD,dst=r8,r0=r8,extra=class patdroid.core.PrimitiveInfo?1>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 6 0
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 30 <GOTO,extra=index:16>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: goto done: <GOTO,extra=index:16>
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <GOTO,extra=index:16>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 8 27
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 16 <IF,GE,r0=r8,r1=r10,extra=index:31>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: not ge: <IF,GE,r0=r8,r1=r10,extra=index:31>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 10 36
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 17 <ARRAY,AGET,dst=r7,r0=r6,r1=r8,type=char>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 4 8
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 18 <NEW,INSTANCE,dst=r1,type=java.lang.StringBuilder>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass java.lang.StringBuilder
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: new object of java.lang.StringBuilder
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: begin new object of java.lang.StringBuildercreated.
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: new object of java.lang.StringBuildercreated.
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 11
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 19 <INVOKE,DIRECT,extra=[java.lang.StringBuilder/<init>[], [1]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class java.lang.StringBuilder
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a src. <java.lang.StringBuilder: void <init>()>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 20 <INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [1, 3]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: caller obj class: class java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: return data: f_ class java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public java.lang.StringBuilder java.lang.StringBuilder.append(java.lang.String)
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a src. <java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 21 <MOV,RESULT,dst=r1,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data f_ java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 22 <INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[char], [1, 7]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: para type: char
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: caller obj class: class java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: return data: f_u class java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public java.lang.StringBuilder java.lang.StringBuilder.append(char)
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a src. <java.lang.StringBuilder: java.lang.StringBuilder append(char)>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 23 <MOV,RESULT,dst=r1,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data f_u java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 24 <MOV,CONST,dst=r4,type=java.lang.String,extra="_">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r4,type=java.lang.String,extra="_">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: _ class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 25 <INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [1, 4]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: caller obj class: class java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: return data: f_u_ class java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public java.lang.StringBuilder java.lang.StringBuilder.append(java.lang.String)
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a src. <java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 26 <MOV,RESULT,dst=r1,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data f_u_ java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 27 <INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/toString[], [1]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: return data: f_u_ class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public java.lang.String java.lang.StringBuilder.toString()
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a src. <java.lang.StringBuilder: java.lang.String toString()>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 28 <MOV,RESULT,dst=r3,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data f_u_ java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 13 38
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 29 <ARITHMETIC,ADD,dst=r8,r0=r8,extra=class patdroid.core.PrimitiveInfo?1>
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <ARITHMETIC,ADD,dst=r8,r0=r8,extra=class patdroid.core.PrimitiveInfo?1>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 6 0
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 30 <GOTO,extra=index:16>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: goto done: <GOTO,extra=index:16>
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <GOTO,extra=index:16>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 8 27
+class fu.hao.trust.dvm.Interpreter - 

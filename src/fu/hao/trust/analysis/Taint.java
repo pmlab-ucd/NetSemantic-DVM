@@ -1,7 +1,8 @@
 package fu.hao.trust.analysis;
 
+import java.io.IOException;
+import java.lang.reflect.Array;
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -18,11 +19,25 @@ import fu.hao.trust.dvm.DVMObject;
 import fu.hao.trust.dvm.DalvikVM;
 import fu.hao.trust.dvm.DalvikVM.simple_dvm_register;
 import fu.hao.trust.utils.Log;
+import fu.hao.trust.utils.SrcSinkParser;
 
 public class Taint extends Plugin {
+	// The nested class to implement singleton
+	private static class SingletonHolder {
+		private static final Taint instance = new Taint();
+	}
+
+	// Get THE instance
+	public static final Taint v() {
+		return SingletonHolder.instance;
+	}
+
 	private final String TAG = getClass().toString();
 	static Map<Integer, Rule> auxByteCodes = new HashMap<>();
 	static Map<Integer, Rule> byteCodes = new HashMap<>();
+
+	static Set<String> sources;
+	static Set<String> sinks;
 
 	class TAINT_OP_MOVE_REG implements Rule {
 		/**
@@ -172,45 +187,61 @@ public class Taint extends Plugin {
 			int[] args = (int[]) extra[1];
 
 			Set<Object> out = new HashSet<>(in);
-			try {
-				// source must be a reflection call;
-				Class<?> clazz = Class.forName(mi.myClass.toString());
-				Log.debug(TAG, "reflction " + clazz);
-				@SuppressWarnings("rawtypes")
-				Class[] argsClass = new Class[mi.paramTypes.length];
-				@SuppressWarnings("unused")
-				Method method;
-				// check whether is call-able through reflection
-				if (args.length == 1) {
-					method = clazz.getDeclaredMethod(mi.name);
-				} else {
-					method = clazz.getDeclaredMethod(mi.name, argsClass);
-				}
 
-				if (mi.isConstructor()) {
-					if (sources.contains(mi.name)) {
-						out.add(vm.getReg(args[0]));
-						out.add(vm.getReg(args[0]).getData());
-					} else {
-						if (out.contains(vm.getReg(args[0]))) {
-							out.remove(vm.getReg(args[0]));
-						}
-					}
-					return out;
-				}
+			// source must be a reflection call;
+			if (method == null) {
+				return out;
+			}
 
-				if (sources.contains(mi.name)) {
-					out.add(vm.getReturnReg());
-					out.add(vm.getReturnReg().getData());
-				} else {
-					if (out.contains(vm.getReturnReg())) {
-						out.remove(vm.getReturnReg());
+			StringBuilder signature = new StringBuilder("<");
+			signature.append(mi.myClass);
+			signature.append(": ");
+			signature.append(mi.returnType + " ");
+			signature.append(mi.name + "(");
+			for (int i = 0; i < mi.paramTypes.length - 1; i++) {
+				ClassInfo paramType = mi.paramTypes[i]; 
+				signature.append(paramType + ",");
+			}
+			if (mi.paramTypes.length > 0) {
+				signature.append(mi.paramTypes[mi.paramTypes.length - 1]);
+			}
+			signature.append(")>");
+			String sootSignature = signature.toString();
+			
+			if (sinks.contains(sootSignature)) {
+				for (int i = 0; i < args.length; i++) {
+					if (in.contains(vm.getReg(args[i]))) {
+						Log.msg(TAG, "found a sink " + mi.name);
 					}
 				}
 
-			} catch (Exception e) {
-				e.printStackTrace();
-				Log.debug(TAG, "not reflction invocation " + mi.myClass);
+				return out;
+			}
+
+			if (mi.isConstructor()) {
+				if (sources.contains(sootSignature)) {
+					Log.warn(TAG, "found a src!");
+					out.add(vm.getReg(args[0]));
+					out.add(vm.getReg(args[0]).getData());
+				} else {
+					Log.debug(TAG, "not a src. " + signature);
+					if (out.contains(vm.getReg(args[0]))) {
+						out.remove(vm.getReg(args[0]));
+					}
+				}
+
+				return out;
+			}
+
+			if (sources.contains(sootSignature)) {
+				Log.warn(TAG, "found a src!");
+				out.add(vm.getReturnReg());
+				out.add(vm.getReturnReg().getData());
+			} else {
+				Log.debug(TAG, "not a src. " + signature);
+				if (out.contains(vm.getReturnReg())) {
+					out.remove(vm.getReturnReg());
+				}
 			}
 
 			return out;
@@ -363,6 +394,31 @@ public class Taint extends Plugin {
 		}
 	}
 
+	class TAINT_OP_IF implements Rule {
+		/**
+		 * @Title: func
+		 * @Description: helper func for if
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			Set<Object> out = new HashSet<>(in);
+			if (in.contains(vm.getReg(inst.r0))) {
+				out.add(vm.getReg(inst.r1));
+				out.add(vm.getReg(inst.r1).getData());
+			}
+
+			if (in.contains(vm.getReg(inst.r1))) {
+				out.add(vm.getReg(inst.r0));
+				out.add(vm.getReg(inst.r0).getData());
+			}
+
+			return out;
+		}
+	}
+
 	class TAINT_OP_ARRAY_GET implements Rule {
 		/**
 		 * @Title: func
@@ -376,15 +432,15 @@ public class Taint extends Plugin {
 		 */
 		@Override
 		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
-
 			// array reg
-			Object[] array = (Object[]) vm.getReg(inst.r0).getData();
+			// Object[] array = (Object[]) vm.getReg(inst.r0).getData();
+			Object array = vm.getReg(inst.r0).getData();
 			// index reg
 			int index = ((PrimitiveInfo) vm.getReg(inst.r1).getData())
 					.intValue();
 
 			Set<Object> out = new HashSet<>(in);
-			if (in.contains(array[index])) {
+			if (in.contains(Array.get(array, index))) {
 				out.add(vm.getReg(inst.rdst));
 				out.add(vm.getReg(inst.rdst).getData());
 			}
@@ -567,27 +623,32 @@ public class Taint extends Plugin {
 		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
 			Set<Object> out = new HashSet<>(in);
 			if (in.contains(vm.getReg(inst.r0))) {
-			Object obj = vm.getReg(inst.r0).getData();
-				out.add(obj);		
-			} 
-			
+				Object obj = vm.getReg(inst.r0).getData();
+				out.add(obj);
+			}
+
 			return out;
 		}
 	}
 
-	Set<String> sources;
-	Set<String> sinks;
-
 	Taint() {
-		// TODO parsing src and sinks
-		sources = new HashSet<>();
-		sources.add("source");
-
-		sinks = new HashSet<>();
-		sinks.add("sink");
+		currtRes = new HashSet<>();
+		SrcSinkParser parser;
+		try {
+			parser = SrcSinkParser.fromFile("SourcesAndSinks.txt");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return;
+		}
+		sources = parser.getSrcStrs();
+		sinks = parser.getSinkStrs();
+		
+		Log.debug(TAG, "srcs: " + sources);
 
 		byteCodes.put(0x07, new TAINT_OP_CMP());
-		byteCodes.put(0x08, new TAINT_OP_INVOKE());
+		byteCodes.put(0x08, new TAINT_OP_IF());
+		byteCodes.put(0x0C, new TAINT_OP_INVOKE());
 
 		auxByteCodes.put(0x01, new TAINT_OP_MOVE_REG());
 		auxByteCodes.put(0x02, new TAINT_OP_MOV_CONST());
@@ -659,7 +720,7 @@ public class Taint extends Plugin {
 			Log.debug(TAG, "not a taint op " + inst);
 			out = new HashSet<>(in);
 		}
-		
+
 		currtRes = out;
 		return out;
 	}
