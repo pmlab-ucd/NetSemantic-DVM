@@ -135,7 +135,7 @@ public class DalvikVM {
 	// which reg store the return value of callee called by this method
 	simple_dvm_register return_val_reg;
 
-	int[] calling_ctx;
+	private int[] calling_ctx;
 	DVMObject thisObj;
 	// DVMClass thisClass;
 
@@ -170,6 +170,10 @@ public class DalvikVM {
 
 	public int[] getContext() {
 		return calling_ctx;
+	}
+	
+	public void setContext(int[] is) {
+		calling_ctx = is;
 	}
 
 	public DalvikVM() {
@@ -228,4 +232,5 @@ public class DalvikVM {
 		this.plugin = plugin;
 		interpreter.invocation(this, methods[0]);
 	}
+
 }

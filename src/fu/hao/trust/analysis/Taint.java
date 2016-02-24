@@ -104,8 +104,8 @@ public class Taint extends Plugin {
 						out.add(vm.getReg(args[i]));
 						out.add(vm.getReg(args[i]).getData());
 					} else {
-						if (out.contains(vm.getReg(inst.rdst))) {
-							out.remove(vm.getReg(inst.rdst));
+						if (out.contains(vm.getReg(callingCtx[i]))) {
+							out.remove(vm.getReg(callingCtx[i]));
 						}
 					}
 				}
@@ -421,12 +421,12 @@ public class Taint extends Plugin {
 		 */
 		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
 			Set<Object> out = new HashSet<>(in);
-			if (in.contains(vm.getReg(inst.r0))) {
+			if (in.contains(vm.getReg(inst.r0)) && inst.r1 != -1) {
 				out.add(vm.getReg(inst.r1));
 				out.add(vm.getReg(inst.r1).getData());
 			}
 
-			if (in.contains(vm.getReg(inst.r1))) {
+			if (inst.r1 != -1 && in.contains(vm.getReg(inst.r1))) {
 				out.add(vm.getReg(inst.r0));
 				out.add(vm.getReg(inst.r0).getData());
 			}

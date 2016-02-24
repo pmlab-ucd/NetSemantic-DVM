@@ -1,0 +1,486 @@
+class fu.hao.trust.dvm.DalvikVM - [MSG]: Begin run onCreate at C:/Users/hao/workspace/DroidBenchProj/GeneralJava_SourceCodeSpecific1/app/app-debug.apk
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 3 7
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [1]<SPECIAL,ARGUMENT_SET,extra=[6, 7]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 15 12
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [2]<HALT,SUPER,extra=[null, [6, 7]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [3]<MOV,CONST,dst=r5,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 15 13
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [4]<HALT,VIRTUAL,extra=[null, [6, 5]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [5]<MOV,CONST,dst=r5,type=java.lang.String,extra="phone">
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 15 13
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [6]<HALT,VIRTUAL,extra=[null, [6, 5]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [7]<MOV,RESULT,dst=r4,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 13 18
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [8]<ARITHMETIC,CHECK-AND-CAST,dst=r4,type=android.telephony.TelephonyManager>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 4 8
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [9]<NEW,INSTANCE,dst=r3,type=java.util.HashSet>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 12 11
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [10]<INVOKE,DIRECT,extra=[java.util.HashSet/<init>[], [3]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [11]<MOV,CONST,dst=r5,type=java.lang.String,extra="+49 123456">
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 12 15
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [12]<INVOKE,INTERFACE,extra=[java.util.Set/add[java.lang.Object], [3, 5]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [13]<MOV,CONST,dst=r5,type=java.lang.String,extra="+49 654321">
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 12 15
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [14]<INVOKE,INTERFACE,extra=[java.util.Set/add[java.lang.Object], [3, 5]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [15]<MOV,CONST,dst=r5,type=java.lang.String,extra="+49 111111">
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 12 15
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [16]<INVOKE,INTERFACE,extra=[java.util.Set/add[java.lang.Object], [3, 5]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [17]<MOV,CONST,dst=r5,type=java.lang.String,extra="+49 222222">
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 12 15
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [18]<INVOKE,INTERFACE,extra=[java.util.Set/add[java.lang.Object], [3, 5]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [19]<MOV,CONST,dst=r5,type=java.lang.String,extra="+49 333333">
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 12 15
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [20]<INVOKE,INTERFACE,extra=[java.util.Set/add[java.lang.Object], [3, 5]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [21]<MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?33>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 13 38
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [22]<ARITHMETIC,ADD,dst=r1,r0=r0,extra=class patdroid.core.PrimitiveInfo?43>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 8 25
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [23]<IF,NE,r0=r0,r1=r1,extra=index:26>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [24]<MOV,CONST,dst=r2,type=java.lang.String,extra="no taint">
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 12 11
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [25]<INVOKE,DIRECT,extra=[de.ecspride.MainActivity/sendSMS[java.util.Set, java.lang.String], [6, 3, 2]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 2 3
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [26]<RETURN,VOID>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 12 13
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [27]<INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [4]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [28]<MOV,RESULT,dst=r2,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 6 0
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [29]<GOTO,extra=index:24>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass de.ecspride.MainActivity
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: new object of de.ecspride.MainActivity
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: new object of de.ecspride.MainActivity
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass de.ecspride.MainActivity
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.app.Activity
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: new object of android.app.Activity
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: new object of android.app.Activity
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.app.Activity
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 3 7
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 0 <SPECIAL,ARGUMENT_SET,extra=[6, 7]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: args: fu.hao.trust.dvm.DVMObject@2af604b0
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.os.Bundle
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: new object of android.os.Bundle
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: new object of android.os.Bundle
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.os.Bundle
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: args: fu.hao.trust.dvm.DVMObject@7dadd4d8
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 15 12
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 1 <HALT,SUPER,extra=[null, [6, 7]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: cannot resolve the invocation
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <HALT,SUPER,extra=[null, [6, 7]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 2 <MOV,CONST,dst=r5,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r5,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: 2130903040 class patdroid.core.PrimitiveInfo
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 15 13
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 3 <HALT,VIRTUAL,extra=[null, [6, 5]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: cannot resolve the invocation
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <HALT,VIRTUAL,extra=[null, [6, 5]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 4 <MOV,CONST,dst=r5,type=java.lang.String,extra="phone">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r5,type=java.lang.String,extra="phone">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: phone class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 15 13
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 5 <HALT,VIRTUAL,extra=[null, [6, 5]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: cannot resolve the invocation
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <HALT,VIRTUAL,extra=[null, [6, 5]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 6 <MOV,RESULT,dst=r4,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data null null
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 13 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 7 <ARITHMETIC,CHECK-AND-CAST,dst=r4,type=android.telephony.TelephonyManager>
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <ARITHMETIC,CHECK-AND-CAST,dst=r4,type=android.telephony.TelephonyManager>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 4 8
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 8 <NEW,INSTANCE,dst=r3,type=java.util.HashSet>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass java.util.HashSet
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: new object of java.util.HashSet
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: new object of java.util.HashSet
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass java.util.HashSet
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: begin new object of java.util.HashSetcreated.
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: new object of java.util.HashSetcreated.
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 11
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 9 <INVOKE,DIRECT,extra=[java.util.HashSet/<init>[], [3]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: fu.hao.trust.dvm.DVMObject@1f70f15e
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: new instance: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 10 <MOV,CONST,dst=r5,type=java.lang.String,extra="+49 123456">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r5,type=java.lang.String,extra="+49 123456">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: +49 123456 class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 15
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 11 <INVOKE,INTERFACE,extra=[java.util.Set/add[java.lang.Object], [3, 5]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class: interface java.util.Set
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: caller obj: [], from class: class java.util.HashSet
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: return data: true ,class java.lang.Boolean
+class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public abstract boolean java.util.Set.add(java.lang.Object)
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint call: <java.util.Set: boolean add(java.lang.Object)>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 12 <MOV,CONST,dst=r5,type=java.lang.String,extra="+49 654321">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r5,type=java.lang.String,extra="+49 654321">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: +49 654321 class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 15
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 13 <INVOKE,INTERFACE,extra=[java.util.Set/add[java.lang.Object], [3, 5]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: [+49 123456]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class: interface java.util.Set
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: caller obj: [+49 123456], from class: class java.util.HashSet
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: return data: true ,class java.lang.Boolean
+class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public abstract boolean java.util.Set.add(java.lang.Object)
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint call: <java.util.Set: boolean add(java.lang.Object)>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 14 <MOV,CONST,dst=r5,type=java.lang.String,extra="+49 111111">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r5,type=java.lang.String,extra="+49 111111">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: +49 111111 class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 15
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 15 <INVOKE,INTERFACE,extra=[java.util.Set/add[java.lang.Object], [3, 5]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: [+49 654321, +49 123456]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class: interface java.util.Set
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: caller obj: [+49 654321, +49 123456], from class: class java.util.HashSet
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: return data: true ,class java.lang.Boolean
+class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public abstract boolean java.util.Set.add(java.lang.Object)
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint call: <java.util.Set: boolean add(java.lang.Object)>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 16 <MOV,CONST,dst=r5,type=java.lang.String,extra="+49 222222">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r5,type=java.lang.String,extra="+49 222222">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: +49 222222 class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 15
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 17 <INVOKE,INTERFACE,extra=[java.util.Set/add[java.lang.Object], [3, 5]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: [+49 111111, +49 654321, +49 123456]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class: interface java.util.Set
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: caller obj: [+49 111111, +49 654321, +49 123456], from class: class java.util.HashSet
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: return data: true ,class java.lang.Boolean
+class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public abstract boolean java.util.Set.add(java.lang.Object)
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint call: <java.util.Set: boolean add(java.lang.Object)>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 18 <MOV,CONST,dst=r5,type=java.lang.String,extra="+49 333333">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r5,type=java.lang.String,extra="+49 333333">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: +49 333333 class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 15
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 19 <INVOKE,INTERFACE,extra=[java.util.Set/add[java.lang.Object], [3, 5]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: [+49 222222, +49 111111, +49 654321, +49 123456]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class: interface java.util.Set
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: caller obj: [+49 222222, +49 111111, +49 654321, +49 123456], from class: class java.util.HashSet
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: return data: true ,class java.lang.Boolean
+class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public abstract boolean java.util.Set.add(java.lang.Object)
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint call: <java.util.Set: boolean add(java.lang.Object)>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 20 <MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?33>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?33>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: 33 class patdroid.core.PrimitiveInfo
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 13 38
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 21 <ARITHMETIC,ADD,dst=r1,r0=r0,extra=class patdroid.core.PrimitiveInfo?43>
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <ARITHMETIC,ADD,dst=r1,r0=r0,extra=class patdroid.core.PrimitiveInfo?43>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 8 25
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 22 <IF,NE,r0=r0,r1=r1,extra=index:26>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: not equ: <IF,NE,r0=r0,r1=r1,extra=index:26> 33 76
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 26 <INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [4]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: null
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class: class android.telephony.TelephonyManager
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: return data: fuck ,class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public java.lang.String android.telephony.TelephonyManager.getDeviceId()
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 27 <MOV,RESULT,dst=r2,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data fuck java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [fuck, reg -1, reg 2]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 6 0
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 28 <GOTO,extra=index:24>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: goto done: <GOTO,extra=index:24>
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <GOTO,extra=index:24>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [fuck, reg -1, reg 2]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 11
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 24 <INVOKE,DIRECT,extra=[de.ecspride.MainActivity/sendSMS[java.util.Set, java.lang.String], [6, 3, 2]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: fu.hao.trust.dvm.DVMObject@2af604b0
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: not a reflction invocation de.ecspride.MainActivity/sendSMS[java.util.Set, java.lang.String]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: arg fu.hao.trust.dvm.DVMObject@2af604b0
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: arg [+49 222222, +49 111111, +49 654321, +49 333333, +49 123456]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: arg fuck
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 3 7
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 0 <SPECIAL,ARGUMENT_SET,extra=[7, 8, 9]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: params: fu.hao.trust.dvm.DVMObject@2af604b0
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: params: [+49 222222, +49 111111, +49 654321, +49 333333, +49 123456]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: params: fuck
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, fuck, reg -1, reg 2]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 1 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 1 <MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 2 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 14
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 2 <INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class android.telephony.SmsManager
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: return data: android.telephony.SmsManager@3c750bcb class android.telephony.SmsManager
+class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public static android.telephony.SmsManager android.telephony.SmsManager.getDefault()
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint call: <android.telephony.SmsManager: android.telephony.SmsManager getDefault()>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 3 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 3 <MOV,RESULT,dst=r0,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data android.telephony.SmsManager@3c750bcb android.telephony.SmsManager
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 4 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 15
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 4 <INVOKE,INTERFACE,extra=[java.util.Set/iterator[], [8]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: [+49 222222, +49 111111, +49 654321, +49 333333, +49 123456]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class: interface java.util.Set
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: return data: java.util.HashMap$KeyIterator@5802ffe7 ,class java.util.HashMap$KeyIterator
+class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public abstract java.util.Iterator java.util.Set.iterator()
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint call: <java.util.Set: java.util.Iterator iterator()>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 5 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 5 <MOV,RESULT,dst=r6,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data java.util.HashMap$KeyIterator@5802ffe7 java.util.HashMap$KeyIterator
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 6 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 15
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 6 <INVOKE,INTERFACE,extra=[java.util.Iterator/hasNext[], [6]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: java.util.HashMap$KeyIterator@5802ffe7
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class: interface java.util.Iterator
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: return data: true ,class java.lang.Boolean
+class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public abstract boolean java.util.Iterator.hasNext()
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint call: <java.util.Iterator: boolean hasNext()>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 7 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 7 <MOV,RESULT,dst=r3,type=void>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data true java.lang.Boolean
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 8 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 8 30
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 8 <IF,EQZ,r0=r3,extra=index:17>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: not equ: <IF,EQZ,r0=r3,extra=index:17>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 9 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 15
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 9 <INVOKE,INTERFACE,extra=[java.util.Iterator/next[], [6]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: java.util.HashMap$KeyIterator@5802ffe7
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class: interface java.util.Iterator
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: return data: +49 222222 ,class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public abstract java.lang.Object java.util.Iterator.next()
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint call: <java.util.Iterator: java.lang.Object next()>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 10 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 10 <MOV,RESULT,dst=r1,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data +49 222222 java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 11 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 13 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 11 <ARITHMETIC,CHECK-AND-CAST,dst=r1,type=java.lang.String>
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <ARITHMETIC,CHECK-AND-CAST,dst=r1,type=java.lang.String>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 12 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 1
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 12 <MOV,REG,dst=r3,r0=r9,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter$OP_MOVE_REG - [DEBUG]: mov 9 to 3
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, 3, fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 13 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 1
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 13 <MOV,REG,dst=r4,r0=r2,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter$OP_MOVE_REG - [DEBUG]: mov 2 to 4
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, 3, fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 14 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 1
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 14 <MOV,REG,dst=r5,r0=r2,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter$OP_MOVE_REG - [DEBUG]: mov 2 to 5
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, 3, fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 15 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 15 <INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: android.telephony.SmsManager@3c750bcb
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class: class android.telephony.SmsManager
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: caller obj: android.telephony.SmsManager@3c750bcb, from class: class android.telephony.SmsManager
+class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public void android.telephony.SmsManager.sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, 3, fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 16 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 6 0
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 16 <GOTO,extra=index:6>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: goto done: <GOTO,extra=index:6>
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <GOTO,extra=index:6>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, 3, fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 6 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 15
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 6 <INVOKE,INTERFACE,extra=[java.util.Iterator/hasNext[], [6]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: java.util.HashMap$KeyIterator@5802ffe7
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class: interface java.util.Iterator
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: return data: true ,class java.lang.Boolean
+class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public abstract boolean java.util.Iterator.hasNext()
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint call: <java.util.Iterator: boolean hasNext()>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, 3, fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 7 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 7 <MOV,RESULT,dst=r3,type=void>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data true java.lang.Boolean
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, 3, fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 8 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 8 30
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 8 <IF,EQZ,r0=r3,extra=index:17>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: not equ: <IF,EQZ,r0=r3,extra=index:17>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, 3, fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 9 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 15
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 9 <INVOKE,INTERFACE,extra=[java.util.Iterator/next[], [6]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: java.util.HashMap$KeyIterator@5802ffe7
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class: interface java.util.Iterator
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: return data: +49 111111 ,class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public abstract java.lang.Object java.util.Iterator.next()
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint call: <java.util.Iterator: java.lang.Object next()>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, 3, fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 10 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 10 <MOV,RESULT,dst=r1,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data +49 111111 java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, 3, fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 11 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 13 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 11 <ARITHMETIC,CHECK-AND-CAST,dst=r1,type=java.lang.String>
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <ARITHMETIC,CHECK-AND-CAST,dst=r1,type=java.lang.String>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, 3, fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 12 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 1
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 12 <MOV,REG,dst=r3,r0=r9,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter$OP_MOVE_REG - [DEBUG]: mov 9 to 3
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, 3, fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 13 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 1
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 13 <MOV,REG,dst=r4,r0=r2,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter$OP_MOVE_REG - [DEBUG]: mov 2 to 4
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, 3, fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 14 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 1
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 14 <MOV,REG,dst=r5,r0=r2,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter$OP_MOVE_REG - [DEBUG]: mov 2 to 5
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, 3, fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 15 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 15 <INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: android.telephony.SmsManager@3c750bcb
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class: class android.telephony.SmsManager
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: caller obj: android.telephony.SmsManager@3c750bcb, from class: class android.telephony.SmsManager
+class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public void android.telephony.SmsManager.sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, 3, fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 16 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 6 0
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 16 <GOTO,extra=index:6>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: goto done: <GOTO,extra=index:6>
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <GOTO,extra=index:6>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, 3, fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 6 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 15
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 6 <INVOKE,INTERFACE,extra=[java.util.Iterator/hasNext[], [6]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: java.util.HashMap$KeyIterator@5802ffe7
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class: interface java.util.Iterator
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: return data: true ,class java.lang.Boolean
+class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public abstract boolean java.util.Iterator.hasNext()
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint call: <java.util.Iterator: boolean hasNext()>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, 3, fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 7 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 7 <MOV,RESULT,dst=r3,type=void>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data true java.lang.Boolean
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, 3, fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 8 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 8 30
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 8 <IF,EQZ,r0=r3,extra=index:17>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: not equ: <IF,EQZ,r0=r3,extra=index:17>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, 3, fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 9 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 15
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 9 <INVOKE,INTERFACE,extra=[java.util.Iterator/next[], [6]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: java.util.HashMap$KeyIterator@5802ffe7
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class: interface java.util.Iterator
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: return data: +49 654321 ,class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public abstract java.lang.Object java.util.Iterator.next()
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint call: <java.util.Iterator: java.lang.Object next()>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, 3, fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 10 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 10 <MOV,RESULT,dst=r1,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data +49 654321 java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, 3, fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 11 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 13 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 11 <ARITHMETIC,CHECK-AND-CAST,dst=r1,type=java.lang.String>
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <ARITHMETIC,CHECK-AND-CAST,dst=r1,type=java.lang.String>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, 3, fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 12 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 1
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 12 <MOV,REG,dst=r3,r0=r9,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter$OP_MOVE_REG - [DEBUG]: mov 9 to 3
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, 3, fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 13 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 1
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 13 <MOV,REG,dst=r4,r0=r2,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter$OP_MOVE_REG - [DEBUG]: mov 2 to 4
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, 3, fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 14 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 1
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 14 <MOV,REG,dst=r5,r0=r2,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter$OP_MOVE_REG - [DEBUG]: mov 2 to 5
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, 3, fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 15 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 15 <INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: android.telephony.SmsManager@3c750bcb
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class: class android.telephony.SmsManager
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: caller obj: android.telephony.SmsManager@3c750bcb, from class: class android.telephony.SmsManager
+class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public void android.telephony.SmsManager.sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, 3, fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 16 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 6 0
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 16 <GOTO,extra=index:6>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: goto done: <GOTO,extra=index:6>
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <GOTO,extra=index:6>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, 3, fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 6 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 15
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 6 <INVOKE,INTERFACE,extra=[java.util.Iterator/hasNext[], [6]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: java.util.HashMap$KeyIterator@5802ffe7
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class: interface java.util.Iterator
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: return data: true ,class java.lang.Boolean
+class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public abstract boolean java.util.Iterator.hasNext()
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint call: <java.util.Iterator: boolean hasNext()>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, 3, fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 7 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 7 <MOV,RESULT,dst=r3,type=void>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data true java.lang.Boolean
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 9, 3, fuck, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 8 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 8 30
+class fu.hao.trus
