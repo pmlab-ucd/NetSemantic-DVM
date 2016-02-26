@@ -1558,10 +1558,10 @@ public class Interpreter {
 			Object obj = vm.regs[inst.r0].data;
 			if (obj instanceof DVMObject) {
 				DVMObject dvmObj = (DVMObject) obj;
-				dvmObj.setField(fieldInfo, vm.regs[inst.r1].data);
 
 				vm.regs[inst.r1].type = fieldInfo.getFieldType();
 				vm.regs[inst.r1].data = dvmObj.getFieldObj(fieldInfo);
+				Log.debug(TAG, "get data: " + vm.regs[inst.r1].data);
 			} else {
 				// TODO reflection set field
 			}
