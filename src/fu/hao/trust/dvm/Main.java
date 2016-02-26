@@ -19,14 +19,20 @@ public class Main {
 		DalvikVM vm = new DalvikVM();
 		//Settings.logLevel = 0;
 		Settings.apkPath = args[0];
-		Settings.susp = args[1]; 
+		Settings.suspClass = args[1]; 
 		Settings.apkName = "app-debug";
+		if (args.length > 2 && args[2] != null) {
+			Settings.suspMethod = args[2];
+		} else {
+			Settings.suspMethod = "onCreate";
+		}
+
 		Results.reset();
 		try {
 			Taint taint = Taint.v();
 			vm.runMethod(
 					Settings.apkPath,
-					Settings.susp, "onCreate", taint);
+					Settings.suspClass, Settings.suspMethod, taint);
 		} catch (ZipException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

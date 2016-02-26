@@ -38,6 +38,6 @@ public class Settings {
 	public static String apkPath;
 	public static String platformDir;
 	public static String apkName;
-	public static String susp;
-	
+	public static String suspClass;
+	public static String suspMethod;
 }

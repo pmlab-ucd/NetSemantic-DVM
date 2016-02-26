@@ -48,8 +48,8 @@ public class Interpreter {
 				return;
 			}
 			vm.regs[inst.rdst].copy(vm.regs[inst.r0]);
-			Log.debug(getClass().toString(), "mov " + inst.r0 + " to "
-					+ inst.rdst);
+			Log.debug(getClass().toString(), "mov " + vm.regs[inst.r0].data + " to "
+					+ vm.regs[inst.rdst].data);
 			// vm.pc(), vm.pc + 2;
 			jump(vm, inst, true);
 		}
@@ -212,6 +212,7 @@ public class Interpreter {
 			vm.regs[inst.rdst].type = inst.type;
 			try {
 				Class.forName(inst.type.toString());
+				vm.regs[inst.rdst].data = null;
 			} catch (ClassNotFoundException e) {
 				// Do not need to handle reflection type,
 				// since <init> invocation will replace the newObj
@@ -487,6 +488,7 @@ public class Interpreter {
 			if (array.getClass().isArray()) {
 				vm.regs[inst.rdst].data = new PrimitiveInfo(
 						Array.getLength(array));
+				Log.debug(TAG, "len " + Array.getLength(array));
 				vm.regs[inst.rdst].type = ClassInfo.primitiveInt;
 			} else {
 				Log.err(TAG, "not an array");
@@ -933,6 +935,7 @@ public class Interpreter {
 		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
+			Log.debug(TAG, "data " + vm.regs[inst.r0].data);
 			PrimitiveInfo op0 = (PrimitiveInfo) vm.regs[inst.r0].data;
 			PrimitiveInfo op1;
 			if (inst.r1 != -1) {
@@ -1552,7 +1555,6 @@ public class Interpreter {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
 			FieldInfo fieldInfo = (FieldInfo) inst.extra;
-
 			Object obj = vm.regs[inst.r0].data;
 			if (obj instanceof DVMObject) {
 				DVMObject dvmObj = (DVMObject) obj;
