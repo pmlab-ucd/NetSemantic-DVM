@@ -11,9 +11,11 @@ public class DVMClass {
 	
 	private ClassInfo type = null;
 	private Map<String, Object> staticFields = new HashMap<>();
+	DalvikVM vm;
 	// private Map<MethodInfo, DVMethod> methods = new HashMap<>();
 	
 	DVMClass(DalvikVM vm, ClassInfo type) {
+		this.vm = vm;
 		this.setType(type);
 		if (type.getStaticInitializer() != null) {
 			vm.runMethod(type.getStaticInitializer());
@@ -40,9 +42,19 @@ public class DVMClass {
 		//methods.put(minfo, n)
 	}
 	
+	public Map<String, Object> getFields() {
+		return staticFields;
+	}
+	
 	@Override
 	public String toString() {
 		return type.toString();
+	}
+	
+	@Override
+	public DVMClass clone() {
+		DVMClass newClass = new DVMClass(vm, type);
+		return newClass;
 	}
 
 }

@@ -16,7 +16,7 @@ import patdroid.util.Pair;
 import fu.hao.trust.dvm.DVMClass;
 import fu.hao.trust.dvm.DVMObject;
 import fu.hao.trust.dvm.DalvikVM;
-import fu.hao.trust.dvm.DalvikVM.simple_dvm_register;
+import fu.hao.trust.dvm.DalvikVM.Register;
 import fu.hao.trust.utils.Log;
 import fu.hao.trust.utils.SrcSinkParser;
 
@@ -481,7 +481,7 @@ public class Taint extends Plugin {
 		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
 			// TODO taint all?
 			// dest reg
-			simple_dvm_register rdst = vm.getReg(inst.rdst);
+			Register rdst = vm.getReg(inst.rdst);
 
 			Set<Object> out = new HashSet<>(in);
 			if (in.contains(rdst)) {

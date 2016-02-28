@@ -20,8 +20,10 @@ public class DVMObject {
 	private DVMClass dvmClass = null;
 	private final String TAG = getClass().toString();
 	private Object superObj = null;
+	private DalvikVM vm;
 
 	public DVMObject(DalvikVM vm, ClassInfo type) {
+		this.vm = vm;
 		if (vm.getClass(type) == null) {
 			Log.debug(TAG, "new object of " + type);
 			vm.setClass(type, new DVMClass(vm, type));
@@ -70,6 +72,15 @@ public class DVMObject {
 
 	public void setSuperObj(Object superObj) {
 		this.superObj = superObj;
+	}
+	
+	@Override
+	public DVMObject clone() {
+		DVMObject newObj = new DVMObject(vm, type);
+		newObj.setFields(fields);
+		newObj.setSuperObj(superObj);
+		newObj.setDvmClass(dvmClass);
+		return newObj;
 	}
 
 }
