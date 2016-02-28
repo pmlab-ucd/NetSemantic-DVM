@@ -212,7 +212,7 @@ public class Interpreter {
 			if (inst.type == null) {
 				Log.err(TAG, "cannot create obj of null class");
 			}
-			
+
 			Log.debug(TAG, "" + vm.regs[inst.rdst]);
 
 			vm.regs[inst.rdst].type = inst.type;
@@ -552,7 +552,7 @@ public class Interpreter {
 			// type checking before moving?
 			vm.regs[inst.rdst].copy(vm.return_val_reg);
 			Log.debug(TAG, "data " + vm.regs[inst.rdst].data + " "
-					+ vm.regs[inst.rdst].type);
+					+ vm.regs[inst.rdst].type + " " + vm.regs[inst.rdst]);
 			jump(vm, inst, true);
 		}
 	}
@@ -791,8 +791,8 @@ public class Interpreter {
 		public void func(DalvikVM vm, Instruction inst) {
 			Register r0 = vm.regs[inst.r0];
 			/*
-			 * if (!r0.type.equals(r1.type)) { Log.err(TAG, "incosistent type " +
-			 * inst); return null; }
+			 * if (!r0.type.equals(r1.type)) { Log.err(TAG, "incosistent type "
+			 * + inst); return null; }
 			 */
 			if (r0.data instanceof Unknown) {
 				vm.storeState();
@@ -801,7 +801,7 @@ public class Interpreter {
 				jump(vm, inst, false);
 				return;
 			}
-			
+
 			PrimitiveInfo[] res = OP_CMP(vm, inst, true);
 			PrimitiveInfo op1 = res[0];
 			PrimitiveInfo op2 = res[1];
@@ -1603,6 +1603,7 @@ public class Interpreter {
 		public void func(DalvikVM vm, Instruction inst) {
 			FieldInfo fieldInfo = (FieldInfo) inst.extra;
 			Object obj = vm.regs[inst.r0].data;
+			Log.debug(TAG, "obj " + obj);
 			if (obj instanceof DVMObject) {
 				DVMObject dvmObj = (DVMObject) obj;
 				vm.regs[inst.r1].type = fieldInfo.getFieldType();
@@ -1642,6 +1643,7 @@ public class Interpreter {
 			if (obj instanceof DVMObject) {
 				DVMObject dvmObj = (DVMObject) obj;
 				dvmObj.setField(fieldInfo, vm.regs[inst.r1].data);
+				Log.debug(TAG, "put field" + dvmObj.getFieldObj(fieldInfo));
 			} else {
 				// TODO reflection set field
 			}
@@ -1838,22 +1840,25 @@ public class Interpreter {
 			@SuppressWarnings("rawtypes")
 			Class[] argsClass = new Class[mi.paramTypes.length];
 			Object[] params = new Object[args.length - 1];
-
+			
 			if (mi.isConstructor()) {
-				// clazz = Class.forName(mi.myClass.toString());
-				if (args.length == 1) {
-					vm.regs[args[0]].data = clazz.newInstance();
-					vm.regs[args[0]].type = mi.returnType;
-					Log.debug(TAG, "new instance: " + vm.regs[args[0]].data);
-				} else {
+				// use DvmObject to replace java.lang.Object
+				if (!mi.myClass.toString().equals("java.lang.Object")) {
+					// clazz = Class.forName(mi.myClass.toString());
+					if (args.length == 1) {
+						vm.regs[args[0]].data = clazz.newInstance();
+						vm.regs[args[0]].type = mi.returnType;
+						Log.debug(TAG, "new instance: " + vm.regs[args[0]].data);
+					} else {
 
-					getParams(vm, mi, args, argsClass, params);
-					// overwrite previous declared dvmObj
-					vm.regs[args[0]].data = clazz.getConstructor(argsClass)
-							.newInstance(params);
-					vm.regs[args[0]].type = mi.myClass;
-					Log.debug(TAG, "return data: " + vm.regs[args[0]].data
-							+ " " + vm.regs[args[0]].data.getClass());
+						getParams(vm, mi, args, argsClass, params);
+						// overwrite previous declared dvmObj
+						vm.regs[args[0]].data = clazz.getConstructor(argsClass)
+								.newInstance(params);
+						vm.regs[args[0]].type = mi.myClass;
+						Log.debug(TAG, "return data: " + vm.regs[args[0]].data
+								+ " " + vm.regs[args[0]].data.getClass());
+					}
 				}
 			} else {
 
@@ -1891,9 +1896,8 @@ public class Interpreter {
 		} catch (java.lang.NullPointerException e) {
 			e.printStackTrace();
 			Log.err(TAG, " null pointer ");
-		}	catch (Exception e) {
+		} catch (java.lang.ClassNotFoundException | NoSuchMethodException e) {
 			vm.plugin.method = null;
-			e.printStackTrace();
 			Log.debug(TAG, "not a reflction invocation " + mi);
 			vm.newStackFrame(mi);
 			vm.setContext(new int[args.length]);
@@ -1901,6 +1905,9 @@ public class Interpreter {
 				vm.getContext()[i] = args[i];
 				Log.debug(TAG, "arg " + vm.regs[vm.getContext()[i]].data);
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			Log.err(TAG, "error in reflection");
 		}
 
 	}
@@ -1920,9 +1927,10 @@ public class Interpreter {
 				String argClass = mi.paramTypes[i - 1].toString();
 				argsClass[i - 1] = Class.forName(argClass);
 				Object argData = vm.regs[args[i]].data;
-				
+
 				if (argData == null) {
-					Log.warn(TAG, "null in the " + i + "th arg, is " + vm.regs[args[i]]);
+					Log.warn(TAG, "null in the " + i + "th arg, is "
+							+ vm.regs[args[i]]);
 					params[i - 1] = null;
 				} else if (matchType(argData.getClass(), argsClass[i - 1])) {
 					params[i - 1] = argData;

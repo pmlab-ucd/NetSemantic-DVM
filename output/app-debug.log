@@ -55,11 +55,11 @@ class fu.hao.trust.dvm.DVMObject - [DEBUG]: new object of android.app.Activity
 class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.app.Activity
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 3 7
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: 0 <SPECIAL,ARGUMENT_SET,extra=[3, 4]>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: args: fu.hao.trust.dvm.DVMObject@1fd3297
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: args: fu.hao.trust.dvm.DVMObject@50caaed8
 class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.view.View
 class fu.hao.trust.dvm.DVMObject - [DEBUG]: new object of android.view.View
 class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.view.View
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: args: fu.hao.trust.dvm.DVMObject@16045886
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: args: fu.hao.trust.dvm.DVMObject@5edd9a4d
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: 1 <MOV,CONST,dst=r2,type=java.lang.String,extra="phone">
@@ -73,7 +73,7 @@ class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <HALT,VIRTUAL,extra=
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: 3 <MOV,RESULT,dst=r1,type=java.lang.Object>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: data null null
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data null null reg 1
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 13 18
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: 4 <ARITHMETIC,CHECK-AND-CAST,dst=r1,type=android.telephony.TelephonyManager>
@@ -85,51 +85,73 @@ class fu.hao.trust.dvm.Interpreter - [DEBUG]: null
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class: class android.telephony.TelephonyManager
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: return data: 359874043116909 ,class java.lang.String
 class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public java.lang.String android.telephony.TelephonyManager.getDeviceId()
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg -1, 359874043116909]
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: 6 <MOV,RESULT,dst=r2,type=java.lang.Object>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: data 359874043116909 java.lang.String
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg -1, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data 359874043116909 java.lang.String reg 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg -1, reg 2, 359874043116909]
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 9 55
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: 7 <INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=de.ecspride.VirtualDispatch1.imei>
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: field de.ecspride.VirtualDispatch1.imei
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg -1, reg -1]
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: put field 359874043116909
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: put field359874043116909
+class fu.hao.trust.analysis.Taint - [DEBUG]: add 359874043116909
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg -1, reg 2, 359874043116909]
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 9 54
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: 8 <INSTANCE,IGET,r0=r3,r1=r2,type=void,extra=de.ecspride.VirtualDispatch1.counter>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: obj fu.hao.trust.dvm.DVMObject@50caaed8
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: put field Unknown var, type: int
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: get data: Unknown var, type: int
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg -1, 359874043116909]
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 13 38
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: 9 <ARITHMETIC,ADD,dst=r2,r0=r2,extra=class patdroid.core.PrimitiveInfo?1>
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: data Unknown var, type: int
 class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <ARITHMETIC,ADD,dst=r2,r0=r2,extra=class patdroid.core.PrimitiveInfo?1>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg -1, 359874043116909]
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 9 55
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: 10 <INSTANCE,IPUT,r0=r3,r1=r2,type=void,extra=de.ecspride.VirtualDispatch1.counter>
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: field de.ecspride.VirtualDispatch1.counter
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg -1]
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: put field Unknown var, type: int
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: put fieldUnknown var, type: int
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg -1, 359874043116909]
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: 11 <MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg -1, 359874043116909]
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 9 54
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: 12 <INSTANCE,IGET,r0=r3,r1=r2,type=void,extra=de.ecspride.VirtualDispatch1.counter>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: obj fu.hao.trust.dvm.DVMObject@50caaed8
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: get data: Unknown var, type: int
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg -1, 359874043116909]
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 13 42
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: 13 <ARITHMETIC,REM,dst=r2,r0=r2,extra=class patdroid.core.PrimitiveInfo?2>
 class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <ARITHMETIC,REM,dst=r2,r0=r2,extra=class patdroid.core.PrimitiveInfo?2>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg -1, 359874043116909]
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 8 31
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: 14 <IF,NEZ,r0=r2,extra=index:20>
 class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass de.ecspride.VirtualDispatch1
 class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.app.Activity
 class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.view.View
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass de.ecspride.VirtualDispatch1
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: new object of de.ecspride.VirtualDispatch1
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass de.ecspride.VirtualDispatch1
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: put field Unknown var, type: int
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: put field 359874043116909
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.app.Activity
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: new object of android.app.Activity
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.app.Activity
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.app.Activity
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: new object of android.app.Activity
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.app.Activity
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.view.View
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: new object of android.view.View
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.view.View
 class fu.hao.trust.dvm.DalvikVM - [DEBUG]: new Reg[0reg 0
 class fu.hao.trust.dvm.DalvikVM - [DEBUG]: old regs[0]reg 0
 class fu.hao.trust.dvm.DalvikVM - [DEBUG]: back reg[0] reg 0
 class fu.hao.trust.dvm.Interpreter - [MSG]: State stored!
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg -1, 359874043116909]
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 4 8
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: 20 <NEW,INSTANCE,dst=r0,type=de.ecspride.DataLeak>
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: reg 0
@@ -138,62 +160,131 @@ class fu.hao.trust.dvm.DVMObject - [DEBUG]: new object of de.ecspride.DataLeak
 class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass de.ecspride.DataLeak
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: begin new object of de.ecspride.DataLeakcreated.
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: new object of de.ecspride.DataLeakcreated.
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg -1, 359874043116909]
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 9 54
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: 21 <INSTANCE,IGET,r0=r3,r1=r2,type=java.lang.Object,extra=de.ecspride.VirtualDispatch1.imei>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: obj fu.hao.trust.dvm.DVMObject@50caaed8
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: get data: 359874043116909
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg -1, reg 2, 359874043116909]
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 11
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: 22 <INVOKE,DIRECT,extra=[de.ecspride.DataLeak/<init>[java.lang.String], [0, 2]]>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: fu.hao.trust.dvm.DVMObject@4c37a013
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: fu.hao.trust.dvm.DVMObject@73a4d25d
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: not a reflction invocation de.ecspride.DataLeak/<init>[java.lang.String]
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: arg fu.hao.trust.dvm.DVMObject@4c37a013
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: arg fu.hao.trust.dvm.DVMObject@73a4d25d
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: arg 359874043116909
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg -1, reg 2, 359874043116909]
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 3 7
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: 0 <SPECIAL,ARGUMENT_SET,extra=[0, 1]>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: params: fu.hao.trust.dvm.DVMObject@4c37a013
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: params: fu.hao.trust.dvm.DVMObject@73a4d25d
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: params: 359874043116909
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg -1, reg 2, 359874043116909, reg 1]
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 11
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: 1 <INVOKE,DIRECT,extra=[de.ecspride.NoDataLeak/<init>[java.lang.String], [0, 1]]>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: fu.hao.trust.dvm.DVMObject@4c37a013
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: fu.hao.trust.dvm.DVMObject@73a4d25d
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: not a reflction invocation de.ecspride.NoDataLeak/<init>[java.lang.String]
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: arg fu.hao.trust.dvm.DVMObject@4c37a013
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: arg fu.hao.trust.dvm.DVMObject@73a4d25d
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: arg 359874043116909
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg -1, reg 2, 359874043116909, reg 1]
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 3 7
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: 0 <SPECIAL,ARGUMENT_SET,extra=[0, 1]>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: params: fu.hao.trust.dvm.DVMObject@4c37a013
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: params: fu.hao.trust.dvm.DVMObject@73a4d25d
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: params: 359874043116909
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg -1, reg 2, 359874043116909, reg 1]
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 11
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: 1 <INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: fu.hao.trust.dvm.DVMObject@4c37a013
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: new instance: java.lang.Object@3fae84c3
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: fu.hao.trust.dvm.DVMObject@73a4d25d
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg -1, reg 2, 359874043116909, reg 1]
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 9 55
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: 2 <INSTANCE,IPUT,r0=r0,r1=r1,type=java.lang.Object,extra=de.ecspride.NoDataLeak.data>
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: field de.ecspride.NoDataLeak.data
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg -1]
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: put field 359874043116909
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: put field359874043116909
+class fu.hao.trust.analysis.Taint - [DEBUG]: add 359874043116909
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg -1, reg 2, 359874043116909, reg 1]
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 2 3
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: 3 <RETURN,VOID>
 class fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID - [DEBUG]: return void
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 1 1
 class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <RETURN,VOID>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg -1, reg 2, 359874043116909, reg 1]
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 2 3
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: 2 <RETURN,VOID>
 class fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID - [DEBUG]: return void
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 22 22
 class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <RETURN,VOID>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg -1, reg 2, 359874043116909, reg 1]
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 6 0
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: 23 <GOTO,extra=index:18>
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: goto done: <GOTO,extra=index:18>
 class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <GOTO,extra=index:18>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg -1, reg 2, 359874043116909, reg 1]
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 13
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: 18 <INVOKE,VIRTUAL,extra=[de.ecspride.NoDataLeak/logData[], [0]]>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: java.lang.Object@3fae84c3
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: n
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: fu.hao.trust.dvm.DVMObject@73a4d25d
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: not a reflction invocation de.ecspride.NoDataLeak/logData[]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: arg fu.hao.trust.dvm.DVMObject@73a4d25d
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg -1, reg 2, 359874043116909, reg 1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 3 7
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 0 <SPECIAL,ARGUMENT_SET,extra=[6]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: params: fu.hao.trust.dvm.DVMObject@73a4d25d
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg -1, reg 2, 359874043116909, reg 1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 1 <MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg -1, 359874043116909, reg 1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 2 <MOV,CONST,dst=r1,type=java.lang.String,extra="LOG">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r1,type=java.lang.String,extra="LOG">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: LOG class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg -1, 359874043116909]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 9 54
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 3 <INSTANCE,IGET,r0=r6,r1=r3,type=java.lang.Object,extra=de.ecspride.NoDataLeak.data>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: obj fu.hao.trust.dvm.DVMObject@73a4d25d
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: get data: 359874043116909
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg -1, 359874043116909, reg 3]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 15 14
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 4 <HALT,STATIC,extra=[null, [1, 3]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: cannot resolve the invocation
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <HALT,STATIC,extra=[null, [1, 3]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg -1, 359874043116909, reg 3]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 14
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 5 <INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class android.telephony.SmsManager
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: return data: android.telephony.SmsManager@42a0a884 class android.telephony.SmsManager
+class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public static android.telephony.SmsManager android.telephony.SmsManager.getDefault()
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint call: <android.telephony.SmsManager: android.telephony.SmsManager getDefault()>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg -1, 359874043116909, reg 3]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 6 <MOV,RESULT,dst=r0,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data android.telephony.SmsManager@42a0a884 android.telephony.SmsManager reg 0
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg -1, 359874043116909, reg 3]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 7 <MOV,CONST,dst=r1,type=java.lang.String,extra="+49 1234">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r1,type=java.lang.String,extra="+49 1234">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: +49 1234 class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg -1, 359874043116909, reg 3]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 9 54
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 8 <INSTANCE,IGET,r0=r6,r1=r3,type=java.lang.Object,extra=de.ecspride.NoDataLeak.data>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: obj fu.hao.trust.dvm.DVMObject@73a4d25d
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: get data: 359874043116909
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg -1, 359874043116909, reg 3]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 1
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 9 <MOV,REG,dst=r4,r0=r2,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter$OP_MOVE_REG - [DEBUG]: mov 0 to 0
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg -1, 359874043116909, reg 3]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 1
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 10 <MOV,REG,dst=r5,r0=r2,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter$OP_MOVE_REG - [DEBUG]: mov 0 to 0
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg -1, 359874043116909, reg 3]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 11 <INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: android.telephony.SmsManager@42a0a884
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class: class android.telephony.SmsManager
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: caller obj: android.telephony.SmsManager@42a0a884, from class: class android.telephony.SmsManager
+class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public void android.telephony.SmsManager.sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg -1, 359874043116909, reg 3]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 2 3
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 12 <RETURN,VOID>
+class fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID - [DEBUG]: return void
+clas

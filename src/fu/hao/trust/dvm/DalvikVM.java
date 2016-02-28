@@ -54,7 +54,6 @@ public class DalvikVM {
 		public void copy(Register y) {
 			this.type = y.type;
 			this.data = y.data;
-			this.count = y.count;
 		}
 
 		public void copy(ClassInfo type, Object data) {
@@ -133,7 +132,10 @@ public class DalvikVM {
 			dvmObjs.get(type).add(dvmObj);
 		}
 
-		private void setObj(DVMObject dvmObj) {
+		public void setObj(DVMObject dvmObj) {
+			if (dvmObjs.get(dvmObj.getType()) == null) {
+				dvmObjs.put(dvmObj.getType(), new HashSet<DVMObject>());
+			}
 			dvmObjs.get(dvmObj.getType()).add(dvmObj);
 		}
 	}
@@ -162,7 +164,7 @@ public class DalvikVM {
 				if (objMap.containsKey(obj)) {
 					newObj = objMap.get(obj);
 				} else {
-					newObj = obj.clone();
+					newObj = obj.clone(backHeap);
 				}
 
 				// Fix fields.
@@ -189,7 +191,7 @@ public class DalvikVM {
 		for (int i = 0; i < newRegs.length; i++) {
 			newRegs[i] = new Register();
 			newRegs[i].copy(regs[i]);
-			
+			newRegs[i].count = i;
 			if (newRegs[i].data instanceof DVMObject) {
 				newRegs[i].data = objMap.get(regs[i].data);
 			} else if (newRegs[i].data instanceof DVMClass) {

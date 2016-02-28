@@ -3,6 +3,7 @@ package fu.hao.trust.dvm;
 import java.util.HashMap;
 import java.util.Map;
 
+import fu.hao.trust.dvm.DalvikVM.Heap;
 import fu.hao.trust.utils.Log;
 import patdroid.core.ClassInfo;
 import patdroid.core.FieldInfo;
@@ -32,6 +33,20 @@ public class DVMObject {
 		DVMClass dvmClass = vm.getClass(type);
 		this.setType(type);
 		this.setDvmClass(dvmClass);
+		vm.setObj(type, this);
+	}
+	
+	public DVMObject(DalvikVM vm, ClassInfo type, Heap heap) {
+		this.vm = vm;
+		if (vm.getClass(type) == null) {
+			Log.debug(TAG, "new object of " + type);
+			vm.setClass(type, new DVMClass(vm, type));
+		}
+		Log.debug(TAG, "new object of " + type);
+		DVMClass dvmClass = vm.getClass(type);
+		this.setType(type);
+		this.setDvmClass(dvmClass);
+		heap.setObj(this);
 	}
 
 	public ClassInfo getType() {
@@ -55,6 +70,10 @@ public class DVMObject {
 	}
 
 	public void setField(FieldInfo fieldInfo, Object obj) {
+		if (obj == null) {
+			Log.err(TAG, "null field put!");
+		}
+		Log.debug(TAG, "put field " + obj);
 		fields.put(fieldInfo, obj);
 	}
 
@@ -77,6 +96,14 @@ public class DVMObject {
 	@Override
 	public DVMObject clone() {
 		DVMObject newObj = new DVMObject(vm, type);
+		newObj.setFields(fields);
+		newObj.setSuperObj(superObj);
+		newObj.setDvmClass(dvmClass);
+		return newObj;
+	}
+	
+	public DVMObject clone(Heap heap) {
+		DVMObject newObj = new DVMObject(vm, type, heap);
 		newObj.setFields(fields);
 		newObj.setSuperObj(superObj);
 		newObj.setDvmClass(dvmClass);

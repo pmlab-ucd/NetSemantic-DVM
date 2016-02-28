@@ -242,7 +242,6 @@ public class Taint extends Plugin {
 				out.add(vm.getReturnReg().getData());
 			} else {
 				Log.debug(TAG, "not a taint call: " + signature);
-
 			}
 
 			if (vm.getReturnReg().getData() != null) {
@@ -618,7 +617,13 @@ public class Taint extends Plugin {
 					// TODO reflection get field
 				}
 			} else if (in.contains(vm.getReg(inst.r1))) {
+				// value register, has been assigned to new value
 				out.remove(vm.getReg(inst.r1));
+			}
+			
+			// if field is already tainted
+			if (in.contains(vm.getReg(inst.r1).getData())) {
+				out.add(vm.getReg(inst.r1));
 			}
 
 			return out;
@@ -641,6 +646,12 @@ public class Taint extends Plugin {
 			Set<Object> out = new HashSet<>(in);
 			if (in.contains(vm.getReg(inst.r0))) {
 				Object obj = vm.getReg(inst.r0).getData();
+				out.add(obj);
+			}
+			
+			if (in.contains(vm.getReg(inst.r1))) {
+				Object obj = vm.getReg(inst.r1).getData();
+				Log.debug(TAG, "add " + obj );
 				out.add(obj);
 			}
 
