@@ -17,7 +17,7 @@ public class MainTest {
 		Settings.logLevel = 0;
 	}
 	
-	//@Test
+	@Test
 	public void test() {
 		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/app-debug.apk";
 		args[1] = "de.ecspride.LoopExample1";
@@ -28,7 +28,7 @@ public class MainTest {
 		assertEquals(Results.results.contains(res), true);
 	}
 
-	//@Test
+	@Test
 	public void testGeneralJava_Loop1() {
 		args[0] = "C:/Users/hao/workspace/GeneralJava_Loop1/app/app-debug.apk";
 		args[1] = "de.ecspride.LoopExample1";
@@ -39,7 +39,7 @@ public class MainTest {
 		assertEquals(Results.results.contains(res), true);
 	}
 
-	//@Test
+	@Test
 	public void testGeneralJava_Loop2() {
 		args[0] = "C:/Users/hao/workspace/GeneralJava_Loop2/app/app-debug.apk";
 		args[1] = "de.ecspride.LoopExample2";
@@ -50,7 +50,7 @@ public class MainTest {
 		assertEquals(Results.results.contains(res), true);
 	}
 	
-	//@Test
+	@Test
 	public void testGeneralJava_SourceCodeSpecific1() {
 		args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_SourceCodeSpecific1/app/app-debug.apk";
 		args[1] = "de.ecspride.MainActivity";
@@ -61,7 +61,7 @@ public class MainTest {
 		assertEquals(Results.results.contains(res), true);
 	}
 
-	//@Test
+	@Test
 	public void testGeneralJava_StaticInitialization1() {
 		args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_StaticInitialization1/app/app-release.apk";
 		args[1] = "de.ecspride.MainActivity";
@@ -72,7 +72,7 @@ public class MainTest {
 		assertEquals(Results.results.contains(res), true);
 	}
 	
-	//@Test
+	@Test
 	public void testGeneralJava_StaticInitialization2() {
 		args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_StaticInitialization2/app/app-release.apk";
 		args[1] = "de.ecspride.MainActivity";
@@ -83,7 +83,7 @@ public class MainTest {
 		assertEquals(Results.results.contains(res), true);
 	}
 	
-	//@Test
+	@Test
 	public void testGeneralJava_UnreachableCode() {
 		args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_UnreachableCode/app/app-release.apk";
 		args[1] = "de.ecspride.UnreachableCode";
