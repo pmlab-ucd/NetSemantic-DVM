@@ -789,19 +789,6 @@ public class Interpreter {
 		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			Register r0 = vm.regs[inst.r0];
-			/*
-			 * if (!r0.type.equals(r1.type)) { Log.err(TAG, "incosistent type "
-			 * + inst); return null; }
-			 */
-			if (r0.data instanceof Unknown) {
-				vm.storeState();
-				Log.msg(TAG, "State stored!");
-				// go else
-				jump(vm, inst, false);
-				return;
-			}
-
 			PrimitiveInfo[] res = OP_CMP(vm, inst, true);
 			PrimitiveInfo op1 = res[0];
 			PrimitiveInfo op2 = res[1];
@@ -1736,9 +1723,44 @@ public class Interpreter {
 		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			// TODO Auto-generated method stub
 			jump(vm, inst, true);
 			Log.debug(TAG, "cannot resolve the invocation");
+		}
+	}
+	
+	class OP_CMP implements ByteCode {
+		/**
+		 * @Title: func
+		 * @Description: (·Ç JavaDoc)
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
+		@Override
+		public void func(DalvikVM vm, Instruction inst) {
+			// check whether contains an unknown var 
+			Register r0 = vm.regs[inst.r0];
+			Register r1 = null;
+			if (inst.r1 != -1) {
+				r1 = vm.regs[inst.r1];
+			}
+			
+			Unknown u0;
+			if (r0.data instanceof Unknown) {
+				u0 = (Unknown) r0.data; 
+				u0.addConstriant(vm, inst);
+				vm.storeState();
+				if (r1 != null && r1.data instanceof Unknown) {
+					// TODO
+				}
+				jump(vm, inst, false);
+				Log.debug(TAG, "unknown branch");
+				// TODO add constraint inconsistency check to rm unreachable code
+				return;
+			} else {
+				auxByteCodes.get((int) inst.opcode_aux).func(vm, inst);
+			}	
 		}
 	}
 
@@ -2023,7 +2045,7 @@ public class Interpreter {
 		primClasses.put(Character.class, char.class);
 
 		byteCodes.put(0x06, new OP_GOTO());
-		// byteCodes.put(0x07, new OP_CMP());
+		byteCodes.put(0x08, new OP_CMP());
 		byteCodes.put(0x0E, new OP_SWITCH());
 		byteCodes.put(0x0F, new OP_HALT());
 

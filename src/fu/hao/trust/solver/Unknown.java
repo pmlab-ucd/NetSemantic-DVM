@@ -33,11 +33,11 @@ public class Unknown {
 		this.type = type;
 		store = new Store();
 		if (type.equals(ClassInfo.primitiveInt)) {
-			var = new IntVar();
+			var = new IntVar(store);
 		}
 	}
 	
-	public void addConstriant(DalvikVM vm, Instruction ifInst, boolean then) {
+	public void addConstriant(DalvikVM vm, Instruction ifInst) {
 		PrimitiveInfo op1;
 		if (lastArith.r1 != -1) {
 			op1 = (PrimitiveInfo) vm.getReg(lastArith.r1).getData();
@@ -48,7 +48,7 @@ public class Unknown {
 		IntVar op1Var = new IntVar(store, op1.intValue(), op1.intValue());
 		IntVar res = new IntVar(store);
 		IntVar zero = new IntVar(store, 0, 0);
-		zero.setDomain(0, 0);
+		// zero.setDomain(0, 0);
 		
 		switch ((int) lastArith.opcode_aux) {
 		case 0x2A:
@@ -69,4 +69,25 @@ public class Unknown {
 	public void addLastArith(Instruction lastArith) {
 		this.lastArith = lastArith;
 	}
+	
+	public boolean isValid() { 
+		if (getRes() == null) {
+			return false;
+		}
+		return true;
+	}
+	
+	/**
+	* @Title: getRes
+	* @Author: hao
+	* @Description: Get the result through resolving the constrains
+	* @param @return  
+	* @return Var   
+	* @throws
+	*/
+	public Var getRes() {
+		// TODO
+		return null;
+	}
+	
 }
