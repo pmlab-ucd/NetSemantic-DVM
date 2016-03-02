@@ -32,7 +32,7 @@ public class Main {
 		// Settings.logLevel = 0;
 
 		if (args[2] != null && !"".equals(args[2])) {
-			Settings.apkPath = args[0] + "app-release.apk";
+			Settings.apkPath = args[0];// + "app-release.apk";
 			Settings.suspClass = args[1];
 			Settings.suspMethod = args[2];
 			runMethod();
