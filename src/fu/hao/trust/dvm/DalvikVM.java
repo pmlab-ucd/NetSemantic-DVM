@@ -13,6 +13,7 @@ import java.util.zip.ZipFile;
 
 import fu.hao.trust.analysis.Plugin;
 import fu.hao.trust.utils.Log;
+import fu.hao.trust.utils.Settings;
 import patdroid.core.ClassInfo;
 import patdroid.core.FieldInfo;
 import patdroid.core.MethodInfo;
@@ -435,6 +436,59 @@ public class DalvikVM {
 		this.plugin = plugin;
 		runMethod(methods[0]);
 	}
+	
+	public void runMethods(String apk, String[] chain,
+			Plugin plugin) throws ZipException, IOException {
+		
+		// for normal java run-time classes
+		// when a class is not loaded, load it with reflection
+		ClassInfo.rootDetailLoader = new ReflectionClassDetailLoader();
+		// pick an apk
+		ZipFile apkFile;
+		apkFile = new ZipFile(new File(apk));
+		// load all classes, methods, fields and instructions from an apk
+		// we are using smali as the underlying engine
+		new SmaliClassDetailLoader(apkFile, true).loadAll();
+		// get the class representation for the MainActivity class in the
+		// apk
+		Settings.suspClass = chain[0];
+		Log.debug(tag, "class " + chain[0]);
+		Log.debug(tag, "class " + apkFile + " " + apk);
+		ClassInfo c = ClassInfo.findClass(Settings.suspClass);
+		Log.debug(tag, "class " + c);
+		// find all methods with the name "onCreate", most likely there is
+		// only one
+		this.plugin = plugin;
+		
+
+		thisObj = new DVMObject(this, c);
+		ClassInfo superClass = c.getSuperClass();
+		Class<?> superClazz;
+		try {
+			superClazz = Class.forName(superClass.toString());
+			Log.debug(tag, superClazz.getName());
+			thisObj.setSuperObj(superClazz.newInstance());
+		} catch (ClassNotFoundException e) {
+			thisObj.setSuperObj(new DVMObject(this, superClass));
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (java.lang.NoClassDefFoundError e) {
+			e.printStackTrace();
+		} catch (java.lang.RuntimeException e) {
+			e.printStackTrace();
+		}
+			
+		for (int i = 1; i < chain.length; i++) {
+			Log.debug(tag, "Run " + chain[i] + " at " + c);
+			MethodInfo[] methods = c.findMethodsHere(chain[i]);
+			runMethod(methods[0]);
+		}
+	}
 
 	/**
 	 * @Title: runMethod
@@ -445,8 +499,14 @@ public class DalvikVM {
 	 * @throws
 	 */
 	public void runMethod(MethodInfo method) {
+		Log.msg(tag, "RUN Method " + method);
+		
 		// print all instructions
 		int counter = 0;
+		if (method.insns == null) {
+			Log.warn(tag, "Empty body of " + method);
+			return;
+		}
 		for (Instruction ins : method.insns) {
 			Log.debug(tag, "opcode: " + ins.opcode + " " + ins.opcode_aux);
 			Log.debug(tag, "[" + counter + "]" + ins.toString());

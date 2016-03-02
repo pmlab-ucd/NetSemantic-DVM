@@ -1,290 +1,676 @@
-class fu.hao.trust.dvm.DalvikVM - [MSG]: Begin run clickButton at C:/Users/hao/workspace/DroidBenchProj/GeneralJava_VirtualDispatch1/app/app-release.apk
+class fu.hao.trust.dvm.DalvikVM - [MSG]: Begin run onCreate at C:/Users/hao/workspace/DroidBenchProj/apks/droidkungfu/00cf11a8b905e891a454e5b3fcae41f3ed405e3c5d0f9c1fce310de4a88c42d0.apk
+class fu.hao.trust.dvm.DalvikVM - [MSG]: RUN Method ru.atools.sytrant.Sytrant/onCreate[android.os.Bundle]
 class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 3 7
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [0]<SPECIAL,ARGUMENT_SET,extra=[3, 4]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [0]<SPECIAL,ARGUMENT_SET,extra=[7, 8]>
 class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [1]<MOV,CONST,dst=r2,type=java.lang.String,extra="phone">
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [1]<MOV,CONST,dst=r6,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 15 12
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [2]<HALT,SUPER,extra=[null, [7, 8]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [3]<MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?2130903041>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 12 13
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [4]<INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [7, 3]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [5]<MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?2>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 4 9
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [6]<NEW,ARRAY,dst=r3,r0=r3,type=[Ljava.lang.String;>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [7]<MOV,CONST,dst=r4,type=java.lang.String,extra="emulator">
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 10 37
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [8]<ARRAY,APUT,dst=r4,r0=r3,r1=r6,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [9]<MOV,CONST,dst=r4,type=void,extra=class patdroid.core.PrimitiveInfo?1>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [10]<MOV,CONST,dst=r5,type=java.lang.String,extra="501978F844133087939C8EA0285A6448">
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 10 37
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [11]<ARRAY,APUT,dst=r5,r0=r3,r1=r4,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [12]<MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?2131099654>
 class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 15 13
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [2]<HALT,VIRTUAL,extra=[null, [3, 2]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [13]<HALT,VIRTUAL,extra=[null, [7, 3]]>
 class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 21
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [3]<MOV,RESULT,dst=r1,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [14]<MOV,RESULT,dst=r3,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 9 55
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [15]<INSTANCE,IPUT,r0=r7,r1=r3,type=java.lang.Object,extra=ru.atools.sytrant.Sytrant.sync_but>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 9 54
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [16]<INSTANCE,IGET,r0=r7,r1=r3,type=java.lang.Object,extra=ru.atools.sytrant.Sytrant.sync_but>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 12 13
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [17]<INVOKE,VIRTUAL,extra=[android.view.View/setOnClickListener[android.view.View$OnClickListener], [3, 7]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [18]<MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?2131099653>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 15 13
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [19]<HALT,VIRTUAL,extra=[null, [7, 3]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [20]<MOV,RESULT,dst=r3,type=java.lang.Object>
 class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 13 18
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [4]<ARITHMETIC,CHECK-AND-CAST,dst=r1,type=android.telephony.TelephonyManager>
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 12 13
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [5]<INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [21]<ARITHMETIC,CHECK-AND-CAST,dst=r3,type=android.widget.TextView>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 9 55
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [22]<INSTANCE,IPUT,r0=r7,r1=r3,type=java.lang.Object,extra=ru.atools.sytrant.Sytrant.log>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [23]<MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?2131099652>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 15 13
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [24]<HALT,VIRTUAL,extra=[null, [7, 3]]>
 class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 21
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [6]<MOV,RESULT,dst=r2,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [25]<MOV,RESULT,dst=r3,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 13 18
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [26]<ARITHMETIC,CHECK-AND-CAST,dst=r3,type=android.widget.ScrollView>
 class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 9 55
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [7]<INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=de.ecspride.VirtualDispatch1.imei>
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 9 54
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [8]<INSTANCE,IGET,r0=r3,r1=r2,type=void,extra=de.ecspride.VirtualDispatch1.counter>
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 13 38
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [9]<ARITHMETIC,ADD,dst=r2,r0=r2,extra=class patdroid.core.PrimitiveInfo?1>
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 9 55
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [10]<INSTANCE,IPUT,r0=r3,r1=r2,type=void,extra=de.ecspride.VirtualDispatch1.counter>
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [11]<MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 9 54
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [12]<INSTANCE,IGET,r0=r3,r1=r2,type=void,extra=de.ecspride.VirtualDispatch1.counter>
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 13 42
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [13]<ARITHMETIC,REM,dst=r2,r0=r2,extra=class patdroid.core.PrimitiveInfo?2>
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 8 31
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [14]<IF,NEZ,r0=r2,extra=index:20>
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 4 8
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [15]<NEW,INSTANCE,dst=r0,type=de.ecspride.NoDataLeak>
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [16]<MOV,CONST,dst=r2,type=java.lang.String,extra="no leak">
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [27]<INSTANCE,IPUT,r0=r7,r1=r3,type=java.lang.Object,extra=ru.atools.sytrant.Sytrant.scrollview>
 class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 12 11
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [17]<INVOKE,DIRECT,extra=[de.ecspride.NoDataLeak/<init>[java.lang.String], [0, 2]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [28]<INVOKE,DIRECT,extra=[ru.atools.sytrant.Sytrant/initUI[], [7]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 12 11
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [29]<INVOKE,DIRECT,extra=[ru.atools.sytrant.Sytrant/initThreading[], [7]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 4 8
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [30]<NEW,INSTANCE,dst=r3,type=ru.atools.sytrant.Sytrant$1>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 12 11
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [31]<INVOKE,DIRECT,extra=[ru.atools.sytrant.Sytrant$1/<init>[ru.atools.sytrant.Sytrant], [3, 7]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 12 14
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [32]<INVOKE,STATIC,extra=[ru.atools.sytrant.SyncService/setUpdateListener[ru.atools.sytrant.ServiceUpdateUIListener], [3]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 4 8
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [33]<NEW,INSTANCE,dst=r1,type=com.atools.battery.MyAd>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [34]<MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?1>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [35]<MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [36]<MOV,CONST,dst=r4,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 12 11
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [37]<INVOKE,DIRECT,extra=[com.atools.battery.MyAd/<init>[android.app.Activity, int, boolean, android.widget.RelativeLayout], [1, 7, 2, 3, 4]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 9 55
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [38]<INSTANCE,IPUT,r0=r7,r1=r1,type=java.lang.Object,extra=ru.atools.sytrant.Sytrant.mAd>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 9 54
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [39]<INSTANCE,IGET,r0=r7,r1=r1,type=java.lang.Object,extra=ru.atools.sytrant.Sytrant.mAd>
 class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 12 13
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [18]<INVOKE,VIRTUAL,extra=[de.ecspride.NoDataLeak/logData[], [0]]>
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 2 3
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [19]<RETURN,VOID>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [40]<INVOKE,VIRTUAL,extra=[com.atools.battery.MyAd/startAd[], [1]]>
 class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 4 8
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [20]<NEW,INSTANCE,dst=r0,type=de.ecspride.DataLeak>
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 9 54
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [21]<INSTANCE,IGET,r0=r3,r1=r2,type=java.lang.Object,extra=de.ecspride.VirtualDispatch1.imei>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [41]<NEW,INSTANCE,dst=r1,type=com.atools.battery.NewAd>
 class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 12 11
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [22]<INVOKE,DIRECT,extra=[de.ecspride.DataLeak/<init>[java.lang.String], [0, 2]]>
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 6 0
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [23]<GOTO,extra=index:18>
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass de.ecspride.VirtualDispatch1
-class fu.hao.trust.dvm.DVMObject - [DEBUG]: new object of de.ecspride.VirtualDispatch1
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass de.ecspride.VirtualDispatch1
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.app.Activity
-class fu.hao.trust.dvm.DVMObject - [DEBUG]: new object of android.app.Activity
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.app.Activity
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [42]<INVOKE,DIRECT,extra=[com.atools.battery.NewAd/<init>[android.content.Context], [1, 7]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 9 55
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [43]<INSTANCE,IPUT,r0=r7,r1=r1,type=java.lang.Object,extra=ru.atools.sytrant.Sytrant.mAd2>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 9 54
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [44]<INSTANCE,IGET,r0=r7,r1=r1,type=java.lang.Object,extra=ru.atools.sytrant.Sytrant.mAd2>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 12 13
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [45]<INVOKE,VIRTUAL,extra=[com.atools.battery.NewAd/startAd[], [1]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 4 8
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [46]<NEW,INSTANCE,dst=r0,type=android.content.Intent>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 12 11
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [47]<INVOKE,DIRECT,extra=[android.content.Intent/<init>[], [0]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [48]<MOV,CONST,dst=r1,type=java.lang.Class,extra=class patdroid.core.ClassInfo?ru.atools.sytrant.UpdateCheck>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 12 13
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [49]<INVOKE,VIRTUAL,extra=[android.content.Intent/setClass[android.content.Context, java.lang.Class], [0, 7, 1]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 15 13
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [50]<HALT,VIRTUAL,extra=[null, [7, 0]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 2 3
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [51]<RETURN,VOID>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass ru.atools.sytrant.Sytrant
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: new object of ru.atools.sytrant.Sytrant
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass ru.atools.sytrant.Sytrant
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: android.app.Activity
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 3 7
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: 0 <SPECIAL,ARGUMENT_SET,extra=[3, 4]>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: args: fu.hao.trust.dvm.DVMObject@7538ecf2
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.view.View
-class fu.hao.trust.dvm.DVMObject - [DEBUG]: new object of android.view.View
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.view.View
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: args: fu.hao.trust.dvm.DVMObject@298a84ed
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 0 <SPECIAL,ARGUMENT_SET,extra=[7, 8]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: args: fu.hao.trust.dvm.DVMObject@5144f423
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.os.Bundle
+class fu.hao.trust.dvm.DalvikVM - [MSG]: RUN Method android.os.Bundle/<clinit>[]
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: new object of android.os.Bundle
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.os.Bundle
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: args: fu.hao.trust.dvm.DVMObject@6b7a3576
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: 1 <MOV,CONST,dst=r2,type=java.lang.String,extra="phone">
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r2,type=java.lang.String,extra="phone">
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: phone class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 1 <MOV,CONST,dst=r6,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r6,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 15 12
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 2 <HALT,SUPER,extra=[null, [7, 8]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: cannot resolve the invocation
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <HALT,SUPER,extra=[null, [7, 8]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 3 <MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?2130903041>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?2130903041>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: 2130903041 class patdroid.core.PrimitiveInfo
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 4 <INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [7, 3]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: fu.hao.trust.dvm.DVMObject@5144f423
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class: class android.app.Activity
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: para type: int
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: caller obj: fu.hao.trust.dvm.DVMObject@5144f423, from class: class fu.hao.trust.dvm.DVMObject
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 5 <MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?2>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?2>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: 2 class patdroid.core.PrimitiveInfo
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 4 9
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 6 <NEW,ARRAY,dst=r3,r0=r3,type=[Ljava.lang.String;>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: a new array of [Ljava.lang.String; in size 2created.
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <NEW,ARRAY,dst=r3,r0=r3,type=[Ljava.lang.String;>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 7 <MOV,CONST,dst=r4,type=java.lang.String,extra="emulator">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r4,type=java.lang.String,extra="emulator">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: emulator class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 10 37
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 8 <ARRAY,APUT,dst=r4,r0=r3,r1=r6,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: emulator array: [Ljava.lang.Object;@1647b29c
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 9 <MOV,CONST,dst=r4,type=void,extra=class patdroid.core.PrimitiveInfo?1>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r4,type=void,extra=class patdroid.core.PrimitiveInfo?1>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: 1 class patdroid.core.PrimitiveInfo
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 10 <MOV,CONST,dst=r5,type=java.lang.String,extra="501978F844133087939C8EA0285A6448">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r5,type=java.lang.String,extra="501978F844133087939C8EA0285A6448">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: 501978F844133087939C8EA0285A6448 class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 10 37
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 11 <ARRAY,APUT,dst=r5,r0=r3,r1=r4,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: 501978F844133087939C8EA0285A6448 array: [Ljava.lang.Object;@1647b29c
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 12 <MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?2131099654>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?2131099654>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: 2131099654 class patdroid.core.PrimitiveInfo
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 15 13
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: 2 <HALT,VIRTUAL,extra=[null, [3, 2]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 13 <HALT,VIRTUAL,extra=[null, [7, 3]]>
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: cannot resolve the invocation
-class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <HALT,VIRTUAL,extra=[null, [3, 2]]>
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <HALT,VIRTUAL,extra=[null, [7, 3]]>
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: 3 <MOV,RESULT,dst=r1,type=java.lang.Object>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: data null null reg 1
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 14 <MOV,RESULT,dst=r3,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data null null reg 3
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 9 55
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 15 <INSTANCE,IPUT,r0=r7,r1=r3,type=java.lang.Object,extra=ru.atools.sytrant.Sytrant.sync_but>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: field ru.atools.sytrant.Sytrant.sync_but
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: put field null
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: put fieldnull
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 9 54
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 16 <INSTANCE,IGET,r0=r7,r1=r3,type=java.lang.Object,extra=ru.atools.sytrant.Sytrant.sync_but>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: obj fu.hao.trust.dvm.DVMObject@5144f423
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: put field Unknown var, type: android.view.View
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: get data: Unknown var, type: android.view.View
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 17 <INVOKE,VIRTUAL,extra=[android.view.View/setOnClickListener[android.view.View$OnClickListener], [3, 7]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Unknown var, type: android.view.View
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class: class android.view.View
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: caller obj: Unknown var, type: android.view.View, from class: class fu.hao.trust.solver.Unknown
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 18 <MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?2131099653>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?2131099653>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: 2131099653 class patdroid.core.PrimitiveInfo
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 15 13
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 19 <HALT,VIRTUAL,extra=[null, [7, 3]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: cannot resolve the invocation
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <HALT,VIRTUAL,extra=[null, [7, 3]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 20 <MOV,RESULT,dst=r3,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data null null reg 3
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 13 18
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: 4 <ARITHMETIC,CHECK-AND-CAST,dst=r1,type=android.telephony.TelephonyManager>
-class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <ARITHMETIC,CHECK-AND-CAST,dst=r1,type=android.telephony.TelephonyManager>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 21 <ARITHMETIC,CHECK-AND-CAST,dst=r3,type=android.widget.TextView>
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <ARITHMETIC,CHECK-AND-CAST,dst=r3,type=android.widget.TextView>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 9 55
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 22 <INSTANCE,IPUT,r0=r7,r1=r3,type=java.lang.Object,extra=ru.atools.sytrant.Sytrant.log>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: field ru.atools.sytrant.Sytrant.log
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: put field null
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: put fieldnull
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 23 <MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?2131099652>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?2131099652>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: 2131099652 class patdroid.core.PrimitiveInfo
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 15 13
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 24 <HALT,VIRTUAL,extra=[null, [7, 3]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: cannot resolve the invocation
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <HALT,VIRTUAL,extra=[null, [7, 3]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 25 <MOV,RESULT,dst=r3,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data null null reg 3
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 13 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 26 <ARITHMETIC,CHECK-AND-CAST,dst=r3,type=android.widget.ScrollView>
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <ARITHMETIC,CHECK-AND-CAST,dst=r3,type=android.widget.ScrollView>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 9 55
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 27 <INSTANCE,IPUT,r0=r7,r1=r3,type=java.lang.Object,extra=ru.atools.sytrant.Sytrant.scrollview>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: field ru.atools.sytrant.Sytrant.scrollview
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: put field null
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: put fieldnull
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 11
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 28 <INVOKE,DIRECT,extra=[ru.atools.sytrant.Sytrant/initUI[], [7]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: fu.hao.trust.dvm.DVMObject@5144f423
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: not a reflction invocation ru.atools.sytrant.Sytrant/initUI[]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: arg fu.hao.trust.dvm.DVMObject@5144f423
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 3 7
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 0 <SPECIAL,ARGUMENT_SET,extra=[14]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: params: fu.hao.trust.dvm.DVMObject@5144f423
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 1 <MOV,CONST,dst=r13,type=void,extra=class patdroid.core.PrimitiveInfo?1>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r13,type=void,extra=class patdroid.core.PrimitiveInfo?1>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: 1 class patdroid.core.PrimitiveInfo
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 2 <MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 4 8
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 3 <NEW,INSTANCE,dst=r1,type=ru.atools.sytrant.SettingsData>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reg 1
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass ru.atools.sytrant.SettingsData
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: new object of ru.atools.sytrant.SettingsData
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass ru.atools.sytrant.SettingsData
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: begin new object of ru.atools.sytrant.SettingsDatacreated.
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: new object of ru.atools.sytrant.SettingsDatacreated.
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 11
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 4 <INVOKE,DIRECT,extra=[ru.atools.sytrant.SettingsData/<init>[android.content.Context], [1, 14]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: fu.hao.trust.dvm.DVMObject@58d48756
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: not a reflction invocation ru.atools.sytrant.SettingsData/<init>[android.content.Context]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: arg fu.hao.trust.dvm.DVMObject@58d48756
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: arg fu.hao.trust.dvm.DVMObject@5144f423
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 3 7
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 0 <SPECIAL,ARGUMENT_SET,extra=[3, 4]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: params: fu.hao.trust.dvm.DVMObject@58d48756
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: params: fu.hao.trust.dvm.DVMObject@5144f423
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 1 <MOV,CONST,dst=r0,type=java.lang.String,extra="sytrant_settings.db">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r0,type=java.lang.String,extra="sytrant_settings.db">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: sytrant_settings.db class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 2 <MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 3 <MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?1>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?1>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: 1 class patdroid.core.PrimitiveInfo
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 11
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 4 <INVOKE,DIRECT,extra=[android.database.sqlite.SQLiteOpenHelper/<init>[android.content.Context, java.lang.String, android.database.sqlite.SQLiteDatabase$CursorFactory, int], [3, 4, 0, 1, 2]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: fu.hao.trust.dvm.DVMObject@58d48756
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: para type: int
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 2 3
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 5 <RETURN,VOID>
+class fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID - [DEBUG]: return void
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 4 4
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <RETURN,VOID>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 9 55
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 5 <INSTANCE,IPUT,r0=r14,r1=r1,type=java.lang.Object,extra=ru.atools.sytrant.Sytrant.settingsdata>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: field ru.atools.sytrant.Sytrant.settingsdata
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: put field 0
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: put field0
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 9 54
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 6 <INSTANCE,IGET,r0=r14,r1=r1,type=java.lang.Object,extra=ru.atools.sytrant.Sytrant.settingsdata>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: obj fu.hao.trust.dvm.DVMObject@5144f423
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: get data: 0
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 13
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: 5 <INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: null
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class: class android.telephony.TelephonyManager
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: return data: 359874043116909 ,class java.lang.String
-class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public java.lang.String android.telephony.TelephonyManager.getDeviceId()
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 7 <INVOKE,VIRTUAL,extra=[android.database.sqlite.SQLiteOpenHelper/getReadableDatabase[], [1]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 0
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class: class android.database.sqlite.SQLiteOpenHelper
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: 6 <MOV,RESULT,dst=r2,type=java.lang.Object>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: data 359874043116909 java.lang.String reg 2
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 2, 359874043116909, reg -1]
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 9 55
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: 7 <INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=de.ecspride.VirtualDispatch1.imei>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: field de.ecspride.VirtualDispatch1.imei
-class fu.hao.trust.dvm.DVMObject - [DEBUG]: put field 359874043116909
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: put field359874043116909
-class fu.hao.trust.analysis.Taint - [DEBUG]: add 359874043116909
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 2, 359874043116909, reg -1]
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 9 54
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: 8 <INSTANCE,IGET,r0=r3,r1=r2,type=void,extra=de.ecspride.VirtualDispatch1.counter>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: obj fu.hao.trust.dvm.DVMObject@7538ecf2
-class fu.hao.trust.dvm.DVMObject - [DEBUG]: put field Unknown var, type: int
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: get data: Unknown var, type: int
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg -1]
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 13 38
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: 9 <ARITHMETIC,ADD,dst=r2,r0=r2,extra=class patdroid.core.PrimitiveInfo?1>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: data Unknown var, type: int
-class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <ARITHMETIC,ADD,dst=r2,r0=r2,extra=class patdroid.core.PrimitiveInfo?1>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg -1]
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 9 55
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: 10 <INSTANCE,IPUT,r0=r3,r1=r2,type=void,extra=de.ecspride.VirtualDispatch1.counter>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: field de.ecspride.VirtualDispatch1.counter
-class fu.hao.trust.dvm.DVMObject - [DEBUG]: put field Unknown var, type: int
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: put fieldUnknown var, type: int
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 8 <MOV,RESULT,dst=r0,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data null null reg 0
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: 11 <MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 9 <MOV,CONST,dst=r1,type=java.lang.String,extra="settings">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r1,type=java.lang.String,extra="settings">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: settings class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 11 52
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 10 <STATIC,SGET,r0=r2,type=java.lang.Object,extra=(ru.atools.sytrant.Constants, FROM)>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass ru.atools.sytrant.Constants
+class fu.hao.trust.dvm.DalvikVM - [MSG]: RUN Method ru.atools.sytrant.Constants/<clinit>[]
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 3 7
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [0]<SPECIAL,ARGUMENT_SET,extra=[]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [1]<MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?7>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 4 9
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [2]<NEW,ARRAY,dst=r0,r0=r0,type=[Ljava.lang.String;>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [3]<MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [4]<MOV,CONST,dst=r2,type=java.lang.String,extra="_id">
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 10 37
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [5]<ARRAY,APUT,dst=r2,r0=r0,r1=r1,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [6]<MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?1>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [7]<MOV,CONST,dst=r2,type=java.lang.String,extra="server">
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 10 37
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [8]<ARRAY,APUT,dst=r2,r0=r0,r1=r1,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [9]<MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [10]<MOV,CONST,dst=r2,type=java.lang.String,extra="port">
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 10 37
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [11]<ARRAY,APUT,dst=r2,r0=r0,r1=r1,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [12]<MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?3>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [13]<MOV,CONST,dst=r2,type=java.lang.String,extra="gmt_offset">
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 10 37
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [14]<ARRAY,APUT,dst=r2,r0=r0,r1=r1,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [15]<MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?4>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [16]<MOV,CONST,dst=r2,type=java.lang.String,extra="enable_autosync">
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 10 37
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [17]<ARRAY,APUT,dst=r2,r0=r0,r1=r1,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [18]<MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?5>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [19]<MOV,CONST,dst=r2,type=java.lang.String,extra="enable_autostart">
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 10 37
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [20]<ARRAY,APUT,dst=r2,r0=r0,r1=r1,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [21]<MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?6>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [22]<MOV,CONST,dst=r2,type=java.lang.String,extra="autosync_interval">
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 10 37
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [23]<ARRAY,APUT,dst=r2,r0=r0,r1=r1,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 11 53
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [24]<STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(ru.atools.sytrant.Constants, FROM)>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 2 3
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [25]<RETURN,VOID>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: sget FROM from ru.atools.sytrant.Constants
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass ru.atools.sytrant.Constants
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 1 <MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?7>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?7>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: 7 class patdroid.core.PrimitiveInfo
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 4 9
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 2 <NEW,ARRAY,dst=r0,r0=r0,type=[Ljava.lang.String;>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: a new array of [Ljava.lang.String; in size 7created.
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <NEW,ARRAY,dst=r0,r0=r0,type=[Ljava.lang.String;>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 3 <MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 4 <MOV,CONST,dst=r2,type=java.lang.String,extra="_id">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r2,type=java.lang.String,extra="_id">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: _id class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 10 37
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 5 <ARRAY,APUT,dst=r2,r0=r0,r1=r1,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: _id array: [Ljava.lang.Object;@4bdc0b6b
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 6 <MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?1>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?1>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: 1 class patdroid.core.PrimitiveInfo
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 7 <MOV,CONST,dst=r2,type=java.lang.String,extra="server">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r2,type=java.lang.String,extra="server">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: server class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 10 37
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 8 <ARRAY,APUT,dst=r2,r0=r0,r1=r1,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: server array: [Ljava.lang.Object;@4bdc0b6b
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 9 <MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: 2 class patdroid.core.PrimitiveInfo
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 10 <MOV,CONST,dst=r2,type=java.lang.String,extra="port">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r2,type=java.lang.String,extra="port">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: port class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 10 37
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 11 <ARRAY,APUT,dst=r2,r0=r0,r1=r1,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: port array: [Ljava.lang.Object;@4bdc0b6b
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 12 <MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?3>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?3>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: 3 class patdroid.core.PrimitiveInfo
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 13 <MOV,CONST,dst=r2,type=java.lang.String,extra="gmt_offset">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r2,type=java.lang.String,extra="gmt_offset">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: gmt_offset class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 10 37
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 14 <ARRAY,APUT,dst=r2,r0=r0,r1=r1,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: gmt_offset array: [Ljava.lang.Object;@4bdc0b6b
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 15 <MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?4>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?4>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: 4 class patdroid.core.PrimitiveInfo
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 16 <MOV,CONST,dst=r2,type=java.lang.String,extra="enable_autosync">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r2,type=java.lang.String,extra="enable_autosync">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: enable_autosync class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 10 37
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 17 <ARRAY,APUT,dst=r2,r0=r0,r1=r1,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: enable_autosync array: [Ljava.lang.Object;@4bdc0b6b
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 18 <MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?5>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?5>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: 5 class patdroid.core.PrimitiveInfo
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 19 <MOV,CONST,dst=r2,type=java.lang.String,extra="enable_autostart">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r2,type=java.lang.String,extra="enable_autostart">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: enable_autostart class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 10 37
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 20 <ARRAY,APUT,dst=r2,r0=r0,r1=r1,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: enable_autostart array: [Ljava.lang.Object;@4bdc0b6b
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 21 <MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?6>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?6>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: 6 class patdroid.core.PrimitiveInfo
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 22 <MOV,CONST,dst=r2,type=java.lang.String,extra="autosync_interval">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r2,type=java.lang.String,extra="autosync_interval">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: autosync_interval class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 10 37
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 23 <ARRAY,APUT,dst=r2,r0=r0,r1=r1,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: autosync_interval array: [Ljava.lang.Object;@4bdc0b6b
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 11 53
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 24 <STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(ru.atools.sytrant.Constants, FROM)>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: field type [Ljava.lang.String;
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass ru.atools.sytrant.Constants
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: getDvmClass ru.atools.sytrant.Constants
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 2 3
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 25 <RETURN,VOID>
+class fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID - [DEBUG]: return void
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 10 10
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <RETURN,VOID>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 1
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 11 <MOV,REG,dst=r4,r0=r3,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter$OP_MOVE_REG - [DEBUG]: mov fu.hao.trust.dvm.DVMObject@58d48756 to fu.hao.trust.dvm.DVMObject@58d48756
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 1
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 12 <MOV,REG,dst=r5,r0=r3,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter$OP_MOVE_REG - [DEBUG]: mov fu.hao.trust.dvm.DVMObject@58d48756 to fu.hao.trust.dvm.DVMObject@58d48756
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 1
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 13 <MOV,REG,dst=r6,r0=r3,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter$OP_MOVE_REG - [DEBUG]: mov fu.hao.trust.dvm.DVMObject@58d48756 to fu.hao.trust.dvm.DVMObject@58d48756
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 1
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 14 <MOV,REG,dst=r7,r0=r3,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter$OP_MOVE_REG - [DEBUG]: mov fu.hao.trust.dvm.DVMObject@58d48756 to fu.hao.trust.dvm.DVMObject@58d48756
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 15 <INVOKE,VIRTUAL,extra=[android.database.sqlite.SQLiteDatabase/query[java.lang.String, [Ljava.lang.String;, java.lang.String, [Ljava.lang.String;, java.lang.String, java.lang.String, java.lang.String], [0, 1, 2, 3, 4, 5, 6, 7]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: [Ljava.lang.Object;@4bdc0b6b
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class: class android.database.sqlite.SQLiteDatabase
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: caller obj: [Ljava.lang.Object;@4bdc0b6b, from class: class [Ljava.lang.Object;
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 16 <MOV,RESULT,dst=r8,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data null null reg 8
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 15 13
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 17 <HALT,VIRTUAL,extra=[null, [14, 8]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: cannot resolve the invocation
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <HALT,VIRTUAL,extra=[null, [14, 8]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 15
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 18 <INVOKE,INTERFACE,extra=[android.database.Cursor/moveToNext[], [8]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: null
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class: interface android.database.Cursor
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 19 <MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2131099651>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2131099651>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: 2131099651 class patdroid.core.PrimitiveInfo
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 15 13
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 20 <HALT,VIRTUAL,extra=[null, [14, 1]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: cannot resolve the invocation
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <HALT,VIRTUAL,extra=[null, [14, 1]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 21 <MOV,RESULT,dst=r12,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data null null reg 12
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 13 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 22 <ARITHMETIC,CHECK-AND-CAST,dst=r12,type=android.widget.TextView>
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <ARITHMETIC,CHECK-AND-CAST,dst=r12,type=android.widget.TextView>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 23 <MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?3>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?3>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: 3 class patdroid.core.PrimitiveInfo
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 15
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 24 <INVOKE,INTERFACE,extra=[android.database.Cursor/getInt[int], [8, 1]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: null
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class: interface android.database.Cursor
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 25 <MOV,RESULT,dst=r10,type=void>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data null null reg 10
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 14
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 26 <INVOKE,STATIC,extra=[java.lang.String/valueOf[int], [10]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 27 <MOV,RESULT,dst=r1,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data null null reg 1
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 28 <INVOKE,VIRTUAL,extra=[android.widget.TextView/setText[java.lang.CharSequence], [12, 1]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: null
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class: class android.widget.TextView
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 29 <MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2131099650>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2131099650>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: 2131099650 class patdroid.core.PrimitiveInfo
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 15 13
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 30 <HALT,VIRTUAL,extra=[null, [14, 1]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: cannot resolve the invocation
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <HALT,VIRTUAL,extra=[null, [14, 1]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 31 <MOV,RESULT,dst=r12,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data null null reg 12
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 13 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 32 <ARITHMETIC,CHECK-AND-CAST,dst=r12,type=android.widget.TextView>
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <ARITHMETIC,CHECK-AND-CAST,dst=r12,type=android.widget.TextView>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 15
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 33 <INVOKE,INTERFACE,extra=[android.database.Cursor/getString[int], [8, 13]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: null
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class: interface android.database.Cursor
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 34 <MOV,RESULT,dst=r11,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data null null reg 11
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 35 <INVOKE,VIRTUAL,extra=[android.widget.TextView/setText[java.lang.CharSequence], [12, 11]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: null
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class: class android.widget.TextView
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 14
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 36 <INVOKE,STATIC,extra=[ru.atools.sytrant.SyncService/setMainActivity[ru.atools.sytrant.Sytrant], [14]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: not a reflction invocation ru.atools.sytrant.SyncService/setMainActivity[ru.atools.sytrant.Sytrant]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: arg fu.hao.trust.dvm.DVMObject@5144f423
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 3 7
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 0 <SPECIAL,ARGUMENT_SET,extra=[0]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: params: fu.hao.trust.dvm.DVMObject@5144f423
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 11 53
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 1 <STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(ru.atools.sytrant.SyncService, MAIN_ACTIVITY)>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: field type ru.atools.sytrant.Sytrant
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass ru.atools.sytrant.SyncService
+class fu.hao.trust.dvm.DalvikVM - [MSG]: RUN Method ru.atools.sytrant.SyncService/<clinit>[]
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 3 7
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [0]<SPECIAL,ARGUMENT_SET,extra=[]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [1]<MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 11 53
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [2]<STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(ru.atools.sytrant.SyncService, UI_UPDATE_LISTENER)>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 11 53
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [3]<STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(ru.atools.sytrant.SyncService, MAIN_ACTIVITY)>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [4]<MOV,CONST,dst=r0,type=AndroidWide,extra=class patdroid.core.PrimitiveInfo?3600l>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 11 53
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [5]<STATIC,SPUT,r0=r0,type=AndroidWide,extra=(ru.atools.sytrant.SyncService, UPDATE_INTERVAL)>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: opcode: 2 3
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [6]<RETURN,VOID>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: getDvmClass ru.atools.sytrant.SyncService
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 1 <MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg -1]
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 9 54
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: 12 <INSTANCE,IGET,r0=r3,r1=r2,type=void,extra=de.ecspride.VirtualDispatch1.counter>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: obj fu.hao.trust.dvm.DVMObject@7538ecf2
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: get data: Unknown var, type: int
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg -1]
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 13 42
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: 13 <ARITHMETIC,REM,dst=r2,r0=r2,extra=class patdroid.core.PrimitiveInfo?2>
-class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <ARITHMETIC,REM,dst=r2,r0=r2,extra=class patdroid.core.PrimitiveInfo?2>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg -1]
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 8 31
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: 14 <IF,NEZ,r0=r2,extra=index:20>
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass de.ecspride.VirtualDispatch1
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.app.Activity
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.view.View
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass de.ecspride.VirtualDispatch1
-class fu.hao.trust.dvm.DVMObject - [DEBUG]: new object of de.ecspride.VirtualDispatch1
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass de.ecspride.VirtualDispatch1
-class fu.hao.trust.dvm.DVMObject - [DEBUG]: put field Unknown var, type: int
-class fu.hao.trust.dvm.DVMObject - [DEBUG]: put field 359874043116909
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.app.Activity
-class fu.hao.trust.dvm.DVMObject - [DEBUG]: new object of android.app.Activity
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.app.Activity
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.app.Activity
-class fu.hao.trust.dvm.DVMObject - [DEBUG]: new object of android.app.Activity
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.app.Activity
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.view.View
-class fu.hao.trust.dvm.DVMObject - [DEBUG]: new object of android.view.View
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.view.View
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: new Reg[0reg 0
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: old regs[0]reg 0
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: back reg[0] reg 0
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: unknown branch
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg -1]
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 4 8
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: 20 <NEW,INSTANCE,dst=r0,type=de.ecspride.DataLeak>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: reg 0
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass de.ecspride.DataLeak
-class fu.hao.trust.dvm.DVMObject - [DEBUG]: new object of de.ecspride.DataLeak
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass de.ecspride.DataLeak
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: begin new object of de.ecspride.DataLeakcreated.
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: new object of de.ecspride.DataLeakcreated.
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg -1]
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 9 54
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: 21 <INSTANCE,IGET,r0=r3,r1=r2,type=java.lang.Object,extra=de.ecspride.VirtualDispatch1.imei>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: obj fu.hao.trust.dvm.DVMObject@7538ecf2
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: get data: 359874043116909
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 2, 359874043116909, reg -1]
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 11
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: 22 <INVOKE,DIRECT,extra=[de.ecspride.DataLeak/<init>[java.lang.String], [0, 2]]>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: fu.hao.trust.dvm.DVMObject@7be27131
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: not a reflction invocation de.ecspride.DataLeak/<init>[java.lang.String]
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: arg fu.hao.trust.dvm.DVMObject@7be27131
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: arg 359874043116909
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 2, 359874043116909, reg -1]
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 3 7
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: 0 <SPECIAL,ARGUMENT_SET,extra=[0, 1]>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: params: fu.hao.trust.dvm.DVMObject@7be27131
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: params: 359874043116909
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 2, reg 1, 359874043116909, reg -1]
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 11
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: 1 <INVOKE,DIRECT,extra=[de.ecspride.NoDataLeak/<init>[java.lang.String], [0, 1]]>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: fu.hao.trust.dvm.DVMObject@7be27131
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: not a reflction invocation de.ecspride.NoDataLeak/<init>[java.lang.String]
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: arg fu.hao.trust.dvm.DVMObject@7be27131
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: arg 359874043116909
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 2, reg 1, 359874043116909, reg -1]
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 3 7
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: 0 <SPECIAL,ARGUMENT_SET,extra=[0, 1]>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: params: fu.hao.trust.dvm.DVMObject@7be27131
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: params: 359874043116909
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 2, reg 1, 359874043116909, reg -1]
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 11
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: 1 <INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: fu.hao.trust.dvm.DVMObject@7be27131
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 2, reg 1, 359874043116909, reg -1]
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 9 55
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: 2 <INSTANCE,IPUT,r0=r0,r1=r1,type=java.lang.Object,extra=de.ecspride.NoDataLeak.data>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: field de.ecspride.NoDataLeak.data
-class fu.hao.trust.dvm.DVMObject - [DEBUG]: put field 359874043116909
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: put field359874043116909
-class fu.hao.trust.analysis.Taint - [DEBUG]: add 359874043116909
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 2, reg 1, 359874043116909, reg -1]
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 2 3
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: 3 <RETURN,VOID>
-class fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID - [DEBUG]: return void
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 1 1
-class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <RETURN,VOID>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 2, reg 1, 359874043116909, reg -1]
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 2 3
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: 2 <RETURN,VOID>
-class fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID - [DEBUG]: return void
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: pc 22 22
-class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <RETURN,VOID>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 2, reg 1, 359874043116909, reg -1]
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 6 0
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: 23 <GOTO,extra=index:18>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: goto done: <GOTO,extra=index:18>
-class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <GOTO,extra=index:18>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 2, reg 1, 359874043116909, reg -1]
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 13
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: 18 <INVOKE,VIRTUAL,extra=[de.ecspride.NoDataLeak/logData[], [0]]>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: fu.hao.trust.dvm.DVMObject@7be27131
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: not a reflction invocation de.ecspride.NoDataLeak/logData[]
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: arg fu.hao.trust.dvm.DVMObject@7be27131
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 2, reg 1, 359874043116909, reg -1]
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 3 7
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: 0 <SPECIAL,ARGUMENT_SET,extra=[6]>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: params: fu.hao.trust.dvm.DVMObject@7be27131
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 2, reg 1, 359874043116909, reg -1]
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: 1 <MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 1, 359874043116909, reg -1]
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: 2 <MOV,CONST,dst=r1,type=java.lang.String,extra="LOG">
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r1,type=java.lang.String,extra="LOG">
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: LOG class java.lang.String
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg -1]
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 9 54
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: 3 <INSTANCE,IGET,r0=r6,r1=r3,type=java.lang.Object,extra=de.ecspride.NoDataLeak.data>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: obj fu.hao.trust.dvm.DVMObject@7be27131
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: get data: 359874043116909
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 3, 359874043116909, reg -1]
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 15 14
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: 4 <HALT,STATIC,extra=[null, [1, 3]]>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: cannot resolve the invocation
-class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <HALT,STATIC,extra=[null, [1, 3]]>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 3, 359874043116909, reg -1]
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 14
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: 5 <INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class android.telephony.SmsManager
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: return data: android.telephony.SmsManager@6b95d875 class android.telephony.SmsManager
-class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public static android.telephony.SmsManager android.telephony.SmsManager.getDefault()
-class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint call: <android.telephony.SmsManager: android.telephony.SmsManager getDefault()>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 3, 359874043116909, reg -1]
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: 6 <MOV,RESULT,dst=r0,type=java.lang.Object>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: data android.telephony.SmsManager@6b95d875 android.telephony.SmsManager reg 0
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 3, 359874043116909, reg -1]
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: 7 <MOV,CONST,dst=r1,type=java.lang.String,extra="+49 1234">
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r1,type=java.lang.String,extra="+49 1234">
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: +49 1234 class java.lang.String
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 3, 359874043116909, reg -1]
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 9 54
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: 8 <INSTANCE,IGET,r0=r6,r1=r3,type=java.lang.Object,extra=de.ecspride.NoDataLeak.data>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: obj fu.hao.trust.dvm.DVMObject@7be27131
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: get data: 359874043116909
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 3, 359874043116909, reg -1]
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 1
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: 9 <MOV,REG,dst=r4,r0=r2,type=java.lang.Object>
-class fu.hao.trust.dvm.Interpreter$OP_MOVE_REG - [DEBUG]: mov 0 to 0
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 3, 359874043116909, reg -1]
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 1
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: 10 <MOV,REG,dst=r5,r0=r2,type=java.lang.Object>
-class fu.hao.trust.dvm.Interpreter$OP_MOVE_REG - [DEBUG]: mov 0 to 0
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 3, 359874043116909, reg -1]
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 13
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: 11 <INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]>
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: android.telephony.SmsManager@6b95d875
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class: class android.telephony.SmsManager
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: caller obj: android.telephony.SmsManager@6b95d875, from class: class android.telephony.SmsManager
-class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public void android.telephony.SmsManager.sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 3, 359874043116909, reg -1]
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 2 3
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: 12 <RETURN,VOID>
-class fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID - [DEBUG]: return void
-c
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 11 53
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 2 <STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(ru.atools.sytrant.SyncService, UI_UPDATE_LISTENER)>
+class

@@ -93,9 +93,21 @@ public class MainTest {
 	
 	@Test
 	public void testGeneralJava_VirtualDispatch1() {
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_VirtualDispatch1/app/app-release.apk";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_VirtualDispatch1/app/";
 		args[1] = "de.ecspride.VirtualDispatch1";
-		args[2] = "clickButton";
+		//args[2] = "clickButton";
+		Main.main(args);
+		Map<String, String> res = new HashMap<>();
+		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
+				"359874043116909");
+		assertEquals(Results.results.contains(res), true);
+	}
+	
+	//@Test
+	public void testDroidKunfu() {
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/droidkungfu/00cf11a8b905e891a454e5b3fcae41f3ed405e3c5d0f9c1fce310de4a88c42d0.apk";
+		args[1] = "ru.atools.sytrant.Sytrant";
+		args[2] = "onCreate";
 		Main.main(args);
 		Map<String, String> res = new HashMap<>();
 		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",

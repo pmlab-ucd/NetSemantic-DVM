@@ -71,7 +71,7 @@ public class DVMObject {
 
 	public void setField(FieldInfo fieldInfo, Object obj) {
 		if (obj == null) {
-			Log.err(TAG, "null field put!");
+			Log.warn(TAG, "null field put!");
 		}
 		Log.debug(TAG, "put field " + obj);
 		fields.put(fieldInfo, obj);

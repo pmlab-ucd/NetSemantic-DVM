@@ -244,7 +244,6 @@ public class Interpreter {
 		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			// TODO reflection obj
 			if (inst.type == null) {
 				Log.err(TAG, "cannot create array of null class");
 			}
@@ -255,7 +254,7 @@ public class Interpreter {
 			if (inst.type.isPrimitive()) {
 				newArray = new PrimitiveInfo[count];
 			} else {
-				newArray = new DVMObject[count];
+				newArray = new Object[count];
 			}
 
 			vm.regs[inst.rdst].data = newArray;
@@ -347,6 +346,8 @@ public class Interpreter {
 				}
 				Log.msg(TAG, "reflction invocation " + method);
 				vm.plugin.method = method;
+			} catch (java.lang.IllegalAccessException e) {
+				e.printStackTrace();
 			} catch (Exception e) {
 				vm.plugin.method = null;
 				e.printStackTrace();
@@ -406,6 +407,9 @@ public class Interpreter {
 					Object[] params = new Object[args.length - 1];
 					// start from 0 since no "this"
 					for (int i = 0; i < args.length; i++) {
+						if (vm.regs[args[i]].data == null) {
+							continue;
+						}
 						if (mi.paramTypes[i].isPrimitive()) {
 							Object primitive = resolvePrimitive((PrimitiveInfo) vm.regs[args[i]].data);
 							params[i] = primitive;
@@ -432,14 +436,22 @@ public class Interpreter {
 				}
 				Log.msg(TAG, "reflction invocation " + method);
 				vm.plugin.method = method;
-			} catch (Exception e) {
+				jump(vm, inst, true);
+			} catch (java.lang.ClassNotFoundException e) {
 				vm.plugin.method = null;
-				e.printStackTrace();
 				Log.debug(TAG, "not a reflction invocation " + mi);
 				vm.newStackFrame(mi);
+				vm.setContext(new int[args.length]);
+				for (int i = 0; i < args.length; i++) {
+					vm.getContext()[i] = args[i];
+					Log.debug(TAG, "arg " + vm.regs[vm.getContext()[i]].data);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				Log.warn(TAG, "error in reflection");
+				jump(vm, inst, true);
 			}
-
-			jump(vm, inst, true);
+			
 		}
 	}
 
@@ -925,6 +937,7 @@ public class Interpreter {
 				Log.err(TAG, "inconsistent type " + inst);
 				return;
 			}
+			Log.debug(TAG, "data: " + rdst.data + " array: " + array);
 			array[index] = rdst.data;
 			jump(vm, inst, true);
 		}
@@ -1630,7 +1643,7 @@ public class Interpreter {
 			if (obj instanceof DVMObject) {
 				DVMObject dvmObj = (DVMObject) obj;
 				dvmObj.setField(fieldInfo, vm.regs[inst.r1].data);
-				Log.debug(TAG, "put field" + dvmObj.getFieldObj(fieldInfo));
+				Log.debug(TAG, "put field" + dvmObj.getFieldObj(fieldInfo) + " at " + dvmObj);
 			} else {
 				// TODO reflection set field
 			}
@@ -1747,6 +1760,11 @@ public class Interpreter {
 			}
 			
 			Unknown u0;
+			
+			if (r0.data == null) {
+				r0.data = new Unknown(r0.type);
+			}
+			
 			if (r0.data instanceof Unknown) {
 				u0 = (Unknown) r0.data; 
 				u0.addConstriant(vm, inst);
@@ -1914,11 +1932,12 @@ public class Interpreter {
 			jump(vm, inst, true);
 		} catch (java.lang.IllegalArgumentException e) {
 			e.printStackTrace();
-			Log.err(TAG, "obj " + obj + " " + method.getDeclaringClass());
+			Log.warn(TAG, "obj " + obj + " not an instance of " + method.getDeclaringClass());
+			jump(vm, inst, true);
 		} catch (java.lang.NullPointerException e) {
 			e.printStackTrace();
 			Log.err(TAG, " null pointer ");
-		} catch (java.lang.ClassNotFoundException | NoSuchMethodException e) {
+		} catch (java.lang.ClassNotFoundException e) {
 			vm.plugin.method = null;
 			Log.debug(TAG, "not a reflction invocation " + mi);
 			vm.newStackFrame(mi);
@@ -1929,7 +1948,8 @@ public class Interpreter {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			Log.err(TAG, "error in reflection");
+			Log.warn(TAG, "error in reflection");
+			jump(vm, inst, true);
 		}
 
 	}
@@ -1983,8 +2003,7 @@ public class Interpreter {
 	}
 
 	public void invocation(DalvikVM vm, MethodInfo mi) {
-		vm.thisObj = null;
-		if (!mi.isStatic() && vm.getContext() == null) {
+		if (vm.thisObj == null && !mi.isStatic() && vm.getContext() == null) {
 			vm.thisObj = new DVMObject(vm, mi.myClass);
 			ClassInfo superClass = mi.myClass.getSuperClass();
 			Class<?> superClazz;
@@ -2003,7 +2022,10 @@ public class Interpreter {
 				e.printStackTrace();
 			} catch (java.lang.NoClassDefFoundError e) {
 				e.printStackTrace();
+			} catch (java.lang.RuntimeException e) {
+				e.printStackTrace();
 			}
+			
 
 		}
 

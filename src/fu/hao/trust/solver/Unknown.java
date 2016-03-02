@@ -32,12 +32,17 @@ public class Unknown {
 	public Unknown(ClassInfo type) {
 		this.type = type;
 		store = new Store();
-		if (type.equals(ClassInfo.primitiveInt)) {
+		//if (type.equals(ClassInfo.primitiveInt)) {
 			var = new IntVar(store);
-		}
+		//}
 	}
 	
 	public void addConstriant(DalvikVM vm, Instruction ifInst) {
+		// FIXME
+		if (lastArith == null) {
+			return;
+		}
+
 		PrimitiveInfo op1;
 		if (lastArith.r1 != -1) {
 			op1 = (PrimitiveInfo) vm.getReg(lastArith.r1).getData();
