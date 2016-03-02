@@ -90,6 +90,15 @@ public class DalvikVM {
 			this.method = method;
 			pc = 0;
 			return_val_reg = new Register();
+			
+			int counter = 0;
+			
+			Log.debug(tag, "new method call: " + method);	
+			for (Instruction ins : method.insns) {
+				Log.debug(tag, "[" + counter + "]" + ins.toString());
+				counter++;
+			}
+			
 		}
 		
 		public JVM_STACK_FRAME clone() {
@@ -472,10 +481,8 @@ public class DalvikVM {
 			thisObj.setSuperObj(new DVMObject(this, superClass));
 			e.printStackTrace();
 		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (java.lang.NoClassDefFoundError e) {
 			e.printStackTrace();
@@ -486,6 +493,7 @@ public class DalvikVM {
 		for (int i = 1; i < chain.length; i++) {
 			Log.debug(tag, "Run " + chain[i] + " at " + c);
 			MethodInfo[] methods = c.findMethodsHere(chain[i]);
+			// TODO Multiple methods have same name.
 			runMethod(methods[0]);
 		}
 	}
@@ -501,16 +509,9 @@ public class DalvikVM {
 	public void runMethod(MethodInfo method) {
 		Log.msg(tag, "RUN Method " + method);
 		
-		// print all instructions
-		int counter = 0;
 		if (method.insns == null) {
 			Log.warn(tag, "Empty body of " + method);
 			return;
-		}
-		for (Instruction ins : method.insns) {
-			Log.debug(tag, "opcode: " + ins.opcode + " " + ins.opcode_aux);
-			Log.debug(tag, "[" + counter + "]" + ins.toString());
-			counter++;
 		}
 
 		interpreter.invocation(this, method);

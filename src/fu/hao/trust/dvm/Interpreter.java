@@ -51,7 +51,6 @@ public class Interpreter {
 			vm.regs[inst.rdst].copy(vm.regs[inst.r0]);
 			Log.debug(getClass().toString(), "mov " + vm.regs[inst.r0].data
 					+ " to " + vm.regs[inst.rdst].data);
-			// vm.pc(), vm.pc + 2;
 			jump(vm, inst, true);
 		}
 	}
@@ -122,8 +121,18 @@ public class Interpreter {
 			// context switch back to the caller
 			vm.jvm_stack_depth--;
 			vm.curr_jvm_stack = caller;
-			// this is a trick
-
+			
+			if (vm.curr_jvm_stack != null) {
+				vm.pc = vm.curr_jvm_stack.pc;
+				Log.debug(TAG, "pc " + vm.pc + " " + vm.curr_jvm_stack.pc);
+			} else {
+				vm.pc = Integer.MAX_VALUE;
+				// backtrace to last unknown branch
+				vm.restoreState();
+				Log.warn(TAG, "Backtrace begin!!!");
+			}
+			jump(vm, inst, true);
+			
 		}
 	}
 
@@ -2133,7 +2142,7 @@ public class Interpreter {
 
 	public void exec(DalvikVM vm, Instruction inst) {
 		Log.debug(TAG, "opcode: " + inst.opcode + " " + inst.opcode_aux);
-		Log.debug(TAG, vm.pc + " " + inst);
+		Log.debug(TAG, vm.pc + " " + inst + " at " + vm.curr_jvm_stack.method);
 
 		if (byteCodes.containsKey((int) inst.opcode)) {
 			byteCodes.get((int) inst.opcode).func(vm, inst);
