@@ -72,8 +72,7 @@ public class Interpreter {
 			jump(vm, inst, true);
 		}
 	}
-	
-	
+
 	class OP_RETURN_VOID implements ByteCode {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
@@ -104,6 +103,7 @@ public class Interpreter {
 			vm.return_val_reg.data = vm.regs[inst.r0].data;
 			vm.return_val_reg.type = ClassInfo
 					.findOrCreateClass(vm.regs[inst.r0].data.getClass());
+			Log.debug(TAG, "return data: " + vm.return_val_reg.data);
 			vm.backCallCtx(vm.regs[inst.r0]);
 			jump(vm, inst, true);
 		}
@@ -276,72 +276,7 @@ public class Interpreter {
 	class OP_INVOKE_SUPER implements ByteCode {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			// TODO Auto-generated method stub
-			Object[] extra = (Object[]) inst.extra;
-			MethodInfo mi = (MethodInfo) extra[0];
-			// The register index referred by args
-			int[] args = (int[]) extra[1];
-
-			try {
-				// If applicable, directly use reflection to run the method,
-				// the method is inside java.lang
-				Class<?> clazz = Class.forName(mi.myClass.toString());
-				Log.debug(TAG, "reflction " + clazz);
-				@SuppressWarnings("rawtypes")
-				Class[] argsClass = new Class[mi.paramTypes.length];
-				Method method;
-				Object[] params = new Object[args.length - 1];
-
-				if (mi.isConstructor()) {
-					if (args.length == 1) {
-						vm.regs[args[0]].data = clazz.newInstance();
-						return;
-					}
-
-					getParams(vm, mi, args, argsClass, params);
-					// overwrite previous declared dvmObj
-					vm.regs[args[0]].data = clazz.getConstructor(argsClass)
-							.newInstance(params);
-					vm.regs[args[0]].type = mi.myClass;
-					Log.debug(TAG, "return data: " + vm.regs[args[0]].data
-							+ " " + vm.regs[args[0]].data.getClass());
-					return;
-				}
-
-				Object obj = vm.regs[args[0]].data;
-				if (args.length == 1) {
-					method = clazz.getDeclaredMethod(mi.name);
-					vm.return_val_reg.data = method.invoke(obj);
-				} else {
-					getParams(vm, mi, args, argsClass, params);
-					method = clazz.getDeclaredMethod(mi.name, argsClass);
-					Log.debug(TAG, "caller obj: " + obj.getClass().toString());
-					// handle return val
-					vm.return_val_reg.data = method.invoke(obj, params);
-				}
-				if (vm.return_val_reg.data != null) {
-					vm.return_val_reg.type = ClassInfo
-							.findOrCreateClass(vm.return_val_reg.data
-									.getClass());
-					Log.debug(TAG, "return data: " + vm.return_val_reg.data
-							+ " " + vm.return_val_reg.data.getClass());
-				}
-				Log.msg(TAG, "reflction invocation " + method);
-				vm.plugin.method = method;
-			} catch (java.lang.IllegalAccessException e) {
-				e.printStackTrace();
-			} catch (Exception e) {
-				vm.plugin.method = null;
-				e.printStackTrace();
-				Log.debug(TAG, "not reflction invocation " + mi.myClass);
-				vm.newStackFrame(mi);
-				vm.setContext(new int[args.length]);
-				for (int i = 0; i < args.length; i++) {
-					vm.getContext()[i] = args[i];
-				}
-			}
-
-			jump(vm, inst, true);
+			invocation(vm, inst);
 		}
 	}
 
@@ -433,7 +368,7 @@ public class Interpreter {
 				Log.warn(TAG, "error in reflection");
 				jump(vm, inst, true);
 			}
-			
+
 		}
 	}
 
@@ -1586,6 +1521,7 @@ public class Interpreter {
 			FieldInfo fieldInfo = (FieldInfo) inst.extra;
 			Object obj = vm.regs[inst.r0].data;
 			Log.debug(TAG, "obj " + obj);
+			Log.warn(TAG, "fieldinfo " + fieldInfo);
 			if (obj instanceof DVMObject) {
 				DVMObject dvmObj = (DVMObject) obj;
 				vm.regs[inst.r1].type = fieldInfo.getFieldType();
@@ -1625,7 +1561,8 @@ public class Interpreter {
 			if (obj instanceof DVMObject) {
 				DVMObject dvmObj = (DVMObject) obj;
 				dvmObj.setField(fieldInfo, vm.regs[inst.r1].data);
-				Log.debug(TAG, "put field" + dvmObj.getFieldObj(fieldInfo) + " at " + dvmObj);
+				Log.debug(TAG, "put field " + dvmObj.getFieldObj(fieldInfo)
+						+ " at " + dvmObj);
 			} else {
 				// TODO reflection set field
 			}
@@ -1722,7 +1659,7 @@ public class Interpreter {
 			Log.debug(TAG, "cannot resolve the invocation");
 		}
 	}
-	
+
 	class OP_CMP implements ByteCode {
 		/**
 		 * @Title: func
@@ -1734,21 +1671,21 @@ public class Interpreter {
 		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			// check whether contains an unknown var 
+			// check whether contains an unknown var
 			Register r0 = vm.regs[inst.r0];
 			Register r1 = null;
 			if (inst.r1 != -1) {
 				r1 = vm.regs[inst.r1];
 			}
-			
+
 			Unknown u0;
-			
+
 			if (r0.data == null) {
 				r0.data = new Unknown(r0.type);
 			}
-			
+
 			if (r0.data instanceof Unknown) {
-				u0 = (Unknown) r0.data; 
+				u0 = (Unknown) r0.data;
 				u0.addConstriant(vm, inst);
 				vm.storeState();
 				if (r1 != null && r1.data instanceof Unknown) {
@@ -1756,11 +1693,12 @@ public class Interpreter {
 				}
 				jump(vm, inst, false);
 				Log.debug(TAG, "unknown branch");
-				// TODO add constraint inconsistency check to rm unreachable code
+				// TODO add constraint inconsistency check to rm unreachable
+				// code
 				return;
 			} else {
 				auxByteCodes.get((int) inst.opcode_aux).func(vm, inst);
-			}	
+			}
 		}
 	}
 
@@ -1862,7 +1800,7 @@ public class Interpreter {
 			@SuppressWarnings("rawtypes")
 			Class[] argsClass = new Class[mi.paramTypes.length];
 			Object[] params = new Object[args.length - 1];
-			
+
 			if (mi.isConstructor()) {
 				// use DvmObject to replace java.lang.Object
 				if (!mi.myClass.toString().equals("java.lang.Object")) {
@@ -1886,7 +1824,8 @@ public class Interpreter {
 				Log.debug(TAG, "reflction class: " + clazz);
 
 				obj = vm.regs[args[0]].data;
-				if (obj == null) {
+				if (obj == null || obj instanceof DVMObject
+						&& !DVMObject.class.equals(clazz)) {
 					obj = clazz.newInstance();
 				}
 				if (args.length == 1) {
@@ -1913,7 +1852,10 @@ public class Interpreter {
 			jump(vm, inst, true);
 		} catch (java.lang.IllegalArgumentException e) {
 			e.printStackTrace();
-			Log.warn(TAG, "obj " + obj + " not an instance of " + method.getDeclaringClass());
+			Log.warn(
+					TAG,
+					"obj " + obj + " not an instance of "
+							+ method.getDeclaringClass());
 			jump(vm, inst, true);
 		} catch (java.lang.NullPointerException e) {
 			e.printStackTrace();
@@ -1921,6 +1863,14 @@ public class Interpreter {
 		} catch (java.lang.ClassNotFoundException e) {
 			vm.plugin.method = null;
 			Log.debug(TAG, "not a reflction invocation " + mi);
+
+			if (args.length > 0 && vm.regs[args[0]].data instanceof DVMObject) {
+				DVMObject thisObj = (DVMObject) vm.regs[args[0]].data;
+				if (((int) inst.opcode_aux != 0x0C) && !mi.isConstructor()
+						&& thisObj.getType().getSuperClass().equals(mi.myClass)) {
+					mi = thisObj.getType().findMethodsHere(mi.name)[0];
+				}
+			}
 			vm.newStackFrame(mi);
 			vm.setContext(new int[args.length]);
 			for (int i = 0; i < args.length; i++) {
@@ -1929,7 +1879,7 @@ public class Interpreter {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			Log.warn(TAG, "error in reflection");
+			Log.err(TAG, "error in reflection");
 			jump(vm, inst, true);
 		}
 
@@ -2006,7 +1956,6 @@ public class Interpreter {
 			} catch (java.lang.RuntimeException e) {
 				e.printStackTrace();
 			}
-			
 
 		}
 

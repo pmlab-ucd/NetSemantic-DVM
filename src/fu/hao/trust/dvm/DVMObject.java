@@ -66,7 +66,16 @@ public class DVMObject {
 	}
 
 	public Object getFieldObj(FieldInfo fieldInfo) {
-		return fields.get(fieldInfo);
+		if (fields.get(fieldInfo) == null) {
+			for (FieldInfo field : fields.keySet()) {
+				if (fieldInfo.fieldName.equals(field.fieldName)) {
+					return fields.get(field);
+				}
+			}
+			return null;
+		} else {
+			return fields.get(fieldInfo);
+		}
 	}
 
 	public void setField(FieldInfo fieldInfo, Object obj) {

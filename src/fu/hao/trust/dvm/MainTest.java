@@ -37,7 +37,7 @@ public class MainTest {
 		Map<String, String> res = new HashMap<>();
 		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
 				"3_5_9_8_7_4_0_4_3_1_1_6_9_0_9_");
-		assertEquals(Results.results.contains(res), true);
+		assertEquals(true, Results.results.contains(res));
 	}
 
 	@Test
@@ -148,6 +148,20 @@ public class MainTest {
 		Main.main(args);
 		assertEquals(true, Results.results.isEmpty());
 	}
+	
+	@Test
+	public void testFieldAndObjectSensitivity_InheritedObjects1() {
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FieldAndObjectSensitivity_InheritedObjects1/app/app-release.apk";
+		args[1] = "de.ecspride.InheritedObjects1";
+		args[2] = "onCreate";
+		Main.main(args);
+		Map<String, String> res = new HashMap<>();
+		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
+				"359874043116909");
+		assertEquals(true, Results.results.contains(res));
+	}
+	
+	
 	
 	//@Test
 	public void testDroidKunfu() {
