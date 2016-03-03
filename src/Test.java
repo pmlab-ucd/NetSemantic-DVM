@@ -1,16 +1,33 @@
+import java.util.HashMap;
+import java.util.Map;
+
+import patdroid.util.Log;
 import fu.hao.trust.analysis.Results;
 import fu.hao.trust.dvm.Main;
 import fu.hao.trust.utils.Settings;
 
 public class Test {
+	static String TAG = "test";  
+	
 	public static void main(String[] margs) {
 		String[] args = new String[3];
 		Settings.logLevel = 0;
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FieldAndObjectSensitivity_FieldSensitivity1/app/app-release.apk";
-		args[1] = "de.ecspride.FieldSensitivity1";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FieldAndObjectSensitivity_FieldSensitivity3/app/app-release.apk";
+		args[1] = "de.ecspride.FieldSensitivity3";
 		args[2] = "onCreate";
 		Main.main(args);
-		assert(Results.results.isEmpty());
+		
+		for (Object obj : Results.results) {
+			@SuppressWarnings("unchecked")
+			Map<String, String> res = (Map<String, String>) obj;
+			Log.msg(TAG, "res" + res);
+		}
+		
+		Map<String, String> res = new HashMap<>();
+		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
+				"359874043116909");
+		
+		assert(Results.results.contains(res));
 	}
 	
 	public void test() {

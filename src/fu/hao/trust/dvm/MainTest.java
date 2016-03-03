@@ -56,11 +56,12 @@ public class MainTest {
 	public void testGeneralJava_SourceCodeSpecific1() {
 		args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_SourceCodeSpecific1/app/app-debug.apk";
 		args[1] = "de.ecspride.MainActivity";
+		args[2] = "onCreate";
 		Main.main(args);
 		Map<String, String> res = new HashMap<>();
 		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
 				"359874043116909");
-		assertEquals(Results.results.contains(res), true);
+		assertEquals(true, Results.results.contains(res));
 	}
 
 	@Test
@@ -115,16 +116,28 @@ public class MainTest {
 		args[1] = "de.ecspride.FieldSensitivity1";
 		args[2] = "onCreate";
 		Main.main(args);
-		assertEquals(Results.results.isEmpty(), true);
+		assertEquals(true, Results.results.isEmpty());
 	}
 	
 	@Test
 	public void testFieldAndObjectSensitivity_FieldSensitivity2() {
 		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FieldAndObjectSensitivity_FieldSensitivity2/app/app-release.apk";
-		args[1] = "de.ecspride.FieldSensitivity1";
+		args[1] = "de.ecspride.FieldSensitivity2";
 		args[2] = "onCreate";
 		Main.main(args);
-		assertEquals(Results.results.isEmpty(), true);
+		assertEquals(true, Results.results.isEmpty());
+	}
+	
+	@Test
+	public void testFieldAndObjectSensitivity_FieldSensitivity3() {
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FieldAndObjectSensitivity_FieldSensitivity3/app/app-release.apk";
+		args[1] = "de.ecspride.FieldSensitivity3";
+		args[2] = "onCreate";
+		Main.main(args);
+		Map<String, String> res = new HashMap<>();
+		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
+				"359874043116909");
+		assertEquals(true, Results.results.contains(res));
 	}
 	
 	//@Test
@@ -136,7 +149,7 @@ public class MainTest {
 		Map<String, String> res = new HashMap<>();
 		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
 				"359874043116909");
-		assertEquals(Results.results.contains(res), true);
+		assertEquals(true, Results.results.contains(res));
 	}
 
 }

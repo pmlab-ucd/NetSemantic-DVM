@@ -96,7 +96,15 @@ public class Taint extends Plugin {
 		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
 			int[] args = (int[]) inst.extra;
 			int[] callingCtx = vm.getContext();
-			Set<Object> out = new HashSet<>(in);
+			Set<Object> out = new HashSet<>();
+			
+			for (Object res : in) {
+				if (res instanceof Register) {
+					continue;
+				}
+				out.add(res);
+			}
+					
 			if (vm.getContext() != null) {
 				for (int i = 0; i < vm.getContext().length; i++) {
 					if (in.contains(vm.getReg(callingCtx[i]))) {
@@ -210,7 +218,7 @@ public class Taint extends Plugin {
 			if (sinks.contains(sootSignature)) {
 				for (int i = 0; i < args.length; i++) {
 					if (in.contains(vm.getReg(args[i]))) {
-						Log.warn(TAG, "found a sink " + sootSignature
+						Log.warn(TAG, "found a taint sink " + sootSignature
 								+ " leaking data [" + vm.getReg(args[i]).getData() + "]!!!");
 						Map<String, String> res = new HashMap<>();
 						res.put(sootSignature, vm.getReg(args[i]).getData().toString());

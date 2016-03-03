@@ -86,12 +86,14 @@ public class DalvikVM {
 		// but it's easier to implement in our case
 		// since we know we do not need pc to cross procedure
 		int pc;
+		Set<Object> pluginRes;
 
 		JVM_STACK_FRAME(MethodInfo method) {
 			this.method = method;
 			pc = 0;
 			return_val_reg = new Register();
 			backRegs = new HashMap<>();
+			pluginRes = new HashSet<>();
 
 			int counter = 0;
 
@@ -415,6 +417,12 @@ public class DalvikVM {
 					backRegs.put(i, regVal);
 				}
 			}
+
+			/*
+			 * for (Object res : plugin.currtRes) { if (res instanceof Register)
+			 * { continue; } curr_jvm_stack.pluginRes.add(res); }
+			 * plugin.currtRes = curr_jvm_stack.pluginRes;
+			 */
 		}
 
 		newStackFrame.prev_stack = curr_jvm_stack;
@@ -423,6 +431,45 @@ public class DalvikVM {
 		pc = 0;
 
 		return newStackFrame;
+	}
+
+	/**
+	 * @Title: backCallCtx
+	 * @Author: Hao Fu
+	 * @Description: Restore context before the call
+	 * @param
+	 * @return void
+	 * @throws
+	 */
+	public void backCallCtx(Register retReg) {
+		JVM_STACK_FRAME caller = curr_jvm_stack.prev_stack;
+		jvm_stack_depth--;
+		curr_jvm_stack = caller;
+		if (curr_jvm_stack != null) {
+			pc = curr_jvm_stack.pc;
+			for (Integer i : curr_jvm_stack.backRegs.keySet()) {
+				regs[i].type = (ClassInfo) curr_jvm_stack.backRegs.get(i)[0];
+				regs[i].data = curr_jvm_stack.backRegs.get(i)[1];
+			}
+
+			for (Object res : plugin.currtRes) {
+				if (res instanceof Register) {
+					if (res == retReg) {
+						curr_jvm_stack.pluginRes.add(return_val_reg);
+					}
+					continue;
+				}
+				curr_jvm_stack.pluginRes.add(res);
+			}
+			plugin.currtRes = curr_jvm_stack.pluginRes;
+
+			Log.debug(tag, "pc " + pc + " " + curr_jvm_stack.pc);
+		} else {
+			pc = Integer.MAX_VALUE;
+			// backtrace to last unknown branch
+			restoreState();
+			Log.warn(tag, "Backtrace begin!!!");
+		}
 	}
 
 	ClassLoader loader;

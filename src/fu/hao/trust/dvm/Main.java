@@ -23,8 +23,10 @@ import fu.hao.trust.utils.Settings;
  * @date: Feb 15, 2016 12:08:30 AM
  */
 public class Main {
+	final static String TAG = "main";
+	
 	public static void main(String[] args) {
-		final String TAG = "main";
+		Results.reset();
 
 		// Settings.logLevel = 0;
 

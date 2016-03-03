@@ -6,7 +6,6 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
-import fu.hao.trust.dvm.DalvikVM.JVM_STACK_FRAME;
 import fu.hao.trust.dvm.DalvikVM.Register;
 import fu.hao.trust.solver.Unknown;
 import fu.hao.trust.utils.Log;
@@ -74,39 +73,13 @@ public class Interpreter {
 		}
 	}
 	
-	/**
-	* @Title: backCallCtx
-	* @Author: Hao Fu
-	* @Description: Restore context before the call
-	* @param   
-	* @return void   
-	* @throws
-	*/
-	private void backCallCtx(DalvikVM vm, Instruction inst) {
-		JVM_STACK_FRAME caller = vm.curr_jvm_stack.prev_stack;
-		vm.jvm_stack_depth--;
-		vm.curr_jvm_stack = caller;
-		if (vm.curr_jvm_stack != null) {
-			vm.pc = vm.curr_jvm_stack.pc;
-			for (Integer i : vm.curr_jvm_stack.backRegs.keySet()) {
-				vm.regs[i].type = (ClassInfo) vm.curr_jvm_stack.backRegs.get(i)[0];
-				vm.regs[i].data = vm.curr_jvm_stack.backRegs.get(i)[1];
-			}
-			Log.debug(TAG, "pc " + vm.pc + " " + vm.curr_jvm_stack.pc);
-		} else {
-			vm.pc = Integer.MAX_VALUE;
-			// backtrace to last unknown branch
-			vm.restoreState();
-			Log.warn(TAG, "Backtrace begin!!!");
-		}
-		jump(vm, inst, true);
-	}
-
+	
 	class OP_RETURN_VOID implements ByteCode {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
 			Log.debug(getClass().toString(), "return void");
-			backCallCtx(vm, inst);
+			vm.backCallCtx(null);
+			jump(vm, inst, true);
 		}
 	}
 
@@ -131,7 +104,8 @@ public class Interpreter {
 			vm.return_val_reg.data = vm.regs[inst.r0].data;
 			vm.return_val_reg.type = ClassInfo
 					.findOrCreateClass(vm.regs[inst.r0].data.getClass());
-			backCallCtx(vm, inst);
+			vm.backCallCtx(vm.regs[inst.r0]);
+			jump(vm, inst, true);
 		}
 	}
 
@@ -1898,7 +1872,6 @@ public class Interpreter {
 						vm.regs[args[0]].type = mi.returnType;
 						Log.debug(TAG, "new instance: " + vm.regs[args[0]].data);
 					} else {
-
 						getParams(vm, mi, args, argsClass, params);
 						// overwrite previous declared dvmObj
 						vm.regs[args[0]].data = clazz.getConstructor(argsClass)
