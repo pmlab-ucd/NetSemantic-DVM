@@ -12,8 +12,8 @@ public class Test {
 	public static void main(String[] margs) {
 		String[] args = new String[3];
 		Settings.logLevel = 0;
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FieldAndObjectSensitivity_FieldSensitivity3/app/app-release.apk";
-		args[1] = "de.ecspride.FieldSensitivity3";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FieldAndObjectSensitivity_FieldSensitivity4/app/app-release.apk";
+		args[1] = "de.ecspride.FieldSensitivity4";
 		args[2] = "onCreate";
 		Main.main(args);
 		

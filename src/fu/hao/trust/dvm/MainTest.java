@@ -140,6 +140,15 @@ public class MainTest {
 		assertEquals(true, Results.results.contains(res));
 	}
 	
+	@Test
+	public void testFieldAndObjectSensitivity_FieldSensitivity4() {
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FieldAndObjectSensitivity_FieldSensitivity4/app/app-release.apk";
+		args[1] = "de.ecspride.FieldSensitivity4";
+		args[2] = "onCreate";
+		Main.main(args);
+		assertEquals(true, Results.results.isEmpty());
+	}
+	
 	//@Test
 	public void testDroidKunfu() {
 		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/droidkungfu/00cf11a8b905e891a454e5b3fcae41f3ed405e3c5d0f9c1fce310de4a88c42d0.apk";
