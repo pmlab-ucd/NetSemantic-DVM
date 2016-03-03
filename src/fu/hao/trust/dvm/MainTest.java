@@ -161,7 +161,23 @@ public class MainTest {
 		assertEquals(true, Results.results.contains(res));
 	}
 	
+	@Test
+	public void testFieldAndObjectSensitivity_ObjectSensitivity1() {
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FieldAndObjectSensitivity_ObjectSensitivity1/app/app-release.apk";
+		args[1] = "de.ecspride.ObjectSensitivity1";
+		args[2] = "onCreate";
+		Main.main(args);
+		assertEquals(true, Results.results.isEmpty());
+	}
 	
+	@Test
+	public void testFieldAndObjectSensitivity_ObjectSensitivity2() {
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FieldAndObjectSensitivity_ObjectSensitivity2/app/app-release.apk";
+		args[1] = "de.ecspride.OverwiteValue";
+		args[2] = "onCreate";
+		Main.main(args);
+		assertEquals(true, Results.results.isEmpty());
+	}
 	
 	//@Test
 	public void testDroidKunfu() {

@@ -12,11 +12,10 @@ public class Test {
 		String[] args = new String[3];
 		Settings.logLevel = 0;
 		
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_VirtualDispatch1/app/";
-		args[1] = "de.ecspride.VirtualDispatch1";
-		args[2] = null;
-		//args[2] = "clickButton";
-		Main.main(args);;
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FieldAndObjectSensitivity_ObjectSensitivity2/app/app-release.apk";
+		args[1] = "de.ecspride.OverwiteValue";
+		args[2] = "onCreate";
+		Main.main(args);
 		Map<String, String> res = new HashMap<>();
 		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
 				"359874043116909");
