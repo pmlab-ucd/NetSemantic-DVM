@@ -1,24 +1,16 @@
-import java.util.HashSet;
-import java.util.Set;
-
-import patdroid.core.ClassInfo;
-import fu.hao.trust.dvm.DVMObject;
-import fu.hao.trust.dvm.DalvikVM;
+import fu.hao.trust.analysis.Results;
+import fu.hao.trust.dvm.Main;
+import fu.hao.trust.utils.Settings;
 
 public class Test {
-	public static void main(String[] args) {
-		Set<Object> objs = new HashSet<>();
-		objs.add(3);
-		objs.add(42);
-		DalvikVM vm = new DalvikVM();
-		DVMObject obj1 = new DVMObject(vm, ClassInfo.primitiveInt);
-		DVMObject obj2 = new DVMObject(vm, ClassInfo.primitiveLong);
-		objs.add(obj1);
-		System.out.println(objs.contains(42));
-		System.out.println(objs.contains(3));
-		System.out.println(objs.contains(obj1));
-		System.out.println(objs.contains(43));
-		System.out.println(objs.contains(obj2));
+	public static void main(String[] margs) {
+		String[] args = new String[3];
+		Settings.logLevel = 0;
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FieldAndObjectSensitivity_FieldSensitivity1/app/app-release.apk";
+		args[1] = "de.ecspride.FieldSensitivity1";
+		args[2] = "onCreate";
+		Main.main(args);
+		assert(Results.results.isEmpty());
 	}
 	
 	public void test() {

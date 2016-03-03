@@ -1,7 +1,5 @@
 package fu.hao.trust.dvm;
 
-import static org.junit.Assert.*;
-
 import java.io.IOException;
 import java.util.zip.ZipException;
 
