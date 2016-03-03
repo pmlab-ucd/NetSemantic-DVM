@@ -73,26 +73,40 @@ public class Interpreter {
 			jump(vm, inst, true);
 		}
 	}
+	
+	/**
+	* @Title: backCallCtx
+	* @Author: Hao Fu
+	* @Description: Restore context before the call
+	* @param   
+	* @return void   
+	* @throws
+	*/
+	private void backCallCtx(DalvikVM vm, Instruction inst) {
+		JVM_STACK_FRAME caller = vm.curr_jvm_stack.prev_stack;
+		vm.jvm_stack_depth--;
+		vm.curr_jvm_stack = caller;
+		if (vm.curr_jvm_stack != null) {
+			vm.pc = vm.curr_jvm_stack.pc;
+			for (Integer i : vm.curr_jvm_stack.backRegs.keySet()) {
+				vm.regs[i].type = (ClassInfo) vm.curr_jvm_stack.backRegs.get(i)[0];
+				vm.regs[i].data = vm.curr_jvm_stack.backRegs.get(i)[1];
+			}
+			Log.debug(TAG, "pc " + vm.pc + " " + vm.curr_jvm_stack.pc);
+		} else {
+			vm.pc = Integer.MAX_VALUE;
+			// backtrace to last unknown branch
+			vm.restoreState();
+			Log.warn(TAG, "Backtrace begin!!!");
+		}
+		jump(vm, inst, true);
+	}
 
 	class OP_RETURN_VOID implements ByteCode {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
 			Log.debug(getClass().toString(), "return void");
-			JVM_STACK_FRAME caller = vm.curr_jvm_stack.prev_stack;
-			vm.jvm_stack_depth--;
-			vm.curr_jvm_stack = caller;
-			// this is a trick
-			// jump(vm, inst, true);
-			if (vm.curr_jvm_stack != null) {
-				vm.pc = vm.curr_jvm_stack.pc;
-				Log.debug(TAG, "pc " + vm.pc + " " + vm.curr_jvm_stack.pc);
-			} else {
-				vm.pc = Integer.MAX_VALUE;
-				// backtrace to last unknown branch
-				vm.restoreState();
-				Log.warn(TAG, "Backtrace begin!!!");
-			}
-			jump(vm, inst, true);
+			backCallCtx(vm, inst);
 		}
 	}
 
@@ -114,25 +128,10 @@ public class Interpreter {
 			}
 
 			// the caller stack of this invocation
-			JVM_STACK_FRAME caller = vm.curr_jvm_stack.prev_stack;
 			vm.return_val_reg.data = vm.regs[inst.r0].data;
 			vm.return_val_reg.type = ClassInfo
 					.findOrCreateClass(vm.regs[inst.r0].data.getClass());
-			// context switch back to the caller
-			vm.jvm_stack_depth--;
-			vm.curr_jvm_stack = caller;
-			
-			if (vm.curr_jvm_stack != null) {
-				vm.pc = vm.curr_jvm_stack.pc;
-				Log.debug(TAG, "pc " + vm.pc + " " + vm.curr_jvm_stack.pc);
-			} else {
-				vm.pc = Integer.MAX_VALUE;
-				// backtrace to last unknown branch
-				vm.restoreState();
-				Log.warn(TAG, "Backtrace begin!!!");
-			}
-			jump(vm, inst, true);
-			
+			backCallCtx(vm, inst);
 		}
 	}
 
