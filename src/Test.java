@@ -6,15 +6,39 @@ import fu.hao.trust.dvm.Main;
 import fu.hao.trust.utils.Settings;
 
 public class Test {
+	
+	class dd {
+		int a;
+	}
+	
 	static String TAG = "test";  
 	
-	public static void main(String[] margs) {
+	dd i;
+	
+	public static void main(String[] margs) {		
+		
+		Test t = new Test();
+		t.testMain();
+		//t.testFie();
+	}
+	
+	void testFie() {
+		b(i);
+		i = new dd();
+		i.a = 4;
+		System.out.println(i.a);
+	}
+	
+	void b (dd c) {
+		c = new dd();
+		c.a = 3;
+	}
+	
+	public void testMain() {
 		String[] args = new String[3];
 		Settings.logLevel = 0;
 		
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FieldAndObjectSensitivity_ObjectSensitivity2/app/app-release.apk";
-		args[1] = "de.ecspride.OverwiteValue";
-		args[2] = "onCreate";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Lifecycle_ActivityLifecycle1/app/";
 		Main.main(args);
 		Map<String, String> res = new HashMap<>();
 		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",

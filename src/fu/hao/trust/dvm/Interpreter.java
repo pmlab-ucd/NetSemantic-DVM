@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import fu.hao.trust.dvm.DalvikVM.Register;
+import fu.hao.trust.dvm.DalvikVM.StackFrame;
 import fu.hao.trust.solver.Unknown;
 import fu.hao.trust.utils.Log;
 import patdroid.core.ClassInfo;
@@ -47,9 +48,9 @@ public class Interpreter {
 				Log.err(getClass().toString(), "Cannot find rx in the inst");
 				return;
 			}
-			vm.regs[inst.rdst].copy(vm.regs[inst.r0]);
-			Log.debug(getClass().toString(), "mov " + vm.regs[inst.r0].data
-					+ " to " + vm.regs[inst.rdst].data);
+			vm.getReg(inst.rdst).copy(vm.getReg(inst.r0));
+			Log.debug(getClass().toString(), "mov " + vm.getReg(inst.r0).data
+					+ " to " + vm.getReg(inst.rdst).data);
 			jump(vm, inst, true);
 		}
 	}
@@ -66,9 +67,11 @@ public class Interpreter {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
 			Log.debug(TAG, "Mov const begin " + inst);
-			vm.regs[inst.rdst].copy(inst.type, inst.extra);
-			Log.debug(TAG, "data: " + vm.regs[inst.rdst].data + " "
-					+ vm.regs[inst.rdst].data.getClass());
+			vm.getReg(inst.rdst).copy(inst.type, inst.extra);
+			Log.debug(
+					TAG,
+					"data: " + vm.getReg(inst.rdst).data + " "
+							+ vm.getReg(inst.rdst).data.getClass());
 			jump(vm, inst, true);
 		}
 	}
@@ -100,11 +103,11 @@ public class Interpreter {
 			}
 
 			// the caller stack of this invocation
-			vm.return_val_reg.data = vm.regs[inst.r0].data;
-			vm.return_val_reg.type = ClassInfo
-					.findOrCreateClass(vm.regs[inst.r0].data.getClass());
-			Log.debug(TAG, "return data: " + vm.return_val_reg.data);
-			vm.backCallCtx(vm.regs[inst.r0]);
+			vm.retValReg.data = vm.getReg(inst.r0).data;
+			vm.retValReg.type = ClassInfo
+					.findOrCreateClass(vm.getReg(inst.r0).data.getClass());
+			Log.debug(TAG, "return data: " + vm.retValReg.data);
+			vm.backCallCtx(vm.getReg(inst.r0));
 			jump(vm, inst, true);
 		}
 	}
@@ -128,7 +131,8 @@ public class Interpreter {
 	class OP_SP_ARGUMENTS implements ByteCode {
 		/**
 		 * @Title: func
-		 * @Description: set arguments for the new invocation
+		 * @Description: Set parameters for the new call based on the given
+		 *               arguments.
 		 * @param vm
 		 * @param inst
 		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
@@ -136,42 +140,45 @@ public class Interpreter {
 		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			int[] args = (int[]) inst.extra;
+			int[] params = (int[]) inst.extra;
 
 			if (vm.getContext() == null) {
 				Log.warn(TAG, "null ctx!");
-				MethodInfo currMethod = vm.curr_jvm_stack.method;
+				MethodInfo currMethod = vm.getCurrStackFrame().method;
 				int startParam = 0;
 				if (!currMethod.isStatic()) {
 					startParam = 1;
-					vm.regs[args[0]].data = vm.thisObj;
-					vm.regs[args[0]].type = currMethod.myClass;
-					Log.debug(TAG, "args: " + vm.regs[args[0]].data);
+					vm.getReg(params[0]).data = vm.getCurrStackFrame().thisObj;
+					vm.getReg(params[0]).type = currMethod.myClass;
+					Log.debug(TAG, "args: " + vm.getReg(params[0]).data);
 				}
 
 				int i = startParam;
 				for (ClassInfo paramClass : currMethod.paramTypes) {
 					if (paramClass.isPrimitive()) {
 						// FIXME
-						vm.regs[args[i]].data = new PrimitiveInfo(42);
-						vm.regs[args[i]].type = paramClass;
+						vm.getReg(params[i]).data = new PrimitiveInfo(42);
+						vm.getReg(params[i]).type = paramClass;
 					} else if (paramClass.isArray()) {
 						// FIXME
 					} else {
-						vm.regs[args[i]].data = new DVMObject(vm, paramClass);
-						vm.regs[args[i]].type = paramClass;
+						vm.getReg(params[i]).data = new DVMObject(vm, paramClass);
+						vm.getReg(params[i]).type = paramClass;
 					}
-					Log.debug(TAG, "args: " + vm.regs[args[i]].data);
+					Log.debug(TAG, "args: " + vm.getReg(params[i]).data);
 					i++;
 				}
 			} else {
-				if (args.length != vm.getContext().length) {
+				if (params.length != vm.getContext().length) {
 					Log.err(TAG, "invalid ctx for invocation!");
 					return;
 				}
-				for (int i = 0; i < vm.getContext().length; i++) {
-					vm.regs[args[i]].copy(vm.regs[vm.getContext()[i]]);
-					Log.debug(TAG, "params: " + vm.regs[args[i]].data);
+				
+				int i = 0;
+				for (Register argReg : vm.getContext()) {
+					vm.getReg(params[i]).copy(argReg);
+					Log.debug(TAG, "params: " + vm.getReg(params[i]).data);
+					i++;
 				}
 			}
 			jump(vm, inst, true);
@@ -195,18 +202,18 @@ public class Interpreter {
 				Log.err(TAG, "cannot create obj of null class");
 			}
 
-			Log.debug(TAG, "" + vm.regs[inst.rdst]);
+			Log.debug(TAG, "" + vm.getReg(inst.rdst));
 
-			vm.regs[inst.rdst].type = inst.type;
+			vm.getReg(inst.rdst).type = inst.type;
 			try {
 				Class.forName(inst.type.toString());
-				vm.regs[inst.rdst].data = null;
+				vm.getReg(inst.rdst).data = null;
 			} catch (ClassNotFoundException e) {
 				// Do not need to handle reflection type,
 				// since <init> invocation will replace the newObj
 				Object newObj = new DVMObject(vm, inst.type);
 				Log.debug(TAG, "begin new object of " + inst.type + "created.");
-				vm.regs[inst.rdst].data = newObj;
+				vm.getReg(inst.rdst).data = newObj;
 				Log.debug(TAG, "new object of " + inst.type + "created.");
 			}
 			jump(vm, inst, true);
@@ -229,8 +236,8 @@ public class Interpreter {
 			if (inst.type == null) {
 				Log.err(TAG, "cannot create array of null class");
 			}
-			vm.regs[inst.rdst].type = inst.type;
-			int count = Integer.parseInt(vm.regs[inst.r0].data.toString());
+			vm.getReg(inst.rdst).type = inst.type;
+			int count = Integer.parseInt(vm.getReg(inst.r0).data.toString());
 
 			Object[] newArray;
 			if (inst.type.isPrimitive()) {
@@ -239,7 +246,7 @@ public class Interpreter {
 				newArray = new Object[count];
 			}
 
-			vm.regs[inst.rdst].data = newArray;
+			vm.getReg(inst.rdst).data = newArray;
 			Log.debug(TAG, "a new array of " + inst.type + " in size " + count
 					+ "created.");
 			jump(vm, inst, true);
@@ -319,16 +326,17 @@ public class Interpreter {
 				// static invocation
 				if (args.length == 0) {
 					method = clazz.getDeclaredMethod(mi.name);
-					vm.return_val_reg.data = method.invoke(null);
+					vm.retValReg.data = method.invoke(null);
 				} else {
 					Object[] params = new Object[args.length - 1];
 					// start from 0 since no "this"
 					for (int i = 0; i < args.length; i++) {
-						if (vm.regs[args[i]].data == null) {
+						if (vm.getReg(args[i]).data == null) {
 							continue;
 						}
 						if (mi.paramTypes[i].isPrimitive()) {
-							Object primitive = resolvePrimitive((PrimitiveInfo) vm.regs[args[i]].data);
+							Object primitive = resolvePrimitive((PrimitiveInfo) vm
+									.getReg(args[i]).data);
 							params[i] = primitive;
 							Class<?> argClass = primClasses.get(primitive
 									.getClass());
@@ -337,32 +345,25 @@ public class Interpreter {
 							// TODO use classloader to check exists or not
 							String argClass = mi.paramTypes[i].toString();
 							argsClass[i] = Class.forName(argClass);
-							params[i] = vm.regs[args[i]].data;
+							params[i] = vm.getReg(args[i]).data;
 						}
 					}
 					method = clazz.getDeclaredMethod(mi.name, argsClass);
-					vm.return_val_reg.data = method.invoke(null, params);
+					vm.retValReg.data = method.invoke(null, params);
 				}
 
-				if (vm.return_val_reg.data != null) {
-					vm.return_val_reg.type = ClassInfo
-							.findOrCreateClass(vm.return_val_reg.data
-									.getClass());
-					Log.debug(TAG, "return data: " + vm.return_val_reg.data
-							+ " " + vm.return_val_reg.data.getClass());
+				if (vm.retValReg.data != null) {
+					vm.retValReg.type = ClassInfo
+							.findOrCreateClass(vm.retValReg.data.getClass());
+					Log.debug(TAG, "return data: " + vm.retValReg.data + " "
+							+ vm.retValReg.data.getClass());
 				}
 				Log.msg(TAG, "reflction invocation " + method);
 				vm.plugin.method = method;
 				jump(vm, inst, true);
 			} catch (java.lang.ClassNotFoundException e) {
 				vm.plugin.method = null;
-				Log.debug(TAG, "not a reflction invocation " + mi);
-				vm.newStackFrame(mi);
-				vm.setContext(new int[args.length]);
-				for (int i = 0; i < args.length; i++) {
-					vm.getContext()[i] = args[i];
-					Log.debug(TAG, "arg " + vm.regs[vm.getContext()[i]].data);
-				}
+				invocation(vm, mi, inst, args);
 			} catch (Exception e) {
 				e.printStackTrace();
 				Log.warn(TAG, "error in reflection");
@@ -393,11 +394,11 @@ public class Interpreter {
 		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			if (inst.type.equals(vm.regs[inst.rdst])) {
-				vm.regs[inst.r0].data = 99;
+			if (inst.type.equals(vm.getReg(inst.rdst))) {
+				vm.getReg(inst.r0).data = 99;
 				Log.debug(TAG, "same type when instanceof");
 			} else {
-				vm.regs[inst.r0].data = 0;
+				vm.getReg(inst.r0).data = 0;
 				Log.debug(TAG, "NOT same type when instanceof");
 			}
 
@@ -419,12 +420,12 @@ public class Interpreter {
 		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			Object array = vm.regs[inst.r0].data;
+			Object array = vm.getReg(inst.r0).data;
 			if (array.getClass().isArray()) {
-				vm.regs[inst.rdst].data = new PrimitiveInfo(
+				vm.getReg(inst.rdst).data = new PrimitiveInfo(
 						Array.getLength(array));
 				Log.debug(TAG, "len " + Array.getLength(array));
-				vm.regs[inst.rdst].type = ClassInfo.primitiveInt;
+				vm.getReg(inst.rdst).type = ClassInfo.primitiveInt;
 			} else {
 				Log.err(TAG, "not an array");
 			}
@@ -447,9 +448,9 @@ public class Interpreter {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
 			// TODO long-to-int
-			if (vm.regs[inst.rdst].type != null
-					&& !inst.type.isConvertibleTo(vm.regs[inst.rdst].type)) {
-				Log.err(TAG, "not consistent type when cast!");
+			if (vm.getReg(inst.rdst).type != null
+					&& !inst.type.isConvertibleTo(vm.getReg(inst.rdst).type)) {
+				Log.warn(TAG, "not consistent type when cast!");
 			}
 
 			jump(vm, inst, true);
@@ -472,16 +473,17 @@ public class Interpreter {
 				Log.err(TAG, "cannot identify res type!");
 			}
 
-			if (vm.return_val_reg.type != null
-					&& vm.return_val_reg.type.isPrimitive()) {
-				vm.return_val_reg.data = PrimitiveInfo
-						.fromObject(vm.return_val_reg.data);
+			if (vm.retValReg.type != null && vm.retValReg.type.isPrimitive()) {
+				vm.retValReg.data = PrimitiveInfo.fromObject(vm.retValReg.data);
 			}
 
 			// type checking before moving?
-			vm.regs[inst.rdst].copy(vm.return_val_reg);
-			Log.debug(TAG, "data " + vm.regs[inst.rdst].data + " "
-					+ vm.regs[inst.rdst].type + " " + vm.regs[inst.rdst]);
+			vm.getReg(inst.rdst).copy(vm.retValReg);
+			Log.debug(
+					TAG,
+					"data " + vm.getReg(inst.rdst).data + " "
+							+ vm.getReg(inst.rdst).type + " "
+							+ vm.getReg(inst.rdst));
 			jump(vm, inst, true);
 		}
 	}
@@ -506,14 +508,14 @@ public class Interpreter {
 		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			Log.debug(TAG, "cast data " + vm.regs[inst.r0].data);
-			if (!(vm.regs[inst.r0].data instanceof PrimitiveInfo)) {
-				vm.regs[inst.r0].data = PrimitiveInfo
-						.fromObject(vm.regs[inst.r0].data);
+			Log.debug(TAG, "cast data " + vm.getReg(inst.r0).data);
+			if (!(vm.getReg(inst.r0).data instanceof PrimitiveInfo)) {
+				vm.getReg(inst.r0).data = PrimitiveInfo.fromObject(vm
+						.getReg(inst.r0).data);
 			}
-			PrimitiveInfo primitive = (PrimitiveInfo) vm.regs[inst.r0].data;
-			vm.regs[inst.rdst].data = primitive.castTo(inst.type);
-			vm.regs[inst.rdst].type = inst.type;
+			PrimitiveInfo primitive = (PrimitiveInfo) vm.getReg(inst.r0).data;
+			vm.getReg(inst.rdst).data = primitive.castTo(inst.type);
+			vm.getReg(inst.rdst).type = inst.type;
 			jump(vm, inst, true);
 		}
 	}
@@ -808,22 +810,23 @@ public class Interpreter {
 		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			Object array = vm.regs[inst.r0].data;
+			Object array = vm.getReg(inst.r0).data;
 			if (array.getClass().isArray()) {
 				// dest reg
-				Register rdst = vm.regs[inst.rdst];
+				Register rdst = vm.getReg(inst.rdst);
 				// array reg
-				// Object[] array = (Object[]) vm.regs[inst.r0].data;
+				// Object[] array = (Object[]) vm.getReg(inst.r0).data;
 				// index reg
-				int index = ((PrimitiveInfo) vm.regs[inst.r1].data).intValue();
+				int index = ((PrimitiveInfo) vm.getReg(inst.r1).data)
+						.intValue();
 
-				rdst.type = vm.regs[inst.r0].type.getElementClass();
+				rdst.type = vm.getReg(inst.r0).type.getElementClass();
 				Object element = Array.get(array, index);
 				// if (element.getClass().isPrimitive()) {
 				if (rdst.type.isPrimitive()) {
 					rdst.data = PrimitiveInfo.fromObject(element);
 				} else {
-					rdst.data = Array.get(vm.regs[inst.r0].data, index);// array[index];
+					rdst.data = Array.get(vm.getReg(inst.r0).data, index);// array[index];
 				}
 			}
 			jump(vm, inst, true);
@@ -844,12 +847,12 @@ public class Interpreter {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
 			// dest reg
-			Register rdst = vm.regs[inst.rdst];
+			Register rdst = vm.getReg(inst.rdst);
 			// array reg
-			Object[] array = (Object[]) vm.regs[inst.r0].data;
+			Object[] array = (Object[]) vm.getReg(inst.r0).data;
 			// index reg
-			int index = ((PrimitiveInfo) vm.regs[inst.r1].data).intValue();
-			if (!rdst.type.isConvertibleTo(vm.regs[inst.r0].type
+			int index = ((PrimitiveInfo) vm.getReg(inst.r1).data).intValue();
+			if (!rdst.type.isConvertibleTo(vm.getReg(inst.r0).type
 					.getElementClass())) {
 				Log.err(TAG, "inconsistent type " + inst);
 				return;
@@ -871,16 +874,16 @@ public class Interpreter {
 		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			Log.debug(TAG, "data " + vm.regs[inst.r0].data);
-			if (vm.regs[inst.r0].data instanceof Unknown) {
+			Log.debug(TAG, "data " + vm.getReg(inst.r0).data);
+			if (vm.getReg(inst.r0).data instanceof Unknown) {
 				Log.warn(TAG, "Unknown primitive data found.");
 				jump(vm, inst, true);
 				return;
 			}
-			PrimitiveInfo op0 = (PrimitiveInfo) vm.regs[inst.r0].data;
+			PrimitiveInfo op0 = (PrimitiveInfo) vm.getReg(inst.r0).data;
 			PrimitiveInfo op1;
 			if (inst.r1 != -1) {
-				op1 = (PrimitiveInfo) vm.regs[inst.r1].data;
+				op1 = (PrimitiveInfo) vm.getReg(inst.r1).data;
 			} else {
 				op1 = (PrimitiveInfo) inst.extra;
 			}
@@ -890,7 +893,7 @@ public class Interpreter {
 				jump(vm, inst, true);
 				return;
 			}
-			Register rdst = vm.regs[inst.rdst];
+			Register rdst = vm.getReg(inst.rdst);
 			if (op1.isInteger()) {
 				rdst.type = ClassInfo.primitiveInt;
 				int res = op0.intValue() + op1.intValue();
@@ -915,14 +918,14 @@ public class Interpreter {
 	class OP_A_SUB implements ByteCode {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			PrimitiveInfo op0 = (PrimitiveInfo) vm.regs[inst.r0].data;
+			PrimitiveInfo op0 = (PrimitiveInfo) vm.getReg(inst.r0).data;
 			PrimitiveInfo op1;
 			if (inst.r1 != -1) {
-				op1 = (PrimitiveInfo) vm.regs[inst.r1].data;
+				op1 = (PrimitiveInfo) vm.getReg(inst.r1).data;
 			} else {
 				op1 = (PrimitiveInfo) inst.extra;
 			}
-			Register rdst = vm.regs[inst.rdst];
+			Register rdst = vm.getReg(inst.rdst);
 			if (op1.isInteger()) {
 				rdst.type = ClassInfo.primitiveInt;
 				int res = op0.intValue() - op1.intValue();
@@ -947,14 +950,14 @@ public class Interpreter {
 	class OP_A_MUL implements ByteCode {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			PrimitiveInfo op0 = (PrimitiveInfo) vm.regs[inst.r0].data;
+			PrimitiveInfo op0 = (PrimitiveInfo) vm.getReg(inst.r0).data;
 			PrimitiveInfo op1;
 			if (inst.r1 != -1) {
-				op1 = (PrimitiveInfo) vm.regs[inst.r1].data;
+				op1 = (PrimitiveInfo) vm.getReg(inst.r1).data;
 			} else {
 				op1 = (PrimitiveInfo) inst.extra;
 			}
-			Register rdst = vm.regs[inst.rdst];
+			Register rdst = vm.getReg(inst.rdst);
 
 			Object obj = resolvePrimitive(op1);
 			Log.debug(TAG, "" + obj.getClass());
@@ -986,14 +989,14 @@ public class Interpreter {
 	class OP_A_DIV implements ByteCode {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			PrimitiveInfo op0 = (PrimitiveInfo) vm.regs[inst.r0].data;
+			PrimitiveInfo op0 = (PrimitiveInfo) vm.getReg(inst.r0).data;
 			PrimitiveInfo op1;
 			if (inst.r1 != -1) {
-				op1 = (PrimitiveInfo) vm.regs[inst.r1].data;
+				op1 = (PrimitiveInfo) vm.getReg(inst.r1).data;
 			} else {
 				op1 = (PrimitiveInfo) inst.extra;
 			}
-			Register rdst = vm.regs[inst.rdst];
+			Register rdst = vm.getReg(inst.rdst);
 			if (op1.isInteger()) {
 				rdst.type = ClassInfo.primitiveInt;
 				int res = op0.intValue() / op1.intValue();
@@ -1019,14 +1022,14 @@ public class Interpreter {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
 			try {
-				PrimitiveInfo op0 = (PrimitiveInfo) vm.regs[inst.r0].data;
+				PrimitiveInfo op0 = (PrimitiveInfo) vm.getReg(inst.r0).data;
 				PrimitiveInfo op1;
 				if (inst.r1 != -1) {
-					op1 = (PrimitiveInfo) vm.regs[inst.r1].data;
+					op1 = (PrimitiveInfo) vm.getReg(inst.r1).data;
 				} else {
 					op1 = (PrimitiveInfo) inst.extra;
 				}
-				Register rdst = vm.regs[inst.rdst];
+				Register rdst = vm.getReg(inst.rdst);
 
 				if (op1.isInteger()) {
 					rdst.type = ClassInfo.primitiveInt;
@@ -1048,13 +1051,13 @@ public class Interpreter {
 
 			} catch (java.lang.ClassCastException e) {
 				Unknown op = null;
-				if (vm.regs[inst.r0].data instanceof Unknown) {
-					op = (Unknown) vm.regs[inst.r0].data;
+				if (vm.getReg(inst.r0).data instanceof Unknown) {
+					op = (Unknown) vm.getReg(inst.r0).data;
 					op.addLastArith(inst);
 				}
 
-				if (inst.r1 != -1 && vm.regs[inst.r1].data instanceof Unknown) {
-					op = (Unknown) vm.regs[inst.r0].data;
+				if (inst.r1 != -1 && vm.getReg(inst.r1).data instanceof Unknown) {
+					op = (Unknown) vm.getReg(inst.r0).data;
 					op.addLastArith(inst);
 				}
 
@@ -1067,14 +1070,14 @@ public class Interpreter {
 	class OP_A_AND implements ByteCode {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			PrimitiveInfo op0 = (PrimitiveInfo) vm.regs[inst.r0].data;
+			PrimitiveInfo op0 = (PrimitiveInfo) vm.getReg(inst.r0).data;
 			PrimitiveInfo op1;
 			if (inst.r1 != -1) {
-				op1 = (PrimitiveInfo) vm.regs[inst.r1].data;
+				op1 = (PrimitiveInfo) vm.getReg(inst.r1).data;
 			} else {
 				op1 = (PrimitiveInfo) inst.extra;
 			}
-			Register rdst = vm.regs[inst.rdst];
+			Register rdst = vm.getReg(inst.rdst);
 			if (op1.isInteger()) {
 				rdst.type = ClassInfo.primitiveInt;
 				int res = op0.intValue() & op1.intValue();
@@ -1094,8 +1097,8 @@ public class Interpreter {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
 			// FIXME not sure correct
-			PrimitiveInfo op0 = (PrimitiveInfo) vm.regs[inst.r0].data;
-			Register rdst = vm.regs[inst.rdst];
+			PrimitiveInfo op0 = (PrimitiveInfo) vm.getReg(inst.r0).data;
+			Register rdst = vm.getReg(inst.rdst);
 			if (op0.isInteger()) {
 				rdst.type = ClassInfo.primitiveInt;
 				int res = ~op0.intValue();
@@ -1112,8 +1115,8 @@ public class Interpreter {
 	class OP_A_NEG implements ByteCode {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			PrimitiveInfo op0 = (PrimitiveInfo) vm.regs[inst.r0].data;
-			Register rdst = vm.regs[inst.rdst];
+			PrimitiveInfo op0 = (PrimitiveInfo) vm.getReg(inst.r0).data;
+			Register rdst = vm.getReg(inst.rdst);
 			if (op0.isInteger()) {
 				rdst.type = ClassInfo.primitiveInt;
 				int res = -op0.intValue();
@@ -1138,14 +1141,14 @@ public class Interpreter {
 	class OP_A_XOR implements ByteCode {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			PrimitiveInfo op0 = (PrimitiveInfo) vm.regs[inst.r0].data;
+			PrimitiveInfo op0 = (PrimitiveInfo) vm.getReg(inst.r0).data;
 			PrimitiveInfo op1;
 			if (inst.r1 != -1) {
-				op1 = (PrimitiveInfo) vm.regs[inst.r1].data;
+				op1 = (PrimitiveInfo) vm.getReg(inst.r1).data;
 			} else {
 				op1 = (PrimitiveInfo) inst.extra;
 			}
-			Register rdst = vm.regs[inst.rdst];
+			Register rdst = vm.getReg(inst.rdst);
 			if (op1.isInteger()) {
 				rdst.type = ClassInfo.primitiveInt;
 				int res = op0.intValue() ^ op1.intValue();
@@ -1162,14 +1165,14 @@ public class Interpreter {
 	class OP_A_OR implements ByteCode {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			PrimitiveInfo op0 = (PrimitiveInfo) vm.regs[inst.r0].data;
+			PrimitiveInfo op0 = (PrimitiveInfo) vm.getReg(inst.r0).data;
 			PrimitiveInfo op1;
 			if (inst.r1 != -1) {
-				op1 = (PrimitiveInfo) vm.regs[inst.r1].data;
+				op1 = (PrimitiveInfo) vm.getReg(inst.r1).data;
 			} else {
 				op1 = (PrimitiveInfo) inst.extra;
 			}
-			Register rdst = vm.regs[inst.rdst];
+			Register rdst = vm.getReg(inst.rdst);
 			if (op1.isInteger()) {
 				rdst.type = ClassInfo.primitiveInt;
 				int res = op0.intValue() | op1.intValue();
@@ -1195,14 +1198,14 @@ public class Interpreter {
 		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			PrimitiveInfo op0 = (PrimitiveInfo) vm.regs[inst.r0].data;
+			PrimitiveInfo op0 = (PrimitiveInfo) vm.getReg(inst.r0).data;
 			PrimitiveInfo op1;
 			if (inst.r1 != -1) {
-				op1 = (PrimitiveInfo) vm.regs[inst.r1].data;
+				op1 = (PrimitiveInfo) vm.getReg(inst.r1).data;
 			} else {
 				op1 = (PrimitiveInfo) inst.extra;
 			}
-			Register rdst = vm.regs[inst.rdst];
+			Register rdst = vm.getReg(inst.rdst);
 			if (op0.isInteger()) {
 				rdst.type = ClassInfo.primitiveInt;
 				int res = op0.intValue() << op1.intValue();
@@ -1233,14 +1236,14 @@ public class Interpreter {
 		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			PrimitiveInfo op0 = (PrimitiveInfo) vm.regs[inst.r0].data;
+			PrimitiveInfo op0 = (PrimitiveInfo) vm.getReg(inst.r0).data;
 			PrimitiveInfo op1;
 			if (inst.r1 != -1) {
-				op1 = (PrimitiveInfo) vm.regs[inst.r1].data;
+				op1 = (PrimitiveInfo) vm.getReg(inst.r1).data;
 			} else {
 				op1 = (PrimitiveInfo) inst.extra;
 			}
-			Register rdst = vm.regs[inst.rdst];
+			Register rdst = vm.getReg(inst.rdst);
 			if (op0.isInteger()) {
 				rdst.type = ClassInfo.primitiveInt;
 				int res = op0.intValue() >> op1.intValue();
@@ -1271,14 +1274,14 @@ public class Interpreter {
 		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			PrimitiveInfo op0 = (PrimitiveInfo) vm.regs[inst.r0].data;
+			PrimitiveInfo op0 = (PrimitiveInfo) vm.getReg(inst.r0).data;
 			PrimitiveInfo op1;
 			if (inst.r1 != -1) {
-				op1 = (PrimitiveInfo) vm.regs[inst.r1].data;
+				op1 = (PrimitiveInfo) vm.getReg(inst.r1).data;
 			} else {
 				op1 = (PrimitiveInfo) inst.extra;
 			}
-			Register rdst = vm.regs[inst.rdst];
+			Register rdst = vm.getReg(inst.rdst);
 			if (op0.isInteger()) {
 				rdst.type = ClassInfo.primitiveInt;
 				int res = op0.intValue() >>> op1.intValue();
@@ -1318,7 +1321,7 @@ public class Interpreter {
 			PrimitiveInfo[] res = OP_CMP(vm, inst, true);
 			PrimitiveInfo op1 = res[0];
 			PrimitiveInfo op2 = res[1];
-			Register rdst = vm.regs[inst.rdst];
+			Register rdst = vm.getReg(inst.rdst);
 			rdst.type = ClassInfo.primitiveInt;
 
 			if (op1.longValue() > op2.longValue()) {
@@ -1349,15 +1352,15 @@ public class Interpreter {
 		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			Register r0 = vm.regs[inst.r0], r1 = vm.regs[inst.r1];
+			Register r0 = vm.getReg(inst.r0), r1 = vm.getReg(inst.r1);
 			if (!r0.type.equals(r1.type)) {
 				Log.err(TAG, "incosistent type " + inst);
 				return;
 			}
 
-			PrimitiveInfo op1 = (PrimitiveInfo) vm.regs[inst.r0].data;
-			PrimitiveInfo op2 = (PrimitiveInfo) vm.regs[inst.r1].data;
-			Register rdst = vm.regs[inst.rdst];
+			PrimitiveInfo op1 = (PrimitiveInfo) vm.getReg(inst.r0).data;
+			PrimitiveInfo op2 = (PrimitiveInfo) vm.getReg(inst.r1).data;
+			Register rdst = vm.getReg(inst.rdst);
 			rdst.type = ClassInfo.primitiveInt;
 			// FIXME NaN handling
 			if (r0.type.equals(ClassInfo.primitiveFloat)) {
@@ -1398,15 +1401,15 @@ public class Interpreter {
 		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			Register r0 = vm.regs[inst.r0], r1 = vm.regs[inst.r1];
+			Register r0 = vm.getReg(inst.r0), r1 = vm.getReg(inst.r1);
 			if (!r0.type.equals(r1.type)) {
 				Log.err(TAG, "incosistent type " + inst);
 				return;
 			}
 
-			PrimitiveInfo op1 = (PrimitiveInfo) vm.regs[inst.r0].data;
-			PrimitiveInfo op2 = (PrimitiveInfo) vm.regs[inst.r1].data;
-			Register rdst = vm.regs[inst.rdst];
+			PrimitiveInfo op1 = (PrimitiveInfo) vm.getReg(inst.r0).data;
+			PrimitiveInfo op2 = (PrimitiveInfo) vm.getReg(inst.r1).data;
+			Register rdst = vm.getReg(inst.rdst);
 			rdst.type = ClassInfo.primitiveInt;
 			// FIXME NaN handling
 			if (r0.type.equals(ClassInfo.primitiveFloat)) {
@@ -1452,10 +1455,10 @@ public class Interpreter {
 				Class<?> clazz = Class.forName(pair.first.toString());
 				Field field = clazz.getDeclaredField(pair.second.toString());
 				// TODO only support static field now
-				vm.regs[inst.r0].data = field.get(clazz);
-				vm.regs[inst.r0].type = ClassInfo
-						.findOrCreateClass(vm.regs[inst.r0].data.getClass());
-				Log.debug(TAG, "refleciton " + vm.regs[inst.r0].data);
+				vm.getReg(inst.r0).data = field.get(clazz);
+				vm.getReg(inst.r0).type = ClassInfo.findOrCreateClass(vm
+						.getReg(inst.r0).data.getClass());
+				Log.debug(TAG, "refleciton " + vm.getReg(inst.r0).data);
 			} catch (Exception e) {
 				ClassInfo owner = pair.first;
 				String fieldName = pair.second;
@@ -1464,10 +1467,15 @@ public class Interpreter {
 				// Log.debug(TAG, "sget " + statFieldInfo.getFieldType());
 
 				DVMClass dvmClass = vm.getClass(owner);
-				Log.debug(TAG, "sget " + fieldName + " from " + dvmClass);
-				vm.regs[inst.r0].data = dvmClass.getStatField(fieldName);
+				vm.getReg(inst.r0).data = dvmClass.getStatField(fieldName);
 				ClassInfo fieldType = owner.getStaticFieldType(fieldName);
-				vm.regs[inst.r0].type = fieldType;
+				vm.getReg(inst.r0).type = fieldType;
+				Log.debug(TAG, "sget " + vm.getReg(inst.r0).data + ", from "
+						+ dvmClass);
+				Log.debug(
+						TAG,
+						"expect sget " + fieldName + ", a "
+								+ vm.getReg(inst.r0).type + " from " + owner);
 			}
 
 			jump(vm, inst, true);
@@ -1491,16 +1499,17 @@ public class Interpreter {
 			Pair<ClassInfo, String> pair = (Pair<ClassInfo, String>) inst.extra;
 			ClassInfo owner = pair.first;
 			String fieldName = pair.second;
-			Log.debug(TAG,
-					"field type " + pair.first.getStaticFieldType(pair.second));
+
 			ClassInfo fieldType = owner.getStaticFieldType(fieldName);
 			DVMClass dvmClass = vm.getClass(owner);
-			Log.debug(TAG, "getDvmClass " + dvmClass);
-			if (!vm.regs[inst.r0].type.isConvertibleTo(fieldType)) {
-				Log.warn(TAG, "Type inconsistent! " + vm.regs[inst.r0].type
+			if (!vm.getReg(inst.r0).type.isConvertibleTo(fieldType)) {
+				Log.warn(TAG, "Type inconsistent! " + vm.getReg(inst.r0).type
 						+ " " + fieldType);
 			}
-			dvmClass.setStatField(fieldName, vm.regs[inst.r0].data);
+			dvmClass.setStatField(fieldName, vm.getReg(inst.r0).data);
+			Log.debug(TAG, "expect sput " + fieldName + " from " + owner);
+			Log.debug(TAG, "real sput " + vm.getReg(inst.r0).data + " from "
+					+ dvmClass);
 			jump(vm, inst, true);
 		}
 	}
@@ -1519,21 +1528,21 @@ public class Interpreter {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
 			FieldInfo fieldInfo = (FieldInfo) inst.extra;
-			Object obj = vm.regs[inst.r0].data;
+			Object obj = vm.getReg(inst.r0).data;
 			Log.debug(TAG, "obj " + obj);
 			Log.warn(TAG, "fieldinfo " + fieldInfo);
 			if (obj instanceof DVMObject) {
 				DVMObject dvmObj = (DVMObject) obj;
-				vm.regs[inst.r1].type = fieldInfo.getFieldType();
+				vm.getReg(inst.r1).type = fieldInfo.getFieldType();
 
 				if (dvmObj.getFieldObj(fieldInfo) == null) {
 					dvmObj.setField(fieldInfo,
 							new Unknown(fieldInfo.getFieldType()));
 				}
 
-				vm.regs[inst.r1].data = dvmObj.getFieldObj(fieldInfo);
+				vm.getReg(inst.r1).data = dvmObj.getFieldObj(fieldInfo);
 
-				Log.debug(TAG, "get data: " + vm.regs[inst.r1].data);
+				Log.debug(TAG, "get data: " + vm.getReg(inst.r1).data);
 			} else {
 				// TODO reflection set field
 			}
@@ -1557,10 +1566,10 @@ public class Interpreter {
 		public void func(DalvikVM vm, Instruction inst) {
 			FieldInfo fieldInfo = (FieldInfo) inst.extra;
 			Log.debug(TAG, "field " + fieldInfo);
-			Object obj = vm.regs[inst.r0].data;
+			Object obj = vm.getReg(inst.r0).data;
 			if (obj instanceof DVMObject) {
 				DVMObject dvmObj = (DVMObject) obj;
-				dvmObj.setField(fieldInfo, vm.regs[inst.r1].data);
+				dvmObj.setField(fieldInfo, vm.getReg(inst.r1).data);
 				Log.debug(TAG, "put field " + dvmObj.getFieldObj(fieldInfo)
 						+ " at " + dvmObj);
 			} else {
@@ -1631,7 +1640,7 @@ public class Interpreter {
 			// seems <int, int> is enough
 			@SuppressWarnings("unchecked")
 			Map<Integer, Integer> switchTable = (Map<Integer, Integer>) inst.extra;
-			Object data = vm.regs[inst.r0];
+			Object data = vm.getReg(inst.r0);
 
 			for (int key : switchTable.keySet()) {
 				if (data.equals(key)) {
@@ -1672,10 +1681,10 @@ public class Interpreter {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
 			// check whether contains an unknown var
-			Register r0 = vm.regs[inst.r0];
+			Register r0 = vm.getReg(inst.r0);
 			Register r1 = null;
 			if (inst.r1 != -1) {
-				r1 = vm.regs[inst.r1];
+				r1 = vm.getReg(inst.r1);
 			}
 
 			Unknown u0;
@@ -1711,7 +1720,7 @@ public class Interpreter {
 	 *      patdroid.dalvik.Instruction)
 	 */
 	private PrimitiveInfo[] OP_CMP(DalvikVM vm, Instruction inst, boolean flagZ) {
-		Register r0 = vm.regs[inst.r0];
+		Register r0 = vm.getReg(inst.r0);
 		/*
 		 * if (!r0.type.equals(r1.type)) { Log.err(TAG, "incosistent type " +
 		 * inst); return null; }
@@ -1725,11 +1734,11 @@ public class Interpreter {
 		if (flagZ) {
 			op2 = new PrimitiveInfo(0);
 		} else {
-			op2 = (PrimitiveInfo) vm.regs[inst.r1].data;
+			op2 = (PrimitiveInfo) vm.getReg(inst.r1).data;
 		}
 
 		if (inst.rdst != -1) {
-			Register rdst = vm.regs[inst.rdst];
+			Register rdst = vm.getReg(inst.rdst);
 			rdst.type = ClassInfo.primitiveInt;
 		}
 		PrimitiveInfo[] res = new PrimitiveInfo[2];
@@ -1752,19 +1761,19 @@ public class Interpreter {
 	 */
 	private void jump(DalvikVM vm, Instruction inst, boolean seq) {
 		if (seq) {
-			if (vm.curr_jvm_stack == null) {
+			if (vm.getCurrStackFrame() == null) {
 				vm.pc = Integer.MAX_VALUE;
 				return;
 			}
 			vm.pc++;
-			vm.curr_jvm_stack.pc++;
+			vm.getCurrStackFrame().pc++;
 		} else {
 			if (inst.extra == null) {
 				Log.err(TAG, "unresolve dest address in goto: " + inst);
 				return;
 			}
-			vm.curr_jvm_stack.pc = (int) inst.extra;
-			vm.pc = vm.curr_jvm_stack.pc;
+			vm.getCurrStackFrame().pc = (int) inst.extra;
+			vm.pc = vm.getCurrStackFrame().pc;
 		}
 	}
 
@@ -1789,12 +1798,12 @@ public class Interpreter {
 			// If applicable, directly use reflection to run the method,
 			// the method is inside java.lang
 			// Class<?> clazz = Class.forName(mi.myClass.toString());
-			Log.debug(TAG, "" + vm.regs[args[0]].data);
+			Log.debug(TAG, "" + vm.getReg(args[0]).data);
 			Class<?> clazz;
-			// if (vm.regs[args[0]].data == null) {
+			// if (vm.getReg(args[0]).data == null) {
 			clazz = Class.forName(mi.myClass.toString());
 			// } else {
-			// clazz = vm.regs[args[0]].data.getClass();
+			// clazz = vm.getReg(args[0]).data.getClass();
 			// }
 
 			@SuppressWarnings("rawtypes")
@@ -1806,49 +1815,54 @@ public class Interpreter {
 				if (!mi.myClass.toString().equals("java.lang.Object")) {
 					// clazz = Class.forName(mi.myClass.toString());
 					if (args.length == 1) {
-						vm.regs[args[0]].data = clazz.newInstance();
-						vm.regs[args[0]].type = mi.returnType;
-						Log.debug(TAG, "new instance: " + vm.regs[args[0]].data);
+						vm.getReg(args[0]).data = clazz.newInstance();
+						vm.getReg(args[0]).type = mi.returnType;
+						Log.debug(TAG, "Init instance: "
+								+ vm.getReg(args[0]).data);
 					} else {
 						getParams(vm, mi, args, argsClass, params);
-						// overwrite previous declared dvmObj
-						vm.regs[args[0]].data = clazz.getConstructor(argsClass)
-								.newInstance(params);
-						vm.regs[args[0]].type = mi.myClass;
-						Log.debug(TAG, "return data: " + vm.regs[args[0]].data
-								+ " " + vm.regs[args[0]].data.getClass());
+						// Overwrite previous declared dvmObj
+						vm.getReg(args[0]).data = clazz.getConstructor(
+								argsClass).newInstance(params);
+						vm.getReg(args[0]).type = mi.myClass;
+						Log.debug(TAG,
+								"Init instance: " + vm.getReg(args[0]).data + " "
+										+ vm.getReg(args[0]).data.getClass());
 					}
 				}
 			} else {
 
 				Log.debug(TAG, "reflction class: " + clazz);
 
-				obj = vm.regs[args[0]].data;
+				obj = vm.getReg(args[0]).data;
 				if (obj == null || obj instanceof DVMObject
 						&& !DVMObject.class.equals(clazz)) {
 					obj = clazz.newInstance();
 				}
+				
+				//clazz = obj.getClass();
 				if (args.length == 1) {
 					method = clazz.getDeclaredMethod(mi.name);
-					vm.return_val_reg.data = method.invoke(obj);
+					vm.retValReg.data = method.invoke(obj);
 				} else {
 					getParams(vm, mi, args, argsClass, params);
 					method = clazz.getDeclaredMethod(mi.name, argsClass);
 					Log.debug(TAG, "caller obj: " + obj + ", from class: "
 							+ obj.getClass().toString());
 					// handle return val
-					vm.return_val_reg.data = method.invoke(obj, params);
+					vm.retValReg.data = method.invoke(obj, params);
 				}
-				if (vm.return_val_reg.data != null) {
-					vm.return_val_reg.type = ClassInfo
-							.findOrCreateClass(vm.return_val_reg.data
-									.getClass());
-					Log.debug(TAG, "return data: " + vm.return_val_reg.data
-							+ " ," + vm.return_val_reg.data.getClass());
+				if (vm.retValReg.data != null) {
+					vm.retValReg.type = ClassInfo
+							.findOrCreateClass(vm.retValReg.data.getClass());
+					Log.debug(TAG, "return data: " + vm.retValReg.data + " ,"
+							+ vm.retValReg.data.getClass());
 				}
 				Log.msg(TAG, "reflction invocation " + method);
-				vm.plugin.method = method;
+				
 			}
+			
+			vm.plugin.method = method;
 			jump(vm, inst, true);
 		} catch (java.lang.IllegalArgumentException e) {
 			e.printStackTrace();
@@ -1863,20 +1877,7 @@ public class Interpreter {
 		} catch (java.lang.ClassNotFoundException e) {
 			vm.plugin.method = null;
 			Log.debug(TAG, "not a reflction invocation " + mi);
-
-			if (args.length > 0 && vm.regs[args[0]].data instanceof DVMObject) {
-				DVMObject thisObj = (DVMObject) vm.regs[args[0]].data;
-				if (((int) inst.opcode_aux != 0x0C) && !mi.isConstructor()
-						&& thisObj.getType().getSuperClass().equals(mi.myClass)) {
-					mi = thisObj.getType().findMethodsHere(mi.name)[0];
-				}
-			}
-			vm.newStackFrame(mi);
-			vm.setContext(new int[args.length]);
-			for (int i = 0; i < args.length; i++) {
-				vm.getContext()[i] = args[i];
-				Log.debug(TAG, "arg " + vm.regs[vm.getContext()[i]].data);
-			}
+			invocation(vm, mi, inst, args);
 		} catch (Exception e) {
 			e.printStackTrace();
 			Log.err(TAG, "error in reflection");
@@ -1885,25 +1886,53 @@ public class Interpreter {
 
 	}
 
+	/**
+	* @Title: getParams
+	* @Author: Hao Fu
+	* @Description: Transform from ClassInfo to Class
+	* @param vm
+	* @param mi
+	* @param args
+	* @param argsClass
+	* @param params
+	* @param @throws ClassNotFoundException  
+	* @return void   
+	* @throws
+	*/
 	private void getParams(DalvikVM vm, MethodInfo mi, int[] args,
 			Class<?>[] argsClass, Object[] params)
 			throws ClassNotFoundException {
 		// start from 1 to ignore "this"
 		for (int i = 1; i < args.length; i++) {
 			if (mi.paramTypes[i - 1].isPrimitive()) {
-				Log.debug(TAG, "para type: " + mi.paramTypes[i - 1]);
-				Object primitive = resolvePrimitive((PrimitiveInfo) vm.regs[args[i]].data);
-				params[i - 1] = primitive;
+				Log.debug(TAG, "expected para type: " + mi.paramTypes[i - 1]);
+				Object primitive = resolvePrimitive((PrimitiveInfo) vm
+						.getReg(args[i]).data);
 				Class<?> argClass = primClasses.get(primitive.getClass());
+				params[i - 1] = primitive;
+				// Because of a bug in PATDroid.
+				if (mi.paramTypes[i - 1].equals(ClassInfo.primitiveBoolean) && 
+						primitive instanceof Integer) {
+					if (primitive.equals(1)) {
+						params[i - 1] = true;
+					} else if (primitive.equals(0)) {
+						params[i - 1] = false;
+					}
+					argClass = boolean.class;
+				} 
+
+				Log.debug(TAG, "real para " + argClass);
 				argsClass[i - 1] = argClass;
 			} else {
 				String argClass = mi.paramTypes[i - 1].toString();
 				argsClass[i - 1] = Class.forName(argClass);
-				Object argData = vm.regs[args[i]].data;
+				Object argData = vm.getReg(args[i]).data;
 
 				if (argData == null) {
-					Log.warn(TAG, "null in the " + i + "th arg, is "
-							+ vm.regs[args[i]]);
+					Log.warn(
+							TAG,
+							"null in the " + i + "th arg, is "
+									+ vm.getReg(args[i]));
 					params[i - 1] = null;
 				} else if (matchType(argData.getClass(), argsClass[i - 1])) {
 					params[i - 1] = argData;
@@ -1933,48 +1962,90 @@ public class Interpreter {
 		return false;
 	}
 
-	public void invocation(DalvikVM vm, MethodInfo mi) {
-		if (vm.thisObj == null && !mi.isStatic() && vm.getContext() == null) {
-			vm.thisObj = new DVMObject(vm, mi.myClass);
-			ClassInfo superClass = mi.myClass.getSuperClass();
-			Class<?> superClazz;
-			try {
-				superClazz = Class.forName(superClass.toString());
-				Log.debug(TAG, superClazz.getName());
-				vm.thisObj.setSuperObj(superClazz.newInstance());
-			} catch (ClassNotFoundException e) {
-				vm.thisObj.setSuperObj(new DVMObject(vm, superClass));
-				e.printStackTrace();
-			} catch (InstantiationException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (java.lang.NoClassDefFoundError e) {
-				e.printStackTrace();
-			} catch (java.lang.RuntimeException e) {
-				e.printStackTrace();
+	/**
+	 * @Title: invocation
+	 * @Author: Hao Fu
+	 * @Description: Run the non-reflectable method.
+	 * @param @param vm
+	 * @param @param mi
+	 * @return void
+	 * @throws
+	 */
+	public void invocation(DalvikVM vm, MethodInfo mi, Instruction inst,
+			int[] args) {
+		// Create a new stack frame and push it to the stack.	
+		if (!mi.isStatic()) {
+			if (vm.getReg(args[0]).data instanceof Unknown || vm.getReg(args[0]).data == null) {
+				Log.warn(TAG, "NULL Invocator!");
+				vm.retValReg.data = null;
+				vm.retValReg.type = null;
+				jump(vm, inst, true);
+				return;
 			}
-
+			DVMObject thisObj = (DVMObject) vm.getReg(args[0]).data;
+			if (((int) inst.opcode_aux != 0x0C) && !mi.isConstructor()
+					&& thisObj.getType().getSuperClass().equals(mi.myClass)) {
+				mi = thisObj.getType().findMethodsHere(mi.name)[0];
+			}
 		}
 
-		vm.newStackFrame(mi);
+		if (args != null) {
+			vm.setContext(args);
+		}
+		
+		StackFrame stackFrame = vm.newStackFrame(mi);
+		vm.stack.add(stackFrame);
+	}
+	
+	public void runMethod(DalvikVM vm, MethodInfo mi) {
+		// Create a new stack frame and push it to the stack.
+		StackFrame stackFrame = vm.newStackFrame(mi);
+		vm.stack.add(stackFrame);
+		if (mi.isStatic()) {
+			stackFrame.thisObj = null;
+		} else {
+			if (chainThisObj == null) {
+				Log.debug(TAG, "new chain obj");
+				stackFrame.thisObj = new DVMObject(vm, mi.myClass);
+				MethodInfo constructor = mi.myClass.getDefaultConstructor();
+				if (constructor != null) {
+					StackFrame construct = vm.newStackFrame(constructor);
+					construct.thisObj = stackFrame.thisObj;
+					vm.stack.add(construct);
+				}
+				chainThisObj = stackFrame.thisObj;
+			} else {
+				stackFrame.thisObj = chainThisObj;
+			}
+
+		} 
+
 		if (!running) {
+			Log.msg(TAG, "RUN BEGIN " + mi);
 			run(vm);
 		}
 	}
+	
+
+	/**
+	 * @fieldName: chainThisObj
+	 * @fieldType: DVMObject
+	 * @Description: To help run chain methods.
+	 */
+	DVMObject chainThisObj = null;
 
 	public void run(DalvikVM vm) {
+		Log.msg(TAG, "RUN BEGIN");
 		running = true;
-		while (vm.curr_jvm_stack != null
-				&& vm.pc < vm.curr_jvm_stack.method.insns.length) {
-			Instruction insns = vm.curr_jvm_stack.method.insns[vm.pc];
+		String mname = vm.getCurrStackFrame().method.name;
+		while (vm.getCurrStackFrame() != null
+				&& vm.pc < vm.getCurrStackFrame().method.insns.length) {
+			Instruction insns = vm.getCurrStackFrame().method.insns[vm.pc];
 			exec(vm, insns);
 		}
 
 		running = false;
-		Log.msg(TAG, "RUN DONE!");
+		Log.msg(TAG, "RUN DONE! The last one is " + mname);
 	}
 
 	static Map<Integer, ByteCode> byteCodes = new HashMap<>();
@@ -2063,7 +2134,8 @@ public class Interpreter {
 
 	public void exec(DalvikVM vm, Instruction inst) {
 		Log.debug(TAG, "opcode: " + inst.opcode + " " + inst.opcode_aux);
-		Log.debug(TAG, vm.pc + " " + inst + " at " + vm.curr_jvm_stack.method);
+		Log.debug(TAG, vm.pc + " " + inst + " at "
+				+ vm.getCurrStackFrame().method);
 
 		if (byteCodes.containsKey((int) inst.opcode)) {
 			byteCodes.get((int) inst.opcode).func(vm, inst);
@@ -2089,7 +2161,9 @@ public class Interpreter {
 	 * @throws
 	 */
 	public Object resolvePrimitive(PrimitiveInfo op1) {
-		if (op1.isInteger()) {
+		if (op1.isBoolean()) {
+			return new Boolean(op1.booleanValue());
+		} else if (op1.isInteger()) {
 			return new Integer(op1.intValue());
 		} else if (op1.isLong()) {
 			return new Long(op1.longValue());

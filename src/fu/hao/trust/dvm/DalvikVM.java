@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
@@ -34,16 +35,6 @@ public class DalvikVM {
 
 	private final String tag = getClass().toString();
 
-	// ---------------------------------
-	/*
-	 * generic parameter parser for 35c
-	 */
-	class invoke_parameters {
-		int method_id;
-		int reg_count;
-		int[] reg_idx = new int[5]; // 0-5 map C-G
-	}
-
 	// Dalvik VM Register Bank
 	public class Register {
 		ClassInfo type = null;
@@ -72,32 +63,30 @@ public class DalvikVM {
 
 	}
 
-	public class JVM_STACK_FRAME {
-		int[] local_var_table;
-		// int[] operand_stack; // dvm leverages reg, not a stack
+	public class StackFrame {
 		MethodInfo method;
-		int return_addr;
-		long offset;
-		long max_stack;
-		long max_locals;
-		JVM_STACK_FRAME prev_stack;
-		Map<Integer, Object[]> backRegs;
 		// in theory, pc should not be here
 		// but it's easier to implement in our case
 		// since we know we do not need pc to cross procedure
 		int pc;
 		Set<Object> pluginRes;
+		DVMObject thisObj;
+		private Register[] regs = new Register[65536]; // locals
 
-		JVM_STACK_FRAME(MethodInfo method) {
+		StackFrame(MethodInfo method) {
 			this.method = method;
 			pc = 0;
-			return_val_reg = new Register();
-			backRegs = new HashMap<>();
+			retValReg = new Register();
 			pluginRes = new HashSet<>();
+			
+			for (int i = 0; i < regs.length; i++) {
+				regs[i] = new Register();
+				regs[i].count = i;
+			}
 
 			int counter = 0;
 
-			Log.debug(tag, "new method call: " + method);
+			Log.debug(tag, "New method call: " + method);
 			for (Instruction ins : method.insns) {
 				Log.debug(tag, "[" + counter + "]" + ins.toString());
 				counter++;
@@ -105,18 +94,32 @@ public class DalvikVM {
 
 		}
 
-		public JVM_STACK_FRAME clone() {
-			JVM_STACK_FRAME frame = new JVM_STACK_FRAME(method);
+		public StackFrame clone() {
+			StackFrame frame = new StackFrame(method);
+			frame.thisObj = thisObj;
 			frame.pc = pc;
-			frame.prev_stack = prev_stack;
+			frame.pluginRes.addAll(pluginRes);
+			
+			for (int i = 0; i < regs.length; i++) {
+				frame.regs[i].copy(regs[i]);
+				if (pluginRes.contains(regs[i])) {
+					frame.pluginRes.remove(regs[i]);
+					frame.pluginRes.add(frame.regs[i]);
+				}
+			}
 			return frame;
 		}
 	}
-
-	class constant_info_st {
-		int index;
-		int tag;
-		int[] base;
+	
+	public LinkedList<StackFrame> cloneStack() {
+		LinkedList<StackFrame> newStack = new LinkedList<>();
+		for (StackFrame frame : stack) {
+			newStack.add(frame);
+		}
+		
+		newStack.set(newStack.size() - 1, stack.getLast().clone());
+		
+		return newStack;
 	}
 
 	class Heap {
@@ -130,11 +133,16 @@ public class DalvikVM {
 		private void setClass(DVMClass dvmClass) {
 			dvmClasses.put(dvmClass.getType(), dvmClass);
 		}
+		
+		private void setClass(DalvikVM vm, ClassInfo type) {
+			Log.debug(tag, "new class representation for " + type + " at " + vm.heap);
+			dvmClasses.put(type, new DVMClass(vm, type));
+		}
 
 		private DVMClass getClass(DalvikVM vm, ClassInfo type) {
-			Log.debug(tag, "getClass " + type);
+			Log.debug(tag, "getClass " + type + " at " + vm.heap);
 			if (!dvmClasses.containsKey(type)) {
-				dvmClasses.put(type, new DVMClass(vm, type));
+				setClass(vm, type);
 			}
 			return dvmClasses.get(type);
 		}
@@ -200,49 +208,30 @@ public class DalvikVM {
 			backHeap.setObj(dvmObj);
 		}
 
-		// backup regs
-		Register[] newRegs = new Register[65536];
-		for (int i = 0; i < newRegs.length; i++) {
-			newRegs[i] = new Register();
-			newRegs[i].copy(regs[i]);
-			newRegs[i].count = i;
-			if (newRegs[i].data instanceof DVMObject) {
-				newRegs[i].data = objMap.get(regs[i].data);
-			} else if (newRegs[i].data instanceof DVMClass) {
-				newRegs[i].data = classMap.get(regs[i].data);
-			}
-		}
-
-		Log.debug(tag, "new Reg[0" + newRegs[0]);
-		Log.debug(tag, "old regs[0]" + regs[0]);
-
 		// backup jvm stack
-		JVM_STACK_FRAME newFrame = curr_jvm_stack.clone();
+		LinkedList<StackFrame> newStack = cloneStack();
 
-		// backup return_val_reg
+		// backup retValReg
 		Register returnReg = new Register();
-		returnReg.type = return_val_reg.type;
-		returnReg.data = backupField(return_val_reg.data, objMap);
-
-		// backup this obj
-		DVMObject newThis = objMap.get(thisObj);
+		returnReg.type = retValReg.type;
+		returnReg.data = backupField(retValReg.data, objMap);
 
 		// calling ctx
-		int[] newCTX = null;
-		if (calling_ctx != null) {
-			newCTX = new int[calling_ctx.length];
-			for (int i = 0; i < calling_ctx.length; i++) {
-				newCTX[i] = calling_ctx[i];
+		Register[] newCTX = null;
+		if (callingCtx != null) {
+			newCTX = new Register[callingCtx.length];
+			for (int i = 0; i < callingCtx.length; i++) {
+				newCTX[i].copy(callingCtx[i]);
 			}
 		}
 
-		// backup plugin res
+		// FIXME backup plugin res
 		Set<Object> currtRes = new HashSet<>();
 		currtRes.addAll(plugin.currtRes);
 		Method pluginMethod = plugin.method;
 
-		State state = new State(backHeap, newRegs, newFrame, jvm_stack_depth,
-				returnReg, newCTX, newThis, pc, currtRes, pluginMethod);
+		State state = new State(backHeap, newStack,
+				returnReg, newCTX, pc, currtRes, pluginMethod);
 		states.add(state);
 		return state;
 	}
@@ -275,12 +264,9 @@ public class DalvikVM {
 		}
 		State state = popState();
 		heap = state.heap;
-		regs = state.regs;
-		Log.debug(tag, "reg[0] " + regs[0]);
-		curr_jvm_stack = state.curr_jvm_stack;
-		return_val_reg = state.return_val_reg;
-		calling_ctx = state.calling_ctx;
-		thisObj = state.thisObj;
+		stack = state.stack;
+		retValReg = state.retValReg;
+		callingCtx = state.callingCtx;
 		pc = state.pc;
 		plugin.currtRes = state.currtRes;
 		plugin.method = state.pluginMethod;
@@ -288,33 +274,23 @@ public class DalvikVM {
 
 	class State {
 		Heap heap;
-		Register[] regs; // 32
-		// invoke_parameters p;
-		// int[] result = new int[8];
 		int pc;
+		LinkedList<StackFrame> stack;
 
-		JVM_STACK_FRAME curr_jvm_stack;
-		int jvm_stack_depth;
+		Register retValReg;
 
-		Register return_val_reg;
-
-		int[] calling_ctx;
-		DVMObject thisObj;
+		Register[] callingCtx;
 
 		Set<Object> currtRes;
 		Method pluginMethod;
 
-		State(Heap heap, Register[] regs, JVM_STACK_FRAME curr_jvm_stack,
-				int jvm_stack_depth, Register return_val_reg,
-				int[] calling_ctx, DVMObject thisObj, int pc,
+		State(Heap heap, LinkedList<StackFrame> stack, Register retValReg,
+				Register[] callingCtx, int pc,
 				Set<Object> currRes, Method pluginMethod) {
 			this.heap = heap;
-			this.regs = regs;
-			Log.debug(tag, "back reg[0] " + regs[0]);
-			this.curr_jvm_stack = curr_jvm_stack;
-			this.return_val_reg = return_val_reg;
-			this.calling_ctx = calling_ctx;
-			this.thisObj = thisObj;
+			this.stack = stack;
+			this.retValReg = retValReg;
+			this.callingCtx = callingCtx;
 			this.pc = pc;
 			this.currtRes = currRes;
 			this.pluginMethod = pluginMethod;
@@ -324,28 +300,25 @@ public class DalvikVM {
 
 	// We directly use underlying jvm who runs this interpreter to manage memory
 	Heap heap;
-	Register[] regs = new Register[65536]; // 32
+	
+	LinkedList<StackFrame> stack;  
 	// invoke_parameters p;
 	// int[] result = new int[8];
 	int pc;
-
-	JVM_STACK_FRAME curr_jvm_stack;
-	int jvm_stack_depth = 0;
-
+	
 	Interpreter interpreter;
 
 	Register test = new Register();
 	// which reg store the return value of callee called by this method
-	Register return_val_reg;
-
-	private int[] calling_ctx;
-	DVMObject thisObj;
-	// DVMClass thisClass;
+	Register retValReg;
+	
+	private Register[] callingCtx;
+	
 
 	Plugin plugin;
 
 	public Register getReg(int i) {
-		return regs[i];
+		return stack.getLast().regs[i];
 	}
 
 	/**
@@ -370,64 +343,50 @@ public class DalvikVM {
 		return heap.dvmObjs.get(type);
 	}
 
-	public int[] getContext() {
-		return calling_ctx;
+	public Register[] getContext() {
+		return callingCtx;
 	}
 
 	public void setContext(int[] is) {
-		calling_ctx = is;
+		callingCtx = new Register[is.length];
+		for (int i = 0; i < is.length; i++) {
+			callingCtx[i] = getReg(is[i]);
+		}
 	}
 
 	public DalvikVM() {
 		heap = new Heap();
 		interpreter = Interpreter.v();
-		for (int i = 0; i < regs.length; i++) {
-			regs[i] = new Register();
-			regs[i].count = i;
-		}
-		return_val_reg = new Register();
+		retValReg = new Register();
+		stack = new LinkedList<>(); 
 	}
 
 	public void reset() {
 		heap = new Heap();
-		for (int i = 0; i < regs.length; i++) {
-			regs[i].data = null;
-			regs[i].type = null;
-			regs[i].count = -1;
+		interpreter = Interpreter.v();
+		retValReg = new Register();
+		stack = new LinkedList<>(); 
+		if (plugin != null) {
+			plugin.reset();
 		}
-
-		return_val_reg.data = null;
-		return_val_reg.type = null;
+		retValReg.data = null;
+		retValReg.type = null;
+		pc = 0;
 	}
 
 	public Register getReturnReg() {
-		return return_val_reg;
+		return retValReg;
+	}
+	
+	public StackFrame getCurrStackFrame() {
+		if (stack.isEmpty()) {
+			return null;
+		}
+		return stack.getLast();
 	}
 
-	public JVM_STACK_FRAME newStackFrame(MethodInfo mi) {
-		JVM_STACK_FRAME newStackFrame = new JVM_STACK_FRAME(mi);
-		// ctx switch: push local vars
-		if (curr_jvm_stack != null) {
-			Map<Integer, Object[]> backRegs = curr_jvm_stack.backRegs;
-			for (int i = 0; i < 65535; i++) {
-				if (regs[i].data != null || regs[i].type != null) {
-					Object[] regVal = new Object[2];
-					regVal[0] = regs[i].type;
-					regVal[1] = regs[i].data;
-					backRegs.put(i, regVal);
-				}
-			}
-
-			/*
-			 * for (Object res : plugin.currtRes) { if (res instanceof Register)
-			 * { continue; } curr_jvm_stack.pluginRes.add(res); }
-			 * plugin.currtRes = curr_jvm_stack.pluginRes;
-			 */
-		}
-
-		newStackFrame.prev_stack = curr_jvm_stack;
-		curr_jvm_stack = newStackFrame;
-		jvm_stack_depth++;
+	public StackFrame newStackFrame(MethodInfo mi) {
+		StackFrame newStackFrame = new StackFrame(mi);
 		pc = 0;
 
 		return newStackFrame;
@@ -442,28 +401,23 @@ public class DalvikVM {
 	 * @throws
 	 */
 	public void backCallCtx(Register retReg) {
-		JVM_STACK_FRAME caller = curr_jvm_stack.prev_stack;
-		jvm_stack_depth--;
-		curr_jvm_stack = caller;
-		if (curr_jvm_stack != null) {
-			pc = curr_jvm_stack.pc;
-			for (Integer i : curr_jvm_stack.backRegs.keySet()) {
-				regs[i].type = (ClassInfo) curr_jvm_stack.backRegs.get(i)[0];
-				regs[i].data = curr_jvm_stack.backRegs.get(i)[1];
-			}
+		stack.remove(stack.size() - 1);
+		if (!stack.isEmpty()) {
+			StackFrame currtStack = stack.getLast();
+			pc = currtStack.pc;
 
 			for (Object res : plugin.currtRes) {
 				if (res instanceof Register) {
 					if (res == retReg) {
-						curr_jvm_stack.pluginRes.add(return_val_reg);
+						currtStack.pluginRes.add(retValReg);
 					}
 					continue;
 				}
-				curr_jvm_stack.pluginRes.add(res);
+				currtStack.pluginRes.add(res);
 			}
-			plugin.currtRes = curr_jvm_stack.pluginRes;
+			plugin.currtRes = currtStack.pluginRes;
 
-			Log.debug(tag, "pc " + pc + " " + curr_jvm_stack.pc);
+			Log.debug(tag, "pc " + pc + " " + currtStack.pc);
 		} else {
 			pc = Integer.MAX_VALUE;
 			// backtrace to last unknown branch
@@ -511,7 +465,6 @@ public class DalvikVM {
 
 	public void runMethods(String apk, String[] chain, Plugin plugin)
 			throws ZipException, IOException {
-
 		// for normal java run-time classes
 		// when a class is not loaded, load it with reflection
 		ClassInfo.rootDetailLoader = new ReflectionClassDetailLoader();
@@ -532,30 +485,10 @@ public class DalvikVM {
 		// only one
 		this.plugin = plugin;
 
-		thisObj = new DVMObject(this, c);
-		ClassInfo superClass = c.getSuperClass();
-		Class<?> superClazz;
-		try {
-			superClazz = Class.forName(superClass.toString());
-			Log.debug(tag, superClazz.getName());
-			thisObj.setSuperObj(superClazz.newInstance());
-		} catch (ClassNotFoundException e) {
-			thisObj.setSuperObj(new DVMObject(this, superClass));
-			e.printStackTrace();
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (java.lang.NoClassDefFoundError e) {
-			e.printStackTrace();
-		} catch (java.lang.RuntimeException e) {
-			e.printStackTrace();
-		}
-
 		for (int i = 1; i < chain.length; i++) {
-			Log.debug(tag, "Run " + chain[i] + " at " + c);
+			Log.msg(tag, "Run chain " + chain[i] + " at " + c);
 			MethodInfo[] methods = c.findMethodsHere(chain[i]);
-			// TODO Multiple methods have same name.
+			// TODO Multiple methods have the same name.
 			runMethod(methods[0]);
 		}
 	}
@@ -576,7 +509,7 @@ public class DalvikVM {
 			return;
 		}
 
-		interpreter.invocation(this, method);
+		interpreter.runMethod(this, method);
 	}
 
 }

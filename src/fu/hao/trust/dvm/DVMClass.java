@@ -17,8 +17,10 @@ public class DVMClass {
 	DVMClass(DalvikVM vm, ClassInfo type) {
 		this.vm = vm;
 		this.setType(type);
+		vm.setClass(type, this);
+		
 		if (type.getStaticInitializer() != null) {
-			vm.runMethod(type.getStaticInitializer());
+			vm.stack.add(vm.newStackFrame(type.getStaticInitializer()));
 		}
 	}
 
@@ -46,10 +48,11 @@ public class DVMClass {
 		return staticFields;
 	}
 	
+	/*
 	@Override
 	public String toString() {
-		return type.toString();
-	}
+		return type.toString() + ": " + vm.heap; 
+	}*/
 	
 	@Override
 	public DVMClass clone() {

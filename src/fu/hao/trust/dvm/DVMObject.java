@@ -26,14 +26,27 @@ public class DVMObject {
 	public DVMObject(DalvikVM vm, ClassInfo type) {
 		this.vm = vm;
 		if (vm.getClass(type) == null) {
-			Log.debug(TAG, "new object of " + type);
+			Log.debug(TAG, "New class representation of " + type);
 			vm.setClass(type, new DVMClass(vm, type));
 		}
-		Log.debug(TAG, "new object of " + type);
+		Log.debug(TAG, "New instance of " + type);
 		DVMClass dvmClass = vm.getClass(type);
 		this.setType(type);
 		this.setDvmClass(dvmClass);
 		vm.setObj(type, this);
+		
+		/*
+		ClassInfo superClass = type.getSuperClass();
+		if (superClass != null) {
+			Log.debug(TAG, "Set super class " + superClass);
+			Class<?> superClazz;
+			try {
+				superClazz = Class.forName(superClass.toString());
+				setSuperObj(superClazz.newInstance());
+			} catch (Exception e) {
+				setSuperObj(new DVMObject(vm, superClass));
+			}
+		}*/
 	}
 	
 	public DVMObject(DalvikVM vm, ClassInfo type, Heap heap) {

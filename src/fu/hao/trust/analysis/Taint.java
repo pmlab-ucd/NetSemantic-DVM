@@ -94,27 +94,25 @@ public class Taint extends Plugin {
 	class TAINT_OP_SP_ARGUMENTS implements Rule {
 		@Override
 		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
-			int[] args = (int[]) inst.extra;
-			int[] callingCtx = vm.getContext();
+			int[] params = (int[]) inst.extra;
+			Register[] callingCtx = vm.getContext();
 			Set<Object> out = new HashSet<>();
-			
+
 			for (Object res : in) {
 				if (res instanceof Register) {
 					continue;
 				}
 				out.add(res);
 			}
-					
-			if (vm.getContext() != null) {
-				for (int i = 0; i < vm.getContext().length; i++) {
-					if (in.contains(vm.getReg(callingCtx[i]))) {
-						out.add(vm.getReg(args[i]));
-						out.add(vm.getReg(args[i]).getData());
-					} else {
-						if (out.contains(vm.getReg(callingCtx[i]))) {
-							out.remove(vm.getReg(callingCtx[i]));
-						}
+
+			if (callingCtx != null) {
+
+				for (int i = 0; i < callingCtx.length; i++) {
+					if (in.contains(callingCtx[i])) {
+						out.add(vm.getReg(params[i]));
+						out.add(callingCtx[i].getData());
 					}
+
 				}
 			}
 
@@ -194,8 +192,36 @@ public class Taint extends Plugin {
 			int[] args = (int[]) extra[1];
 
 			Set<Object> out = new HashSet<>(in);
+			
+			if (mi.isConstructor()) {
+				// FIXME
+				/*
+				if (sources.contains(sootSignature)) {
+					Log.warn(TAG, "Found a src!");
+					out.add(vm.getReg(args[0]));
+					out.add(vm.getReg(args[0]).getData());
+				} else {
+					Log.debug(TAG, "Not a src. " + signature);
+					if (out.contains(vm.getReg(args[0]))) {
+						out.remove(vm.getReg(args[0]));
+					}
+				}*/
 
-			// source must be a reflection call;
+				if (!mi.isStatic()) {
+					for (int i = 1; i < args.length; i++) {
+						if (in.contains(vm.getReg(args[i]))) {
+							Log.warn(TAG, "Found a tainted init instance!");
+							out.add(vm.getReg(args[0]));
+							out.add(vm.getReg(args[0]).getData());
+							break;
+						}
+					}
+				}
+
+				return out;
+			}
+
+			// Must be a reflection call;
 			if (method == null) {
 				return out;
 			}
@@ -214,14 +240,19 @@ public class Taint extends Plugin {
 			}
 			signature.append(")>");
 			String sootSignature = signature.toString();
+			
+			Log.debug(TAG, sootSignature);
 
 			if (sinks.contains(sootSignature)) {
+				Log.debug(TAG, "Found a sink invocation. " + sootSignature);
 				for (int i = 0; i < args.length; i++) {
 					if (in.contains(vm.getReg(args[i]))) {
-						Log.warn(TAG, "found a taint sink " + sootSignature
-								+ " leaking data [" + vm.getReg(args[i]).getData() + "]!!!");
+						Log.warn(TAG, "Found a taint sink " + sootSignature
+								+ " leaking data ["
+								+ vm.getReg(args[i]).getData() + "]!!!");
 						Map<String, String> res = new HashMap<>();
-						res.put(sootSignature, vm.getReg(args[i]).getData().toString());
+						res.put(sootSignature, vm.getReg(args[i]).getData()
+								.toString());
 						Results.results.add(res);
 					}
 				}
@@ -229,23 +260,11 @@ public class Taint extends Plugin {
 				return out;
 			}
 
-			if (mi.isConstructor()) {
-				if (sources.contains(sootSignature)) {
-					Log.warn(TAG, "found a src!");
-					out.add(vm.getReg(args[0]));
-					out.add(vm.getReg(args[0]).getData());
-				} else {
-					Log.debug(TAG, "not a src. " + signature);
-					if (out.contains(vm.getReg(args[0]))) {
-						out.remove(vm.getReg(args[0]));
-					}
-				}
 
-				return out;
-			}
 
+			// Add ret val?
 			if (sources.contains(sootSignature)) {
-				Log.warn(TAG, "found a taint invokation!");
+				Log.warn(TAG, "Found a tainted return value!");
 				out.add(vm.getReturnReg());
 				out.add(vm.getReturnReg().getData());
 			} else {
@@ -255,7 +274,7 @@ public class Taint extends Plugin {
 			if (vm.getReturnReg().getData() != null) {
 				for (int i = 0; i < args.length; i++) {
 					if (in.contains(vm.getReg(args[i]))) {
-						Log.warn(TAG, "found a taint invokation!");
+						Log.warn(TAG, "Found a tainted return val!");
 						out.add(vm.getReturnReg());
 						out.add(vm.getReturnReg().getData());
 						break;
@@ -628,7 +647,7 @@ public class Taint extends Plugin {
 				// value register, has been assigned to new value
 				out.remove(vm.getReg(inst.r1));
 			}
-			
+
 			// if field is already tainted
 			if (in.contains(vm.getReg(inst.r1).getData())) {
 				out.add(vm.getReg(inst.r1));
@@ -656,10 +675,10 @@ public class Taint extends Plugin {
 				Object obj = vm.getReg(inst.r0).getData();
 				out.add(obj);
 			}
-			
+
 			if (in.contains(vm.getReg(inst.r1))) {
 				Object obj = vm.getReg(inst.r1).getData();
-				Log.debug(TAG, "add " + obj );
+				Log.debug(TAG, "add " + obj);
 				out.add(obj);
 			}
 
@@ -667,7 +686,7 @@ public class Taint extends Plugin {
 		}
 	}
 
-	Taint() {
+	public Taint() {
 		currtRes = new HashSet<>();
 		SrcSinkParser parser;
 		try {
@@ -764,6 +783,11 @@ public class Taint extends Plugin {
 	@Override
 	public Set<Object> getCurrRes() {
 		return currtRes;
+	}
+
+	@Override
+	public void reset() {
+		currtRes = new HashSet<>();
 	}
 
 }

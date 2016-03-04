@@ -179,6 +179,17 @@ public class MainTest {
 		assertEquals(true, Results.results.isEmpty());
 	}
 	
+	@Test
+	public void testLifecycle_ActivityLifecycle1() {
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Lifecycle_ActivityLifecycle1/app/";
+		Main.main(args);
+		assertEquals(false, Results.results.isEmpty());
+		Map<String, String> res = new HashMap<>();
+		res.put("<java.net.URL: java.net.URLConnection openConnection()>",
+				"http://www.google.de/search?q=359874043116909");
+		assertEquals(true, Results.results.contains(res));
+	}
+	
 	//@Test
 	public void testDroidKunfu() {
 		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/droidkungfu/00cf11a8b905e891a454e5b3fcae41f3ed405e3c5d0f9c1fce310de4a88c42d0.apk";

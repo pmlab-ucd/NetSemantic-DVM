@@ -12,4 +12,6 @@ public abstract class Plugin {
 	public abstract Set<Object> runAnalysis(DalvikVM vm, Instruction inst, Set<Object> in);
 	
 	public abstract Set<Object> getCurrRes(); 
+	
+	public abstract void reset();
 }

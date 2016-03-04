@@ -75,11 +75,23 @@ public class Main {
 				Log.debug(TAG, fileName);
 				Settings.apkPath = args[0] + fileName;
 
-				// Run suspicious function.
+				// Run callbacks
 				String csv = "C:/Users/hao/workspace/TRUST/sootOutput/"
-						+ Settings.apkName + ".csv";
+						+ Settings.apkName + "_dummy.csv";
+				Log.debug(TAG, csv);
 				CSVReader reader = new CSVReader(new FileReader(csv));
 
+				for (String[] items : reader.readAll()) {
+					runMethods(items);
+				}
+				
+				reader.close();
+				
+				// Run suspicious function.
+				csv = "C:/Users/hao/workspace/TRUST/sootOutput/"
+						+ Settings.apkName + ".csv";
+				reader = new CSVReader(new FileReader(csv));
+				Log.debug(TAG, csv);
 				for (String[] items : reader.readAll()) {
 					Settings.suspClass = items[0];
 					Settings.suspMethod = items[1];
@@ -89,16 +101,7 @@ public class Main {
 				
 				reader.close();
 
-				// Run callbacks
-				csv = "C:/Users/hao/workspace/TRUST/sootOutput/"
-						+ Settings.apkName + "_dummy.csv";
-				reader = new CSVReader(new FileReader(csv));
-
-				for (String[] items : reader.readAll()) {
-					runMethods(items);
-				}
 				
-				reader.close();
 			}
 
 		} catch (IOException e) {
@@ -112,7 +115,7 @@ public class Main {
 		Results.reset();
 		DalvikVM vm = new DalvikVM();
 		try {
-			Taint taint = Taint.v();
+			Taint taint = new Taint();//Taint.v();
 			vm.runMethod(Settings.apkPath, Settings.suspClass,
 					Settings.suspMethod, taint);
 		} catch (ZipException e) {
@@ -127,7 +130,7 @@ public class Main {
 		Results.reset();
 		DalvikVM vm = new DalvikVM();
 		try {
-			Taint taint = Taint.v();
+			Taint taint = new Taint();// Taint.v();
 			vm.runMethods(Settings.apkPath, items, taint);
 		} catch (ZipException e) {
 			e.printStackTrace();
