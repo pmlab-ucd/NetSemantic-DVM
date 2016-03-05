@@ -3,25 +3,37 @@ package fu.hao.trust.dvm;
 import java.util.HashMap;
 import java.util.Map;
 
+import fu.hao.trust.dvm.DalvikVM.StackFrame;
 import patdroid.core.ClassInfo;
 import patdroid.core.MethodInfo;
 
 public class DVMClass {
 	// TODO access flag
-	
+
 	private ClassInfo type = null;
 	private Map<String, Object> staticFields = new HashMap<>();
 	DalvikVM vm;
+	DVMClass superClass;
+
 	// private Map<MethodInfo, DVMethod> methods = new HashMap<>();
-	
+
 	DVMClass(DalvikVM vm, ClassInfo type) {
 		this.vm = vm;
 		this.setType(type);
 		vm.setClass(type, this);
-		
-		if (type.getStaticInitializer() != null) {
-			vm.stack.add(vm.newStackFrame(type.getStaticInitializer()));
+
+		MethodInfo clinit = type.getStaticInitializer();
+		if (clinit != null) {
+			StackFrame stackFrame = vm.newStackFrame(clinit);
+			vm.stack.add(stackFrame);
+			// vm.getCurrStackFrame().thisObj = null;
+			// To force run the constructor.
+			for (int i = 0; i < clinit.insns.length; i++) {
+				vm.interpreter.exec(vm, clinit.insns[i]);
+			}
 		}
+		
+		superClass = vm.getClass(type.getSuperClass());
 	}
 
 	public ClassInfo getType() {
@@ -31,29 +43,38 @@ public class DVMClass {
 	public void setType(ClassInfo type) {
 		this.type = type;
 	}
-	
+
 	public void setStatField(String fieldName, Object obj) {
 		staticFields.put(fieldName, obj);
+		// FIXME Check "protected".
+		if (superClass != null && superClass.getStatField(fieldName) != null) {
+			superClass.setStatField(fieldName, obj);
+		}
 	}
-	
+
 	public Object getStatField(String fieldName) {
-		return staticFields.get(fieldName);
+		if (staticFields.containsKey(fieldName)) {
+			return staticFields.get(fieldName);
+		} else if (superClass != null) {
+			return superClass.getStatField(fieldName);
+		} else {
+			return null;
+		}
 	}
-	
+
 	public void invokeStatic(MethodInfo mInfo) {
-		//methods.put(minfo, n)
+		// methods.put(minfo, n)
 	}
-	
+
 	public Map<String, Object> getFields() {
 		return staticFields;
 	}
-	
+
 	/*
-	@Override
-	public String toString() {
-		return type.toString() + ": " + vm.heap; 
-	}*/
-	
+	 * @Override public String toString() { return type.toString() + ": " +
+	 * vm.heap; }
+	 */
+
 	@Override
 	public DVMClass clone() {
 		DVMClass newClass = new DVMClass(vm, type);

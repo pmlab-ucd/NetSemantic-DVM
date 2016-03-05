@@ -328,6 +328,12 @@ public class DalvikVM {
 	 * @see java.lang.Object#getClass()
 	 */
 	public DVMClass getClass(ClassInfo type) {
+		if (type == null) {
+			return null;
+		}
+		if (heap.getClass(this, type) == null) {
+			setClass(type, new DVMClass(this, type));
+		}
 		return heap.getClass(this, type);
 	}
 
@@ -476,18 +482,19 @@ public class DalvikVM {
 		new SmaliClassDetailLoader(apkFile, true).loadAll();
 		// get the class representation for the MainActivity class in the
 		// apk
-		Settings.suspClass = chain[0];
-		Log.debug(tag, "class " + chain[0]);
-		Log.debug(tag, "class " + apkFile + " " + apk);
-		ClassInfo c = ClassInfo.findClass(Settings.suspClass);
-		Log.debug(tag, "class " + c);
+		
+		Log.debug(tag, "apk " + apkFile + " " + apk);
+		
 		// find all methods with the name "onCreate", most likely there is
 		// only one
 		this.plugin = plugin;
 
-		for (int i = 1; i < chain.length; i++) {
-			Log.msg(tag, "Run chain " + chain[i] + " at " + c);
-			MethodInfo[] methods = c.findMethodsHere(chain[i]);
+		for (int i = 1; i < chain.length; i++) {			
+			Settings.suspClass = chain[i].split(":")[0];
+			ClassInfo c = ClassInfo.findClass(Settings.suspClass);
+			Log.debug(tag, "class " + c);
+			MethodInfo[] methods = c.findMethodsHere(chain[i].split(":")[1]);
+			Log.warn(tag, "Run chain " + chain[i] + " at " + c);
 			// TODO Multiple methods have the same name.
 			runMethod(methods[0]);
 		}
@@ -496,7 +503,7 @@ public class DalvikVM {
 	/**
 	 * @Title: runMethod
 	 * @Author: hao
-	 * @Description: For internal usage
+	 * @Description: For internal use
 	 * @param @param method
 	 * @return void
 	 * @throws

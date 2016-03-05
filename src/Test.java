@@ -7,6 +7,21 @@ import fu.hao.trust.utils.Settings;
 
 public class Test {
 	
+	public void testMain() {
+		String[] args = new String[3];
+		Settings.logLevel = 0;
+		
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Lifecycle_ActivityLifecycle2/app/";//ActivityLifecycle2.apk";
+		args[1] = "de.ecspride.MainActivity";
+		//args[2] = "onCreate";
+		Main.main(args);
+		Map<String, String> res = new HashMap<>();
+		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
+				"359874043116909");
+		
+		assert(Results.results.contains(res));
+	}
+	
 	class dd {
 		int a;
 	}
@@ -34,18 +49,7 @@ public class Test {
 		c.a = 3;
 	}
 	
-	public void testMain() {
-		String[] args = new String[3];
-		Settings.logLevel = 0;
-		
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Lifecycle_ActivityLifecycle1/app/";
-		Main.main(args);
-		Map<String, String> res = new HashMap<>();
-		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
-				"359874043116909");
-		
-		assert(Results.results.contains(res));
-	}
+
 	
 	public void test() {
 		StringBuilder sb = new StringBuilder("hah");

@@ -2017,7 +2017,6 @@ public class Interpreter {
 			} else {
 				stackFrame.thisObj = chainThisObj;
 			}
-
 		} 
 
 		if (!running) {
