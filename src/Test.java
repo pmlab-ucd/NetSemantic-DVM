@@ -3,7 +3,6 @@ import static org.junit.Assert.assertEquals;
 import java.util.HashMap;
 import java.util.Map;
 
-import patdroid.util.Log;
 import fu.hao.trust.analysis.Results;
 import fu.hao.trust.dvm.Main;
 import fu.hao.trust.utils.Settings;
@@ -14,7 +13,7 @@ public class Test {
 		String[] args = new String[3];
 		Settings.logLevel = 0;
 		
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Lifecycle_ActivityLifecycle1/app/";//ActivityLifecycle2.apk";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Lifecycle_ActivityLifecycle3/app/";//ActivityLifecycle2.apk";
 		args[1] = "de.ecspride.MainActivity";
 		//args[2] = "onCreate";
 		Main.main(args);
