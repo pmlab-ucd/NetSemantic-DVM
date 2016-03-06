@@ -90,6 +90,11 @@ public class Main {
 				// Run suspicious function.
 				csv = "C:/Users/hao/workspace/TRUST/sootOutput/"
 						+ Settings.apkName + ".csv";
+				File file = new File(csv);
+				if (!file.exists()) {
+					return;
+				}
+				
 				reader = new CSVReader(new FileReader(csv));
 				Log.debug(TAG, csv);
 				for (String[] items : reader.readAll()) {
@@ -100,8 +105,7 @@ public class Main {
 				}
 				
 				reader.close();
-
-				
+		
 			}
 
 		} catch (IOException e) {

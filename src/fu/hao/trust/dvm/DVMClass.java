@@ -26,6 +26,7 @@ public class DVMClass {
 		if (clinit != null) {
 			StackFrame stackFrame = vm.newStackFrame(clinit);
 			vm.stack.add(stackFrame);
+			vm.setContext(null);
 			// vm.getCurrStackFrame().thisObj = null;
 			// To force run the constructor.
 			for (int i = 0; i < clinit.insns.length; i++) {

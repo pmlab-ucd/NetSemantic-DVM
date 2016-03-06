@@ -1,6 +1,9 @@
+import static org.junit.Assert.assertEquals;
+
 import java.util.HashMap;
 import java.util.Map;
 
+import patdroid.util.Log;
 import fu.hao.trust.analysis.Results;
 import fu.hao.trust.dvm.Main;
 import fu.hao.trust.utils.Settings;
@@ -11,15 +14,19 @@ public class Test {
 		String[] args = new String[3];
 		Settings.logLevel = 0;
 		
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Lifecycle_ActivityLifecycle2/app/";//ActivityLifecycle2.apk";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Lifecycle_ActivityLifecycle1/app/";//ActivityLifecycle2.apk";
 		args[1] = "de.ecspride.MainActivity";
 		//args[2] = "onCreate";
 		Main.main(args);
-		Map<String, String> res = new HashMap<>();
-		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
-				"359874043116909");
+		System.out.println("REs: " + Results.results.toString());
+
 		
-		assert(Results.results.contains(res));
+		assertEquals(false, Results.results.isEmpty());
+		Map<String, String> res = new HashMap<>();
+		res.put("<java.net.URL: java.net.URLConnection openConnection()>",
+				"http://www.google.de/search?q=359874043116909");
+		System.out.print("REs: " + res.toString());
+		assertEquals(true, Results.results.contains(res));
 	}
 	
 	class dd {
@@ -30,8 +37,7 @@ public class Test {
 	
 	dd i;
 	
-	public static void main(String[] margs) {		
-		
+	public static void main(String[] margs) {				
 		Test t = new Test();
 		t.testMain();
 		//t.testFie();

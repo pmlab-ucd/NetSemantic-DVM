@@ -354,6 +354,10 @@ public class DalvikVM {
 	}
 
 	public void setContext(int[] is) {
+		if (is == null) {
+			callingCtx = null;
+			return;
+		}
 		callingCtx = new Register[is.length];
 		for (int i = 0; i < is.length; i++) {
 			callingCtx[i] = getReg(is[i]);
