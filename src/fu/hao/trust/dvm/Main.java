@@ -116,7 +116,7 @@ public class Main {
 
 	public static void runMethod() {
 		// DalvikVM vm = DalvikVM.v();
-		Results.reset();
+		// Results.reset();
 		DalvikVM vm = new DalvikVM();
 		try {
 			Taint taint = new Taint();//Taint.v();
@@ -131,7 +131,7 @@ public class Main {
 
 	public static void runMethods(String[] items) {
 		// DalvikVM vm = DalvikVM.v();
-		Results.reset();
+		// Results.reset();
 		DalvikVM vm = new DalvikVM();
 		try {
 			Taint taint = new Taint();// Taint.v();
