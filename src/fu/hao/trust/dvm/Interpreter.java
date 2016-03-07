@@ -492,7 +492,7 @@ public class Interpreter {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
 			// TODO Auto-generated method stub
-
+			jump(vm, inst, true);
 		}
 	}
 

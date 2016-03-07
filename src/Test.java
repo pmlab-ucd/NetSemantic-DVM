@@ -13,7 +13,7 @@ public class Test {
 		String[] args = new String[3];
 		Settings.logLevel = 0;
 		
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Lifecycle_ServiceLifecycle1/app/";//ActivityLifecycle2.apk";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_Exceptions1/app/";//ActivityLifecycle2.apk";
 		args[1] = "de.ecspride.MainActivity";
 		//args[2] = "onCreate";
 		Main.main(args);
