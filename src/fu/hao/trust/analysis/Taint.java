@@ -380,6 +380,29 @@ public class Taint extends Plugin {
 		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
 			// TODO Auto-generated method stub
 			Set<Object> out = new HashSet<>(in);
+			if (in.contains(vm.getCurrStackFrame().getExceptReg())) {
+				out.add(vm.getReg(inst.rdst));
+			} else {
+				if (in.contains(vm.getCurrStackFrame().getExceptReg())) {
+					in.remove(vm.getCurrStackFrame().getExceptReg());
+				}
+			}
+			return out;
+		}
+	}
+	
+	class TAINT_OP_EXCEPTION_THROW implements Rule {
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			// TODO Auto-generated method stub
+			Set<Object> out = new HashSet<>(in);
+			if (in.contains(vm.getReg(inst.r0))) {
+				out.add(vm.getCurrStackFrame().getExceptReg());
+			} else {
+				if (in.contains(vm.getCurrStackFrame().getExceptReg())) {
+					in.remove(vm.getCurrStackFrame().getExceptReg());
+				}
+			}
 			return out;
 		}
 	}
@@ -728,7 +751,7 @@ public class Taint extends Plugin {
 		 * new TAINT_OP_A_NEG());
 		 */
 		auxByteCodes.put(0x15, new TAINT_OP_MOV_RESULT());
-		// auxByteCodes.put(0x16, new TAINT_OP_MOV_EXCEPTION());
+		auxByteCodes.put(0x16, new TAINT_OP_MOV_EXCEPTION());
 		/*
 		 * auxByteCodes.put(0x17, new TAINT_OP_A_CAST()); auxByteCodes.put(0x18,
 		 * new TAINT_OP_IF_EQ()); auxByteCodes.put(0x19, new TAINT_OP_IF_NE());
@@ -761,7 +784,7 @@ public class Taint extends Plugin {
 		auxByteCodes.put(0x36, new TAINT_OP_INSTANCE_GET_FIELD());
 		auxByteCodes.put(0x37, new TAINT_OP_INSTANCE_PUT_FIELD());
 		// auxByteCodes.put(0x38, new TAINT_OP_EXCEPTION_TRYCATCH());
-		// auxByteCodes.put(0x39, new TAINT_OP_EXCEPTION_THROW());
+		auxByteCodes.put(0x39, new TAINT_OP_EXCEPTION_THROW());
 	}
 
 	@Override

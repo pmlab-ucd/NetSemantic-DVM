@@ -72,6 +72,7 @@ public class DalvikVM {
 		Set<Object> pluginRes;
 		DVMObject thisObj;
 		private Register[] regs = new Register[65536]; // locals
+		Register exceptReg; // Register to store exceptioal obj.
 
 		StackFrame(MethodInfo method) {
 			this.method = method;
@@ -108,6 +109,10 @@ public class DalvikVM {
 				}
 			}
 			return frame;
+		}
+		
+		public Register getExceptReg() {
+			return exceptReg;
 		}
 	}
 	

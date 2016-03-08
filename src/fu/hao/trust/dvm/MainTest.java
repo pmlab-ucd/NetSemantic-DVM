@@ -290,6 +290,35 @@ public class MainTest {
 	}
 	
 	//@Test
+	public void testGeneralJava_Exceptions2() {
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_Exceptions2/app/";
+		Main.main(args);
+		assertEquals(false, Results.results.isEmpty());
+		Map<String, String> res = new HashMap<>();
+		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
+				"359874043116909");
+		assertEquals(true, Results.results.contains(res));
+	}
+	
+	//@Test
+	public void testGeneralJava_Exceptions3() {
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_Exceptions3/app/";
+		Main.main(args);
+		assertEquals(true, Results.results.isEmpty());
+	}
+	
+	@Test
+	public void testGeneralJava_Exceptions4() {
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_Exceptions4/app/";
+		Main.main(args);
+		assertEquals(false, Results.results.isEmpty());
+		Map<String, String> res = new HashMap<>();
+		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
+				"359874043116909");
+		assertEquals(true, Results.results.contains(res));
+	}
+	
+	//@Test
 	public void testDroidKunfu() {
 		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/droidkungfu/00cf11a8b905e891a454e5b3fcae41f3ed405e3c5d0f9c1fce310de4a88c42d0.apk";
 		args[1] = "ru.atools.sytrant.Sytrant";

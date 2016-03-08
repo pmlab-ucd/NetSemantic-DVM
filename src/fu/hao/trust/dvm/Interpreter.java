@@ -248,7 +248,7 @@ public class Interpreter {
 
 			vm.getReg(inst.rdst).data = newArray;
 			Log.debug(TAG, "a new array of " + inst.type + " in size " + count
-					+ "created.");
+					+ " created.");
 			jump(vm, inst, true);
 		}
 	}
@@ -491,7 +491,7 @@ public class Interpreter {
 	class OP_MOV_EXCEPTION implements ByteCode {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			// TODO Auto-generated method stub
+			vm.getReg(inst.rdst).copy(vm.getCurrStackFrame().exceptReg);
 			jump(vm, inst, true);
 		}
 	}
@@ -823,6 +823,7 @@ public class Interpreter {
 				rdst.type = vm.getReg(inst.r0).type.getElementClass();
 				Object element = Array.get(array, index);
 				// if (element.getClass().isPrimitive()) {
+				Log.debug(TAG, "elem: " + element + " at " + index + " of " + array);
 				if (rdst.type.isPrimitive()) {
 					rdst.data = PrimitiveInfo.fromObject(element);
 				} else {
@@ -1590,7 +1591,7 @@ public class Interpreter {
 	class OP_EXCEPTION_THROW implements ByteCode {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			// TODO Auto-generated method stub
+			vm.getCurrStackFrame().exceptReg = vm.getReg(inst.r0);
 			jump(vm, inst, true);
 		}
 	}
