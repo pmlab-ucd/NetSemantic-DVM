@@ -1,6 +1,6 @@
 main - [DEBUG]: C:/Users/hao/workspace/TRUST/sootOutput/Callbacks_Button1.apk_dummy.csv
 class fu.hao.trust.analysis.Taint - [DEBUG]: srcs: [<android.os.Bundle: java.lang.ClassLoader getClassLoader()>, <android.os.Bundle: byte getByte(java.lang.String)>, <android.os.Bundle: short[] getShortArray(java.lang.String)>, <android.content.ContentResolver: android.database.Cursor query(android.net.Uri,java.lang.String[],java.lang.String,java.lang.String[],java.lang.String)>, <android.database.Cursor: java.lang.String getString(int)>, <org.apache.http.util.EntityUtils: java.lang.String getContentCharSet(org.apache.http.HttpEntity)>, <android.os.Bundle: java.lang.CharSequence getCharSequence(java.lang.String,java.lang.CharSequence)>, <android.os.Bundle: java.lang.CharSequence[] getCharSequenceArray(java.lang.String)>, <android.os.Bundle: long[] getLongArray(java.lang.String)>, <android.os.Handler: android.os.Message obtainMessage(int,java.lang.Object)>, <android.media.AudioRecord: int read(short[],int,int)>, <android.os.Bundle: double getDouble(java.lang.String,double)>, <java.util.Locale: java.lang.String getCountry()>, <android.app.Activity: android.content.Intent getIntent()>, <android.os.Bundle: java.util.ArrayList getStringArrayList(java.lang.String key)>, <android.net.Uri: android.net.Uri parse(java.lang.String)>, <android.media.AudioRecord: int read(byte[],int,int)>, <android.content.pm.PackageManager: java.util.List queryContentProviders(java.lang.String,int,int)>, <android.os.Bundle: byte[] getByteArray(java.lang.String)>, <android.content.pm.PackageManager: java.util.List queryIntentActivities(android.content.Intent,int)>, <android.os.Bundle: java.util.ArrayList getParcelableArrayList(java.lang.String)>, <android.content.ContentResolver: android.database.Cursor query(android.net.Uri,java.lang.String[],java.lang.String,java.lang.String[],java.lang.String,android.os.CancellationSignal)>, <android.os.Handler: android.os.Message obtainMessage(int,int,int,java.lang.Object)>, <android.os.Bundle: int getInt(java.lang.String)>, <android.os.Bundle: float[] getFloatArray(java.lang.String)>, <android.os.Bundle: java.util.ArrayList getCharSequenceArrayList(java.lang.String)>, <android.os.Bundle: boolean getBoolean(java.lang.String,boolean)>, <android.os.Bundle: java.lang.String getString(java.lang.String)>, <java.util.Calendar: java.util.TimeZone getTimeZone()>, <android.os.Bundle: java.util.ArrayList getIntegerArrayList(java.lang.String)>, <android.location.Location: double getLongitude()>, <android.os.Bundle: char getChar(java.lang.String)>, <android.os.Bundle: int[] getIntArray(java.lang.String)>, <android.os.Bundle: float getFloat(java.lang.String,float)>, <org.apache.http.util.EntityUtils: java.lang.String toString(org.apache.http.HttpEntity)>, <org.apache.http.HttpResponse: org.apache.http.HttpEntity getEntity()>, <android.location.LocationManager: android.location.Location getLastKnownLocation(java.lang.String)>, <org.apache.http.util.EntityUtils: byte[] toByteArray(org.apache.http.HttpEntity)>, <android.content.pm.PackageManager: java.util.List queryIntentServices(android.content.Intent,int)>, <org.apache.http.util.EntityUtils: java.lang.String toString(org.apache.http.HttpEntity,java.lang.String)>, <java.net.URLConnection: java.io.InputStream getInputStream()>, <android.os.Bundle: double[] getDoubleArray(java.lang.String)>, <android.os.Bundle: char[] getCharArray(java.lang.String)>, <com.example.testflowdroid.SourceAndSink: java.lang.String source(com.example.testflowdroid.MyObject)>, <android.media.AudioRecord: int read(java.nio.ByteBuffer,int)>, <android.telephony.TelephonyManager: java.lang.String getSimSerialNumber()>, <android.os.Bundle: char getChar(java.lang.String,char)>, <android.telephony.TelephonyManager: java.lang.String getSubscriberId()>, <android.os.Bundle: java.io.Serializable getSerializable(java.lang.String)>, <android.app.PendingIntent: android.app.PendingIntent getService(android.content.Context,int,android.content.Intent,int)>, <android.os.Handler: android.os.Message obtainMessage(int,int,int)>, <android.os.Bundle: long getLong(java.lang.String)>, <android.os.Handler: android.os.Message obtainMessage(int)>, <android.os.Bundle: java.lang.Object get(java.lang.String)>, <android.location.Location: double getLatitude()>, <android.os.Bundle: boolean[] getBooleanArray(java.lang.String)>, <android.app.PendingIntent: android.app.PendingIntent getActivity(android.content.Context,int,android.content.Intent,int,android.os.Bundle)>, <android.telephony.TelephonyManager: java.lang.String getDeviceId()>, <android.content.pm.PackageManager: java.util.List getInstalledPackages(int)>, <java.net.URLConnection: java.io.OutputStream getOutputStream()>, <android.database.sqlite.SQLiteDatabase: android.database.Cursor query(android.net.Uri,java.lang.String[],java.lang.String,java.lang.String[],java.lang.String,android.os.CancellationSignal)>, <android.os.Bundle: int getInt(java.lang.String,int)>, <android.content.pm.PackageManager: java.util.List queryBroadcastReceivers(android.content.Intent,int)>, <android.os.Bundle: android.os.Bundle getBundle(java.lang.String)>, <android.os.Handler: android.os.Message obtainMessage()>, <android.telephony.TelephonyManager: java.lang.String getLine1Number()>, <android.os.Bundle: boolean getBoolean(java.lang.String)>, <android.os.Bundle: java.lang.Byte getByte(java.lang.String,byte)>, <android.os.Bundle: android.os.Parcelable[] getParcelableArray(java.lang.String)>, <android.app.PendingIntent: android.app.PendingIntent getBroadcast(android.content.Context,int,android.content.Intent,int)>, <android.os.Bundle: float getFloat(java.lang.String)>, <android.os.Bundle: java.lang.CharSequence getCharSequence(java.lang.String)>, <android.content.pm.PackageManager: java.util.List getInstalledApplications(int)>, <android.database.sqlite.SQLiteDatabase: android.database.Cursor query(android.net.Uri,java.lang.String[],java.lang.String,java.lang.String[],java.lang.String)>, <android.os.Bundle: short getShort(java.lang.String)>, <android.os.Bundle: short getShort(java.lang.String,short)>, <android.os.Bundle: double getDouble(java.lang.String)>, <java.net.URL: java.net.URLConnection openConnection()>, <android.os.Bundle: long getLong(java.lang.String,long)>, <android.os.Bundle: android.util.SparseArray getSparseParcelableArray(java.lang.String)>, <android.content.SharedPreferences: android.content.SharedPreferences getDefaultSharedPreferences(android.content.Context)>, <android.os.Bundle: android.os.Parcelable getParcelable(java.lang.String)>, <android.app.PendingIntent: android.app.PendingIntent getActivity(android.content.Context,int,android.content.Intent,int)>]
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: apk java.util.zip.ZipFile@6c0ac3e4 C:/Users/hao/workspace/DroidBenchProj/Callbacks_Button1/app/Callbacks_Button1.apk
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: apk java.util.zip.ZipFile@410fb004 C:/Users/hao/workspace/DroidBenchProj/Callbacks_Button1/app/Callbacks_Button1.apk
 class fu.hao.trust.dvm.DalvikVM - [DEBUG]: class de.ecspride.Button1
 class fu.hao.trust.dvm.DalvikVM - [MSG]: RUN Method de.ecspride.Button1/onCreate[android.os.Bundle]
 class fu.hao.trust.dvm.DalvikVM - [DEBUG]: New method call: de.ecspride.Button1/onCreate[android.os.Bundle]
@@ -17,8 +17,8 @@ class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [9]<MOV,RESULT,dst=r1,type=java.lang.
 class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [10]<STATIC,SPUT,r0=r1,type=java.lang.Object,extra=(de.ecspride.Button1, imei)>
 class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [11]<RETURN,VOID>
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: new chain obj
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.DalvikVM$Heap@203f97d7
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: new class representation for de.ecspride.Button1 at fu.hao.trust.dvm.DalvikVM$Heap@203f97d7
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.DalvikVM$Heap@42d72882
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: new class representation for de.ecspride.Button1 at fu.hao.trust.dvm.DalvikVM$Heap@42d72882
 class fu.hao.trust.dvm.DalvikVM - [DEBUG]: New method call: de.ecspride.Button1/<clinit>[]
 class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [0]<SPECIAL,ARGUMENT_SET,extra=[]>
 class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [1]<MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
@@ -34,10 +34,10 @@ class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: 0 class patdroid.core.Primit
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 11 53
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: 2 <STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(de.ecspride.Button1, imei)> at de.ecspride.Button1/<clinit>[]
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.DalvikVM$Heap@203f97d7
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.DalvikVM$Heap@203f97d7
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.DalvikVM$Heap@42d72882
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.DalvikVM$Heap@42d72882
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: expect sput imei from de.ecspride.Button1
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: real sput 0 from fu.hao.trust.dvm.DVMClass@655a6b10
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: real sput 0 from fu.hao.trust.dvm.DVMClass@43c4c648
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 2 3
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: 3 <RETURN,VOID> at de.ecspride.Button1/<clinit>[]
@@ -45,16 +45,16 @@ class fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID - [DEBUG]: return void
 class fu.hao.trust.dvm.DalvikVM - [DEBUG]: pc 0 0
 class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <RETURN,VOID>
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.app.Activity at fu.hao.trust.dvm.DalvikVM$Heap@203f97d7
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: new class representation for android.app.Activity at fu.hao.trust.dvm.DalvikVM$Heap@203f97d7
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass java.lang.Object at fu.hao.trust.dvm.DalvikVM$Heap@203f97d7
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: new class representation for java.lang.Object at fu.hao.trust.dvm.DalvikVM$Heap@203f97d7
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass java.lang.Object at fu.hao.trust.dvm.DalvikVM$Heap@203f97d7
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.app.Activity at fu.hao.trust.dvm.DalvikVM$Heap@203f97d7
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.DalvikVM$Heap@203f97d7
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.app.Activity at fu.hao.trust.dvm.DalvikVM$Heap@42d72882
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: new class representation for android.app.Activity at fu.hao.trust.dvm.DalvikVM$Heap@42d72882
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass java.lang.Object at fu.hao.trust.dvm.DalvikVM$Heap@42d72882
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: new class representation for java.lang.Object at fu.hao.trust.dvm.DalvikVM$Heap@42d72882
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass java.lang.Object at fu.hao.trust.dvm.DalvikVM$Heap@42d72882
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.app.Activity at fu.hao.trust.dvm.DalvikVM$Heap@42d72882
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.DalvikVM$Heap@42d72882
 class fu.hao.trust.dvm.DVMObject - [DEBUG]: New instance of de.ecspride.Button1
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.DalvikVM$Heap@203f97d7
-class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.DalvikVM$Heap@203f97d7
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.DalvikVM$Heap@42d72882
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.DalvikVM$Heap@42d72882
 class fu.hao.trust.dvm.Interpreter - [MSG]: RUN BEGIN de.ecspride.Button1/onCreate[android.os.Bundle]
 class fu.hao.trust.dvm.Interpreter - [MSG]: RUN BEGIN
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 15 12
@@ -73,7 +73,7 @@ class fu.hao.trust.dvm.Interpreter - [DEBUG]: null
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class: class android.app.Activity
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: expected para type: int
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: real para int
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: caller obj: android.app.Activity@7e98c0fe, from class: class android.app.Activity
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: caller obj: android.app.Activity@17b14695, from class: class android.app.Activity
 class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public void android.app.Activity.setContentView(int)
 class fu.hao.trust.analysis.Taint - [DEBUG]: <android.app.Activity: void setContentView(int)>
 class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint call: <android.app.Activity: void setContentView(int)>
@@ -87,15 +87,268 @@ class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 13
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: 5 <INVOKE,VIRTUAL,extra=[android.app.Activity/getSystemService[java.lang.String], [2, 1]]> at de.ecspride.Button1/onCreate[android.os.Bundle]
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: null
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class: class android.app.Activity
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: caller obj: android.app.Activity@2797e57c, from class: class android.app.Activity
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: return data: android.telephony.TelephonyManager@655b4432 ,class android.telephony.TelephonyManager
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: caller obj: android.app.Activity@7790ec59, from class: class android.app.Activity
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: return data: android.telephony.TelephonyManager@4b8d0462 ,class android.telephony.TelephonyManager
 class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public java.lang.Object android.app.Activity.getSystemService(java.lang.String)
 class fu.hao.trust.analysis.Taint - [DEBUG]: <android.app.Activity: java.lang.Object getSystemService(java.lang.String)>
 class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint call: <android.app.Activity: java.lang.Object getSystemService(java.lang.String)>
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: 6 <MOV,RESULT,dst=r0,type=java.lang.Object> at de.ecspride.Button1/onCreate[android.os.Bundle]
-class fu.hao.trust.dvm.Interpreter - [DEBUG]: data android.telephony.TelephonyManager@655b4432 android.telephony.TelephonyManager reg 0
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data android.telephony.TelephonyManager@4b8d0462 android.telephony.TelephonyManager reg 0
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 13 18
-class fu.hao.trust.dvm.Interpret
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 7 <ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.telephony.TelephonyManager> at de.ecspride.Button1/onCreate[android.os.Bundle]
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.telephony.TelephonyManager>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 8 <INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]> at de.ecspride.Button1/onCreate[android.os.Bundle]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: android.telephony.TelephonyManager@4b8d0462
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class: class android.telephony.TelephonyManager
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: return data: 359874043116909 ,class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public java.lang.String android.telephony.TelephonyManager.getDeviceId()
+class fu.hao.trust.analysis.Taint - [DEBUG]: <android.telephony.TelephonyManager: java.lang.String getDeviceId()>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 9 <MOV,RESULT,dst=r1,type=java.lang.Object> at de.ecspride.Button1/onCreate[android.os.Bundle]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data 359874043116909 java.lang.String reg 1
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg 1, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 11 53
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 10 <STATIC,SPUT,r0=r1,type=java.lang.Object,extra=(de.ecspride.Button1, imei)> at de.ecspride.Button1/onCreate[android.os.Bundle]
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.DalvikVM$Heap@42d72882
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.DalvikVM$Heap@42d72882
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: expect sput imei from de.ecspride.Button1
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: real sput 359874043116909 from fu.hao.trust.dvm.DVMClass@43c4c648
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.DalvikVM$Heap@42d72882
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.DalvikVM$Heap@42d72882
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg 1, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 2 3
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 11 <RETURN,VOID> at de.ecspride.Button1/onCreate[android.os.Bundle]
+class fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID - [DEBUG]: return void
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <RETURN,VOID>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg 1, reg -1]
+class fu.hao.trust.dvm.Interpreter - [MSG]: RUN DONE! The last one is onCreate
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: class de.ecspride.Button1
+class fu.hao.trust.dvm.DalvikVM - [MSG]: RUN Method de.ecspride.Button1/sendMessage[android.view.View]
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: New method call: de.ecspride.Button1/sendMessage[android.view.View]
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [0]<SPECIAL,ARGUMENT_SET,extra=[6, 7]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [1]<MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [2]<STATIC,SGET,r0=r1,type=java.lang.Object,extra=(de.ecspride.Button1, imei)>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [3]<MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?1>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [4]<HALT,STATIC,extra=[null, [6, 1, 3]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [5]<MOV,RESULT,dst=r1,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [6]<HALT,VIRTUAL,extra=[null, [1]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [7]<INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [8]<MOV,RESULT,dst=r0,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [9]<MOV,CONST,dst=r1,type=java.lang.String,extra="+49">
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [10]<STATIC,SGET,r0=r3,type=java.lang.Object,extra=(de.ecspride.Button1, imei)>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [11]<MOV,REG,dst=r4,r0=r2,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [12]<MOV,REG,dst=r5,r0=r2,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [13]<INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [14]<RETURN,VOID>
+class fu.hao.trust.dvm.Interpreter - [MSG]: RUN BEGIN de.ecspride.Button1/sendMessage[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [MSG]: RUN BEGIN
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 3 7
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 0 <SPECIAL,ARGUMENT_SET,extra=[6, 7]> at de.ecspride.Button1/sendMessage[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: args: fu.hao.trust.dvm.DVMObject@2bb5c3ba
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.view.View at fu.hao.trust.dvm.DalvikVM$Heap@42d72882
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: new class representation for android.view.View at fu.hao.trust.dvm.DalvikVM$Heap@42d72882
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.view.View at fu.hao.trust.dvm.DalvikVM$Heap@42d72882
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: New instance of android.view.View
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.view.View at fu.hao.trust.dvm.DalvikVM$Heap@42d72882
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.view.View at fu.hao.trust.dvm.DalvikVM$Heap@42d72882
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: args: fu.hao.trust.dvm.DVMObject@7605ba5d
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 1 <MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0> at de.ecspride.Button1/sendMessage[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 11 52
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 2 <STATIC,SGET,r0=r1,type=java.lang.Object,extra=(de.ecspride.Button1, imei)> at de.ecspride.Button1/sendMessage[android.view.View]
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.DalvikVM$Heap@42d72882
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.DalvikVM$Heap@42d72882
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: sget 359874043116909, from fu.hao.trust.dvm.DVMClass@43c4c648
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: expect sget imei, a java.lang.String from de.ecspride.Button1
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.DalvikVM$Heap@42d72882
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.DalvikVM$Heap@42d72882
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg 1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 3 <MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?1> at de.ecspride.Button1/sendMessage[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?1>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: 1 class patdroid.core.PrimitiveInfo
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg 1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 15 14
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 4 <HALT,STATIC,extra=[null, [6, 1, 3]]> at de.ecspride.Button1/sendMessage[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: cannot resolve the invocation
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <HALT,STATIC,extra=[null, [6, 1, 3]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg 1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 5 <MOV,RESULT,dst=r1,type=java.lang.Object> at de.ecspride.Button1/sendMessage[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data null null reg 1
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg 1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 15 13
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 6 <HALT,VIRTUAL,extra=[null, [1]]> at de.ecspride.Button1/sendMessage[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: cannot resolve the invocation
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <HALT,VIRTUAL,extra=[null, [1]]>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg 1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 14
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 7 <INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]> at de.ecspride.Button1/sendMessage[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class android.telephony.SmsManager
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: return data: android.telephony.SmsManager@39325d6b class android.telephony.SmsManager
+class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public static android.telephony.SmsManager android.telephony.SmsManager.getDefault()
+class fu.hao.trust.analysis.Taint - [DEBUG]: <android.telephony.SmsManager: android.telephony.SmsManager getDefault()>
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint call: <android.telephony.SmsManager: android.telephony.SmsManager getDefault()>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg 1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 8 <MOV,RESULT,dst=r0,type=java.lang.Object> at de.ecspride.Button1/sendMessage[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data android.telephony.SmsManager@39325d6b android.telephony.SmsManager reg 0
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg 1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 9 <MOV,CONST,dst=r1,type=java.lang.String,extra="+49"> at de.ecspride.Button1/sendMessage[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r1,type=java.lang.String,extra="+49">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: +49 class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 11 52
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 10 <STATIC,SGET,r0=r3,type=java.lang.Object,extra=(de.ecspride.Button1, imei)> at de.ecspride.Button1/sendMessage[android.view.View]
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.DalvikVM$Heap@42d72882
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.DalvikVM$Heap@42d72882
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: sget 359874043116909, from fu.hao.trust.dvm.DVMClass@43c4c648
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: expect sget imei, a java.lang.String from de.ecspride.Button1
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.DalvikVM$Heap@42d72882
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.DalvikVM$Heap@42d72882
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 3, 359874043116909]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 1
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 11 <MOV,REG,dst=r4,r0=r2,type=java.lang.Object> at de.ecspride.Button1/sendMessage[android.view.View]
+class fu.hao.trust.dvm.Interpreter$OP_MOVE_REG - [DEBUG]: mov 0 to 0
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 3, 359874043116909]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 1
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 12 <MOV,REG,dst=r5,r0=r2,type=java.lang.Object> at de.ecspride.Button1/sendMessage[android.view.View]
+class fu.hao.trust.dvm.Interpreter$OP_MOVE_REG - [DEBUG]: mov 0 to 0
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 3, 359874043116909]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 13 <INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]> at de.ecspride.Button1/sendMessage[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: android.telephony.SmsManager@39325d6b
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class: class android.telephony.SmsManager
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: caller obj: android.telephony.SmsManager@39325d6b, from class: class android.telephony.SmsManager
+class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public void android.telephony.SmsManager.sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)
+class fu.hao.trust.analysis.Taint - [DEBUG]: <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>
+class fu.hao.trust.analysis.Taint - [DEBUG]: Found a sink invocation. <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 3, 359874043116909]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 2 3
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 14 <RETURN,VOID> at de.ecspride.Button1/sendMessage[android.view.View]
+class fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID - [DEBUG]: return void
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <RETURN,VOID>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 3, 359874043116909]
+class fu.hao.trust.dvm.Interpreter - [MSG]: RUN DONE! The last one is sendMessage
+main - [DEBUG]: C:/Users/hao/workspace/TRUST/sootOutput/Callbacks_Button1.apk.csv
+main - [DEBUG]: Callbacks_Button2.apk
+main - [DEBUG]: C:/Users/hao/workspace/TRUST/sootOutput/Callbacks_Button2.apk_dummy.csv
+class fu.hao.trust.analysis.Taint - [DEBUG]: srcs: [<android.os.Bundle: java.lang.ClassLoader getClassLoader()>, <android.os.Bundle: byte getByte(java.lang.String)>, <android.os.Bundle: short[] getShortArray(java.lang.String)>, <android.content.ContentResolver: android.database.Cursor query(android.net.Uri,java.lang.String[],java.lang.String,java.lang.String[],java.lang.String)>, <android.database.Cursor: java.lang.String getString(int)>, <org.apache.http.util.EntityUtils: java.lang.String getContentCharSet(org.apache.http.HttpEntity)>, <android.os.Bundle: java.lang.CharSequence getCharSequence(java.lang.String,java.lang.CharSequence)>, <android.os.Bundle: java.lang.CharSequence[] getCharSequenceArray(java.lang.String)>, <android.os.Bundle: long[] getLongArray(java.lang.String)>, <android.os.Handler: android.os.Message obtainMessage(int,java.lang.Object)>, <android.media.AudioRecord: int read(short[],int,int)>, <android.os.Bundle: double getDouble(java.lang.String,double)>, <java.util.Locale: java.lang.String getCountry()>, <android.app.Activity: android.content.Intent getIntent()>, <android.os.Bundle: java.util.ArrayList getStringArrayList(java.lang.String key)>, <android.net.Uri: android.net.Uri parse(java.lang.String)>, <android.media.AudioRecord: int read(byte[],int,int)>, <android.content.pm.PackageManager: java.util.List queryContentProviders(java.lang.String,int,int)>, <android.os.Bundle: byte[] getByteArray(java.lang.String)>, <android.content.pm.PackageManager: java.util.List queryIntentActivities(android.content.Intent,int)>, <android.os.Bundle: java.util.ArrayList getParcelableArrayList(java.lang.String)>, <android.content.ContentResolver: android.database.Cursor query(android.net.Uri,java.lang.String[],java.lang.String,java.lang.String[],java.lang.String,android.os.CancellationSignal)>, <android.os.Handler: android.os.Message obtainMessage(int,int,int,java.lang.Object)>, <android.os.Bundle: int getInt(java.lang.String)>, <android.os.Bundle: float[] getFloatArray(java.lang.String)>, <android.os.Bundle: java.util.ArrayList getCharSequenceArrayList(java.lang.String)>, <android.os.Bundle: boolean getBoolean(java.lang.String,boolean)>, <android.os.Bundle: java.lang.String getString(java.lang.String)>, <java.util.Calendar: java.util.TimeZone getTimeZone()>, <android.os.Bundle: java.util.ArrayList getIntegerArrayList(java.lang.String)>, <android.location.Location: double getLongitude()>, <android.os.Bundle: char getChar(java.lang.String)>, <android.os.Bundle: int[] getIntArray(java.lang.String)>, <android.os.Bundle: float getFloat(java.lang.String,float)>, <org.apache.http.util.EntityUtils: java.lang.String toString(org.apache.http.HttpEntity)>, <org.apache.http.HttpResponse: org.apache.http.HttpEntity getEntity()>, <android.location.LocationManager: android.location.Location getLastKnownLocation(java.lang.String)>, <org.apache.http.util.EntityUtils: byte[] toByteArray(org.apache.http.HttpEntity)>, <android.content.pm.PackageManager: java.util.List queryIntentServices(android.content.Intent,int)>, <org.apache.http.util.EntityUtils: java.lang.String toString(org.apache.http.HttpEntity,java.lang.String)>, <java.net.URLConnection: java.io.InputStream getInputStream()>, <android.os.Bundle: double[] getDoubleArray(java.lang.String)>, <android.os.Bundle: char[] getCharArray(java.lang.String)>, <com.example.testflowdroid.SourceAndSink: java.lang.String source(com.example.testflowdroid.MyObject)>, <android.media.AudioRecord: int read(java.nio.ByteBuffer,int)>, <android.telephony.TelephonyManager: java.lang.String getSimSerialNumber()>, <android.os.Bundle: char getChar(java.lang.String,char)>, <android.telephony.TelephonyManager: java.lang.String getSubscriberId()>, <android.os.Bundle: java.io.Serializable getSerializable(java.lang.String)>, <android.app.PendingIntent: android.app.PendingIntent getService(android.content.Context,int,android.content.Intent,int)>, <android.os.Handler: android.os.Message obtainMessage(int,int,int)>, <android.os.Bundle: long getLong(java.lang.String)>, <android.os.Handler: android.os.Message obtainMessage(int)>, <android.os.Bundle: java.lang.Object get(java.lang.String)>, <android.location.Location: double getLatitude()>, <android.os.Bundle: boolean[] getBooleanArray(java.lang.String)>, <android.app.PendingIntent: android.app.PendingIntent getActivity(android.content.Context,int,android.content.Intent,int,android.os.Bundle)>, <android.telephony.TelephonyManager: java.lang.String getDeviceId()>, <android.content.pm.PackageManager: java.util.List getInstalledPackages(int)>, <java.net.URLConnection: java.io.OutputStream getOutputStream()>, <android.database.sqlite.SQLiteDatabase: android.database.Cursor query(android.net.Uri,java.lang.String[],java.lang.String,java.lang.String[],java.lang.String,android.os.CancellationSignal)>, <android.os.Bundle: int getInt(java.lang.String,int)>, <android.content.pm.PackageManager: java.util.List queryBroadcastReceivers(android.content.Intent,int)>, <android.os.Bundle: android.os.Bundle getBundle(java.lang.String)>, <android.os.Handler: android.os.Message obtainMessage()>, <android.telephony.TelephonyManager: java.lang.String getLine1Number()>, <android.os.Bundle: boolean getBoolean(java.lang.String)>, <android.os.Bundle: java.lang.Byte getByte(java.lang.String,byte)>, <android.os.Bundle: android.os.Parcelable[] getParcelableArray(java.lang.String)>, <android.app.PendingIntent: android.app.PendingIntent getBroadcast(android.content.Context,int,android.content.Intent,int)>, <android.os.Bundle: float getFloat(java.lang.String)>, <android.os.Bundle: java.lang.CharSequence getCharSequence(java.lang.String)>, <android.content.pm.PackageManager: java.util.List getInstalledApplications(int)>, <android.database.sqlite.SQLiteDatabase: android.database.Cursor query(android.net.Uri,java.lang.String[],java.lang.String,java.lang.String[],java.lang.String)>, <android.os.Bundle: short getShort(java.lang.String)>, <android.os.Bundle: short getShort(java.lang.String,short)>, <android.os.Bundle: double getDouble(java.lang.String)>, <java.net.URL: java.net.URLConnection openConnection()>, <android.os.Bundle: long getLong(java.lang.String,long)>, <android.os.Bundle: android.util.SparseArray getSparseParcelableArray(java.lang.String)>, <android.content.SharedPreferences: android.content.SharedPreferences getDefaultSharedPreferences(android.content.Context)>, <android.os.Bundle: android.os.Parcelable getParcelable(java.lang.String)>, <android.app.PendingIntent: android.app.PendingIntent getActivity(android.content.Context,int,android.content.Intent,int)>]
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: apk java.util.zip.ZipFile@ebb013f C:/Users/hao/workspace/DroidBenchProj/Callbacks_Button2/app/Callbacks_Button2.apk
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: class de.ecspride.Button2
+class fu.hao.trust.dvm.DalvikVM - [MSG]: RUN Method de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: New method call: de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [0]<SPECIAL,ARGUMENT_SET,extra=[4, 5]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [1]<MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [2]<INVOKE,VIRTUAL,extra=[android.app.Activity/getSystemService[java.lang.String], [4, 1]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [3]<MOV,RESULT,dst=r0,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [4]<ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.telephony.TelephonyManager>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [5]<INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [6]<MOV,RESULT,dst=r1,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [7]<INSTANCE,IPUT,r0=r4,r1=r1,type=java.lang.Object,extra=de.ecspride.Button2.imei>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [8]<MOV,CONST,dst=r1,type=java.lang.String,extra="TAG">
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [9]<NEW,INSTANCE,dst=r2,type=java.lang.StringBuilder>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [10]<INVOKE,DIRECT,extra=[java.lang.StringBuilder/<init>[], [2]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [11]<MOV,CONST,dst=r3,type=java.lang.String,extra="Button3: ">
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [12]<INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [2, 3]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [13]<MOV,RESULT,dst=r2,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [14]<INSTANCE,IGET,r0=r4,r1=r3,type=java.lang.Object,extra=de.ecspride.Button2.imei>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [15]<INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [2, 3]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [16]<MOV,RESULT,dst=r2,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [17]<INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/toString[], [2]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [18]<MOV,RESULT,dst=r2,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [19]<HALT,STATIC,extra=[null, [1, 2]]>
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: [20]<RETURN,VOID>
+class fu.hao.trust.dvm.Interpreter - [MSG]: RUN BEGIN de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [MSG]: RUN BEGIN
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 3 7
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 0 <SPECIAL,ARGUMENT_SET,extra=[4, 5]> at de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: args: fu.hao.trust.dvm.DVMObject@2bb5c3ba
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.view.View at fu.hao.trust.dvm.DalvikVM$Heap@12fa85c8
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: new class representation for android.view.View at fu.hao.trust.dvm.DalvikVM$Heap@12fa85c8
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.view.View at fu.hao.trust.dvm.DalvikVM$Heap@12fa85c8
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: New instance of android.view.View
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.view.View at fu.hao.trust.dvm.DalvikVM$Heap@12fa85c8
+class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.view.View at fu.hao.trust.dvm.DalvikVM$Heap@12fa85c8
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: args: fu.hao.trust.dvm.DVMObject@7d651733
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 1 <MOV,CONST,dst=r1,type=java.lang.String,extra="phone"> at de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: phone class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 2 <INVOKE,VIRTUAL,extra=[android.app.Activity/getSystemService[java.lang.String], [4, 1]]> at de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: fu.hao.trust.dvm.DVMObject@2bb5c3ba
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class: class android.app.Activity
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: caller obj: android.app.Activity@77d65595, from class: class android.app.Activity
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: return data: android.telephony.TelephonyManager@188ce6aa ,class android.telephony.TelephonyManager
+class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public java.lang.Object android.app.Activity.getSystemService(java.lang.String)
+class fu.hao.trust.analysis.Taint - [DEBUG]: <android.app.Activity: java.lang.Object getSystemService(java.lang.String)>
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint call: <android.app.Activity: java.lang.Object getSystemService(java.lang.String)>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 3 <MOV,RESULT,dst=r0,type=java.lang.Object> at de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data android.telephony.TelephonyManager@188ce6aa android.telephony.TelephonyManager reg 0
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 13 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 4 <ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.telephony.TelephonyManager> at de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.analysis.Taint - [DEBUG]: not a taint op <ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.telephony.TelephonyManager>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: []
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 5 <INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]> at de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: android.telephony.TelephonyManager@188ce6aa
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class: class android.telephony.TelephonyManager
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: return data: 359874043116909 ,class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public java.lang.String android.telephony.TelephonyManager.getDeviceId()
+class fu.hao.trust.analysis.Taint - [DEBUG]: <android.telephony.TelephonyManager: java.lang.String getDeviceId()>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 6 <MOV,RESULT,dst=r1,type=java.lang.Object> at de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data 359874043116909 java.lang.String reg 1
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 1, 359874043116909, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 9 55
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 7 <INSTANCE,IPUT,r0=r4,r1=r1,type=java.lang.Object,extra=de.ecspride.Button2.imei> at de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: field de.ecspride.Button2.imei
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: put field 359874043116909
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: put field 359874043116909 at fu.hao.trust.dvm.DVMObject@2bb5c3ba
+class fu.hao.trust.analysis.Taint - [DEBUG]: add 359874043116909
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [reg 1, 359874043116909, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 8 <MOV,CONST,dst=r1,type=java.lang.String,extra="TAG"> at de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r1,type=java.lang.String,extra="TAG">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: TAG class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 4 8
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 9 <NEW,INSTANCE,dst=r2,type=java.lang.StringBuilder> at de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reg 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 11
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 10 <INVOKE,DIRECT,extra=[java.lang.StringBuilder/<init>[], [2]]> at de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: null
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Init instance: 
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 11 <MOV,CONST,dst=r3,type=java.lang.String,extra="Button3: "> at de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r3,type=java.lang.String,extra="Button3: ">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: Button3:  class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: tainted set: [359874043116909, reg -1]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 12 <INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [2, 3]]> at de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class: class java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: caller obj: , from class: class java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: return data: Button3:  ,class java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public java.lang.StringBuilder java.lang.StringBuilder.append(java.lang.String)
+class fu.hao.trust.analysis.Taint - [DEBUG]: <java.lang.StringBuilder: java.lang.StringBuilder appe

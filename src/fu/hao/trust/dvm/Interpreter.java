@@ -1535,15 +1535,19 @@ public class Interpreter {
 			if (obj instanceof DVMObject) {
 				DVMObject dvmObj = (DVMObject) obj;
 				vm.getReg(inst.r1).type = fieldInfo.getFieldType();
-
+				
 				if (dvmObj.getFieldObj(fieldInfo) == null) {
+					if (fieldInfo.fieldName.equals("this$0")) {
+						dvmObj.setField(fieldInfo, vm.callbackOwner);
+					} else {
 					dvmObj.setField(fieldInfo,
 							new Unknown(fieldInfo.getFieldType()));
+					}
 				}
 
 				vm.getReg(inst.r1).data = dvmObj.getFieldObj(fieldInfo);
 
-				Log.debug(TAG, "get data: " + vm.getReg(inst.r1).data);
+				Log.debug(TAG, "Get data: " + vm.getReg(inst.r1).data);
 			} else {
 				// TODO reflection set field
 			}

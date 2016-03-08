@@ -13,18 +13,11 @@ public class Test {
 		String[] args = new String[3];
 		Settings.logLevel = 0;
 		
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Callbacks_Button1/app/";//ActivityLifecycle2.apk";
-		args[1] = "de.ecspride.MainActivity";
-		//args[2] = "onCreate";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Lifecycle_ActivityLifecycle1/app/";
 		Main.main(args);
+		//args[2] = "onCreate";
 		System.out.println("REs: " + Results.results.toString());
 
-		assertEquals(false, Results.results.isEmpty());
-		Map<String, String> res = new HashMap<>();
-		res.put("<java.net.URL: java.net.URLConnection openConnection()>",
-				"http://www.google.de/search?q=359874043116909");
-		System.out.print("REs: " + res.toString());
-		assertEquals(true, Results.results.contains(res));
 	}
 	
 	class dd {

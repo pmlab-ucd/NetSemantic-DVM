@@ -26,6 +26,11 @@ public class Main {
 	final static String TAG = "main";
 	
 	public static void main(String[] args) {
+		Main main = new Main();
+		main.run(args);
+	}
+	
+	public void run(String[] args) {
 		Results.reset();
 
 		// Settings.logLevel = 0;
@@ -114,7 +119,7 @@ public class Main {
 
 	}
 
-	public static void runMethod() {
+	public void runMethod() {
 		// DalvikVM vm = DalvikVM.v();
 		// Results.reset();
 		DalvikVM vm = new DalvikVM();
@@ -129,7 +134,7 @@ public class Main {
 		}
 	}
 
-	public static void runMethods(String[] items) {
+	public void runMethods(String[] items) {
 		// DalvikVM vm = DalvikVM.v();
 		// Results.reset();
 		DalvikVM vm = new DalvikVM();
