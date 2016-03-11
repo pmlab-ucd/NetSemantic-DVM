@@ -52,7 +52,7 @@ public class Taint extends Plugin {
 		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
 			// TODO array
 			Set<Object> out = new HashSet<>(in);
-			if (in.contains(vm.getReg(inst.r0))) {
+			if (in.contains(vm.getReg(inst.r0)) || in.contains(vm.getReg(inst.r0).getData())) {
 				out.add(vm.getReg(inst.rdst));
 				out.add(vm.getReg(inst.rdst).getData());
 			} else {
@@ -108,7 +108,7 @@ public class Taint extends Plugin {
 			if (callingCtx != null) {
 
 				for (int i = 0; i < callingCtx.length; i++) {
-					if (in.contains(callingCtx[i])) {
+					if (in.contains(callingCtx[i]) || in.contains(callingCtx[i].getData())) {
 						out.add(vm.getReg(params[i]));
 						out.add(callingCtx[i].getData());
 					}
@@ -132,14 +132,6 @@ public class Taint extends Plugin {
 		@Override
 		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
 			Set<Object> out = new HashSet<>(in);
-			if (in.contains(inst.rdst)) {
-				out.add(vm.getReg(inst.rdst));
-				out.add(vm.getReg(inst.rdst).getData());
-			} else {
-				if (out.contains(vm.getReg(inst.rdst))) {
-					out.remove(vm.getReg(inst.rdst));
-				}
-			}
 
 			return out;
 		}
@@ -209,7 +201,7 @@ public class Taint extends Plugin {
 
 				if (!mi.isStatic()) {
 					for (int i = 1; i < args.length; i++) {
-						if (in.contains(vm.getReg(args[i]))) {
+						if (in.contains(vm.getReg(args[i])) || in.contains(vm.getReg(args[i]))) {
 							Log.warn(TAG, "Found a tainted init instance!");
 							out.add(vm.getReg(args[0]));
 							out.add(vm.getReg(args[0]).getData());
@@ -246,7 +238,7 @@ public class Taint extends Plugin {
 			if (sinks.contains(sootSignature)) {
 				Log.debug(TAG, "Found a sink invocation. " + sootSignature);
 				for (int i = 0; i < args.length; i++) {
-					if (in.contains(vm.getReg(args[i]))) {
+					if (in.contains(vm.getReg(args[i])) || in.contains(vm.getReg(args[i]).getData())) {
 						Log.warn(TAG, "Found a taint sink " + sootSignature
 								+ " leaking data ["
 								+ vm.getReg(args[i]).getData() + "]!!!");
@@ -261,7 +253,6 @@ public class Taint extends Plugin {
 			}
 
 
-
 			// Add ret val?
 			if (sources.contains(sootSignature)) {
 				Log.warn(TAG, "Found a tainted return value!");
@@ -273,7 +264,7 @@ public class Taint extends Plugin {
 
 			if (vm.getReturnReg().getData() != null) {
 				for (int i = 0; i < args.length; i++) {
-					if (in.contains(vm.getReg(args[i]))) {
+					if (in.contains(vm.getReg(args[i])) || in.contains(vm.getReg(args[i]).getData())) {
 						Log.warn(TAG, "Found a tainted return val!");
 						out.add(vm.getReturnReg());
 						out.add(vm.getReturnReg().getData());
@@ -363,7 +354,7 @@ public class Taint extends Plugin {
 		@Override
 		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
 			Set<Object> out = new HashSet<>(in);
-			if (in.contains(vm.getReturnReg())) {
+			if (in.contains(vm.getReturnReg()) || in.contains(vm.getReturnReg().getData())) {
 				out.add(vm.getReg(inst.rdst));
 				out.add(vm.getReg(inst.rdst).getData());
 			} else {
@@ -443,11 +434,11 @@ public class Taint extends Plugin {
 		 */
 		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
 			Set<Object> out = new HashSet<>(in);
-			if (in.contains(vm.getReg(inst.r0))) {
+			if (in.contains(vm.getReg(inst.r0)) || in.contains(vm.getReg(inst.r0).getData())) {
 				out.add(vm.getReg(inst.rdst));
 				out.add(vm.getReg(inst.rdst).getData());
 			} else {
-				if (inst.r1 != -1 && in.contains(vm.getReg(inst.r1))) {
+				if (inst.r1 != -1 && (in.contains(vm.getReg(inst.r1)) || in.contains(vm.getReg(inst.r1).getData()))) {
 					out.add(vm.getReg(inst.rdst));
 					out.add(vm.getReg(inst.rdst).getData());
 				} else {
@@ -472,12 +463,12 @@ public class Taint extends Plugin {
 		 */
 		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
 			Set<Object> out = new HashSet<>(in);
-			if (in.contains(vm.getReg(inst.r0)) && inst.r1 != -1) {
+			if (inst.r0 != -1 && inst.r1 != -1 && (in.contains(vm.getReg(inst.r0)) || in.contains(vm.getReg(inst.r0).getData()))) {
 				out.add(vm.getReg(inst.r1));
 				out.add(vm.getReg(inst.r1).getData());
 			}
 
-			if (inst.r1 != -1 && in.contains(vm.getReg(inst.r1))) {
+			if (inst.r1 != -1 && (in.contains(vm.getReg(inst.r1)) || in.contains(vm.getReg(inst.r1).getData()))) {
 				out.add(vm.getReg(inst.r0));
 				out.add(vm.getReg(inst.r0).getData());
 			}
@@ -533,7 +524,7 @@ public class Taint extends Plugin {
 			Register rdst = vm.getReg(inst.rdst);
 
 			Set<Object> out = new HashSet<>(in);
-			if (in.contains(rdst)) {
+			if (in.contains(rdst) || in.contains(rdst.getData())) {
 				// array reg
 				Object[] array = (Object[]) vm.getReg(inst.r0).getData();
 				// index reg
@@ -631,7 +622,7 @@ public class Taint extends Plugin {
 		@Override
 		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
 			Set<Object> out = new HashSet<>(in);
-			if (in.contains(vm.getReg(inst.r0).getData())) {
+			if (in.contains(vm.getReg(inst.r0).getData()) || in.contains(vm.getReg(inst.r0).getData())) {
 				out.add(vm.getReg(inst.r0));
 				@SuppressWarnings("unchecked")
 				Pair<ClassInfo, String> pair = (Pair<ClassInfo, String>) inst.extra;
@@ -659,7 +650,7 @@ public class Taint extends Plugin {
 		@Override
 		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
 			Set<Object> out = new HashSet<>(in);
-			if (in.contains(vm.getReg(inst.r0))) {
+			if (in.contains(vm.getReg(inst.r0)) || in.contains(vm.getReg(inst.r0).getData())) {
 				Object obj = vm.getReg(inst.r0).getData();
 				if (obj instanceof DVMObject) {
 					out.add(vm.getReg(inst.r1));
@@ -672,7 +663,7 @@ public class Taint extends Plugin {
 			}
 
 			// if field is already tainted
-			if (in.contains(vm.getReg(inst.r1).getData())) {
+			if (in.contains(vm.getReg(inst.r1).getData()) || in.contains(vm.getReg(inst.r1).getData())) {
 				out.add(vm.getReg(inst.r1));
 			}
 
@@ -694,12 +685,12 @@ public class Taint extends Plugin {
 		@Override
 		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
 			Set<Object> out = new HashSet<>(in);
-			if (in.contains(vm.getReg(inst.r0))) {
+			if (in.contains(vm.getReg(inst.r0)) || in.contains(vm.getReg(inst.r0).getData())) {
 				Object obj = vm.getReg(inst.r0).getData();
 				out.add(obj);
 			}
 
-			if (in.contains(vm.getReg(inst.r1))) {
+			if (in.contains(vm.getReg(inst.r1)) || in.contains(vm.getReg(inst.r1).getData())) {
 				Object obj = vm.getReg(inst.r1).getData();
 				Log.debug(TAG, "add " + obj);
 				out.add(obj);

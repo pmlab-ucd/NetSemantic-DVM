@@ -8,6 +8,7 @@ import java.util.Map;
 
 import fu.hao.trust.dvm.DalvikVM.Register;
 import fu.hao.trust.dvm.DalvikVM.StackFrame;
+import fu.hao.trust.solver.InfluVar;
 import fu.hao.trust.solver.Unknown;
 import fu.hao.trust.utils.Log;
 import patdroid.core.ClassInfo;
@@ -1706,7 +1707,7 @@ public class Interpreter {
 					// TODO
 				}
 				jump(vm, inst, false);
-				Log.debug(TAG, "unknown branch");
+				Log.warn(TAG, "Unknown branch");
 				// TODO add constraint inconsistency check to rm unreachable
 				// code
 				return;
@@ -1764,7 +1765,7 @@ public class Interpreter {
 	 * @return void
 	 * @throws
 	 */
-	private void jump(DalvikVM vm, Instruction inst, boolean seq) {
+	public void jump(DalvikVM vm, Instruction inst, boolean seq) {
 		if (seq) {
 			if (vm.getCurrStackFrame() == null) {
 				vm.pc = Integer.MAX_VALUE;
@@ -1784,7 +1785,7 @@ public class Interpreter {
 
 	/**
 	 * @Title: invocation
-	 * @Author: hao
+	 * @Author: Hao Fu
 	 * @Description: invocation helper
 	 * @param @param vm
 	 * @param @param mi
@@ -1792,6 +1793,9 @@ public class Interpreter {
 	 * @throws
 	 */
 	public void invocation(DalvikVM vm, Instruction inst) {
+		vm.retValReg.type = null;
+		vm.retValReg.data = null;
+		
 		Object[] extra = (Object[]) inst.extra;
 		MethodInfo mi = (MethodInfo) extra[0];
 		// The register index referred by args
@@ -1837,7 +1841,7 @@ public class Interpreter {
 				}
 			} else {
 
-				Log.debug(TAG, "reflction class: " + clazz);
+				Log.debug(TAG, "Reflction class: " + clazz);
 
 				obj = vm.getReg(args[0]).data;
 				if (obj == null || obj instanceof DVMObject

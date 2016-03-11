@@ -510,6 +510,10 @@ public class DalvikVM {
 			runMethod(methods[0]);
 		}
 	}
+	
+	public void jump(Instruction inst, boolean then) {
+		interpreter.jump(this, inst, then);
+	}
 
 	/**
 	 * @Title: runMethod
