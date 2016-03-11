@@ -1885,7 +1885,7 @@ public class Interpreter {
 			invocation(vm, mi, inst, args);
 		} catch (Exception e) {
 			e.printStackTrace();
-			Log.err(TAG, "error in reflection");
+			Log.warn(TAG, "Error in reflection");
 			jump(vm, inst, true);
 		}
 

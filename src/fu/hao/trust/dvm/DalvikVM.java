@@ -319,7 +319,7 @@ public class DalvikVM {
 	
 	private Register[] callingCtx;
 	
-	// The instance of a component.
+	// The "this" instance of a component.
 	DVMObject callbackOwner;
 
 	Plugin plugin;

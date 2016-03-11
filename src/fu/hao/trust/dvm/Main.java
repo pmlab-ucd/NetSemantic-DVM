@@ -11,6 +11,8 @@ import java.util.zip.ZipException;
 
 import com.opencsv.CSVReader;
 
+import fu.hao.trust.analysis.ConditionAnalysis;
+import fu.hao.trust.analysis.Plugin;
 import fu.hao.trust.analysis.Results;
 import fu.hao.trust.analysis.Taint;
 import fu.hao.trust.utils.Log;
@@ -34,12 +36,21 @@ public class Main {
 		Results.reset();
 
 		// Settings.logLevel = 0;
+		Plugin plugin = null;
+		
+		for (int i = 0; i < args.length; i++) {
+			if (args[i] != null && args[i].equalsIgnoreCase("Taint")) {
+				plugin = new Taint();// Taint.v();
+			} else if (args[i] != null && args[i].equalsIgnoreCase("Cond")) {
+				plugin = new ConditionAnalysis();
+			}
+		}
 
 		if (args[2] != null && !"".equals(args[2])) {
 			Settings.apkPath = args[0];// + "app-release.apk";
 			Settings.suspClass = args[1];
 			Settings.suspMethod = args[2];
-			runMethod();
+			runMethod(plugin);
 			return;
 		}
 
@@ -87,7 +98,7 @@ public class Main {
 				CSVReader reader = new CSVReader(new FileReader(csv));
 
 				for (String[] items : reader.readAll()) {
-					runMethods(items);
+					runMethods(items, plugin);
 				}
 				
 				reader.close();
@@ -106,7 +117,7 @@ public class Main {
 					Settings.suspClass = items[0];
 					Settings.suspMethod = items[1];
 					Log.debug(TAG, items[0]);
-					runMethod();
+					runMethod(plugin);
 				}
 				
 				reader.close();
@@ -119,14 +130,13 @@ public class Main {
 
 	}
 
-	public void runMethod() {
+	public void runMethod(Plugin plugin) {
 		// DalvikVM vm = DalvikVM.v();
 		// Results.reset();
 		DalvikVM vm = new DalvikVM();
 		try {
-			Taint taint = new Taint();//Taint.v();
 			vm.runMethod(Settings.apkPath, Settings.suspClass,
-					Settings.suspMethod, taint);
+					Settings.suspMethod, plugin);
 		} catch (ZipException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -134,13 +144,12 @@ public class Main {
 		}
 	}
 
-	public void runMethods(String[] items) {
+	public void runMethods(String[] items, Plugin plugin) {
 		// DalvikVM vm = DalvikVM.v();
 		// Results.reset();
 		DalvikVM vm = new DalvikVM();
 		try {
-			Taint taint = new Taint();// Taint.v();
-			vm.runMethods(Settings.apkPath, items, taint);
+			vm.runMethods(Settings.apkPath, items, plugin);
 		} catch (ZipException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

@@ -11,10 +11,11 @@ import fu.hao.trust.analysis.Results;
 import fu.hao.trust.utils.Settings;
 
 public class MainTest2 {
-	String[] args = new String[3];
+	String[] args = new String[4];
 
 	public MainTest2() {
 		Settings.logLevel = 0;
+		args[3] = "Cond";
 	}
 
 	@Test

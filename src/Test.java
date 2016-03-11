@@ -10,12 +10,14 @@ import fu.hao.trust.utils.Settings;
 public class Test {
 	
 	public void testMain() {
-		String[] args = new String[3];
+		String[] args = new String[4];
 		Settings.logLevel = 0;
 		
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Lifecycle_ActivityLifecycle1/app/";
+		args[0] = "C:/Users/hao/workspace/PJApps/app/PJApps.apk";
+		args[1] = "fu.hao.pjapps.MainActivity";
+		args[2] = "onCreate";
+		args[3] = "Cond";
 		Main.main(args);
-		//args[2] = "onCreate";
 		System.out.println("REs: " + Results.results.toString());
 
 	}
@@ -45,8 +47,6 @@ public class Test {
 		c = new dd();
 		c.a = 3;
 	}
-	
-
 	
 	public void test() {
 		StringBuilder sb = new StringBuilder("hah");
