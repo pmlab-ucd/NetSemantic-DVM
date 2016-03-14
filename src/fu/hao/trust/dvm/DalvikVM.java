@@ -122,6 +122,18 @@ public class DalvikVM {
 		public Register getExceptReg() {
 			return exceptReg;
 		}
+		
+		public Instruction getInst(int index) {
+			return method.insns[index];
+		}
+		
+		public int getPC() {
+			return pc;
+		}
+		
+		public MethodInfo getMethod() {
+			return method;
+		}
 	}
 	
 	public LinkedList<StackFrame> cloneStack() {
@@ -281,6 +293,7 @@ public class DalvikVM {
 
 	public void restoreState() {
 		if (states.isEmpty()) {
+			plugin.condition = null;
 			return;
 		}
 		State state = popState();
@@ -292,7 +305,7 @@ public class DalvikVM {
 		plugin.currtRes = state.currtRes;
 		plugin.method = state.pluginMethod;
 		// It can be safely rm since <body> is in another direction.
-		unknownBranches.removeLast();
+		plugin.condition = unknownBranches.removeLast();
 	}
 
 	class State {

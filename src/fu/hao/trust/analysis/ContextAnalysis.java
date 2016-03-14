@@ -4,7 +4,6 @@ import java.util.Set;
 
 import patdroid.core.MethodInfo;
 import patdroid.dalvik.Instruction;
-import fu.hao.trust.analysis.Taint.TAINT_OP_INVOKE;
 import fu.hao.trust.dvm.DalvikVM;
 import fu.hao.trust.solver.InfluVar;
 

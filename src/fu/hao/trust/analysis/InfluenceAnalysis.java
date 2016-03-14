@@ -7,6 +7,7 @@ import patdroid.core.ClassInfo;
 import patdroid.core.MethodInfo;
 import patdroid.dalvik.Instruction;
 import fu.hao.trust.dvm.DalvikVM;
+import fu.hao.trust.dvm.DalvikVM.Register;
 import fu.hao.trust.solver.InfluVar;
 import fu.hao.trust.solver.Unknown;
 import fu.hao.trust.utils.Log;
@@ -20,6 +21,10 @@ import fu.hao.trust.utils.Log;
 public class InfluenceAnalysis extends Taint {
 	
 	final String TAG = "ForwardAnalysis";
+	
+	Set<MethodInfo> influencedAPI;
+	boolean recordAPI = false;
+	Instruction stopSign = null;
 
 	class COND_OP_IF implements Rule {
 		/**
@@ -32,8 +37,8 @@ public class InfluenceAnalysis extends Taint {
 		 */
 		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
 			TAINT_OP_IF taintOp = new TAINT_OP_IF();
-
 			Set<Object> out = taintOp.flow(vm, inst, in);
+			
 			
 
 			return out;
@@ -79,6 +84,15 @@ public class InfluenceAnalysis extends Taint {
 
 				}
 			}
+			
+			if (method != null && recordAPI) {
+				if (!here) {
+					influencedAPI.add(mi);
+					Log.warn(TAG, "Found influenced API " + mi);
+				} else {
+					recordAPI = false;
+				}
+			}
 
 			return out;
 		}
@@ -95,6 +109,29 @@ public class InfluenceAnalysis extends Taint {
 		}
 
 	}
+	
+	class COND_OP_RETURN_VOID implements Rule {
+
+		@Override
+		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+			Set<Object> out = new HashSet<>(in);
+			
+			if (condition != null) {
+				Register r0 = vm.getReg(condition.r0);
+				// If 
+				if (r0.getData() instanceof Unknown) {
+					stopSign = vm.getCurrStackFrame().getInst((int) condition.extra);
+					interested = stopSign;
+					recordAPI = true;
+				}
+			}
+			
+			
+			return out;
+		}
+
+	}
+	
 
 	public InfluenceAnalysis() {
 		super();
@@ -103,5 +140,7 @@ public class InfluenceAnalysis extends Taint {
 		byteCodes.put(0x08, new COND_OP_IF());
 		byteCodes.put(0x0C, new COND_OP_INVOKE());
 		auxByteCodes.put(0x15, new COND_OP_MOV_RESULT());
+		auxByteCodes.put(0x03, new COND_OP_RETURN_VOID());
+		influencedAPI = new HashSet<>();
 	}
 }

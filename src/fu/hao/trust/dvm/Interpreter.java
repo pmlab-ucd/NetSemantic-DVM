@@ -79,7 +79,7 @@ public class Interpreter {
 	class OP_RETURN_VOID implements ByteCode {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			Log.debug(getClass().toString(), "return void");
+			Log.debug(getClass().toString(), "Return void");
 			vm.backCallCtx(null);
 			jump(vm, inst, true);
 		}
@@ -2174,6 +2174,9 @@ public class Interpreter {
 
 		if (vm.plugin != null) {
 			vm.plugin.runAnalysis(vm, inst, vm.plugin.getCurrRes());
+			if (vm.plugin.interested == inst) {
+				vm.plugin.here = true;
+			}
 			Log.debug(TAG, "tainted set: " + vm.plugin.currtRes);
 		}
 	}
