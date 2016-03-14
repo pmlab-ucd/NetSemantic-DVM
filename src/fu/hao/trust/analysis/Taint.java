@@ -253,7 +253,7 @@ public class Taint extends Plugin {
 			}
 
 
-			// Add ret val?
+			// Add return val?
 			if (sources.contains(sootSignature)) {
 				Log.warn(TAG, "Found a tainted return value!");
 				out.add(vm.getReturnReg());
@@ -262,7 +262,7 @@ public class Taint extends Plugin {
 				Log.debug(TAG, "not a taint call: " + signature);
 			}
 
-			if (vm.getReturnReg().getData() != null) {
+			if (vm.getReturnReg().getData() != null || vm.getReturnReg().getType() != null) {
 				for (int i = 0; i < args.length; i++) {
 					if (in.contains(vm.getReg(args[i])) || in.contains(vm.getReg(args[i]).getData())) {
 						Log.warn(TAG, "Found a tainted return val!");

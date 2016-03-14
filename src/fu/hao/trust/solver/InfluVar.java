@@ -6,6 +6,7 @@ import java.util.Set;
 import patdroid.core.ClassInfo;
 import patdroid.dalvik.Dalvik;
 import patdroid.dalvik.Instruction;
+import patdroid.util.Log;
 
 /**
  * @ClassName: CtxVar
@@ -16,6 +17,18 @@ import patdroid.dalvik.Instruction;
 public class InfluVar {
 	Object var;
 	static Set<Class<?>> ctxList;
+	final String TAG = "InfluVar";
+	
+	static {
+		ctxList = new HashSet<>();
+		// ctxList.add(Dalvik.findClass("java.net.URLConnection"));
+		try {
+			ctxList.add(Class.forName("java.net.URLConnection"));
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 	public static boolean isCtxVar(Object obj) {
 		for (Class<?> clazz : ctxList) {
@@ -28,12 +41,7 @@ public class InfluVar {
 	}
 	
 	public InfluVar(Object obj) throws ClassNotFoundException {
-		if (ctxList == null) {
-			ctxList = new HashSet<>();
-			// ctxList.add(Dalvik.findClass("java.net.URLConnection"));
-			ctxList.add(Class.forName("java.net.URLConnection"));
-		}
-		
+		Log.warn(TAG, obj.toString());
 		var = obj;
 	}
 	

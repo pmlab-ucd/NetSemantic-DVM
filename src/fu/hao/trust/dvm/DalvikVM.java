@@ -56,6 +56,10 @@ public class DalvikVM {
 		public Object getData() {
 			return data;
 		}
+		
+		public ClassInfo getType() {
+			return type;
+		}
 
 		public String toString() {
 			return "reg " + count;
@@ -72,7 +76,7 @@ public class DalvikVM {
 		Set<Object> pluginRes;
 		DVMObject thisObj;
 		private Register[] regs = new Register[65536]; // locals
-		Register exceptReg; // Register to store exceptioal obj.
+		Register exceptReg; // Register to store exceptional obj.
 
 		StackFrame(MethodInfo method) {
 			this.method = method;
@@ -119,10 +123,10 @@ public class DalvikVM {
 	public LinkedList<StackFrame> cloneStack() {
 		LinkedList<StackFrame> newStack = new LinkedList<>();
 		for (StackFrame frame : stack) {
-			newStack.add(frame);
+			newStack.add(frame.clone());
 		}
 		
-		newStack.set(newStack.size() - 1, stack.getLast().clone());
+		// newStack.set(newStack.size() - 1, stack.getLast().clone());
 		
 		return newStack;
 	}
@@ -168,6 +172,7 @@ public class DalvikVM {
 	}
 
 	public State storeState() {
+		Log.warn(tag, "Store state! +++++++++++++++++++++++++++++++++++++++++++");
 		Heap backHeap = new Heap();
 
 		Map<DVMClass, DVMClass> classMap = new HashMap<>();
@@ -213,24 +218,25 @@ public class DalvikVM {
 			backHeap.setObj(dvmObj);
 		}
 
-		// backup jvm stack
+		// Backup jvm stack
 		LinkedList<StackFrame> newStack = cloneStack();
 
-		// backup retValReg
+		// Backup retValReg
 		Register returnReg = new Register();
 		returnReg.type = retValReg.type;
 		returnReg.data = backupField(retValReg.data, objMap);
 
-		// calling ctx
+		// Calling ctx
 		Register[] newCTX = null;
 		if (callingCtx != null) {
 			newCTX = new Register[callingCtx.length];
 			for (int i = 0; i < callingCtx.length; i++) {
+				newCTX[i] = new Register();
 				newCTX[i].copy(callingCtx[i]);
 			}
 		}
 
-		// FIXME backup plugin res
+		// FIXME Backup plugin res
 		Set<Object> currtRes = new HashSet<>();
 		currtRes.addAll(plugin.currtRes);
 		Method pluginMethod = plugin.method;
@@ -258,6 +264,12 @@ public class DalvikVM {
 	}
 
 	Stack<State> states = new Stack<>();
+	/**
+	 * @fieldName: unknownCond
+	 * @fieldType: Stack<Instruction>
+	 * @Description: To store the unknown branches met for this trace. 
+	 */
+	LinkedList<Instruction> unknownBranches = new LinkedList<>();
 
 	public State popState() {
 		return states.pop();
@@ -275,12 +287,16 @@ public class DalvikVM {
 		pc = state.pc;
 		plugin.currtRes = state.currtRes;
 		plugin.method = state.pluginMethod;
+		// It can be safely rm since <body> is in another direction.
+		unknownBranches.removeLast();
 	}
 
 	class State {
 		Heap heap;
 		int pc;
 		LinkedList<StackFrame> stack;
+		
+		//Instruction condition;
 
 		Register retValReg;
 

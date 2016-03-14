@@ -11,7 +11,8 @@ import java.util.zip.ZipException;
 
 import com.opencsv.CSVReader;
 
-import fu.hao.trust.analysis.ConditionAnalysis;
+import fu.hao.trust.analysis.ContextAnalysis;
+import fu.hao.trust.analysis.InfluenceAnalysis;
 import fu.hao.trust.analysis.Plugin;
 import fu.hao.trust.analysis.Results;
 import fu.hao.trust.analysis.Taint;
@@ -42,7 +43,9 @@ public class Main {
 			if (args[i] != null && args[i].equalsIgnoreCase("Taint")) {
 				plugin = new Taint();// Taint.v();
 			} else if (args[i] != null && args[i].equalsIgnoreCase("Cond")) {
-				plugin = new ConditionAnalysis();
+				plugin = new ContextAnalysis();
+			} else if (args[i] != null && args[i].equalsIgnoreCase("Forward")) {
+				plugin = new InfluenceAnalysis();
 			}
 		}
 

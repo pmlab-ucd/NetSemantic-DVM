@@ -8,7 +8,6 @@ import java.util.Map;
 
 import fu.hao.trust.dvm.DalvikVM.Register;
 import fu.hao.trust.dvm.DalvikVM.StackFrame;
-import fu.hao.trust.solver.InfluVar;
 import fu.hao.trust.solver.Unknown;
 import fu.hao.trust.utils.Log;
 import patdroid.core.ClassInfo;
@@ -697,10 +696,18 @@ public class Interpreter {
 		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
+			if (vm.getReg(inst.r0) != null && !vm.getReg(inst.r0).type.isPrimitive()) {
+				jump(vm, inst, true);
+				return;
+			} else if (vm.getReg(inst.r0) == null) {
+				jump(vm, inst, false);
+				return;
+			}
+			
 			PrimitiveInfo[] res = OP_CMP(vm, inst, true);
 			PrimitiveInfo op1 = res[0];
 			PrimitiveInfo op2 = res[1];
-			if (op1.equals(op2) || op1.booleanValue() == false) {
+			if (op1.isBoolean() && op1.booleanValue() == false || !op1.isBoolean() && op1.equals(op2)) {
 				jump(vm, inst, false);
 				Log.debug(TAG, "equ: " + inst);
 			} else {
@@ -724,12 +731,12 @@ public class Interpreter {
 			PrimitiveInfo[] res = OP_CMP(vm, inst, true);
 			PrimitiveInfo op1 = res[0];
 			PrimitiveInfo op2 = res[1];
-			if (!op1.equals(op2) || op1.booleanValue() == true) {
+			if (op1.isBoolean() && op1.booleanValue() == true || !op1.isBoolean() && !op1.equals(op2)) {
 				jump(vm, inst, false);
-				Log.debug(TAG, "not equ: " + inst);
+				Log.debug(TAG, "Not equ: " + op1);
 			} else {
 				jump(vm, inst, true);
-				Log.debug(TAG, "not equ: " + inst);
+				Log.debug(TAG, "Equ: " + inst);
 			}
 		}
 	}
@@ -1694,19 +1701,32 @@ public class Interpreter {
 			}
 
 			Unknown u0;
-
+			Log.debug(TAG, "r0 data " + r0.data);
 			if (r0.data == null) {
+				Log.warn(TAG, "Null operator found!");
 				r0.data = new Unknown(r0.type);
 			}
-
+			
 			if (r0.data instanceof Unknown) {
 				u0 = (Unknown) r0.data;
+				
 				u0.addConstriant(vm, inst);
+				
+				if (vm.unknownBranches.contains(inst)) {
+					Log.warn(TAG, "I am here");
+					jump(vm, inst, true);
+					// vm.states.pop();
+					return;
+				}
+				
+				vm.unknownBranches.push(inst);
 				vm.storeState();
 				if (r1 != null && r1.data instanceof Unknown) {
 					// TODO
 				}
+				
 				jump(vm, inst, false);
+				
 				Log.warn(TAG, "Unknown branch");
 				// TODO add constraint inconsistency check to rm unreachable
 				// code
@@ -1728,7 +1748,7 @@ public class Interpreter {
 	private PrimitiveInfo[] OP_CMP(DalvikVM vm, Instruction inst, boolean flagZ) {
 		Register r0 = vm.getReg(inst.r0);
 		/*
-		 * if (!r0.type.equals(r1.type)) { Log.err(TAG, "incosistent type " +
+		 * if (!r0.type.equals(r1.type)) { Log.err(TAG, "inconsistent type " +
 		 * inst); return null; }
 		 */
 		if (!(r0.data instanceof PrimitiveInfo)) {
@@ -1850,24 +1870,23 @@ public class Interpreter {
 				}
 				
 				//clazz = obj.getClass();
+				vm.retValReg.type = mi.returnType;
 				if (args.length == 1) {
 					method = clazz.getDeclaredMethod(mi.name);
 					vm.retValReg.data = method.invoke(obj);
 				} else {
 					getParams(vm, mi, args, argsClass, params);
 					method = clazz.getDeclaredMethod(mi.name, argsClass);
-					Log.debug(TAG, "caller obj: " + obj + ", from class: "
+					Log.debug(TAG, "Caller obj: " + obj + ", from class: "
 							+ obj.getClass().toString());
 					// handle return val
 					vm.retValReg.data = method.invoke(obj, params);
 				}
 				if (vm.retValReg.data != null) {
-					vm.retValReg.type = ClassInfo
-							.findOrCreateClass(vm.retValReg.data.getClass());
-					Log.debug(TAG, "return data: " + vm.retValReg.data + " ,"
+					Log.debug(TAG, "Return data: " + vm.retValReg.data + " ,"
 							+ vm.retValReg.data.getClass());
 				}
-				Log.msg(TAG, "reflction invocation " + method);
+				Log.msg(TAG, "Reflction invocation " + method);
 				
 			}
 			
