@@ -57,6 +57,10 @@ public class DalvikVM {
 			return data;
 		}
 		
+		public void setData(Object data) {
+			this.data = data; 
+		}
+		
 		public ClassInfo getType() {
 			return type;
 		}

@@ -3,12 +3,12 @@ package fu.hao.trust.analysis;
 import java.util.HashSet;
 import java.util.Set;
 
+import patdroid.core.ClassInfo;
 import patdroid.core.MethodInfo;
 import patdroid.dalvik.Instruction;
-import fu.hao.trust.analysis.Taint.TAINT_OP_INVOKE;
-import fu.hao.trust.analysis.Taint.TAINT_OP_MOV_RESULT;
 import fu.hao.trust.dvm.DalvikVM;
 import fu.hao.trust.solver.InfluVar;
+import fu.hao.trust.solver.Unknown;
 import fu.hao.trust.utils.Log;
 
 /**
@@ -57,10 +57,13 @@ public class InfluenceAnalysis extends Taint {
 			int[] args = (int[]) extra[1];
 
 			if (mi.name.contains("equals")) {
+				Log.warn(TAG, "dd found");
 				for (int i = 0; i < args.length; i++) {
-					if (InfluVar.isCtxVar(vm.getReg(args[i]).getData())) {
-						vm.storeState();
-						vm.jump(inst, false);
+					if (out.contains(vm.getReg(args[i]).getData())) {
+						//vm.storeState();
+						//vm.jump(inst, false);
+						Log.warn(TAG, "ddd found");
+						vm.getReturnReg().setData(new Unknown(ClassInfo.primitiveBoolean));
 					}
 				}
 			}
@@ -69,7 +72,7 @@ public class InfluenceAnalysis extends Taint {
 					&& InfluVar.isCtxVar(vm.getReturnReg().getData())) {
 				// If "this" is a CtxVar, add the return val as CtxVar
 				try {
-					InfluVar var = new InfluVar(vm.getReturnReg().getData());
+					//InfluVar var = new InfluVar(vm.getReturnReg().getData());
 					out.add(vm.getReturnReg().getData());
 					Log.warn(TAG, "Add new influing obj: " + vm.getReturnReg().getData());
 				} catch (Exception e) {
