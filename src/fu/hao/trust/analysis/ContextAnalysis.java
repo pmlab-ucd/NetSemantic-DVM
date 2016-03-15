@@ -24,6 +24,7 @@ public class ContextAnalysis extends Taint {
 	Set<MethodInfo> influencedAPI;
 	boolean recordAPI = false;
 	Instruction stopSign = null;
+	Set<String> netCalls;
 
 	class CTX_OP_IF implements Rule {
 		/**
@@ -75,8 +76,10 @@ public class ContextAnalysis extends Taint {
 
 			if (recordAPI) {
 				if (!here) {
-					influencedAPI.add(mi);
-					Log.warn(TAG, "Found influenced API " + mi);
+					if (isNetCall(mi.name)) {
+						influencedAPI.add(mi);
+						Log.warn(TAG, "Found influenced API " + mi);
+					}
 				} else {
 					recordAPI = false;
 					Log.warn(TAG, "Record API end");
@@ -164,6 +167,14 @@ public class ContextAnalysis extends Taint {
 		}
 
 	}
+	
+	private boolean isNetCall(String target) {
+		if (netCalls.contains(target)) {
+			return true;
+		}
+		
+		return false;
+	}
 
 	public ContextAnalysis() {
 		super();
@@ -175,5 +186,9 @@ public class ContextAnalysis extends Taint {
 		auxByteCodes.put(0x01, new CTX_OP_MOV_REG());
 		auxByteCodes.put(0x02, new CTX_OP_MOV_CONST());
 		influencedAPI = new HashSet<>();
+		netCalls = new HashSet<>();
+		
+		netCalls.add("openConnection");
+		
 	}
 }
