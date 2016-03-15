@@ -16,7 +16,7 @@ public class MainTest {
 
 	public MainTest() {
 		Settings.logLevel = 0;
-		args[3] = "Cond";
+		args[3] = "Taint";
 	}
 	
 	//@Test

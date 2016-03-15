@@ -2176,6 +2176,7 @@ public class Interpreter {
 			vm.plugin.runAnalysis(vm, inst, vm.plugin.getCurrRes());
 			if (vm.plugin.interested == inst) {
 				vm.plugin.here = true;
+				Log.warn(TAG, "HERE!" + vm.plugin.interested);
 			}
 			Log.debug(TAG, "tainted set: " + vm.plugin.currtRes);
 		}

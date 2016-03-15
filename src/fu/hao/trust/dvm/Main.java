@@ -42,9 +42,9 @@ public class Main {
 		for (int i = 0; i < args.length; i++) {
 			if (args[i] != null && args[i].equalsIgnoreCase("Taint")) {
 				plugin = new Taint();// Taint.v();
-			} else if (args[i] != null && args[i].equalsIgnoreCase("Cond")) {
+			} else if (args[i] != null && args[i].equalsIgnoreCase("Ctx")) {
 				plugin = new ContextAnalysis();
-			} else if (args[i] != null && args[i].equalsIgnoreCase("Forward")) {
+			} else if (args[i] != null && args[i].equalsIgnoreCase("Influ")) {
 				plugin = new InfluenceAnalysis();
 			}
 		}

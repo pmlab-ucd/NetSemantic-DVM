@@ -88,9 +88,9 @@ public class Log {
 	protected static void log(String tag, int theLevel, String title, String msg)
 			throws IOException {
 		if (theLevel >= Settings.logLevel) {
-			//Logger logger = LoggerFactory.getLogger(tag);
-			//logger.info(msg);
-			System.out.println(tag + "--" + msg);
+			Logger logger = LoggerFactory.getLogger(tag);
+			logger.info(msg);
+			//System.out.println(tag + "--" + msg);
 			writeLog(tag, theLevel, title, msg, out);
 		}
 	}

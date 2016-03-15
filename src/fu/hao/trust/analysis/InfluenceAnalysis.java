@@ -26,7 +26,7 @@ public class InfluenceAnalysis extends Taint {
 	boolean recordAPI = false;
 	Instruction stopSign = null;
 
-	class COND_OP_IF implements Rule {
+	class INFLU_OP_IF implements Rule {
 		/**
 		 * @Title: func
 		 * @Description: Helper func for if
@@ -45,7 +45,7 @@ public class InfluenceAnalysis extends Taint {
 		}
 	}
 
-	class COND_OP_INVOKE implements Rule {
+	class INFLU_OP_INVOKE implements Rule {
 		/**
 		 * @Title: func
 		 * @Description: Helper func for if
@@ -98,7 +98,7 @@ public class InfluenceAnalysis extends Taint {
 		}
 	}
 
-	class COND_OP_MOV_RESULT implements Rule {
+	class INFLU_OP_MOV_RESULT implements Rule {
 
 		@Override
 		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
@@ -110,7 +110,7 @@ public class InfluenceAnalysis extends Taint {
 
 	}
 	
-	class COND_OP_RETURN_VOID implements Rule {
+	class INFLU_OP_RETURN_VOID implements Rule {
 
 		@Override
 		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
@@ -126,7 +126,6 @@ public class InfluenceAnalysis extends Taint {
 				}
 			}
 			
-			
 			return out;
 		}
 
@@ -137,10 +136,10 @@ public class InfluenceAnalysis extends Taint {
 		super();
 		sources = new HashSet<>();
 		sinks = new HashSet<>();
-		byteCodes.put(0x08, new COND_OP_IF());
-		byteCodes.put(0x0C, new COND_OP_INVOKE());
-		auxByteCodes.put(0x15, new COND_OP_MOV_RESULT());
-		auxByteCodes.put(0x03, new COND_OP_RETURN_VOID());
+		byteCodes.put(0x08, new INFLU_OP_IF());
+		byteCodes.put(0x0C, new INFLU_OP_INVOKE());
+		auxByteCodes.put(0x15, new INFLU_OP_MOV_RESULT());
+		auxByteCodes.put(0x03, new INFLU_OP_RETURN_VOID());
 		influencedAPI = new HashSet<>();
 	}
 }
