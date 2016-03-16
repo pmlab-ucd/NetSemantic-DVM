@@ -3,21 +3,22 @@ package fu.hao.trust.solver;
 import java.util.HashSet;
 import java.util.Set;
 
+import fu.hao.trust.dvm.DalvikVM;
 import patdroid.core.ClassInfo;
 import patdroid.dalvik.Dalvik;
 import patdroid.dalvik.Instruction;
 import patdroid.util.Log;
 
 /**
- * @ClassName: CtxVar
- * @Description: Contextual Variable, e.g. URLConnection
+ * @ClassName: InfluVar
+ * @Description: Influencing Variable, e.g. URLConnection
  * @author: Hao Fu
  * @date: Mar 10, 2016 7:20:04 PM
  */
-public class InfluVar {
+public class InfluVar implements BiDirVar {
 	Object var;
 	static Set<Class<?>> ctxList;
-	final String TAG = "InfluVar";
+	final String TAG = "DynCtxVar";
 	
 	static {
 		ctxList = new HashSet<>();
@@ -30,7 +31,7 @@ public class InfluVar {
 		}
 	}
 	
-	public static boolean isCtxVar(Object obj) {
+	public static boolean isInfluVar(Object obj) {
 		for (Class<?> clazz : ctxList) {
 			if (clazz.isInstance(obj)) {
 				return true;
@@ -45,7 +46,9 @@ public class InfluVar {
 		var = obj;
 	}
 	
-	public void addConstraint(Instruction inst) {
+	@Override
+	public void addConstriant(DalvikVM vm, Instruction inst) {
+		// Null or not
 		
 	}
 

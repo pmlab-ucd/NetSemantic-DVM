@@ -13,11 +13,11 @@ import patdroid.dalvik.Instruction;
 
 /**
  * @ClassName: Unknown
- * @Description: Representation of a unknown variable.
+ * @Description: Representation of a unknown variable and its value is primitive.
  * @author: Hao Fu
  * @date: Feb 26, 2016 12:19:45 PM
  */
-public class Unknown {
+public class Unknown implements BiDirVar {
 	
 	Var var;
 	Store store;

@@ -39,7 +39,6 @@ public class InfluenceAnalysis extends Taint {
 			TAINT_OP_IF taintOp = new TAINT_OP_IF();
 			Set<Object> out = taintOp.flow(vm, inst, in);
 			
-			
 
 			return out;
 		}
@@ -74,7 +73,7 @@ public class InfluenceAnalysis extends Taint {
 			}
 
 			if (vm.getReturnReg().getData() != null
-					&& InfluVar.isCtxVar(vm.getReturnReg().getData())) {
+					&& InfluVar.isInfluVar(vm.getReturnReg().getData())) {
 				// If "this" is a CtxVar, add the return val as CtxVar
 				try {
 					//InfluVar var = new InfluVar(vm.getReturnReg().getData());

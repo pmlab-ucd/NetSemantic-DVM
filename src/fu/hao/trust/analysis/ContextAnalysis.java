@@ -3,11 +3,11 @@ package fu.hao.trust.analysis;
 import java.util.HashSet;
 import java.util.Set;
 
-import patdroid.core.ClassInfo;
 import patdroid.core.MethodInfo;
 import patdroid.dalvik.Instruction;
 import fu.hao.trust.dvm.DalvikVM;
 import fu.hao.trust.dvm.DalvikVM.Register;
+import fu.hao.trust.solver.SensCtxVar;
 import fu.hao.trust.solver.Unknown;
 import fu.hao.trust.utils.Log;
 
@@ -67,18 +67,19 @@ public class ContextAnalysis extends Taint {
 			Set<Object> out = taintOp.flow(vm, inst, in);
 			Object[] extra = (Object[]) inst.extra;
 			MethodInfo mi = (MethodInfo) extra[0];
+			int[] args = (int[]) extra[1];
 
 			if (out.size() != in.size()) {
 				Log.warn(TAG, "Dynamic Ctx Generator detected!");
 				vm.getReturnReg().setData(
-						new Unknown(ClassInfo.primitiveBoolean));
+						new SensCtxVar(mi.returnType));
 			}
 
 			if (recordAPI) {
 				if (!here) {
 					if (isNetCall(mi.name)) {
 						influencedAPI.add(mi);
-						Log.warn(TAG, "Found influenced API " + mi);
+						Log.warn(TAG, "Found influenced API " + mi + " " + vm.getReg(args[0]).getData());
 					}
 				} else {
 					recordAPI = false;
@@ -86,6 +87,7 @@ public class ContextAnalysis extends Taint {
 				}
 			}
 
+			Log.warn(TAG, "Ret value " + vm.getReturnReg().getData());
 			return out;
 		}
 	}

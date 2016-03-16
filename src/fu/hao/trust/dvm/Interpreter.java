@@ -8,6 +8,7 @@ import java.util.Map;
 
 import fu.hao.trust.dvm.DalvikVM.Register;
 import fu.hao.trust.dvm.DalvikVM.StackFrame;
+import fu.hao.trust.solver.BiDirVar;
 import fu.hao.trust.solver.Unknown;
 import fu.hao.trust.utils.Log;
 import patdroid.core.ClassInfo;
@@ -1700,15 +1701,15 @@ public class Interpreter {
 				r1 = vm.getReg(inst.r1);
 			}
 
-			Unknown u0;
+			BiDirVar u0;
 			Log.debug(TAG, "r0 data " + r0.data);
 			if (r0.data == null) {
 				Log.warn(TAG, "Null operator found!");
 				r0.data = new Unknown(r0.type);
 			}
 			
-			if (r0.data instanceof Unknown) {
-				u0 = (Unknown) r0.data;
+			if (r0.data instanceof BiDirVar) {
+				u0 = (BiDirVar) r0.data;
 				
 				u0.addConstriant(vm, inst);
 				
