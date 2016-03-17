@@ -22,14 +22,15 @@ public class DVMObject {
 	private final String TAG = getClass().toString();
 	private Object superObj = null;
 	private DalvikVM vm;
+	private int index;
 
 	public DVMObject(DalvikVM vm, ClassInfo type) {
 		this.vm = vm;
 		if (vm.getClass(type) == null) {
-			Log.debug(TAG, "New class representation of " + type);
+			Log.bb(TAG, "New class representation of " + type);
 			vm.setClass(type, new DVMClass(vm, type));
 		}
-		Log.debug(TAG, "New instance of " + type);
+		Log.bb(TAG, "New instance of " + type);
 		DVMClass dvmClass = vm.getClass(type);
 		this.setType(type);
 		this.setDvmClass(dvmClass);
@@ -133,6 +134,15 @@ public class DVMObject {
 		newObj.setSuperObj(superObj);
 		newObj.setDvmClass(dvmClass);
 		return newObj;
+	}
+	
+	public void setTag(int i) {
+		index = i;
+	}
+	
+	@Override
+	public String toString() {
+		return index + "@" + type;
 	}
 
 }

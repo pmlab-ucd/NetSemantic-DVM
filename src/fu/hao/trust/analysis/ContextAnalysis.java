@@ -1,6 +1,9 @@
 package fu.hao.trust.analysis;
 
+import java.lang.reflect.Method;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import patdroid.core.MethodInfo;
@@ -8,12 +11,12 @@ import patdroid.dalvik.Instruction;
 import fu.hao.trust.dvm.DalvikVM;
 import fu.hao.trust.dvm.DalvikVM.Register;
 import fu.hao.trust.solver.SensCtxVar;
-import fu.hao.trust.solver.Unknown;
 import fu.hao.trust.utils.Log;
 
 /**
  * @ClassName: Condition
- * @Description: Extract conditional factors.
+ * @Description: Extract the context of an API call: dep API and params (entry
+ *               point is recored by the static analysis).
  * @author: Hao Fu
  * @date: Mar 9, 2016 3:10:38 PM
  */
@@ -21,10 +24,14 @@ public class ContextAnalysis extends Taint {
 
 	final String TAG = "ContextAnalysis";
 
-	Set<MethodInfo> influencedAPI;
-	boolean recordAPI = false;
+	// Store visited target API calls, equivalent to influenced API in InfluenceAnalysis
+	Set<MethodInfo> targetCalls;
+	// Whether to record APIs will be visited.
+	boolean recordCall;
+	//Set<MethodInfo> recordCall;
 	Instruction stopSign = null;
-	Set<String> netCalls;
+	// Specification of the target APIs
+	Set<String> targetList;
 
 	class CTX_OP_IF implements Rule {
 		/**
@@ -35,18 +42,18 @@ public class ContextAnalysis extends Taint {
 		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
 		 *      patdroid.dalvik.Instruction)
 		 */
-		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+		public Map<Object, Method> flow(DalvikVM vm, Instruction inst, Map<Object, Method> in) {
 			TAINT_OP_IF taintOp = new TAINT_OP_IF();
-			Set<Object> out = taintOp.flow(vm, inst, in);
+			Map<Object, Method> out = taintOp.flow(vm, inst, in);
 
 			// Sensitive value exists in the branch
-			if (out.contains(vm.getReg(inst.r0))) {
-				stopSign = vm.getCurrStackFrame().getInst(
-						(int) inst.extra);
+			if (out.containsKey(vm.getReg(inst.r0))) {
+				stopSign = vm.getCurrStackFrame().getInst((int) inst.extra);
 				interested = stopSign;
-				recordAPI = true;
+				recordCall = true;
 				here = false;
-				Log.msg(TAG, "CTX_OP_IF: " + stopSign + " " + inst + " " + inst.extra);
+				Log.msg(TAG, "CTX_OP_IF: " + stopSign + " " + inst + " "
+						+ inst.extra);
 			}
 
 			return out;
@@ -62,27 +69,37 @@ public class ContextAnalysis extends Taint {
 		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
 		 *      patdroid.dalvik.Instruction)
 		 */
-		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+		public Map<Object, Method> flow(DalvikVM vm, Instruction inst, Map<Object, Method> in) {
 			TAINT_OP_INVOKE taintOp = new TAINT_OP_INVOKE();
-			Set<Object> out = taintOp.flow(vm, inst, in);
+			Map<Object, Method> out = taintOp.flow(vm, inst, in);
 			Object[] extra = (Object[]) inst.extra;
 			MethodInfo mi = (MethodInfo) extra[0];
 			int[] args = (int[]) extra[1];
 
 			if (out.size() != in.size()) {
-				Log.debug(TAG, "Ctx Generator detected! " + vm.getReturnReg().getData());
+				Log.debug(TAG, "Ctx-Generator detected! "
+						+ vm.getReturnReg().getData());
+				// Set return variable as a bidiVar
 				vm.getReturnReg().setData(
-						new SensCtxVar(mi.returnType, vm.getReturnReg().getData()));
+						new SensCtxVar(mi.returnType, vm.getReturnReg()
+								.getData()));
+				if (isSrc) {
+					// Record dep API
+					
+				}
 			}
 
-			if (recordAPI) {
+			if (recordCall) {
 				if (!here) {
 					if (isNetCall(mi.name)) {
-						influencedAPI.add(mi);
-						Log.warn(TAG, "Found influenced API " + mi + " with Param " + vm.getReg(args[0]).getData());
+						targetCalls.add(mi);
+						Log.warn(TAG, "Found influenced API: " + mi
+								+ ", its Param: "
+								+ vm.getReg(args[0]).getData()
+								+ ", it deps on API: ");
 					}
 				} else {
-					recordAPI = false;
+					recordCall = false;
 					Log.msg(TAG, "Record API end");
 				}
 			}
@@ -95,9 +112,9 @@ public class ContextAnalysis extends Taint {
 	class CTX_OP_MOV_RESULT implements Rule {
 
 		@Override
-		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+		public Map<Object, Method> flow(DalvikVM vm, Instruction inst, Map<Object, Method> in) {
 			TAINT_OP_MOV_RESULT taintOp = new TAINT_OP_MOV_RESULT();
-			Set<Object> out = taintOp.flow(vm, inst, in);
+			Map<Object, Method> out = taintOp.flow(vm, inst, in);
 
 			return out;
 		}
@@ -107,19 +124,19 @@ public class ContextAnalysis extends Taint {
 	class CTX_OP_RETURN_VOID implements Rule {
 
 		@Override
-		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
-			Set<Object> out = new HashSet<>(in);
-
+		public Map<Object, Method> flow(DalvikVM vm, Instruction inst, Map<Object, Method> in) {
+			Map<Object, Method> out = new HashMap<>(in);
+			// If stored bidir condition is not empty
 			if (condition != null) {
 				Register r0 = vm.getReg(condition.r0);
-				// If
-				if (r0.getData() instanceof Unknown) {
+				if (r0.getData() instanceof SensCtxVar) {
 					stopSign = vm.getCurrStackFrame().getInst(
 							(int) condition.extra);
 					interested = stopSign;
-					recordAPI = true;
+					recordCall = true;
 					here = false;
-					Log.msg(TAG, "Record API Begin " + stopSign + " " + condition + " " + condition.extra);
+					Log.msg(TAG, "Record API Begin " + stopSign + " "
+							+ condition + " " + condition.extra);
 				}
 			}
 
@@ -127,19 +144,21 @@ public class ContextAnalysis extends Taint {
 		}
 
 	}
-	
+
 	class CTX_OP_MOV_CONST implements Rule {
 
 		@Override
-		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
-			Set<Object> out = new HashSet<>(in);
+		public Map<Object, Method> flow(DalvikVM vm, Instruction inst, Map<Object, Method> in) {
+			Map<Object, Method> out = new HashMap<>(in);
 
-			if (recordAPI) {
+			if (recordCall) {
 				if (!here) {
-					out.add(vm.getReg(inst.rdst));
-					Log.warn(TAG, "Found influenced var at " + vm.getReg(inst.rdst));
+					// FIXME
+					out.put(vm.getReg(inst.rdst), null);
+					Log.warn(TAG,
+							"Found influenced var at " + vm.getReg(inst.rdst));
 				} else {
-					recordAPI = false;
+					recordCall = false;
 					Log.msg(TAG, "Record API end");
 				}
 			}
@@ -148,19 +167,21 @@ public class ContextAnalysis extends Taint {
 		}
 
 	}
-	
+
 	class CTX_OP_MOV_REG implements Rule {
 
 		@Override
-		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
-			Set<Object> out = new HashSet<>(in);
+		public Map<Object, Method> flow(DalvikVM vm, Instruction inst, Map<Object, Method> in) {
+			Map<Object, Method> out = new HashMap<>(in);
 
-			if (recordAPI) {
+			if (recordCall) {
 				if (!here) {
-					out.add(vm.getReg(inst.rdst));
-					Log.warn(TAG, "Found influenced var at " + vm.getReg(inst.rdst));
+					// FIXME
+					out.put(vm.getReg(inst.rdst), null);
+					Log.warn(TAG,
+							"Found influenced var at " + vm.getReg(inst.rdst));
 				} else {
-					recordAPI = false;
+					recordCall = false;
 					Log.msg(TAG, "Record API end");
 				}
 			}
@@ -169,17 +190,18 @@ public class ContextAnalysis extends Taint {
 		}
 
 	}
-	
+
 	private boolean isNetCall(String target) {
-		if (netCalls.contains(target)) {
+		if (targetList.contains(target)) {
 			return true;
 		}
-		
+
 		return false;
 	}
 
 	public ContextAnalysis() {
 		super();
+		recordCall = false;// new HashSet<>();
 		sinks = new HashSet<>();
 		byteCodes.put(0x08, new CTX_OP_IF());
 		byteCodes.put(0x0C, new CTX_OP_INVOKE());
@@ -187,10 +209,10 @@ public class ContextAnalysis extends Taint {
 		auxByteCodes.put(0x03, new CTX_OP_RETURN_VOID());
 		auxByteCodes.put(0x01, new CTX_OP_MOV_REG());
 		auxByteCodes.put(0x02, new CTX_OP_MOV_CONST());
-		influencedAPI = new HashSet<>();
-		netCalls = new HashSet<>();
-		
-		netCalls.add("openConnection");
-		
+		targetCalls = new HashSet<>();
+		targetList = new HashSet<>();
+
+		targetList.add("openConnection");
+
 	}
 }

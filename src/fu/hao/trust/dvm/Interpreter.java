@@ -4,7 +4,6 @@ import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 
 import fu.hao.trust.dvm.DalvikVM.Register;
@@ -1464,6 +1463,7 @@ public class Interpreter {
 		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
+			final String TAG = getClass().toString();
 			@SuppressWarnings("unchecked")
 			Pair<ClassInfo, String> pair = (Pair<ClassInfo, String>) inst.extra;
 
@@ -1510,6 +1510,7 @@ public class Interpreter {
 		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
+			final String TAG = getClass().toString();
 			// owner and field.getName
 			@SuppressWarnings("unchecked")
 			Pair<ClassInfo, String> pair = (Pair<ClassInfo, String>) inst.extra;
@@ -1543,10 +1544,11 @@ public class Interpreter {
 		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
+			final String TAG = getClass().toString();
 			FieldInfo fieldInfo = (FieldInfo) inst.extra;
 			Object obj = vm.getReg(inst.r0).data;
-			Log.debug(TAG, "obj " + obj);
-			Log.warn(TAG, "fieldinfo " + fieldInfo);
+			Log.bb(TAG, "obj " + obj);
+			Log.bb(TAG, "fieldinfo " + fieldInfo);
 			if (obj instanceof DVMObject) {
 				DVMObject dvmObj = (DVMObject) obj;
 				vm.getReg(inst.r1).type = fieldInfo.getFieldType();
@@ -1584,14 +1586,15 @@ public class Interpreter {
 		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
+			final String TAG = getClass().toString();
 			FieldInfo fieldInfo = (FieldInfo) inst.extra;
-			Log.debug(TAG, "field " + fieldInfo);
+			Log.bb(TAG, "field " + fieldInfo);
 			Object obj = vm.getReg(inst.r0).data;
 			if (obj instanceof DVMObject) {
 				DVMObject dvmObj = (DVMObject) obj;
 				dvmObj.setField(fieldInfo, vm.getReg(inst.r1).data);
-				Log.debug(TAG, "put field " + dvmObj.getFieldObj(fieldInfo)
-						+ " at " + dvmObj);
+				Log.msg(TAG, "Put field " + dvmObj.getFieldObj(fieldInfo)
+						+ " to the field of " + dvmObj);
 			} else {
 				// TODO reflection set field
 			}
@@ -1827,14 +1830,14 @@ public class Interpreter {
 		MethodInfo mi = (MethodInfo) extra[0];
 		// The register index referred by args
 		int[] args = (int[]) extra[1];
-
+		final String TAG = getClass().toString();
 		Object obj = null;
 		Method method = null;
 		try {
 			// If applicable, directly use reflection to run the method,
 			// the method is inside java.lang
 			// Class<?> clazz = Class.forName(mi.myClass.toString());
-			Log.debug(TAG, "" + vm.getReg(args[0]).data);
+			Log.bb(TAG, "arg0 obj: " + vm.getReg(args[0]).data);
 			Class<?> clazz;
 			// if (vm.getReg(args[0]).data == null) {
 			clazz = Class.forName(mi.myClass.toString());
@@ -2195,7 +2198,7 @@ public class Interpreter {
 
 		if (vm.plugin != null && vm.getCurrStackFrame() != null) {
 			vm.plugin.runAnalysis(vm, inst, vm.plugin.getCurrRes());
-			vm.getCurrStackFrame().pluginRes = new HashSet<>(vm.plugin.currtRes);
+			vm.getCurrStackFrame().pluginRes = new HashMap<>(vm.plugin.currtRes);
 			if (vm.plugin.interested == inst) {
 				vm.plugin.here = true;
 				Log.warn(TAG, "HERE!" + vm.plugin.interested);

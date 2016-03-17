@@ -13,10 +13,15 @@ public class Test {
 		String[] args = new String[4];
 		Settings.logLevel = 0;
 		
-		args[0] = "C:/Users/hao/workspace/PJApps/app/PJApps.apk";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FieldAndObjectSensitivity_FieldSensitivity2/app/app-release.apk";
+		args[1] = "de.ecspride.FieldSensitivity2";
+		args[2] = "onCreate";
+		args[3] = "Taint";
+		
+		/*args[0] = "C:/Users/hao/workspace/PJApps/app/PJApps.apk";
 		args[1] = "fu.hao.pjapps.MainActivity";
 		args[2] = "testCtx";
-		args[3] = "Ctx";
+		args[3] = "Ctx";*/
 		/*args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_VirtualDispatch1/app/";
 		args[1] = "de.ecspride.VirtualDispatch1";
 		args[2] = null;

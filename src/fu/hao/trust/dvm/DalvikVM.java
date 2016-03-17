@@ -88,7 +88,7 @@ public class DalvikVM {
 		// but it's easier to implement in our case
 		// since we know we do not need pc to cross procedure
 		int pc;
-		Set<Object> pluginRes;
+		Map<Object, Method> pluginRes;
 		DVMObject thisObj;
 		private Register[] regs = new Register[65536]; // locals
 		Register exceptReg; // Register to store exceptional obj.
@@ -97,7 +97,7 @@ public class DalvikVM {
 			this.method = method;
 			pc = 0;
 			retValReg = new Register();
-			pluginRes = new HashSet<>();
+			pluginRes = new HashMap<>();
 			
 			for (int i = 0; i < regs.length; i++) {
 				regs[i] = new Register();
@@ -118,23 +118,23 @@ public class DalvikVM {
 			StackFrame frame = new StackFrame(method);
 			frame.thisObj = thisObj;
 			frame.pc = pc;
-			frame.pluginRes.addAll(pluginRes);
+			frame.pluginRes = new HashMap<>(pluginRes);
 			
 			for (int i = 0; i < regs.length; i++) {
 				frame.regs[i].copy(regs[i], objMap, classMap);
-				if (pluginRes.contains(regs[i])) {
+				if (pluginRes.containsKey(regs[i])) {
 					frame.pluginRes.remove(regs[i]);
-					frame.pluginRes.add(frame.regs[i]);
+					frame.pluginRes.put(frame.regs[i], pluginRes.get(regs[i]));
 				}
 			}
 			
-			for (Object obj : pluginRes) {
+			for (Object obj : pluginRes.keySet()) {
 				if (obj instanceof DVMClass) {
 					frame.pluginRes.remove(obj);
-					frame.pluginRes.add(classMap.get(obj));
+					frame.pluginRes.put(classMap.get(obj), pluginRes.get(obj));
 				} else if (obj instanceof DVMObject) {
 					frame.pluginRes.remove(obj);
-					frame.pluginRes.add(objMap.get(obj));
+					frame.pluginRes.put(objMap.get(obj), pluginRes.get(obj));
 				}
 			}
 			Log.debug(tag, "BB " + pluginRes);
@@ -205,6 +205,7 @@ public class DalvikVM {
 				dvmObjs.put(type, new HashSet<DVMObject>());
 			}
 			dvmObjs.get(type).add(dvmObj);
+			dvmObj.setTag(dvmObjs.get(type).size());
 		}
 
 		public void setObj(DVMObject dvmObj) {
@@ -212,6 +213,7 @@ public class DalvikVM {
 				dvmObjs.put(dvmObj.getType(), new HashSet<DVMObject>());
 			}
 			dvmObjs.get(dvmObj.getType()).add(dvmObj);
+			dvmObj.setTag(dvmObjs.get(dvmObj.getType()).size());
 		}
 	}
 
@@ -482,14 +484,14 @@ public class DalvikVM {
 			StackFrame currtStack = stack.getLast();
 			pc = currtStack.pc;
 
-			for (Object res : plugin.currtRes) {
+			for (Object res : plugin.currtRes.keySet()) {
 				if (res instanceof Register) {
 					if (res == retReg) {
-						currtStack.pluginRes.add(retValReg);
+						currtStack.pluginRes.put(retValReg, plugin.currtRes.get(res));
 					}
 					continue;
 				}
-				currtStack.pluginRes.add(res);
+				currtStack.pluginRes.put(res, plugin.currtRes.get(res));
 			}
 			plugin.currtRes = currtStack.pluginRes;
 

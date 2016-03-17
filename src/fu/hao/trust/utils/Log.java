@@ -84,6 +84,16 @@ public class Log {
 		}
 		System.exit(r);
 	}
+	
+	public static void bb(String TAG, String msg) {
+		System.out.println("[" + TAG + "] - " + msg);
+		try {
+			writeLog(TAG, 0, TAG, msg, out);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	protected static void log(String TAG, int theLevel, String title, String msg)
 			throws IOException {

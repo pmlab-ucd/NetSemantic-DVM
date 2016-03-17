@@ -1,10 +1,11 @@
 package fu.hao.trust.analysis;
 
-import java.util.Set;
+import java.lang.reflect.Method;
+import java.util.Map;
 
 import fu.hao.trust.dvm.DalvikVM;
 import patdroid.dalvik.Instruction;
 
 interface Rule {
-    Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in);
+    Map<Object, Method> flow(DalvikVM vm, Instruction inst, Map<Object, Method> in);
 }

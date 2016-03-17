@@ -1,6 +1,9 @@
 package fu.hao.trust.analysis;
 
+import java.lang.reflect.Method;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import patdroid.core.ClassInfo;
@@ -35,9 +38,9 @@ public class InfluenceAnalysis extends Taint {
 		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
 		 *      patdroid.dalvik.Instruction)
 		 */
-		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+		public Map<Object, Method> flow(DalvikVM vm, Instruction inst, Map<Object, Method> in) {
 			TAINT_OP_IF taintOp = new TAINT_OP_IF();
-			Set<Object> out = taintOp.flow(vm, inst, in);
+			Map<Object, Method> out = taintOp.flow(vm, inst, in);
 			
 
 			return out;
@@ -53,9 +56,9 @@ public class InfluenceAnalysis extends Taint {
 		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
 		 *      patdroid.dalvik.Instruction)
 		 */
-		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+		public Map<Object, Method> flow(DalvikVM vm, Instruction inst, Map<Object, Method> in) {
 			TAINT_OP_INVOKE taintOp = new TAINT_OP_INVOKE();
-			Set<Object> out = taintOp.flow(vm, inst, in);
+			Map<Object, Method> out = taintOp.flow(vm, inst, in);
 			Object[] extra = (Object[]) inst.extra;
 			MethodInfo mi = (MethodInfo) extra[0];
 			int[] args = (int[]) extra[1];
@@ -63,7 +66,7 @@ public class InfluenceAnalysis extends Taint {
 			if (mi.name.contains("equals")) {
 				Log.warn(TAG, "dd found");
 				for (int i = 0; i < args.length; i++) {
-					if (out.contains(vm.getReg(args[i]).getData())) {
+					if (out.containsKey(vm.getReg(args[i]).getData())) {
 						//vm.storeState();
 						//vm.jump(inst, false);
 						Log.warn(TAG, "ddd found");
@@ -77,7 +80,8 @@ public class InfluenceAnalysis extends Taint {
 				// If "this" is a CtxVar, add the return val as CtxVar
 				try {
 					//InfluVar var = new InfluVar(vm.getReturnReg().getData());
-					out.add(vm.getReturnReg().getData());
+					// FIXME
+					out.put(vm.getReturnReg().getData(), null);
 					Log.warn(TAG, "Add new influing obj: " + vm.getReturnReg().getData());
 				} catch (Exception e) {
 
@@ -100,9 +104,9 @@ public class InfluenceAnalysis extends Taint {
 	class INFLU_OP_MOV_RESULT implements Rule {
 
 		@Override
-		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
+		public Map<Object, Method> flow(DalvikVM vm, Instruction inst, Map<Object, Method> in) {
 			TAINT_OP_MOV_RESULT taintOp = new TAINT_OP_MOV_RESULT();
-			Set<Object> out = taintOp.flow(vm, inst, in);
+			Map<Object, Method> out = taintOp.flow(vm, inst, in);
 
 			return out;
 		}
@@ -112,8 +116,8 @@ public class InfluenceAnalysis extends Taint {
 	class INFLU_OP_RETURN_VOID implements Rule {
 
 		@Override
-		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
-			Set<Object> out = new HashSet<>(in);
+		public Map<Object, Method> flow(DalvikVM vm, Instruction inst, Map<Object, Method> in) {
+			Map<Object, Method> out = new HashMap<>(in);
 			
 			if (condition != null) {
 				Register r0 = vm.getReg(condition.r0);
