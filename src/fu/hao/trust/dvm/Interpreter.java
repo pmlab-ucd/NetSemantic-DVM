@@ -4,6 +4,7 @@ import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 import fu.hao.trust.dvm.DalvikVM.Register;
@@ -2192,8 +2193,9 @@ public class Interpreter {
 			Log.err(TAG, "unsupported opcode " + inst);
 		}
 
-		if (vm.plugin != null) {
+		if (vm.plugin != null && vm.getCurrStackFrame() != null) {
 			vm.plugin.runAnalysis(vm, inst, vm.plugin.getCurrRes());
+			vm.getCurrStackFrame().pluginRes = new HashSet<>(vm.plugin.currtRes);
 			if (vm.plugin.interested == inst) {
 				vm.plugin.here = true;
 				Log.warn(TAG, "HERE!" + vm.plugin.interested);

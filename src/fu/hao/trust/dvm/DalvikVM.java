@@ -47,6 +47,17 @@ public class DalvikVM {
 			this.type = y.type;
 			this.data = y.data;
 		}
+		
+		public void copy(Register y, Map<DVMObject, DVMObject> objMap, Map<DVMClass, DVMClass> classMap) {
+			this.type = y.type;
+			this.data = y.data;
+			
+			if (this.data instanceof DVMObject) {
+				this.data = objMap.get(y.data);
+			} else if (this.data instanceof DVMClass) {
+				this.data = classMap.get(y.data);
+			}
+		}
 
 		public void copy(ClassInfo type, Object data) {
 			this.type = type;
@@ -103,19 +114,32 @@ public class DalvikVM {
 
 		}
 
-		public StackFrame clone() {
+		public StackFrame clone(Map<DVMObject, DVMObject> objMap, Map<DVMClass, DVMClass> classMap) {
 			StackFrame frame = new StackFrame(method);
 			frame.thisObj = thisObj;
 			frame.pc = pc;
 			frame.pluginRes.addAll(pluginRes);
 			
 			for (int i = 0; i < regs.length; i++) {
-				frame.regs[i].copy(regs[i]);
+				frame.regs[i].copy(regs[i], objMap, classMap);
 				if (pluginRes.contains(regs[i])) {
 					frame.pluginRes.remove(regs[i]);
 					frame.pluginRes.add(frame.regs[i]);
 				}
 			}
+			
+			for (Object obj : pluginRes) {
+				if (obj instanceof DVMClass) {
+					frame.pluginRes.remove(obj);
+					frame.pluginRes.add(classMap.get(obj));
+				} else if (obj instanceof DVMObject) {
+					frame.pluginRes.remove(obj);
+					frame.pluginRes.add(objMap.get(obj));
+				}
+			}
+			Log.debug(tag, "BB " + pluginRes);
+			Log.debug(tag, "BB " + frame.pluginRes);
+			
 			return frame;
 		}
 		
@@ -140,10 +164,10 @@ public class DalvikVM {
 		}
 	}
 	
-	public LinkedList<StackFrame> cloneStack() {
+	public LinkedList<StackFrame> cloneStack(Map<DVMObject, DVMObject> objMap, Map<DVMClass, DVMClass> classMap) {
 		LinkedList<StackFrame> newStack = new LinkedList<>();
 		for (StackFrame frame : stack) {
-			newStack.add(frame.clone());
+			newStack.add(frame.clone(objMap, classMap));
 		}
 		
 		// newStack.set(newStack.size() - 1, stack.getLast().clone());
@@ -239,7 +263,7 @@ public class DalvikVM {
 		}
 
 		// Backup jvm stack
-		LinkedList<StackFrame> newStack = cloneStack();
+		LinkedList<StackFrame> newStack = cloneStack(objMap, classMap);
 
 		// Backup retValReg
 		Register returnReg = new Register();
@@ -257,11 +281,10 @@ public class DalvikVM {
 		}
 
 		// FIXME Backup plugin res
-		Set<Object> currtRes = newStack.peek().pluginRes; 
 		Method pluginMethod = plugin.method;
 
 		State state = new State(backHeap, newStack,
-				returnReg, newCTX, pc, currtRes, pluginMethod);
+				returnReg, newCTX, pc, pluginMethod);
 		states.add(state);
 		return state;
 	}
@@ -295,6 +318,7 @@ public class DalvikVM {
 	}
 
 	public void restoreState() {
+		Log.warn(tag, "BackTrace++++++++++++++++++++++++++++++++++++++++++++++++");
 		if (states.isEmpty()) {
 			plugin.condition = null;
 			return;
@@ -305,7 +329,8 @@ public class DalvikVM {
 		retValReg = state.retValReg;
 		callingCtx = state.callingCtx;
 		pc = state.pc;
-		plugin.currtRes = state.currtRes;
+		plugin.currtRes = getCurrStackFrame().pluginRes;
+		Log.debug(tag, "res objs " + plugin.currtRes);
 		plugin.method = state.pluginMethod;
 		// It can be safely rm since <body> is in another direction.
 		plugin.condition = unknownBranches.removeLast();
@@ -322,18 +347,16 @@ public class DalvikVM {
 
 		Register[] callingCtx;
 
-		Set<Object> currtRes;
 		Method pluginMethod;
 
 		State(Heap heap, LinkedList<StackFrame> stack, Register retValReg,
 				Register[] callingCtx, int pc,
-				Set<Object> currRes, Method pluginMethod) {
+				 Method pluginMethod) {
 			this.heap = heap;
 			this.stack = stack;
 			this.retValReg = retValReg;
 			this.callingCtx = callingCtx;
 			this.pc = pc;
-			this.currtRes = currRes;
 			this.pluginMethod = pluginMethod;
 		}
 
