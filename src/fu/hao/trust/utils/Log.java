@@ -57,7 +57,7 @@ public class Log {
 		}
 	};
 
-	private static void writeLog(String tag, int theLevel, String title,
+	private static void writeLog(String TAG, int theLevel, String title,
 			String msg, Writer w) throws IOException {
 		if (fileWriter == null) {
 			fileWriter = new FileWriter("output/" + Settings.apkName + ".log");
@@ -66,7 +66,7 @@ public class Log {
 		}
 		if (theLevel >= Settings.logLevel) {
 			try {
-				w.write(tag + " - " + indent.get() + "[" + title + "]: " + msg
+				w.write(TAG + " - " + indent.get() + "[" + title + "]: " + msg
 						+ "\n");
 			} catch (IOException e) {
 				// logging system should never die
@@ -85,17 +85,17 @@ public class Log {
 		System.exit(r);
 	}
 
-	protected static void log(String tag, int theLevel, String title, String msg)
+	protected static void log(String TAG, int theLevel, String title, String msg)
 			throws IOException {
 		if (theLevel >= Settings.logLevel) {
-			Logger logger = LoggerFactory.getLogger(tag);
+			Logger logger = LoggerFactory.getLogger(TAG);
 			logger.info(msg);
-			//System.out.println(tag + "--" + msg);
-			writeLog(tag, theLevel, title, msg, out);
+			//System.out.println(TAG + "--" + msg);
+			writeLog(TAG, theLevel, title, msg, out);
 		}
 	}
 
-	protected static void badlog(String tag, int theLevel, String title,
+	protected static void badlog(String TAG, int theLevel, String title,
 			String msg) {
 		switch (theLevel) {
 		case MODE_WARNING:
@@ -110,16 +110,16 @@ public class Log {
 		default:
 			break;
 		}
-		Logger logger = LoggerFactory.getLogger(tag);
+		Logger logger = LoggerFactory.getLogger(TAG);
 		try {
-			writeLog(tag, theLevel, title, msg, err);
+			writeLog(TAG, theLevel, title, msg, err);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		if (theLevel >= MODE_ERROR) {
 			logger.error(title + " - " + msg);
-			throw new RuntimeErrorException(null, tag + " - " + msg);
+			throw new RuntimeErrorException(null, TAG + " - " + msg);
 		} else {
 			logger.warn(title + " - " + msg);
 		}
@@ -137,32 +137,32 @@ public class Log {
 		indent.remove();
 	}
 
-	public static void doAssert(String tag, boolean b, String msg) {
+	public static void doAssert(String TAG, boolean b, String msg) {
 		if (!b) {
-			err(tag, msg);
+			err(TAG, msg);
 		}
 	}
 
-	public static void msg(String tag, String format, Object... args) {
-		msg(tag, String.format(format, args));
+	public static void msg(String TAG, String format, Object... args) {
+		msg(TAG, String.format(format, args));
 	}
 
-	public static void msg(String tag, String s) {
+	public static void msg(String TAG, String s) {
 		try {
-			log(tag, MODE_MSG, "MSG", s);
+			log(TAG, MODE_MSG, "MSG", s);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	public static void debug(String tag, String format, Object... args) {
-		debug(tag, String.format(format, args));
+	public static void debug(String TAG, String format, Object... args) {
+		debug(TAG, String.format(format, args));
 	}
 
-	public static void debug(String tag, String s) {
+	public static void debug(String TAG, String s) {
 		try {
-			log(tag, MODE_DEBUG, "DEBUG", s);
+			log(TAG, MODE_DEBUG, "DEBUG", s);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -178,42 +178,42 @@ public class Log {
 		return s;
 	}
 
-	public static void warn(String tag, String format, Object... args) {
-		warn(tag, String.format(format, args));
+	public static void warn(String TAG, String format, Object... args) {
+		warn(TAG, String.format(format, args));
 	}
 
-	public static void warn(String tag, Exception e) {
-		warn(tag, exceptionToString(e));
+	public static void warn(String TAG, Exception e) {
+		warn(TAG, exceptionToString(e));
 	}
 
-	public static void warn(String tag, String s) {
-		badlog(tag, MODE_WARNING, "WARN", s);
+	public static void warn(String TAG, String s) {
+		badlog(TAG, MODE_WARNING, "WARN", s);
 	}
 
 	// forgive me for these cute names
-	public static void warnwarn(String tag, String format, Object... args) {
-		warnwarn(tag, String.format(format, args));
+	public static void warnwarn(String TAG, String format, Object... args) {
+		warnwarn(TAG, String.format(format, args));
 	}
 
-	public static void warnwarn(String tag, String s) {
-		badlog(tag, MODE_SEVERE_WARNING, "WARN*", s);
+	public static void warnwarn(String TAG, String s) {
+		badlog(TAG, MODE_SEVERE_WARNING, "WARN*", s);
 	}
 
-	public static void warnwarn(String tag, boolean b, String s) {
+	public static void warnwarn(String TAG, boolean b, String s) {
 		if (!b) {
-			warnwarn(tag, s);
+			warnwarn(TAG, s);
 		}
 	}
 
-	public static void err(String tag, Exception e) {
-		err(tag, exceptionToString(e));
+	public static void err(String TAG, Exception e) {
+		err(TAG, exceptionToString(e));
 	}
 
-	public static void err(String tag, String format, Object... args) {
-		err(tag, String.format(format, args));
+	public static void err(String TAG, String format, Object... args) {
+		err(TAG, String.format(format, args));
 	}
 
-	public static void err(String tag, String msg) {
-		badlog(tag, MODE_ERROR, "ERROR", msg);
+	public static void err(String TAG, String msg) {
+		badlog(TAG, MODE_ERROR, "ERROR", msg);
 	}
 }

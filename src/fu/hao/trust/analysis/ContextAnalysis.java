@@ -46,7 +46,7 @@ public class ContextAnalysis extends Taint {
 				interested = stopSign;
 				recordAPI = true;
 				here = false;
-				Log.warn(TAG, "CTX_OP_IF: " + stopSign + " " + inst + " " + inst.extra);
+				Log.msg(TAG, "CTX_OP_IF: " + stopSign + " " + inst + " " + inst.extra);
 			}
 
 			return out;
@@ -70,7 +70,7 @@ public class ContextAnalysis extends Taint {
 			int[] args = (int[]) extra[1];
 
 			if (out.size() != in.size()) {
-				Log.warn(TAG, "Ctx Generator detected! " + vm.getReturnReg().getData());
+				Log.debug(TAG, "Ctx Generator detected! " + vm.getReturnReg().getData());
 				vm.getReturnReg().setData(
 						new SensCtxVar(mi.returnType, vm.getReturnReg().getData()));
 			}
@@ -79,11 +79,11 @@ public class ContextAnalysis extends Taint {
 				if (!here) {
 					if (isNetCall(mi.name)) {
 						influencedAPI.add(mi);
-						Log.warn(TAG, "Found influenced API " + mi + " " + vm.getReg(args[0]).getData());
+						Log.warn(TAG, "Found influenced API " + mi + " with Param " + vm.getReg(args[0]).getData());
 					}
 				} else {
 					recordAPI = false;
-					Log.warn(TAG, "Record API end");
+					Log.msg(TAG, "Record API end");
 				}
 			}
 
@@ -119,7 +119,7 @@ public class ContextAnalysis extends Taint {
 					interested = stopSign;
 					recordAPI = true;
 					here = false;
-					Log.warn(TAG, "Record API Begin " + stopSign + " " + condition + " " + condition.extra);
+					Log.msg(TAG, "Record API Begin " + stopSign + " " + condition + " " + condition.extra);
 				}
 			}
 
@@ -137,10 +137,10 @@ public class ContextAnalysis extends Taint {
 			if (recordAPI) {
 				if (!here) {
 					out.add(vm.getReg(inst.rdst));
-					Log.warn(TAG, "Found influenced var ");
+					Log.warn(TAG, "Found influenced var at " + vm.getReg(inst.rdst));
 				} else {
 					recordAPI = false;
-					Log.warn(TAG, "Record API end");
+					Log.msg(TAG, "Record API end");
 				}
 			}
 
@@ -158,10 +158,10 @@ public class ContextAnalysis extends Taint {
 			if (recordAPI) {
 				if (!here) {
 					out.add(vm.getReg(inst.rdst));
-					Log.warn(TAG, "Found influenced var ");
+					Log.warn(TAG, "Found influenced var at " + vm.getReg(inst.rdst));
 				} else {
 					recordAPI = false;
-					Log.warn(TAG, "Record API end");
+					Log.msg(TAG, "Record API end");
 				}
 			}
 
