@@ -66,7 +66,7 @@ public class DalvikVM {
 		}
 
 		public String toString() {
-			return "reg " + count;
+			return "reg " + count + "@" + getCurrStackFrame();
 		}
 
 	}
@@ -133,6 +133,10 @@ public class DalvikVM {
 		
 		public MethodInfo getMethod() {
 			return method;
+		}
+		
+		public String toString() {
+			return "StackFrame " + method;
 		}
 	}
 	
@@ -253,8 +257,7 @@ public class DalvikVM {
 		}
 
 		// FIXME Backup plugin res
-		Set<Object> currtRes = new HashSet<>();
-		currtRes.addAll(plugin.currtRes);
+		Set<Object> currtRes = newStack.peek().pluginRes; 
 		Method pluginMethod = plugin.method;
 
 		State state = new State(backHeap, newStack,
