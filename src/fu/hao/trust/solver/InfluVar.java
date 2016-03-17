@@ -4,8 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import fu.hao.trust.dvm.DalvikVM;
-import patdroid.core.ClassInfo;
-import patdroid.dalvik.Dalvik;
 import patdroid.dalvik.Instruction;
 import patdroid.util.Log;
 
@@ -17,14 +15,14 @@ import patdroid.util.Log;
  */
 public class InfluVar implements BiDirVar {
 	Object var;
-	static Set<Class<?>> ctxList;
-	final String TAG = "DynCtxVar";
+	static Set<Class<?>> influList;
+	final String TAG = "InfluVar";
 	
 	static {
-		ctxList = new HashSet<>();
-		// ctxList.add(Dalvik.findClass("java.net.URLConnection"));
+		influList = new HashSet<>();
+		// influList.add(Dalvik.findClass("java.net.URLConnection"));
 		try {
-			ctxList.add(Class.forName("java.net.URLConnection"));
+			influList.add(Class.forName("java.net.URLConnection"));
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -32,7 +30,7 @@ public class InfluVar implements BiDirVar {
 	}
 	
 	public static boolean isInfluVar(Object obj) {
-		for (Class<?> clazz : ctxList) {
+		for (Class<?> clazz : influList) {
 			if (clazz.isInstance(obj)) {
 				return true;
 			}
@@ -50,6 +48,12 @@ public class InfluVar implements BiDirVar {
 	public void addConstriant(DalvikVM vm, Instruction inst) {
 		// Null or not
 		
+	}
+
+	@Override
+	public Object getValue() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

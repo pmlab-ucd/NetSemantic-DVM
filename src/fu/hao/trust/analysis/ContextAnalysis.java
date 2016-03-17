@@ -70,9 +70,9 @@ public class ContextAnalysis extends Taint {
 			int[] args = (int[]) extra[1];
 
 			if (out.size() != in.size()) {
-				Log.warn(TAG, "Dynamic Ctx Generator detected!");
+				Log.warn(TAG, "Ctx Generator detected! " + vm.getReturnReg().getData());
 				vm.getReturnReg().setData(
-						new SensCtxVar(mi.returnType));
+						new SensCtxVar(mi.returnType, vm.getReturnReg().getData()));
 			}
 
 			if (recordAPI) {

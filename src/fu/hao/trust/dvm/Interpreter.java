@@ -163,7 +163,8 @@ public class Interpreter {
 					} else if (paramClass.isArray()) {
 						// FIXME
 					} else {
-						vm.getReg(params[i]).data = new DVMObject(vm, paramClass);
+						vm.getReg(params[i]).data = new DVMObject(vm,
+								paramClass);
 						vm.getReg(params[i]).type = paramClass;
 					}
 					Log.debug(TAG, "args: " + vm.getReg(params[i]).data);
@@ -174,7 +175,7 @@ public class Interpreter {
 					Log.err(TAG, "invalid ctx for invocation!");
 					return;
 				}
-				
+
 				int i = 0;
 				for (Register argReg : vm.getContext()) {
 					vm.getReg(params[i]).copy(argReg);
@@ -697,18 +698,20 @@ public class Interpreter {
 		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			if (vm.getReg(inst.r0) != null && !vm.getReg(inst.r0).type.isPrimitive()) {
+			if (vm.getReg(inst.r0) != null
+					&& !vm.getReg(inst.r0).type.isPrimitive()) {
 				jump(vm, inst, true);
 				return;
 			} else if (vm.getReg(inst.r0) == null) {
 				jump(vm, inst, false);
 				return;
 			}
-			
+
 			PrimitiveInfo[] res = OP_CMP(vm, inst, true);
 			PrimitiveInfo op1 = res[0];
 			PrimitiveInfo op2 = res[1];
-			if (op1.isBoolean() && op1.booleanValue() == false || !op1.isBoolean() && op1.equals(op2)) {
+			if (op1.isBoolean() && op1.booleanValue() == false
+					|| !op1.isBoolean() && op1.equals(op2)) {
 				jump(vm, inst, false);
 				Log.debug(TAG, "equ: " + inst);
 			} else {
@@ -732,7 +735,8 @@ public class Interpreter {
 			PrimitiveInfo[] res = OP_CMP(vm, inst, true);
 			PrimitiveInfo op1 = res[0];
 			PrimitiveInfo op2 = res[1];
-			if (op1.isBoolean() && op1.booleanValue() == true || !op1.isBoolean() && !op1.equals(op2)) {
+			if (op1.isBoolean() && op1.booleanValue() == true
+					|| !op1.isBoolean() && !op1.equals(op2)) {
 				jump(vm, inst, false);
 				Log.debug(TAG, "Not equ: " + op1);
 			} else {
@@ -832,7 +836,8 @@ public class Interpreter {
 				rdst.type = vm.getReg(inst.r0).type.getElementClass();
 				Object element = Array.get(array, index);
 				// if (element.getClass().isPrimitive()) {
-				Log.debug(TAG, "elem: " + element + " at " + index + " of " + array);
+				Log.debug(TAG, "elem: " + element + " at " + index + " of "
+						+ array);
 				if (rdst.type.isPrimitive()) {
 					rdst.data = PrimitiveInfo.fromObject(element);
 				} else {
@@ -1544,13 +1549,13 @@ public class Interpreter {
 			if (obj instanceof DVMObject) {
 				DVMObject dvmObj = (DVMObject) obj;
 				vm.getReg(inst.r1).type = fieldInfo.getFieldType();
-				
+
 				if (dvmObj.getFieldObj(fieldInfo) == null) {
 					if (fieldInfo.fieldName.equals("this$0")) {
 						dvmObj.setField(fieldInfo, vm.callbackOwner);
 					} else {
-					dvmObj.setField(fieldInfo,
-							new Unknown(fieldInfo.getFieldType()));
+						dvmObj.setField(fieldInfo,
+								new Unknown(fieldInfo.getFieldType()));
 					}
 				}
 
@@ -1707,27 +1712,27 @@ public class Interpreter {
 				Log.warn(TAG, "Null operator found!");
 				r0.data = new Unknown(r0.type);
 			}
-			
+
 			if (r0.data instanceof BiDirVar) {
 				u0 = (BiDirVar) r0.data;
-				
+
 				u0.addConstriant(vm, inst);
-				
+
 				if (vm.unknownBranches.contains(inst)) {
 					Log.warn(TAG, "I am here");
 					jump(vm, inst, true);
 					// vm.states.pop();
 					return;
 				}
-				
+
 				vm.unknownBranches.push(inst);
 				vm.storeState();
 				if (r1 != null && r1.data instanceof Unknown) {
 					// TODO
 				}
-				
+
 				jump(vm, inst, false);
-				
+
 				Log.warn(TAG, "Unknown branch");
 				// TODO add constraint inconsistency check to rm unreachable
 				// code
@@ -1816,7 +1821,7 @@ public class Interpreter {
 	public void invocation(DalvikVM vm, Instruction inst) {
 		vm.retValReg.type = null;
 		vm.retValReg.data = null;
-		
+
 		Object[] extra = (Object[]) inst.extra;
 		MethodInfo mi = (MethodInfo) extra[0];
 		// The register index referred by args
@@ -1855,8 +1860,10 @@ public class Interpreter {
 						vm.getReg(args[0]).data = clazz.getConstructor(
 								argsClass).newInstance(params);
 						vm.getReg(args[0]).type = mi.myClass;
-						Log.debug(TAG,
-								"Init instance: " + vm.getReg(args[0]).data + " "
+						Log.debug(
+								TAG,
+								"Init instance: " + vm.getReg(args[0]).data
+										+ " "
 										+ vm.getReg(args[0]).data.getClass());
 					}
 				}
@@ -1865,12 +1872,18 @@ public class Interpreter {
 				Log.debug(TAG, "Reflction class: " + clazz);
 
 				obj = vm.getReg(args[0]).data;
+				
+				if (obj instanceof BiDirVar) {
+					BiDirVar bidirVar = (BiDirVar) obj;
+					obj = bidirVar.getValue();
+				}
+				
 				if (obj == null || obj instanceof DVMObject
 						&& !DVMObject.class.equals(clazz)) {
 					obj = clazz.newInstance();
-				}
-				
-				//clazz = obj.getClass();
+				}		
+
+				// clazz = obj.getClass();
 				vm.retValReg.type = mi.returnType;
 				if (args.length == 1) {
 					method = clazz.getDeclaredMethod(mi.name);
@@ -1888,9 +1901,9 @@ public class Interpreter {
 							+ vm.retValReg.data.getClass());
 				}
 				Log.msg(TAG, "Reflction invocation " + method);
-				
+
 			}
-			
+
 			vm.plugin.method = method;
 			jump(vm, inst, true);
 		} catch (java.lang.IllegalArgumentException e) {
@@ -1916,22 +1929,22 @@ public class Interpreter {
 	}
 
 	/**
-	* @Title: getParams
-	* @Author: Hao Fu
-	* @Description: Transform from ClassInfo to Class
-	* @param vm
-	* @param mi
-	* @param args
-	* @param argsClass
-	* @param params
-	* @param @throws ClassNotFoundException  
-	* @return void   
-	* @throws
-	*/
+	 * @Title: getParams
+	 * @Author: Hao Fu
+	 * @Description: Transform from ClassInfo to Class
+	 * @param vm
+	 * @param mi
+	 * @param args
+	 * @param argsClass
+	 * @param params
+	 * @param @throws ClassNotFoundException
+	 * @return void
+	 * @throws
+	 */
 	private void getParams(DalvikVM vm, MethodInfo mi, int[] args,
 			Class<?>[] argsClass, Object[] params)
-			throws ClassNotFoundException {
-		// start from 1 to ignore "this"
+			throws ClassNotFoundException {		
+		// Start from 1 to ignore "this"
 		for (int i = 1; i < args.length; i++) {
 			if (mi.paramTypes[i - 1].isPrimitive()) {
 				Log.debug(TAG, "expected para type: " + mi.paramTypes[i - 1]);
@@ -1940,17 +1953,17 @@ public class Interpreter {
 				Class<?> argClass = primClasses.get(primitive.getClass());
 				params[i - 1] = primitive;
 				// Because of a bug in PATDroid.
-				if (mi.paramTypes[i - 1].equals(ClassInfo.primitiveBoolean) && 
-						primitive instanceof Integer) {
+				if (mi.paramTypes[i - 1].equals(ClassInfo.primitiveBoolean)
+						&& primitive instanceof Integer) {
 					if (primitive.equals(1)) {
 						params[i - 1] = true;
 					} else if (primitive.equals(0)) {
 						params[i - 1] = false;
 					}
 					argClass = boolean.class;
-				} 
+				}
 
-				Log.debug(TAG, "real para " + argClass);
+				Log.debug(TAG, "Real para " + argClass);
 				argsClass[i - 1] = argClass;
 			} else {
 				String argClass = mi.paramTypes[i - 1].toString();
@@ -1960,7 +1973,7 @@ public class Interpreter {
 				if (argData == null) {
 					Log.warn(
 							TAG,
-							"null in the " + i + "th arg, is "
+							"Null in the " + i + "th arg, is "
 									+ vm.getReg(args[i]));
 					params[i - 1] = null;
 				} else if (matchType(argData.getClass(), argsClass[i - 1])) {
@@ -1968,14 +1981,20 @@ public class Interpreter {
 					// argData.getClass().getInterfaces()
 				} else {
 					// FIXME null
-					Log.warn(TAG, "mismatch type! " + "real para type: "
+					Log.warn(TAG, "Mismatch type! " + "real para type: "
 							+ argData.getClass() + ", expected para type: "
 							+ argsClass[i - 1]);
-					params[i - 1] = null;
+					if (argData instanceof BiDirVar) {
+						BiDirVar bidirVar = (BiDirVar) argData;
+						params[i - 1] = bidirVar.getValue();
+						Log.debug(TAG, "Param " + params[i - 1]);
+					} else {
+						params[i - 1] = null;
+					}
 				}
 			}
 		}
-	}
+	}		
 
 	public boolean matchType(Class<?> real, Class<?> expected) {
 		if (expected.equals(real) || expected.equals(real.getSuperclass())) {
@@ -2002,9 +2021,10 @@ public class Interpreter {
 	 */
 	public void invocation(DalvikVM vm, MethodInfo mi, Instruction inst,
 			int[] args) {
-		// Create a new stack frame and push it to the stack.	
+		// Create a new stack frame and push it to the stack.
 		if (!mi.isStatic()) {
-			if (vm.getReg(args[0]).data instanceof Unknown || vm.getReg(args[0]).data == null) {
+			if (vm.getReg(args[0]).data instanceof Unknown
+					|| vm.getReg(args[0]).data == null) {
 				Log.warn(TAG, "NULL Invocator!");
 				vm.retValReg.data = null;
 				vm.retValReg.type = null;
@@ -2021,11 +2041,11 @@ public class Interpreter {
 		if (args != null) {
 			vm.setContext(args);
 		}
-		
+
 		StackFrame stackFrame = vm.newStackFrame(mi);
 		vm.stack.add(stackFrame);
 	}
-	
+
 	public void runMethod(DalvikVM vm, MethodInfo mi) {
 		// Create a new stack frame and push it to the stack.
 		StackFrame stackFrame = vm.newStackFrame(mi);
@@ -2046,14 +2066,13 @@ public class Interpreter {
 			} else {
 				stackFrame.thisObj = chainThisObj;
 			}
-		} 
+		}
 
 		if (!running) {
 			Log.msg(TAG, "RUN BEGIN " + mi);
 			run(vm);
 		}
 	}
-	
 
 	/**
 	 * @fieldName: chainThisObj

@@ -13,4 +13,6 @@ public interface BiDirVar {
 	
 	public void addConstriant(DalvikVM vm, Instruction inst);
 	
+	public Object getValue();
+	
 }

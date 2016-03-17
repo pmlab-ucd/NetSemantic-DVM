@@ -13,15 +13,22 @@ import fu.hao.trust.dvm.DalvikVM;
 public class SensCtxVar implements BiDirVar{
 	
 	private ClassInfo type;
+	Object value;
 	
-	public SensCtxVar(ClassInfo type) {
+	public SensCtxVar(ClassInfo type, Object value) {
 		type = this.type;
+		value = this.value;
 	}
 
 	@Override
 	public void addConstriant(DalvikVM vm, Instruction inst) {
-		// TODO Auto-generated method stub
+		// Null or not
 		
+	}
+
+	@Override
+	public Object getValue() {
+		return value;
 	}
 	
 

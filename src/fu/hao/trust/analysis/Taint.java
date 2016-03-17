@@ -132,7 +132,9 @@ public class Taint extends Plugin {
 		@Override
 		public Set<Object> flow(DalvikVM vm, Instruction inst, Set<Object> in) {
 			Set<Object> out = new HashSet<>(in);
-
+			if (out.contains(vm.getReg(inst.rdst))) {
+				out.remove(vm.getReg(inst.rdst));
+			}
 			return out;
 		}
 	}
