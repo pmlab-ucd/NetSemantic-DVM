@@ -13,11 +13,11 @@ import fu.hao.trust.dvm.DalvikVM;
 public class SensCtxVar implements BiDirVar{
 	
 	private ClassInfo type;
-	Object value;
+	private Object value;
 	
 	public SensCtxVar(ClassInfo type, Object value) {
-		type = this.type;
-		value = this.value;
+		this.setType(type);
+		this.value = value;
 	}
 
 	@Override
@@ -29,6 +29,19 @@ public class SensCtxVar implements BiDirVar{
 	@Override
 	public Object getValue() {
 		return value;
+	}
+	
+	@Override
+	public String toString() {
+		return "[SensCtxVar for " + value + "]";
+	}
+
+	public ClassInfo getType() {
+		return type;
+	}
+
+	public void setType(ClassInfo type) {
+		this.type = type;
 	}
 	
 
