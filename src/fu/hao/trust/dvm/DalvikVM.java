@@ -88,7 +88,7 @@ public class DalvikVM {
 		// but it's easier to implement in our case
 		// since we know we do not need pc to cross procedure
 		int pc;
-		Map<Object, Method> pluginRes;
+		Map<Object, Instruction> pluginRes;
 		DVMObject thisObj;
 		private Register[] regs = new Register[65536]; // locals
 		Register exceptReg; // Register to store exceptional obj.

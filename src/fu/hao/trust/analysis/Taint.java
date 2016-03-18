@@ -3,7 +3,6 @@ package fu.hao.trust.analysis;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -51,9 +50,9 @@ public class Taint extends Plugin {
 		 *      java.util.Set)
 		 */
 		@Override
-		public Map<Object, Method> flow(DalvikVM vm, Instruction inst, Map<Object, Method> in) {
+		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
 			// TODO array
-			Map<Object, Method> out = new HashMap<>(in);
+			Map<Object, Instruction> out = new HashMap<>(in);
 			if (in.containsKey(vm.getReg(inst.r0)) || in.containsKey(vm.getReg(inst.r0).getData())) {
 				out.put(vm.getReg(inst.rdst), in.get(vm.getReg(inst.r0)));
 				out.put(vm.getReg(inst.rdst).getData(), in.get(vm.getReg(inst.r0)));
@@ -78,8 +77,8 @@ public class Taint extends Plugin {
 		 *      java.util.Set)
 		 */
 		@Override
-		public Map<Object, Method> flow(DalvikVM vm, Instruction inst, Map<Object, Method> in) {
-			Map<Object, Method> out = new HashMap<>(in);
+		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
+			Map<Object, Instruction> out = new HashMap<>(in);
 			if (in.containsKey(inst.extra)) {
 				out.put(vm.getReg(inst.rdst), in.get(inst.extra));
 				out.put(vm.getReg(inst.rdst).getData(), in.get(inst.extra));
@@ -95,10 +94,10 @@ public class Taint extends Plugin {
 
 	class TAINT_OP_SP_ARGUMENTS implements Rule {
 		@Override
-		public Map<Object, Method> flow(DalvikVM vm, Instruction inst, Map<Object, Method> in) {
+		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
 			int[] params = (int[]) inst.extra;
 			Register[] callingCtx = vm.getContext();
-			Map<Object, Method> out = new HashMap<>();
+			Map<Object, Instruction> out = new HashMap<>();
 			final String TAG = getClass().toString();
 
 			for (Object res : in.keySet()) {
@@ -138,8 +137,8 @@ public class Taint extends Plugin {
 		 *      patdroid.dalvik.Instruction)
 		 */
 		@Override
-		public Map<Object, Method> flow(DalvikVM vm, Instruction inst, Map<Object, Method> in) {
-			Map<Object, Method> out = new HashMap<>(in);
+		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
+			Map<Object, Instruction> out = new HashMap<>(in);
 			final String TAG = getClass().toString();
 			Log.bb(TAG, "Rdst " + vm.getReg(inst.rdst));
 			
@@ -163,8 +162,8 @@ public class Taint extends Plugin {
 		 *      patdroid.dalvik.Instruction)
 		 */
 		@Override
-		public Map<Object, Method> flow(DalvikVM vm, Instruction inst, Map<Object, Method> in) {
-			Map<Object, Method> out = new HashMap<>(in);
+		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
+			Map<Object, Instruction> out = new HashMap<>(in);
 			return out;
 		}
 	}
@@ -182,23 +181,23 @@ public class Taint extends Plugin {
 		 *      patdroid.dalvik.Instruction)
 		 */
 		@Override
-		public Map<Object, Method> flow(DalvikVM vm, Instruction inst, Map<Object, Method> in) {
+		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
 			// TODO Auto-generated method stub
-			Map<Object, Method> out = new HashMap<>(in);
+			Map<Object, Instruction> out = new HashMap<>(in);
 			return out;
 		}
 	}
 
 	class TAINT_OP_INVOKE implements Rule {
 		@Override
-		public Map<Object, Method> flow(DalvikVM vm, Instruction inst, Map<Object, Method> in) {
+		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
 			isSrc = false;
 			Object[] extra = (Object[]) inst.extra;
 			MethodInfo mi = (MethodInfo) extra[0];
 			// The register index referred by args
 			int[] args = (int[]) extra[1];
 
-			Map<Object, Method> out = new HashMap<>(in);
+			Map<Object, Instruction> out = new HashMap<>(in);
 			final String TAG = getClass().toString();
 			if (mi.isConstructor()) {
 				// FIXME
@@ -276,8 +275,8 @@ public class Taint extends Plugin {
 			// Decide whether add return value.
 			if (sources.contains(sootSignature)) {
 				Log.warn(TAG, "Found a tainted return value!");
-				out.put(vm.getReturnReg(), method);
-				out.put(vm.getReturnReg().getData(), method);
+				out.put(vm.getReturnReg(), inst);
+				out.put(vm.getReturnReg().getData(), inst);
 				isSrc = true;
 			} else {
 				Log.debug(TAG, "not a taint call: " + signature);
@@ -322,9 +321,9 @@ public class Taint extends Plugin {
 		 *      patdroid.dalvik.Instruction)
 		 */
 		@Override
-		public Map<Object, Method> flow(DalvikVM vm, Instruction inst, Map<Object, Method> in) {
+		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
 			// TODO
-			Map<Object, Method> out = new HashMap<>(in);
+			Map<Object, Instruction> out = new HashMap<>(in);
 			return out;
 		}
 	}
@@ -341,9 +340,9 @@ public class Taint extends Plugin {
 		 *      patdroid.dalvik.Instruction)
 		 */
 		@Override
-		public Map<Object, Method> flow(DalvikVM vm, Instruction inst, Map<Object, Method> in) {
+		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
 			// TODO
-			Map<Object, Method> out = new HashMap<>(in);
+			Map<Object, Instruction> out = new HashMap<>(in);
 			return out;
 		}
 	}
@@ -360,9 +359,9 @@ public class Taint extends Plugin {
 		 *      patdroid.dalvik.Instruction)
 		 */
 		@Override
-		public Map<Object, Method> flow(DalvikVM vm, Instruction inst, Map<Object, Method> in) {
+		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
 			// TODO long-to-int
-			Map<Object, Method> out = new HashMap<>(in);
+			Map<Object, Instruction> out = new HashMap<>(in);
 			return out;
 		}
 	}
@@ -378,8 +377,8 @@ public class Taint extends Plugin {
 		 *      patdroid.dalvik.Instruction)
 		 */
 		@Override
-		public Map<Object, Method> flow(DalvikVM vm, Instruction inst, Map<Object, Method> in) {
-			Map<Object, Method> out = new HashMap<>(in);
+		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
+			Map<Object, Instruction> out = new HashMap<>(in);
 			if (in.containsKey(vm.getReturnReg())) {
 				out.put(vm.getReg(inst.rdst), in.get(vm.getReturnReg()));
 				out.put(vm.getReg(inst.rdst).getData(), in.get(vm.getReturnReg()));
@@ -397,9 +396,9 @@ public class Taint extends Plugin {
 
 	class TAINT_OP_MOV_EXCEPTION implements Rule {
 		@Override
-		public Map<Object, Method> flow(DalvikVM vm, Instruction inst, Map<Object, Method> in) {
+		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
 			// TODO Auto-generated method stub
-			Map<Object, Method> out = new HashMap<>(in);
+			Map<Object, Instruction> out = new HashMap<>(in);
 			if (in.containsKey(vm.getCurrStackFrame().getExceptReg())) {
 				out.put(vm.getReg(inst.rdst), in.get(vm.getCurrStackFrame().getExceptReg()));
 			} else {
@@ -413,9 +412,9 @@ public class Taint extends Plugin {
 	
 	class TAINT_OP_EXCEPTION_THROW implements Rule {
 		@Override
-		public Map<Object, Method> flow(DalvikVM vm, Instruction inst, Map<Object, Method> in) {
+		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
 			// TODO Auto-generated method stub
-			Map<Object, Method> out = new HashMap<>(in);
+			Map<Object, Instruction> out = new HashMap<>(in);
 			if (in.containsKey(vm.getReg(inst.r0))) {
 				out.put(vm.getCurrStackFrame().getExceptReg(), in.get(vm.getReg(inst.r0)));
 			} else {
@@ -438,8 +437,8 @@ public class Taint extends Plugin {
 		 *      patdroid.dalvik.Instruction)
 		 */
 		@Override
-		public Map<Object, Method> flow(DalvikVM vm, Instruction inst, Map<Object, Method> in) {
-			Map<Object, Method> out = new HashMap<>(in);
+		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
+			Map<Object, Instruction> out = new HashMap<>(in);
 			if (in.containsKey(vm.getReg(inst.r0))) {
 				out.put(vm.getReg(inst.rdst), in.get(vm.getReg(inst.r0)));
 				out.put(vm.getReg(inst.rdst).getData(), in.get(vm.getReg(inst.r0)));
@@ -461,8 +460,8 @@ public class Taint extends Plugin {
 		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
 		 *      patdroid.dalvik.Instruction)
 		 */
-		public Map<Object, Method> flow(DalvikVM vm, Instruction inst, Map<Object, Method> in) {
-			Map<Object, Method> out = new HashMap<>(in);
+		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
+			Map<Object, Instruction> out = new HashMap<>(in);
 			if (in.containsKey(vm.getReg(inst.r0))) {
 				out.put(vm.getReg(inst.rdst), in.get(vm.getReg(inst.r0)));
 				out.put(vm.getReg(inst.rdst).getData(), in.get(vm.getReg(inst.r0)));
@@ -498,8 +497,8 @@ public class Taint extends Plugin {
 		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
 		 *      patdroid.dalvik.Instruction)
 		 */
-		public Map<Object, Method> flow(DalvikVM vm, Instruction inst, Map<Object, Method> in) {
-			Map<Object, Method> out = new HashMap<>(in);
+		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
+			Map<Object, Instruction> out = new HashMap<>(in);
 			if (inst.r0 != -1 && inst.r1 != -1 && (in.containsKey(vm.getReg(inst.r0)) )) {
 				out.put(vm.getReg(inst.r1), in.get(vm.getReg(inst.r0)));
 				out.put(vm.getReg(inst.r1).getData(), in.get(vm.getReg(inst.r0)));
@@ -526,7 +525,7 @@ public class Taint extends Plugin {
 		 *      patdroid.dalvik.Instruction)
 		 */
 		@Override
-		public Map<Object, Method> flow(DalvikVM vm, Instruction inst, Map<Object, Method> in) {
+		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
 			// array reg
 			// Object[] array = (Object[]) vm.getReg(inst.r0).getData();
 			Object array = vm.getReg(inst.r0).getData();
@@ -534,7 +533,7 @@ public class Taint extends Plugin {
 			int index = ((PrimitiveInfo) vm.getReg(inst.r1).getData())
 					.intValue();
 
-			Map<Object, Method> out = new HashMap<>(in);
+			Map<Object, Instruction> out = new HashMap<>(in);
 			if (in.containsKey(array)) {
 				out.put(vm.getReg(inst.rdst), in.get(array));
 				out.put(vm.getReg(inst.rdst).getData(), in.get(array));
@@ -558,12 +557,12 @@ public class Taint extends Plugin {
 		 *      patdroid.dalvik.Instruction)
 		 */
 		@Override
-		public Map<Object, Method> flow(DalvikVM vm, Instruction inst, Map<Object, Method> in) {
+		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
 			// TODO taint all?
 			// dest reg
 			Register rdst = vm.getReg(inst.rdst);
 
-			Map<Object, Method> out = new HashMap<>(in);
+			Map<Object, Instruction> out = new HashMap<>(in);
 			if (in.containsKey(rdst)) {
 				// array reg
 				Object[] array = (Object[]) vm.getReg(inst.r0).getData();
@@ -595,8 +594,8 @@ public class Taint extends Plugin {
 		 *      patdroid.dalvik.Instruction)
 		 */
 		@Override
-		public Map<Object, Method> flow(DalvikVM vm, Instruction inst, Map<Object, Method> in) {
-			Map<Object, Method> out = new HashMap<>(in);
+		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
+			Map<Object, Instruction> out = new HashMap<>(in);
 			if (in.containsKey(vm.getReg(inst.r0))) {
 				out.put(vm.getReg(inst.rdst), in.get(vm.getReg(inst.r0)));
 				out.put(vm.getReg(inst.rdst).getData(), in.get(vm.getReg(inst.r0)));
@@ -626,10 +625,10 @@ public class Taint extends Plugin {
 		 *      patdroid.dalvik.Instruction)
 		 */
 		@Override
-		public Map<Object, Method> flow(DalvikVM vm, Instruction inst, Map<Object, Method> in) {
+		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
 			@SuppressWarnings("unchecked")
 			Pair<ClassInfo, String> pair = (Pair<ClassInfo, String>) inst.extra;
-			Map<Object, Method> out = new HashMap<>(in);
+			Map<Object, Instruction> out = new HashMap<>(in);
 
 			try {
 				Class<?> clazz = Class.forName(pair.first.toString());
@@ -668,8 +667,8 @@ public class Taint extends Plugin {
 		 *      patdroid.dalvik.Instruction)
 		 */
 		@Override
-		public Map<Object, Method> flow(DalvikVM vm, Instruction inst, Map<Object, Method> in) {
-			Map<Object, Method> out = new HashMap<>(in);
+		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
+			Map<Object, Instruction> out = new HashMap<>(in);
 			@SuppressWarnings("unchecked")
 			Pair<ClassInfo, String> pair = (Pair<ClassInfo, String>) inst.extra;
 			ClassInfo owner = pair.first;
@@ -701,8 +700,8 @@ public class Taint extends Plugin {
 		 *      patdroid.dalvik.Instruction)
 		 */
 		@Override
-		public Map<Object, Method> flow(DalvikVM vm, Instruction inst, Map<Object, Method> in) {
-			Map<Object, Method> out = new HashMap<>(in);
+		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
+			Map<Object, Instruction> out = new HashMap<>(in);
 			DVMObject obj = (DVMObject) vm.getReg(inst.r0).getData();
 			FieldInfo fieldInfo = (FieldInfo) inst.extra;
 			Object field = obj.getFieldObj(fieldInfo);
@@ -731,9 +730,9 @@ public class Taint extends Plugin {
 		 *      patdroid.dalvik.Instruction)
 		 */
 		@Override
-		public Map<Object, Method> flow(DalvikVM vm, Instruction inst, Map<Object, Method> in) {
+		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
 			final String TAG = getClass().toString();
-			Map<Object, Method> out = new HashMap<>(in);
+			Map<Object, Instruction> out = new HashMap<>(in);
 			DVMObject obj = (DVMObject) vm.getReg(inst.r0).getData();
 			FieldInfo fieldInfo = (FieldInfo) inst.extra;
 			
@@ -832,8 +831,8 @@ public class Taint extends Plugin {
 	}
 
 	@Override
-	public Map<Object, Method> runAnalysis(DalvikVM vm, Instruction inst, Map<Object, Method> in) {
-		Map<Object, Method> out;
+	public Map<Object, Instruction> runAnalysis(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
+		Map<Object, Instruction> out;
 		if (byteCodes.containsKey((int) inst.opcode)) {
 			out = byteCodes.get((int) inst.opcode).flow(vm, inst, in);
 		} else if (auxByteCodes.containsKey((int) inst.opcode_aux)) {
@@ -848,7 +847,7 @@ public class Taint extends Plugin {
 	}
 
 	@Override
-	public Map<Object, Method> getCurrRes() {
+	public Map<Object, Instruction> getCurrRes() {
 		return currtRes;
 	}
 

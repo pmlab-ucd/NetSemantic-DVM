@@ -2095,6 +2095,7 @@ public class Interpreter {
 		while (vm.getCurrStackFrame() != null
 				&& vm.pc < vm.getCurrStackFrame().method.insns.length) {
 			Instruction insns = vm.getCurrStackFrame().method.insns[vm.pc];
+			insns.setLoc(vm.getCurrStackFrame().method);
 			exec(vm, insns);
 		}
 

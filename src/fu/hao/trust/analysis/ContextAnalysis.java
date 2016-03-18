@@ -1,6 +1,5 @@
 package fu.hao.trust.analysis;
 
-import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -26,10 +25,10 @@ public class ContextAnalysis extends Taint {
 
 	// Store visited target API calls, equivalent to influenced API in
 	// InfluenceAnalysis
-	Map<MethodInfo, Set<Method>> targetCalls;
+	Map<MethodInfo, Set<Instruction>> targetCalls;
 	// Whether to record APIs will be visited.
 	// boolean recordCall;
-	Map<Instruction, Method> recordCall;
+	Map<Instruction, Instruction> recordCall;
 	Instruction stopSign = null;
 	// Specification of the target APIs
 	Set<String> targetList;
@@ -48,17 +47,17 @@ public class ContextAnalysis extends Taint {
 		 *      patdroid.dalvik.Instruction, java.util.Map)
 		 */
 		@Override
-		public Map<Object, Method> flow(DalvikVM vm, Instruction inst,
-				Map<Object, Method> in) {
+		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst,
+				Map<Object, Instruction> in) {
 			TAINT_OP_INVOKE taintOp = new TAINT_OP_INVOKE();
-			Map<Object, Method> out = taintOp.flow(vm, inst, in);
+			Map<Object, Instruction> out = taintOp.flow(vm, inst, in);
 			Object[] extra = (Object[]) inst.extra;
 			MethodInfo mi = (MethodInfo) extra[0];
 			int[] args = (int[]) extra[1];
 			
 			// When invoke a method who generate sens var.
-			if (out.size() != in.size()) {
-				Method depAPI = null;
+			if (out.containsKey(vm.getReturnReg())) {
+				Instruction depAPI = null;
 				for (Object obj : out.keySet()) {
 					if (!in.containsKey(obj)) {
 						depAPI = out.get(obj);
@@ -79,7 +78,7 @@ public class ContextAnalysis extends Taint {
 						+ vm.getReg(args[0]).getData());
 				if (!recordCall.isEmpty()) {
 					if (!targetCalls.containsKey(mi)) {
-						Set<Method> depAPIs = new HashSet<>();
+						Set<Instruction> depAPIs = new HashSet<>();
 						targetCalls.put(mi, depAPIs);
 					}
 					targetCalls.get(mi).addAll(recordCall.values());
@@ -105,10 +104,10 @@ public class ContextAnalysis extends Taint {
 		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
 		 *      patdroid.dalvik.Instruction)
 		 */
-		public Map<Object, Method> flow(DalvikVM vm, Instruction inst,
-				Map<Object, Method> in) {
+		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst,
+				Map<Object, Instruction> in) {
 			TAINT_OP_IF taintOp = new TAINT_OP_IF();
-			Map<Object, Method> out = taintOp.flow(vm, inst, in);
+			Map<Object, Instruction> out = taintOp.flow(vm, inst, in);
 			
 			// When sensitive value exists in the branch
 			if (out.containsKey(vm.getReg(inst.r0))) {
@@ -126,10 +125,10 @@ public class ContextAnalysis extends Taint {
 	class CTX_OP_RETURN_VOID implements Rule {
 
 		@Override
-		public Map<Object, Method> flow(DalvikVM vm, Instruction inst,
-				Map<Object, Method> in) {
+		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst,
+				Map<Object, Instruction> in) {
 			final String TAG = getClass().toString();
-			Map<Object, Method> out = new HashMap<>(in);
+			Map<Object, Instruction> out = new HashMap<>(in);
 			// If stored bidir conditions are not empty
 			if (condition != null) {
 				Register r0 = vm.getReg(condition.r0);
@@ -153,10 +152,10 @@ public class ContextAnalysis extends Taint {
 	class CTX_OP_MOV_RESULT implements Rule {
 
 		@Override
-		public Map<Object, Method> flow(DalvikVM vm, Instruction inst,
-				Map<Object, Method> in) {
+		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst,
+				Map<Object, Instruction> in) {
 			TAINT_OP_MOV_RESULT taintOp = new TAINT_OP_MOV_RESULT();
-			Map<Object, Method> out = taintOp.flow(vm, inst, in);
+			Map<Object, Instruction> out = taintOp.flow(vm, inst, in);
 
 			return out;
 		}
@@ -167,15 +166,15 @@ public class ContextAnalysis extends Taint {
 		final String TAG = getClass().toString();
 		
 		@Override
-		public Map<Object, Method> flow(DalvikVM vm, Instruction inst,
-				Map<Object, Method> in) {
-			Map<Object, Method> out = new HashMap<>(in);
+		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst,
+				Map<Object, Instruction> in) {
+			Map<Object, Instruction> out = new HashMap<>(in);
 			
 			if (!recordCall.isEmpty()) {
 				// TODO Add only one, but could be influenced by multiple APIs
 				out.put(vm.getReg(inst.rdst), recordCall.values().iterator()
 						.next());
-				for (Method met : recordCall.values()) {
+				for (Instruction met : recordCall.values()) {
 					Log.bb(TAG, " dep API " + met);
 				}
 				Log.warn(TAG, "Found influenced var at " + vm.getReg(inst.rdst));
@@ -192,9 +191,9 @@ public class ContextAnalysis extends Taint {
 		final String TAG = getClass().toString();
 
 		@Override
-		public Map<Object, Method> flow(DalvikVM vm, Instruction inst,
-				Map<Object, Method> in) {
-			Map<Object, Method> out = new HashMap<>(in);
+		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst,
+				Map<Object, Instruction> in) {
+			Map<Object, Instruction> out = new HashMap<>(in);
 			
 			if (!recordCall.isEmpty()) {
 				// TODO Add only one, but could be influenced by multiple APIs

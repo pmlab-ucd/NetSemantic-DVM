@@ -4,8 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import fu.hao.trust.dvm.DalvikVM;
+import patdroid.core.ClassInfo;
 import patdroid.dalvik.Instruction;
-import patdroid.util.Log;
 
 /**
  * @ClassName: InfluVar
@@ -14,9 +14,11 @@ import patdroid.util.Log;
  * @date: Mar 10, 2016 7:20:04 PM
  */
 public class InfluVar implements BiDirVar {
-	Object var;
+	private Object value;
 	static Set<Class<?>> influList;
 	final String TAG = "InfluVar";
+	private ClassInfo type;
+	private Instruction src;
 	
 	static {
 		influList = new HashSet<>();
@@ -24,7 +26,6 @@ public class InfluVar implements BiDirVar {
 		try {
 			influList.add(Class.forName("java.net.URLConnection"));
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -39,9 +40,10 @@ public class InfluVar implements BiDirVar {
 		return false;
 	}
 	
-	public InfluVar(Object obj) throws ClassNotFoundException {
-		Log.warn(TAG, obj.toString());
-		var = obj;
+	public InfluVar(ClassInfo type, Object value, Instruction src) throws ClassNotFoundException {
+		this.value = value;
+		this.type = type; 
+		this.src = src;
 	}
 	
 	@Override
@@ -49,11 +51,32 @@ public class InfluVar implements BiDirVar {
 		// Null or not
 		
 	}
+	
+	@Override
+	public String toString() {
+		return "[InfluVar for " + value + "]";
+	}
 
 	@Override
 	public Object getValue() {
-		// TODO Auto-generated method stub
-		return null;
+		return value;
 	}
+	
+	public ClassInfo getType() {
+		return type;
+	}
+
+	public void setType(ClassInfo type) {
+		this.type = type;
+	}
+
+	public Instruction getSrc() {
+		return src;
+	}
+
+	public void setSrc(Instruction src) {
+		this.src = src;
+	}
+	
 
 }

@@ -6,7 +6,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import patdroid.core.ClassInfo;
 import patdroid.core.MethodInfo;
 import patdroid.dalvik.Instruction;
 import fu.hao.trust.dvm.DalvikVM;
@@ -17,14 +16,14 @@ import fu.hao.trust.utils.Log;
 
 /**
  * @ClassName: Condition
- * @Description: Extract conditional factors.
+ * @Description: Extract the API calls influenced by the target API calls.
  * @author: Hao Fu
  * @date: Mar 9, 2016 3:10:38 PM
  */
 public class InfluenceAnalysis extends Taint {
-	
-	final String TAG = "ForwardAnalysis";
-	
+
+	final String TAG = "InfluenceAnalysis";
+
 	Set<MethodInfo> influencedAPI;
 	boolean recordAPI = false;
 	Instruction stopSign = null;
@@ -38,10 +37,10 @@ public class InfluenceAnalysis extends Taint {
 		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
 		 *      patdroid.dalvik.Instruction)
 		 */
-		public Map<Object, Method> flow(DalvikVM vm, Instruction inst, Map<Object, Method> in) {
+		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst,
+				Map<Object, Instruction> in) {
 			TAINT_OP_IF taintOp = new TAINT_OP_IF();
-			Map<Object, Method> out = taintOp.flow(vm, inst, in);
-			
+			Map<Object, Instruction> out = taintOp.flow(vm, inst, in);
 
 			return out;
 		}
@@ -56,42 +55,53 @@ public class InfluenceAnalysis extends Taint {
 		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
 		 *      patdroid.dalvik.Instruction)
 		 */
-		public Map<Object, Method> flow(DalvikVM vm, Instruction inst, Map<Object, Method> in) {
+		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst,
+				Map<Object, Instruction> in) {
 			TAINT_OP_INVOKE taintOp = new TAINT_OP_INVOKE();
-			Map<Object, Method> out = taintOp.flow(vm, inst, in);
+			Map<Object, Instruction> out = taintOp.flow(vm, inst, in);
 			Object[] extra = (Object[]) inst.extra;
 			MethodInfo mi = (MethodInfo) extra[0];
-			int[] args = (int[]) extra[1];
-
-			if (mi.name.contains("equals")) {
-				Log.warn(TAG, "dd found");
-				for (int i = 0; i < args.length; i++) {
-					if (out.containsKey(vm.getReg(args[i]).getData())) {
-						//vm.storeState();
-						//vm.jump(inst, false);
-						Log.warn(TAG, "ddd found");
-						vm.getReturnReg().setData(new Unknown(ClassInfo.primitiveBoolean));
-					}
-				}
-			}
-
+			
 			if (vm.getReturnReg().getData() != null
 					&& InfluVar.isInfluVar(vm.getReturnReg().getData())) {
 				// If "this" is a CtxVar, add the return val as CtxVar
 				try {
-					//InfluVar var = new InfluVar(vm.getReturnReg().getData());
+					// InfluVar var = new InfluVar(vm.getReturnReg().getData());
 					// FIXME
 					out.put(vm.getReturnReg().getData(), null);
-					Log.warn(TAG, "Add new influing obj: " + vm.getReturnReg().getData());
+					Log.warn(TAG, "Add new influing obj: "
+							+ vm.getReturnReg().getData());
 				} catch (Exception e) {
 
 				}
 			}
+
+			if (out.containsKey(vm.getReturnReg())) {
+				Instruction depAPI = null;
+				for (Object obj : out.keySet()) {
+					if (!in.containsKey(obj)) {
+						depAPI = out.get(obj);
+						break;
+					}
+				}
+
+				Log.debug(TAG, "Influ var detected! " + method + " "
+						+ vm.getReturnReg().getData());
+				// Set return variable as a bidiVar
+				try {
+					vm.getReturnReg().setData(
+							new InfluVar(mi.returnType, vm.getReturnReg()
+									.getData(), depAPI));
+				} catch (ClassNotFoundException e) {
+					e.printStackTrace();
+				}
+			}
+
 			
 			if (method != null && recordAPI) {
 				if (!interested.isEmpty()) {
 					influencedAPI.add(mi);
-					Log.warn(TAG, "Found influenced API " + mi);
+					Log.warn(TAG, "Found influenced API call " + mi);
 				} else {
 					recordAPI = false;
 				}
@@ -104,36 +114,38 @@ public class InfluenceAnalysis extends Taint {
 	class INFLU_OP_MOV_RESULT implements Rule {
 
 		@Override
-		public Map<Object, Method> flow(DalvikVM vm, Instruction inst, Map<Object, Method> in) {
+		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst,
+				Map<Object, Instruction> in) {
 			TAINT_OP_MOV_RESULT taintOp = new TAINT_OP_MOV_RESULT();
-			Map<Object, Method> out = taintOp.flow(vm, inst, in);
+			Map<Object, Instruction> out = taintOp.flow(vm, inst, in);
 
 			return out;
 		}
 
 	}
-	
+
 	class INFLU_OP_RETURN_VOID implements Rule {
 
 		@Override
-		public Map<Object, Method> flow(DalvikVM vm, Instruction inst, Map<Object, Method> in) {
-			Map<Object, Method> out = new HashMap<>(in);
-			
+		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst,
+				Map<Object, Instruction> in) {
+			Map<Object, Instruction> out = new HashMap<>(in);
+
 			if (condition != null) {
 				Register r0 = vm.getReg(condition.r0);
-				// If 
+				// If
 				if (r0.getData() instanceof Unknown) {
-					stopSign = vm.getCurrStackFrame().getInst((int) condition.extra);
+					stopSign = vm.getCurrStackFrame().getInst(
+							(int) condition.extra);
 					interested.add(stopSign);
 					recordAPI = true;
 				}
 			}
-			
+
 			return out;
 		}
 
 	}
-	
 
 	public InfluenceAnalysis() {
 		super();
