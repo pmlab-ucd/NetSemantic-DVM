@@ -106,9 +106,9 @@ public class DalvikVM {
 
 			int counter = 0;
 
-			Log.debug(tag, "New method call: " + method);
+			Log.bb(tag, "New method call: " + method);
 			for (Instruction ins : method.insns) {
-				Log.debug(tag, "[" + counter + "]" + ins.toString());
+				Log.bb(tag, "[" + counter + "]" + ins.toString());
 				counter++;
 			}
 
@@ -137,8 +137,8 @@ public class DalvikVM {
 					frame.pluginRes.put(objMap.get(obj), pluginRes.get(obj));
 				}
 			}
-			Log.debug(tag, "BB " + pluginRes);
-			Log.debug(tag, "BB " + frame.pluginRes);
+			Log.bb(tag, "BB " + pluginRes);
+			Log.bb(tag, "BB " + frame.pluginRes);
 			
 			return frame;
 		}
@@ -188,12 +188,12 @@ public class DalvikVM {
 		}
 		
 		private void setClass(DalvikVM vm, ClassInfo type) {
-			Log.debug(tag, "new class representation for " + type + " at " + vm.heap);
+			Log.bb(tag, "new class representation for " + type + " at " + vm.heap);
 			dvmClasses.put(type, new DVMClass(vm, type));
 		}
 
 		private DVMClass getClass(DalvikVM vm, ClassInfo type) {
-			Log.debug(tag, "getClass " + type + " at " + vm.heap);
+			Log.bb(tag, "getClass " + type + " at " + vm.heap);
 			if (!dvmClasses.containsKey(type)) {
 				setClass(vm, type);
 			}
@@ -332,7 +332,7 @@ public class DalvikVM {
 		callingCtx = state.callingCtx;
 		pc = state.pc;
 		plugin.currtRes = getCurrStackFrame().pluginRes;
-		Log.debug(tag, "res objs " + plugin.currtRes);
+		Log.bb(tag, "res objs " + plugin.currtRes);
 		plugin.method = state.pluginMethod;
 		// It can be safely rm since <body> is in another direction.
 		plugin.condition = unknownBranches.removeLast();
@@ -495,7 +495,7 @@ public class DalvikVM {
 			}
 			plugin.currtRes = currtStack.pluginRes;
 
-			Log.debug(tag, "pc " + pc + " " + currtStack.pc);
+			Log.bb(tag, "pc " + pc + " " + currtStack.pc);
 		} else {
 			pc = Integer.MAX_VALUE;
 			// backtrace to last unknown branch
@@ -510,12 +510,12 @@ public class DalvikVM {
 	 * @Title: runMethod
 	 * @Author: hao
 	 * @Description: For external usage.
-	 * @param @param apk
-	 * @param @param className
-	 * @param @param main
-	 * @param @param plugin
-	 * @param @throws ZipException
-	 * @param @throws IOException
+	 * @param apk
+	 * @param className
+	 * @param main
+	 * @param plugin
+	 * @throws ZipException
+	 * @throws IOException
 	 * @return void
 	 * @throws
 	 */
@@ -555,7 +555,7 @@ public class DalvikVM {
 		// get the class representation for the MainActivity class in the
 		// apk
 		
-		Log.debug(tag, "apk " + apkFile + " " + apk);
+		Log.msg(tag, "apk " + apkFile + " " + apk);
 		
 		// find all methods with the name "onCreate", most likely there is
 		// only one
@@ -564,7 +564,7 @@ public class DalvikVM {
 		for (int i = 1; i < chain.length; i++) {			
 			Settings.suspClass = chain[i].split(":")[0];
 			ClassInfo c = ClassInfo.findClass(Settings.suspClass);
-			Log.debug(tag, "class " + c);
+			Log.bb(tag, "class " + c);
 			MethodInfo[] methods = c.findMethodsHere(chain[i].split(":")[1]);
 			Log.warn(tag, "Run chain " + chain[i] + " at " + c);
 			// TODO Multiple methods have the same name.

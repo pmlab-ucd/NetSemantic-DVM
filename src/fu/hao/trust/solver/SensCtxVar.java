@@ -1,5 +1,7 @@
 package fu.hao.trust.solver;
 
+import java.lang.reflect.Method;
+
 import patdroid.core.ClassInfo;
 import patdroid.dalvik.Instruction;
 import fu.hao.trust.dvm.DalvikVM;
@@ -14,10 +16,12 @@ public class SensCtxVar implements BiDirVar{
 	
 	private ClassInfo type;
 	private Object value;
+	private Method src;
 	
-	public SensCtxVar(ClassInfo type, Object value) {
+	public SensCtxVar(ClassInfo type, Object value, Method src) {
 		this.setType(type);
 		this.value = value;
+		this.src = src;
 	}
 
 	@Override
@@ -42,6 +46,14 @@ public class SensCtxVar implements BiDirVar{
 
 	public void setType(ClassInfo type) {
 		this.type = type;
+	}
+
+	public Method getSrc() {
+		return src;
+	}
+
+	public void setSrc(Method src) {
+		this.src = src;
 	}
 	
 

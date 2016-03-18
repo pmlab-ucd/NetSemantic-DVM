@@ -839,7 +839,7 @@ public class Taint extends Plugin {
 		} else if (auxByteCodes.containsKey((int) inst.opcode_aux)) {
 			out = auxByteCodes.get((int) inst.opcode_aux).flow(vm, inst, in);
 		} else {
-			Log.debug(TAG, "not a taint op " + inst);
+			Log.bb(TAG, "Not a taint op " + inst);
 			out = new HashMap<>(in);
 		}
 

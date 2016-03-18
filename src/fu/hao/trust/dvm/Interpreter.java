@@ -475,16 +475,19 @@ public class Interpreter {
 				Log.err(TAG, "cannot identify res type!");
 			}
 
-			if (vm.retValReg.type != null && vm.retValReg.type.isPrimitive()) {
+			if (!(vm.retValReg.data instanceof BiDirVar) && vm.retValReg.type != null && vm.retValReg.type.isPrimitive()) {
 				vm.retValReg.data = PrimitiveInfo.fromObject(vm.retValReg.data);
 			}
 
 			// type checking before moving?
 			vm.getReg(inst.rdst).copy(vm.retValReg);
-			Log.debug(
+			Log.bb(
 					TAG,
-					"data " + vm.getReg(inst.rdst).data + " "
-							+ vm.getReg(inst.rdst).type + " "
+					"Result data: " + vm.getReturnReg().getData());
+			Log.bb(
+					TAG,
+					"Result data: " + vm.getReg(inst.rdst).data + ", type: "
+							+ vm.getReg(inst.rdst).type + ", to "
 							+ vm.getReg(inst.rdst));
 			jump(vm, inst, true);
 		}
@@ -1737,7 +1740,7 @@ public class Interpreter {
 
 				jump(vm, inst, false);
 
-				Log.warn(TAG, "Unknown branch");
+				Log.warn(TAG, "BiDir branch " + inst);
 				// TODO add constraint inconsistency check to rm unreachable
 				// code
 				return;
@@ -2058,7 +2061,7 @@ public class Interpreter {
 			stackFrame.thisObj = null;
 		} else {
 			if (chainThisObj == null) {
-				Log.debug(TAG, "new chain obj");
+				Log.msg(TAG, "New chain obj");
 				stackFrame.thisObj = new DVMObject(vm, mi.myClass);
 				MethodInfo constructor = mi.myClass.getDefaultConstructor();
 				if (constructor != null) {
@@ -2183,10 +2186,10 @@ public class Interpreter {
 		auxByteCodes.put(0x39, new OP_EXCEPTION_THROW());
 	}
 
-	public void exec(DalvikVM vm, Instruction inst) {
-		Log.debug(TAG, "opcode: " + inst.opcode + " " + inst.opcode_aux);
+	public void exec(DalvikVM vm, Instruction inst) {	
 		Log.debug(TAG, vm.pc + " " + inst + " at "
 				+ vm.getCurrStackFrame().method);
+		Log.bb(TAG, "opcode: " + inst.opcode + " " + inst.opcode_aux);
 
 		if (byteCodes.containsKey((int) inst.opcode)) {
 			byteCodes.get((int) inst.opcode).func(vm, inst);
@@ -2199,11 +2202,11 @@ public class Interpreter {
 		if (vm.plugin != null && vm.getCurrStackFrame() != null) {
 			vm.plugin.runAnalysis(vm, inst, vm.plugin.getCurrRes());
 			vm.getCurrStackFrame().pluginRes = new HashMap<>(vm.plugin.currtRes);
-			if (vm.plugin.interested == inst) {
-				vm.plugin.here = true;
-				Log.warn(TAG, "HERE!" + vm.plugin.interested);
+			if (vm.plugin.interested.contains(inst)) {
+				vm.plugin.interested.remove(inst);
+				Log.msg(TAG, "HERE found " + inst);
 			}
-			Log.debug(TAG, "tainted set: " + vm.plugin.currtRes);
+			Log.debug(TAG, "Tainted set: " + vm.plugin.currtRes);
 		}
 	}
 

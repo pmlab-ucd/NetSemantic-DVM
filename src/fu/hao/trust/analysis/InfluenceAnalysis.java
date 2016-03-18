@@ -89,7 +89,7 @@ public class InfluenceAnalysis extends Taint {
 			}
 			
 			if (method != null && recordAPI) {
-				if (!here) {
+				if (!interested.isEmpty()) {
 					influencedAPI.add(mi);
 					Log.warn(TAG, "Found influenced API " + mi);
 				} else {
@@ -124,7 +124,7 @@ public class InfluenceAnalysis extends Taint {
 				// If 
 				if (r0.getData() instanceof Unknown) {
 					stopSign = vm.getCurrStackFrame().getInst((int) condition.extra);
-					interested = stopSign;
+					interested.add(stopSign);
 					recordAPI = true;
 				}
 			}
@@ -139,6 +139,7 @@ public class InfluenceAnalysis extends Taint {
 		super();
 		sources = new HashSet<>();
 		sinks = new HashSet<>();
+		interested = new HashSet<>();
 		byteCodes.put(0x08, new INFLU_OP_IF());
 		byteCodes.put(0x0C, new INFLU_OP_INVOKE());
 		auxByteCodes.put(0x15, new INFLU_OP_MOV_RESULT());
