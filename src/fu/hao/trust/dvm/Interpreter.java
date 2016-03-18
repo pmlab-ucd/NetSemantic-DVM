@@ -2202,7 +2202,7 @@ public class Interpreter {
 		if (vm.plugin != null && vm.getCurrStackFrame() != null) {
 			vm.plugin.runAnalysis(vm, inst, vm.plugin.getCurrRes());
 			vm.getCurrStackFrame().pluginRes = new HashMap<>(vm.plugin.currtRes);
-			if (vm.plugin.interested.contains(inst)) {
+			if (vm.plugin.interested != null && vm.plugin.interested.contains(inst)) {
 				vm.plugin.interested.remove(inst);
 				Log.msg(TAG, "HERE found " + inst);
 			}
