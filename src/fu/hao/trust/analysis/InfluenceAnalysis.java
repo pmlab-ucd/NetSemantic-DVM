@@ -1,6 +1,5 @@
 package fu.hao.trust.analysis;
 
-import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -11,7 +10,6 @@ import patdroid.dalvik.Instruction;
 import fu.hao.trust.dvm.DalvikVM;
 import fu.hao.trust.dvm.DalvikVM.Register;
 import fu.hao.trust.solver.InfluVar;
-import fu.hao.trust.solver.Unknown;
 import fu.hao.trust.utils.Log;
 
 /**
@@ -68,6 +66,9 @@ public class InfluenceAnalysis extends Taint {
 				try {
 					// InfluVar var = new InfluVar(vm.getReturnReg().getData());
 					// FIXME
+					vm.getReturnReg().setData(
+							new InfluVar(mi.returnType, vm.getReturnReg()
+									.getData(), inst));
 					out.put(vm.getReturnReg().getData(), null);
 					Log.warn(TAG, "Add new influing obj: "
 							+ vm.getReturnReg().getData());
@@ -97,13 +98,13 @@ public class InfluenceAnalysis extends Taint {
 				}
 			}
 
-			
 			if (method != null && recordAPI) {
 				if (!interested.isEmpty()) {
 					influencedAPI.add(mi);
 					Log.warn(TAG, "Found influenced API call " + mi);
 				} else {
 					recordAPI = false;
+					Log.bb(TAG, "Not API Recording");
 				}
 			}
 
@@ -121,7 +122,6 @@ public class InfluenceAnalysis extends Taint {
 
 			return out;
 		}
-
 	}
 
 	class INFLU_OP_RETURN_VOID implements Rule {
@@ -134,17 +134,18 @@ public class InfluenceAnalysis extends Taint {
 			if (condition != null) {
 				Register r0 = vm.getReg(condition.r0);
 				// If
-				if (r0.getData() instanceof Unknown) {
+				if (r0.getData() instanceof InfluVar) {
 					stopSign = vm.getCurrStackFrame().getInst(
 							(int) condition.extra);
 					interested.add(stopSign);
 					recordAPI = true;
+					Log.msg(TAG, "API Recording Begin " + r0.getData() + " "
+							+ condition + " " + condition.extra);
 				}
 			}
 
 			return out;
 		}
-
 	}
 
 	public InfluenceAnalysis() {
