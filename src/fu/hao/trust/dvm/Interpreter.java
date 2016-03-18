@@ -2021,8 +2021,8 @@ public class Interpreter {
 	 * @Title: invocation
 	 * @Author: Hao Fu
 	 * @Description: Run the non-reflectable method.
-	 * @param @param vm
-	 * @param @param mi
+	 * @param vm
+	 * @param mi
 	 * @return void
 	 * @throws
 	 */
@@ -2197,7 +2197,7 @@ public class Interpreter {
 		} else if (auxByteCodes.containsKey((int) inst.opcode_aux)) {
 			auxByteCodes.get((int) inst.opcode_aux).func(vm, inst);
 		} else {
-			Log.err(TAG, "unsupported opcode " + inst);
+			Log.err(TAG, "Unsupported opcode " + inst);
 		}
 
 		if (vm.plugin != null && vm.getCurrStackFrame() != null) {
@@ -2205,7 +2205,8 @@ public class Interpreter {
 			vm.getCurrStackFrame().pluginRes = new HashMap<>(vm.plugin.currtRes);
 			if (vm.plugin.interested != null && vm.plugin.interested.contains(inst)) {
 				vm.plugin.interested.remove(inst);
-				Log.msg(TAG, "HERE found " + inst);
+				Log.msg(TAG, "Found interested inst " + inst, ", rm it.");
+				Log.bb(TAG, "Left interested " + vm.plugin.interested);
 			}
 			Log.debug(TAG, "Tainted set: " + vm.plugin.currtRes);
 		}

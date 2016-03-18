@@ -9,7 +9,7 @@ import patdroid.dalvik.Instruction;
 
 /**
  * @ClassName: InfluVar
- * @Description: Influencing Variable, e.g. URLConnection
+ * @Description: Influencing Variable, e.g. variables from URLConnection
  * @author: Hao Fu
  * @date: Mar 10, 2016 7:20:04 PM
  */

@@ -14,7 +14,8 @@ import fu.hao.trust.utils.Log;
 
 /**
  * @ClassName: Condition
- * @Description: Extract the API calls influenced by the target API calls.
+ * @Description: Extract the API calls influenced by the target API calls, which
+ *               generate influencing variables.
  * @author: Hao Fu
  * @date: Mar 9, 2016 3:10:38 PM
  */
@@ -22,9 +23,36 @@ public class InfluenceAnalysis extends Taint {
 
 	final String TAG = "InfluenceAnalysis";
 
-	Set<MethodInfo> influencedAPI;
-	boolean recordAPI = false;
+	Set<MethodInfo> influencedCalls;
+	Map<Instruction, Instruction> recordCall;
 	Instruction stopSign = null;
+
+	class INFLU_OP_RETURN_VOID implements Rule {
+
+		@Override
+		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst,
+				Map<Object, Instruction> in) {
+			Map<Object, Instruction> out = new HashMap<>(in);
+
+			if (condition != null) {
+				// Reset the recordCall
+				recordCall.clear();
+				Register r0 = vm.getReg(condition.r0);
+				Log.msg(TAG, "API Recording Begin " + r0.getData() + " "
+						+ condition + " " + condition.extra);
+				if (r0.getData() instanceof InfluVar) {
+					stopSign = vm.getCurrStackFrame().getInst(
+							(int) condition.extra);
+					recordCall
+							.put(stopSign, ((InfluVar) r0.getData()).getSrc());
+					Log.msg(TAG, "API Recording Begin " + stopSign + " "
+							+ condition + " " + condition.extra);
+				}
+			}
+
+			return out;
+		}
+	}
 
 	class INFLU_OP_IF implements Rule {
 		/**
@@ -40,11 +68,22 @@ public class InfluenceAnalysis extends Taint {
 			TAINT_OP_IF taintOp = new TAINT_OP_IF();
 			Map<Object, Instruction> out = taintOp.flow(vm, inst, in);
 
+			// When sensitive value exists in the branch
+			if (out.containsKey(vm.getReg(inst.r0))) {
+				stopSign = vm.getCurrStackFrame().getInst((int) inst.extra);
+				recordCall.put(stopSign, out.get(vm.getReg(inst.r0)));
+
+				Log.msg(TAG, "INFLU_OP_IF: " + stopSign + " " + inst + " "
+						+ inst.extra);
+			}
+
 			return out;
 		}
 	}
 
 	class INFLU_OP_INVOKE implements Rule {
+		final String TAG = getClass().toString();
+
 		/**
 		 * @Title: func
 		 * @Description: Helper func for if
@@ -59,21 +98,20 @@ public class InfluenceAnalysis extends Taint {
 			Map<Object, Instruction> out = taintOp.flow(vm, inst, in);
 			Object[] extra = (Object[]) inst.extra;
 			MethodInfo mi = (MethodInfo) extra[0];
-			
+
 			if (vm.getReturnReg().getData() != null
 					&& InfluVar.isInfluVar(vm.getReturnReg().getData())) {
 				// If "this" is a CtxVar, add the return val as CtxVar
 				try {
-					// InfluVar var = new InfluVar(vm.getReturnReg().getData());
 					// FIXME
 					vm.getReturnReg().setData(
 							new InfluVar(mi.returnType, vm.getReturnReg()
 									.getData(), inst));
-					out.put(vm.getReturnReg().getData(), null);
-					Log.warn(TAG, "Add new influing obj: "
+					out.put(vm.getReturnReg().getData(), inst);
+					Log.warn(TAG, "Add new influencing obj: "
 							+ vm.getReturnReg().getData());
 				} catch (Exception e) {
-
+					e.printStackTrace();
 				}
 			}
 
@@ -86,7 +124,7 @@ public class InfluenceAnalysis extends Taint {
 					}
 				}
 
-				Log.debug(TAG, "Influ var detected! " + method + " "
+				Log.debug(TAG, "Influencing var detected! " + method + " "
 						+ vm.getReturnReg().getData());
 				// Set return variable as a bidiVar
 				try {
@@ -98,14 +136,11 @@ public class InfluenceAnalysis extends Taint {
 				}
 			}
 
-			if (method != null && recordAPI) {
-				if (!interested.isEmpty()) {
-					influencedAPI.add(mi);
-					Log.warn(TAG, "Found influenced API call " + mi);
-				} else {
-					recordAPI = false;
-					Log.bb(TAG, "Not API Recording");
-				}
+			if (method != null && !recordCall.isEmpty()) {
+				influencedCalls.add(mi);
+				Log.warn(TAG, "Found influenced API call " + mi);
+			} else {
+				Log.bb(TAG, "Not API Recording");
 			}
 
 			return out;
@@ -124,39 +159,16 @@ public class InfluenceAnalysis extends Taint {
 		}
 	}
 
-	class INFLU_OP_RETURN_VOID implements Rule {
-
-		@Override
-		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst,
-				Map<Object, Instruction> in) {
-			Map<Object, Instruction> out = new HashMap<>(in);
-
-			if (condition != null) {
-				Register r0 = vm.getReg(condition.r0);
-				// If
-				if (r0.getData() instanceof InfluVar) {
-					stopSign = vm.getCurrStackFrame().getInst(
-							(int) condition.extra);
-					interested.add(stopSign);
-					recordAPI = true;
-					Log.msg(TAG, "API Recording Begin " + r0.getData() + " "
-							+ condition + " " + condition.extra);
-				}
-			}
-
-			return out;
-		}
-	}
-
 	public InfluenceAnalysis() {
 		super();
 		sources = new HashSet<>();
 		sinks = new HashSet<>();
-		interested = new HashSet<>();
+		recordCall = new HashMap<>();
+		interested = recordCall.keySet();
 		byteCodes.put(0x08, new INFLU_OP_IF());
 		byteCodes.put(0x0C, new INFLU_OP_INVOKE());
 		auxByteCodes.put(0x15, new INFLU_OP_MOV_RESULT());
 		auxByteCodes.put(0x03, new INFLU_OP_RETURN_VOID());
-		influencedAPI = new HashSet<>();
+		influencedCalls = new HashSet<>();
 	}
 }

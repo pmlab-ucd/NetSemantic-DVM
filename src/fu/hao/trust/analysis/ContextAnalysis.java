@@ -26,8 +26,7 @@ public class ContextAnalysis extends Taint {
 	// Store visited target API calls, equivalent to influenced API in
 	// InfluenceAnalysis
 	Map<MethodInfo, Set<Instruction>> targetCalls;
-	// Whether to record APIs will be visited.
-	// boolean recordCall;
+	// Whether to record APIs who will be visited and store stop signs.
 	Map<Instruction, Instruction> recordCall;
 	Instruction stopSign = null;
 	// Specification of the target APIs
@@ -131,6 +130,8 @@ public class ContextAnalysis extends Taint {
 			Map<Object, Instruction> out = new HashMap<>(in);
 			// If stored bidir conditions are not empty
 			if (condition != null) {
+				// Reset the recordCall
+				recordCall.clear();
 				Register r0 = vm.getReg(condition.r0);
 				Log.msg(TAG, "API Recording Begin " + r0.getData() + " "
 						+ condition + " " + condition.extra);
