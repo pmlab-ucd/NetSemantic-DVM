@@ -7,6 +7,7 @@ import java.util.Set;
 
 import patdroid.core.MethodInfo;
 import patdroid.dalvik.Instruction;
+import fu.hao.trust.data.TargetCall;
 import fu.hao.trust.dvm.DalvikVM;
 import fu.hao.trust.dvm.DalvikVM.Register;
 import fu.hao.trust.solver.SensCtxVar;
@@ -25,7 +26,7 @@ public class ContextAnalysis extends Taint {
 
 	// Store visited target API calls, equivalent to influenced API in
 	// InfluenceAnalysis
-	Map<MethodInfo, Set<Instruction>> targetCalls;
+	Set<TargetCall> targetCalls;
 	// Whether to record APIs who will be visited and store stop signs.
 	Map<Instruction, Instruction> recordCall;
 	Instruction stopSign = null;
@@ -73,18 +74,14 @@ public class ContextAnalysis extends Taint {
 			}
 
 			if (isTarget(mi.name)) {
-				Log.warn(TAG, "Found a target API call: " + mi + ", its Param: "
-						+ vm.getReg(args[0]).getData());
+				TargetCall targetCall = new TargetCall(inst, vm);
+				targetCalls.add(targetCall);
 				if (!recordCall.isEmpty()) {
-					if (!targetCalls.containsKey(mi)) {
-						Set<Instruction> depAPIs = new HashSet<>();
-						targetCalls.put(mi, depAPIs);
-					}
-					targetCalls.get(mi).addAll(recordCall.values());
-					Log.warn(TAG, "It deps on API: " + recordCall.values());
+					targetCall.setDepAPIs(recordCall.values());
 				} else {
 					Log.bb(TAG, "Not API Recording");
 				}
+				Log.warn(TAG, "Found a target API call:" + targetCall);
 			}
 
 			Log.bb(TAG, "Ret value " + vm.getReturnReg().getData());
@@ -229,10 +226,9 @@ public class ContextAnalysis extends Taint {
 		auxByteCodes.put(0x03, new CTX_OP_RETURN_VOID());
 		auxByteCodes.put(0x01, new CTX_OP_MOV_REG());
 		auxByteCodes.put(0x02, new CTX_OP_MOV_CONST());
-		targetCalls = new HashMap<>();
+		targetCalls = new HashSet<>();
 		targetList = new HashSet<>();
 
 		targetList.add("openConnection");
-
 	}
 }
