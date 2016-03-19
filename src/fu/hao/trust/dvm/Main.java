@@ -27,36 +27,8 @@ import fu.hao.trust.utils.Settings;
  */
 public class Main {
 	final static String TAG = "main";
-	
+
 	public static void main(String[] args) {
-		Main main = new Main();
-		main.run(args);
-	}
-	
-	public void run(String[] args) {
-		Results.reset();
-
-		// Settings.logLevel = 0;
-		Plugin plugin = null;
-		
-		for (int i = 0; i < args.length; i++) {
-			if (args[i] != null && args[i].equalsIgnoreCase("Taint")) {
-				plugin = new Taint();// Taint.v();
-			} else if (args[i] != null && args[i].equalsIgnoreCase("Ctx")) {
-				plugin = new ContextAnalysis();
-			} else if (args[i] != null && args[i].equalsIgnoreCase("Influ")) {
-				plugin = new InfluenceAnalysis();
-			}
-		}
-
-		if (args[2] != null && !"".equals(args[2])) {
-			Settings.apkPath = args[0];// + "app-release.apk";
-			Settings.suspClass = args[1];
-			Settings.suspMethod = args[2];
-			runMethod(plugin);
-			return;
-		}
-
 		try {
 			List<String> apkFiles = new ArrayList<>();
 			File apkFile = new File(args[0]);
@@ -89,7 +61,41 @@ public class Main {
 				}
 			}
 
+			Main main = new Main();
+			// Settings.logLevel = 0;
+			Plugin plugin = null;
+
+			for (int i = 0; i < args.length; i++) {
+				if (args[i] != null && args[i].equalsIgnoreCase("Taint")) {
+					plugin = new Taint();// Taint.v();
+				} else if (args[i] != null && args[i].equalsIgnoreCase("Ctx")) {
+					plugin = new ContextAnalysis();
+				} else if (args[i] != null && args[i].equalsIgnoreCase("Influ")) {
+					plugin = new InfluenceAnalysis();
+				} else if (args[i] != null && args[i].equalsIgnoreCase("Full")) {
+					// TODO
+					Settings.apkPath = args[0];// + "app-release.apk";
+					Settings.suspClass = args[1];
+					Settings.suspMethod = args[2];
+					plugin = new ContextAnalysis();
+					//main.runMethod(plugin);
+					Log.msg(TAG, "-------------------------------------------");
+					plugin = new InfluenceAnalysis();
+					main.runMethod(plugin);
+					return;
+				}
+			}
+
+			if (args[2] != null && !"".equals(args[2])) {
+				Settings.apkPath = args[0];// + "app-release.apk";
+				Settings.suspClass = args[1];
+				Settings.suspMethod = args[2];
+				main.runMethod(plugin);
+				return;
+			}
+
 			for (final String fileName : apkFiles) {
+				Results.reset();
 				Settings.apkName = fileName;
 				Log.debug(TAG, fileName);
 				Settings.apkPath = args[0] + fileName;
@@ -101,11 +107,11 @@ public class Main {
 				CSVReader reader = new CSVReader(new FileReader(csv));
 
 				for (String[] items : reader.readAll()) {
-					runMethods(items, plugin);
+					main.runMethods(items, plugin);
 				}
-				
+
 				reader.close();
-				
+
 				// Run suspicious function.
 				csv = "C:/Users/hao/workspace/TRUST/sootOutput/"
 						+ Settings.apkName + ".csv";
@@ -113,24 +119,23 @@ public class Main {
 				if (!file.exists()) {
 					return;
 				}
-				
+
 				reader = new CSVReader(new FileReader(csv));
 				Log.debug(TAG, csv);
 				for (String[] items : reader.readAll()) {
 					Settings.suspClass = items[0];
 					Settings.suspMethod = items[1];
 					Log.debug(TAG, items[0]);
-					runMethod(plugin);
+					main.runMethod(plugin);
 				}
-				
+
 				reader.close();
-		
+
 			}
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	public void runMethod(Plugin plugin) {

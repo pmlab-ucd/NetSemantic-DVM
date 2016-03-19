@@ -30,8 +30,8 @@ import java.io.Writer;
 
 import javax.management.RuntimeErrorException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 public class Log {
 	public static final int MODE_VERBOSE = 0;
@@ -85,21 +85,16 @@ public class Log {
 		System.exit(r);
 	}
 	
-	public static void bb(String TAG, String msg) {
-		System.out.println("[" + TAG + "] - " + msg);
-		try {
-			writeLog(TAG, 0, TAG, msg, out);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
 	protected static void log(String TAG, int theLevel, String title, String msg)
 			throws IOException {
 		if (theLevel >= Settings.logLevel) {
-			Logger logger = LoggerFactory.getLogger(TAG);
-			logger.info(msg);
+			if (theLevel < MODE_MSG) {
+				System.out.println("[" + TAG + "] - " + title + " - " + msg);
+			} else {
+				// Logger logger = LoggerFactory.getLogger(TAG);
+				// logger.info(msg);
+				System.err.println("[" + TAG + "] - " + title + " - " + msg);
+			}
 			//System.out.println(TAG + "--" + msg);
 			writeLog(TAG, theLevel, title, msg, out);
 		}
@@ -120,7 +115,7 @@ public class Log {
 		default:
 			break;
 		}
-		Logger logger = LoggerFactory.getLogger(TAG);
+		//Logger logger = LoggerFactory.getLogger(TAG);
 		try {
 			writeLog(TAG, theLevel, title, msg, err);
 		} catch (IOException e) {
@@ -128,10 +123,12 @@ public class Log {
 			e.printStackTrace();
 		}
 		if (theLevel >= MODE_ERROR) {
-			logger.error(title + " - " + msg);
+			//logger.error(title + " - " + msg);
+			System.err.println("[" + TAG + "] - " + title + " - " + msg);
 			throw new RuntimeErrorException(null, TAG + " - " + msg);
 		} else {
-			logger.warn(title + " - " + msg);
+			System.err.println("[" + TAG + "] - " + title + " - " + msg);
+			//logger.warn(title + " - " + msg);
 		}
 	}
 
@@ -225,5 +222,14 @@ public class Log {
 
 	public static void err(String TAG, String msg) {
 		badlog(TAG, MODE_ERROR, "ERROR", msg);
+	}
+	
+	public static void bb(String TAG, String msg) {
+		try {
+			log(TAG, MODE_VERBOSE, "BB", msg);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

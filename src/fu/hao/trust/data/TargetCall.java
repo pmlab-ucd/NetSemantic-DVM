@@ -4,7 +4,6 @@ import java.util.Collection;
 import java.util.Set;
 
 import fu.hao.trust.dvm.DalvikVM;
-import fu.hao.trust.utils.Log;
 import patdroid.core.MethodInfo;
 import patdroid.dalvik.Instruction;
 
@@ -15,11 +14,15 @@ import patdroid.dalvik.Instruction;
  * @date: Mar 18, 2016 3:20:34 PM
  */
 public class TargetCall {
+	final String TAG = getClass().toString();
+	
 	Instruction call;
 	MethodInfo mi;
 	Object[] params;
+	// The API calls influencing this target call.
 	Collection<Instruction> depAPIs;
-	final String TAG = getClass().toString();
+	// The API calls influenced by this target call. 
+	Set<Instruction> influAPIs;
 
 	public TargetCall(Instruction call, DalvikVM vm, Set<Instruction> depAPIs) {
 		this.call = call;
@@ -30,11 +33,11 @@ public class TargetCall {
 			params[i] = vm.getReg(args[i]).getData();
 			// TODO If param[i] is sensCTXVar
 		}
-		
+
 		mi = (MethodInfo) extra[0];
 		this.depAPIs = depAPIs;
 	}
-	
+
 	public TargetCall(Instruction call, DalvikVM vm) {
 		this.call = call;
 		Object[] extra = (Object[]) call.extra;
@@ -44,23 +47,22 @@ public class TargetCall {
 			params[i] = vm.getReg(args[i]).getData();
 			// TODO If param[i] is sensCTXVar
 		}
-		
+
 		mi = (MethodInfo) extra[0];
 	}
-	
+
 	public void setDepAPIs(Collection<Instruction> depAPIs) {
 		this.depAPIs = depAPIs;
 	}
-	
+
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder(mi + "-- its Param: [");
-		for (Object param: params) {
+		for (Object param : params) {
 			sb.append(param.toString() + ",");
 		}
 		sb.replace(sb.length() - 1, sb.length(), "]");
-		return 
-				sb.toString() + "-- it deps on APIs: " + depAPIs;
+		return sb.toString() + "-- it deps on APIs: " + depAPIs;
 	}
-	
+
 }

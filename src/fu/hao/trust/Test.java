@@ -1,3 +1,4 @@
+package fu.hao.trust;
 import static org.junit.Assert.assertEquals;
 
 import java.util.HashMap;
@@ -15,8 +16,8 @@ public class Test {
 		
 		args[0] = "C:/Users/hao/workspace/PJApps/app/PJApps.apk";
 		args[1] = "fu.hao.pjapps.MainActivity";
-		args[2] = "testInfluence";
-		args[3] = "Influ";
+		args[2] = "testConnection";
+		args[3] = "Full";
 		
 		/*args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_VirtualDispatch1/app/";
 		args[1] = "de.ecspride.VirtualDispatch1";

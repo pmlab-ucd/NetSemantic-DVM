@@ -53,7 +53,6 @@ public class ContextAnalysis extends Taint {
 			Map<Object, Instruction> out = taintOp.flow(vm, inst, in);
 			Object[] extra = (Object[]) inst.extra;
 			MethodInfo mi = (MethodInfo) extra[0];
-			int[] args = (int[]) extra[1];
 			
 			// When invoke a method who generate sens var.
 			if (out.containsKey(vm.getReturnReg())) {
