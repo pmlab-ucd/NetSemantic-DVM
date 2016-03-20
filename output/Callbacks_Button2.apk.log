@@ -1,0 +1,393 @@
+main - [DEBUG]: C:/Users/hao/workspace/TRUST/sootOutput/Callbacks_Button2.apk_dummy.csv
+class fu.hao.trust.dvm.DalvikVM - [MSG]: apk java.util.zip.ZipFile@75a472e9 C:/Users/hao/workspace/DroidBenchProj/Callbacks_Button2/app/Callbacks_Button2.apk
+class fu.hao.trust.dvm.DalvikVM - [BB]: class de.ecspride.Button2
+class fu.hao.trust.dvm.DalvikVM - [MSG]: RUN Method de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.DalvikVM - [BB]: New method call: de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.DalvikVM - [BB]: [0]<SPECIAL,ARGUMENT_SET,extra=[4, 5]>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [1]<MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+class fu.hao.trust.dvm.DalvikVM - [BB]: [2]<INVOKE,VIRTUAL,extra=[android.app.Activity/getSystemService[java.lang.String], [4, 1]]>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [3]<MOV,RESULT,dst=r0,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [4]<ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.telephony.TelephonyManager>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [5]<INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [6]<MOV,RESULT,dst=r1,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [7]<INSTANCE,IPUT,r0=r4,r1=r1,type=java.lang.Object,extra=de.ecspride.Button2.imei>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [8]<MOV,CONST,dst=r1,type=java.lang.String,extra="TAG">
+class fu.hao.trust.dvm.DalvikVM - [BB]: [9]<NEW,INSTANCE,dst=r2,type=java.lang.StringBuilder>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [10]<INVOKE,DIRECT,extra=[java.lang.StringBuilder/<init>[], [2]]>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [11]<MOV,CONST,dst=r3,type=java.lang.String,extra="Button3: ">
+class fu.hao.trust.dvm.DalvikVM - [BB]: [12]<INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [2, 3]]>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [13]<MOV,RESULT,dst=r2,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [14]<INSTANCE,IGET,r0=r4,r1=r3,type=java.lang.Object,extra=de.ecspride.Button2.imei>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [15]<INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [2, 3]]>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [16]<MOV,RESULT,dst=r2,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [17]<INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/toString[], [2]]>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [18]<MOV,RESULT,dst=r2,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [19]<HALT,STATIC,extra=[null, [1, 2]]>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [20]<RETURN,VOID>
+class fu.hao.trust.dvm.Interpreter - [MSG]: New chain obj
+class fu.hao.trust.dvm.DalvikVM - [BB]: getClass de.ecspride.Button2 at fu.hao.trust.dvm.DalvikVM$Heap@37364b8f
+class fu.hao.trust.dvm.DalvikVM - [BB]: new class representation for de.ecspride.Button2 at fu.hao.trust.dvm.DalvikVM$Heap@37364b8f
+class fu.hao.trust.dvm.DalvikVM - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.DalvikVM$Heap@37364b8f
+class fu.hao.trust.dvm.DalvikVM - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.DalvikVM$Heap@37364b8f
+class fu.hao.trust.dvm.DalvikVM - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.DalvikVM$Heap@37364b8f
+class fu.hao.trust.dvm.DalvikVM - [BB]: new class representation for java.lang.Object at fu.hao.trust.dvm.DalvikVM$Heap@37364b8f
+class fu.hao.trust.dvm.DalvikVM - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.DalvikVM$Heap@37364b8f
+class fu.hao.trust.dvm.DalvikVM - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.DalvikVM$Heap@37364b8f
+class fu.hao.trust.dvm.DalvikVM - [BB]: getClass de.ecspride.Button2 at fu.hao.trust.dvm.DalvikVM$Heap@37364b8f
+class fu.hao.trust.dvm.DVMObject - [BB]: New instance of de.ecspride.Button2
+class fu.hao.trust.dvm.DalvikVM - [BB]: getClass de.ecspride.Button2 at fu.hao.trust.dvm.DalvikVM$Heap@37364b8f
+class fu.hao.trust.dvm.DalvikVM - [BB]: getClass de.ecspride.Button2 at fu.hao.trust.dvm.DalvikVM$Heap@37364b8f
+class fu.hao.trust.dvm.Interpreter - [MSG]: RUN BEGIN de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [MSG]: RUN BEGIN
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 0 <SPECIAL,ARGUMENT_SET,extra=[4, 5]> at de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 3 7
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: args: 1@de.ecspride.Button2
+class fu.hao.trust.dvm.DalvikVM - [BB]: getClass android.view.View at fu.hao.trust.dvm.DalvikVM$Heap@37364b8f
+class fu.hao.trust.dvm.DalvikVM - [BB]: new class representation for android.view.View at fu.hao.trust.dvm.DalvikVM$Heap@37364b8f
+class fu.hao.trust.dvm.DalvikVM - [BB]: getClass android.view.View at fu.hao.trust.dvm.DalvikVM$Heap@37364b8f
+class fu.hao.trust.dvm.DVMObject - [BB]: New instance of android.view.View
+class fu.hao.trust.dvm.DalvikVM - [BB]: getClass android.view.View at fu.hao.trust.dvm.DalvikVM$Heap@37364b8f
+class fu.hao.trust.dvm.DalvikVM - [BB]: getClass android.view.View at fu.hao.trust.dvm.DalvikVM$Heap@37364b8f
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: args: 1@android.view.View
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 1 <MOV,CONST,dst=r1,type=java.lang.String,extra="phone"> at de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: phone class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 2 <INVOKE,VIRTUAL,extra=[android.app.Activity/getSystemService[java.lang.String], [4, 1]]> at de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [BB]: arg0 obj: 1@de.ecspride.Button2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Reflction class: class android.app.Activity
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Caller obj: android.app.Activity@a1d03ef, from class: class android.app.Activity
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Return data: android.telephony.TelephonyManager@76ed4518 ,class android.telephony.TelephonyManager
+class fu.hao.trust.dvm.Interpreter - [MSG]: Reflction invocation public java.lang.Object android.app.Activity.getSystemService(java.lang.String)
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 3 <MOV,RESULT,dst=r0,type=java.lang.Object> at de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [BB]: Result data: android.telephony.TelephonyManager@76ed4518
+class fu.hao.trust.dvm.Interpreter - [BB]: Result data: android.telephony.TelephonyManager@76ed4518, type: java.lang.Object, to reg 0@StackFrame de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 4 <ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.telephony.TelephonyManager> at de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 13 18
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 5 <INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]> at de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [BB]: arg0 obj: android.telephony.TelephonyManager@76ed4518
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Reflction class: class android.telephony.TelephonyManager
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Return data: 359874043116909 ,class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [MSG]: Reflction invocation public java.lang.String android.telephony.TelephonyManager.getDeviceId()
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 6 <MOV,RESULT,dst=r1,type=java.lang.Object> at de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [BB]: Result data: 359874043116909
+class fu.hao.trust.dvm.Interpreter - [BB]: Result data: 359874043116909, type: java.lang.String, to reg 1@StackFrame de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 7 <INSTANCE,IPUT,r0=r4,r1=r1,type=java.lang.Object,extra=de.ecspride.Button2.imei> at de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 9 55
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_PUT_FIELD - [BB]: field de.ecspride.Button2.imei
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: put field 359874043116909
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_PUT_FIELD - [MSG]: Put field 359874043116909 to the field of 1@de.ecspride.Button2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 8 <MOV,CONST,dst=r1,type=java.lang.String,extra="TAG"> at de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r1,type=java.lang.String,extra="TAG">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: TAG class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 9 <NEW,INSTANCE,dst=r2,type=java.lang.StringBuilder> at de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 4 8
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reg 2@StackFrame de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 10 <INVOKE,DIRECT,extra=[java.lang.StringBuilder/<init>[], [2]]> at de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 12 11
+class fu.hao.trust.dvm.Interpreter - [BB]: arg0 obj: null
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Init instance: 
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 11 <MOV,CONST,dst=r3,type=java.lang.String,extra="Button3: "> at de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r3,type=java.lang.String,extra="Button3: ">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: Button3:  class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 12 <INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [2, 3]]> at de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [BB]: arg0 obj: 
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Reflction class: class java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Caller obj: , from class: class java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Return data: Button3:  ,class java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [MSG]: Reflction invocation public java.lang.StringBuilder java.lang.StringBuilder.append(java.lang.String)
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 13 <MOV,RESULT,dst=r2,type=java.lang.Object> at de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [BB]: Result data: Button3: 
+class fu.hao.trust.dvm.Interpreter - [BB]: Result data: Button3: , type: java.lang.StringBuilder, to reg 2@StackFrame de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 14 <INSTANCE,IGET,r0=r4,r1=r3,type=java.lang.Object,extra=de.ecspride.Button2.imei> at de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 9 54
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: obj 1@de.ecspride.Button2
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: fieldinfo de.ecspride.Button2.imei
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: 359874043116909
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 15 <INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [2, 3]]> at de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [BB]: arg0 obj: Button3: 
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Reflction class: class java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Caller obj: Button3: , from class: class java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Return data: Button3: 359874043116909 ,class java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [MSG]: Reflction invocation public java.lang.StringBuilder java.lang.StringBuilder.append(java.lang.String)
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 16 <MOV,RESULT,dst=r2,type=java.lang.Object> at de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [BB]: Result data: Button3: 359874043116909
+class fu.hao.trust.dvm.Interpreter - [BB]: Result data: Button3: 359874043116909, type: java.lang.StringBuilder, to reg 2@StackFrame de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 17 <INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/toString[], [2]]> at de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [BB]: arg0 obj: Button3: 359874043116909
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Reflction class: class java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Return data: Button3: 359874043116909 ,class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [MSG]: Reflction invocation public java.lang.String java.lang.StringBuilder.toString()
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 18 <MOV,RESULT,dst=r2,type=java.lang.Object> at de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [BB]: Result data: Button3: 359874043116909
+class fu.hao.trust.dvm.Interpreter - [BB]: Result data: Button3: 359874043116909, type: java.lang.String, to reg 2@StackFrame de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 19 <HALT,STATIC,extra=[null, [1, 2]]> at de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 15 14
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: cannot resolve the invocation
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 20 <RETURN,VOID> at de.ecspride.Button2/clickOnButton3[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 2 3
+class fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID - [DEBUG]: Return void
+class fu.hao.trust.dvm.Interpreter - [MSG]: RUN DONE! The last one is clickOnButton3
+class fu.hao.trust.dvm.DalvikVM - [BB]: class de.ecspride.Button2$1
+class fu.hao.trust.dvm.DalvikVM - [MSG]: RUN Method de.ecspride.Button2$1/onClick[android.view.View]
+class fu.hao.trust.dvm.DalvikVM - [BB]: New method call: de.ecspride.Button2$1/onClick[android.view.View]
+class fu.hao.trust.dvm.DalvikVM - [BB]: [0]<SPECIAL,ARGUMENT_SET,extra=[6, 7]>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [1]<MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [2]<INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [3]<MOV,RESULT,dst=r0,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [4]<MOV,CONST,dst=r1,type=java.lang.String,extra="+49 1234">
+class fu.hao.trust.dvm.DalvikVM - [BB]: [5]<INSTANCE,IGET,r0=r6,r1=r3,type=java.lang.Object,extra=de.ecspride.Button2$1.this$0>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [6]<INVOKE,STATIC,extra=[de.ecspride.Button2/access$000[de.ecspride.Button2], [3]]>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [7]<MOV,RESULT,dst=r3,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [8]<MOV,REG,dst=r4,r0=r2,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [9]<MOV,REG,dst=r5,r0=r2,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [10]<INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [11]<MOV,CONST,dst=r3,type=java.lang.String,extra="TAG">
+class fu.hao.trust.dvm.DalvikVM - [BB]: [12]<NEW,INSTANCE,dst=r4,type=java.lang.StringBuilder>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [13]<INVOKE,DIRECT,extra=[java.lang.StringBuilder/<init>[], [4]]>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [14]<MOV,CONST,dst=r5,type=java.lang.String,extra="sendIMEI: ">
+class fu.hao.trust.dvm.DalvikVM - [BB]: [15]<INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [4, 5]]>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [16]<MOV,RESULT,dst=r4,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [17]<INSTANCE,IGET,r0=r6,r1=r5,type=java.lang.Object,extra=de.ecspride.Button2$1.this$0>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [18]<INVOKE,STATIC,extra=[de.ecspride.Button2/access$000[de.ecspride.Button2], [5]]>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [19]<MOV,RESULT,dst=r5,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [20]<INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [4, 5]]>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [21]<MOV,RESULT,dst=r4,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [22]<INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/toString[], [4]]>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [23]<MOV,RESULT,dst=r4,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [24]<HALT,STATIC,extra=[null, [3, 4]]>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [25]<INSTANCE,IGET,r0=r6,r1=r3,type=java.lang.Object,extra=de.ecspride.Button2$1.this$0>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [26]<INVOKE,STATIC,extra=[de.ecspride.Button2/access$002[de.ecspride.Button2, java.lang.String], [3, 2]]>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [27]<RETURN,VOID>
+class fu.hao.trust.dvm.Interpreter - [MSG]: RUN BEGIN de.ecspride.Button2$1/onClick[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [MSG]: RUN BEGIN
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 0 <SPECIAL,ARGUMENT_SET,extra=[6, 7]> at de.ecspride.Button2$1/onClick[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 3 7
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: args: 1@de.ecspride.Button2
+class fu.hao.trust.dvm.DalvikVM - [BB]: getClass android.view.View at fu.hao.trust.dvm.DalvikVM$Heap@37364b8f
+class fu.hao.trust.dvm.DalvikVM - [BB]: getClass android.view.View at fu.hao.trust.dvm.DalvikVM$Heap@37364b8f
+class fu.hao.trust.dvm.DVMObject - [BB]: New instance of android.view.View
+class fu.hao.trust.dvm.DalvikVM - [BB]: getClass android.view.View at fu.hao.trust.dvm.DalvikVM$Heap@37364b8f
+class fu.hao.trust.dvm.DalvikVM - [BB]: getClass android.view.View at fu.hao.trust.dvm.DalvikVM$Heap@37364b8f
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: args: 2@android.view.View
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 1 <MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0> at de.ecspride.Button2$1/onClick[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 2 <INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]> at de.ecspride.Button2$1/onClick[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 12 14
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reflction class android.telephony.SmsManager
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: return data: android.telephony.SmsManager@25286ff8 class android.telephony.SmsManager
+class fu.hao.trust.dvm.Interpreter - [MSG]: reflction invocation public static android.telephony.SmsManager android.telephony.SmsManager.getDefault()
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 3 <MOV,RESULT,dst=r0,type=java.lang.Object> at de.ecspride.Button2$1/onClick[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [BB]: Result data: android.telephony.SmsManager@25286ff8
+class fu.hao.trust.dvm.Interpreter - [BB]: Result data: android.telephony.SmsManager@25286ff8, type: android.telephony.SmsManager, to reg 0@StackFrame de.ecspride.Button2$1/onClick[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 4 <MOV,CONST,dst=r1,type=java.lang.String,extra="+49 1234"> at de.ecspride.Button2$1/onClick[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r1,type=java.lang.String,extra="+49 1234">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: +49 1234 class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 5 <INSTANCE,IGET,r0=r6,r1=r3,type=java.lang.Object,extra=de.ecspride.Button2$1.this$0> at de.ecspride.Button2$1/onClick[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 9 54
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: obj 1@de.ecspride.Button2
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: fieldinfo de.ecspride.Button2$1.this$0
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: put field 1@de.ecspride.Button2
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: 1@de.ecspride.Button2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 6 <INVOKE,STATIC,extra=[de.ecspride.Button2/access$000[de.ecspride.Button2], [3]]> at de.ecspride.Button2$1/onClick[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 12 14
+class fu.hao.trust.dvm.DalvikVM - [BB]: New method call: de.ecspride.Button2/access$000[de.ecspride.Button2]
+class fu.hao.trust.dvm.DalvikVM - [BB]: [0]<SPECIAL,ARGUMENT_SET,extra=[1]>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [1]<INSTANCE,IGET,r0=r1,r1=r0,type=java.lang.Object,extra=de.ecspride.Button2.imei>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [2]<RETURN,VALUE,r0=r0,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 0 <SPECIAL,ARGUMENT_SET,extra=[1]> at de.ecspride.Button2/access$000[de.ecspride.Button2]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 3 7
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: params: 1@de.ecspride.Button2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 1 <INSTANCE,IGET,r0=r1,r1=r0,type=java.lang.Object,extra=de.ecspride.Button2.imei> at de.ecspride.Button2/access$000[de.ecspride.Button2]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 9 54
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: obj 1@de.ecspride.Button2
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: fieldinfo de.ecspride.Button2.imei
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: 359874043116909
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 2 <RETURN,VALUE,r0=r0,type=java.lang.Object> at de.ecspride.Button2/access$000[de.ecspride.Button2]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 2 4
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: return data: 359874043116909
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 7 <MOV,RESULT,dst=r3,type=java.lang.Object> at de.ecspride.Button2$1/onClick[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [BB]: Result data: 359874043116909
+class fu.hao.trust.dvm.Interpreter - [BB]: Result data: 359874043116909, type: java.lang.String, to reg 3@StackFrame de.ecspride.Button2$1/onClick[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 8 <MOV,REG,dst=r4,r0=r2,type=java.lang.Object> at de.ecspride.Button2$1/onClick[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 1 1
+class fu.hao.trust.dvm.Interpreter$OP_MOVE_REG - [DEBUG]: mov 0 to 0
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 9 <MOV,REG,dst=r5,r0=r2,type=java.lang.Object> at de.ecspride.Button2$1/onClick[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 1 1
+class fu.hao.trust.dvm.Interpreter$OP_MOVE_REG - [DEBUG]: mov 0 to 0
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 10 <INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]> at de.ecspride.Button2$1/onClick[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [BB]: arg0 obj: android.telephony.SmsManager@25286ff8
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Reflction class: class android.telephony.SmsManager
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Caller obj: android.telephony.SmsManager@25286ff8, from class: class android.telephony.SmsManager
+class fu.hao.trust.dvm.Interpreter - [MSG]: Reflction invocation public void android.telephony.SmsManager.sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 11 <MOV,CONST,dst=r3,type=java.lang.String,extra="TAG"> at de.ecspride.Button2$1/onClick[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r3,type=java.lang.String,extra="TAG">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: TAG class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 12 <NEW,INSTANCE,dst=r4,type=java.lang.StringBuilder> at de.ecspride.Button2$1/onClick[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 4 8
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: reg 4@StackFrame de.ecspride.Button2$1/onClick[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 13 <INVOKE,DIRECT,extra=[java.lang.StringBuilder/<init>[], [4]]> at de.ecspride.Button2$1/onClick[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 12 11
+class fu.hao.trust.dvm.Interpreter - [BB]: arg0 obj: null
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Init instance: 
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 14 <MOV,CONST,dst=r5,type=java.lang.String,extra="sendIMEI: "> at de.ecspride.Button2$1/onClick[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r5,type=java.lang.String,extra="sendIMEI: ">
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: sendIMEI:  class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 15 <INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [4, 5]]> at de.ecspride.Button2$1/onClick[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [BB]: arg0 obj: 
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Reflction class: class java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Caller obj: , from class: class java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Return data: sendIMEI:  ,class java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [MSG]: Reflction invocation public java.lang.StringBuilder java.lang.StringBuilder.append(java.lang.String)
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 16 <MOV,RESULT,dst=r4,type=java.lang.Object> at de.ecspride.Button2$1/onClick[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [BB]: Result data: sendIMEI: 
+class fu.hao.trust.dvm.Interpreter - [BB]: Result data: sendIMEI: , type: java.lang.StringBuilder, to reg 4@StackFrame de.ecspride.Button2$1/onClick[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 17 <INSTANCE,IGET,r0=r6,r1=r5,type=java.lang.Object,extra=de.ecspride.Button2$1.this$0> at de.ecspride.Button2$1/onClick[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 9 54
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: obj 1@de.ecspride.Button2
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: fieldinfo de.ecspride.Button2$1.this$0
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: 1@de.ecspride.Button2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 18 <INVOKE,STATIC,extra=[de.ecspride.Button2/access$000[de.ecspride.Button2], [5]]> at de.ecspride.Button2$1/onClick[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 12 14
+class fu.hao.trust.dvm.DalvikVM - [BB]: New method call: de.ecspride.Button2/access$000[de.ecspride.Button2]
+class fu.hao.trust.dvm.DalvikVM - [BB]: [0]<SPECIAL,ARGUMENT_SET,extra=[1]>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [1]<INSTANCE,IGET,r0=r1,r1=r0,type=java.lang.Object,extra=de.ecspride.Button2.imei>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [2]<RETURN,VALUE,r0=r0,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 0 <SPECIAL,ARGUMENT_SET,extra=[1]> at de.ecspride.Button2/access$000[de.ecspride.Button2]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 3 7
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: params: 1@de.ecspride.Button2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 1 <INSTANCE,IGET,r0=r1,r1=r0,type=java.lang.Object,extra=de.ecspride.Button2.imei> at de.ecspride.Button2/access$000[de.ecspride.Button2]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 9 54
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: obj 1@de.ecspride.Button2
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: fieldinfo de.ecspride.Button2.imei
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: 359874043116909
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 2 <RETURN,VALUE,r0=r0,type=java.lang.Object> at de.ecspride.Button2/access$000[de.ecspride.Button2]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 2 4
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: return data: 359874043116909
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 19 <MOV,RESULT,dst=r5,type=java.lang.Object> at de.ecspride.Button2$1/onClick[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [BB]: Result data: 359874043116909
+class fu.hao.trust.dvm.Interpreter - [BB]: Result data: 359874043116909, type: java.lang.String, to reg 5@StackFrame de.ecspride.Button2$1/onClick[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 20 <INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [4, 5]]> at de.ecspride.Button2$1/onClick[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [BB]: arg0 obj: sendIMEI: 
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Reflction class: class java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Caller obj: sendIMEI: , from class: class java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Return data: sendIMEI: 359874043116909 ,class java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [MSG]: Reflction invocation public java.lang.StringBuilder java.lang.StringBuilder.append(java.lang.String)
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 21 <MOV,RESULT,dst=r4,type=java.lang.Object> at de.ecspride.Button2$1/onClick[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [BB]: Result data: sendIMEI: 359874043116909
+class fu.hao.trust.dvm.Interpreter - [BB]: Result data: sendIMEI: 359874043116909, type: java.lang.StringBuilder, to reg 4@StackFrame de.ecspride.Button2$1/onClick[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 22 <INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/toString[], [4]]> at de.ecspride.Button2$1/onClick[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [BB]: arg0 obj: sendIMEI: 359874043116909
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Reflction class: class java.lang.StringBuilder
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Return data: sendIMEI: 359874043116909 ,class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [MSG]: Reflction invocation public java.lang.String java.lang.StringBuilder.toString()
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 23 <MOV,RESULT,dst=r4,type=java.lang.Object> at de.ecspride.Button2$1/onClick[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 1 21
+class fu.hao.trust.dvm.Interpreter - [BB]: Result data: sendIMEI: 359874043116909
+class fu.hao.trust.dvm.Interpreter - [BB]: Result data: sendIMEI: 359874043116909, type: java.lang.String, to reg 4@StackFrame de.ecspride.Button2$1/onClick[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 24 <HALT,STATIC,extra=[null, [3, 4]]> at de.ecspride.Button2$1/onClick[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 15 14
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: cannot resolve the invocation
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 25 <INSTANCE,IGET,r0=r6,r1=r3,type=java.lang.Object,extra=de.ecspride.Button2$1.this$0> at de.ecspride.Button2$1/onClick[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 9 54
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: obj 1@de.ecspride.Button2
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: fieldinfo de.ecspride.Button2$1.this$0
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: 1@de.ecspride.Button2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 26 <INVOKE,STATIC,extra=[de.ecspride.Button2/access$002[de.ecspride.Button2, java.lang.String], [3, 2]]> at de.ecspride.Button2$1/onClick[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 12 14
+class fu.hao.trust.dvm.DalvikVM - [BB]: New method call: de.ecspride.Button2/access$002[de.ecspride.Button2, java.lang.String]
+class fu.hao.trust.dvm.DalvikVM - [BB]: [0]<SPECIAL,ARGUMENT_SET,extra=[0, 1]>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [1]<INSTANCE,IPUT,r0=r0,r1=r1,type=java.lang.Object,extra=de.ecspride.Button2.imei>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [2]<RETURN,VALUE,r0=r1,type=java.lang.Object>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 0 <SPECIAL,ARGUMENT_SET,extra=[0, 1]> at de.ecspride.Button2/access$002[de.ecspride.Button2, java.lang.String]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 3 7
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: params: 1@de.ecspride.Button2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: params: 0
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 1 <INSTANCE,IPUT,r0=r0,r1=r1,type=java.lang.Object,extra=de.ecspride.Button2.imei> at de.ecspride.Button2/access$002[de.ecspride.Button2, java.lang.String]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 9 55
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_PUT_FIELD - [BB]: field de.ecspride.Button2.imei
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: put field 0
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_PUT_FIELD - [MSG]: Put field 0 to the field of 1@de.ecspride.Button2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 2 <RETURN,VALUE,r0=r1,type=java.lang.Object> at de.ecspride.Button2/access$002[de.ecspride.Button2, java.lang.String]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 2 4
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: return data: 0
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 27 <RETURN,VOID> at de.ecspride.Button2$1/onClick[android.view.View]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 2 3
+class fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID - [DEBUG]: Return void
+class fu.hao.trust.dvm.Interpreter - [MSG]: RUN DONE! The last one is onClick
+main - [DEBUG]: C:/Users/hao/workspace/TRUST/sootOutput/Callbacks_Button2.apk.csv
+main - [DEBUG]: Callbacks_Button1.apk
+main - [DEBUG]: C:/Users/hao/workspace/TRUST/sootOutput/Callbacks_Button1.apk_dummy.csv
+class fu.hao.trust.dvm.DalvikVM - [MSG]: apk java.util.zip.ZipFile@50aa9f08 C:/Users/hao/workspace/DroidBenchProj/Callbacks_Button1/app/Callbacks_Button1.apk
+class fu.hao.trust.dvm.DalvikVM - [BB]: class de.ecspride.Button1
+class fu.hao.trust.dvm.DalvikVM - [MSG]: RUN Method de.ecspride.Button1/onCreate[android.os.Bundle]
+class fu.hao.trust.dvm.DalvikVM - [BB]: New method call: de.ecspride.Button1/onCreate[android.os.Bundle]
+class fu.hao.trust.dvm.DalvikVM - [BB]: [0]<SPECIAL,ARGUMENT_SET,extra=[2, 3]>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [1]<HALT,SUPER,extra=[null, [2, 3]]>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [2]<MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [3]<INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [2, 1]]>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [4]<MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+class fu.hao.trust.dvm.DalvikVM - [BB]: [5]<INVOKE,VIRTUAL,extra=[android.app.Activity/getSystemService[java.lang.String], [2, 1]]>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [6]<MOV,RESULT,dst=r0,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [7]<ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.telephony.TelephonyManager>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [8]<INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [9]<MOV,RESULT,dst=r1,type=java.lang.Object>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [10]<STATIC,SPUT,r0=r1,type=java.lang.Object,extra=(de.ecspride.Button1, imei)>
+class fu.hao.trust.dvm.DalvikVM - [BB]: [11]<RETURN,VOID>
+class fu.hao.trust.dvm.Interpreter - [MSG]: RUN BEGIN de.ecspride.Button1/onCreate[android.os.Bundle]
+class fu.hao.trust.dvm.Interpreter - [MSG]: RUN BEGIN
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 0 <SPECIAL,ARGUMENT_SET,extra=[2, 3]> at de.ecspride.Button1/onCreate[android.os.Bundle]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 3 7
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: args: 1@de.ecspride.Button2
+class fu.hao.trust.dvm.DalvikVM - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.DalvikVM$Heap@7c92b2e9
+class fu.hao.trust.dvm.DalvikVM - [BB]: new class representation for android.os.Bundle at fu.hao.trust.dvm.DalvikVM$Heap@7c92b2e9
+class fu.hao.trust.dvm.DalvikVM - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.DalvikVM$Heap@7c92b2e9
+class fu.hao.trust.dvm.DVMObject - [BB]: New instance of android.os.Bundle
+class fu.hao.trust.dvm.DalvikVM - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.DalvikVM$Heap@7c92b2e9
+class fu.hao.trust.dvm.DalvikVM - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.DalvikVM$Heap@7c92b2e9
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: args: 1@android.os.Bundle
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 1 <HALT,SUPER,extra=[null, [2, 3]]> at de.ecspride.Button1/onCreate[android.os.Bundle]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 15 12
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: cannot resolve the invocation
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 2 <MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040> at de.ecspride.Button1/onCreate[android.os.Bundle]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: data: 2130903040 class patdroid.core.PrimitiveInfo
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 3 <INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [2, 1]]> at de.ecspride.Button1/onCreate[android.os.Bundle]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [BB]: arg0 obj: 1@de.ecspride.Button2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Reflction class: class android.app.Activity
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: expected para type: int
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Real para int
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Caller obj: android.app.Activity@31cc0c56, from class: class android.app.Activity
+class fu.hao.trust.dvm.Interpreter - [MSG]: Reflction invocation public void android.app.Activity.setContentView(int)
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: 4 <MOV,CONST,dst=r1,type=java.lang.String,extra="phone"> at de.ecspride.Button1/onCreate[android.os.Bundle]
+class fu.hao.trust.dvm.Interpreter - [BB]: opcode: 1 2
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+class fu.hao.trust.dvm.Interpreter - [D

@@ -14,14 +14,11 @@ public class Test {
 		String[] args = new String[4];
 		Settings.logLevel = 0;
 		
-		/*args[0] = "C:/Users/hao/workspace/PJApps/app/PJApps.apk";
+		args[0] = "C:/Users/hao/workspace/PJApps/app/PJApps.apk";
 		args[1] = "fu.hao.pjapps.MainActivity";
 		args[2] = "testConnection";
-		args[3] = "Full";*/
+		args[3] = "Full";
 		
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FieldAndObjectSensitivity_ObjectSensitivity1/app/app-release.apk";
-		args[1] = "de.ecspride.ObjectSensitivity1";
-		args[2] = "onCreate";
 		Main.main(args);
 		System.out.println("REs: " + Results.results.toString());
 
