@@ -14,6 +14,7 @@ import com.opencsv.CSVReader;
 import fu.hao.trust.analysis.ContextAnalysis;
 import fu.hao.trust.analysis.InfluenceAnalysis;
 import fu.hao.trust.analysis.Plugin;
+import fu.hao.trust.analysis.PluginManager;
 import fu.hao.trust.analysis.Results;
 import fu.hao.trust.analysis.Taint;
 import fu.hao.trust.utils.Log;
@@ -29,6 +30,7 @@ public class Main {
 	final static String TAG = "main";
 
 	public static void main(String[] args) {
+		Results.reset();
 		try {
 			List<String> apkFiles = new ArrayList<>();
 			File apkFile = new File(args[0]);
@@ -62,26 +64,29 @@ public class Main {
 			}
 
 			Main main = new Main();
+			Settings.reset();
 			// Settings.logLevel = 0;
-			Plugin plugin = null;
+			PluginManager pluginManager = new PluginManager();
 
 			for (int i = 0; i < args.length; i++) {
 				if (args[i] != null && args[i].equalsIgnoreCase("Taint")) {
-					plugin = new Taint();// Taint.v();
+					pluginManager.addPlugin(new Taint());
 				} else if (args[i] != null && args[i].equalsIgnoreCase("Ctx")) {
-					plugin = new ContextAnalysis();
+					Plugin plugin = new ContextAnalysis();
+					pluginManager.addPlugin(plugin);
 				} else if (args[i] != null && args[i].equalsIgnoreCase("Influ")) {
-					plugin = new InfluenceAnalysis();
+					Plugin plugin = new InfluenceAnalysis();
+					pluginManager.addPlugin(plugin);
 				} else if (args[i] != null && args[i].equalsIgnoreCase("Full")) {
 					// TODO
 					Settings.apkPath = args[0];// + "app-release.apk";
 					Settings.suspClass = args[1];
 					Settings.suspMethod = args[2];
-					plugin = new ContextAnalysis();
+					pluginManager.addPlugin(new ContextAnalysis());
 					//main.runMethod(plugin);
 					Log.msg(TAG, "-------------------------------------------");
-					plugin = new InfluenceAnalysis();
-					main.runMethod(plugin);
+					pluginManager.addPlugin(new InfluenceAnalysis());
+					main.runMethod(pluginManager);
 					return;
 				}
 			}
@@ -90,7 +95,7 @@ public class Main {
 				Settings.apkPath = args[0];// + "app-release.apk";
 				Settings.suspClass = args[1];
 				Settings.suspMethod = args[2];
-				main.runMethod(plugin);
+				main.runMethod(pluginManager);
 				return;
 			}
 
@@ -105,9 +110,9 @@ public class Main {
 						+ Settings.apkName + "_dummy.csv";
 				Log.debug(TAG, csv);
 				CSVReader reader = new CSVReader(new FileReader(csv));
-
+				
 				for (String[] items : reader.readAll()) {
-					main.runMethods(items, plugin);
+					main.runMethods(items, pluginManager);
 				}
 
 				reader.close();
@@ -126,7 +131,7 @@ public class Main {
 					Settings.suspClass = items[0];
 					Settings.suspMethod = items[1];
 					Log.debug(TAG, items[0]);
-					main.runMethod(plugin);
+					main.runMethod(pluginManager);
 				}
 
 				reader.close();
@@ -138,13 +143,13 @@ public class Main {
 		}
 	}
 
-	public void runMethod(Plugin plugin) {
+	public void runMethod(PluginManager pluginManager) {
 		// DalvikVM vm = DalvikVM.v();
 		// Results.reset();
 		DalvikVM vm = new DalvikVM();
 		try {
 			vm.runMethod(Settings.apkPath, Settings.suspClass,
-					Settings.suspMethod, plugin);
+					Settings.suspMethod, pluginManager);
 		} catch (ZipException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -152,12 +157,12 @@ public class Main {
 		}
 	}
 
-	public void runMethods(String[] items, Plugin plugin) {
+	public void runMethods(String[] items, PluginManager pluginManager) {
 		// DalvikVM vm = DalvikVM.v();
 		// Results.reset();
 		DalvikVM vm = new DalvikVM();
 		try {
-			vm.runMethods(Settings.apkPath, items, plugin);
+			vm.runMethods(Settings.apkPath, items, pluginManager);
 		} catch (ZipException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

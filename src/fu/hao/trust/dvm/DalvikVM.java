@@ -13,6 +13,7 @@ import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 
 import fu.hao.trust.analysis.Plugin;
+import fu.hao.trust.analysis.PluginManager;
 import fu.hao.trust.utils.Log;
 import fu.hao.trust.utils.Settings;
 import patdroid.core.ClassInfo;
@@ -47,11 +48,12 @@ public class DalvikVM {
 			this.type = y.type;
 			this.data = y.data;
 		}
-		
-		public void copy(Register y, Map<DVMObject, DVMObject> objMap, Map<DVMClass, DVMClass> classMap) {
+
+		public void copy(Register y, Map<DVMObject, DVMObject> objMap,
+				Map<DVMClass, DVMClass> classMap) {
 			this.type = y.type;
 			this.data = y.data;
-			
+
 			if (this.data instanceof DVMObject) {
 				this.data = objMap.get(y.data);
 			} else if (this.data instanceof DVMClass) {
@@ -67,11 +69,11 @@ public class DalvikVM {
 		public Object getData() {
 			return data;
 		}
-		
+
 		public void setData(Object data) {
-			this.data = data; 
+			this.data = data;
 		}
-		
+
 		public ClassInfo getType() {
 			return type;
 		}
@@ -88,7 +90,7 @@ public class DalvikVM {
 		// but it's easier to implement in our case
 		// since we know we do not need pc to cross procedure
 		int pc;
-		Map<Object, Instruction> pluginRes;
+		Map<Plugin, Map<Object, Instruction>> pluginRes;
 		DVMObject thisObj;
 		private Register[] regs = new Register[65536]; // locals
 		Register exceptReg; // Register to store exceptional obj.
@@ -99,6 +101,19 @@ public class DalvikVM {
 			retValReg = new Register();
 			pluginRes = new HashMap<>();
 			
+			for (Plugin plugin : pluginManager.getCurrRes().keySet()) {
+				Map<Object, Instruction> clonedRes = new HashMap<>();
+				Map<Object, Instruction> originRes = pluginManager.getCurrRes().get(plugin);
+				for (Object obj : originRes.keySet()) {
+					if (obj instanceof Register) {
+						continue;
+					}
+					clonedRes.put(obj, originRes.get(obj));
+				}
+				
+				pluginRes.put(plugin, clonedRes);
+			}
+
 			for (int i = 0; i < regs.length; i++) {
 				regs[i] = new Register();
 				regs[i].count = i;
@@ -114,64 +129,83 @@ public class DalvikVM {
 
 		}
 
-		public StackFrame clone(Map<DVMObject, DVMObject> objMap, Map<DVMClass, DVMClass> classMap) {
+		public StackFrame clone(Map<DVMObject, DVMObject> objMap,
+				Map<DVMClass, DVMClass> classMap) {
 			StackFrame frame = new StackFrame(method);
 			frame.thisObj = thisObj;
 			frame.pc = pc;
 			frame.pluginRes = new HashMap<>(pluginRes);
 			
+			for (Plugin plugin : pluginRes.keySet()) {
+				Map<Object, Instruction> clonedRes = new HashMap<>(pluginRes.get(plugin));
+				frame.pluginRes.put(plugin, clonedRes);
+			}
+
+			// Backup register
 			for (int i = 0; i < regs.length; i++) {
 				frame.regs[i].copy(regs[i], objMap, classMap);
-				if (pluginRes.containsKey(regs[i])) {
-					frame.pluginRes.remove(regs[i]);
-					frame.pluginRes.put(frame.regs[i], pluginRes.get(regs[i]));
+				for (Plugin plugin : pluginRes.keySet()) {
+					Map<Object, Instruction> clonedRes = frame.pluginRes
+							.get(plugin);
+					if (pluginRes.get(plugin).containsKey(regs[i])) {
+						clonedRes.remove(regs[i]);
+						clonedRes.put(frame.regs[i],
+								pluginRes.get(plugin).get(regs[i]));
+					}
 				}
 			}
-			
-			for (Object obj : pluginRes.keySet()) {
-				if (obj instanceof DVMClass) {
-					frame.pluginRes.remove(obj);
-					frame.pluginRes.put(classMap.get(obj), pluginRes.get(obj));
-				} else if (obj instanceof DVMObject) {
-					frame.pluginRes.remove(obj);
-					frame.pluginRes.put(objMap.get(obj), pluginRes.get(obj));
+
+			// Backup heap.
+			for (Plugin plugin : pluginRes.keySet()) {
+				Map<Object, Instruction> oriRes = pluginRes.get(plugin);
+				Map<Object, Instruction> clonedRes = frame.pluginRes
+						.get(plugin);
+				for (Object obj : oriRes.keySet()) {
+					if (obj instanceof DVMClass) {
+						clonedRes.remove(obj);
+						clonedRes.put(classMap.get(obj), oriRes.get(obj));
+					} else if (obj instanceof DVMObject) {
+						clonedRes.remove(obj);
+						clonedRes.put(classMap.get(obj), oriRes.get(obj));
+					}
 				}
 			}
 			Log.bb(tag, "BB " + pluginRes);
 			Log.bb(tag, "BB " + frame.pluginRes);
-			
+
 			return frame;
 		}
-		
+
 		public Register getExceptReg() {
 			return exceptReg;
 		}
-		
+
 		public Instruction getInst(int index) {
 			return method.insns[index];
 		}
-		
+
 		public int getPC() {
 			return pc;
 		}
-		
+
 		public MethodInfo getMethod() {
 			return method;
 		}
-		
+
 		public String toString() {
 			return "StackFrame " + method;
 		}
 	}
-	
-	public LinkedList<StackFrame> cloneStack(Map<DVMObject, DVMObject> objMap, Map<DVMClass, DVMClass> classMap) {
+
+	public LinkedList<StackFrame> cloneStack(Map<DVMObject, DVMObject> objMap,
+			Map<DVMClass, DVMClass> classMap) {
 		LinkedList<StackFrame> newStack = new LinkedList<>();
 		for (StackFrame frame : stack) {
 			newStack.add(frame.clone(objMap, classMap));
 		}
-		
+
 		// newStack.set(newStack.size() - 1, stack.getLast().clone());
-		
+
 		return newStack;
 	}
 
@@ -186,9 +220,10 @@ public class DalvikVM {
 		private void setClass(DVMClass dvmClass) {
 			dvmClasses.put(dvmClass.getType(), dvmClass);
 		}
-		
+
 		private void setClass(DalvikVM vm, ClassInfo type) {
-			Log.bb(tag, "new class representation for " + type + " at " + vm.heap);
+			Log.bb(tag, "new class representation for " + type + " at "
+					+ vm.heap);
 			dvmClasses.put(type, new DVMClass(vm, type));
 		}
 
@@ -218,7 +253,8 @@ public class DalvikVM {
 	}
 
 	public State storeState() {
-		Log.warn(tag, "Store state! +++++++++++++++++++++++++++++++++++++++++++");
+		Log.warn(tag,
+				"Store state! +++++++++++++++++++++++++++++++++++++++++++");
 		Heap backHeap = new Heap();
 
 		Map<DVMClass, DVMClass> classMap = new HashMap<>();
@@ -283,10 +319,10 @@ public class DalvikVM {
 		}
 
 		// FIXME Backup plugin res
-		Method pluginMethod = plugin.method;
+		Method pluginMethod = pluginManager.getMethod();
 
-		State state = new State(backHeap, newStack,
-				returnReg, newCTX, pc, pluginMethod);
+		State state = new State(backHeap, newStack, returnReg, newCTX, pc,
+				pluginMethod);
 		states.add(state);
 		return state;
 	}
@@ -311,7 +347,7 @@ public class DalvikVM {
 	/**
 	 * @fieldName: unknownCond
 	 * @fieldType: Stack<Instruction>
-	 * @Description: To store the unknown branches met for this trace. 
+	 * @Description: To store the unknown branches met for this trace.
 	 */
 	LinkedList<Instruction> unknownBranches = new LinkedList<>();
 
@@ -320,9 +356,10 @@ public class DalvikVM {
 	}
 
 	public void restoreState() {
-		Log.warn(tag, "BackTrace++++++++++++++++++++++++++++++++++++++++++++++++");
+		Log.warn(tag,
+				"BackTrace++++++++++++++++++++++++++++++++++++++++++++++++");
 		if (states.isEmpty()) {
-			plugin.condition = null;
+			pluginManager.setCondition(null);
 			return;
 		}
 		State state = popState();
@@ -331,19 +368,19 @@ public class DalvikVM {
 		retValReg = state.retValReg;
 		callingCtx = state.callingCtx;
 		pc = state.pc;
-		plugin.currtRes = getCurrStackFrame().pluginRes;
-		Log.bb(tag, "res objs " + plugin.currtRes);
-		plugin.method = state.pluginMethod;
+		pluginManager.setCurrRes(getCurrStackFrame().pluginRes);
+		Log.bb(tag, "Res objs " + pluginManager.getCurrRes());
+		pluginManager.setMethod(state.pluginMethod);
 		// It can be safely rm since <body> is in another direction.
-		plugin.condition = unknownBranches.removeLast();
+		pluginManager.setCondition(unknownBranches.removeLast());
 	}
 
 	class State {
 		Heap heap;
 		int pc;
 		LinkedList<StackFrame> stack;
-		
-		//Instruction condition;
+
+		// Instruction condition;
 
 		Register retValReg;
 
@@ -352,8 +389,7 @@ public class DalvikVM {
 		Method pluginMethod;
 
 		State(Heap heap, LinkedList<StackFrame> stack, Register retValReg,
-				Register[] callingCtx, int pc,
-				 Method pluginMethod) {
+				Register[] callingCtx, int pc, Method pluginMethod) {
 			this.heap = heap;
 			this.stack = stack;
 			this.retValReg = retValReg;
@@ -366,24 +402,24 @@ public class DalvikVM {
 
 	// We directly use underlying jvm who runs this interpreter to manage memory
 	Heap heap;
-	
-	LinkedList<StackFrame> stack;  
+
+	LinkedList<StackFrame> stack;
 	// invoke_parameters p;
 	// int[] result = new int[8];
 	int pc;
-	
+
 	Interpreter interpreter;
 
 	Register test = new Register();
 	// which reg store the return value of callee called by this method
 	Register retValReg;
-	
+
 	private Register[] callingCtx;
-	
+
 	// The "this" instance of a component.
 	DVMObject callbackOwner;
 
-	Plugin plugin;
+	PluginManager pluginManager;
 
 	public Register getReg(int i) {
 		return stack.getLast().regs[i];
@@ -436,17 +472,15 @@ public class DalvikVM {
 		heap = new Heap();
 		interpreter = Interpreter.v();
 		retValReg = new Register();
-		stack = new LinkedList<>(); 
+		stack = new LinkedList<>();
 	}
 
 	public void reset() {
 		heap = new Heap();
 		interpreter = Interpreter.v();
 		retValReg = new Register();
-		stack = new LinkedList<>(); 
-		if (plugin != null) {
-			plugin.reset();
-		}
+		stack = new LinkedList<>();
+		pluginManager.reset();
 		retValReg.data = null;
 		retValReg.type = null;
 		pc = 0;
@@ -455,7 +489,7 @@ public class DalvikVM {
 	public Register getReturnReg() {
 		return retValReg;
 	}
-	
+
 	public StackFrame getCurrStackFrame() {
 		if (stack.isEmpty()) {
 			return null;
@@ -483,17 +517,27 @@ public class DalvikVM {
 		if (!stack.isEmpty()) {
 			StackFrame currtStack = stack.getLast();
 			pc = currtStack.pc;
-
-			for (Object res : plugin.currtRes.keySet()) {
-				if (res instanceof Register) {
-					if (res == retReg) {
-						currtStack.pluginRes.put(retValReg, plugin.currtRes.get(res));
-					}
-					continue;
-				}
-				currtStack.pluginRes.put(res, plugin.currtRes.get(res));
+			if (pluginManager.getCurrRes() == null || pluginManager.getCurrRes().isEmpty()) {
+				return;
 			}
-			plugin.currtRes = currtStack.pluginRes;
+			for (Plugin plugin : pluginManager.getCurrRes().keySet()) {
+				Map<Object, Instruction> currtRes = pluginManager.getCurrRes()
+						.get(plugin);
+				Map<Object, Instruction> currtStackRes = currtStack.pluginRes
+						.get(plugin);
+				Log.bb(tag, "currt statck res " + currtStackRes);
+				for (Object res : currtRes.keySet()) {
+					if (res instanceof Register) {
+						if (res == retReg) {
+							currtStackRes.put(retValReg,
+									plugin.currtRes.get(res));
+						}
+						continue;
+					}
+					currtStackRes.put(res, plugin.currtRes.get(res));
+				}
+			}
+			pluginManager.setCurrRes(currtStack.pluginRes);
 
 			Log.bb(tag, "pc " + pc + " " + currtStack.pc);
 		} else {
@@ -520,7 +564,7 @@ public class DalvikVM {
 	 * @throws
 	 */
 	public void runMethod(String apk, String className, String main,
-			Plugin plugin) throws ZipException, IOException {
+			PluginManager pluginManager) throws ZipException, IOException {
 		Log.msg(tag, "Begin run " + main + " at " + apk);
 		// for normal java run-time classes
 		// when a class is not loaded, load it with reflection
@@ -537,12 +581,12 @@ public class DalvikVM {
 		// find all methods with the name "onCreate", most likely there is
 		// only one
 		MethodInfo[] methods = c.findMethodsHere(main);
-		this.plugin = plugin;
+		this.pluginManager = pluginManager;
 		runMethod(methods[0]);
 	}
 
-	public void runMethods(String apk, String[] chain, Plugin plugin)
-			throws ZipException, IOException {
+	public void runMethods(String apk, String[] chain,
+			PluginManager pluginManager) throws ZipException, IOException {
 		// for normal java run-time classes
 		// when a class is not loaded, load it with reflection
 		ClassInfo.rootDetailLoader = new ReflectionClassDetailLoader();
@@ -554,14 +598,14 @@ public class DalvikVM {
 		new SmaliClassDetailLoader(apkFile, true).loadAll();
 		// get the class representation for the MainActivity class in the
 		// apk
-		
+
 		Log.msg(tag, "apk " + apkFile + " " + apk);
-		
+
 		// find all methods with the name "onCreate", most likely there is
 		// only one
-		this.plugin = plugin;
+		this.pluginManager = pluginManager;
 
-		for (int i = 1; i < chain.length; i++) {			
+		for (int i = 1; i < chain.length; i++) {
 			Settings.suspClass = chain[i].split(":")[0];
 			ClassInfo c = ClassInfo.findClass(Settings.suspClass);
 			Log.bb(tag, "class " + c);
@@ -571,7 +615,7 @@ public class DalvikVM {
 			runMethod(methods[0]);
 		}
 	}
-	
+
 	public void jump(Instruction inst, boolean then) {
 		interpreter.jump(this, inst, then);
 	}

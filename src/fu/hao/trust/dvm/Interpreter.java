@@ -361,10 +361,10 @@ public class Interpreter {
 							+ vm.retValReg.data.getClass());
 				}
 				Log.msg(TAG, "reflction invocation " + method);
-				vm.plugin.method = method;
+				vm.pluginManager.setMethod(method);
 				jump(vm, inst, true);
 			} catch (java.lang.ClassNotFoundException e) {
-				vm.plugin.method = null;
+				vm.pluginManager.setMethod(null);
 				invocation(vm, mi, inst, args);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -1911,7 +1911,7 @@ public class Interpreter {
 
 			}
 
-			vm.plugin.method = method;
+			vm.pluginManager.setMethod(method);
 			jump(vm, inst, true);
 		} catch (java.lang.IllegalArgumentException e) {
 			e.printStackTrace();
@@ -1924,7 +1924,7 @@ public class Interpreter {
 			e.printStackTrace();
 			Log.err(TAG, " null pointer ");
 		} catch (java.lang.ClassNotFoundException e) {
-			vm.plugin.method = null;
+			vm.pluginManager.setMethod(null);
 			Log.debug(TAG, "not a reflction invocation " + mi);
 			invocation(vm, mi, inst, args);
 		} catch (Exception e) {
@@ -2200,15 +2200,12 @@ public class Interpreter {
 			Log.err(TAG, "Unsupported opcode " + inst);
 		}
 
-		if (vm.plugin != null && vm.getCurrStackFrame() != null) {
-			vm.plugin.runAnalysis(vm, inst, vm.plugin.getCurrRes());
-			vm.getCurrStackFrame().pluginRes = new HashMap<>(vm.plugin.currtRes);
-			if (vm.plugin.interested != null && vm.plugin.interested.contains(inst)) {
-				vm.plugin.interested.remove(inst);
-				Log.msg(TAG, "Found interested inst " + inst, ", rm it.");
-				Log.bb(TAG, "Left interested " + vm.plugin.interested);
-			}
-			Log.debug(TAG, "Tainted set: " + vm.plugin.currtRes);
+		if (!vm.pluginManager.isEmpty() && vm.getCurrStackFrame() != null) {
+			vm.pluginManager.runAnalysis(vm, inst);
+			vm.getCurrStackFrame().pluginRes = vm.pluginManager.cloneCurrtRes();
+			vm.pluginManager.checkInst(inst);
+			
+			Log.msg(TAG, "Tainted set: " + vm.pluginManager.getCurrRes());
 		}
 	}
 

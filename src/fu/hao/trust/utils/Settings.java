@@ -40,4 +40,12 @@ public class Settings {
 	public static String apkName;
 	public static String suspClass;
 	public static String suspMethod;
+	
+	public static void reset() {
+		apkPath = null;
+		platformDir = null;
+		apkName = null;
+		suspClass = null;
+		suspMethod = null;
+	}
 }
