@@ -32,12 +32,12 @@ public class Taint extends Plugin {
 	}
 
 	private final String TAG = getClass().toString();
-	static Map<Integer, Rule> auxByteCodes = new HashMap<>();
-	static Map<Integer, Rule> byteCodes = new HashMap<>();
+	Map<Integer, Rule> auxByteCodes = new HashMap<>();
+	Map<Integer, Rule> byteCodes = new HashMap<>();
 
-	static Set<String> sources;
-	static Set<String> sinks;
-	static boolean isSrc;
+	Set<String> sources;
+	Set<String> sinks;
+	boolean isSrc;
 
 	class TAINT_OP_MOVE_REG implements Rule {
 		/**

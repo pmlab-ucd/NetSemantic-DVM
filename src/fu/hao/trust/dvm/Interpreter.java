@@ -2205,7 +2205,7 @@ public class Interpreter {
 			vm.getCurrStackFrame().pluginRes = vm.pluginManager.cloneCurrtRes();
 			vm.pluginManager.checkInst(inst);
 			
-			Log.msg(TAG, "Tainted set: " + vm.pluginManager.getCurrRes());
+			vm.pluginManager.printResults();
 		}
 	}
 

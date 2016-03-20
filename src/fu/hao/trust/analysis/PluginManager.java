@@ -100,5 +100,11 @@ public class PluginManager {
 	public boolean isEmpty() {
 		return plugins.isEmpty();
 	}
+	
+	public void printResults() {
+		for (Plugin plugin : currtRes.keySet()) {
+			Log.msg(TAG, plugin.getClass().getSimpleName() + " Tainted Res: " + currtRes.get(plugin));
+		}
+	}
 
 }
