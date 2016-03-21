@@ -316,7 +316,7 @@
 <android.location.Location: double getLongitude()> -> _SOURCE_
 <android.location.Location: double getLatitude()> -> _SOURCE_
 <java.util.Calendar: java.util.TimeZone getTimeZone()> -> _SOURCE_
-<java.net.URL: java.net.URLConnection openConnection()> -> _SOURCE_
+%<java.net.URL: java.net.URLConnection openConnection()> -> _SOURCE_
 
 <org.apache.http.impl.client.DefaultHttpClient: org.apache.http.HttpResponse execute(org.apache.http.client.methods.HttpUriRequest)> -> _SINK_
 <org.apache.http.client.HttpClient: org.apache.http.HttpResponse execute(org.apache.http.client.methods.HttpUriRequest)> -> _SINK_

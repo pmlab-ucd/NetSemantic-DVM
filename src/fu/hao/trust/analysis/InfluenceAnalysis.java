@@ -140,14 +140,16 @@ public class InfluenceAnalysis extends Taint {
 
 			if (method != null && !recordCall.isEmpty()) {
 				influencedCalls.add(mi);
-				for (Instruction tgtCall : recordCall.keySet()) {
-					if (Results.targetCallRes.containsKey(tgtCall)) {
+				for (Instruction tgtCall : recordCall.values()) {
+					if (Results.targetCallRes != null && Results.targetCallRes.containsKey(tgtCall)) {
+						Log.msg(TAG, "tgt " + tgtCall);
 						Results.targetCallRes.get(tgtCall).addInfluAPI(inst);
+						break;
 					}
 				}
 				Log.warn(TAG, "Found influenced API call " + mi);
 			} else {
-				Log.bb(TAG, "Not API Recording");
+				Log.msg(TAG, "Not API Recording");
 			}
 
 			return out;
@@ -164,6 +166,13 @@ public class InfluenceAnalysis extends Taint {
 
 			return out;
 		}
+	}
+	
+	@Override
+	public Map<Object, Instruction> runAnalysis(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
+		Map<Object, Instruction> res =  super.runAnalysis(vm, inst, in);
+		Log.msg(TAG, "rec calls: " + recordCall);
+		return res;
 	}
 
 	public InfluenceAnalysis() {

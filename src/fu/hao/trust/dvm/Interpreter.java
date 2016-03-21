@@ -484,7 +484,7 @@ public class Interpreter {
 			Log.bb(
 					TAG,
 					"Result data: " + vm.getReturnReg().getData());
-			Log.bb(
+			Log.debug(
 					TAG,
 					"Result data: " + vm.getReg(inst.rdst).data + ", type: "
 							+ vm.getReg(inst.rdst).type + ", to "
@@ -1840,7 +1840,7 @@ public class Interpreter {
 			// If applicable, directly use reflection to run the method,
 			// the method is inside java.lang
 			// Class<?> clazz = Class.forName(mi.myClass.toString());
-			Log.bb(TAG, "arg0 obj: " + vm.getReg(args[0]).data);
+			Log.msg(TAG, "arg0 obj: " + vm.getReg(args[0]).data);
 			Class<?> clazz;
 			// if (vm.getReg(args[0]).data == null) {
 			clazz = Class.forName(mi.myClass.toString());

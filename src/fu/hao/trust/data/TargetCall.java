@@ -51,6 +51,7 @@ public class TargetCall {
 		}
 
 		mi = (MethodInfo) extra[0];
+		influAPIs = new HashSet<>();
 	}
 
 	public void setDepAPIs(Collection<Instruction> depAPIs) {

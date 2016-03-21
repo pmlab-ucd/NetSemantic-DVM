@@ -10,6 +10,7 @@ import patdroid.dalvik.Instruction;
 import fu.hao.trust.data.TargetCall;
 import fu.hao.trust.dvm.DalvikVM;
 import fu.hao.trust.dvm.DalvikVM.Register;
+import fu.hao.trust.solver.InfluVar;
 import fu.hao.trust.solver.SensCtxVar;
 import fu.hao.trust.utils.Log;
 
@@ -37,6 +38,7 @@ public class ContextAnalysis extends Taint {
 
 	class CTX_OP_INVOKE implements Rule {
 		final String TAG = getClass().toString();
+
 		/**
 		 * @Title: flow
 		 * @Description: The op who creates SensCtx variable, and may includes
@@ -55,7 +57,14 @@ public class ContextAnalysis extends Taint {
 			Map<Object, Instruction> out = taintOp.flow(vm, inst, in);
 			Object[] extra = (Object[]) inst.extra;
 			MethodInfo mi = (MethodInfo) extra[0];
-			
+
+			// Avoid conflicts, let influAnalysis to handle vars related to connection.
+			if (out.containsKey(vm.getReturnReg())
+					&& (vm.getReturnReg().getData() instanceof InfluVar || InfluVar
+							.isInfluVar(vm.getReturnReg().getData()))) {
+				out.remove(vm.getReturnReg());
+			}
+
 			// When invoke a method who generate sens var.
 			if (out.containsKey(vm.getReturnReg())) {
 				Instruction depAPI = null;
@@ -92,7 +101,7 @@ public class ContextAnalysis extends Taint {
 
 	class CTX_OP_IF implements Rule {
 		final String TAG = getClass().toString();
-		
+
 		/**
 		 * @Title: func
 		 * @Description: Helper func for if
@@ -105,7 +114,7 @@ public class ContextAnalysis extends Taint {
 				Map<Object, Instruction> in) {
 			TAINT_OP_IF taintOp = new TAINT_OP_IF();
 			Map<Object, Instruction> out = taintOp.flow(vm, inst, in);
-			
+
 			// When sensitive value exists in the branch
 			if (out.containsKey(vm.getReg(inst.r0))) {
 				stopSign = vm.getCurrStackFrame().getInst((int) inst.extra);
@@ -127,7 +136,7 @@ public class ContextAnalysis extends Taint {
 			final String TAG = getClass().toString();
 			Map<Object, Instruction> out = new HashMap<>(in);
 			// If stored bidir conditions are not empty
-			if (condition != null) {			
+			if (condition != null) {
 				Register r0 = vm.getReg(condition.r0);
 				Log.msg(TAG, "API Recording Begin " + r0.getData() + " "
 						+ condition + " " + condition.extra);
@@ -163,12 +172,12 @@ public class ContextAnalysis extends Taint {
 
 	class CTX_OP_MOV_CONST implements Rule {
 		final String TAG = getClass().toString();
-		
+
 		@Override
 		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst,
 				Map<Object, Instruction> in) {
 			Map<Object, Instruction> out = new HashMap<>(in);
-			
+
 			if (!recordCall.isEmpty()) {
 				// TODO Add only one, but could be influenced by multiple APIs
 				out.put(vm.getReg(inst.rdst), recordCall.values().iterator()
@@ -193,7 +202,7 @@ public class ContextAnalysis extends Taint {
 		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst,
 				Map<Object, Instruction> in) {
 			Map<Object, Instruction> out = new HashMap<>(in);
-			
+
 			if (!recordCall.isEmpty()) {
 				// TODO Add only one, but could be influenced by multiple APIs
 				out.put(vm.getReg(inst.rdst), recordCall.values().iterator()
@@ -215,10 +224,11 @@ public class ContextAnalysis extends Taint {
 
 		return false;
 	}
-	
+
 	@Override
-	public Map<Object, Instruction> runAnalysis(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
-		Map<Object, Instruction> res =  super.runAnalysis(vm, inst, in);
+	public Map<Object, Instruction> runAnalysis(DalvikVM vm, Instruction inst,
+			Map<Object, Instruction> in) {
+		Map<Object, Instruction> res = super.runAnalysis(vm, inst, in);
 		Results.targetCallRes = targetCalls;
 		return res;
 	}

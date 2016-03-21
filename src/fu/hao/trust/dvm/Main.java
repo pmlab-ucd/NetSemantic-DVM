@@ -83,7 +83,7 @@ public class Main {
 					Settings.suspClass = args[1];
 					Settings.suspMethod = args[2];
 					pluginManager.addPlugin(new ContextAnalysis());
-					//pluginManager.addPlugin(new InfluenceAnalysis());
+					pluginManager.addPlugin(new InfluenceAnalysis());
 					main.runMethod(pluginManager);
 					return;
 				}
