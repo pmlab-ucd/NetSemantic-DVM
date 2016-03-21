@@ -31,7 +31,7 @@ public class Interpreter {
 		return SingletonHolder.instance;
 	}
 
-	private final String TAG = getClass().toString();
+	private final String TAG = getClass().getSimpleName();
 
 	class OP_MOVE_REG implements ByteCode {
 		/**
@@ -2188,7 +2188,7 @@ public class Interpreter {
 	}
 
 	public void exec(DalvikVM vm, Instruction inst) {	
-		Log.debug(TAG, vm.pc + " " + inst + " at "
+		Log.msg(TAG, vm.pc + " " + inst + " at "
 				+ vm.getCurrStackFrame().method);
 		Log.bb(TAG, "opcode: " + inst.opcode + " " + inst.opcode_aux);
 
@@ -2205,7 +2205,7 @@ public class Interpreter {
 			vm.getCurrStackFrame().pluginRes = vm.pluginManager.cloneCurrtRes();
 			vm.pluginManager.checkInst(inst);
 			
-			vm.pluginManager.printResults();
+			//vm.pluginManager.printResults();
 		}
 	}
 

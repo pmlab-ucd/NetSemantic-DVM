@@ -34,7 +34,7 @@ public class DalvikVM {
 		return SingletonHolder.instance;
 	}
 
-	private final String tag = getClass().toString();
+	private final String tag = getClass().getSimpleName();
 
 	// Dalvik VM Register Bank
 	public class Register {

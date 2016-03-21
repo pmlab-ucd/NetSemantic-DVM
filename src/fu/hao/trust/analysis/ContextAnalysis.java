@@ -26,8 +26,10 @@ public class ContextAnalysis extends Taint {
 
 	// Store visited target API calls, equivalent to influenced API in
 	// InfluenceAnalysis
-	Set<TargetCall> targetCalls;
+	// <Target API call loc, Target call>
+	Map<Instruction, TargetCall> targetCalls;
 	// Whether to record APIs who will be visited and store stop signs.
+	// <StopSign, target API call>
 	Map<Instruction, Instruction> recordCall;
 	Instruction stopSign = null;
 	// Specification of the target APIs
@@ -72,9 +74,9 @@ public class ContextAnalysis extends Taint {
 								.getData(), depAPI));
 			}
 
-			if (isTarget(mi.name)) {
+			if (isTarget(mi.name) && !targetCalls.containsKey(inst)) {
 				TargetCall targetCall = new TargetCall(inst, vm);
-				targetCalls.add(targetCall);
+				targetCalls.put(inst, targetCall);
 				if (!recordCall.isEmpty()) {
 					targetCall.setDepAPIs(recordCall.values());
 				} else {
@@ -125,13 +127,13 @@ public class ContextAnalysis extends Taint {
 			final String TAG = getClass().toString();
 			Map<Object, Instruction> out = new HashMap<>(in);
 			// If stored bidir conditions are not empty
-			if (condition != null) {
-				// Reset the recordCall
-				recordCall.clear();
+			if (condition != null) {			
 				Register r0 = vm.getReg(condition.r0);
 				Log.msg(TAG, "API Recording Begin " + r0.getData() + " "
 						+ condition + " " + condition.extra);
 				if (r0.getData() instanceof SensCtxVar) {
+					// Reset the recordCall
+					recordCall.clear();
 					stopSign = vm.getCurrStackFrame().getInst(
 							(int) condition.extra);
 					recordCall.put(stopSign,
@@ -213,6 +215,13 @@ public class ContextAnalysis extends Taint {
 
 		return false;
 	}
+	
+	@Override
+	public Map<Object, Instruction> runAnalysis(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
+		Map<Object, Instruction> res =  super.runAnalysis(vm, inst, in);
+		Results.targetCallRes = targetCalls;
+		return res;
+	}
 
 	public ContextAnalysis() {
 		super();
@@ -225,7 +234,7 @@ public class ContextAnalysis extends Taint {
 		auxByteCodes.put(0x03, new CTX_OP_RETURN_VOID());
 		auxByteCodes.put(0x01, new CTX_OP_MOV_REG());
 		auxByteCodes.put(0x02, new CTX_OP_MOV_CONST());
-		targetCalls = new HashSet<>();
+		targetCalls = new HashMap<>();
 		targetList = new HashSet<>();
 
 		targetList.add("openConnection");

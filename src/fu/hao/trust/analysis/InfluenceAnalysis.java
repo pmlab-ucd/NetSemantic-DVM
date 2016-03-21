@@ -24,6 +24,8 @@ public class InfluenceAnalysis extends Taint {
 	final String TAG = "InfluenceAnalysis";
 
 	Set<MethodInfo> influencedCalls;
+	// Whether to record APIs who will be visited and store stop signs.
+	// <StopSign, target API call>
 	Map<Instruction, Instruction> recordCall;
 	Instruction stopSign = null;
 
@@ -35,12 +37,12 @@ public class InfluenceAnalysis extends Taint {
 			Map<Object, Instruction> out = new HashMap<>(in);
 
 			if (condition != null) {
-				// Reset the recordCall
-				recordCall.clear();
 				Register r0 = vm.getReg(condition.r0);
 				Log.msg(TAG, "API Recording Begin " + r0.getData() + " "
 						+ condition + " " + condition.extra);
 				if (r0.getData() instanceof InfluVar) {
+					// Reset the recordCall	
+					recordCall.clear();
 					stopSign = vm.getCurrStackFrame().getInst(
 							(int) condition.extra);
 					recordCall
@@ -72,7 +74,7 @@ public class InfluenceAnalysis extends Taint {
 			if (out.containsKey(vm.getReg(inst.r0))) {
 				stopSign = vm.getCurrStackFrame().getInst((int) inst.extra);
 				recordCall.put(stopSign, out.get(vm.getReg(inst.r0)));
-
+				
 				Log.msg(TAG, "INFLU_OP_IF: " + stopSign + " " + inst + " "
 						+ inst.extra);
 			}
@@ -138,6 +140,11 @@ public class InfluenceAnalysis extends Taint {
 
 			if (method != null && !recordCall.isEmpty()) {
 				influencedCalls.add(mi);
+				for (Instruction tgtCall : recordCall.keySet()) {
+					if (Results.targetCallRes.containsKey(tgtCall)) {
+						Results.targetCallRes.get(tgtCall).addInfluAPI(inst);
+					}
+				}
 				Log.warn(TAG, "Found influenced API call " + mi);
 			} else {
 				Log.bb(TAG, "Not API Recording");

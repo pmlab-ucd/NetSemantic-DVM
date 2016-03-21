@@ -12,7 +12,7 @@ public class Test {
 	
 	public void testMain() {
 		String[] args = new String[4];
-		Settings.logLevel = 0;
+		Settings.logLevel = 1;
 		
 		args[0] = "C:/Users/hao/workspace/PJApps/app/PJApps.apk";
 		args[1] = "fu.hao.pjapps.MainActivity";
@@ -20,7 +20,8 @@ public class Test {
 		args[3] = "Full";
 		
 		Main.main(args);
-		System.out.println("REs: " + Results.results.toString());
+		System.out.println("REs: " + Results.results);
+		System.out.println("REs: " + Results.targetCallRes);
 
 	}
 	

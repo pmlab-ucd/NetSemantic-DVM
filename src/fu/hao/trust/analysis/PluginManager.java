@@ -11,7 +11,7 @@ import fu.hao.trust.utils.Log;
 import patdroid.dalvik.Instruction;
 
 public class PluginManager {
-	private final String TAG = getClass().toString();
+	private final String TAG = getClass().getSimpleName();
 	
 	List<Plugin> plugins;
 	Method method;

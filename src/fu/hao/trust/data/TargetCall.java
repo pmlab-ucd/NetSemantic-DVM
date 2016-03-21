@@ -1,6 +1,7 @@
 package fu.hao.trust.data;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 
 import fu.hao.trust.dvm.DalvikVM;
@@ -35,7 +36,8 @@ public class TargetCall {
 		}
 
 		mi = (MethodInfo) extra[0];
-		this.depAPIs = depAPIs;
+		this.depAPIs = new HashSet<>(depAPIs);
+		influAPIs = new HashSet<>();
 	}
 
 	public TargetCall(Instruction call, DalvikVM vm) {
@@ -52,7 +54,11 @@ public class TargetCall {
 	}
 
 	public void setDepAPIs(Collection<Instruction> depAPIs) {
-		this.depAPIs = depAPIs;
+		this.depAPIs = new HashSet<>(depAPIs);
+	}
+	
+	public void addInfluAPI(Instruction apiCall) {
+		influAPIs.add(apiCall);
 	}
 
 	@Override
@@ -62,7 +68,8 @@ public class TargetCall {
 			sb.append(param.toString() + ",");
 		}
 		sb.replace(sb.length() - 1, sb.length(), "]");
-		return sb.toString() + "-- it deps on APIs: " + depAPIs;
+		return sb.toString() + "\n -- it deps on APIs: " + depAPIs 
+				+ "\n influAPIs " + influAPIs;
 	}
 
 }
