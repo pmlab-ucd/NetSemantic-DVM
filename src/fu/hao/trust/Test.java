@@ -12,12 +12,12 @@ public class Test {
 	
 	public void testMain() {
 		String[] args = new String[4];
-		Settings.logLevel = 1;
+		Settings.logLevel = 0;
 		
 		args[0] = "C:/Users/hao/workspace/PJApps/app/PJApps.apk";
 		args[1] = "fu.hao.pjapps.MainActivity";
-		args[2] = "testConnection";
-		args[3] = "Full";
+		args[2] = "testCondRet";
+		args[3] = "Ctx";
 		
 		Main.main(args);
 		System.out.println("REs: " + Results.results);

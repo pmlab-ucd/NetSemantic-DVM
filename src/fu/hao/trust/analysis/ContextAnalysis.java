@@ -32,6 +32,7 @@ public class ContextAnalysis extends Taint {
 	// Whether to record APIs who will be visited and store stop signs.
 	// <StopSign, target API call>
 	Map<Instruction, Instruction> recordCall;
+	boolean retRecordCall = false;
 	Instruction stopSign = null;
 	// Specification of the target APIs
 	Set<String> targetList;
@@ -129,11 +130,11 @@ public class ContextAnalysis extends Taint {
 	}
 
 	class CTX_OP_RETURN_VOID implements Rule {
-
+		final String TAG = getClass().getSimpleName();
+		
 		@Override
 		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst,
 				Map<Object, Instruction> in) {
-			final String TAG = getClass().toString();
 			Map<Object, Instruction> out = new HashMap<>(in);
 			// If stored bidir conditions are not empty
 			if (condition != null) {
@@ -141,8 +142,18 @@ public class ContextAnalysis extends Taint {
 				Log.msg(TAG, "API Recording Begin " + r0.getData() + " "
 						+ condition + " " + condition.extra);
 				if (r0.getData() instanceof SensCtxVar) {
+					Map<Instruction, Instruction> copyRec = new HashMap<>();
+					
+					if (!recordCall.isEmpty()) {
+						MethodInfo currtMethod = vm.getCurrStackFrame().getMethod();
+						for (Instruction apiCall : recordCall.values()) {
+							copyRec.put(currtMethod.insns[currtMethod.insns.length - 1], apiCall);
+						}
+					}
 					// Reset the recordCall
 					recordCall.clear();
+					recordCall.putAll(copyRec);
+					
 					stopSign = vm.getCurrStackFrame().getInst(
 							(int) condition.extra);
 					recordCall.put(stopSign,
@@ -150,6 +161,11 @@ public class ContextAnalysis extends Taint {
 					Log.msg(TAG, "API Recording Begin " + stopSign + " "
 							+ condition + " " + condition.extra);
 				}
+			}
+			
+			// Keep the recording to the end of this method
+			if (!recordCall.isEmpty()) {
+				retRecordCall = true;
 			}
 
 			return out;
