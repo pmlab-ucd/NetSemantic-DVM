@@ -3,7 +3,6 @@ package fu.hao.trust.dvm;
 import java.util.HashMap;
 import java.util.Map;
 
-import fu.hao.trust.dvm.DalvikVM.Heap;
 import fu.hao.trust.utils.Log;
 import patdroid.core.ClassInfo;
 import patdroid.core.FieldInfo;
@@ -53,7 +52,7 @@ public class DVMObject {
 		}*/
 	}
 	
-	public DVMObject(DalvikVM vm, ClassInfo type, Heap heap) {
+	public DVMObject(DalvikVM vm, ClassInfo type, VMHeap heap) {
 		this.vm = vm;
 		if (vm.getClass(type) == null) {
 			Log.debug(TAG, "new object of " + type);
@@ -132,7 +131,7 @@ public class DVMObject {
 		this.index = index;
 	}
 	
-	public DVMObject clone(Heap heap) {
+	public DVMObject clone(VMHeap heap) {
 		DVMObject newObj = new DVMObject(vm, type, heap);
 		newObj.setFields(fields);
 		newObj.setSuperObj(superObj);

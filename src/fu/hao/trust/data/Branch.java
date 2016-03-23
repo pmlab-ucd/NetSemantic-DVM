@@ -4,12 +4,14 @@ import patdroid.core.MethodInfo;
 import patdroid.dalvik.Instruction;
 
 public class Branch {
-	Instruction inst;
-	MethodInfo method;
+	protected Instruction inst;
+	protected MethodInfo method;
+	protected int index;
 
-	public Branch(Instruction inst, MethodInfo method) {
+	public Branch(Instruction inst, int index, MethodInfo method) {
 		this.inst = inst;
 		this.method = method;
+		this.index = index;
 	}
 	
 	public Instruction getInstruction() {
@@ -22,7 +24,7 @@ public class Branch {
 	
 	@Override
 	public String toString() {
-		return "[Branch: " + inst + "@" + method + "]";
+		return "[Branch: " + index + "--" + inst + "@" + method.name + "]";
 	}
 
 }

@@ -6,9 +6,9 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
-import fu.hao.trust.data.Branch;
 import fu.hao.trust.dvm.DalvikVM.Register;
 import fu.hao.trust.dvm.DalvikVM.StackFrame;
+import fu.hao.trust.solver.BiDirBranch;
 import fu.hao.trust.solver.BiDirVar;
 import fu.hao.trust.solver.Unknown;
 import fu.hao.trust.utils.Log;
@@ -476,15 +476,15 @@ public class Interpreter {
 				Log.err(TAG, "cannot identify res type!");
 			}
 
-			if (!(vm.retValReg.data instanceof BiDirVar) && vm.retValReg.type != null && vm.retValReg.type.isPrimitive()) {
+			if (!(vm.retValReg.data instanceof BiDirVar)
+					&& vm.retValReg.type != null
+					&& vm.retValReg.type.isPrimitive()) {
 				vm.retValReg.data = PrimitiveInfo.fromObject(vm.retValReg.data);
 			}
 
 			// type checking before moving?
 			vm.getReg(inst.rdst).copy(vm.retValReg);
-			Log.bb(
-					TAG,
-					"Result data: " + vm.getReturnReg().getData());
+			Log.bb(TAG, "Result data: " + vm.getReturnReg().getData());
 			Log.debug(
 					TAG,
 					"Result data: " + vm.getReg(inst.rdst).data + ", type: "
@@ -1725,28 +1725,31 @@ public class Interpreter {
 				u0 = (BiDirVar) r0.data;
 
 				u0.addConstriant(vm, inst);
-				
+
 				// To avoid infinite loop
-				if (vm.unknownBranches.contains(inst)) {
-					Log.warn(TAG, "Jump out loop");
-					jump(vm, inst, true);
-					// vm.states.pop();
-					return;
+				for (BiDirBranch branch : vm.unknownBranches) {
+					if (branch.getInstruction() == inst || vm.lastBranch == inst) {
+						Log.warn(TAG, "Jump out loop");
+						jump(vm, inst, true);
+						// vm.states.pop();
+						return;
+					}
 				}
-				
+
 				Log.warn(TAG, "dibranches: " + vm.unknownBranches);
-				Branch branch = new Branch(inst, vm.getCurrStackFrame().method);
+				BiDirBranch branch = new BiDirBranch(inst, vm.pc, 
+						vm.getCurrStackFrame().method, vm.storeState());
 
 				vm.unknownBranches.push(branch);
-				vm.storeState();
+
 				if (r1 != null && r1.data instanceof Unknown) {
 					// TODO
 				}
 
-				//jump(vm, inst, false);
+				// jump(vm, inst, false);
 				jump(vm, inst, true);
 
-				Log.warn(TAG, "BiDir branch " + inst);
+				Log.warn(TAG, "New BiDirBranch " + branch);
 				// TODO add constraint inconsistency check to rm unreachable
 				// code
 				return;
@@ -1885,16 +1888,16 @@ public class Interpreter {
 				Log.debug(TAG, "Reflction class: " + clazz);
 
 				obj = vm.getReg(args[0]).data;
-				
+
 				if (obj instanceof BiDirVar) {
 					BiDirVar bidirVar = (BiDirVar) obj;
 					obj = bidirVar.getValue();
 				}
-				
+
 				if (obj == null || obj instanceof DVMObject
 						&& !DVMObject.class.equals(clazz)) {
 					obj = clazz.newInstance();
-				}		
+				}
 
 				// clazz = obj.getClass();
 				vm.retValReg.type = mi.returnType;
@@ -1956,7 +1959,7 @@ public class Interpreter {
 	 */
 	private void getParams(DalvikVM vm, MethodInfo mi, int[] args,
 			Class<?>[] argsClass, Object[] params)
-			throws ClassNotFoundException {		
+			throws ClassNotFoundException {
 		// Start from 1 to ignore "this"
 		for (int i = 1; i < args.length; i++) {
 			if (mi.paramTypes[i - 1].isPrimitive()) {
@@ -1994,9 +1997,9 @@ public class Interpreter {
 					// argData.getClass().getInterfaces()
 				} else {
 					// FIXME null
-					Log.warn(TAG, "Mismatch type! arg " + i + ", real para type: "
-							+ argData.getClass() + ", expected para type: "
-							+ argsClass[i - 1]);
+					Log.warn(TAG, "Mismatch type! arg " + i
+							+ ", real para type: " + argData.getClass()
+							+ ", expected para type: " + argsClass[i - 1]);
 					if (argData instanceof BiDirVar) {
 						BiDirVar bidirVar = (BiDirVar) argData;
 						params[i - 1] = bidirVar.getValue();
@@ -2007,7 +2010,7 @@ public class Interpreter {
 				}
 			}
 		}
-	}		
+	}
 
 	public boolean matchType(Class<?> real, Class<?> expected) {
 		if (expected.equals(real) || expected.equals(real.getSuperclass())) {
@@ -2193,7 +2196,7 @@ public class Interpreter {
 		auxByteCodes.put(0x39, new OP_EXCEPTION_THROW());
 	}
 
-	public void exec(DalvikVM vm, Instruction inst) {	
+	public void exec(DalvikVM vm, Instruction inst) {
 		Log.msg(TAG, vm.pc + " " + inst + " at "
 				+ vm.getCurrStackFrame().method);
 		Log.bb(TAG, "opcode: " + inst.opcode + " " + inst.opcode_aux);
@@ -2210,8 +2213,8 @@ public class Interpreter {
 			vm.pluginManager.runAnalysis(vm, inst);
 			vm.getCurrStackFrame().pluginRes = vm.pluginManager.cloneCurrtRes();
 			vm.pluginManager.checkInst(inst);
-			
-			//vm.pluginManager.printResults();
+
+			// vm.pluginManager.printResults();
 		}
 	}
 

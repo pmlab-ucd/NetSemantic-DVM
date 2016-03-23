@@ -31,7 +31,7 @@ public class Taint extends Plugin {
 		return SingletonHolder.instance;
 	}
 
-	private final String TAG = getClass().toString();
+	private final String TAG = getClass().getSimpleName();
 	Map<Integer, Rule> auxByteCodes = new HashMap<>();
 	Map<Integer, Rule> byteCodes = new HashMap<>();
 

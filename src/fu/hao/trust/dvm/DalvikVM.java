@@ -4,17 +4,16 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
-import java.util.Stack;
 import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 
 import fu.hao.trust.analysis.Plugin;
 import fu.hao.trust.analysis.PluginManager;
-import fu.hao.trust.data.Branch;
+import fu.hao.trust.data.VMState;
+import fu.hao.trust.solver.BiDirBranch;
 import fu.hao.trust.utils.Log;
 import fu.hao.trust.utils.Settings;
 import patdroid.core.ClassInfo;
@@ -229,55 +228,12 @@ public class DalvikVM {
 		return newStack;
 	}
 
-	class Heap {
-		Map<ClassInfo, DVMClass> dvmClasses = new HashMap<>();
-		Map<ClassInfo, Set<DVMObject>> dvmObjs = new HashMap<>();
-
-		private void setClass(ClassInfo type, DVMClass dvmClass) {
-			dvmClasses.put(type, dvmClass);
-		}
-
-		private void setClass(DVMClass dvmClass) {
-			dvmClasses.put(dvmClass.getType(), dvmClass);
-		}
-
-		private void setClass(DalvikVM vm, ClassInfo type) {
-			Log.bb(tag, "new class representation for " + type + " at "
-					+ vm.heap);
-			dvmClasses.put(type, new DVMClass(vm, type));
-		}
-
-		private DVMClass getClass(DalvikVM vm, ClassInfo type) {
-			Log.bb(tag, "getClass " + type + " at " + vm.heap);
-			if (!dvmClasses.containsKey(type)) {
-				setClass(vm, type);
-			}
-			return dvmClasses.get(type);
-		}
-
-		private void setObj(ClassInfo type, DVMObject dvmObj) {
-			if (dvmObjs.get(type) == null) {
-				dvmObjs.put(type, new HashSet<DVMObject>());
-			}
-			dvmObjs.get(type).add(dvmObj);
-			dvmObj.setTag(dvmObjs.get(type).size());
-		}
-
-		public void setObj(DVMObject dvmObj) {
-			if (dvmObjs.get(dvmObj.getType()) == null) {
-				dvmObjs.put(dvmObj.getType(), new HashSet<DVMObject>());
-			}
-			dvmObjs.get(dvmObj.getType()).add(dvmObj);
-			dvmObj.setTag(dvmObjs.get(dvmObj.getType()).size());
-		}
-	}
-
-	public State storeState() {
+	public VMState storeState() {
 		Log.warn(
 				tag,
 				"++++++++++++++++++++++++++++++++++++++Store state! +++++++++++++++++++++++++++++++++++++++++++");
 		getCurrStackFrame().printLocals();
-		Heap backHeap = new Heap();
+		VMHeap backHeap = new VMHeap();
 
 		Map<DVMClass, DVMClass> classMap = new HashMap<>();
 		Map<DVMObject, DVMObject> objMap = new HashMap<>();
@@ -345,9 +301,8 @@ public class DalvikVM {
 		// FIXME Backup plugin res
 		Method pluginMethod = pluginManager.getMethod();
 
-		State state = new State(backHeap, newStack, returnReg, newCTX, pc,
+		VMState state = new VMState(backHeap, newStack, returnReg, newCTX, pc,
 				pluginMethod);
-		states.add(state);
 		return state;
 	}
 
@@ -367,36 +322,33 @@ public class DalvikVM {
 		}
 	}
 
-	Stack<State> states = new Stack<>();
+	// Stack<State> states = new Stack<>();
 	/**
 	 * @fieldName: unknownCond
 	 * @fieldType: Stack<Instruction>
 	 * @Description: To store the unknown branches met for this trace.
 	 */
-	LinkedList<Branch> unknownBranches = new LinkedList<>();
-
-	public State popState() {
-		return states.pop();
-	}
+	LinkedList<BiDirBranch> unknownBranches = new LinkedList<>();
 
 	public void restoreState() {
 		Log.warn(
 				tag,
 				"++++++++++++++++++++++++++++++++++++++BackTrace++++++++++++++++++++++++++++++++++++++++++++++");
-		if (states.isEmpty()) {
+		if (unknownBranches.isEmpty()) {
 			pluginManager.setCondition(null);
 			return;
 		}
-		State state = popState();
-		heap = state.heap;
-		stack = state.stack;
-		retValReg = state.retValReg;
-		callingCtx = state.callingCtx;
-		pc = state.pc;
+		BiDirBranch focusBranch = unknownBranches.removeLast();
+		VMState state = focusBranch.getState();
+		heap = state.getHeap();
+		stack = state.getStack();
+		retValReg = state.getRetValReg();
+		callingCtx = state.getCallingCtx();
+		pc = state.getPC();
 		pluginManager.setCurrRes(getCurrStackFrame().pluginRes);
 		Log.bb(tag, "Res objs " + pluginManager.getCurrRes());
-		pluginManager.setMethod(state.pluginMethod);
-		Branch focusBranch = unknownBranches.removeLast();
+		pluginManager.setMethod(state.getPluginMethod());
+		
 		Log.msg(tag, "bidibranches: " + unknownBranches);
 		Log.msg(tag, " bidirBrach: " + focusBranch);
 		pluginManager.setCondition(focusBranch.getInstruction());
@@ -404,6 +356,8 @@ public class DalvikVM {
 		pc--;
 		getCurrStackFrame().pc--;
 		getCurrStackFrame().printLocals();
+		
+		lastBranch = focusBranch.getInstruction();
 
 		if (focusBranch.getMethod() != getCurrStackFrame().getMethod()) {
 			Log.err(tag, "BackTracing Error! Not the same method! "
@@ -413,38 +367,16 @@ public class DalvikVM {
 
 	}
 
-	class State {
-		Heap heap;
-		int pc;
-		LinkedList<StackFrame> stack;
-
-		// Instruction condition;
-
-		Register retValReg;
-
-		Register[] callingCtx;
-
-		Method pluginMethod;
-
-		State(Heap heap, LinkedList<StackFrame> stack, Register retValReg,
-				Register[] callingCtx, int pc, Method pluginMethod) {
-			this.heap = heap;
-			this.stack = stack;
-			this.retValReg = retValReg;
-			this.callingCtx = callingCtx;
-			this.pc = pc;
-			this.pluginMethod = pluginMethod;
-		}
-
-	}
-
 	// We directly use underlying jvm who runs this interpreter to manage memory
-	Heap heap;
+	VMHeap heap;
 
 	LinkedList<StackFrame> stack;
 	// invoke_parameters p;
 	// int[] result = new int[8];
 	int pc;
+	
+	// Help identify the loop.
+	Instruction lastBranch;
 
 	Interpreter interpreter;
 
@@ -507,14 +439,14 @@ public class DalvikVM {
 	}
 
 	public DalvikVM() {
-		heap = new Heap();
+		heap = new VMHeap();
 		interpreter = Interpreter.v();
 		retValReg = new Register();
 		stack = new LinkedList<>();
 	}
 
 	public void reset() {
-		heap = new Heap();
+		heap = new VMHeap();
 		interpreter = Interpreter.v();
 		retValReg = new Register();
 		stack = new LinkedList<>();
