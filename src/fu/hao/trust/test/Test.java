@@ -1,8 +1,4 @@
-package fu.hao.trust;
-import static org.junit.Assert.assertEquals;
-
-import java.util.HashMap;
-import java.util.Map;
+package fu.hao.trust.test;
 
 import fu.hao.trust.analysis.Results;
 import fu.hao.trust.dvm.Main;
@@ -14,16 +10,20 @@ public class Test {
 		String[] args = new String[4];
 		Settings.logLevel = 0;
 		
-		args[0] = "C:/Users/hao/workspace/PJApps/app/PJApps.apk";
+		
+		
+		/*args[0] = "C:/Users/hao/workspace/PJApps/app/PJApps.apk";
 		args[1] = "fu.hao.pjapps.MainActivity";
 		args[2] = "testCondRet";
-		args[3] = "Ctx";
+		args[3] = "Ctx";*/
 		
 		Main.main(args);
 		System.out.println("REs: " + Results.results);
 		System.out.println("REs: " + Results.targetCallRes);
 
 	}
+	
+
 	
 	class dd {
 		int a;

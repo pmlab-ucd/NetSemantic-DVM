@@ -142,17 +142,17 @@ public class ContextAnalysis extends Taint {
 				Log.msg(TAG, "API Recording Begin " + r0.getData() + " "
 						+ condition + " " + condition.extra);
 				if (r0.getData() instanceof SensCtxVar) {
-					Map<Instruction, Instruction> copyRec = new HashMap<>();
+					/*Map<Instruction, Instruction> copyRec = new HashMap<>();
 					
 					if (!recordCall.isEmpty()) {
 						MethodInfo currtMethod = vm.getCurrStackFrame().getMethod();
 						for (Instruction apiCall : recordCall.values()) {
 							copyRec.put(currtMethod.insns[currtMethod.insns.length - 1], apiCall);
 						}
-					}
+					}*/
 					// Reset the recordCall
 					recordCall.clear();
-					recordCall.putAll(copyRec);
+					//recordCall.putAll(copyRec);
 					
 					stopSign = vm.getCurrStackFrame().getInst(
 							(int) condition.extra);

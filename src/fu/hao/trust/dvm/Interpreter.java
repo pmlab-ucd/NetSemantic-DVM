@@ -1724,10 +1724,11 @@ public class Interpreter {
 				u0 = (BiDirVar) r0.data;
 
 				u0.addConstriant(vm, inst);
-
+				
+				// To avoid infinite loop
 				if (vm.unknownBranches.contains(inst)) {
-					Log.warn(TAG, "I am here");
-					jump(vm, inst, true);
+					Log.warn(TAG, "Jump out loop");
+					jump(vm, inst, false);
 					// vm.states.pop();
 					return;
 				}
@@ -1738,7 +1739,8 @@ public class Interpreter {
 					// TODO
 				}
 
-				jump(vm, inst, false);
+				//jump(vm, inst, false);
+				jump(vm, inst, true);
 
 				Log.warn(TAG, "BiDir branch " + inst);
 				// TODO add constraint inconsistency check to rm unreachable
@@ -2205,7 +2207,7 @@ public class Interpreter {
 			vm.getCurrStackFrame().pluginRes = vm.pluginManager.cloneCurrtRes();
 			vm.pluginManager.checkInst(inst);
 			
-			//vm.pluginManager.printResults();
+			vm.pluginManager.printResults();
 		}
 	}
 

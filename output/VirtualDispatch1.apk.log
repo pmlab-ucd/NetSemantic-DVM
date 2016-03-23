@@ -1,0 +1,386 @@
+main - [DEBUG]: C:/Users/hao/workspace/TRUST/sootOutput/VirtualDispatch1.apk_dummy.csv
+DalvikVM - [MSG]: apk java.util.zip.ZipFile@106305aa C:/Users/hao/workspace/DroidBenchProj/GeneralJava_VirtualDispatch1/app/VirtualDispatch1.apk
+DalvikVM - [BB]: class de.ecspride.VirtualDispatch1
+DalvikVM - [MSG]: RUN Method de.ecspride.VirtualDispatch1/onCreate[android.os.Bundle]
+DalvikVM - [BB]: New method call: de.ecspride.VirtualDispatch1/onCreate[android.os.Bundle]
+DalvikVM - [BB]: [0]<SPECIAL,ARGUMENT_SET,extra=[2, 3]>
+DalvikVM - [BB]: [1]<HALT,SUPER,extra=[null, [2, 3]]>
+DalvikVM - [BB]: [2]<MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+DalvikVM - [BB]: [3]<INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [2, 1]]>
+DalvikVM - [BB]: [4]<MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: [5]<INVOKE,VIRTUAL,extra=[android.app.Activity/getSystemService[java.lang.String], [2, 1]]>
+DalvikVM - [BB]: [6]<MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [7]<ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.telephony.TelephonyManager>
+DalvikVM - [BB]: [8]<INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>
+DalvikVM - [BB]: [9]<MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [10]<INSTANCE,IPUT,r0=r2,r1=r1,type=java.lang.Object,extra=de.ecspride.VirtualDispatch1.imei>
+DalvikVM - [BB]: [11]<RETURN,VOID>
+Interpreter - [MSG]: New chain obj
+DalvikVM - [BB]: getClass de.ecspride.VirtualDispatch1 at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+DalvikVM - [BB]: new class representation for de.ecspride.VirtualDispatch1 at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+DalvikVM - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+DalvikVM - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+DalvikVM - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+DalvikVM - [BB]: new class representation for java.lang.Object at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+DalvikVM - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+DalvikVM - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+DalvikVM - [BB]: getClass de.ecspride.VirtualDispatch1 at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+class fu.hao.trust.dvm.DVMObject - [BB]: New instance of de.ecspride.VirtualDispatch1
+DalvikVM - [BB]: getClass de.ecspride.VirtualDispatch1 at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+DalvikVM - [BB]: getClass de.ecspride.VirtualDispatch1 at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+Interpreter - [MSG]: RUN BEGIN de.ecspride.VirtualDispatch1/onCreate[android.os.Bundle]
+Interpreter - [MSG]: RUN BEGIN
+Interpreter - [MSG]: 0 <SPECIAL,ARGUMENT_SET,extra=[2, 3]> at de.ecspride.VirtualDispatch1/onCreate[android.os.Bundle]
+Interpreter - [BB]: opcode: 3 7
+Interpreter - [DEBUG]: args: 1@de.ecspride.VirtualDispatch1
+DalvikVM - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+DalvikVM - [BB]: new class representation for android.os.Bundle at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+DalvikVM - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+class fu.hao.trust.dvm.DVMObject - [BB]: New instance of android.os.Bundle
+DalvikVM - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+DalvikVM - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+Interpreter - [DEBUG]: args: 1@android.os.Bundle
+Interpreter - [MSG]: 1 <HALT,SUPER,extra=[null, [2, 3]]> at de.ecspride.VirtualDispatch1/onCreate[android.os.Bundle]
+Interpreter - [BB]: opcode: 15 12
+Interpreter - [DEBUG]: cannot resolve the invocation
+Interpreter - [MSG]: 2 <MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040> at de.ecspride.VirtualDispatch1/onCreate[android.os.Bundle]
+Interpreter - [BB]: opcode: 1 2
+Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+Interpreter - [DEBUG]: data: 2130903040 class patdroid.core.PrimitiveInfo
+Interpreter - [MSG]: 3 <INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [2, 1]]> at de.ecspride.VirtualDispatch1/onCreate[android.os.Bundle]
+Interpreter - [BB]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [MSG]: arg0 obj: 1@de.ecspride.VirtualDispatch1
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Reflction class: class android.app.Activity
+Interpreter - [DEBUG]: expected para type: int
+Interpreter - [DEBUG]: Real para int
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Caller obj: android.app.Activity@1833e2a6, from class: class android.app.Activity
+class fu.hao.trust.dvm.Interpreter - [MSG]: Reflction invocation public void android.app.Activity.setContentView(int)
+Interpreter - [MSG]: 4 <MOV,CONST,dst=r1,type=java.lang.String,extra="phone"> at de.ecspride.VirtualDispatch1/onCreate[android.os.Bundle]
+Interpreter - [BB]: opcode: 1 2
+Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+Interpreter - [DEBUG]: data: phone class java.lang.String
+Interpreter - [MSG]: 5 <INVOKE,VIRTUAL,extra=[android.app.Activity/getSystemService[java.lang.String], [2, 1]]> at de.ecspride.VirtualDispatch1/onCreate[android.os.Bundle]
+Interpreter - [BB]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [MSG]: arg0 obj: 1@de.ecspride.VirtualDispatch1
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Reflction class: class android.app.Activity
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Caller obj: android.app.Activity@76650cb3, from class: class android.app.Activity
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Return data: android.telephony.TelephonyManager@6424f87e ,class android.telephony.TelephonyManager
+class fu.hao.trust.dvm.Interpreter - [MSG]: Reflction invocation public java.lang.Object android.app.Activity.getSystemService(java.lang.String)
+Interpreter - [MSG]: 6 <MOV,RESULT,dst=r0,type=java.lang.Object> at de.ecspride.VirtualDispatch1/onCreate[android.os.Bundle]
+Interpreter - [BB]: opcode: 1 21
+Interpreter - [BB]: Result data: android.telephony.TelephonyManager@6424f87e
+Interpreter - [DEBUG]: Result data: android.telephony.TelephonyManager@6424f87e, type: java.lang.Object, to reg 0@StackFrame de.ecspride.VirtualDispatch1/onCreate[android.os.Bundle]
+Interpreter - [MSG]: 7 <ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.telephony.TelephonyManager> at de.ecspride.VirtualDispatch1/onCreate[android.os.Bundle]
+Interpreter - [BB]: opcode: 13 18
+Interpreter - [MSG]: 8 <INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]> at de.ecspride.VirtualDispatch1/onCreate[android.os.Bundle]
+Interpreter - [BB]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [MSG]: arg0 obj: android.telephony.TelephonyManager@6424f87e
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Reflction class: class android.telephony.TelephonyManager
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Return data: 359874043116909 ,class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [MSG]: Reflction invocation public java.lang.String android.telephony.TelephonyManager.getDeviceId()
+Interpreter - [MSG]: 9 <MOV,RESULT,dst=r1,type=java.lang.Object> at de.ecspride.VirtualDispatch1/onCreate[android.os.Bundle]
+Interpreter - [BB]: opcode: 1 21
+Interpreter - [BB]: Result data: 359874043116909
+Interpreter - [DEBUG]: Result data: 359874043116909, type: java.lang.String, to reg 1@StackFrame de.ecspride.VirtualDispatch1/onCreate[android.os.Bundle]
+Interpreter - [MSG]: 10 <INSTANCE,IPUT,r0=r2,r1=r1,type=java.lang.Object,extra=de.ecspride.VirtualDispatch1.imei> at de.ecspride.VirtualDispatch1/onCreate[android.os.Bundle]
+Interpreter - [BB]: opcode: 9 55
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_PUT_FIELD - [BB]: field de.ecspride.VirtualDispatch1.imei
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: put field 359874043116909
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_PUT_FIELD - [MSG]: Put field 359874043116909 to the field of 1@de.ecspride.VirtualDispatch1
+Interpreter - [MSG]: 11 <RETURN,VOID> at de.ecspride.VirtualDispatch1/onCreate[android.os.Bundle]
+Interpreter - [BB]: opcode: 2 3
+class fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID - [DEBUG]: Return void
+Interpreter - [MSG]: RUN DONE! The last one is onCreate
+DalvikVM - [BB]: class de.ecspride.VirtualDispatch1
+DalvikVM - [MSG]: RUN Method de.ecspride.VirtualDispatch1/clickButton[android.view.View]
+DalvikVM - [BB]: New method call: de.ecspride.VirtualDispatch1/clickButton[android.view.View]
+DalvikVM - [BB]: [0]<SPECIAL,ARGUMENT_SET,extra=[2, 3]>
+DalvikVM - [BB]: [1]<INSTANCE,IGET,r0=r2,r1=r1,type=void,extra=de.ecspride.VirtualDispatch1.counter>
+DalvikVM - [BB]: [2]<ARITHMETIC,ADD,dst=r1,r0=r1,extra=class patdroid.core.PrimitiveInfo?1>
+DalvikVM - [BB]: [3]<INSTANCE,IPUT,r0=r2,r1=r1,type=void,extra=de.ecspride.VirtualDispatch1.counter>
+DalvikVM - [BB]: [4]<MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [5]<INSTANCE,IGET,r0=r2,r1=r1,type=void,extra=de.ecspride.VirtualDispatch1.counter>
+DalvikVM - [BB]: [6]<ARITHMETIC,REM,dst=r1,r0=r1,extra=class patdroid.core.PrimitiveInfo?2>
+DalvikVM - [BB]: [7]<IF,NEZ,r0=r1,extra=index:13>
+DalvikVM - [BB]: [8]<NEW,INSTANCE,dst=r0,type=de.ecspride.NoDataLeak>
+DalvikVM - [BB]: [9]<MOV,CONST,dst=r1,type=java.lang.String,extra="no leak">
+DalvikVM - [BB]: [10]<INVOKE,DIRECT,extra=[de.ecspride.NoDataLeak/<init>[java.lang.String], [0, 1]]>
+DalvikVM - [BB]: [11]<INVOKE,VIRTUAL,extra=[de.ecspride.NoDataLeak/logData[], [0]]>
+DalvikVM - [BB]: [12]<RETURN,VOID>
+DalvikVM - [BB]: [13]<NEW,INSTANCE,dst=r0,type=de.ecspride.DataLeak>
+DalvikVM - [BB]: [14]<INSTANCE,IGET,r0=r2,r1=r1,type=java.lang.Object,extra=de.ecspride.VirtualDispatch1.imei>
+DalvikVM - [BB]: [15]<INVOKE,DIRECT,extra=[de.ecspride.DataLeak/<init>[java.lang.String], [0, 1]]>
+DalvikVM - [BB]: [16]<GOTO,extra=index:11>
+Interpreter - [MSG]: RUN BEGIN de.ecspride.VirtualDispatch1/clickButton[android.view.View]
+Interpreter - [MSG]: RUN BEGIN
+Interpreter - [MSG]: 0 <SPECIAL,ARGUMENT_SET,extra=[2, 3]> at de.ecspride.VirtualDispatch1/clickButton[android.view.View]
+Interpreter - [BB]: opcode: 3 7
+Interpreter - [DEBUG]: args: 1@de.ecspride.VirtualDispatch1
+DalvikVM - [BB]: getClass android.view.View at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+DalvikVM - [BB]: new class representation for android.view.View at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+DalvikVM - [BB]: getClass android.view.View at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+class fu.hao.trust.dvm.DVMObject - [BB]: New instance of android.view.View
+DalvikVM - [BB]: getClass android.view.View at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+DalvikVM - [BB]: getClass android.view.View at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+Interpreter - [DEBUG]: args: 1@android.view.View
+Interpreter - [MSG]: 1 <INSTANCE,IGET,r0=r2,r1=r1,type=void,extra=de.ecspride.VirtualDispatch1.counter> at de.ecspride.VirtualDispatch1/clickButton[android.view.View]
+Interpreter - [BB]: opcode: 9 54
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: obj 1@de.ecspride.VirtualDispatch1
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: fieldinfo de.ecspride.VirtualDispatch1.counter
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: put field Unknown var, type: int
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: Unknown var, type: int
+Interpreter - [MSG]: 2 <ARITHMETIC,ADD,dst=r1,r0=r1,extra=class patdroid.core.PrimitiveInfo?1> at de.ecspride.VirtualDispatch1/clickButton[android.view.View]
+Interpreter - [BB]: opcode: 13 38
+Interpreter - [DEBUG]: data Unknown var, type: int
+Interpreter - [MSG]: 3 <INSTANCE,IPUT,r0=r2,r1=r1,type=void,extra=de.ecspride.VirtualDispatch1.counter> at de.ecspride.VirtualDispatch1/clickButton[android.view.View]
+Interpreter - [BB]: opcode: 9 55
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_PUT_FIELD - [BB]: field de.ecspride.VirtualDispatch1.counter
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: put field Unknown var, type: int
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_PUT_FIELD - [MSG]: Put field Unknown var, type: int to the field of 1@de.ecspride.VirtualDispatch1
+Interpreter - [MSG]: 4 <MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0> at de.ecspride.VirtualDispatch1/clickButton[android.view.View]
+Interpreter - [BB]: opcode: 1 2
+Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+Interpreter - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+Interpreter - [MSG]: 5 <INSTANCE,IGET,r0=r2,r1=r1,type=void,extra=de.ecspride.VirtualDispatch1.counter> at de.ecspride.VirtualDispatch1/clickButton[android.view.View]
+Interpreter - [BB]: opcode: 9 54
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: obj 1@de.ecspride.VirtualDispatch1
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: fieldinfo de.ecspride.VirtualDispatch1.counter
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: Unknown var, type: int
+Interpreter - [MSG]: 6 <ARITHMETIC,REM,dst=r1,r0=r1,extra=class patdroid.core.PrimitiveInfo?2> at de.ecspride.VirtualDispatch1/clickButton[android.view.View]
+Interpreter - [BB]: opcode: 13 42
+Interpreter - [MSG]: 7 <IF,NEZ,r0=r1,extra=index:13> at de.ecspride.VirtualDispatch1/clickButton[android.view.View]
+Interpreter - [BB]: opcode: 8 31
+Interpreter - [DEBUG]: r0 data Unknown var, type: int
+DalvikVM - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+DalvikVM - [BB]: getClass de.ecspride.VirtualDispatch1 at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+DalvikVM - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+DalvikVM - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+DalvikVM - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+DalvikVM - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+DalvikVM - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+DalvikVM - [BB]: getClass android.view.View at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+DalvikVM - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+DalvikVM - [BB]: getClass de.ecspride.VirtualDispatch1 at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+DalvikVM - [BB]: getClass de.ecspride.VirtualDispatch1 at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: new object of de.ecspride.VirtualDispatch1
+DalvikVM - [BB]: getClass de.ecspride.VirtualDispatch1 at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+DalvikVM - [BB]: getClass de.ecspride.VirtualDispatch1 at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: put field Unknown var, type: int
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: put field 359874043116909
+DalvikVM - [BB]: getClass android.view.View at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+DalvikVM - [BB]: getClass android.view.View at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: new object of android.view.View
+DalvikVM - [BB]: getClass android.view.View at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+DalvikVM - [BB]: getClass android.view.View at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+DalvikVM - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+DalvikVM - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: new object of android.os.Bundle
+DalvikVM - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+DalvikVM - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+DalvikVM - [BB]: New method call: de.ecspride.VirtualDispatch1/clickButton[android.view.View]
+DalvikVM - [BB]: [0]<SPECIAL,ARGUMENT_SET,extra=[2, 3]>
+DalvikVM - [BB]: [1]<INSTANCE,IGET,r0=r2,r1=r1,type=void,extra=de.ecspride.VirtualDispatch1.counter>
+DalvikVM - [BB]: [2]<ARITHMETIC,ADD,dst=r1,r0=r1,extra=class patdroid.core.PrimitiveInfo?1>
+DalvikVM - [BB]: [3]<INSTANCE,IPUT,r0=r2,r1=r1,type=void,extra=de.ecspride.VirtualDispatch1.counter>
+DalvikVM - [BB]: [4]<MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [5]<INSTANCE,IGET,r0=r2,r1=r1,type=void,extra=de.ecspride.VirtualDispatch1.counter>
+DalvikVM - [BB]: [6]<ARITHMETIC,REM,dst=r1,r0=r1,extra=class patdroid.core.PrimitiveInfo?2>
+DalvikVM - [BB]: [7]<IF,NEZ,r0=r1,extra=index:13>
+DalvikVM - [BB]: [8]<NEW,INSTANCE,dst=r0,type=de.ecspride.NoDataLeak>
+DalvikVM - [BB]: [9]<MOV,CONST,dst=r1,type=java.lang.String,extra="no leak">
+DalvikVM - [BB]: [10]<INVOKE,DIRECT,extra=[de.ecspride.NoDataLeak/<init>[java.lang.String], [0, 1]]>
+DalvikVM - [BB]: [11]<INVOKE,VIRTUAL,extra=[de.ecspride.NoDataLeak/logData[], [0]]>
+DalvikVM - [BB]: [12]<RETURN,VOID>
+DalvikVM - [BB]: [13]<NEW,INSTANCE,dst=r0,type=de.ecspride.DataLeak>
+DalvikVM - [BB]: [14]<INSTANCE,IGET,r0=r2,r1=r1,type=java.lang.Object,extra=de.ecspride.VirtualDispatch1.imei>
+DalvikVM - [BB]: [15]<INVOKE,DIRECT,extra=[de.ecspride.DataLeak/<init>[java.lang.String], [0, 1]]>
+DalvikVM - [BB]: [16]<GOTO,extra=index:11>
+DalvikVM - [BB]: BB {}
+DalvikVM - [BB]: BB {}
+Interpreter - [MSG]: 8 <NEW,INSTANCE,dst=r0,type=de.ecspride.NoDataLeak> at de.ecspride.VirtualDispatch1/clickButton[android.view.View]
+Interpreter - [BB]: opcode: 4 8
+Interpreter - [DEBUG]: reg 0@StackFrame de.ecspride.VirtualDispatch1/clickButton[android.view.View]
+DalvikVM - [BB]: getClass de.ecspride.NoDataLeak at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+DalvikVM - [BB]: new class representation for de.ecspride.NoDataLeak at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+DalvikVM - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+DalvikVM - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+DalvikVM - [BB]: getClass de.ecspride.NoDataLeak at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+class fu.hao.trust.dvm.DVMObject - [BB]: New instance of de.ecspride.NoDataLeak
+DalvikVM - [BB]: getClass de.ecspride.NoDataLeak at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+DalvikVM - [BB]: getClass de.ecspride.NoDataLeak at fu.hao.trust.dvm.DalvikVM$Heap@14356844
+Interpreter - [DEBUG]: begin new object of de.ecspride.NoDataLeakcreated.
+Interpreter - [DEBUG]: new object of de.ecspride.NoDataLeakcreated.
+Interpreter - [MSG]: 9 <MOV,CONST,dst=r1,type=java.lang.String,extra="no leak"> at de.ecspride.VirtualDispatch1/clickButton[android.view.View]
+Interpreter - [BB]: opcode: 1 2
+Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r1,type=java.lang.String,extra="no leak">
+Interpreter - [DEBUG]: data: no leak class java.lang.String
+Interpreter - [MSG]: 10 <INVOKE,DIRECT,extra=[de.ecspride.NoDataLeak/<init>[java.lang.String], [0, 1]]> at de.ecspride.VirtualDispatch1/clickButton[android.view.View]
+Interpreter - [BB]: opcode: 12 11
+class fu.hao.trust.dvm.Interpreter - [MSG]: arg0 obj: 1@de.ecspride.NoDataLeak
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: not a reflction invocation de.ecspride.NoDataLeak/<init>[java.lang.String]
+DalvikVM - [BB]: New method call: de.ecspride.NoDataLeak/<init>[java.lang.String]
+DalvikVM - [BB]: [0]<SPECIAL,ARGUMENT_SET,extra=[0, 1]>
+DalvikVM - [BB]: [1]<INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]>
+DalvikVM - [BB]: [2]<INSTANCE,IPUT,r0=r0,r1=r1,type=java.lang.Object,extra=de.ecspride.NoDataLeak.data>
+DalvikVM - [BB]: [3]<RETURN,VOID>
+Interpreter - [MSG]: 0 <SPECIAL,ARGUMENT_SET,extra=[0, 1]> at de.ecspride.NoDataLeak/<init>[java.lang.String]
+Interpreter - [BB]: opcode: 3 7
+Interpreter - [DEBUG]: params: 1@de.ecspride.NoDataLeak
+Interpreter - [DEBUG]: params: no leak
+Interpreter - [MSG]: 1 <INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]> at de.ecspride.NoDataLeak/<init>[java.lang.String]
+Interpreter - [BB]: opcode: 12 11
+class fu.hao.trust.dvm.Interpreter - [MSG]: arg0 obj: 1@de.ecspride.NoDataLeak
+Interpreter - [MSG]: 2 <INSTANCE,IPUT,r0=r0,r1=r1,type=java.lang.Object,extra=de.ecspride.NoDataLeak.data> at de.ecspride.NoDataLeak/<init>[java.lang.String]
+Interpreter - [BB]: opcode: 9 55
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_PUT_FIELD - [BB]: field de.ecspride.NoDataLeak.data
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: put field no leak
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_PUT_FIELD - [MSG]: Put field no leak to the field of 1@de.ecspride.NoDataLeak
+Interpreter - [MSG]: 3 <RETURN,VOID> at de.ecspride.NoDataLeak/<init>[java.lang.String]
+Interpreter - [BB]: opcode: 2 3
+class fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID - [DEBUG]: Return void
+Interpreter - [MSG]: 11 <INVOKE,VIRTUAL,extra=[de.ecspride.NoDataLeak/logData[], [0]]> at de.ecspride.VirtualDispatch1/clickButton[android.view.View]
+Interpreter - [BB]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [MSG]: arg0 obj: 1@de.ecspride.NoDataLeak
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: not a reflction invocation de.ecspride.NoDataLeak/logData[]
+DalvikVM - [BB]: New method call: de.ecspride.NoDataLeak/logData[]
+DalvikVM - [BB]: [0]<SPECIAL,ARGUMENT_SET,extra=[6]>
+DalvikVM - [BB]: [1]<MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [2]<MOV,CONST,dst=r1,type=java.lang.String,extra="LOG">
+DalvikVM - [BB]: [3]<INSTANCE,IGET,r0=r6,r1=r3,type=java.lang.Object,extra=de.ecspride.NoDataLeak.data>
+DalvikVM - [BB]: [4]<HALT,STATIC,extra=[null, [1, 3]]>
+DalvikVM - [BB]: [5]<INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]>
+DalvikVM - [BB]: [6]<MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [7]<MOV,CONST,dst=r1,type=java.lang.String,extra="+49 1234">
+DalvikVM - [BB]: [8]<INSTANCE,IGET,r0=r6,r1=r3,type=java.lang.Object,extra=de.ecspride.NoDataLeak.data>
+DalvikVM - [BB]: [9]<MOV,REG,dst=r4,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [10]<MOV,REG,dst=r5,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [11]<INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]>
+DalvikVM - [BB]: [12]<RETURN,VOID>
+Interpreter - [MSG]: 0 <SPECIAL,ARGUMENT_SET,extra=[6]> at de.ecspride.NoDataLeak/logData[]
+Interpreter - [BB]: opcode: 3 7
+Interpreter - [DEBUG]: params: 1@de.ecspride.NoDataLeak
+Interpreter - [MSG]: 1 <MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0> at de.ecspride.NoDataLeak/logData[]
+Interpreter - [BB]: opcode: 1 2
+Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+Interpreter - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+Interpreter - [MSG]: 2 <MOV,CONST,dst=r1,type=java.lang.String,extra="LOG"> at de.ecspride.NoDataLeak/logData[]
+Interpreter - [BB]: opcode: 1 2
+Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r1,type=java.lang.String,extra="LOG">
+Interpreter - [DEBUG]: data: LOG class java.lang.String
+Interpreter - [MSG]: 3 <INSTANCE,IGET,r0=r6,r1=r3,type=java.lang.Object,extra=de.ecspride.NoDataLeak.data> at de.ecspride.NoDataLeak/logData[]
+Interpreter - [BB]: opcode: 9 54
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: obj 1@de.ecspride.NoDataLeak
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: fieldinfo de.ecspride.NoDataLeak.data
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: no leak
+Interpreter - [MSG]: 4 <HALT,STATIC,extra=[null, [1, 3]]> at de.ecspride.NoDataLeak/logData[]
+Interpreter - [BB]: opcode: 15 14
+Interpreter - [DEBUG]: cannot resolve the invocation
+Interpreter - [MSG]: 5 <INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]> at de.ecspride.NoDataLeak/logData[]
+Interpreter - [BB]: opcode: 12 14
+Interpreter - [DEBUG]: reflction class android.telephony.SmsManager
+Interpreter - [DEBUG]: return data: android.telephony.SmsManager@1b01ade9 class android.telephony.SmsManager
+Interpreter - [MSG]: reflction invocation public static android.telephony.SmsManager android.telephony.SmsManager.getDefault()
+Interpreter - [MSG]: 6 <MOV,RESULT,dst=r0,type=java.lang.Object> at de.ecspride.NoDataLeak/logData[]
+Interpreter - [BB]: opcode: 1 21
+Interpreter - [BB]: Result data: android.telephony.SmsManager@1b01ade9
+Interpreter - [DEBUG]: Result data: android.telephony.SmsManager@1b01ade9, type: android.telephony.SmsManager, to reg 0@StackFrame de.ecspride.NoDataLeak/logData[]
+Interpreter - [MSG]: 7 <MOV,CONST,dst=r1,type=java.lang.String,extra="+49 1234"> at de.ecspride.NoDataLeak/logData[]
+Interpreter - [BB]: opcode: 1 2
+Interpreter - [DEBUG]: Mov const begin <MOV,CONST,dst=r1,type=java.lang.String,extra="+49 1234">
+Interpreter - [DEBUG]: data: +49 1234 class java.lang.String
+Interpreter - [MSG]: 8 <INSTANCE,IGET,r0=r6,r1=r3,type=java.lang.Object,extra=de.ecspride.NoDataLeak.data> at de.ecspride.NoDataLeak/logData[]
+Interpreter - [BB]: opcode: 9 54
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: obj 1@de.ecspride.NoDataLeak
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: fieldinfo de.ecspride.NoDataLeak.data
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: no leak
+Interpreter - [MSG]: 9 <MOV,REG,dst=r4,r0=r2,type=java.lang.Object> at de.ecspride.NoDataLeak/logData[]
+Interpreter - [BB]: opcode: 1 1
+class fu.hao.trust.dvm.Interpreter$OP_MOVE_REG - [DEBUG]: mov 0 to 0
+Interpreter - [MSG]: 10 <MOV,REG,dst=r5,r0=r2,type=java.lang.Object> at de.ecspride.NoDataLeak/logData[]
+Interpreter - [BB]: opcode: 1 1
+class fu.hao.trust.dvm.Interpreter$OP_MOVE_REG - [DEBUG]: mov 0 to 0
+Interpreter - [MSG]: 11 <INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]> at de.ecspride.NoDataLeak/logData[]
+Interpreter - [BB]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [MSG]: arg0 obj: android.telephony.SmsManager@1b01ade9
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Reflction class: class android.telephony.SmsManager
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Caller obj: android.telephony.SmsManager@1b01ade9, from class: class android.telephony.SmsManager
+class fu.hao.trust.dvm.Interpreter - [MSG]: Reflction invocation public void android.telephony.SmsManager.sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)
+Interpreter - [MSG]: 12 <RETURN,VOID> at de.ecspride.NoDataLeak/logData[]
+Interpreter - [BB]: opcode: 2 3
+class fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID - [DEBUG]: Return void
+Interpreter - [MSG]: 12 <RETURN,VOID> at de.ecspride.VirtualDispatch1/clickButton[android.view.View]
+Interpreter - [BB]: opcode: 2 3
+class fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: Res objs {}
+Interpreter - [MSG]: 13 <NEW,INSTANCE,dst=r0,type=de.ecspride.DataLeak> at de.ecspride.VirtualDispatch1/clickButton[android.view.View]
+Interpreter - [BB]: opcode: 4 8
+Interpreter - [DEBUG]: reg 0@StackFrame de.ecspride.VirtualDispatch1/clickButton[android.view.View]
+DalvikVM - [BB]: getClass de.ecspride.DataLeak at fu.hao.trust.dvm.DalvikVM$Heap@424eeb54
+DalvikVM - [BB]: new class representation for de.ecspride.DataLeak at fu.hao.trust.dvm.DalvikVM$Heap@424eeb54
+DalvikVM - [BB]: getClass de.ecspride.NoDataLeak at fu.hao.trust.dvm.DalvikVM$Heap@424eeb54
+DalvikVM - [BB]: new class representation for de.ecspride.NoDataLeak at fu.hao.trust.dvm.DalvikVM$Heap@424eeb54
+DalvikVM - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.DalvikVM$Heap@424eeb54
+DalvikVM - [BB]: new class representation for java.lang.Object at fu.hao.trust.dvm.DalvikVM$Heap@424eeb54
+DalvikVM - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.DalvikVM$Heap@424eeb54
+DalvikVM - [BB]: getClass de.ecspride.NoDataLeak at fu.hao.trust.dvm.DalvikVM$Heap@424eeb54
+DalvikVM - [BB]: getClass de.ecspride.DataLeak at fu.hao.trust.dvm.DalvikVM$Heap@424eeb54
+class fu.hao.trust.dvm.DVMObject - [BB]: New instance of de.ecspride.DataLeak
+DalvikVM - [BB]: getClass de.ecspride.DataLeak at fu.hao.trust.dvm.DalvikVM$Heap@424eeb54
+DalvikVM - [BB]: getClass de.ecspride.DataLeak at fu.hao.trust.dvm.DalvikVM$Heap@424eeb54
+Interpreter - [DEBUG]: begin new object of de.ecspride.DataLeakcreated.
+Interpreter - [DEBUG]: new object of de.ecspride.DataLeakcreated.
+Interpreter - [MSG]: 14 <INSTANCE,IGET,r0=r2,r1=r1,type=java.lang.Object,extra=de.ecspride.VirtualDispatch1.imei> at de.ecspride.VirtualDispatch1/clickButton[android.view.View]
+Interpreter - [BB]: opcode: 9 54
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: obj null
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: fieldinfo de.ecspride.VirtualDispatch1.imei
+Interpreter - [MSG]: 15 <INVOKE,DIRECT,extra=[de.ecspride.DataLeak/<init>[java.lang.String], [0, 1]]> at de.ecspride.VirtualDispatch1/clickButton[android.view.View]
+Interpreter - [BB]: opcode: 12 11
+class fu.hao.trust.dvm.Interpreter - [MSG]: arg0 obj: 1@de.ecspride.DataLeak
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: not a reflction invocation de.ecspride.DataLeak/<init>[java.lang.String]
+DalvikVM - [BB]: New method call: de.ecspride.DataLeak/<init>[java.lang.String]
+DalvikVM - [BB]: [0]<SPECIAL,ARGUMENT_SET,extra=[0, 1]>
+DalvikVM - [BB]: [1]<INVOKE,DIRECT,extra=[de.ecspride.NoDataLeak/<init>[java.lang.String], [0, 1]]>
+DalvikVM - [BB]: [2]<RETURN,VOID>
+Interpreter - [MSG]: 0 <SPECIAL,ARGUMENT_SET,extra=[0, 1]> at de.ecspride.DataLeak/<init>[java.lang.String]
+Interpreter - [BB]: opcode: 3 7
+Interpreter - [DEBUG]: params: 1@de.ecspride.DataLeak
+Interpreter - [DEBUG]: params: Unknown var, type: int
+Interpreter - [MSG]: 1 <INVOKE,DIRECT,extra=[de.ecspride.NoDataLeak/<init>[java.lang.String], [0, 1]]> at de.ecspride.DataLeak/<init>[java.lang.String]
+Interpreter - [BB]: opcode: 12 11
+class fu.hao.trust.dvm.Interpreter - [MSG]: arg0 obj: 1@de.ecspride.DataLeak
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: not a reflction invocation de.ecspride.NoDataLeak/<init>[java.lang.String]
+DalvikVM - [BB]: New method call: de.ecspride.NoDataLeak/<init>[java.lang.String]
+DalvikVM - [BB]: [0]<SPECIAL,ARGUMENT_SET,extra=[0, 1]>
+DalvikVM - [BB]: [1]<INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]>
+DalvikVM - [BB]: [2]<INSTANCE,IPUT,r0=r0,r1=r1,type=java.lang.Object,extra=de.ecspride.NoDataLeak.data>
+DalvikVM - [BB]: [3]<RETURN,VOID>
+Interpreter - [MSG]: 0 <SPECIAL,ARGUMENT_SET,extra=[0, 1]> at de.ecspride.NoDataLeak/<init>[java.lang.String]
+Interpreter - [BB]: opcode: 3 7
+Interpreter - [DEBUG]: params: 1@de.ecspride.DataLeak
+Interpreter - [DEBUG]: params: Unknown var, type: int
+Interpreter - [MSG]: 1 <INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]> at de.ecspride.NoDataLeak/<init>[java.lang.String]
+Interpreter - [BB]: opcode: 12 11
+class fu.hao.trust.dvm.Interpreter - [MSG]: arg0 obj: 1@de.ecspride.DataLeak
+Interpreter - [MSG]: 2 <INSTANCE,IPUT,r0=r0,r1=r1,type=java.lang.Object,extra=de.ecspride.NoDataLeak.data> at de.ecspride.NoDataLeak/<init>[java.lang.String]
+Interpreter - [BB]: opcode: 9 55
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_PUT_FIELD - [BB]: field de.ecspride.NoDataLeak.data
+class fu.hao.trust.dvm.DVMObject - [DEBUG]: put field Unknown var, type: int
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_PUT_FIELD - [MSG]: Put field Unknown var, type: int to the field of 1@de.ecspride.DataLeak
+Interpreter - [MSG]: 3 <RETURN,VOID> at de.ecspride.NoDataLeak/<init>[java.lang.String]
+Interpreter - [BB]: opcode: 2 3
+class fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID - [DEBUG]: Return void
+Interpreter - [MSG]: 2 <RETURN,VOID> at de.ecspride.DataLeak/<init>[java.lang.String]
+Interpreter - [BB]: opcode: 2 3
+class fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID - [DEBUG]: Return void
+Interpreter - [MSG]: 16 <GOTO,extra=index:11> at de.ecspride.VirtualDispatch1/clickButton[android.view.View]
+Interpreter - [BB]: opcode: 6 0
+Interpreter - [DEBUG]: goto done: <GOTO,extra=index:11>
+Interpreter - [MSG]: 11 <INVOKE,VIRTUAL,extra=[de.ecspride.NoDataLeak/logData[], [0]]> at de.ecspride.VirtualDispatch1/clickButton[android.view.View]
+Interpreter - [BB]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [MSG]: arg0 obj: 1@de.ecspride.DataLeak
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: not a reflction invocation de.ecspride.NoDataLeak/logData[]
+DalvikVM - [BB]: New method call: de.ecspride.DataLeak/logData[]
+DalvikVM - [BB]: [0]<SPECIAL,ARGUMENT_SET,extra=[6]>
+DalvikVM - [BB]: [1]<MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [2]<MOV,CONST,dst=r1,type=java.lang.String,extra="LOG">
+DalvikVM - [BB]: [3]<INVOKE,SUPER,extra=[de.ecspride.NoDataLeak/getData[], [6]]>

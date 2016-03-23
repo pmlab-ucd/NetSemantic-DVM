@@ -128,11 +128,16 @@ public class DVMObject {
 		return newObj;
 	}
 	
+	public void setIndex(int index) {
+		this.index = index;
+	}
+	
 	public DVMObject clone(Heap heap) {
 		DVMObject newObj = new DVMObject(vm, type, heap);
 		newObj.setFields(fields);
 		newObj.setSuperObj(superObj);
 		newObj.setDvmClass(dvmClass);
+		newObj.setIndex(index);
 		return newObj;
 	}
 	
@@ -142,7 +147,7 @@ public class DVMObject {
 	
 	@Override
 	public String toString() {
-		return index + "@" + type;
+		return "instance number " + index + "@" + type;
 	}
 
 }

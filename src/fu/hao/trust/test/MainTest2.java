@@ -1,4 +1,4 @@
-package fu.hao.trust.dvm;
+package fu.hao.trust.test;
 
 import static org.junit.Assert.*;
 
@@ -8,6 +8,7 @@ import java.util.Map;
 import org.junit.Test;
 
 import fu.hao.trust.analysis.Results;
+import fu.hao.trust.dvm.Main;
 import fu.hao.trust.utils.Settings;
 
 public class MainTest2 {
