@@ -72,5 +72,13 @@ public class TargetCall {
 		return sb.toString() + "\n -- it deps on APIs: " + depAPIs 
 				+ "\n influAPIs " + influAPIs;
 	}
+	
+	public Collection<Instruction> getDepAPIs() {
+		return depAPIs;
+	}
+	
+	public Set<Instruction> getInfluAPIs() {
+		return influAPIs;
+	}
 
 }

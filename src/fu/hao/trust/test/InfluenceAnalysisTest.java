@@ -10,8 +10,8 @@ import fu.hao.trust.utils.Settings;
 
 public class InfluenceAnalysisTest {
 
-	//@Test
-	public void test() {
+	@Test
+	public void testInfluence() {
 		String[] args = new String[4];
 		Settings.logLevel = 0;
 
@@ -24,7 +24,7 @@ public class InfluenceAnalysisTest {
 	}
 
 	@Test
-	public void testFull() {
+	public void testConnection() {
 		String[] args = new String[4];
 		Settings.logLevel = 2;
 
@@ -33,9 +33,20 @@ public class InfluenceAnalysisTest {
 		args[2] = "testConnection";
 		args[3] = "Full";
 		Main.main(args);
-		
+
 		System.out.println("REs: " + Results.results);
 		System.out.println("REs: " + Results.targetCallRes);
+		assertEquals(false, Results.targetCallRes.isEmpty());
+		assertEquals(
+				true,
+				Results.targetCallRes
+						.values()
+						.iterator()
+						.next()
+						.getInfluAPIs()
+						.toString()
+						.contains(
+								"<INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage"));
 	}
 
 }
