@@ -10,6 +10,7 @@ import patdroid.dalvik.Instruction;
 import fu.hao.trust.dvm.DalvikVM;
 import fu.hao.trust.dvm.DalvikVM.Register;
 import fu.hao.trust.solver.InfluVar;
+import fu.hao.trust.solver.SensCtxVar;
 import fu.hao.trust.utils.Log;
 
 /**
@@ -41,7 +42,7 @@ public class InfluenceAnalysis extends Taint {
 				Log.msg(TAG, "API Recording Begin " + r0.getData() + " "
 						+ condition + " " + condition.extra);
 				if (r0.getData() instanceof InfluVar) {
-					// Reset the recordCall	
+					// Reset the recordCall
 					recordCall.clear();
 					stopSign = vm.getCurrStackFrame().getInst(
 							(int) condition.extra);
@@ -74,7 +75,7 @@ public class InfluenceAnalysis extends Taint {
 			if (out.containsKey(vm.getReg(inst.r0))) {
 				stopSign = vm.getCurrStackFrame().getInst((int) inst.extra);
 				recordCall.put(stopSign, out.get(vm.getReg(inst.r0)));
-				
+
 				Log.msg(TAG, "INFLU_OP_IF: " + stopSign + " " + inst + " "
 						+ inst.extra);
 			}
@@ -117,6 +118,13 @@ public class InfluenceAnalysis extends Taint {
 				}
 			}
 
+			// Avoid conflicts, let influAnalysis to handle vars related to
+			// connection.
+			if (out.containsKey(vm.getReturnReg())
+					&& (vm.getReturnReg().getData() instanceof SensCtxVar)) {
+				out.remove(vm.getReturnReg());
+			}
+
 			if (out.containsKey(vm.getReturnReg())) {
 				Instruction depAPI = null;
 				for (Object obj : out.keySet()) {
@@ -141,7 +149,8 @@ public class InfluenceAnalysis extends Taint {
 			if (method != null && !recordCall.isEmpty()) {
 				influencedCalls.add(mi);
 				for (Instruction tgtCall : recordCall.values()) {
-					if (Results.targetCallRes != null && Results.targetCallRes.containsKey(tgtCall)) {
+					if (Results.targetCallRes != null
+							&& Results.targetCallRes.containsKey(tgtCall)) {
 						Log.msg(TAG, "tgt " + tgtCall);
 						Results.targetCallRes.get(tgtCall).addInfluAPI(inst);
 						break;
@@ -167,10 +176,11 @@ public class InfluenceAnalysis extends Taint {
 			return out;
 		}
 	}
-	
+
 	@Override
-	public Map<Object, Instruction> runAnalysis(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
-		Map<Object, Instruction> res =  super.runAnalysis(vm, inst, in);
+	public Map<Object, Instruction> runAnalysis(DalvikVM vm, Instruction inst,
+			Map<Object, Instruction> in) {
+		Map<Object, Instruction> res = super.runAnalysis(vm, inst, in);
 		Log.msg(TAG, "rec calls: " + recordCall);
 		return res;
 	}

@@ -10,7 +10,7 @@ import fu.hao.trust.utils.Settings;
 
 public class InfluenceAnalysisTest {
 
-	@Test
+	//@Test
 	public void test() {
 		String[] args = new String[4];
 		Settings.logLevel = 0;
@@ -21,13 +21,12 @@ public class InfluenceAnalysisTest {
 		args[3] = "Influ";
 
 		Main.main(args);
-		System.out.println("REs: " + Results.targetCallRes);
 	}
 
-	//@Test
+	@Test
 	public void testFull() {
 		String[] args = new String[4];
-		Settings.logLevel = 1;
+		Settings.logLevel = 2;
 
 		args[0] = "C:/Users/hao/workspace/PJApps/app/PJApps.apk";
 		args[1] = "fu.hao.pjapps.MainActivity";

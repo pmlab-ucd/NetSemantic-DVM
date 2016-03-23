@@ -14,6 +14,7 @@ import java.util.zip.ZipFile;
 
 import fu.hao.trust.analysis.Plugin;
 import fu.hao.trust.analysis.PluginManager;
+import fu.hao.trust.data.Branch;
 import fu.hao.trust.utils.Log;
 import fu.hao.trust.utils.Settings;
 import patdroid.core.ClassInfo;
@@ -55,7 +56,9 @@ public class DalvikVM {
 			this.data = y.data;
 
 			if (this.data instanceof DVMObject) {
-				Log.bb(tag, "backobj for reg " + y.data + " as " + objMap.get(y.data));
+				Log.bb(tag,
+						"backobj for reg " + y.data + " as "
+								+ objMap.get(y.data));
 				this.data = objMap.get(y.data);
 			} else if (this.data instanceof DVMClass) {
 				this.data = classMap.get(y.data);
@@ -101,17 +104,18 @@ public class DalvikVM {
 			pc = 0;
 			retValReg = new Register();
 			pluginRes = new HashMap<>();
-			
+
 			for (Plugin plugin : pluginManager.getCurrRes().keySet()) {
 				Map<Object, Instruction> clonedRes = new HashMap<>();
-				Map<Object, Instruction> originRes = pluginManager.getCurrRes().get(plugin);
+				Map<Object, Instruction> originRes = pluginManager.getCurrRes()
+						.get(plugin);
 				for (Object obj : originRes.keySet()) {
 					if (obj instanceof Register) {
 						continue;
 					}
 					clonedRes.put(obj, originRes.get(obj));
 				}
-				
+
 				pluginRes.put(plugin, clonedRes);
 			}
 
@@ -136,9 +140,10 @@ public class DalvikVM {
 			frame.thisObj = thisObj;
 			frame.pc = pc;
 			frame.pluginRes = new HashMap<>(pluginRes);
-			
+
 			for (Plugin plugin : pluginRes.keySet()) {
-				Map<Object, Instruction> clonedRes = new HashMap<>(pluginRes.get(plugin));
+				Map<Object, Instruction> clonedRes = new HashMap<>(
+						pluginRes.get(plugin));
 				frame.pluginRes.put(plugin, clonedRes);
 			}
 
@@ -146,7 +151,8 @@ public class DalvikVM {
 			for (int i = 0; i < regs.length; i++) {
 				frame.regs[i].copy(regs[i], objMap, classMap);
 				if (regs[i].data != null) {
-					Log.bb(tag, "BackupReg " + i + " " + frame.regs[i].getData());
+					Log.bb(tag,
+							"BackupReg " + i + " " + frame.regs[i].getData());
 				}
 				for (Plugin plugin : pluginRes.keySet()) {
 					Map<Object, Instruction> clonedRes = frame.pluginRes
@@ -199,15 +205,16 @@ public class DalvikVM {
 		public String toString() {
 			return "StackFrame " + method;
 		}
-		
+
 		public void printLocals() {
 			for (int i = 0; i < 65536; i++) {
 				if (regs[i].data != null) {
-					Log.bb(tag, "StackFrame " + method + ", reg " + i + ": " + regs[i].data);
+					Log.bb(tag, "StackFrame " + method + ", reg " + i + ": "
+							+ regs[i].data);
 				}
 			}
 		}
-		
+
 	}
 
 	public LinkedList<StackFrame> cloneStack(Map<DVMObject, DVMObject> objMap,
@@ -266,7 +273,8 @@ public class DalvikVM {
 	}
 
 	public State storeState() {
-		Log.warn(tag,
+		Log.warn(
+				tag,
 				"++++++++++++++++++++++++++++++++++++++Store state! +++++++++++++++++++++++++++++++++++++++++++");
 		getCurrStackFrame().printLocals();
 		Heap backHeap = new Heap();
@@ -289,14 +297,14 @@ public class DalvikVM {
 		for (ClassInfo type : heap.dvmObjs.keySet()) {
 			for (DVMObject obj : heap.dvmObjs.get(type)) {
 				DVMObject newObj;
-				
+
 				if (objMap.containsKey(obj)) {
 					newObj = objMap.get(obj);
 				} else {
 					newObj = obj.clone(backHeap);
 					objMap.put(obj, newObj);
 				}
-				
+
 				// Fix fields.
 				for (FieldInfo fieldInfo : newObj.getFields().keySet()) {
 					Object field = newObj.getFieldObj(fieldInfo);
@@ -365,15 +373,16 @@ public class DalvikVM {
 	 * @fieldType: Stack<Instruction>
 	 * @Description: To store the unknown branches met for this trace.
 	 */
-	LinkedList<Instruction> unknownBranches = new LinkedList<>();
+	LinkedList<Branch> unknownBranches = new LinkedList<>();
 
 	public State popState() {
 		return states.pop();
 	}
 
 	public void restoreState() {
-		Log.warn(tag,
-				"++++++++++++++++++++++++++++++++++++++BackTrace++++++++++++++++++++++++++++++++++++++++++++++++");
+		Log.warn(
+				tag,
+				"++++++++++++++++++++++++++++++++++++++BackTrace++++++++++++++++++++++++++++++++++++++++++++++");
 		if (states.isEmpty()) {
 			pluginManager.setCondition(null);
 			return;
@@ -387,12 +396,21 @@ public class DalvikVM {
 		pluginManager.setCurrRes(getCurrStackFrame().pluginRes);
 		Log.bb(tag, "Res objs " + pluginManager.getCurrRes());
 		pluginManager.setMethod(state.pluginMethod);
-		focusBranch = unknownBranches.removeLast();
-		pluginManager.setCondition(focusBranch);
-		interpreter.jump(this, focusBranch, false);
+		Branch focusBranch = unknownBranches.removeLast();
+		Log.msg(tag, "bidibranches: " + unknownBranches);
+		Log.msg(tag, " bidirBrach: " + focusBranch);
+		pluginManager.setCondition(focusBranch.getInstruction());
+		interpreter.jump(this, focusBranch.getInstruction(), false);
 		pc--;
 		getCurrStackFrame().pc--;
 		getCurrStackFrame().printLocals();
+
+		if (focusBranch.getMethod() != getCurrStackFrame().getMethod()) {
+			Log.err(tag, "BackTracing Error! Not the same method! "
+					+ focusBranch.getMethod() + " expected, but now is "
+					+ getCurrStackFrame().getMethod());
+		}
+
 	}
 
 	class State {
@@ -440,8 +458,6 @@ public class DalvikVM {
 	DVMObject callbackOwner;
 
 	PluginManager pluginManager;
-	
-	Instruction focusBranch;
 
 	public Register getReg(int i) {
 		return stack.getLast().regs[i];
@@ -539,7 +555,8 @@ public class DalvikVM {
 		if (!stack.isEmpty()) {
 			StackFrame currtStack = stack.getLast();
 			pc = currtStack.pc;
-			if (pluginManager.getCurrRes() == null || pluginManager.getCurrRes().isEmpty()) {
+			if (pluginManager.getCurrRes() == null
+					|| pluginManager.getCurrRes().isEmpty()) {
 				return;
 			}
 			for (Plugin plugin : pluginManager.getCurrRes().keySet()) {

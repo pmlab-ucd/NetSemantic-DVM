@@ -6,6 +6,7 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
+import fu.hao.trust.data.Branch;
 import fu.hao.trust.dvm.DalvikVM.Register;
 import fu.hao.trust.dvm.DalvikVM.StackFrame;
 import fu.hao.trust.solver.BiDirVar;
@@ -1728,12 +1729,15 @@ public class Interpreter {
 				// To avoid infinite loop
 				if (vm.unknownBranches.contains(inst)) {
 					Log.warn(TAG, "Jump out loop");
-					jump(vm, inst, false);
+					jump(vm, inst, true);
 					// vm.states.pop();
 					return;
 				}
+				
+				Log.warn(TAG, "dibranches: " + vm.unknownBranches);
+				Branch branch = new Branch(inst, vm.getCurrStackFrame().method);
 
-				vm.unknownBranches.push(inst);
+				vm.unknownBranches.push(branch);
 				vm.storeState();
 				if (r1 != null && r1.data instanceof Unknown) {
 					// TODO
@@ -1990,7 +1994,7 @@ public class Interpreter {
 					// argData.getClass().getInterfaces()
 				} else {
 					// FIXME null
-					Log.warn(TAG, "Mismatch type! " + "real para type: "
+					Log.warn(TAG, "Mismatch type! arg " + i + ", real para type: "
 							+ argData.getClass() + ", expected para type: "
 							+ argsClass[i - 1]);
 					if (argData instanceof BiDirVar) {
@@ -2207,7 +2211,7 @@ public class Interpreter {
 			vm.getCurrStackFrame().pluginRes = vm.pluginManager.cloneCurrtRes();
 			vm.pluginManager.checkInst(inst);
 			
-			vm.pluginManager.printResults();
+			//vm.pluginManager.printResults();
 		}
 	}
 

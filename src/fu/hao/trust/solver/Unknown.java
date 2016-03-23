@@ -7,6 +7,7 @@ import org.jacop.core.Store;
 import org.jacop.core.Var;
 
 import fu.hao.trust.dvm.DalvikVM;
+import fu.hao.trust.utils.Log;
 import patdroid.core.ClassInfo;
 import patdroid.core.PrimitiveInfo;
 import patdroid.dalvik.Instruction;
@@ -29,12 +30,15 @@ public class Unknown implements BiDirVar {
 	 */
 	Instruction lastArith;
 	
+	final String TAG = "Unknown";
+	
 	public Unknown(ClassInfo type) {
 		this.type = type;
 		store = new Store();
 		//if (type.equals(ClassInfo.primitiveInt)) {
 			var = new IntVar(store);
 		//}
+		Log.bb(TAG, "Unknown created!");
 	}
 	
 	public void addConstriant(DalvikVM vm, Instruction ifInst) {
@@ -68,7 +72,7 @@ public class Unknown implements BiDirVar {
 	}
 	
 	public String toString() {
-		return "Unknown var, type: " + type.toString();
+		return "Unknown var, type: " + type;
 	}
 	
 	public void addLastArith(Instruction lastArith) {
