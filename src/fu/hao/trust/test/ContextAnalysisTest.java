@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import fu.hao.trust.analysis.Results;
 import fu.hao.trust.dvm.Main;
 import fu.hao.trust.utils.Settings;
 
@@ -20,6 +21,7 @@ public class ContextAnalysisTest {
 		args[3] = "Ctx";
 		
 		Main.main(args);
+		System.out.println("REs: " + Results.targetCallRes);
 	}
 
 }

@@ -139,8 +139,7 @@ public class ContextAnalysis extends Taint {
 			// If stored bidir conditions are not empty
 			if (condition != null) {
 				Register r0 = vm.getReg(condition.r0);
-				Log.msg(TAG, "API Recording Begin " + r0.getData() + " "
-						+ condition + " " + condition.extra);
+
 				if (r0.getData() instanceof SensCtxVar) {
 					/*Map<Instruction, Instruction> copyRec = new HashMap<>();
 					
@@ -154,8 +153,10 @@ public class ContextAnalysis extends Taint {
 					recordCall.clear();
 					//recordCall.putAll(copyRec);
 					
-					stopSign = vm.getCurrStackFrame().getInst(
-							(int) condition.extra);
+					//stopSign = vm.getCurrStackFrame().getInst(
+							//(int) condition.extra);
+					MethodInfo currtMethod = vm.getCurrStackFrame().getMethod();
+					stopSign = currtMethod.insns[currtMethod.insns.length - 1]; 
 					recordCall.put(stopSign,
 							((SensCtxVar) r0.getData()).getSrc());
 					Log.msg(TAG, "API Recording Begin " + stopSign + " "

@@ -21,6 +21,7 @@ public class InfluenceAnalysisTest {
 		args[3] = "Influ";
 
 		Main.main(args);
+		System.out.println("REs: " + Results.targetCallRes);
 	}
 
 	//@Test
