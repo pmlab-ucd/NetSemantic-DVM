@@ -104,5 +104,11 @@ public class Unknown implements BiDirVar {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public void setValue(Object value) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

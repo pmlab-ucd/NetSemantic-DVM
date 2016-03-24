@@ -66,7 +66,7 @@ public class TargetCall {
 	public String toString() {
 		StringBuilder sb = new StringBuilder(mi + "-- its Param: [");
 		for (Object param : params) {
-			sb.append(param.toString() + ",");
+			sb.append(param + ",");
 		}
 		sb.replace(sb.length() - 1, sb.length(), "]");
 		return sb.toString() + "\n -- it deps on APIs: " + depAPIs 

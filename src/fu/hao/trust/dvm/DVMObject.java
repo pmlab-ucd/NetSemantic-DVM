@@ -3,9 +3,11 @@ package fu.hao.trust.dvm;
 import java.util.HashMap;
 import java.util.Map;
 
+import fu.hao.trust.dvm.DalvikVM.StackFrame;
 import fu.hao.trust.utils.Log;
 import patdroid.core.ClassInfo;
 import patdroid.core.FieldInfo;
+import patdroid.core.MethodInfo;
 
 /**
  * @ClassName: DVMObject
@@ -50,6 +52,19 @@ public class DVMObject {
 				setSuperObj(new DVMObject(vm, superClass));
 			}
 		}*/
+		
+		MethodInfo oinit = type.getDefaultConstructor();
+		if (oinit != null) {
+			Log.bb(TAG, "not empty constructor");
+			StackFrame stackFrame = vm.newStackFrame(oinit);
+			vm.stack.add(stackFrame);
+			vm.setContext(null);
+			// vm.getCurrStackFrame().thisObj = null;
+			// To force run the constructor.
+			for (int i = 0; i < oinit.insns.length; i++) {
+				vm.interpreter.exec(vm, oinit.insns[i]);
+			}
+		}
 	}
 	
 	public DVMObject(DalvikVM vm, ClassInfo type, VMHeap heap) {

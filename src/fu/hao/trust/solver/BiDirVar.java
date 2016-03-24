@@ -15,4 +15,6 @@ public interface BiDirVar {
 	
 	public Object getValue();
 	
+	public void setValue(Object value);
+	
 }

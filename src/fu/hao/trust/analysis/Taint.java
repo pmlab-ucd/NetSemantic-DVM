@@ -17,6 +17,7 @@ import fu.hao.trust.dvm.DVMClass;
 import fu.hao.trust.dvm.DVMObject;
 import fu.hao.trust.dvm.DalvikVM;
 import fu.hao.trust.dvm.DalvikVM.Register;
+import fu.hao.trust.solver.BiDirVar;
 import fu.hao.trust.utils.Log;
 import fu.hao.trust.utils.SrcSinkParser;
 
@@ -526,14 +527,24 @@ public class Taint extends Plugin {
 		 */
 		@Override
 		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
+			Map<Object, Instruction> out = new HashMap<>(in);
 			// array reg
 			// Object[] array = (Object[]) vm.getReg(inst.r0).getData();
 			Object array = vm.getReg(inst.r0).getData();
 			// index reg
-			int index = ((PrimitiveInfo) vm.getReg(inst.r1).getData())
-					.intValue();
-
-			Map<Object, Instruction> out = new HashMap<>(in);
+			PrimitiveInfo pindex;
+			if (vm.getReg(inst.r1).getData() instanceof BiDirVar) {
+				if (((BiDirVar) vm.getReg(inst.r1).getData()).getValue() instanceof PrimitiveInfo) {
+					pindex = (PrimitiveInfo) ((BiDirVar) vm.getReg(inst.r1).getData()).getValue();
+				} else {
+					Log.warn(TAG, "Array get error! index is not a int.");
+					return out;
+				}
+			} else {
+				pindex = (PrimitiveInfo) vm.getReg(inst.r1).getData();
+			}
+			
+			int index = pindex.intValue();
 			if (in.containsKey(array)) {
 				out.put(vm.getReg(inst.rdst), in.get(array));
 				out.put(vm.getReg(inst.rdst).getData(), in.get(array));
@@ -702,6 +713,10 @@ public class Taint extends Plugin {
 		@Override
 		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
 			Map<Object, Instruction> out = new HashMap<>(in);
+			if (!(vm.getReg(inst.r0).getData() instanceof DVMObject)) {
+				Log.warn(TAG, "Object not DVMObject, it is " + vm.getReg(inst.r0).getData());
+				return out;
+			}
 			DVMObject obj = (DVMObject) vm.getReg(inst.r0).getData();
 			FieldInfo fieldInfo = (FieldInfo) inst.extra;
 			Object field = obj.getFieldObj(fieldInfo);
