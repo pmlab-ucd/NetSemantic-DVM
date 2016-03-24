@@ -4,7 +4,9 @@ import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import fu.hao.trust.dvm.DalvikVM.Register;
 import fu.hao.trust.dvm.DalvikVM.StackFrame;
@@ -2003,7 +2005,6 @@ public class Interpreter {
 					}
 				}
 			} else {
-
 				Log.debug(TAG, "Reflction class: " + clazz);
 
 				obj = vm.getReg(args[0]).data;
@@ -2022,7 +2023,13 @@ public class Interpreter {
 				vm.retValReg.type = mi.returnType;
 				if (args.length == 1) {
 					method = clazz.getDeclaredMethod(mi.name);
-					vm.retValReg.data = method.invoke(obj);
+					// TODO 
+					if (noInvokeList.contains(method.getName())) {
+						vm.retValReg.data = null;
+						Log.warn(TAG, "Found noInvokeMethod " + method);
+					} else {
+						vm.retValReg.data = method.invoke(obj);
+					}
 				} else {
 					getParams(vm, mi, args, argsClass, params);
 					method = clazz.getDeclaredMethod(mi.name, argsClass);
@@ -2310,6 +2317,11 @@ public class Interpreter {
 		auxByteCodes.put(0x37, new OP_INSTANCE_PUT_FIELD());
 		auxByteCodes.put(0x38, new OP_EXCEPTION_TRYCATCH());
 		auxByteCodes.put(0x39, new OP_EXCEPTION_THROW());
+		
+		noInvokeList = new HashSet<>();
+		noInvokeList.add("connect");
+		noInvokeList.add("getResponseCode");
+		noInvokeList.add("getInputStream");
 	}
 
 	public void exec(DalvikVM vm, Instruction inst) {
@@ -2360,5 +2372,7 @@ public class Interpreter {
 
 		return null;
 	}
+	
+	Set<String> noInvokeList;
 
 }
