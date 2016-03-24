@@ -541,7 +541,12 @@ public class Taint extends Plugin {
 					return out;
 				}
 			} else {
-				pindex = (PrimitiveInfo) vm.getReg(inst.r1).getData();
+				if (vm.getReg(inst.r1).getData() instanceof PrimitiveInfo) {
+					pindex = (PrimitiveInfo) vm.getReg(inst.r1).getData();
+				} else {
+					Log.warn(TAG, "Wrong type: " + vm.getReg(inst.r1).getData());
+					pindex = new PrimitiveInfo(0);
+				}
 			}
 			
 			int index = pindex.intValue();
