@@ -20,6 +20,8 @@ public class InfluVar implements BiDirVar {
 	private ClassInfo type;
 	private Instruction src;
 	
+	boolean on = false;
+	
 	static {
 		influList = new HashSet<>();
 		// influList.add(Dalvik.findClass("java.net.URLConnection"));
@@ -81,6 +83,11 @@ public class InfluVar implements BiDirVar {
 	@Override
 	public void setValue(Object value) {
 		this.value = value;
+	}
+
+	@Override
+	public boolean isOn() {
+		return on;
 	}
 	
 

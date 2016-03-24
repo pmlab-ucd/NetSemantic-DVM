@@ -371,9 +371,8 @@ public class DalvikVM {
 	VMHeap heap;
 
 	LinkedList<StackFrame> stack;
-	// invoke_parameters p;
-	// int[] result = new int[8];
-	int pc;
+	int pc; // Point to the position of next instruction
+	int nowPC; // Point to the current instruction.
 	
 	// Help identify the loop.
 	Instruction lastBranch;
@@ -608,6 +607,18 @@ public class DalvikVM {
 		}
 
 		interpreter.runMethod(this, method);
+	}
+	
+	public int getPC() {
+		return pc;
+	}
+	
+	public void setPC(int pc) {
+		this.pc = pc;
+	}
+	
+	public int getNowPC() {
+		return nowPC;
 	}
 
 }

@@ -10,8 +10,6 @@ import patdroid.dalvik.Instruction;
 import fu.hao.trust.data.TargetCall;
 import fu.hao.trust.dvm.DalvikVM;
 import fu.hao.trust.dvm.DalvikVM.Register;
-import fu.hao.trust.solver.InfluVar;
-import fu.hao.trust.solver.SensCtxVar;
 import fu.hao.trust.utils.Log;
 
 /**
@@ -59,31 +57,6 @@ public class ContextAnalysis extends Taint {
 			Object[] extra = (Object[]) inst.extra;
 			MethodInfo mi = (MethodInfo) extra[0];
 
-			// Avoid conflicts, let influAnalysis to handle vars related to connection.
-			if (out.containsKey(vm.getReturnReg())
-					&& (vm.getReturnReg().getData() instanceof InfluVar || InfluVar
-							.isInfluVar(vm.getReturnReg().getData()))) {
-				out.remove(vm.getReturnReg());
-			}
-
-			// When invoke a method who generate sens var.
-			if (out.containsKey(vm.getReturnReg())) {
-				Instruction depAPI = null;
-				for (Object obj : out.keySet()) {
-					if (!in.containsKey(obj)) {
-						depAPI = out.get(obj);
-						break;
-					}
-				}
-
-				Log.debug(TAG, "Ctx-generator detected! " + method + " "
-						+ vm.getReturnReg().getData());
-				// Set return variable as a bidiVar
-				vm.getReturnReg().setData(
-						new SensCtxVar(mi.returnType, vm.getReturnReg()
-								.getData(), depAPI));
-			}
-
 			if (isTarget(mi.name) && !targetCalls.containsKey(inst)) {
 				TargetCall targetCall = new TargetCall(inst, vm);
 				targetCalls.put(inst, targetCall);
@@ -100,7 +73,7 @@ public class ContextAnalysis extends Taint {
 		}
 	}
 
-	class CTX_OP_IF implements Rule {
+	class CTX_OP_CMP implements Rule {
 		final String TAG = getClass().toString();
 
 		/**
@@ -117,7 +90,8 @@ public class ContextAnalysis extends Taint {
 			Map<Object, Instruction> out = taintOp.flow(vm, inst, in);
 
 			// When sensitive value exists in the branch
-			if (out.containsKey(vm.getReg(inst.r0))) {
+			if (out.containsKey(vm.getReg(inst.r0)) || inst.r1 != -1 && out.containsKey(vm.getReg(inst.r1))) {
+				vm.setPC(vm.getNowPC() + 1);
 				stopSign = vm.getCurrStackFrame().getInst((int) inst.extra);
 				recordCall.put(stopSign, out.get(vm.getReg(inst.r0)));
 
@@ -139,8 +113,8 @@ public class ContextAnalysis extends Taint {
 			// If stored bidir conditions are not empty
 			if (condition != null) {
 				Register r0 = vm.getReg(condition.r0);
-
-				if (r0.getData() instanceof SensCtxVar) {
+				
+				//if (r0.getData() instanceof SensCtxVar) {
 					/*Map<Instruction, Instruction> copyRec = new HashMap<>();
 					
 					if (!recordCall.isEmpty()) {
@@ -157,30 +131,17 @@ public class ContextAnalysis extends Taint {
 							//(int) condition.extra);
 					MethodInfo currtMethod = vm.getCurrStackFrame().getMethod();
 					stopSign = currtMethod.insns[currtMethod.insns.length - 1]; 
-					recordCall.put(stopSign,
-							((SensCtxVar) r0.getData()).getSrc());
+					//recordCall.put(stopSign,
+						//	((SensCtxVar) r0.getData()).getSrc());
 					Log.msg(TAG, "API Recording Begin " + stopSign + " "
 							+ condition + " " + condition.extra);
-				}
+				//}
 			}
 			
 			// Keep the recording to the end of this method
 			if (!recordCall.isEmpty()) {
 				retRecordCall = true;
 			}
-
-			return out;
-		}
-
-	}
-
-	class CTX_OP_MOV_RESULT implements Rule {
-
-		@Override
-		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst,
-				Map<Object, Instruction> in) {
-			TAINT_OP_MOV_RESULT taintOp = new TAINT_OP_MOV_RESULT();
-			Map<Object, Instruction> out = taintOp.flow(vm, inst, in);
 
 			return out;
 		}
@@ -255,9 +216,8 @@ public class ContextAnalysis extends Taint {
 		recordCall = new HashMap<>();
 		interested = recordCall.keySet();
 		sinks = new HashSet<>();
-		byteCodes.put(0x08, new CTX_OP_IF());
+		byteCodes.put(0x08, new CTX_OP_CMP());
 		byteCodes.put(0x0C, new CTX_OP_INVOKE());
-		auxByteCodes.put(0x15, new CTX_OP_MOV_RESULT());
 		auxByteCodes.put(0x03, new CTX_OP_RETURN_VOID());
 		auxByteCodes.put(0x01, new CTX_OP_MOV_REG());
 		auxByteCodes.put(0x02, new CTX_OP_MOV_CONST());

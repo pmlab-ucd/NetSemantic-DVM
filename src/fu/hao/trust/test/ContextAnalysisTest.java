@@ -30,7 +30,7 @@ public class ContextAnalysisTest {
 						.toString());
 	}
 	
-	@Test
+	//@Test
 	public void testCondRet() {
 		Settings.logLevel = 0;
 

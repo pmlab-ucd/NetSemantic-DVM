@@ -16,6 +16,8 @@ public class SensCtxVar implements BiDirVar{
 	private Object value;
 	private Instruction src;
 	
+	boolean on = false;
+	
 	public SensCtxVar(ClassInfo type, Object value, Instruction src) {
 		this.setType(type);
 		this.value = value;
@@ -57,6 +59,11 @@ public class SensCtxVar implements BiDirVar{
 	@Override
 	public void setValue(Object value) {
 		this.value = value;
+	}
+
+	@Override
+	public boolean isOn() {
+		return on;
 	}
 	
 

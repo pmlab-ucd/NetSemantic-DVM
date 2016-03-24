@@ -17,4 +17,14 @@ public interface BiDirVar {
 	
 	public void setValue(Object value);
 	
+	/**
+	* @Title: isOn
+	* @Author: Hao Fu
+	* @Description: Whether turn bi-dir traversal on
+	* @param @return  
+	* @return boolean   
+	* @throws
+	*/
+	public boolean isOn();
+	
 }

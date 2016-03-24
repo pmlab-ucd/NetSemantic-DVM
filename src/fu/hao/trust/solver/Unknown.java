@@ -30,6 +30,8 @@ public class Unknown implements BiDirVar {
 	 */
 	Instruction lastArith;
 	
+	boolean on = true;
+	
 	final String TAG = "Unknown";
 	
 	public Unknown(ClassInfo type) {
@@ -109,6 +111,11 @@ public class Unknown implements BiDirVar {
 	public void setValue(Object value) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public boolean isOn() {
+		return on;
 	}
 	
 }

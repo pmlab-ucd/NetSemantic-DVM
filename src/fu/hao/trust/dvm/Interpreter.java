@@ -194,6 +194,7 @@ public class Interpreter {
 
 	class OP_NEW_INSTANCE implements ByteCode {
 		private final String TAG = getClass().getSimpleName();
+
 		/**
 		 * @Title: func
 		 * @Description: new-instance v0, java.io.FileInputStream // type@0015
@@ -230,6 +231,7 @@ public class Interpreter {
 
 	class OP_NEW_ARRAY implements ByteCode {
 		private final String TAG = getClass().getSimpleName();
+
 		/**
 		 * @Title: func
 		 * @Description: new-array v2, v1, char[] // type@0025 Generates a new
@@ -247,8 +249,9 @@ public class Interpreter {
 			}
 			vm.getReg(inst.rdst).type = inst.type;
 			int count;
-			
-			if (vm.getReg(inst.r0).data == null || vm.getReg(inst.r0).data instanceof Unknown) {
+
+			if (vm.getReg(inst.r0).data == null
+					|| vm.getReg(inst.r0).data instanceof Unknown) {
 				count = 42;
 				Log.warn(TAG, "Incorrect size!");
 			} else {
@@ -418,13 +421,12 @@ public class Interpreter {
 				Log.debug(TAG, "NOT same type when instanceof");
 			}
 
-			jump(vm, inst, true);
-
 		}
 	}
 
 	class OP_A_ARRAY_LENGTH implements ByteCode {
 		private final String TAG = getClass().getSimpleName();
+
 		/**
 		 * @Title: func
 		 * @Description: array-length v1, v1 Calculates the number of elements
@@ -445,17 +447,16 @@ public class Interpreter {
 				vm.getReg(inst.rdst).type = ClassInfo.primitiveInt;
 			} else {
 				Log.warn(TAG, "not an array");
-				vm.getReg(inst.rdst).data = new PrimitiveInfo(
-						0);
+				vm.getReg(inst.rdst).data = new PrimitiveInfo(0);
 				vm.getReg(inst.rdst).type = ClassInfo.primitiveInt;
 			}
 
-			jump(vm, inst, true);
 		}
 	}
 
 	class OP_A_CHECKCAST implements ByteCode {
 		private final String TAG = getClass().getSimpleName();
+
 		/**
 		 * @Title: func
 		 * @Description: 1F04 0100 - check-cast v4, Test3 // type@0001 Checks
@@ -474,12 +475,12 @@ public class Interpreter {
 				Log.warn(TAG, "not consistent type when cast!");
 			}
 
-			jump(vm, inst, true);
 		}
 	}
 
 	class OP_MOV_RESULT implements ByteCode {
 		private final String TAG = getClass().getSimpleName();
+
 		/**
 		 * @Title: func
 		 * @Description: move-result v0 Move the return value of a previous
@@ -495,17 +496,17 @@ public class Interpreter {
 				Log.err(TAG, "cannot identify res type!");
 			}
 
-			if (vm.retValReg.data instanceof BiDirVar && vm.retValReg.type.isPrimitive()) {
+			if (vm.retValReg.data instanceof BiDirVar
+					&& vm.retValReg.type.isPrimitive()) {
 				BiDirVar var = (BiDirVar) vm.retValReg.data;
 				var.setValue(PrimitiveInfo.fromObject(var.getValue()));
 			}
-			
-			
+
 			if (!(vm.retValReg.data instanceof BiDirVar)
 					&& vm.retValReg.type != null
 					&& vm.retValReg.type.isPrimitive()) {
 				vm.retValReg.data = PrimitiveInfo.fromObject(vm.retValReg.data);
-			} 
+			}
 
 			// type checking before moving?
 			vm.getReg(inst.rdst).copy(vm.retValReg);
@@ -529,7 +530,7 @@ public class Interpreter {
 
 	class OP_A_CAST implements ByteCode {
 		private final String TAG = getClass().getSimpleName();
-		
+
 		/**
 		 * @Title: func
 		 * @Description: int-to-long v6, v0 Converts an integer in v0 into a
@@ -541,13 +542,12 @@ public class Interpreter {
 		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			jump(vm, inst, true);
-			
+
 			if (vm.getReg(inst.r0).data == null) {
 				Log.warn(TAG, "ERROR: Null!");
 				return;
 			}
-			
+
 			Log.debug(TAG, "cast data " + vm.getReg(inst.r0).data);
 			if (!(vm.getReg(inst.r0).data instanceof PrimitiveInfo)) {
 				vm.getReg(inst.r0).data = PrimitiveInfo.fromObject(vm
@@ -555,13 +555,13 @@ public class Interpreter {
 			}
 			PrimitiveInfo primitive = (PrimitiveInfo) vm.getReg(inst.r0).data;
 			vm.getReg(inst.rdst).data = primitive.castTo(inst.type);
-			vm.getReg(inst.rdst).type = inst.type;			
+			vm.getReg(inst.rdst).type = inst.type;
 		}
 	}
 
 	class OP_IF_EQ implements ByteCode {
 		private final String TAG = getClass().getSimpleName();
-		
+
 		/**
 		 * @Title: func
 		 * @Description: if-eq v3, v11, 0080 // +0066 Jumps to the current
@@ -590,7 +590,7 @@ public class Interpreter {
 
 	class OP_IF_LT implements ByteCode {
 		private final String TAG = getClass().getSimpleName();
-		
+
 		/**
 		 * @Title: func
 		 * @Description: if-lt v2, v3, 0023 // -0035 Jumps to the current
@@ -619,7 +619,7 @@ public class Interpreter {
 
 	class OP_IF_NE implements ByteCode {
 		private final String TAG = getClass().getSimpleName();
-		
+
 		/**
 		 * @Title: func
 		 * @Description: if-ne v3, v10, 002c // +0010 Jumps to the current
@@ -926,7 +926,6 @@ public class Interpreter {
 			Log.debug(TAG, "data " + vm.getReg(inst.r0).data);
 			if (vm.getReg(inst.r0).data instanceof Unknown) {
 				Log.warn(TAG, "Unknown primitive data found.");
-				jump(vm, inst, true);
 				return;
 			}
 			PrimitiveInfo op0 = (PrimitiveInfo) vm.getReg(inst.r0).data;
@@ -939,7 +938,6 @@ public class Interpreter {
 
 			if (op0 == null || op1 == null) {
 				Log.warn(TAG, "Unknown primitive data found.");
-				jump(vm, inst, true);
 				return;
 			}
 			Register rdst = vm.getReg(inst.rdst);
@@ -973,7 +971,7 @@ public class Interpreter {
 			} else {
 				op1 = (PrimitiveInfo) inst.extra;
 			}
-			
+
 			Register rdst = vm.getReg(inst.rdst);
 			if (op1.isInteger()) {
 				rdst.type = ClassInfo.primitiveInt;
@@ -1067,48 +1065,33 @@ public class Interpreter {
 	class OP_A_REM implements ByteCode {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			try {
-				PrimitiveInfo op0 = (PrimitiveInfo) vm.getReg(inst.r0).data;
-				PrimitiveInfo op1;
-				if (inst.r1 != -1) {
-					op1 = (PrimitiveInfo) vm.getReg(inst.r1).data;
-				} else {
-					op1 = (PrimitiveInfo) inst.extra;
-				}
-				Register rdst = vm.getReg(inst.rdst);
-
-				if (op1.isInteger()) {
-					rdst.type = ClassInfo.primitiveInt;
-					int res = op0.intValue() % op1.intValue();
-					rdst.data = new PrimitiveInfo(res);
-				} else if (op1.isLong()) {
-					rdst.type = ClassInfo.primitiveLong;
-					long res = op0.longValue() % op1.longValue();
-					rdst.data = new PrimitiveInfo(res);
-				} else if (op1.isFloat()) {
-					rdst.type = ClassInfo.primitiveFloat;
-					float res = op0.floatValue() % op1.floatValue();
-					rdst.data = new PrimitiveInfo(res);
-				} else if (op1.isDouble()) {
-					rdst.type = ClassInfo.primitiveFloat;
-					double res = op0.floatValue() % op1.floatValue();
-					rdst.data = new PrimitiveInfo(res);
-				}
-
-			} catch (java.lang.ClassCastException e) {
-				Unknown op = null;
-				if (vm.getReg(inst.r0).data instanceof Unknown) {
-					op = (Unknown) vm.getReg(inst.r0).data;
-					op.addLastArith(inst);
-				}
-
-				if (inst.r1 != -1 && vm.getReg(inst.r1).data instanceof Unknown) {
-					op = (Unknown) vm.getReg(inst.r0).data;
-					op.addLastArith(inst);
-				}
-
-				Log.warn(TAG, "unknown found! " + op);
+			PrimitiveInfo op0 = (PrimitiveInfo) vm.getReg(inst.r0).data;
+			PrimitiveInfo op1;
+			if (inst.r1 != -1) {
+				op1 = (PrimitiveInfo) vm.getReg(inst.r1).data;
+			} else {
+				op1 = (PrimitiveInfo) inst.extra;
 			}
+			Register rdst = vm.getReg(inst.rdst);
+
+			if (op1.isInteger()) {
+				rdst.type = ClassInfo.primitiveInt;
+				int res = op0.intValue() % op1.intValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op1.isLong()) {
+				rdst.type = ClassInfo.primitiveLong;
+				long res = op0.longValue() % op1.longValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op1.isFloat()) {
+				rdst.type = ClassInfo.primitiveFloat;
+				float res = op0.floatValue() % op1.floatValue();
+				rdst.data = new PrimitiveInfo(res);
+			} else if (op1.isDouble()) {
+				rdst.type = ClassInfo.primitiveFloat;
+				double res = op0.floatValue() % op1.floatValue();
+				rdst.data = new PrimitiveInfo(res);
+			}
+
 		}
 	}
 
@@ -1360,7 +1343,7 @@ public class Interpreter {
 			Register rdst = vm.getReg(inst.rdst);
 			rdst.type = ClassInfo.primitiveInt;
 			jump(vm, inst, true);
-			
+
 			if (op1 == null || op2 == null) {
 				Log.warn(TAG, "CMP_Long error! null value");
 				return;
@@ -1719,6 +1702,7 @@ public class Interpreter {
 
 	class OP_CMP implements ByteCode {
 		private final String TAG = getClass().getSimpleName();
+
 		/**
 		 * @Title: func
 		 * @Description: (·Ç JavaDoc)
@@ -1736,29 +1720,29 @@ public class Interpreter {
 				r1 = vm.getReg(inst.r1);
 			}
 
-			BiDirVar u0, u1;
+			BiDirVar u0 = null, u1 = null;
 			Log.debug(TAG, "r0 data " + r0.data);
 			if (r0.data == null) {
 				Log.warn(TAG, "Null operator found!");
 				r0.data = new Unknown(r0.type);
 			}
-			
+
 			if (inst.r1 != -1 && vm.getReg(inst.r1).data == null) {
 				Log.warn(TAG, "Null operator found!");
 				r1.data = new Unknown(r1.type);
 			}
-			
-			if (r0.data instanceof BiDirVar || inst.r1 != -1 && r1.data instanceof BiDirVar) {
-				if (r0.data instanceof BiDirVar) {
-					u0 = (BiDirVar) r0.data;
-					u0.addConstriant(vm, inst);
-				}
-				
-				if (inst.r1 != -1 && r1.data instanceof BiDirVar) {
-					u1 = (BiDirVar) r1.data;
-					u1.addConstriant(vm, inst);
-				}
 
+			if (r0.data instanceof BiDirVar) {
+				u0 = (BiDirVar) r0.data;
+				u0.addConstriant(vm, inst);
+			}
+
+			if (inst.r1 != -1 && r1.data instanceof BiDirVar) {
+				u1 = (BiDirVar) r1.data;
+				u1.addConstriant(vm, inst);
+			}
+
+			if (u0 != null || u1 != null) {
 				// To avoid infinite loop
 				for (BiDirBranch branch : vm.unknownBranches) {
 					if (branch.getInstruction() == inst
@@ -1770,100 +1754,49 @@ public class Interpreter {
 					}
 				}
 
-				Log.warn(TAG, "dibranches: " + vm.unknownBranches);
-				BiDirBranch branch = new BiDirBranch(inst, vm.pc,
-						vm.getCurrStackFrame().method, vm.storeState());
-
-				vm.unknownBranches.push(branch);
-
-				if (r1 != null && r1.data instanceof Unknown) {
-					// TODO
-				}
-
-				// jump(vm, inst, false);
+				// To froce proceed to then part.
 				jump(vm, inst, true);
 
-				Log.warn(TAG, "New BiDirBranch " + branch);
-				// TODO add constraint inconsistency check to rm unreachable
-				// code
-				return;
+				if (u0 != null && u0.isOn() || u1 != null && u1.isOn()) {
+					Log.warn(TAG, "dibranches: " + vm.unknownBranches);
+					BiDirBranch branch = new BiDirBranch(inst, vm.pc,
+							vm.getCurrStackFrame().method, vm.storeState());
+
+					vm.unknownBranches.push(branch);
+
+					if (r1 != null && r1.data instanceof Unknown) {
+						// TODO
+					}
+
+					Log.warn(TAG, "New BiDirBranch " + branch);
+					// TODO add constraint inconsistency check to rm unreachable
+					// code
+				}
 			} else {
 				auxByteCodes.get((int) inst.opcode_aux).func(vm, inst);
 			}
 		}
 	}
-	
+
 	class OP_ARITHETIC implements ByteCode {
 		private final String TAG = getClass().getSimpleName();
 
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
 			jump(vm, inst, true);
-			
-			if (inst.r0 == -1) {
-				return;
+
+			// If operands contains instance of Unknown, directly set the res reg (r0) as unknowon
+			Unknown op = null;
+			if (inst.r0 != -1 && vm.getReg(inst.r0).data instanceof Unknown || inst.r1 != -1 && vm.getReg(inst.r1).data instanceof Unknown) {
+				op = (Unknown) vm.getReg(inst.r0).data;
+				op.addLastArith(inst);
+				Log.warn(TAG, "Unknown found! " + op);
+			} else {
+				auxByteCodes.get((int) inst.opcode_aux).func(vm, inst);
 			}
-			
-			boolean unknown = false;
-			Register r0 = vm.getReg(inst.r0);
-			Register r1 = null;
-			if (inst.r1 != -1) {
-				r1 = vm.getReg(inst.r1);
-			}
-			
-			if (inst.r0 != -1 && r0.data == null) {
-				r0.data = new Unknown(r0.type);
-				unknown = true;
-				Log.warn(TAG, "ERROR: r0 is null");
-			}
-			
-			if (inst.r1 != -1 && r1.data == null) {
-				r1.data = new Unknown(r0.type);
-				unknown = true;
-				Log.warn(TAG, "ERROR: r1 is null");
-			}
-			
-			if (unknown) {
-				Register rdst = vm.getReg(inst.rdst);
-				rdst.data = new Unknown(r0.type);
-				rdst.type = r0.type;
-				return;
-			}
-			
-			BiDirVar bidiVar1 = null, bidiVar2 = null;
-			
-			if (inst.r0 != -1 && vm.getReg(inst.r0).data instanceof BiDirVar) {
-				bidiVar1 = (BiDirVar) vm.getReg(inst.r0).data;
-				if (bidiVar1.getValue() == null) {
-					bidiVar1.setValue(new PrimitiveInfo(0));
-					Log.warn(TAG, "ERROR: NULL value");
-				}
-				vm.getReg(inst.r0).data = bidiVar1.getValue();
-				Log.warn(TAG, "data0: " + bidiVar1.getValue());
-			} 
-				
-			if (inst.r1 != -1 && vm.getReg(inst.r1).data instanceof BiDirVar) {
-				bidiVar2 = (BiDirVar) vm.getReg(inst.r1).data;
-				if (bidiVar2.getValue() == null) {
-					bidiVar2.setValue(new PrimitiveInfo(0));
-					Log.warn(TAG, "ERROR: NULL value");
-				}
-				vm.getReg(inst.r1).data = bidiVar2.getValue();
-				Log.warn(TAG, "data1: " + vm.getReg(inst.r1).data);
-			}
-			
-			auxByteCodes.get((int) inst.opcode_aux).func(vm, inst);
-			
-			if (bidiVar1 != null) {
-				vm.getReg(inst.r0).data = bidiVar1; 
-			}
-			
-			if (bidiVar2 != null) {
-				vm.getReg(inst.r1).data = bidiVar2; 
-			}	
-			
+
 		}
-		
+
 	}
 
 	/**
@@ -1876,24 +1809,26 @@ public class Interpreter {
 	 */
 	private PrimitiveInfo[] OP_CMP(DalvikVM vm, Instruction inst, boolean flagZ) {
 		Register r0 = vm.getReg(inst.r0);
-		
+
 		PrimitiveInfo op1;
-		
+
 		if (r0.data == null) {
 			op1 = new PrimitiveInfo(0);
 		} else {
-			if (r0.data instanceof BiDirVar && r0.type != null && r0.type.isPrimitive()) {
+			if (r0.data instanceof BiDirVar && r0.type != null
+					&& r0.type.isPrimitive()) {
 				op1 = (PrimitiveInfo) ((BiDirVar) r0.data).getValue();
 			} else if (r0.data instanceof PrimitiveInfo) {
 				op1 = (PrimitiveInfo) r0.data;
-			} else if (r0.type != null && r0.type.isPrimitive() && r0.data != null && !(r0.data instanceof PrimitiveInfo)) {
+			} else if (r0.type != null && r0.type.isPrimitive()
+					&& r0.data != null && !(r0.data instanceof PrimitiveInfo)) {
 				r0.data = PrimitiveInfo.fromObject(r0.data);
 				op1 = (PrimitiveInfo) r0.data;
 			} else {
 				op1 = new PrimitiveInfo(1);
 			}
 		}
-		
+
 		PrimitiveInfo op2;
 		if (flagZ) {
 			op2 = new PrimitiveInfo(0);
@@ -2023,7 +1958,7 @@ public class Interpreter {
 				vm.retValReg.type = mi.returnType;
 				if (args.length == 1) {
 					method = clazz.getDeclaredMethod(mi.name);
-					// TODO 
+					// TODO
 					if (noInvokeList.contains(method.getName())) {
 						vm.retValReg.data = null;
 						Log.warn(TAG, "Found noInvokeMethod " + method);
@@ -2317,7 +2252,7 @@ public class Interpreter {
 		auxByteCodes.put(0x37, new OP_INSTANCE_PUT_FIELD());
 		auxByteCodes.put(0x38, new OP_EXCEPTION_TRYCATCH());
 		auxByteCodes.put(0x39, new OP_EXCEPTION_THROW());
-		
+
 		noInvokeList = new HashSet<>();
 		noInvokeList.add("connect");
 		noInvokeList.add("getResponseCode");
@@ -2327,6 +2262,7 @@ public class Interpreter {
 	public void exec(DalvikVM vm, Instruction inst) {
 		Log.msg(TAG, vm.pc + " " + inst + " at "
 				+ vm.getCurrStackFrame().method);
+		vm.nowPC = vm.pc;
 		Log.bb(TAG, "opcode: " + inst.opcode + " " + inst.opcode_aux);
 
 		if (byteCodes.containsKey((int) inst.opcode)) {
@@ -2342,7 +2278,7 @@ public class Interpreter {
 			vm.getCurrStackFrame().pluginRes = vm.pluginManager.cloneCurrtRes();
 			vm.pluginManager.checkInst(inst);
 
-			// vm.pluginManager.printResults();
+			vm.pluginManager.printResults();
 		}
 	}
 
@@ -2372,7 +2308,7 @@ public class Interpreter {
 
 		return null;
 	}
-	
+
 	Set<String> noInvokeList;
 
 }
