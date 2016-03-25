@@ -47,5 +47,23 @@ public class ContextAnalysisTest {
 				Results.targetCallRes.values().iterator().next().getDepAPIs()
 						.toString());
 	}
+	
+	//@Test
+	public void testEif2() {
+		Settings.logLevel = 0;
+
+		args[0] = "C:/Users/hao/workspace/PJApps/app/PJApps.apk";
+		args[1] = "fu.hao.pjapps.MainActivity";
+		args[2] = "testEif2";
+		args[3] = "Ctx";
+
+		Main.main(args);
+		System.out.println("REs: " + Results.targetCallRes);
+		assertEquals(false, Results.targetCallRes.isEmpty());
+		assertEquals(
+				"[<INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [4]]>]",
+				Results.targetCallRes.values().iterator().next().getDepAPIs()
+						.toString());
+	}
 
 }
