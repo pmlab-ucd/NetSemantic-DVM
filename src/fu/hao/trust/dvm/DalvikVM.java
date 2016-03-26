@@ -370,7 +370,7 @@ public class DalvikVM {
 	// We directly use underlying jvm who runs this interpreter to manage memory
 	VMHeap heap;
 
-	LinkedList<StackFrame> stack;
+	private LinkedList<StackFrame> stack;
 	int pc; // Point to the position of next instruction
 	int nowPC; // Point to the current instruction.
 	
@@ -468,24 +468,33 @@ public class DalvikVM {
 
 	public StackFrame newStackFrame(MethodInfo mi) {
 		StackFrame newStackFrame = new StackFrame(mi);
+		if (getCurrStackFrame() != null) {
+			Log.bb(tag, "New Stack Frame: " + newStackFrame + ", pc " + getCurrStackFrame().pc + " stored. ");
+		} else {
+			Log.bb(tag, "New Stack Frame: " + newStackFrame);
+		}
 		pc = 0;
-
+		stack.add(newStackFrame);	
+		Log.bb(tag, "Stack: " + stack);
 		return newStackFrame;
 	}
 
 	/**
 	 * @Title: backCallCtx
 	 * @Author: Hao Fu
-	 * @Description: Restore context before the call
+	 * @Description: Restore the context before the call
 	 * @param
 	 * @return void
 	 * @throws
 	 */
 	public void backCallCtx(Register retReg) {
-		stack.remove(stack.size() - 1);
+		Log.bb(tag, "stack " + stack);
+		stack.removeLast();
+		Log.bb(tag, "stack " + stack);
 		if (!stack.isEmpty()) {
 			StackFrame currtStack = stack.getLast();
 			pc = currtStack.pc;
+			Log.msg(tag, "Return to " + pc + "@" + currtStack.method);
 			if (pluginManager.getCurrRes() == null
 					|| pluginManager.getCurrRes().isEmpty()) {
 				return;
@@ -495,7 +504,7 @@ public class DalvikVM {
 						.get(plugin);
 				Map<Object, Instruction> currtStackRes = currtStack.pluginRes
 						.get(plugin);
-				Log.bb(tag, "currt statck res " + currtStackRes);
+				Log.bb(tag, "Currt statck res " + currtStackRes);
 				for (Object res : currtRes.keySet()) {
 					if (res instanceof Register) {
 						if (res == retReg) {
@@ -507,11 +516,8 @@ public class DalvikVM {
 					currtStackRes.put(res, plugin.currtRes.get(res));
 				}
 			}
-			pluginManager.setCurrRes(currtStack.pluginRes);
-
-			Log.bb(tag, "pc " + pc + " " + currtStack.pc);
+			pluginManager.setCurrRes(currtStack.pluginRes);		
 		} else {
-			pc = Integer.MAX_VALUE;
 			// backtrace to last unknown branch
 			restoreState();
 			Log.warn(tag, "Backtrace begin!!!");

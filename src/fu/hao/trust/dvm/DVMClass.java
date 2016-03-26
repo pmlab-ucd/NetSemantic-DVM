@@ -3,7 +3,6 @@ package fu.hao.trust.dvm;
 import java.util.HashMap;
 import java.util.Map;
 
-import fu.hao.trust.dvm.DalvikVM.StackFrame;
 import patdroid.core.ClassInfo;
 import patdroid.core.MethodInfo;
 
@@ -24,8 +23,7 @@ public class DVMClass {
 
 		MethodInfo clinit = type.getStaticInitializer();
 		if (clinit != null) {
-			StackFrame stackFrame = vm.newStackFrame(clinit);
-			vm.stack.add(stackFrame);
+			vm.newStackFrame(clinit);
 			vm.setContext(null);
 			// vm.getCurrStackFrame().thisObj = null;
 			// To force run the constructor.

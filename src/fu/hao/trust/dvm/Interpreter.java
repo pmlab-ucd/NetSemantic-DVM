@@ -102,8 +102,7 @@ public class Interpreter {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
 			if (inst.r0 == -1) {
-				Log.err(TAG, "return error");
-				return;
+				Log.err(TAG, "Return error");
 			}
 
 			// the caller stack of this invocation
@@ -112,7 +111,7 @@ public class Interpreter {
 				vm.retValReg.type = ClassInfo.findOrCreateClass(vm
 						.getReg(inst.r0).data.getClass());
 			}
-			Log.debug(TAG, "return data: " + vm.retValReg.data);
+			Log.bb(TAG, "Return data: " + vm.retValReg.data);
 			vm.backCallCtx(vm.getReg(inst.r0));
 			jump(vm, inst, true);
 		}
@@ -1867,18 +1866,19 @@ public class Interpreter {
 		if (seq) {
 			if (vm.getCurrStackFrame() == null) {
 				vm.pc = Integer.MAX_VALUE;
+				Log.bb(TAG, "Infinity PC!");
 				return;
+			} else {		
+				vm.getCurrStackFrame().pc++;
 			}
-			vm.pc++;
-			vm.getCurrStackFrame().pc++;
 		} else {
 			if (inst.extra == null) {
 				Log.err(TAG, "unresolve dest address in goto: " + inst);
-				return;
 			}
 			vm.getCurrStackFrame().pc = (int) inst.extra;
-			vm.pc = vm.getCurrStackFrame().pc;
 		}
+		
+		vm.pc = vm.getCurrStackFrame().pc;
 	}
 
 	/**
@@ -2115,14 +2115,12 @@ public class Interpreter {
 			vm.setContext(args);
 		}
 
-		StackFrame stackFrame = vm.newStackFrame(mi);
-		vm.stack.add(stackFrame);
+		vm.newStackFrame(mi);		
 	}
 
 	public void runMethod(DalvikVM vm, MethodInfo mi) {
 		// Create a new stack frame and push it to the stack.
 		StackFrame stackFrame = vm.newStackFrame(mi);
-		vm.stack.add(stackFrame);
 		if (mi.isStatic()) {
 			stackFrame.thisObj = null;
 		} else {
@@ -2133,7 +2131,6 @@ public class Interpreter {
 				if (constructor != null) {
 					StackFrame construct = vm.newStackFrame(constructor);
 					construct.thisObj = stackFrame.thisObj;
-					vm.stack.add(construct);
 				}
 				chainThisObj = stackFrame.thisObj;
 			} else {
