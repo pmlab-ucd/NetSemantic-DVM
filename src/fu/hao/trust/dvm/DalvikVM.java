@@ -371,8 +371,8 @@ public class DalvikVM {
 	VMHeap heap;
 
 	private LinkedList<StackFrame> stack;
-	int pc; // Point to the position of next instruction
-	int nowPC; // Point to the current instruction.
+	private int pc; // Point to the position of next instruction
+	private int nowPC; // Point to the current instruction.
 	
 	// Help identify the loop.
 	Instruction lastBranch;
@@ -620,11 +620,22 @@ public class DalvikVM {
 	}
 	
 	public void setPC(int pc) {
+		StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
+		StackTraceElement caller = stackTraceElements[2];//maybe this number needs to be corrected
+		StackTraceElement caller2 = stackTraceElements[3];
+		Log.bb(tag, caller2.getClassName() + " -> " +  caller.getMethodName() + " set pc to " + pc);
+		if (getCurrStackFrame() != null) {
+			getCurrStackFrame().pc = pc;
+		}
 		this.pc = pc;
 	}
 	
 	public int getNowPC() {
 		return nowPC;
+	}
+	
+	public void setNowPC(int nowPC) {
+		this.nowPC = nowPC;
 	}
 
 }

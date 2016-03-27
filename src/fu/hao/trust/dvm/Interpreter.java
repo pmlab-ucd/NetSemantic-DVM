@@ -1758,7 +1758,7 @@ public class Interpreter {
 
 				if (u0 != null && u0.isOn() || u1 != null && u1.isOn()) {
 					Log.warn(TAG, "dibranches: " + vm.unknownBranches);
-					BiDirBranch branch = new BiDirBranch(inst, vm.pc,
+					BiDirBranch branch = new BiDirBranch(inst, vm.getPC(),
 							vm.getCurrStackFrame().method, vm.storeState());
 
 					vm.unknownBranches.push(branch);
@@ -1865,10 +1865,10 @@ public class Interpreter {
 	public void jump(DalvikVM vm, Instruction inst, boolean seq) {
 		if (seq) {
 			if (vm.getCurrStackFrame() == null) {
-				vm.pc = Integer.MAX_VALUE;
+				vm.setPC(Integer.MAX_VALUE);
 				Log.bb(TAG, "Infinity PC!");
 				return;
-			} else {		
+			} else {
 				vm.getCurrStackFrame().pc++;
 			}
 		} else {
@@ -1878,7 +1878,7 @@ public class Interpreter {
 			vm.getCurrStackFrame().pc = (int) inst.extra;
 		}
 		
-		vm.pc = vm.getCurrStackFrame().pc;
+		vm.setPC(vm.getCurrStackFrame().pc);
 	}
 
 	/**
@@ -2156,8 +2156,8 @@ public class Interpreter {
 		running = true;
 		String mname = vm.getCurrStackFrame().method.name;
 		while (vm.getCurrStackFrame() != null
-				&& vm.pc < vm.getCurrStackFrame().method.insns.length) {
-			Instruction insns = vm.getCurrStackFrame().method.insns[vm.pc];
+				&& vm.getPC() < vm.getCurrStackFrame().method.insns.length) {
+			Instruction insns = vm.getCurrStackFrame().method.insns[vm.getPC()];
 			insns.setLoc(vm.getCurrStackFrame().method);
 			exec(vm, insns);
 		}
@@ -2257,9 +2257,9 @@ public class Interpreter {
 	}
 
 	public void exec(DalvikVM vm, Instruction inst) {
-		Log.msg(TAG, vm.pc + " " + inst + " at "
+		Log.msg(TAG, vm.getPC() + " " + inst + " at "
 				+ vm.getCurrStackFrame().method);
-		vm.nowPC = vm.pc;
+		vm.setNowPC(vm.getPC());
 		Log.bb(TAG, "opcode: " + inst.opcode + " " + inst.opcode_aux);
 
 		if (byteCodes.containsKey((int) inst.opcode)) {
