@@ -30,7 +30,7 @@ public class Unknown implements BiDirVar {
 	 */
 	Instruction lastArith;
 	
-	boolean on = true;
+	boolean on = false;
 	
 	final String TAG = "Unknown";
 	
