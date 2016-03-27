@@ -1,11 +1,10 @@
-package fu.hao.trust.analysis;
+package fu.hao.trust.data;
 
 //import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import fu.hao.trust.data.TargetCall;
 import patdroid.dalvik.Instruction;
 
 public class Results {

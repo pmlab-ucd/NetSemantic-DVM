@@ -1,4 +1,4 @@
-package fu.hao.trust.analysis;
+package fu.hao.trust.data;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -6,7 +6,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import fu.hao.trust.data.MethodRep;
 import fu.hao.trust.utils.MethodRepParser;
 
 public class SrcSinkMethod extends MethodRep {

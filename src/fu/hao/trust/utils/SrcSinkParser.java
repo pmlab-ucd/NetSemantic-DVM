@@ -20,7 +20,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import fu.hao.trust.analysis.SrcSinkMethod;
+import fu.hao.trust.data.SrcSinkMethod;
 
 /**
  * Parser for the permissions to method map of Adrienne Porter Felt. 

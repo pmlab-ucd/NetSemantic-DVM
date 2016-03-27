@@ -1,6 +1,6 @@
 package fu.hao.trust.test;
 
-import fu.hao.trust.analysis.Results;
+import fu.hao.trust.data.Results;
 import fu.hao.trust.dvm.Main;
 import fu.hao.trust.utils.Settings;
 

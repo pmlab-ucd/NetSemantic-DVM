@@ -328,17 +328,27 @@ public class DalvikVM {
 	 * @fieldType: Stack<Instruction>
 	 * @Description: To store the unknown branches met for this trace.
 	 */
-	LinkedList<BiDirBranch> unknownBranches = new LinkedList<>();
+	private LinkedList<BiDirBranch> bidirBranches = new LinkedList<>();
+	
+	public void addBiDirBranch(BiDirBranch branch) {
+		bidirBranches.push(branch);
+	}
+	
+	public LinkedList<BiDirBranch> getBiDirBranches() {
+		return bidirBranches;
+	}
+	
 
 	public void restoreState() {
-		Log.warn(
-				tag,
-				"++++++++++++++++++++++++++++++++++++++BackTrace++++++++++++++++++++++++++++++++++++++++++++++");
-		if (unknownBranches.isEmpty()) {
+		if (bidirBranches.isEmpty()) {
 			pluginManager.setCondition(null);
 			return;
 		}
-		BiDirBranch focusBranch = unknownBranches.removeLast();
+		
+		Log.warn(
+				tag,
+				"++++++++++++++++++++++++++++++++++++++BackTrace++++++++++++++++++++++++++++++++++++++++++++++");
+		BiDirBranch focusBranch = bidirBranches.removeLast();
 		VMState state = focusBranch.getState();
 		heap = state.getHeap();
 		stack = state.getStack();
@@ -349,7 +359,7 @@ public class DalvikVM {
 		Log.bb(tag, "Res objs " + pluginManager.getCurrRes());
 		pluginManager.setMethod(state.getPluginMethod());
 		
-		Log.msg(tag, "bidibranches: " + unknownBranches);
+		Log.msg(tag, "bidibranches: " + bidirBranches);
 		Log.msg(tag, " bidirBrach: " + focusBranch);
 		pluginManager.setCondition(focusBranch.getInstruction());
 		interpreter.jump(this, focusBranch.getInstruction(), false);

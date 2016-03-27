@@ -13,6 +13,7 @@ import patdroid.core.MethodInfo;
 import patdroid.core.PrimitiveInfo;
 import patdroid.dalvik.Instruction;
 import patdroid.util.Pair;
+import fu.hao.trust.data.Results;
 import fu.hao.trust.dvm.DVMClass;
 import fu.hao.trust.dvm.DVMObject;
 import fu.hao.trust.dvm.DalvikVM;
@@ -784,7 +785,7 @@ public class Taint extends Plugin {
 		}
 		sources = parser.getSrcStrs();
 		sinks = parser.getSinkStrs();
-
+		
 		Log.debug(TAG, "srcs: " + sources);
 
 		byteCodes.put(0x07, new TAINT_OP_CMP());

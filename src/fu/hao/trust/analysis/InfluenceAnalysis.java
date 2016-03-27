@@ -7,6 +7,7 @@ import java.util.Set;
 
 import patdroid.core.MethodInfo;
 import patdroid.dalvik.Instruction;
+import fu.hao.trust.data.Results;
 import fu.hao.trust.dvm.DalvikVM;
 import fu.hao.trust.dvm.DalvikVM.Register;
 import fu.hao.trust.solver.InfluVar;

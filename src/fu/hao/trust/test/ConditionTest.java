@@ -1,4 +1,4 @@
-package fu.hao.trust.analysis;
+package fu.hao.trust.test;
 
 import static org.junit.Assert.*;
 

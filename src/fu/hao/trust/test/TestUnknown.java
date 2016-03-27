@@ -7,7 +7,7 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import fu.hao.trust.analysis.Results;
+import fu.hao.trust.data.Results;
 import fu.hao.trust.dvm.Main;
 import fu.hao.trust.utils.Settings;
 
@@ -20,7 +20,7 @@ public class TestUnknown {
 			args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_VirtualDispatch1/app/";
 			args[1] = "de.ecspride.VirtualDispatch1";
 			args[2] = null;
-			args[3] = "Taint";
+			args[3] = "ATaint";
 			//args[2] = "clickButton";
 			Main.main(args);
 			System.out.println("REs: " + Results.results);

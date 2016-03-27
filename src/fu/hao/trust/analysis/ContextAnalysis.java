@@ -7,9 +7,10 @@ import java.util.Set;
 
 import patdroid.core.MethodInfo;
 import patdroid.dalvik.Instruction;
+import fu.hao.trust.data.Results;
 import fu.hao.trust.data.TargetCall;
 import fu.hao.trust.dvm.DalvikVM;
-import fu.hao.trust.dvm.DalvikVM.Register;
+//import fu.hao.trust.dvm.DalvikVM.Register;
 import fu.hao.trust.utils.Log;
 
 /**
@@ -74,7 +75,7 @@ public class ContextAnalysis extends Taint {
 	}
 
 	class CTX_OP_CMP implements Rule {
-		final String TAG = getClass().toString();
+		final String TAG = getClass().getName();
 
 		/**
 		 * @Title: func
@@ -112,7 +113,7 @@ public class ContextAnalysis extends Taint {
 			Map<Object, Instruction> out = new HashMap<>(in);
 			// If stored bidir conditions are not empty
 			if (condition != null) {
-				Register r0 = vm.getReg(condition.r0);
+				//Register r0 = vm.getReg(condition.r0);
 				
 				//if (r0.getData() instanceof SensCtxVar) {
 					/*Map<Instruction, Instruction> copyRec = new HashMap<>();

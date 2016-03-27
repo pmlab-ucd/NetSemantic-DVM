@@ -1743,7 +1743,7 @@ public class Interpreter {
 
 			if (u0 != null || u1 != null) {
 				// To avoid infinite loop
-				for (BiDirBranch branch : vm.unknownBranches) {
+				for (BiDirBranch branch : vm.getBiDirBranches()) {
 					if (branch.getInstruction() == inst
 							|| vm.lastBranch == inst) {
 						Log.warn(TAG, "Jump out loop");
@@ -1757,11 +1757,11 @@ public class Interpreter {
 				jump(vm, inst, true);
 
 				if (u0 != null && u0.isOn() || u1 != null && u1.isOn()) {
-					Log.warn(TAG, "dibranches: " + vm.unknownBranches);
+					Log.warn(TAG, "dibranches: " + vm.getBiDirBranches());
 					BiDirBranch branch = new BiDirBranch(inst, vm.getPC(),
 							vm.getCurrStackFrame().method, vm.storeState());
 
-					vm.unknownBranches.push(branch);
+					vm.addBiDirBranch(branch);
 
 					if (r1 != null && r1.data instanceof Unknown) {
 						// TODO
