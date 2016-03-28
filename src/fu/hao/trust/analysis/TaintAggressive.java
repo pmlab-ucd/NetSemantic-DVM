@@ -3,9 +3,6 @@ package fu.hao.trust.analysis;
 import java.util.HashMap;
 import java.util.Map;
 
-import fu.hao.trust.analysis.ContextAnalysis.CTX_OP_MOV_CONST;
-import fu.hao.trust.analysis.ContextAnalysis.CTX_OP_MOV_REG;
-import fu.hao.trust.analysis.Taint.TAINT_OP_IF;
 import fu.hao.trust.dvm.DalvikVM;
 import fu.hao.trust.solver.BiDirBranch;
 import fu.hao.trust.solver.Unknown;
@@ -50,6 +47,8 @@ public class TaintAggressive extends Taint {
 								vm.getCurrStackFrame().getMethod(), vm.storeState());
 
 						vm.addBiDirBranch(branch);
+						// Remove just added stop sign since the aggressive is unnecessary and we will come back later
+						addVarsOfBranch.remove(stopSign);
 						break;
 					}
 				}
