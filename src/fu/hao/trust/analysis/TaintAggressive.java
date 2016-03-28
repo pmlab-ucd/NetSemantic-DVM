@@ -94,9 +94,8 @@ public class TaintAggressive extends Taint {
 				Map<Object, Instruction> in) {
 			Map<Object, Instruction> out = new HashMap<>(in);
 
-			if (!addVarsOfBranch.isEmpty()) {
-				// FIXME Do not overwrite previous mapping. 
-				// TODO Add only one, but could be influenced by multiple APIs
+			if (!addVarsOfBranch.isEmpty() && !out.containsKey(vm.getReg(inst.rdst))) {
+				// TODO Now only add one, but could be influenced by multiple APIs
 				out.put(vm.getReg(inst.rdst), addVarsOfBranch.values().iterator()
 						.next());
 				Log.warn(TAG, "Found influenced var at " + vm.getReg(inst.rdst));

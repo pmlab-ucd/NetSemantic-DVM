@@ -20,7 +20,7 @@ import fu.hao.trust.utils.Log;
  * @author: Hao Fu
  * @date: Mar 9, 2016 3:10:38 PM
  */
-public class ContextAnalysis extends Taint {
+public class ContextAnalysis extends TaintAggressive {
 
 	final String TAG = "ContextAnalysis";
 
@@ -58,15 +58,20 @@ public class ContextAnalysis extends Taint {
 			Object[] extra = (Object[]) inst.extra;
 			MethodInfo mi = (MethodInfo) extra[0];
 
-			if (isTarget(mi.name) && !targetCalls.containsKey(inst)) {
-				TargetCall targetCall = new TargetCall(inst, vm);
-				targetCalls.put(inst, targetCall);
-				if (!recordCall.isEmpty()) {
-					targetCall.setDepAPIs(recordCall.values());
+			if (isTarget(mi.name)) {
+				if (!targetCalls.containsKey(inst)) {
+					TargetCall targetCall = new TargetCall(inst, vm);
+					targetCalls.put(inst, targetCall);
+					if (!recordCall.isEmpty()) {
+						targetCall.setDepAPIs(recordCall.values());
+					} else {
+						Log.bb(TAG, "Not API Recording");
+					}
+					Log.warn(TAG, "Found a target API call:" + targetCall);
 				} else {
-					Log.bb(TAG, "Not API Recording");
+					TargetCall targetCall = targetCalls.get(inst);
+					targetCall.addParams(inst, vm);
 				}
-				Log.warn(TAG, "Found a target API call:" + targetCall);
 			}
 
 			Log.bb(TAG, "Ret value " + vm.getReturnReg().getData());
@@ -91,7 +96,8 @@ public class ContextAnalysis extends Taint {
 			Map<Object, Instruction> out = taintOp.flow(vm, inst, in);
 
 			// When sensitive value exists in the branch
-			if (out.containsKey(vm.getReg(inst.r0)) || inst.r1 != -1 && out.containsKey(vm.getReg(inst.r1))) {
+			if (out.containsKey(vm.getReg(inst.r0)) || inst.r1 != -1
+					&& out.containsKey(vm.getReg(inst.r1))) {
 				vm.setPC(vm.getNowPC() + 1);
 				stopSign = vm.getCurrStackFrame().getInst((int) inst.extra);
 				recordCall.put(stopSign, out.get(vm.getReg(inst.r0)));
@@ -106,39 +112,40 @@ public class ContextAnalysis extends Taint {
 
 	class CTX_OP_RETURN_VOID implements Rule {
 		final String TAG = getClass().getSimpleName();
-		
+
 		@Override
 		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst,
 				Map<Object, Instruction> in) {
 			Map<Object, Instruction> out = new HashMap<>(in);
 			// If stored bidir conditions are not empty
 			if (condition != null) {
-				//Register r0 = vm.getReg(condition.r0);
-				
-				//if (r0.getData() instanceof SensCtxVar) {
-					/*Map<Instruction, Instruction> copyRec = new HashMap<>();
-					
-					if (!recordCall.isEmpty()) {
-						MethodInfo currtMethod = vm.getCurrStackFrame().getMethod();
-						for (Instruction apiCall : recordCall.values()) {
-							copyRec.put(currtMethod.insns[currtMethod.insns.length - 1], apiCall);
-						}
-					}*/
-					// Reset the recordCall
-					recordCall.clear();
-					//recordCall.putAll(copyRec);
-					
-					//stopSign = vm.getCurrStackFrame().getInst(
-							//(int) condition.extra);
-					MethodInfo currtMethod = vm.getCurrStackFrame().getMethod();
-					stopSign = currtMethod.insns[currtMethod.insns.length - 1]; 
-					//recordCall.put(stopSign,
-						//	((SensCtxVar) r0.getData()).getSrc());
-					Log.msg(TAG, "API Recording Begin " + stopSign + " "
-							+ condition + " " + condition.extra);
-				//}
+				// Register r0 = vm.getReg(condition.r0);
+
+				// if (r0.getData() instanceof SensCtxVar) {
+				/*
+				 * Map<Instruction, Instruction> copyRec = new HashMap<>();
+				 * 
+				 * if (!recordCall.isEmpty()) { MethodInfo currtMethod =
+				 * vm.getCurrStackFrame().getMethod(); for (Instruction apiCall
+				 * : recordCall.values()) {
+				 * copyRec.put(currtMethod.insns[currtMethod.insns.length - 1],
+				 * apiCall); } }
+				 */
+				// Reset the recordCall
+				recordCall.clear();
+				// recordCall.putAll(copyRec);
+
+				// stopSign = vm.getCurrStackFrame().getInst(
+				// (int) condition.extra);
+				MethodInfo currtMethod = vm.getCurrStackFrame().getMethod();
+				stopSign = currtMethod.insns[currtMethod.insns.length - 1];
+				// recordCall.put(stopSign,
+				// ((SensCtxVar) r0.getData()).getSrc());
+				Log.msg(TAG, "API Recording Begin " + stopSign + " "
+						+ condition + " " + condition.extra);
+				// }
 			}
-			
+
 			// Keep the recording to the end of this method
 			if (!recordCall.isEmpty()) {
 				retRecordCall = true;
