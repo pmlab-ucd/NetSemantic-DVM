@@ -87,21 +87,6 @@ public class Log {
 	
 	protected static void log(String TAG, int theLevel, String title, String msg)
 			throws IOException {
-		if (theLevel >= Settings.logLevel) {
-			if (theLevel < MODE_MSG) {
-				System.out.println("[" + TAG + "] - " + title + " - " + msg);
-			} else {
-				// Logger logger = LoggerFactory.getLogger(TAG);
-				// logger.info(msg);
-				System.err.println("[" + TAG + "] - " + title + " - " + msg);
-			}
-			//System.out.println(TAG + "--" + msg);
-			writeLog(TAG, theLevel, title, msg, out);
-		}
-	}
-
-	protected static void badlog(String TAG, int theLevel, String title,
-			String msg) {
 		switch (theLevel) {
 		case MODE_WARNING:
 			Report.nWarnings++;
@@ -115,20 +100,20 @@ public class Log {
 		default:
 			break;
 		}
-		//Logger logger = LoggerFactory.getLogger(TAG);
-		try {
-			writeLog(TAG, theLevel, title, msg, err);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		if (theLevel >= MODE_ERROR) {
-			//logger.error(title + " - " + msg);
-			System.err.println("[" + TAG + "] - " + title + " - " + msg);
-			throw new RuntimeErrorException(null, TAG + " - " + msg);
-		} else {
-			System.err.println("[" + TAG + "] - " + title + " - " + msg);
-			//logger.warn(title + " - " + msg);
+		if (theLevel >= Settings.logLevel) {
+			if (theLevel < MODE_MSG) {
+				System.out.println("[" + TAG + "] - " + title + " - " + msg);
+			} else if (theLevel >= MODE_ERROR) {
+				//logger.error(title + " - " + msg);
+				System.err.println("[" + TAG + "] - " + title + " - " + msg);
+				throw new RuntimeErrorException(null, TAG + " - " + msg);
+			} else {
+				// Logger logger = LoggerFactory.getLogger(TAG);
+				// logger.info(msg);
+				System.err.println("[" + TAG + "] - " + title + " - " + msg);
+				// writeLog(TAG, theLevel, title, msg, err);
+			}
+			writeLog(TAG, theLevel, title, msg, out);
 		}
 	}
 
@@ -194,7 +179,12 @@ public class Log {
 	}
 
 	public static void warn(String TAG, String s) {
-		badlog(TAG, MODE_WARNING, "WARN", s);
+		try {
+			log(TAG, MODE_WARNING, "WARN", s);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	// forgive me for these cute names
@@ -203,7 +193,12 @@ public class Log {
 	}
 
 	public static void warnwarn(String TAG, String s) {
-		badlog(TAG, MODE_SEVERE_WARNING, "WARN*", s);
+		try {
+			log(TAG, MODE_SEVERE_WARNING, "WARN*", s);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public static void warnwarn(String TAG, boolean b, String s) {
@@ -221,7 +216,12 @@ public class Log {
 	}
 
 	public static void err(String TAG, String msg) {
-		badlog(TAG, MODE_ERROR, "ERROR", msg);
+		try {
+			log(TAG, MODE_ERROR, "ERROR", msg);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public static void bb(String TAG, String msg) {

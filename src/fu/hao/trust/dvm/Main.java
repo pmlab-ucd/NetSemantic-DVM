@@ -68,6 +68,7 @@ public class Main {
 			Settings.reset();
 			// Settings.logLevel = 0;
 			PluginManager pluginManager = new PluginManager();
+			Settings.apkName = "Test";
 
 			for (int i = 0; i < args.length; i++) {
 				if (args[i] != null && args[i].equalsIgnoreCase("Taint")) {

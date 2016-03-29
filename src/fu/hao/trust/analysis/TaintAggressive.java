@@ -21,7 +21,7 @@ public class TaintAggressive extends Taint {
 
 	// Whether add the controlled vars of the branches
 	// <StopSign, target API call>
-	Map<Instruction, Instruction> addVarsOfBranch;
+	private Map<Instruction, Instruction> addVarsOfBranch;
 
 	class ATAINT_OP_CMP implements Rule {
 		final String TAG = getClass().getName();

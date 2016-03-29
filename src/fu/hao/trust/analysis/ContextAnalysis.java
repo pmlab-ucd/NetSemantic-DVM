@@ -10,6 +10,7 @@ import patdroid.dalvik.Instruction;
 import fu.hao.trust.data.Results;
 import fu.hao.trust.data.TargetCall;
 import fu.hao.trust.dvm.DalvikVM;
+import fu.hao.trust.solver.BiDirBranch;
 //import fu.hao.trust.dvm.DalvikVM.Register;
 import fu.hao.trust.utils.Log;
 
@@ -101,6 +102,21 @@ public class ContextAnalysis extends TaintAggressive {
 				vm.setPC(vm.getNowPC() + 1);
 				stopSign = vm.getCurrStackFrame().getInst((int) inst.extra);
 				recordCall.put(stopSign, out.get(vm.getReg(inst.r0)));
+				
+				// Scan to check whether the block contains "Return"
+				Instruction[] insns = vm.getCurrStackFrame().getMethod().insns;
+				for (int i = vm.getPC(); i < (int) inst.extra; i++) {
+					if (insns[i].opcode == Instruction.OP_RETURN) {					
+						Log.bb(TAG, "Branch: " + vm.getPC() + " " + inst + " at " + vm.getCurrStackFrame().getMethod());
+						Log.bb(TAG, "Found a return at " + i + ", " + insns[i]);
+						BiDirBranch branch = new BiDirBranch(inst, vm.getPC(),
+								vm.getCurrStackFrame().getMethod(), vm.storeState());
+						vm.addBiDirBranch(branch);
+						// Remove just added stop sign since the aggressive is unnecessary and we will come back later
+						recordCall.remove(stopSign);
+						break;
+					}
+				}
 
 				Log.msg(TAG, "CTX_OP_IF: " + stopSign + " " + inst + " "
 						+ inst.extra);

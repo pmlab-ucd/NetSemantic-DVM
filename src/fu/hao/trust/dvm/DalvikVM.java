@@ -356,7 +356,9 @@ public class DalvikVM {
 		Log.warn(
 				tag,
 				"++++++++++++++++++++++++++++++++++++++BackTrace++++++++++++++++++++++++++++++++++++++++++++++");
+		Log.msg(tag, "bidibranches: " + bidirBranches);
 		BiDirBranch focusBranch = bidirBranches.removeLast();
+		Log.msg(tag, " bidirBrach: " + focusBranch);
 		VMState state = focusBranch.getState();
 		heap = state.getHeap();
 		stack = state.getStack();
@@ -367,8 +369,6 @@ public class DalvikVM {
 		Log.bb(tag, "Res objs " + pluginManager.getCurrRes());
 		pluginManager.setMethod(state.getPluginMethod());
 		
-		Log.msg(tag, "bidibranches: " + bidirBranches);
-		Log.msg(tag, " bidirBrach: " + focusBranch);
 		pluginManager.setCondition(focusBranch.getInstruction());
 		interpreter.jump(this, focusBranch.getInstruction(), false);
 		pc--;
