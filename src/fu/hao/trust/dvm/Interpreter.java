@@ -346,7 +346,7 @@ public class Interpreter {
 					method = clazz.getDeclaredMethod(mi.name);
 					vm.retValReg.data = method.invoke(null);
 				} else {
-					Object[] params = new Object[args.length - 1];
+					Object[] params = new Object[args.length];
 					// start from 0 since no "this"
 					for (int i = 0; i < args.length; i++) {
 						if (vm.getReg(args[i]).data == null) {
@@ -360,7 +360,7 @@ public class Interpreter {
 									.getClass());
 							argsClass[i] = argClass;
 						} else {
-							// TODO use classloader to check exists or not
+							// TODO use classLoader to check exists or not
 							String argClass = mi.paramTypes[i].toString();
 							argsClass[i] = Class.forName(argClass);
 							params[i] = vm.getReg(args[i]).data;
