@@ -150,7 +150,7 @@ public class Main {
 		DalvikVM vm = new DalvikVM();
 		try {
 			vm.runMethod(Settings.apkPath, Settings.suspClass,
-					Settings.suspMethod, pluginManager);
+					Settings.suspMethod, pluginManager, null);
 		} catch (ZipException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

@@ -103,6 +103,27 @@ public class DalvikVM {
 			pc = 0;
 			retValReg = new Register();
 			pluginRes = new HashMap<>();
+			
+			for (int i = 0; i < regs.length; i++) {
+				regs[i] = new Register();
+				regs[i].count = i;
+			}
+			
+			if (method == null) {
+				return;
+			}
+
+			int counter = 0;
+
+			Log.bb(tag, "New method call: " + method);
+			for (Instruction ins : method.insns) {
+				Log.bb(tag, "[" + counter + "]" + ins.toString());
+				counter++;
+			}
+			
+			if (pluginManager == null) {
+				pluginManager = new PluginManager();
+			}
 
 			for (Plugin plugin : pluginManager.getCurrRes().keySet()) {
 				Map<Object, Instruction> clonedRes = new HashMap<>();
@@ -116,19 +137,6 @@ public class DalvikVM {
 				}
 
 				pluginRes.put(plugin, clonedRes);
-			}
-
-			for (int i = 0; i < regs.length; i++) {
-				regs[i] = new Register();
-				regs[i].count = i;
-			}
-
-			int counter = 0;
-
-			Log.bb(tag, "New method call: " + method);
-			for (Instruction ins : method.insns) {
-				Log.bb(tag, "[" + counter + "]" + ins.toString());
-				counter++;
 			}
 
 		}
@@ -436,7 +444,7 @@ public class DalvikVM {
 		return callingCtx;
 	}
 
-	public void setContext(int[] is) {
+	public void setCallContext(int[] is) {
 		if (is == null) {
 			callingCtx = null;
 			return;
@@ -550,7 +558,7 @@ public class DalvikVM {
 	 * @throws
 	 */
 	public void runMethod(String apk, String className, String main,
-			PluginManager pluginManager) throws ZipException, IOException {
+			PluginManager pluginManager, Object[] params) throws ZipException, IOException {
 		Log.msg(tag, "Begin run " + main + " at " + apk);
 		// for normal java run-time classes
 		// when a class is not loaded, load it with reflection
@@ -568,7 +576,11 @@ public class DalvikVM {
 		// only one
 		MethodInfo[] methods = c.findMethodsHere(main);
 		this.pluginManager = pluginManager;
-		runMethod(methods[0]);
+		if (params == null) {
+			runMethod(methods[0]);
+		} else {
+			runMethod(methods[0], params);
+		}
 	}
 
 	public void runMethods(String apk, String[] chain,
@@ -622,6 +634,24 @@ public class DalvikVM {
 			return;
 		}
 
+		interpreter.runMethod(this, method);
+	}
+	
+	public void runMethod(MethodInfo method, Object[] params) {
+		if (method == null) {
+			Log.err(tag, "Null Method");
+		}
+		StackFrame stackFrame = newStackFrame(null);	
+		for (int i = 0; i < params.length; i++) {
+			stackFrame.regs[i].data = params[i];
+		}
+		
+		int[] args = new int[params.length];
+		for (int i = 0; i < params.length; i++) {
+			args[i] = i;
+		}
+		
+		setCallContext(args);
 		interpreter.runMethod(this, method);
 	}
 	

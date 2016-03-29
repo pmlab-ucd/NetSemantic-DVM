@@ -93,7 +93,7 @@ public class InterpreterTest {
 		DalvikVM vm = new DalvikVM();
 		Settings.logLevel = 9;
 		vm.runMethod("C:/Users/hao/workspace/TestDVM/app/app-release.apk",
-				"fu.hao.testdvm.MainActivity", method, null);
+				"fu.hao.testdvm.MainActivity", method, null, null);
 	}
 
 }

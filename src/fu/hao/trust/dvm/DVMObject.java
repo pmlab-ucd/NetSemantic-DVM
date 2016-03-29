@@ -56,7 +56,7 @@ public class DVMObject {
 		if (oinit != null) {
 			Log.bb(TAG, "not empty constructor");
 			vm.newStackFrame(oinit);
-			vm.setContext(null);
+			vm.setCallContext(null);
 			// vm.getCurrStackFrame().thisObj = null;
 			// To force run the constructor.
 			for (int i = 0; i < oinit.insns.length; i++) {

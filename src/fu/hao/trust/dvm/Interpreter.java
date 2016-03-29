@@ -2112,7 +2112,7 @@ public class Interpreter {
 		}
 
 		if (args != null) {
-			vm.setContext(args);
+			vm.setCallContext(args);
 		}
 
 		vm.newStackFrame(mi);		
@@ -2143,7 +2143,7 @@ public class Interpreter {
 			run(vm);
 		}
 	}
-
+	
 	/**
 	 * @fieldName: chainThisObj
 	 * @fieldType: DVMObject
@@ -2156,7 +2156,7 @@ public class Interpreter {
 		running = true;
 		String mname = vm.getCurrStackFrame().method.name;
 		while (vm.getCurrStackFrame() != null
-				&& vm.getPC() < vm.getCurrStackFrame().method.insns.length) {
+				&& vm.getCurrStackFrame().method != null &&  vm.getPC() < vm.getCurrStackFrame().method.insns.length) {
 			Instruction insns = vm.getCurrStackFrame().method.insns[vm.getPC()];
 			insns.setLoc(vm.getCurrStackFrame().method);
 			exec(vm, insns);
