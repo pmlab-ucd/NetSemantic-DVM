@@ -6,6 +6,7 @@ import org.jacop.core.IntVar;
 import org.jacop.core.Store;
 import org.jacop.core.Var;
 
+import fu.hao.trust.data.SymbolicVar;
 import fu.hao.trust.dvm.DalvikVM;
 import fu.hao.trust.utils.Log;
 import patdroid.core.ClassInfo;
@@ -18,7 +19,7 @@ import patdroid.dalvik.Instruction;
  * @author: Hao Fu
  * @date: Feb 26, 2016 12:19:45 PM
  */
-public class Unknown implements BiDirVar {
+public class Unknown extends SymbolicVar {
 	
 	Var var;
 	Store store;
@@ -113,7 +114,6 @@ public class Unknown implements BiDirVar {
 		
 	}
 
-	@Override
 	public boolean isOn() {
 		return on;
 	}

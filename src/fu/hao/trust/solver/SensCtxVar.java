@@ -2,6 +2,7 @@ package fu.hao.trust.solver;
 
 import patdroid.core.ClassInfo;
 import patdroid.dalvik.Instruction;
+import fu.hao.trust.data.SymbolicVar;
 import fu.hao.trust.dvm.DalvikVM;
 
 /**
@@ -10,7 +11,7 @@ import fu.hao.trust.dvm.DalvikVM;
  * @author: Hao Fu
  * @date: Mar 15, 2016 8:53:58 PM
  */
-public class SensCtxVar implements BiDirVar{
+public class SensCtxVar extends SymbolicVar{
 	
 	private ClassInfo type;
 	private Object value;
@@ -61,7 +62,6 @@ public class SensCtxVar implements BiDirVar{
 		this.value = value;
 	}
 
-	@Override
 	public boolean isOn() {
 		return on;
 	}

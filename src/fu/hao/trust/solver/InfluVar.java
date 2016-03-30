@@ -3,6 +3,7 @@ package fu.hao.trust.solver;
 import java.util.HashSet;
 import java.util.Set;
 
+import fu.hao.trust.data.SymbolicVar;
 import fu.hao.trust.dvm.DalvikVM;
 import patdroid.core.ClassInfo;
 import patdroid.dalvik.Instruction;
@@ -13,7 +14,7 @@ import patdroid.dalvik.Instruction;
  * @author: Hao Fu
  * @date: Mar 10, 2016 7:20:04 PM
  */
-public class InfluVar implements BiDirVar {
+public class InfluVar extends SymbolicVar {
 	private Object value;
 	static Set<Class<?>> influList;
 	final String TAG = "InfluVar";
@@ -85,7 +86,6 @@ public class InfluVar implements BiDirVar {
 		this.value = value;
 	}
 
-	@Override
 	public boolean isOn() {
 		return on;
 	}

@@ -14,11 +14,11 @@ import patdroid.core.PrimitiveInfo;
 import patdroid.dalvik.Instruction;
 import patdroid.util.Pair;
 import fu.hao.trust.data.Results;
+import fu.hao.trust.data.SymbolicVar;
 import fu.hao.trust.dvm.DVMClass;
 import fu.hao.trust.dvm.DVMObject;
 import fu.hao.trust.dvm.DalvikVM;
 import fu.hao.trust.dvm.DalvikVM.Register;
-import fu.hao.trust.solver.BiDirVar;
 import fu.hao.trust.utils.Log;
 import fu.hao.trust.utils.SrcSinkParser;
 
@@ -534,9 +534,9 @@ public class Taint extends Plugin {
 			Object array = vm.getReg(inst.r0).getData();
 			// index reg
 			PrimitiveInfo pindex;
-			if (vm.getReg(inst.r1).getData() instanceof BiDirVar) {
-				if (((BiDirVar) vm.getReg(inst.r1).getData()).getValue() instanceof PrimitiveInfo) {
-					pindex = (PrimitiveInfo) ((BiDirVar) vm.getReg(inst.r1).getData()).getValue();
+			if (vm.getReg(inst.r1).getData() instanceof SymbolicVar) {
+				if (((SymbolicVar) vm.getReg(inst.r1).getData()).getValue() instanceof PrimitiveInfo) {
+					pindex = (PrimitiveInfo) ((SymbolicVar) vm.getReg(inst.r1).getData()).getValue();
 				} else {
 					Log.warn(TAG, "Array get error! index is not a int.");
 					return out;

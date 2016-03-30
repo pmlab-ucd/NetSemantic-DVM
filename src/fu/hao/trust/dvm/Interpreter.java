@@ -8,10 +8,10 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import fu.hao.trust.data.SymbolicVar;
 import fu.hao.trust.dvm.DalvikVM.Register;
 import fu.hao.trust.dvm.DalvikVM.StackFrame;
 import fu.hao.trust.solver.BiDirBranch;
-import fu.hao.trust.solver.BiDirVar;
 import fu.hao.trust.solver.Unknown;
 import fu.hao.trust.utils.Log;
 import patdroid.core.ClassInfo;
@@ -495,13 +495,13 @@ public class Interpreter {
 				Log.err(TAG, "cannot identify res type!");
 			}
 
-			if (vm.retValReg.data instanceof BiDirVar
+			if (vm.retValReg.data instanceof SymbolicVar
 					&& vm.retValReg.type.isPrimitive()) {
-				BiDirVar var = (BiDirVar) vm.retValReg.data;
+				SymbolicVar var = (SymbolicVar) vm.retValReg.data;
 				var.setValue(PrimitiveInfo.fromObject(var.getValue()));
 			}
 
-			if (!(vm.retValReg.data instanceof BiDirVar)
+			if (!(vm.retValReg.data instanceof SymbolicVar)
 					&& vm.retValReg.type != null
 					&& vm.retValReg.type.isPrimitive()) {
 				vm.retValReg.data = PrimitiveInfo.fromObject(vm.retValReg.data);
@@ -1719,7 +1719,7 @@ public class Interpreter {
 				r1 = vm.getReg(inst.r1);
 			}
 
-			BiDirVar u0 = null, u1 = null;
+			SymbolicVar u0 = null, u1 = null;
 			Log.debug(TAG, "r0 data " + r0.data);
 			if (r0.data == null) {
 				Log.warn(TAG, "Null operator found!");
@@ -1731,13 +1731,13 @@ public class Interpreter {
 				r1.data = new Unknown(r1.type);
 			}
 
-			if (r0.data instanceof BiDirVar) {
-				u0 = (BiDirVar) r0.data;
+			if (r0.data instanceof SymbolicVar) {
+				u0 = (SymbolicVar) r0.data;
 				u0.addConstriant(vm, inst);
 			}
 
-			if (inst.r1 != -1 && r1.data instanceof BiDirVar) {
-				u1 = (BiDirVar) r1.data;
+			if (inst.r1 != -1 && r1.data instanceof SymbolicVar) {
+				u1 = (SymbolicVar) r1.data;
 				u1.addConstriant(vm, inst);
 			}
 
@@ -1755,22 +1755,6 @@ public class Interpreter {
 
 				// To froce proceed to then part.
 				jump(vm, inst, true);
-
-				if (u0 != null && u0.isOn() || u1 != null && u1.isOn()) {
-					Log.warn(TAG, "dibranches: " + vm.getBiDirBranches());
-					BiDirBranch branch = new BiDirBranch(inst, vm.getPC(),
-							vm.getCurrStackFrame().method, vm.storeState());
-
-					vm.addBiDirBranch(branch);
-
-					if (r1 != null && r1.data instanceof Unknown) {
-						// TODO
-					}
-
-					Log.warn(TAG, "New BiDirBranch " + branch);
-					// TODO add constraint inconsistency check to rm unreachable
-					// code
-				}
 			} else {
 				auxByteCodes.get((int) inst.opcode_aux).func(vm, inst);
 			}
@@ -1814,9 +1798,9 @@ public class Interpreter {
 		if (r0.data == null) {
 			op1 = new PrimitiveInfo(0);
 		} else {
-			if (r0.data instanceof BiDirVar && r0.type != null
+			if (r0.data instanceof SymbolicVar && r0.type != null
 					&& r0.type.isPrimitive()) {
-				op1 = (PrimitiveInfo) ((BiDirVar) r0.data).getValue();
+				op1 = (PrimitiveInfo) ((SymbolicVar) r0.data).getValue();
 			} else if (r0.data instanceof PrimitiveInfo) {
 				op1 = (PrimitiveInfo) r0.data;
 			} else if (r0.type != null && r0.type.isPrimitive()
@@ -1833,8 +1817,8 @@ public class Interpreter {
 			op2 = new PrimitiveInfo(0);
 		} else {
 			Register r1 = vm.getReg(inst.r1);
-			if (r1.data instanceof BiDirVar) {
-				op2 = (PrimitiveInfo) ((BiDirVar) r1.data).getValue();
+			if (r1.data instanceof SymbolicVar) {
+				op2 = (PrimitiveInfo) ((SymbolicVar) r1.data).getValue();
 			} else {
 				op2 = (PrimitiveInfo) vm.getReg(inst.r1).data;
 			}
@@ -1944,8 +1928,8 @@ public class Interpreter {
 
 				obj = vm.getReg(args[0]).data;
 
-				if (obj instanceof BiDirVar) {
-					BiDirVar bidirVar = (BiDirVar) obj;
+				if (obj instanceof SymbolicVar) {
+					SymbolicVar bidirVar = (SymbolicVar) obj;
 					obj = bidirVar.getValue();
 				}
 
@@ -2057,8 +2041,8 @@ public class Interpreter {
 					Log.warn(TAG, "Mismatch type! arg " + i
 							+ ", real para type: " + argData.getClass()
 							+ ", expected para type: " + argsClass[i - 1]);
-					if (argData instanceof BiDirVar) {
-						BiDirVar bidirVar = (BiDirVar) argData;
+					if (argData instanceof SymbolicVar) {
+						SymbolicVar bidirVar = (SymbolicVar) argData;
 						params[i - 1] = bidirVar.getValue();
 						Log.debug(TAG, "Param " + params[i - 1]);
 					} else {
