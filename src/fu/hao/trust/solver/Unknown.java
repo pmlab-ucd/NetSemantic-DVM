@@ -31,7 +31,7 @@ public class Unknown extends SymbolicVar {
 	 */
 	Instruction lastArith;
 	
-	boolean on = false;
+	boolean on = true;
 	
 	final String TAG = "Unknown";
 	

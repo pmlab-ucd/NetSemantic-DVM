@@ -20,7 +20,7 @@ public class TestUnknown {
 			args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_VirtualDispatch1/app/";
 			args[1] = "de.ecspride.VirtualDispatch1";
 			args[2] = null;
-			args[3] = "ATaint";
+			args[3] = "Taint";
 			//args[2] = "clickButton";
 			Main.main(args);
 			System.out.println("REs: " + Results.results);

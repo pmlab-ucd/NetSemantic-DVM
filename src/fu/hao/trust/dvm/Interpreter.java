@@ -8,10 +8,10 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import fu.hao.trust.data.SymbolicVar;
 import fu.hao.trust.dvm.DalvikVM.Register;
 import fu.hao.trust.dvm.DalvikVM.StackFrame;
 import fu.hao.trust.solver.BiDirBranch;
+import fu.hao.trust.data.SymbolicVar;
 import fu.hao.trust.solver.Unknown;
 import fu.hao.trust.utils.Log;
 import patdroid.core.ClassInfo;
@@ -732,7 +732,7 @@ public class Interpreter {
 	class OP_IF_EQZ implements ByteCode {
 		/**
 		 * @Title: func
-		 * @Description: (œÊ JavaDoc)
+		 * @Description: (ð¨ƒ¨ JavaDoc)
 		 * @param vm
 		 * @param inst
 		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
@@ -757,7 +757,7 @@ public class Interpreter {
 	class OP_IF_NEZ implements ByteCode {
 		/**
 		 * @Title: func
-		 * @Description: (œÊ JavaDoc)
+		 * @Description: (ð¨ƒ¨ JavaDoc)
 		 * @param vm
 		 * @param inst
 		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
@@ -1686,7 +1686,7 @@ public class Interpreter {
 	class OP_HALT implements ByteCode {
 		/**
 		 * @Title: func
-		 * @Description: (·Ç JavaDoc)
+		 * @Description: (æº– JavaDoc)
 		 * @param vm
 		 * @param inst
 		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
@@ -1704,7 +1704,7 @@ public class Interpreter {
 
 		/**
 		 * @Title: func
-		 * @Description: (·Ç JavaDoc)
+		 * @Description: (æº– JavaDoc)
 		 * @param vm
 		 * @param inst
 		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
@@ -1755,6 +1755,22 @@ public class Interpreter {
 
 				// To froce proceed to then part.
 				jump(vm, inst, true);
+
+				if (u0 != null || u1 != null) {
+					Log.warn(TAG, "dibranches: " + vm.getBiDirBranches());
+					BiDirBranch branch = new BiDirBranch(inst, vm.getPC(),
+							vm.getCurrStackFrame().method, vm.storeState());
+
+					vm.addBiDirBranch(branch);
+
+					if (r1 != null && r1.data instanceof Unknown) {
+						// TODO
+					}
+
+					Log.warn(TAG, "New BiDirBranch " + branch);
+					// TODO add constraint inconsistency check to rm unreachable
+					// code
+				}
 			} else {
 				auxByteCodes.get((int) inst.opcode_aux).func(vm, inst);
 			}

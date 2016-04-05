@@ -23,7 +23,6 @@ import patdroid.core.ReflectionClassDetailLoader;
 import patdroid.dalvik.Instruction;
 import patdroid.smali.SmaliClassDetailLoader;
 
-@SuppressWarnings("deprecation")
 public class DalvikVM {
 	// The nested class to implement singleton
 	private static class SingletonHolder {
@@ -46,17 +45,10 @@ public class DalvikVM {
 		int count = -1;
 
 		public void copy(Register y) {
-			priorMovValue = data;
-			
-			if (data instanceof MultiValVar) {
-				
-			}
-			
 			this.type = y.type;
 			this.data = y.data;
 		}
 
-		@Deprecated
 		public void copy(Register y, Map<DVMObject, DVMObject> objMap,
 				Map<DVMClass, DVMClass> classMap) {
 			this.type = y.type;
@@ -73,7 +65,6 @@ public class DalvikVM {
 		}
 
 		public void copy(ClassInfo type, Object data) {
-			priorMovValue = data;
 			this.type = type;
 			this.data = data;
 		}
@@ -150,7 +141,6 @@ public class DalvikVM {
 
 		}
 
-		@Deprecated
 		public StackFrame clone(Map<DVMObject, DVMObject> objMap,
 				Map<DVMClass, DVMClass> classMap) {
 			StackFrame frame = new StackFrame(method);
@@ -234,7 +224,6 @@ public class DalvikVM {
 
 	}
 
-	@Deprecated
 	public LinkedList<StackFrame> cloneStack(Map<DVMObject, DVMObject> objMap,
 			Map<DVMClass, DVMClass> classMap) {
 		LinkedList<StackFrame> newStack = new LinkedList<>();
@@ -246,8 +235,7 @@ public class DalvikVM {
 
 		return newStack;
 	}
-	
-	@Deprecated
+
 	public VMState storeState() {
 		Log.warn(
 				tag,
@@ -325,8 +313,7 @@ public class DalvikVM {
 				pluginMethod);
 		return state;
 	}
-	
-	@Deprecated
+
 	private Object backupField(Object field, Map<DVMObject, DVMObject> objMap) {
 		if (field instanceof DVMObject) {
 			DVMObject newField;
@@ -349,19 +336,19 @@ public class DalvikVM {
 	 * @fieldType: Stack<Instruction>
 	 * @Description: To store the unknown branches met for this trace.
 	 */
-	private BiDirBranch bidirBranch;
+	private LinkedList<BiDirBranch> bidirBranches = new LinkedList<>();
 	
-	public void setBiDirBranch(BiDirBranch branch) {
-		bidirBranch = branch;
+	public void addBiDirBranch(BiDirBranch branch) {
+		bidirBranches.push(branch);
 	}
 	
-	public BiDirBranch getBiDirBranch() {
-		return bidirBranch;
+	public LinkedList<BiDirBranch> getBiDirBranches() {
+		return bidirBranches;
 	}
 	
-	@Deprecated
-	public void restoreState() {	
-		if (bidirBranch == null) {
+
+	public void restoreState() {
+		if (bidirBranches.isEmpty()) {
 			pluginManager.setCondition(null);
 			return;
 		}
@@ -369,8 +356,8 @@ public class DalvikVM {
 		Log.warn(
 				tag,
 				"++++++++++++++++++++++++++++++++++++++BackTrace++++++++++++++++++++++++++++++++++++++++++++++");
-		BiDirBranch focusBranch = bidirBranch;
-		bidirBranch = null;
+		Log.msg(tag, "bidibranches: " + bidirBranches);
+		BiDirBranch focusBranch = bidirBranches.removeLast();
 		Log.msg(tag, " bidirBrach: " + focusBranch);
 		VMState state = focusBranch.getState();
 		heap = state.getHeap();
@@ -420,9 +407,6 @@ public class DalvikVM {
 	DVMObject callbackOwner;
 
 	PluginManager pluginManager;
-	
-	// The value that the reg stored before moving, I know it is ugly. 
-	public Object priorMovValue;
 
 	public Register getReg(int i) {
 		return stack.getLast().regs[i];

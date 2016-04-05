@@ -12,19 +12,15 @@ import fu.hao.trust.data.VMState;
  * @author: Hao Fu
  * @date: Mar 30, 2016 3:27:47 PM
  */
-@SuppressWarnings("deprecation")
 public class BiDirBranch extends Branch {
-	@Deprecated
 	VMState state;
 
-	@Deprecated
 	public BiDirBranch(Instruction inst, int index, MethodInfo method,
 			VMState state) {
 		super(inst, index, method);
 		this.state = state;
 	}
 
-	@Deprecated
 	public VMState getState() {
 		return state;
 	}
