@@ -117,5 +117,5 @@ public class Unknown extends SymbolicVar {
 	public boolean isOn() {
 		return on;
 	}
-	
+
 }

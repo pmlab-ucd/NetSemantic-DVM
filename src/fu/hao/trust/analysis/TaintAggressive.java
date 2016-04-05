@@ -3,6 +3,8 @@ package fu.hao.trust.analysis;
 import java.util.HashMap;
 import java.util.Map;
 
+import fu.hao.trust.data.ConcreteVar;
+import fu.hao.trust.data.SymbolicVar;
 import fu.hao.trust.dvm.DalvikVM;
 import fu.hao.trust.solver.BiDirBranch;
 import fu.hao.trust.solver.Unknown;
@@ -44,9 +46,9 @@ public class TaintAggressive extends Taint {
 				for (int i = vm.getPC(); i < (int) inst.extra; i++) {
 					if (insns[i].opcode == Instruction.OP_RETURN) {
 						BiDirBranch branch = new BiDirBranch(inst, vm.getPC(),
-								vm.getCurrStackFrame().getMethod(), vm.storeState());
+								vm.getCurrStackFrame().getMethod());
 
-						vm.addBiDirBranch(branch);
+						vm.setBiDirBranch(branch);
 						// Remove just added stop sign since the aggressive is unnecessary and we will come back later
 						addVarsOfBranch.remove(stopSign);
 						break;
@@ -98,6 +100,14 @@ public class TaintAggressive extends Taint {
 				// TODO Now only add one, but could be influenced by multiple APIs
 				out.put(vm.getReg(inst.rdst), addVarsOfBranch.values().iterator()
 						.next());
+				
+				if (!(vm.getReg(inst.rdst).getData() instanceof SymbolicVar)) {
+					ConcreteVar mcvv;
+					if (vm.getReg(inst.rdst).getData() instanceof ConcreteVar) {
+						mcvv = vm.g
+						mcvv.addValue(vm.getReg(inst.rdst).getData());
+					}
+				}
 				Log.warn(TAG, "Found influenced var at " + vm.getReg(inst.rdst));
 			} else {
 				Log.bb(TAG, "Not API Recording");

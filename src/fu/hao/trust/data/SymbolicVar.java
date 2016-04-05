@@ -9,7 +9,7 @@ import fu.hao.trust.dvm.DalvikVM;
  * @author: Hao Fu
  * @date: Mar 30, 2016 2:19:54 PM
  */
-public abstract class SymbolicVar {
+public abstract class SymbolicVar extends MultiValueVar {
 	public abstract void addConstriant(DalvikVM vm, Instruction inst);
 	
 	public abstract Object getValue();

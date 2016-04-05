@@ -7,6 +7,7 @@ import fu.hao.trust.dvm.DalvikVM.Register;
 import fu.hao.trust.dvm.DalvikVM.StackFrame;
 import fu.hao.trust.dvm.VMHeap;
 
+@Deprecated
 public class VMState {
 	VMHeap heap;
 	int pc;

@@ -110,8 +110,8 @@ public class ContextAnalysis extends TaintAggressive {
 						Log.bb(TAG, "Branch: " + vm.getPC() + " " + inst + " at " + vm.getCurrStackFrame().getMethod());
 						Log.bb(TAG, "Found a return at " + i + ", " + insns[i]);
 						BiDirBranch branch = new BiDirBranch(inst, vm.getPC(),
-								vm.getCurrStackFrame().getMethod(), vm.storeState());
-						vm.addBiDirBranch(branch);
+								vm.getCurrStackFrame().getMethod());
+						vm.setBiDirBranch(branch);
 						// Remove just added stop sign since the aggressive is unnecessary and we will come back later
 						recordCall.remove(stopSign);
 						break;
