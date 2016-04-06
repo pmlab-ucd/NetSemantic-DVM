@@ -41,18 +41,12 @@ public class DalvikVM {
 		ClassInfo type = null;
 		// data can be instance of: PrimitiveInfo, DVMObject and any class
 		// reflection supports
-		Object data = null;
+		private Object data = null;
 		int count = -1;
 
 		public void copy(Register y) {
-			if (this.data != null || this.type != null) {
-				assigned = new Object[3];
-				assigned[0] = this;
-				assigned[1] = this.data;
-				assigned[2] = data;
-			}
-			this.type = y.type;
-			this.data = y.data;
+			this.setType(y.type);
+			this.setData(y.getData());
 		}
 
 		public void copy(Register y, Map<DVMObject, DVMObject> objMap,
@@ -70,23 +64,17 @@ public class DalvikVM {
 			}
 		}
 
-		public void copy(ClassInfo type, Object data) {
-			if (this.data != null || this.type != null) {
-				Log.bb(TAG, "Assigned " + this + " " + this.data);
-				assigned = new Object[3];
-				assigned[0] = this;
-				assigned[1] = this.data;
-				assigned[2] = data;
-			}
-			this.type = type;
-			this.data = data;
-		}
-
 		public Object getData() {
 			return data;
 		}
 
 		public void setData(Object data) {
+			if (this.data != null || this.type != null) {
+				assigned = new Object[3];
+				assigned[0] = this;
+				assigned[1] = this.data;
+				assigned[2] = data;
+			}
 			this.data = data;
 		}
 
@@ -96,6 +84,10 @@ public class DalvikVM {
 
 		public String toString() {
 			return "reg " + count + "@" + getCurrStackFrame();
+		}
+
+		public void setType(ClassInfo type) {
+			this.type = type;
 		}
 
 	}
