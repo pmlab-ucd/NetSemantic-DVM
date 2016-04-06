@@ -38,7 +38,7 @@ public class ContextAnalysis extends TaintAggressive {
 	Set<String> targetList;
 
 	class CTX_OP_INVOKE implements Rule {
-		final String TAG = getClass().toString();
+		final String TAG = getClass().getName();
 
 		/**
 		 * @Title: flow

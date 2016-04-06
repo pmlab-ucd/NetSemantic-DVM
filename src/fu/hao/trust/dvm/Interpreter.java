@@ -1752,7 +1752,7 @@ public class Interpreter {
 						return;
 					}
 				}
-
+				/*
 				// To froce proceed to then part.
 				jump(vm, inst, true);
 
@@ -1770,7 +1770,7 @@ public class Interpreter {
 					Log.warn(TAG, "New BiDirBranch " + branch);
 					// TODO add constraint inconsistency check to rm unreachable
 					// code
-				}
+				}*/
 			} else {
 				auxByteCodes.get((int) inst.opcode_aux).func(vm, inst);
 			}
@@ -2261,6 +2261,11 @@ public class Interpreter {
 				+ vm.getCurrStackFrame().method);
 		vm.setNowPC(vm.getPC());
 		Log.bb(TAG, "opcode: " + inst.opcode + " " + inst.opcode_aux);
+		
+		vm.assigned = null;
+		if (!vm.pluginManager.isEmpty() && vm.getCurrStackFrame() != null) {
+			vm.pluginManager.preprossing(vm, inst);
+		}
 
 		if (byteCodes.containsKey((int) inst.opcode)) {
 			byteCodes.get((int) inst.opcode).func(vm, inst);
@@ -2273,10 +2278,10 @@ public class Interpreter {
 		if (!vm.pluginManager.isEmpty() && vm.getCurrStackFrame() != null) {
 			vm.pluginManager.runAnalysis(vm, inst);
 			vm.getCurrStackFrame().pluginRes = vm.pluginManager.cloneCurrtRes();
-			vm.pluginManager.checkInst(inst);
 
 			vm.pluginManager.printResults();
 		}
+		
 	}
 
 	/**

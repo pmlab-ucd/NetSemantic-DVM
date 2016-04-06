@@ -34,7 +34,7 @@ public class DalvikVM {
 		return SingletonHolder.instance;
 	}
 
-	private final String tag = getClass().getSimpleName();
+	private final String TAG = getClass().getSimpleName();
 
 	// Dalvik VM Register Bank
 	public class Register {
@@ -45,6 +45,12 @@ public class DalvikVM {
 		int count = -1;
 
 		public void copy(Register y) {
+			if (this.data != null || this.type != null) {
+				assigned = new Object[3];
+				assigned[0] = this;
+				assigned[1] = this.data;
+				assigned[2] = data;
+			}
 			this.type = y.type;
 			this.data = y.data;
 		}
@@ -55,7 +61,7 @@ public class DalvikVM {
 			this.data = y.data;
 
 			if (this.data instanceof DVMObject) {
-				Log.bb(tag,
+				Log.bb(TAG,
 						"backobj for reg " + y.data + " as "
 								+ objMap.get(y.data));
 				this.data = objMap.get(y.data);
@@ -65,6 +71,13 @@ public class DalvikVM {
 		}
 
 		public void copy(ClassInfo type, Object data) {
+			if (this.data != null || this.type != null) {
+				Log.bb(TAG, "Assigned " + this + " " + this.data);
+				assigned = new Object[3];
+				assigned[0] = this;
+				assigned[1] = this.data;
+				assigned[2] = data;
+			}
 			this.type = type;
 			this.data = data;
 		}
@@ -115,9 +128,9 @@ public class DalvikVM {
 
 			int counter = 0;
 
-			Log.bb(tag, "New method call: " + method);
+			Log.bb(TAG, "New method call: " + method);
 			for (Instruction ins : method.insns) {
-				Log.bb(tag, "[" + counter + "]" + ins.toString());
+				Log.bb(TAG, "[" + counter + "]" + ins.toString());
 				counter++;
 			}
 			
@@ -158,7 +171,7 @@ public class DalvikVM {
 			for (int i = 0; i < regs.length; i++) {
 				frame.regs[i].copy(regs[i], objMap, classMap);
 				if (regs[i].data != null) {
-					Log.bb(tag,
+					Log.bb(TAG,
 							"BackupReg " + i + " " + frame.regs[i].getData());
 				}
 				for (Plugin plugin : pluginRes.keySet()) {
@@ -187,8 +200,8 @@ public class DalvikVM {
 					}
 				}
 			}
-			Log.bb(tag, "BB " + pluginRes);
-			Log.bb(tag, "BB " + frame.pluginRes);
+			Log.bb(TAG, "BB " + pluginRes);
+			Log.bb(TAG, "BB " + frame.pluginRes);
 
 			return frame;
 		}
@@ -216,7 +229,7 @@ public class DalvikVM {
 		public void printLocals() {
 			for (int i = 0; i < 65536; i++) {
 				if (regs[i].data != null) {
-					Log.bb(tag, "StackFrame " + method + ", reg " + i + ": "
+					Log.bb(TAG, "StackFrame " + method + ", reg " + i + ": "
 							+ regs[i].data);
 				}
 			}
@@ -238,7 +251,7 @@ public class DalvikVM {
 
 	public VMState storeState() {
 		Log.warn(
-				tag,
+				TAG,
 				"++++++++++++++++++++++++++++++++++++++Store state! +++++++++++++++++++++++++++++++++++++++++++");
 		getCurrStackFrame().printLocals();
 		VMHeap backHeap = new VMHeap();
@@ -354,11 +367,11 @@ public class DalvikVM {
 		}
 		
 		Log.warn(
-				tag,
+				TAG,
 				"++++++++++++++++++++++++++++++++++++++BackTrace++++++++++++++++++++++++++++++++++++++++++++++");
-		Log.msg(tag, "bidibranches: " + bidirBranches);
+		Log.msg(TAG, "bidibranches: " + bidirBranches);
 		BiDirBranch focusBranch = bidirBranches.removeLast();
-		Log.msg(tag, " bidirBrach: " + focusBranch);
+		Log.msg(TAG, " bidirBrach: " + focusBranch);
 		VMState state = focusBranch.getState();
 		heap = state.getHeap();
 		stack = state.getStack();
@@ -366,7 +379,7 @@ public class DalvikVM {
 		callingCtx = state.getCallingCtx();
 		pc = state.getPC();
 		pluginManager.setCurrRes(getCurrStackFrame().pluginRes);
-		Log.bb(tag, "Res objs " + pluginManager.getCurrRes());
+		Log.bb(TAG, "Res objs " + pluginManager.getCurrRes());
 		pluginManager.setMethod(state.getPluginMethod());
 		
 		pluginManager.setCondition(focusBranch.getInstruction());
@@ -378,7 +391,7 @@ public class DalvikVM {
 		lastBranch = focusBranch.getInstruction();
 
 		if (focusBranch.getMethod() != getCurrStackFrame().getMethod()) {
-			Log.err(tag, "BackTracing Error! Not the same method! "
+			Log.err(TAG, "BackTracing Error! Not the same method! "
 					+ focusBranch.getMethod() + " expected, but now is "
 					+ getCurrStackFrame().getMethod());
 		}
@@ -407,9 +420,15 @@ public class DalvikVM {
 	DVMObject callbackOwner;
 
 	PluginManager pluginManager;
+	
+	Object[] assigned;
 
 	public Register getReg(int i) {
 		return stack.getLast().regs[i];
+	}
+	
+	public Object[] getAssigned() {
+		return assigned;
 	}
 
 	/**
@@ -487,13 +506,13 @@ public class DalvikVM {
 	public StackFrame newStackFrame(MethodInfo mi) {
 		StackFrame newStackFrame = new StackFrame(mi);
 		if (getCurrStackFrame() != null) {
-			Log.bb(tag, "New Stack Frame: " + newStackFrame + ", pc " + getCurrStackFrame().pc + " stored. ");
+			Log.bb(TAG, "New Stack Frame: " + newStackFrame + ", pc " + getCurrStackFrame().pc + " stored. ");
 		} else {
-			Log.bb(tag, "New Stack Frame: " + newStackFrame);
+			Log.bb(TAG, "New Stack Frame: " + newStackFrame);
 		}
 		pc = 0;
 		stack.add(newStackFrame);	
-		Log.bb(tag, "Stack: " + stack);
+		Log.bb(TAG, "Stack: " + stack);
 		return newStackFrame;
 	}
 
@@ -506,13 +525,13 @@ public class DalvikVM {
 	 * @throws
 	 */
 	public void backCallCtx(Register retReg) {
-		Log.bb(tag, "stack " + stack);
+		Log.bb(TAG, "stack " + stack);
 		stack.removeLast();
-		Log.bb(tag, "stack " + stack);
+		Log.bb(TAG, "stack " + stack);
 		if (!stack.isEmpty()) {
 			StackFrame currtStack = stack.getLast();
 			pc = currtStack.pc;
-			Log.msg(tag, "Return to " + pc + "@" + currtStack.method);
+			Log.msg(TAG, "Return to " + pc + "@" + currtStack.method);
 			if (pluginManager.getCurrRes() == null
 					|| pluginManager.getCurrRes().isEmpty()) {
 				return;
@@ -522,7 +541,7 @@ public class DalvikVM {
 						.get(plugin);
 				Map<Object, Instruction> currtStackRes = currtStack.pluginRes
 						.get(plugin);
-				Log.bb(tag, "Currt statck res " + currtStackRes);
+				Log.bb(TAG, "Currt statck res " + currtStackRes);
 				for (Object res : currtRes.keySet()) {
 					if (res instanceof Register) {
 						if (res == retReg) {
@@ -538,11 +557,9 @@ public class DalvikVM {
 		} else {
 			// backtrace to last unknown branch
 			restoreState();
-			Log.warn(tag, "Backtrace begin!!!");
+			Log.warn(TAG, "Backtrace begin!!!");
 		}
 	}
-
-	ClassLoader loader;
 
 	/**
 	 * @Title: runMethod
@@ -559,7 +576,7 @@ public class DalvikVM {
 	 */
 	public void runMethod(String apk, String className, String main,
 			PluginManager pluginManager, Object[] params) throws ZipException, IOException {
-		Log.msg(tag, "Begin run " + main + " at " + apk);
+		Log.msg(TAG, "Begin run " + main + " at " + apk);
 		// for normal java run-time classes
 		// when a class is not loaded, load it with reflection
 		ClassInfo.rootDetailLoader = new ReflectionClassDetailLoader();
@@ -597,7 +614,7 @@ public class DalvikVM {
 		// get the class representation for the MainActivity class in the
 		// apk
 
-		Log.msg(tag, "apk " + apkFile + " " + apk);
+		Log.msg(TAG, "apk " + apkFile + " " + apk);
 
 		// find all methods with the name "onCreate", most likely there is
 		// only one
@@ -606,9 +623,9 @@ public class DalvikVM {
 		for (int i = 1; i < chain.length; i++) {
 			Settings.suspClass = chain[i].split(":")[0];
 			ClassInfo c = ClassInfo.findClass(Settings.suspClass);
-			Log.bb(tag, "class " + c);
+			Log.bb(TAG, "class " + c);
 			MethodInfo[] methods = c.findMethodsHere(chain[i].split(":")[1]);
-			Log.warn(tag, "Run chain " + chain[i] + " at " + c);
+			Log.warn(TAG, "Run chain " + chain[i] + " at " + c);
 			// TODO Multiple methods have the same name.
 			runMethod(methods[0]);
 		}
@@ -627,10 +644,10 @@ public class DalvikVM {
 	 * @throws
 	 */
 	public void runMethod(MethodInfo method) {
-		Log.msg(tag, "RUN Method " + method);
+		Log.msg(TAG, "RUN Method " + method);
 
 		if (method.insns == null) {
-			Log.warn(tag, "Empty body of " + method);
+			Log.warn(TAG, "Empty body of " + method);
 			return;
 		}
 
@@ -639,7 +656,7 @@ public class DalvikVM {
 	
 	public void runMethod(MethodInfo method, Object[] params) {
 		if (method == null) {
-			Log.err(tag, "Null Method");
+			Log.err(TAG, "Null Method");
 		}
 		StackFrame stackFrame = newStackFrame(null);	
 		for (int i = 0; i < params.length; i++) {
@@ -663,7 +680,7 @@ public class DalvikVM {
 		StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
 		StackTraceElement caller = stackTraceElements[2];//maybe this number needs to be corrected
 		StackTraceElement caller2 = stackTraceElements[3];
-		Log.bb(tag, caller2.getClassName() + " -> " +  caller.getMethodName() + " set pc to " + pc);
+		Log.bb(TAG, caller2.getClassName() + " -> " +  caller.getMethodName() + " set pc to " + pc);
 		if (getCurrStackFrame() != null) {
 			getCurrStackFrame().pc = pc;
 		}

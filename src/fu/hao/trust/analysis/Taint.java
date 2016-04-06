@@ -876,5 +876,11 @@ public class Taint extends Plugin {
 	public void reset() {
 		currtRes = new HashMap<>();
 	}
+	
+	@Override
+	public void preprocessing(DalvikVM vm, Instruction inst) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

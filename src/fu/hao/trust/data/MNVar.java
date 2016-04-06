@@ -44,7 +44,7 @@ public class MNVar extends MultiValueVar {
 		if (values.containsKey(dvmObjVal.getType())) {
 			for (FieldInfo fieldInfo : dvmObjVal.getFields().keySet()) {
 				Object field = values.get(dvmObjVal.getType()).getFieldObj(fieldInfo);
-				values.get(dvmObjVal.getType()).setField(fieldInfo, valueCombination(field,
+				values.get(dvmObjVal.getType()).setField(fieldInfo, Branch.valCombination(field,
 						dvmObjVal.getFieldObj(fieldInfo)));
 			}
 		} else {

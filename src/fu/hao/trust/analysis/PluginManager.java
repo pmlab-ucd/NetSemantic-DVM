@@ -79,17 +79,6 @@ public class PluginManager {
 		this.currtRes = currtRes;
 	}
 
-	public void checkInst(Instruction inst) {
-		for (Plugin plugin : currtRes.keySet()) {
-			if (plugin.interested != null && plugin.interested.contains(inst)) {
-				plugin.interested.remove(inst);
-				Log.msg(TAG, "Found interested inst " + inst, ", rm it.");
-				Log.bb(TAG, "Left interested " + plugin.interested);
-			}
-		}
-		
-	}
-
 	public void reset() {
 		for (Plugin plugin : plugins) {
 			plugin.reset();
@@ -104,6 +93,12 @@ public class PluginManager {
 	public void printResults() {
 		for (Plugin plugin : currtRes.keySet()) {
 			Log.msg(TAG, plugin.getClass().getSimpleName() + " Tainted Res: " + currtRes.get(plugin));
+		}
+	}
+	
+	public void preprossing(DalvikVM vm, Instruction inst) {
+		for (Plugin plugin : currtRes.keySet()) {
+			plugin.preprocessing(vm, inst);
 		}
 	}
 
