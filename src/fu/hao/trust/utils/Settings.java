@@ -48,4 +48,11 @@ public class Settings {
 		suspClass = null;
 		suspMethod = null;
 	}
+	
+	public static String getRuntimeCaller() {
+		StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
+		StackTraceElement caller = stackTraceElements[3];
+		return caller.getClass().getSimpleName();
+	}
+
 }

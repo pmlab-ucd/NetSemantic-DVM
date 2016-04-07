@@ -4,6 +4,9 @@ import patdroid.core.MethodInfo;
 import patdroid.dalvik.Instruction;
 import fu.hao.trust.data.Branch;
 import fu.hao.trust.data.VMState;
+import fu.hao.trust.dvm.DalvikVM;
+import fu.hao.trust.utils.Log;
+import fu.hao.trust.utils.Settings;
 
 /**
  * @ClassName: BiDirBranch
@@ -16,9 +19,10 @@ public class BiDirBranch extends Branch {
 	VMState state;
 
 	public BiDirBranch(Instruction inst, int index, MethodInfo method,
-			VMState state) {
+			DalvikVM vm) {
 		super(inst, index, method);
-		this.state = state;
+		Log.warn(Settings.getRuntimeCaller(), "New BiDirBranch " + this);
+		this.state = vm.storeState();
 	}
 
 	public VMState getState() {

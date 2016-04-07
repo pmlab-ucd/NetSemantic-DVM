@@ -79,7 +79,7 @@ public class TaintAggressive extends Taint {
 					simpleBranches.add(branch);
 					Log.warn(TAG, "New Simple Branch " + branch);
 				} else {
-					BiDirBranch branch = new BiDirBranch(inst, vm.getNowPC(), vm.getCurrStackFrame().getMethod(), vm.storeState());
+					BiDirBranch branch = new BiDirBranch(inst, vm.getNowPC(), vm.getCurrStackFrame().getMethod(), vm);
 					branch.setSumPoint(vm.getCurrStackFrame().getInst(simpleBranch));
 					bidirBranches.add(branch);
 					vm.addBiDirBranch(branch);

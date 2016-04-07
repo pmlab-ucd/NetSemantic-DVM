@@ -1,9 +1,7 @@
 package fu.hao.trust.data;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 import fu.hao.trust.dvm.DVMObject;
 import fu.hao.trust.dvm.DalvikVM.Register;
@@ -25,7 +23,7 @@ public class Branch {
 	 * @Description: The memory element who has conflict values
 	 * <Memory obj: reg, MVV>
 	 */
-	protected Map<Register, Set<Object>> conflicts; 
+	protected Map<Register, Object[]> conflicts; 
 	
 	static final String TAG = Branch.class.getName();
 
@@ -54,14 +52,20 @@ public class Branch {
 	}
 	
 	public void addVar(Register var) {
-		conflicts.put(var, new HashSet<>());
+		// Object[0]: original val, Object[1]: new value
+		conflicts.put(var, new Object[2]);
 	}
 	
 	public void addValue(Register var, Object val) {
+		// Set the original val before the branch
 		if (!conflicts.containsKey(var)) {
 			addVar(var);
+			conflicts.get(var)[0] = val;
+		} else {
+			// Over write the current value in the block
+			conflicts.get(var)[1] = val;
 		}
-		conflicts.get(var).add(val);
+
 		Log.bb(TAG, "Add conflict at var " + var + ", with value " + val);
 	}
 	

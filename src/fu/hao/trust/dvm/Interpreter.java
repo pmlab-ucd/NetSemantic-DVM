@@ -1959,7 +1959,7 @@ public class Interpreter {
 				vm.retValReg.type = mi.returnType;
 				if (args.length == 1) {
 					method = clazz.getDeclaredMethod(mi.name);
-					// TODO
+					// When method is a memeber of noInvoke, do not really invoke it
 					if (noInvokeList.contains(method.getName())) {
 						vm.retValReg.setData(null);
 						Log.warn(TAG, "Found noInvokeMethod " + method);
