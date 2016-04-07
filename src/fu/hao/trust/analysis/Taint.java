@@ -41,7 +41,7 @@ public class Taint extends Plugin {
 	Set<String> sinks;
 	boolean isSrc;
 
-	class TAINT_OP_MOVE_REG implements Rule {
+	class TAINT_OP_MOV_REG implements Rule {
 		/**
 		 * @Title: flow
 		 * @Description: x = y
@@ -62,6 +62,9 @@ public class Taint extends Plugin {
 				if (out.containsKey(vm.getReg(inst.rdst))) {
 					out.remove(vm.getReg(inst.rdst));
 				}
+				if (in.containsKey(vm.getReturnReg())) {
+					out.remove(vm.getReturnReg());
+				}
 			}
 
 			return out;
@@ -69,6 +72,7 @@ public class Taint extends Plugin {
 	}
 
 	class TAINT_OP_MOV_CONST implements Rule {
+		final String TAG = getClass().getSimpleName();
 		/**
 		 * @Title: flow
 		 * @Description: x = y
@@ -81,15 +85,11 @@ public class Taint extends Plugin {
 		@Override
 		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
 			Map<Object, Instruction> out = new HashMap<>(in);
-			if (in.containsKey(inst.extra)) {
-				out.put(vm.getReg(inst.rdst), in.get(inst.extra));
-				out.put(vm.getReg(inst.rdst).getData(), in.get(inst.extra));
-			} else {
-				if (out.containsKey(vm.getReg(inst.rdst))) {
-					out.remove(vm.getReg(inst.rdst));
-				}
+			
+			if (out.containsKey(vm.getReg(inst.rdst))) {
+				out.remove(vm.getReg(inst.rdst));
 			}
-
+			
 			return out;
 		}
 	}
@@ -235,7 +235,7 @@ public class Taint extends Plugin {
 			}
 
 			// Must be a reflection call;
-			if (method == null) {
+			if (getMethod() == null) {
 				return out;
 			}
 
@@ -273,7 +273,6 @@ public class Taint extends Plugin {
 				return out;
 			}
 
-
 			// Decide whether add return value.
 			if (sources.contains(sootSignature)) {
 				Log.warn(TAG, "Found a tainted return value!");
@@ -299,11 +298,9 @@ public class Taint extends Plugin {
 					}
 				}
 			}
-
-			if (out.size() == in.size()) {
-				if (out.containsKey(vm.getReturnReg())) {
-					out.remove(vm.getReturnReg());
-				}
+			
+			if (in.size() == out.size() && in.containsKey(vm.getReturnReg())) {
+				out.remove(vm.getReturnReg());
 			}
 
 			return out;
@@ -369,6 +366,8 @@ public class Taint extends Plugin {
 	}
 
 	class TAINT_OP_MOV_RESULT implements Rule {
+		final String TAG = getClass().getSimpleName();
+		
 		/**
 		 * @Title: func
 		 * @Description: move-result v0 Move the return value of a previous
@@ -384,13 +383,21 @@ public class Taint extends Plugin {
 			if (in.containsKey(vm.getReturnReg())) {
 				out.put(vm.getReg(inst.rdst), in.get(vm.getReturnReg()));
 				out.put(vm.getReg(inst.rdst).getData(), in.get(vm.getReturnReg()));
+				Log.bb(TAG, "set " + in);
+				Log.bb(TAG, "Add reg " + inst.rdst + " due to ret reg.");
 			} else if (in.containsKey(vm.getReturnReg().getData())) {
 				out.put(vm.getReg(inst.rdst), in.get(vm.getReturnReg().getData()));
 				out.put(vm.getReg(inst.rdst).getData(), in.get(vm.getReturnReg().getData()));
+				Log.bb(TAG, "Add reg " + inst.rdst + " due to ret data.");
 			} else {
 				if (in.containsKey(vm.getReg(inst.rdst))) {
-					in.remove(inst.rdst);
+					out.remove(vm.getReg(inst.rdst));
+					Log.bb(TAG, "Rm reg " + inst.rdst);
 				}
+			}
+			
+			if (in.containsKey(vm.getReturnReg())) {
+				out.remove(vm.getReturnReg());
 			}
 			return out;
 		}
@@ -405,7 +412,7 @@ public class Taint extends Plugin {
 				out.put(vm.getReg(inst.rdst), in.get(vm.getCurrStackFrame().getExceptReg()));
 			} else {
 				if (in.containsKey(vm.getCurrStackFrame().getExceptReg())) {
-					in.remove(vm.getCurrStackFrame().getExceptReg());
+					out.remove(vm.getCurrStackFrame().getExceptReg());
 				}
 			}
 			return out;
@@ -421,7 +428,7 @@ public class Taint extends Plugin {
 				out.put(vm.getCurrStackFrame().getExceptReg(), in.get(vm.getReg(inst.r0)));
 			} else {
 				if (in.containsKey(vm.getCurrStackFrame().getExceptReg())) {
-					in.remove(vm.getCurrStackFrame().getExceptReg());
+					out.remove(vm.getCurrStackFrame().getExceptReg());
 				}
 			}
 			return out;
@@ -446,7 +453,7 @@ public class Taint extends Plugin {
 				out.put(vm.getReg(inst.rdst).getData(), in.get(vm.getReg(inst.r0)));
 			} else {
 				if (in.containsKey(vm.getReg(inst.rdst))) {
-					in.remove(inst.rdst);
+					out.remove(vm.getReg(inst.rdst));
 				}
 			}
 			return out;
@@ -477,11 +484,9 @@ public class Taint extends Plugin {
 				} else if (in.containsKey(vm.getReg(inst.r1).getData())) {
 					out.put(vm.getReg(inst.rdst), in.get(vm.getReg(inst.r1).getData()));
 					out.put(vm.getReg(inst.rdst).getData(), in.get(vm.getReg(inst.r1).getData()));
-				}
-					else {
-				
+				} else {				
 					if (in.containsKey(vm.getReg(inst.rdst))) {
-						in.remove(inst.rdst);
+						out.remove(vm.getReg(inst.rdst));
 					}
 				}
 			}
@@ -622,7 +627,7 @@ public class Taint extends Plugin {
 					out.put(vm.getReg(inst.rdst).getData(), in.get(vm.getReg(inst.r1)));
 				} else {
 					if (in.containsKey(vm.getReg(inst.rdst))) {
-						in.remove(inst.rdst);
+						out.remove(vm.getReg(inst.rdst));
 					}
 				}
 			}
@@ -674,6 +679,8 @@ public class Taint extends Plugin {
 	}
 
 	class TAINT_OP_STATIC_PUT_FIELD implements Rule {
+		final String TAG = getClass().getSimpleName();
+		
 		/**
 		 * @Title: func
 		 * @Description: sput v0, Test2.i5:I // field@0001 Stores v0 into
@@ -692,6 +699,7 @@ public class Taint extends Plugin {
 			String fieldName = pair.second;
 			DVMClass dvmClass = vm.getClass(owner);
 			if (in.containsKey(vm.getReg(inst.r0))) {
+				Log.bb(TAG, "SPut at " + vm.getReg(inst.r0));
 				out.put(dvmClass.getStatField(fieldName), in.get(vm.getReg(inst.r0)));
 			} else if (in.containsKey(vm.getReg(inst.r0).getData())) {
 				out.put(dvmClass.getStatField(fieldName), in.get(vm.getReg(inst.r0).getData()));
@@ -740,6 +748,8 @@ public class Taint extends Plugin {
 	}
 
 	class TAINT_OP_INSTANCE_PUT_FIELD implements Rule {
+		final String TAG = getClass().getSimpleName();
+		
 		/**
 		 * @Title: func
 		 * @Description: iput v0,v2, Test2.i6:I // field@0002 Stores v1 into
@@ -752,7 +762,6 @@ public class Taint extends Plugin {
 		 */
 		@Override
 		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
-			final String TAG = getClass().toString();
 			Map<Object, Instruction> out = new HashMap<>(in);
 			DVMObject obj = (DVMObject) vm.getReg(inst.r0).getData();
 			FieldInfo fieldInfo = (FieldInfo) inst.extra;
@@ -772,9 +781,31 @@ public class Taint extends Plugin {
 			return out;
 		}
 	}
+	
+	class TAINT_OP_RETURN_SOMETHING implements Rule {
+		final String TAG = getClass().getSimpleName();
+		
+		@Override
+		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
+			// TODO Auto-generated method stub
+			Map<Object, Instruction> out = new HashMap<>(in);
+			if (in.containsKey(vm.getReg(inst.r0))) {
+				out.put(vm.getReturnReg(), in.get(vm.getReg(inst.r0)));
+				Log.bb(TAG, "Add " + vm.getReturnReg() + "as tainted due to " + vm.getReg(inst.r0));
+			} else if (in.containsKey(vm.getReg(inst.r0).getData())) {
+				out.put(vm.getReturnReg(), in.get(vm.getReg(inst.r0).getData()));
+				Log.bb(TAG, "Add " + vm.getReturnReg() + "as tainted due to r0 data " + vm.getReg(inst.r0).getData());
+			} else {
+				if (in.containsKey(vm.getReturnReg())) {
+					out.remove(vm.getReturnReg());
+					Log.bb(TAG, "Remove " + vm.getReturnReg() + "as tainted.");
+				}
+			}
+			return out;
+		}
+	}
 
 	public Taint() {
-		currtRes = new HashMap<>();
 		SrcSinkParser parser;
 		try {
 			parser = SrcSinkParser.fromFile("SourcesAndSinks.txt");
@@ -792,10 +823,10 @@ public class Taint extends Plugin {
 		byteCodes.put(0x08, new TAINT_OP_IF());
 		byteCodes.put(0x0C, new TAINT_OP_INVOKE());
 
-		auxByteCodes.put(0x01, new TAINT_OP_MOVE_REG());
+		auxByteCodes.put(0x01, new TAINT_OP_MOV_REG());
 		auxByteCodes.put(0x02, new TAINT_OP_MOV_CONST());
 		// auxByteCodes.put(0x03, new TAINT_OP_RETURN_VOID());
-		// auxByteCodes.put(0x04, new TAINT_OP_RETURN_SOMETHING());
+		auxByteCodes.put(0x04, new TAINT_OP_RETURN_SOMETHING());
 		// auxByteCodes.put(0x05, new TAINT_OP_MONITOR_ENTER());
 		// auxByteCodes.put(0x06, new TAINT_OP_MONITOR_EXIT());
 		auxByteCodes.put(0x07, new TAINT_OP_SP_ARGUMENTS());
@@ -863,20 +894,10 @@ public class Taint extends Plugin {
 			out = new HashMap<>(in);
 		}
 
-		currtRes = out;
+		setCurrtRes(out);
 		return out;
 	}
 
-	@Override
-	public Map<Object, Instruction> getCurrRes() {
-		return currtRes;
-	}
-
-	@Override
-	public void reset() {
-		currtRes = new HashMap<>();
-	}
-	
 	@Override
 	public void preprocessing(DalvikVM vm, Instruction inst) {
 		// TODO Auto-generated method stub

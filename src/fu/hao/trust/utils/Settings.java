@@ -52,7 +52,7 @@ public class Settings {
 	public static String getRuntimeCaller() {
 		StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
 		StackTraceElement caller = stackTraceElements[3];
-		return caller.getClass().getSimpleName();
+		return caller.getClassName();
 	}
 
 }

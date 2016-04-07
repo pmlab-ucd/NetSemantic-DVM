@@ -17,12 +17,22 @@ import fu.hao.trust.utils.Settings;
  */
 public class BiDirBranch extends Branch {
 	VMState state;
+	boolean remove;
 
 	public BiDirBranch(Instruction inst, int index, MethodInfo method,
 			DalvikVM vm) {
 		super(inst, index, method);
 		Log.warn(Settings.getRuntimeCaller(), "New BiDirBranch " + this);
 		this.state = vm.storeState();
+		remove = false;
+	}
+	
+	public void setRmFlag(boolean remove) {
+		this.remove = remove;
+	}
+	
+	public boolean getRmFlag() {
+		return remove;
 	}
 
 	public VMState getState() {

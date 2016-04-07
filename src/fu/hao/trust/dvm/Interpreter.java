@@ -333,6 +333,8 @@ public class Interpreter {
 			MethodInfo mi = (MethodInfo) extra[0];
 			// The register index referred by args
 			int[] args = (int[]) extra[1];
+			vm.retValReg.setData(null);
+			vm.retValReg.setType(null);
 			try {
 				// If applicable, directly use reflection to run the method,
 				// the method is inside java.lang
@@ -1471,7 +1473,7 @@ public class Interpreter {
 		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			final String TAG = getClass().toString();
+			final String TAG = getClass().getSimpleName();
 			@SuppressWarnings("unchecked")
 			Pair<ClassInfo, String> pair = (Pair<ClassInfo, String>) inst.extra;
 
@@ -1482,7 +1484,7 @@ public class Interpreter {
 				vm.getReg(inst.r0).setData(field.get(clazz));
 				vm.getReg(inst.r0).type = ClassInfo.findOrCreateClass(vm
 						.getReg(inst.r0).getData().getClass());
-				Log.debug(TAG, "refleciton " + vm.getReg(inst.r0).getData());
+				Log.debug(TAG, "Refleciton " + vm.getReg(inst.r0).getData());
 			} catch (Exception e) {
 				ClassInfo owner = pair.first;
 				String fieldName = pair.second;
@@ -1494,11 +1496,11 @@ public class Interpreter {
 				vm.getReg(inst.r0).setData(dvmClass.getStatField(fieldName));
 				ClassInfo fieldType = owner.getStaticFieldType(fieldName);
 				vm.getReg(inst.r0).type = fieldType;
-				Log.debug(TAG, "sget " + vm.getReg(inst.r0).getData() + ", from "
+				Log.debug(TAG, "Sget " + vm.getReg(inst.r0).getData() + ", from "
 						+ dvmClass);
 				Log.debug(
 						TAG,
-						"expect sget " + fieldName + ", a "
+						"Expect sget " + fieldName + ", a "
 								+ vm.getReg(inst.r0).type + " from " + owner);
 			}
 
@@ -1695,8 +1697,10 @@ public class Interpreter {
 		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
+			vm.retValReg.setType(null);
+			vm.retValReg.setData(null);
 			jump(vm, inst, true);
-			Log.debug(TAG, "cannot resolve the invocation");
+			Log.msg(TAG, "Cannot resolve the invocation");
 		}
 	}
 
@@ -1866,20 +1870,17 @@ public class Interpreter {
 	public void jump(DalvikVM vm, Instruction inst, boolean seq) {
 		if (seq) {
 			if (vm.getCurrStackFrame() == null) {
-				vm.setPC(Integer.MAX_VALUE);
-				Log.bb(TAG, "Infinity PC!");
 				return;
 			} else {
-				vm.getCurrStackFrame().pc++;
+				vm.setPC(vm.getPC() + 1);
 			}
 		} else {
 			if (inst.extra == null) {
 				Log.err(TAG, "unresolve dest address in goto: " + inst);
 			}
-			vm.getCurrStackFrame().pc = (int) inst.extra;
+			vm.setPC((int) inst.extra);
 		}
 		
-		vm.setPC(vm.getCurrStackFrame().pc);
 	}
 
 	/**
@@ -1892,7 +1893,7 @@ public class Interpreter {
 	 * @throws
 	 */
 	public void invocation(DalvikVM vm, Instruction inst) {
-		vm.retValReg.type = null;
+		vm.retValReg.setType(null);
 		vm.retValReg.setData(null);
 
 		Object[] extra = (Object[]) inst.extra;
@@ -1979,7 +1980,6 @@ public class Interpreter {
 							+ vm.retValReg.getData().getClass());
 				}
 				Log.msg(TAG, "Reflction invocation " + method);
-
 			}
 
 			vm.pluginManager.setMethod(method);
@@ -2095,13 +2095,13 @@ public class Interpreter {
 	 */
 	public void invocation(DalvikVM vm, MethodInfo mi, Instruction inst,
 			int[] args) {
+		vm.retValReg.setData(null);
+		vm.retValReg.type = null;
 		// Create a new stack frame and push it to the stack.
 		if (!mi.isStatic()) {
 			if (vm.getReg(args[0]).getData() instanceof Unknown
 					|| vm.getReg(args[0]).getData() == null) {
 				Log.warn(TAG, "NULL Invocator!");
-				vm.retValReg.setData(null);
-				vm.retValReg.type = null;
 				jump(vm, inst, true);
 				return;
 			}
@@ -2188,10 +2188,10 @@ public class Interpreter {
 
 		byteCodes.put(0x06, new OP_GOTO());
 		byteCodes.put(0x08, new OP_CMP());
+		byteCodes.put(0x0D, new OP_ARITHETIC());
 		byteCodes.put(0x0E, new OP_SWITCH());
 		byteCodes.put(0x0F, new OP_HALT());
-		byteCodes.put(0x0D, new OP_ARITHETIC());
-
+		
 		//
 		auxByteCodes.put(0x01, new OP_MOVE_REG());
 		auxByteCodes.put(0x02, new OP_MOV_CONST());

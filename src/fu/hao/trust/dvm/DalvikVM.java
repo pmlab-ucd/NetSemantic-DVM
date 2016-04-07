@@ -42,7 +42,13 @@ public class DalvikVM {
 		// data can be instance of: PrimitiveInfo, DVMObject and any class
 		// reflection supports
 		private Object data = null;
-		int count = -1;
+		private int count = -1;
+		private StackFrame stackFrame;
+		
+		Register(StackFrame stackFrame, int count) {
+			this.stackFrame = stackFrame;
+			this.count = count;
+		}
 
 		public void copy(Register y) {
 			this.setType(y.type);
@@ -83,11 +89,19 @@ public class DalvikVM {
 		}
 
 		public String toString() {
-			return "reg " + count + "@" + getCurrStackFrame();
+			return "reg " + count + "@" + stackFrame;
 		}
 
 		public void setType(ClassInfo type) {
 			this.type = type;
+		}
+
+		public StackFrame getStackFrame() {
+			return stackFrame;
+		}
+
+		public void setStackFrame(StackFrame stackFrame) {
+			this.stackFrame = stackFrame;
 		}
 
 	}
@@ -97,7 +111,7 @@ public class DalvikVM {
 		// in theory, pc should not be here
 		// but it's easier to implement in our case
 		// since we know we do not need pc to cross procedure
-		int pc;
+		int[] pc = new int[1];
 		Map<Plugin, Map<Object, Instruction>> pluginRes;
 		DVMObject thisObj;
 		private Register[] regs = new Register[65536]; // locals
@@ -105,13 +119,11 @@ public class DalvikVM {
 
 		StackFrame(MethodInfo method) {
 			this.method = method;
-			pc = 0;
-			retValReg = new Register();
+			pc[0] = 0;
 			pluginRes = new HashMap<>();
 			
 			for (int i = 0; i < regs.length; i++) {
-				regs[i] = new Register();
-				regs[i].count = i;
+				regs[i] = new Register(this, i);
 			}
 			
 			if (method == null) {
@@ -130,10 +142,9 @@ public class DalvikVM {
 				pluginManager = new PluginManager();
 			}
 
-			for (Plugin plugin : pluginManager.getCurrRes().keySet()) {
+			for (Plugin plugin : pluginManager.getPlugins()) {
 				Map<Object, Instruction> clonedRes = new HashMap<>();
-				Map<Object, Instruction> originRes = pluginManager.getCurrRes()
-						.get(plugin);
+				Map<Object, Instruction> originRes = plugin.getCurrtRes();
 				for (Object obj : originRes.keySet()) {
 					if (obj instanceof Register) {
 						continue;
@@ -145,12 +156,16 @@ public class DalvikVM {
 			}
 
 		}
+		
+		public Map<Plugin, Map<Object, Instruction>> getPluginRes() {
+			return pluginRes;
+		}
 
 		public StackFrame clone(Map<DVMObject, DVMObject> objMap,
 				Map<DVMClass, DVMClass> classMap) {
 			StackFrame frame = new StackFrame(method);
 			frame.thisObj = thisObj;
-			frame.pc = pc;
+			frame.pc[0] = pc[0];
 			frame.pluginRes = new HashMap<>(pluginRes);
 
 			for (Plugin plugin : pluginRes.keySet()) {
@@ -207,7 +222,7 @@ public class DalvikVM {
 		}
 
 		public int getPC() {
-			return pc;
+			return pc[0];
 		}
 
 		public MethodInfo getMethod() {
@@ -296,25 +311,10 @@ public class DalvikVM {
 		// Backup jvm stack
 		LinkedList<StackFrame> newStack = cloneStack(objMap, classMap);
 
-		// Backup retValReg
-		Register returnReg = new Register();
-		returnReg.type = retValReg.type;
-		returnReg.data = backupField(retValReg.data, objMap);
-
-		// Calling ctx
-		Register[] newCTX = null;
-		if (callingCtx != null) {
-			newCTX = new Register[callingCtx.length];
-			for (int i = 0; i < callingCtx.length; i++) {
-				newCTX[i] = new Register();
-				newCTX[i].copy(callingCtx[i], objMap, classMap);
-			}
-		}
-
 		// FIXME Backup plugin res
 		Method pluginMethod = pluginManager.getMethod();
 
-		VMState state = new VMState(backHeap, newStack, returnReg, newCTX, pc,
+		VMState state = new VMState(backHeap, newStack, pc[0],
 				pluginMethod);
 		return state;
 	}
@@ -354,7 +354,6 @@ public class DalvikVM {
 
 	public void restoreState() {
 		if (bidirBranches.isEmpty()) {
-			pluginManager.setCondition(null);
 			return;
 		}
 		
@@ -367,17 +366,12 @@ public class DalvikVM {
 		VMState state = focusBranch.getState();
 		heap = state.getHeap();
 		stack = state.getStack();
-		retValReg = state.getRetValReg();
-		callingCtx = state.getCallingCtx();
-		pc = state.getPC();
+		pc = getCurrStackFrame().pc;
 		pluginManager.setCurrRes(getCurrStackFrame().pluginRes);
-		Log.bb(TAG, "Res objs " + pluginManager.getCurrRes());
 		pluginManager.setMethod(state.getPluginMethod());
 		
-		pluginManager.setCondition(focusBranch.getInstruction());
 		interpreter.jump(this, focusBranch.getInstruction(), false);
-		pc--;
-		getCurrStackFrame().pc--;
+		getCurrStackFrame().pc[0]--;
 		getCurrStackFrame().printLocals();
 		
 		lastBranch = focusBranch.getInstruction();
@@ -394,7 +388,7 @@ public class DalvikVM {
 	VMHeap heap;
 
 	private LinkedList<StackFrame> stack;
-	private int pc; // Point to the position of next instruction
+	private int[] pc = new int[1]; // Point to the position of next instruction
 	private int nowPC; // Point to the current instruction.
 	
 	// Help identify the loop.
@@ -402,7 +396,6 @@ public class DalvikVM {
 
 	Interpreter interpreter;
 
-	Register test = new Register();
 	// which reg store the return value of callee called by this method
 	Register retValReg;
 
@@ -469,19 +462,19 @@ public class DalvikVM {
 	public DalvikVM() {
 		heap = new VMHeap();
 		interpreter = Interpreter.v();
-		retValReg = new Register();
+		retValReg = new Register(null, -1);
 		stack = new LinkedList<>();
 	}
 
 	public void reset() {
 		heap = new VMHeap();
 		interpreter = Interpreter.v();
-		retValReg = new Register();
+		retValReg = new Register(null, -1);
 		stack = new LinkedList<>();
 		pluginManager.reset();
 		retValReg.data = null;
 		retValReg.type = null;
-		pc = 0;
+		pc[0] = 0;
 	}
 
 	public Register getReturnReg() {
@@ -502,8 +495,8 @@ public class DalvikVM {
 		} else {
 			Log.bb(TAG, "New Stack Frame: " + newStackFrame);
 		}
-		pc = 0;
 		stack.add(newStackFrame);	
+		pc = getCurrStackFrame().pc;
 		Log.bb(TAG, "Stack: " + stack);
 		return newStackFrame;
 	}
@@ -520,32 +513,23 @@ public class DalvikVM {
 		Log.bb(TAG, "stack " + stack);
 		stack.removeLast();
 		Log.bb(TAG, "stack " + stack);
+		
 		if (!stack.isEmpty()) {
-			StackFrame currtStack = stack.getLast();
-			pc = currtStack.pc;
-			Log.msg(TAG, "Return to " + pc + "@" + currtStack.method);
-			if (pluginManager.getCurrRes() == null
-					|| pluginManager.getCurrRes().isEmpty()) {
-				return;
-			}
-			for (Plugin plugin : pluginManager.getCurrRes().keySet()) {
-				Map<Object, Instruction> currtRes = pluginManager.getCurrRes()
-						.get(plugin);
-				Map<Object, Instruction> currtStackRes = currtStack.pluginRes
-						.get(plugin);
-				Log.bb(TAG, "Currt statck res " + currtStackRes);
-				for (Object res : currtRes.keySet()) {
-					if (res instanceof Register) {
-						if (res == retReg) {
-							currtStackRes.put(retValReg,
-									plugin.currtRes.get(res));
-						}
+			// Add new tainted heap objs into the caller's res  
+			for (Plugin plugin : pluginManager.getPlugins()) {
+				Map<Object, Instruction> callerRes = getCurrStackFrame().getPluginRes().get(plugin);
+				for (Object obj : plugin.getCurrtRes().keySet()) {
+					if (obj instanceof Register) {
 						continue;
 					}
-					currtStackRes.put(res, plugin.currtRes.get(res));
+					
+					callerRes.put(obj, plugin.getCurrtRes().get(obj));
 				}
 			}
-			pluginManager.setCurrRes(currtStack.pluginRes);		
+			
+			pluginManager.setCurrRes(getCurrStackFrame().getPluginRes());
+			pc = getCurrStackFrame().pc;
+			Log.bb(TAG, "Return to " + pc[0] + "@" + getCurrStackFrame().method);
 		} else {
 			// backtrace to last unknown branch
 			restoreState();
@@ -665,7 +649,7 @@ public class DalvikVM {
 	}
 	
 	public int getPC() {
-		return pc;
+		return pc[0];
 	}
 	
 	public void setPC(int pc) {
@@ -674,9 +658,8 @@ public class DalvikVM {
 		StackTraceElement caller2 = stackTraceElements[3];
 		Log.bb(TAG, caller2.getClassName() + " -> " +  caller.getMethodName() + " set pc to " + pc);
 		if (getCurrStackFrame() != null) {
-			getCurrStackFrame().pc = pc;
+			getCurrStackFrame().pc[0] = pc;
 		}
-		this.pc = pc;
 	}
 	
 	public int getNowPC() {

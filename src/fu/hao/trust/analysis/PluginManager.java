@@ -13,21 +13,21 @@ import patdroid.dalvik.Instruction;
 public class PluginManager {
 	private final String TAG = getClass().getSimpleName();
 	
-	List<Plugin> plugins;
-	Method method;
-	Instruction condition;
-	private Map<Plugin, Map<Object, Instruction>> currtRes;
+	private List<Plugin> plugins;
+	private Method method;
 	
 	public PluginManager() {
 		plugins = new ArrayList<>();
-		currtRes = new HashMap<>();
 	}
 	
 	public void addPlugin(Plugin plugin) {
 		plugins.add(plugin);
 		Map<Object, Instruction> res = new HashMap<>();
-		plugin.currtRes = res;
-		currtRes.put(plugin, plugin.currtRes);
+		plugin.setCurrtRes(res);
+	}
+	
+	public List<Plugin> getPlugins() {
+		return plugins;
 	}
 	
 	public Method getMethod() {
@@ -37,53 +37,36 @@ public class PluginManager {
 	public void setMethod(Method method) {
 		this.method = method; 
 		for (Plugin plugin : plugins) {
-			plugin.method = method;
-		}
-	}
-	
-	public Instruction getCondition() {
-		return condition;
-	}
-	
-	public void setCondition(Instruction condition) {
-		this.condition = condition; 
-		for (Plugin plugin : plugins) {
-			plugin.condition = condition;
+			plugin.setMethod(method);
 		}
 	}
 	
 	public void runAnalysis(DalvikVM vm, Instruction inst) {
-		Log.bb(TAG, "run analysis " + currtRes.keySet().size());
-		for (Plugin plugin : currtRes.keySet()) {
-			plugin.currtRes = plugin.runAnalysis(vm, inst, plugin.currtRes);
-			currtRes.put(plugin, plugin.currtRes);
-			Log.bb(TAG, "analysis " + inst);
+		for (Plugin plugin : plugins) {
+			plugin.runAnalysis(vm, inst, plugin.getCurrtRes());
 		}
 	}
 	
 	public Map<Plugin, Map<Object, Instruction>> cloneCurrtRes() {
 		Map<Plugin, Map<Object, Instruction>> cloned = new HashMap<>();
-		for (Plugin plugin : currtRes.keySet()) {
-			Map<Object, Instruction> newMap = new HashMap<>(currtRes.get(plugin));
+		for (Plugin plugin : plugins) {
+			Map<Object, Instruction> newMap = new HashMap<>(plugin.getCurrtRes());
 			cloned.put(plugin, newMap);
 		}
 		
 		return cloned;
 	}
 
-	public Map<Plugin, Map<Object, Instruction>> getCurrRes() {
-		return currtRes;
-	}
-	
-	public void setCurrRes(Map<Plugin, Map<Object, Instruction>> currtRes) {
-		this.currtRes = currtRes;
+	public void setCurrRes(Map<Plugin, Map<Object, Instruction>> currtResults) {
+		for (Plugin plugin : plugins) {
+			plugin.setCurrtRes(currtResults.get(plugin));
+		}
 	}
 
 	public void reset() {
 		for (Plugin plugin : plugins) {
 			plugin.reset();
 		}
-		
 	}
 
 	public boolean isEmpty() {
@@ -91,13 +74,13 @@ public class PluginManager {
 	}
 	
 	public void printResults() {
-		for (Plugin plugin : currtRes.keySet()) {
-			Log.msg(TAG, plugin.getClass().getSimpleName() + " Tainted Res: " + currtRes.get(plugin));
+		for (Plugin plugin : plugins) {
+			Log.msg(TAG, plugin.getClass().getSimpleName() + " Tainted Res: " + plugin.getCurrtRes());
 		}
 	}
 	
 	public void preprossing(DalvikVM vm, Instruction inst) {
-		for (Plugin plugin : currtRes.keySet()) {
+		for (Plugin plugin : plugins) {
 			plugin.preprocessing(vm, inst);
 		}
 	}

@@ -1,6 +1,5 @@
 package fu.hao.trust.analysis;
 
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Stack;
@@ -100,8 +99,10 @@ public class TaintAggressive extends Taint {
 		@Override
 		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst,
 				Map<Object, Instruction> in) {
-			Map<Object, Instruction> out = new HashMap<>(in);
-
+			
+			TAINT_OP_MOV_CONST taintOp = new TAINT_OP_MOV_CONST();
+			Map<Object, Instruction> out = taintOp.flow(vm, inst, in);
+			/*
 			if (!simpleBranches.isEmpty()) {
 				// TODO Add only one, but could be influenced by multiple APIs
 				//out.put(vm.getReg(inst.rdst), addVarsOfBranch.values().iterator()
@@ -112,7 +113,7 @@ public class TaintAggressive extends Taint {
 				Log.warn(TAG, "Found influenced var at " + vm.getReg(inst.rdst));
 			} else {
 				Log.bb(TAG, "Not API Recording");
-			}
+			}*/
 
 			return out;
 		}
@@ -125,7 +126,8 @@ public class TaintAggressive extends Taint {
 		@Override
 		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst,
 				Map<Object, Instruction> in) {
-			Map<Object, Instruction> out = new HashMap<>(in);
+			TAINT_OP_MOV_REG taintOp = new TAINT_OP_MOV_REG();
+			Map<Object, Instruction> out = taintOp.flow(vm, inst, in);
 			/*
 			if (!addVarsOfBranch.isEmpty() && !out.containsKey(vm.getReg(inst.rdst))) {
 				// TODO Now only add one, but could be influenced by multiple APIs
@@ -155,12 +157,11 @@ public class TaintAggressive extends Taint {
 			branch.valCombination();
 			Log.bb(TAG, "Remove branch ");
 		}
+		
 	}
 	
 	@Override
 	public Map<Object, Instruction> runAnalysis(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
-		Log.bb(TAG, "assigend " + vm.getAssigned());
-		
 		if (!simpleBranches.isEmpty() && vm.getAssigned() != null) {
 			// Set the assigned var as combined value 
 			Object[] assigned = vm.getAssigned();
@@ -171,8 +172,60 @@ public class TaintAggressive extends Taint {
 				Log.bb(TAG, "Add conflict at var " + assigned[0] + ", with value " + assigned[1]);
 			}
 		}
+		
 		return super.runAnalysis(vm, inst, in);
 	}
+	
+	class ATAINT_OP_MOV_RESULT implements Rule {
+		final String TAG = getClass().getName();
+		
+		/**
+		 * @Title: func
+		 * @Description: move-result v0 Move the return value of a previous
+		 *               method invocation into v0.
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
+		@Override
+		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
+			TAINT_OP_MOV_RESULT taintOp = new TAINT_OP_MOV_RESULT();
+			Map<Object, Instruction> out = taintOp.flow(vm, inst, in);
+			
+			if (!vm.getBiDirBranches().isEmpty() && vm.getBiDirBranches().peek().getSumPoint() == inst) {	
+				BiDirBranch branch = vm.getBiDirBranches().peek();
+				
+				branch.addValue(vm.getReturnReg(), vm.getReturnReg().getData());
+				if (branch.getRmFlag()) {
+					branch = vm.getBiDirBranches().removeLast();
+					branch.valCombination();
+				}
+			}
+			
+			return out;
+		}
+	}
+	
+	class ATAINT_OP_GOTO implements Rule {
+		/**
+		 * @Title: func
+		 * @Description: goto 0005 // -0010 Jumps to current position-16 words
+		 *               (hex 10). 0005 is the label of the target instruction.
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
+		@Override
+		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
+			if (!vm.getBiDirBranches().isEmpty() && vm.getBiDirBranches().peek().getMethod().insns.length - 1 == vm.getNowPC()) {
+				vm.getBiDirBranches().peek().setRmFlag(true);
+			}
+			return in;
+		}
+	}
+	
 	
 	public TaintAggressive() {
 		simpleBranches = new Stack<>();

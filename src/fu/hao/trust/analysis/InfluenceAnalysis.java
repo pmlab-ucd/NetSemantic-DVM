@@ -135,7 +135,7 @@ public class InfluenceAnalysis extends Taint {
 					}
 				}
 
-				Log.debug(TAG, "Influencing var detected! " + method + " "
+				Log.debug(TAG, "Influencing var detected! " + getMethod() + " "
 						+ vm.getReturnReg().getData());
 				// Set return variable as a bidiVar
 				try {
@@ -147,7 +147,7 @@ public class InfluenceAnalysis extends Taint {
 				}
 			}
 
-			if (method != null && !recordCall.isEmpty()) {
+			if (getMethod() != null && !recordCall.isEmpty()) {
 				influencedCalls.add(mi);
 				for (Instruction tgtCall : recordCall.values()) {
 					if (Results.targetCallRes != null
