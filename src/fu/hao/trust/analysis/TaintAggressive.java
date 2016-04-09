@@ -10,6 +10,7 @@ import fu.hao.trust.dvm.DalvikVM;
 import fu.hao.trust.dvm.DalvikVM.Register;
 import fu.hao.trust.solver.BiDirBranch;
 import fu.hao.trust.utils.Log;
+import patdroid.core.MethodInfo;
 import patdroid.dalvik.Instruction;
 
 /**
@@ -21,8 +22,6 @@ import patdroid.dalvik.Instruction;
 public class TaintAggressive extends Taint {
 
 	private final String TAG = getClass().getSimpleName();
-	
-	Instruction sumPoint = null;
 
 	/**
 	 * @fieldName: unknownCond
@@ -67,19 +66,26 @@ public class TaintAggressive extends Taint {
 				// Scan to check whether the block contains "Return"
 				Instruction[] insns = vm.getCurrStackFrame().getMethod().insns;
 				for (int i = vm.getPC(); i < (int) inst.extra; i++) {
-					if (insns[i].opcode == Instruction.OP_RETURN) {			
+					if (insns[i].opcode == Instruction.OP_RETURN || insns[i].opcode == Instruction.OP_GOTO) {			
 						simpleBranch = i;
 						break;
 					}
 				}
 				
+				MethodInfo currtMethod = vm.getCurrStackFrame().getMethod();
+				
 				if (simpleBranch == -1) {
-					Branch branch = new Branch(inst, vm.getNowPC(), vm.getCurrStackFrame().getMethod());
-					simpleBranches.add(branch);
-					Log.warn(TAG, "New Simple Branch " + branch);
+					// In case of multiple conditions (not multiple blocks).
+					if (currtMethod.insns[((int) inst.extra) - 1].opcode != Instruction.OP_IF) {
+						Branch branch = new Branch(inst, vm.getNowPC(), currtMethod);
+						simpleBranches.add(branch);
+						Log.warn(TAG, "New Simple Branch " + branch);
+					}
 				} else {
+					// FIXME In case of multiple conditions.
 					BiDirBranch branch = new BiDirBranch(inst, vm.getNowPC(), vm.getCurrStackFrame().getMethod(), vm);
 					branch.setSumPoint(vm.getCurrStackFrame().getInst(simpleBranch));
+					Log.bb(TAG, "BiDirSumpoint " + vm.getCurrStackFrame().getInst(simpleBranch));
 					bidirBranches.add(branch);
 					vm.addBiDirBranch(branch);
 					Log.warn(TAG, "New BiDirBranch " + branch);
@@ -167,9 +173,25 @@ public class TaintAggressive extends Taint {
 			Object[] assigned = vm.getAssigned();
 			Branch branch = simpleBranches.peek();
 			if (Branch.checkType(assigned[1], assigned[2])) {
+				Log.bb(TAG, "Assigned: " + assigned[1] + " " + assigned[2] );
 				branch.addValue((Register) assigned[0], assigned[1]);
 				branch.addValue((Register) assigned[0], assigned[2]);
-				Log.bb(TAG, "Add conflict at var " + assigned[0] + ", with value " + assigned[1]);
+			}
+		}
+		
+		if (!vm.getBiDirBranches().isEmpty() && vm.getBiDirBranches().peek().getSumPoint() == inst) {	
+			BiDirBranch branch = vm.getBiDirBranches().peek();
+			Log.msg(TAG, "Arrive at sum point of bidirbranch " + branch);
+			branch.addValue(vm.getReturnReg(), vm.getReturnReg().getData());
+			
+			if (branch.getRmFlag()) {
+				branch = vm.getBiDirBranches().removeLast();
+				branch.valCombination();
+			} else {
+				// backtrace to last unknown branch
+				vm.restoreState();
+				// FIXME currently do not explore all blks yet.
+				branch.setRmFlag(true);
 			}
 		}
 		
@@ -192,17 +214,7 @@ public class TaintAggressive extends Taint {
 		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
 			TAINT_OP_MOV_RESULT taintOp = new TAINT_OP_MOV_RESULT();
 			Map<Object, Instruction> out = taintOp.flow(vm, inst, in);
-			
-			if (!vm.getBiDirBranches().isEmpty() && vm.getBiDirBranches().peek().getSumPoint() == inst) {	
-				BiDirBranch branch = vm.getBiDirBranches().peek();
-				
-				branch.addValue(vm.getReturnReg(), vm.getReturnReg().getData());
-				if (branch.getRmFlag()) {
-					branch = vm.getBiDirBranches().removeLast();
-					branch.valCombination();
-				}
-			}
-			
+		
 			return out;
 		}
 	}
@@ -226,7 +238,6 @@ public class TaintAggressive extends Taint {
 		}
 	}
 	
-	
 	public TaintAggressive() {
 		simpleBranches = new Stack<>();
 		
@@ -234,7 +245,7 @@ public class TaintAggressive extends Taint {
 		
 		auxByteCodes.put(0x01, new ATAINT_OP_MOV_REG());
 		auxByteCodes.put(0x02, new ATAINT_OP_MOV_CONST());
-		
+		auxByteCodes.put(0x15, new ATAINT_OP_MOV_RESULT());
 	}
 
 }

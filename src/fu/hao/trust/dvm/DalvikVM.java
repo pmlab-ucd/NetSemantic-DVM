@@ -80,6 +80,7 @@ public class DalvikVM {
 				assigned[0] = this;
 				assigned[1] = this.data;
 				assigned[2] = data;
+				Log.bb(TAG, "A" + this + " " + data);
 			}
 			this.data = data;
 		}
@@ -102,6 +103,10 @@ public class DalvikVM {
 
 		public void setStackFrame(StackFrame stackFrame) {
 			this.stackFrame = stackFrame;
+		}
+		
+		public int getIndex() {
+			return count;
 		}
 
 	}
@@ -371,7 +376,7 @@ public class DalvikVM {
 		pluginManager.setMethod(state.getPluginMethod());
 		
 		interpreter.jump(this, focusBranch.getInstruction(), false);
-		getCurrStackFrame().pc[0]--;
+		//getCurrStackFrame().pc[0]--;
 		getCurrStackFrame().printLocals();
 		
 		lastBranch = focusBranch.getInstruction();
@@ -530,11 +535,7 @@ public class DalvikVM {
 			pluginManager.setCurrRes(getCurrStackFrame().getPluginRes());
 			pc = getCurrStackFrame().pc;
 			Log.bb(TAG, "Return to " + pc[0] + "@" + getCurrStackFrame().method);
-		} else {
-			// backtrace to last unknown branch
-			restoreState();
-			Log.warn(TAG, "Backtrace begin!!!");
-		}
+		} 
 	}
 
 	/**

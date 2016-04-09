@@ -71,6 +71,9 @@ public class Branch {
 	
 	public void valCombination() {
 		for (Register var : conflicts.keySet()) {
+			if (sumPoint.opcode == Instruction.OP_RETURN && var.getIndex() != -1) {
+				continue;
+			}
 			Log.bb(TAG, "Value combination for var " + var);
 			Object currtVal = null;
 			for (Object val : conflicts.get(var)) {
@@ -83,8 +86,12 @@ public class Branch {
 	}
 	
 	public static Object valCombination(Object val1, Object val2) {
-		if (val1 == null) {
+		if (val1 == null || val1 == val2) {
 			return val2;
+		} 
+		
+		if (val2 == null) {
+			return val1;
 		}
 		
 		if (!checkType(val1, val2)) {
@@ -96,7 +103,7 @@ public class Branch {
 		} else if (val1 instanceof String || val1 instanceof MSVar) {
 			// TODO handle MSVar
 			MSVar msv = new MSVar();
-			msv.addConcreteVal(val2);
+			msv.addValue(val2);
 			return msv;
 		} else if (val1 instanceof DVMObject){
 			MNVar mnv = MNVar.createInstance(val1);
@@ -109,14 +116,18 @@ public class Branch {
 	}
 	
 	public static boolean checkType(Object val1, Object val2) {
+		if (val1 == null || val2 == null) {
+			return true;
+		}
+		
 		if (val1 instanceof PrimitiveInfo || val1 instanceof SymbolicVar) {
 			if (val2 instanceof PrimitiveInfo || val2 instanceof SymbolicVar) {
 				return true;
 			} else {
 				return false;
 			}
-		} else if (val1 instanceof String || val1 instanceof MSVar) {
-			if (val2 instanceof String || val2 instanceof MSVar) {
+		} else if (val1 instanceof String || val1 instanceof MSVar || val1 instanceof PrimitiveInfo && ((PrimitiveInfo) val1).intValue() == 0) {
+			if (val2 instanceof String || val2 instanceof MSVar || val2 instanceof PrimitiveInfo && ((PrimitiveInfo) val2).intValue() == 0) {
 				return true;
 			} else {
 				return false;

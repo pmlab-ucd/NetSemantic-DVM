@@ -238,7 +238,6 @@ public class ContextAnalysis extends TaintAggressive {
 	public ContextAnalysis() {
 		super();
 		recordCall = new HashMap<>();
-		interested = recordCall.keySet();
 		sinks = new HashSet<>();
 		byteCodes.put(0x08, new CTX_OP_CMP());
 		byteCodes.put(0x0C, new CTX_OP_INVOKE());

@@ -17,6 +17,11 @@ import fu.hao.trust.utils.Settings;
  */
 public class BiDirBranch extends Branch {
 	VMState state;
+	/**
+	 * @fieldName: remove
+	 * @fieldType: boolean
+	 * @Description: Whether remove this branch from the stack
+	 */
 	boolean remove;
 
 	public BiDirBranch(Instruction inst, int index, MethodInfo method,

@@ -1,6 +1,5 @@
 package fu.hao.trust.test;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.zip.ZipException;
 import java.util.zip.ZipFile;

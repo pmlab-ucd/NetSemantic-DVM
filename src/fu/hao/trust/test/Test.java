@@ -12,7 +12,7 @@ public class Test {
 		
 		args[0] = "C:/Users/hao/workspace/PJApps/app/app-release.apk";
 		args[1] = "fu.hao.pjapps.MainActivity";
-		args[2] = "testEif";
+		args[2] = "testCtx2";
 		args[3] = "ATaint";
 		
 		/*
@@ -20,7 +20,7 @@ public class Test {
 		args[1] = "com.android.main.MainService";
 		args[2] = "execTask";
 		args[3] = "ATaint";*/
-		
+	
 		Main.main(args);
 		System.out.println("REs: " + Results.results);
 		System.out.println("REs: " + Results.targetCallRes);

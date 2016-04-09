@@ -1918,7 +1918,8 @@ public class Interpreter {
 			@SuppressWarnings("rawtypes")
 			Class[] argsClass = new Class[mi.paramTypes.length];
 			Object[] params = new Object[args.length - 1];
-
+			
+			// If args contains a symbolic var, directly set the return val as a symbolic var.
 			if (mi.isConstructor()) {
 				// use DvmObject to replace java.lang.Object
 				if (!mi.myClass.toString().equals("java.lang.Object")) {
@@ -1968,12 +1969,16 @@ public class Interpreter {
 						vm.retValReg.setData(method.invoke(obj));
 					}
 				} else {
-					getParams(vm, mi, args, argsClass, params);
+					boolean symbolArg = getParams(vm, mi, args, argsClass, params);
 					method = clazz.getDeclaredMethod(mi.name, argsClass);
 					Log.debug(TAG, "Caller obj: " + obj + ", from class: "
 							+ obj.getClass().toString());
 					// handle return val
-					vm.retValReg.setData(method.invoke(obj, params));
+					if (symbolArg) {
+						vm.retValReg.setData(method.invoke(obj, params));
+					} else {
+						vm.retValReg.setData(new Unknown(mi.returnType));
+					}
 				}
 				if (vm.retValReg.getData() != null) {
 					Log.debug(TAG, "Return data: " + vm.retValReg.getData() + " ,"
@@ -2015,13 +2020,13 @@ public class Interpreter {
 	 * @return void
 	 * @throws
 	 */
-	private void getParams(DalvikVM vm, MethodInfo mi, int[] args,
+	private boolean getParams(DalvikVM vm, MethodInfo mi, int[] args,
 			Class<?>[] argsClass, Object[] params)
 			throws ClassNotFoundException {
 		// Start from 1 to ignore "this"
 		for (int i = 1; i < args.length; i++) {
 			if (mi.paramTypes[i - 1].isPrimitive()) {
-				Log.debug(TAG, "expected para type: " + mi.paramTypes[i - 1]);
+				Log.debug(TAG, "Expected para type: " + mi.paramTypes[i - 1]);
 				Object primitive = resolvePrimitive((PrimitiveInfo) vm
 						.getReg(args[i]).getData());
 				Class<?> argClass = primClasses.get(primitive.getClass());
@@ -2061,13 +2066,16 @@ public class Interpreter {
 					if (argData instanceof SymbolicVar) {
 						SymbolicVar bidirVar = (SymbolicVar) argData;
 						params[i - 1] = bidirVar.getValue();
-						Log.debug(TAG, "Param " + params[i - 1]);
+						Log.debug(TAG, "Found symbolic var " + params[i - 1]);
+						return false;
 					} else {
 						params[i - 1] = null;
 					}
 				}
 			}
 		}
+		
+		return true;
 	}
 
 	public boolean matchType(Class<?> real, Class<?> expected) {

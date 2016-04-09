@@ -139,9 +139,9 @@ public class Log {
 		msg(TAG, String.format(format, args));
 	}
 
-	public static void msg(String TAG, String s) {
+	public static void msg(String TAG, Object s) {
 		try {
-			log(TAG, MODE_MSG, "MSG", s);
+			log(TAG, MODE_MSG, "MSG", s.toString());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -152,9 +152,9 @@ public class Log {
 		debug(TAG, String.format(format, args));
 	}
 
-	public static void debug(String TAG, String s) {
+	public static void debug(String TAG, Object s) {
 		try {
-			log(TAG, MODE_DEBUG, "DEBUG", s);
+			log(TAG, MODE_DEBUG, "DEBUG", s.toString());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -178,9 +178,9 @@ public class Log {
 		warn(TAG, exceptionToString(e));
 	}
 
-	public static void warn(String TAG, String s) {
+	public static void warn(String TAG, Object s) {
 		try {
-			log(TAG, MODE_WARNING, "WARN", s);
+			log(TAG, MODE_WARNING, "WARN", s.toString());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -215,18 +215,18 @@ public class Log {
 		err(TAG, String.format(format, args));
 	}
 
-	public static void err(String TAG, String msg) {
+	public static void err(String TAG, Object msg) {
 		try {
-			log(TAG, MODE_ERROR, "ERROR", msg);
+			log(TAG, MODE_ERROR, "ERROR", msg.toString());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
-	public static void bb(String TAG, String msg) {
+	public static void bb(String TAG, Object msg) {
 		try {
-			log(TAG, MODE_VERBOSE, "BB", msg);
+			log(TAG, MODE_VERBOSE, "BB", msg.toString());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
