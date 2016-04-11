@@ -13,7 +13,7 @@ public class Test {
 		args[0] = "C:/Users/hao/workspace/PJApps/app/app-release.apk";
 		args[1] = "fu.hao.pjapps.MainActivity";
 		args[2] = "testCtx2";
-		args[3] = "ATaint";
+		args[3] = "ATaint";// "Ctx";
 		
 		/*
 		args[0] = "C:/Users/hao/workspace/PJApps/app/663e8eb52c7b4a14e2873b1551748587018661b3.apk";

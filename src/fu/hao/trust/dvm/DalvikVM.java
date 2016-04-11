@@ -375,11 +375,11 @@ public class DalvikVM {
 		pluginManager.setCurrRes(getCurrStackFrame().pluginRes);
 		pluginManager.setMethod(state.getPluginMethod());
 		
-		interpreter.jump(this, focusBranch.getInstruction(), false);
+		interpreter.jump(this, focusBranch.getInstructions().iterator().next(), false);
 		//getCurrStackFrame().pc[0]--;
 		getCurrStackFrame().printLocals();
 		
-		lastBranch = focusBranch.getInstruction();
+		lastBranch = focusBranch.getInstructions().iterator().next();
 
 		if (focusBranch.getMethod() != getCurrStackFrame().getMethod()) {
 			Log.err(TAG, "BackTracing Error! Not the same method! "

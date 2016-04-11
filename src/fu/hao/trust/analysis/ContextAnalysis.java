@@ -4,13 +4,15 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.Stack;
 
 import patdroid.core.MethodInfo;
 import patdroid.dalvik.Instruction;
+import fu.hao.trust.data.Branch;
 import fu.hao.trust.data.Results;
 import fu.hao.trust.data.TargetCall;
 import fu.hao.trust.dvm.DalvikVM;
-import fu.hao.trust.solver.BiDirBranch;
+import fu.hao.trust.dvm.DalvikVM.Register;
 //import fu.hao.trust.dvm.DalvikVM.Register;
 import fu.hao.trust.utils.Log;
 
@@ -21,9 +23,9 @@ import fu.hao.trust.utils.Log;
  * @author: Hao Fu
  * @date: Mar 9, 2016 3:10:38 PM
  */
-public class ContextAnalysis extends TaintAggressive {
+public class ContextAnalysis extends TaintAdv {
 
-	final String TAG = "ContextAnalysis";
+	final String TAG = getClass().getSimpleName();
 
 	// Store visited target API calls, equivalent to influenced API in
 	// InfluenceAnalysis
@@ -31,9 +33,7 @@ public class ContextAnalysis extends TaintAggressive {
 	Map<Instruction, TargetCall> targetCalls;
 	// Whether to record APIs who will be visited and store stop signs.
 	// <StopSign, target API call>
-	Map<Instruction, Instruction> recordCall;
-	boolean retRecordCall = false;
-	Instruction stopSign = null;
+	Stack<Branch> interested;
 	// Specification of the target APIs
 	Set<String> targetList;
 
@@ -63,8 +63,11 @@ public class ContextAnalysis extends TaintAggressive {
 				if (!targetCalls.containsKey(inst)) {
 					TargetCall targetCall = new TargetCall(inst, vm);
 					targetCalls.put(inst, targetCall);
-					if (!recordCall.isEmpty()) {
-						targetCall.setDepAPIs(recordCall.values());
+					if (!interested.isEmpty()) {
+						for (Branch branch : interested) {
+							Log.msg(TAG, "Add depAPI " + branch.getElemSrc());
+							targetCall.addDepAPI(branch.getElemSrc());
+						}
 					} else {
 						Log.bb(TAG, "Not API Recording");
 					}
@@ -93,130 +96,41 @@ public class ContextAnalysis extends TaintAggressive {
 		 */
 		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst,
 				Map<Object, Instruction> in) {
-			TAINT_OP_IF taintOp = new TAINT_OP_IF();
+			Branch branch = null;
+
+			if (!simpleBranches.isEmpty()) {
+				branch = simpleBranches.peek();
+			}
+			ATAINT_OP_CMP taintOp = new ATAINT_OP_CMP();
 			Map<Object, Instruction> out = taintOp.flow(vm, inst, in);
 
-			// When sensitive value exists in the branch
-			if (out.containsKey(vm.getReg(inst.r0)) || inst.r1 != -1
-					&& out.containsKey(vm.getReg(inst.r1))) {
-				vm.setPC(vm.getNowPC() + 1);
-				stopSign = vm.getCurrStackFrame().getInst((int) inst.extra);
-				recordCall.put(stopSign, out.get(vm.getReg(inst.r0)));
-				
-				// Scan to check whether the block contains "Return"
-				Instruction[] insns = vm.getCurrStackFrame().getMethod().insns;
-				for (int i = vm.getPC(); i < (int) inst.extra; i++) {
-					if (insns[i].opcode == Instruction.OP_RETURN) {					
-						Log.bb(TAG, "Branch: " + vm.getPC() + " " + inst + " at " + vm.getCurrStackFrame().getMethod());
-						Log.bb(TAG, "Found a return at " + i + ", " + insns[i]);
-						BiDirBranch branch = new BiDirBranch(inst, vm.getPC(),
-								vm.getCurrStackFrame().getMethod());
-						vm.setBiDirBranch(branch);
-						// Remove just added stop sign since the aggressive is unnecessary and we will come back later
-						recordCall.remove(stopSign);
-						break;
-					}
+			if (branch != null || branch == null && !simpleBranches.isEmpty()) {
+				Register r0 = null, r1 = null;
+				if (inst.r0 != -1) {
+					r0 = vm.getReg(inst.r0);
 				}
 
-				Log.msg(TAG, "CTX_OP_IF: " + stopSign + " " + inst + " "
-						+ inst.extra);
-			}
-
-			return out;
-		}
-	}
-
-	class CTX_OP_RETURN_VOID implements Rule {
-		final String TAG = getClass().getSimpleName();
-
-		@Override
-		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst,
-				Map<Object, Instruction> in) {
-			Map<Object, Instruction> out = new HashMap<>(in);
-			// If stored bidir conditions are not empty
-			if (condition != null) {
-				// Register r0 = vm.getReg(condition.r0);
-
-				// if (r0.getData() instanceof SensCtxVar) {
-				/*
-				 * Map<Instruction, Instruction> copyRec = new HashMap<>();
-				 * 
-				 * if (!recordCall.isEmpty()) { MethodInfo currtMethod =
-				 * vm.getCurrStackFrame().getMethod(); for (Instruction apiCall
-				 * : recordCall.values()) {
-				 * copyRec.put(currtMethod.insns[currtMethod.insns.length - 1],
-				 * apiCall); } }
-				 */
-				// Reset the recordCall
-				recordCall.clear();
-				// recordCall.putAll(copyRec);
-
-				// stopSign = vm.getCurrStackFrame().getInst(
-				// (int) condition.extra);
-				MethodInfo currtMethod = vm.getCurrStackFrame().getMethod();
-				stopSign = currtMethod.insns[currtMethod.insns.length - 1];
-				// recordCall.put(stopSign,
-				// ((SensCtxVar) r0.getData()).getSrc());
-				Log.msg(TAG, "API Recording Begin " + stopSign + " "
-						+ condition + " " + condition.extra);
-				// }
-			}
-
-			// Keep the recording to the end of this method
-			if (!recordCall.isEmpty()) {
-				retRecordCall = true;
-			}
-
-			return out;
-		}
-
-	}
-
-	class CTX_OP_MOV_CONST implements Rule {
-		final String TAG = getClass().toString();
-
-		@Override
-		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst,
-				Map<Object, Instruction> in) {
-			Map<Object, Instruction> out = new HashMap<>(in);
-
-			if (!recordCall.isEmpty()) {
-				// TODO Add only one, but could be influenced by multiple APIs
-				out.put(vm.getReg(inst.rdst), recordCall.values().iterator()
-						.next());
-				for (Instruction met : recordCall.values()) {
-					Log.bb(TAG, " dep API " + met);
+				if (inst.r1 != -1) {
+					r1 = vm.getReg(inst.r1);
 				}
-				Log.warn(TAG, "Found influenced var at " + vm.getReg(inst.rdst));
-			} else {
-				Log.bb(TAG, "Not API Recording");
+
+				// When sensitive value exists in the branch
+				if ((r0 != null && out.containsKey(r0) || r1 != null
+						&& out.containsKey(r1))
+						&& simpleBranches.peek() != branch) {
+					branch = simpleBranches.peek();
+					Log.bb(TAG, "r0 map " + out.get(r0));
+					Log.bb(TAG, "r1 map " + out.get(r1));
+					branch.setElemSrc(out.get(r0) != null ? out.get(r0) : out
+							.get(r1));
+					interested.add(branch);
+
+					Log.msg(TAG, "CTX_OP_IF: New CtxBranch " + branch);
+				}
 			}
 
 			return out;
 		}
-
-	}
-
-	class CTX_OP_MOV_REG implements Rule {
-		final String TAG = getClass().toString();
-
-		@Override
-		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst,
-				Map<Object, Instruction> in) {
-			Map<Object, Instruction> out = new HashMap<>(in);
-
-			if (!recordCall.isEmpty()) {
-				// TODO Add only one, but could be influenced by multiple APIs
-				out.put(vm.getReg(inst.rdst), recordCall.values().iterator()
-						.next());
-				Log.warn(TAG, "Found influenced var at " + vm.getReg(inst.rdst));
-			} else {
-				Log.bb(TAG, "Not API Recording");
-			}
-
-			return out;
-		}
-
 	}
 
 	private boolean isTarget(String target) {
@@ -230,20 +144,35 @@ public class ContextAnalysis extends TaintAggressive {
 	@Override
 	public Map<Object, Instruction> runAnalysis(DalvikVM vm, Instruction inst,
 			Map<Object, Instruction> in) {
-		Map<Object, Instruction> res = super.runAnalysis(vm, inst, in);
+		Map<Object, Instruction> out = super.runAnalysis(vm, inst, in);
+
+		if (!interested.isEmpty() && vm.getAssigned() != null) {
+			// Set the assigned var as combined value
+			Object[] assigned = vm.getAssigned();
+			// FIXME Multiple controlling if.
+			out.put((Register) assigned[0], interested.peek().getElemSrc());
+		}
+
 		Results.targetCallRes = targetCalls;
-		return res;
+		return out;
+	}
+
+	@Override
+	public void preprocessing(DalvikVM vm, Instruction inst) {
+		super.preprocessing(vm, inst);
+		if (!interested.isEmpty()
+				&& !simpleBranches.contains(interested.peek())) {
+			interested.pop();
+		}
 	}
 
 	public ContextAnalysis() {
 		super();
-		recordCall = new HashMap<>();
+		interested = new Stack<>();
 		sinks = new HashSet<>();
 		byteCodes.put(0x08, new CTX_OP_CMP());
 		byteCodes.put(0x0C, new CTX_OP_INVOKE());
-		auxByteCodes.put(0x03, new CTX_OP_RETURN_VOID());
-		auxByteCodes.put(0x01, new CTX_OP_MOV_REG());
-		auxByteCodes.put(0x02, new CTX_OP_MOV_CONST());
+
 		targetCalls = new HashMap<>();
 		targetList = new HashSet<>();
 

@@ -1,6 +1,7 @@
 package fu.hao.trust.data;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 
 import fu.hao.trust.dvm.DVMObject;
@@ -13,22 +14,20 @@ import patdroid.core.PrimitiveInfo;
 import patdroid.dalvik.Instruction;
 
 public class Branch {
-	protected Instruction inst;
+	protected LinkedList<Instruction> insts;
 	protected MethodInfo method;
 	protected int index;
 	protected Instruction sumPoint;
-	/**
-	 * @fieldName: conflitTarget
-	 * @fieldType: Set<Object>
-	 * @Description: The memory element who has conflict values
-	 * <Memory obj: reg, MVV>
-	 */
+	// The src API call that generates the element of the branch.
+	protected Instruction elemSrc;
+	// The memory element who has conflict values <Memory obj: reg, MVV>
 	protected Map<Register, Object[]> conflicts; 
 	
 	static final String TAG = Branch.class.getName();
 
 	public Branch(Instruction inst, int index, MethodInfo method) {
-		this.inst = inst;
+		insts = new LinkedList<>();
+		insts.add(inst);
 		this.method = method;
 		this.index = index;
 		sumPoint = method.insns[((int) inst.extra)];
@@ -43,12 +42,24 @@ public class Branch {
 		this.sumPoint = sumPoint;
 	}
 	
-	public Instruction getInstruction() {
-		return inst;
+	public LinkedList<Instruction> getInstructions() {
+		return insts;
+	}
+	
+	public void addInst(Instruction inst) {
+		insts.add(inst);
 	}
 	
 	public MethodInfo getMethod() {
 		return method;
+	}
+	
+	public Instruction getElemSrc() {
+		return elemSrc;
+	}
+	
+	public void setElemSrc(Instruction elemSrc) {
+		this.elemSrc = elemSrc;
 	}
 	
 	public void addVar(Register var) {
@@ -141,7 +152,14 @@ public class Branch {
 	
 	@Override
 	public String toString() {
-		return "[Branch: " + index + "--" + inst + "@" + method.name + "]";
+		StringBuilder sb = new StringBuilder("[Branch: " + index);
+		
+		for (Instruction inst : insts) {
+			sb.append("--" + inst);
+		}
+		
+		sb.append("@" + method.name + "]");
+		return sb.toString();
 	}
 
 }

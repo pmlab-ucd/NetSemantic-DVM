@@ -110,4 +110,12 @@ public class TargetCall {
 		Log.warn(TAG, "Add params " + sb);
 	}
 
+	public void addDepAPI(Instruction APICall) {
+		if (depAPIs == null) {
+			depAPIs = new HashSet<>();
+		}
+		
+		depAPIs.add(APICall);
+	}
+
 }

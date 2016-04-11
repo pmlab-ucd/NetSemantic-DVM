@@ -16,7 +16,7 @@ import fu.hao.trust.analysis.InfluenceAnalysis;
 import fu.hao.trust.analysis.Plugin;
 import fu.hao.trust.analysis.PluginManager;
 import fu.hao.trust.analysis.Taint;
-import fu.hao.trust.analysis.TaintAggressive;
+import fu.hao.trust.analysis.TaintAdv;
 import fu.hao.trust.data.Results;
 import fu.hao.trust.utils.Log;
 import fu.hao.trust.utils.Settings;
@@ -74,7 +74,7 @@ public class Main {
 				if (args[i] != null && args[i].equalsIgnoreCase("Taint")) {
 					pluginManager.addPlugin(new Taint());
 				} else if (args[i] != null && args[i].equalsIgnoreCase("ATaint")) {
-					pluginManager.addPlugin(new TaintAggressive());
+					pluginManager.addPlugin(new TaintAdv());
 				} else if (args[i] != null && args[i].equalsIgnoreCase("Ctx")) {
 					Plugin plugin = new ContextAnalysis();
 					pluginManager.addPlugin(plugin);
