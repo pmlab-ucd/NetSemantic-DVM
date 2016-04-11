@@ -73,7 +73,7 @@ public class TaintAdv extends Taint {
 				for (int i = vm.getPC(); i < (int) inst.extra; i++) {
 					if (insns[i].opcode == Instruction.OP_RETURN
 							|| insns[i].opcode == Instruction.OP_GOTO) {
-						simpleBranch = i;
+						simpleBranch = i - 1;
 						break;
 					}
 				}

@@ -65,8 +65,8 @@ public class ContextAnalysis extends TaintAdv {
 					targetCalls.put(inst, targetCall);
 					if (!interested.isEmpty()) {
 						for (Branch branch : interested) {
-							Log.msg(TAG, "Add depAPI " + branch.getElemSrc());
-							targetCall.addDepAPI(branch.getElemSrc());
+							Log.msg(TAG, "Add depAPI " + branch.getElemSrcs());
+							targetCall.addDepAPIs(branch.getElemSrcs());
 						}
 					} else {
 						Log.bb(TAG, "Not API Recording");
@@ -115,17 +115,17 @@ public class ContextAnalysis extends TaintAdv {
 				}
 
 				// When sensitive value exists in the branch
-				if ((r0 != null && out.containsKey(r0) || r1 != null
-						&& out.containsKey(r1))
+				if (((r0 != null && out.containsKey(r0)) || (r1 != null
+						&& out.containsKey(r1)))
 						&& simpleBranches.peek() != branch) {
 					branch = simpleBranches.peek();
-					Log.bb(TAG, "r0 map " + out.get(r0));
-					Log.bb(TAG, "r1 map " + out.get(r1));
-					branch.setElemSrc(out.get(r0) != null ? out.get(r0) : out
+					Log.bb(TAG, r0 + " map " + out.get(r0));
+					Log.bb(TAG, r1 + " map " + out.get(r1));
+					branch.addElemSrc(out.get(r0) != null ? out.get(r0) : out
 							.get(r1));
 					interested.add(branch);
 
-					Log.msg(TAG, "CTX_OP_IF: New CtxBranch " + branch);
+					Log.msg(TAG, "New CtxBranch " + branch);
 				}
 			}
 
@@ -150,8 +150,9 @@ public class ContextAnalysis extends TaintAdv {
 			// Set the assigned var as combined value
 			Object[] assigned = vm.getAssigned();
 			// FIXME Multiple controlling if.
-			out.put((Register) assigned[0], interested.peek().getElemSrc());
-		}
+			out.put((Register) assigned[0], interested.peek().getElemSrcs().iterator().next());
+			Log.msg(TAG, "Add correlated tained var " + assigned[0]);
+		} 
 
 		Results.targetCallRes = targetCalls;
 		return out;

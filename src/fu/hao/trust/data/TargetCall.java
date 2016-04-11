@@ -63,6 +63,7 @@ public class TargetCall {
 
 		mi = (MethodInfo) extra[0];
 		influAPIs = new HashSet<>();
+		depAPIs = new HashSet<>();
 	}
 
 	public void setDepAPIs(Collection<Instruction> depAPIs) {
@@ -116,6 +117,10 @@ public class TargetCall {
 		}
 		
 		depAPIs.add(APICall);
+	}
+
+	public void addDepAPIs(Set<Instruction> elemSrcs) {
+		depAPIs.addAll(elemSrcs);
 	}
 
 }

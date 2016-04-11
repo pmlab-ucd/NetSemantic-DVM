@@ -1,8 +1,10 @@
 package fu.hao.trust.data;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.Set;
 
 import fu.hao.trust.dvm.DVMObject;
 import fu.hao.trust.dvm.DalvikVM.Register;
@@ -19,7 +21,7 @@ public class Branch {
 	protected int index;
 	protected Instruction sumPoint;
 	// The src API call that generates the element of the branch.
-	protected Instruction elemSrc;
+	protected Set<Instruction> elemSrcs;
 	// The memory element who has conflict values <Memory obj: reg, MVV>
 	protected Map<Register, Object[]> conflicts; 
 	
@@ -32,6 +34,7 @@ public class Branch {
 		this.index = index;
 		sumPoint = method.insns[((int) inst.extra)];
 		conflicts = new HashMap<>();
+		elemSrcs = new HashSet<>();
 	}
 	
 	public Instruction getSumPoint() {
@@ -54,12 +57,12 @@ public class Branch {
 		return method;
 	}
 	
-	public Instruction getElemSrc() {
-		return elemSrc;
+	public Set<Instruction> getElemSrcs() {
+		return elemSrcs;
 	}
 	
-	public void setElemSrc(Instruction elemSrc) {
-		this.elemSrc = elemSrc;
+	public void addElemSrc(Instruction elemSrc) {
+		elemSrcs.add(elemSrc);
 	}
 	
 	public void addVar(Register var) {
@@ -155,10 +158,10 @@ public class Branch {
 		StringBuilder sb = new StringBuilder("[Branch: " + index);
 		
 		for (Instruction inst : insts) {
-			sb.append("--" + inst);
+			sb.append("--[cond: " + inst + "]");
 		}
 		
-		sb.append("@" + method.name + "]");
+		sb.append("[sumpoint: " + sumPoint + "]" + "@" + method.name + "]");
 		return sb.toString();
 	}
 

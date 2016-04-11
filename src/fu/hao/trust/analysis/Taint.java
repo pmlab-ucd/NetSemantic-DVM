@@ -736,7 +736,7 @@ public class Taint extends Plugin {
 			Object field = obj.getFieldObj(fieldInfo);
 			
 			if (in.containsKey(field)) {
-					out.put(vm.getReg(inst.r1), in.get(vm.getReg(inst.r0)));
+					out.put(vm.getReg(inst.r1), in.get(field));
 					Log.bb(TAG, "Add " + obj + "as tainted due to field " + field);
 			} else if (in.containsKey(vm.getReg(inst.r1))) {
 				// value register, has been assigned to new value
