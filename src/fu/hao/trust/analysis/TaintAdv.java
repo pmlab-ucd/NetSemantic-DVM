@@ -70,10 +70,10 @@ public class TaintAdv extends Taint {
 
 				// Scan to check whether the block contains "Return"
 				Instruction[] insns = vm.getCurrStackFrame().getMethod().insns;
-				for (int i = vm.getPC(); i < (int) inst.extra; i++) {
+				for (int i = vm.getPC(); i <= (int) inst.extra; i++) {
 					if (insns[i].opcode == Instruction.OP_RETURN
 							|| insns[i].opcode == Instruction.OP_GOTO) {
-						simpleBranch = i - 1;
+						simpleBranch = i;
 						break;
 					}
 				}
@@ -198,6 +198,14 @@ public class TaintAdv extends Taint {
 
 	}
 
+	/**
+	* @Title: preprocessing
+	* @Author: Hao Fu
+	* @Description: Run before the interpreter.run()
+	* @param @param vm
+	* @param @param inst  
+	* @see fu.hao.trust.analysis.Taint#preprocessing(fu.hao.trust.dvm.DalvikVM, patdroid.dalvik.Instruction)  
+	*/
 	public void preprocessing(DalvikVM vm, Instruction inst) {
 		if (!simpleBranches.isEmpty()
 				&& simpleBranches.peek().getSumPoint() == inst) {

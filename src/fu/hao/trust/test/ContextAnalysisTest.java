@@ -31,6 +31,24 @@ public class ContextAnalysisTest {
 	}
 	
 	//@Test
+	public void testCtx2() {
+		Settings.logLevel = 0;
+
+		args[0] = "C:/Users/hao/workspace/PJApps/app/app-release.apk";
+		args[1] = "fu.hao.pjapps.MainActivity";
+		args[2] = "testCtx2";
+		args[3] = "Ctx"; //"ATaint";
+
+		Main.main(args);
+		System.out.println("REs: " + Results.targetCallRes);
+		assertEquals(false, Results.targetCallRes.isEmpty());
+		assertEquals(
+				"[<INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSubscriberId[], [5]]>]",
+				Results.targetCallRes.values().iterator().next().getDepAPIs()
+						.toString());
+	}
+	
+	//@Test
 	public void testCondRet() {
 		Settings.logLevel = 0;
 

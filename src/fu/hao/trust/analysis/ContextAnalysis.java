@@ -31,9 +31,9 @@ public class ContextAnalysis extends TaintAdv {
 	// InfluenceAnalysis
 	// <Target API call loc, Target call>
 	Map<Instruction, TargetCall> targetCalls;
-	// Whether to record APIs who will be visited and store stop signs.
-	// <StopSign, target API call>
-	Stack<Branch> interested;
+	// The interestedSimple branches that have ctxVar inside the conditions. It is a
+	// subset of simpleBranches.
+	Stack<Branch> interestedSimple;
 	// Specification of the target APIs
 	Set<String> targetList;
 
@@ -63,8 +63,8 @@ public class ContextAnalysis extends TaintAdv {
 				if (!targetCalls.containsKey(inst)) {
 					TargetCall targetCall = new TargetCall(inst, vm);
 					targetCalls.put(inst, targetCall);
-					if (!interested.isEmpty()) {
-						for (Branch branch : interested) {
+					if (!interestedSimple.isEmpty()) {
+						for (Branch branch : interestedSimple) {
 							Log.msg(TAG, "Add depAPI " + branch.getElemSrcs());
 							targetCall.addDepAPIs(branch.getElemSrcs());
 						}
@@ -98,13 +98,14 @@ public class ContextAnalysis extends TaintAdv {
 				Map<Object, Instruction> in) {
 			Branch branch = null;
 
+			ATAINT_OP_CMP taintOp = new ATAINT_OP_CMP();
+			Map<Object, Instruction> out = taintOp.flow(vm, inst, in);
+			
 			if (!simpleBranches.isEmpty()) {
 				branch = simpleBranches.peek();
 			}
-			ATAINT_OP_CMP taintOp = new ATAINT_OP_CMP();
-			Map<Object, Instruction> out = taintOp.flow(vm, inst, in);
 
-			if (branch != null || branch == null && !simpleBranches.isEmpty()) {
+			if (branch != null) {
 				Register r0 = null, r1 = null;
 				if (inst.r0 != -1) {
 					r0 = vm.getReg(inst.r0);
@@ -115,15 +116,11 @@ public class ContextAnalysis extends TaintAdv {
 				}
 
 				// When sensitive value exists in the branch
-				if (((r0 != null && out.containsKey(r0)) || (r1 != null
-						&& out.containsKey(r1)))
-						&& simpleBranches.peek() != branch) {
-					branch = simpleBranches.peek();
-					Log.bb(TAG, r0 + " map " + out.get(r0));
-					Log.bb(TAG, r1 + " map " + out.get(r1));
+				if (((r0 != null && out.containsKey(r0)) || (r1 != null && out
+						.containsKey(r1)))) {
 					branch.addElemSrc(out.get(r0) != null ? out.get(r0) : out
 							.get(r1));
-					interested.add(branch);
+					interestedSimple.add(branch);
 
 					Log.msg(TAG, "New CtxBranch " + branch);
 				}
@@ -145,14 +142,15 @@ public class ContextAnalysis extends TaintAdv {
 	public Map<Object, Instruction> runAnalysis(DalvikVM vm, Instruction inst,
 			Map<Object, Instruction> in) {
 		Map<Object, Instruction> out = super.runAnalysis(vm, inst, in);
-
-		if (!interested.isEmpty() && vm.getAssigned() != null) {
+		// Add ctrl-dep correlated vars
+		if (!interestedSimple.isEmpty() && vm.getAssigned() != null) {
 			// Set the assigned var as combined value
 			Object[] assigned = vm.getAssigned();
 			// FIXME Multiple controlling if.
-			out.put((Register) assigned[0], interested.peek().getElemSrcs().iterator().next());
+			out.put((Register) assigned[0], interestedSimple.peek().getElemSrcs()
+					.iterator().next());
 			Log.msg(TAG, "Add correlated tained var " + assigned[0]);
-		} 
+		}
 
 		Results.targetCallRes = targetCalls;
 		return out;
@@ -161,15 +159,15 @@ public class ContextAnalysis extends TaintAdv {
 	@Override
 	public void preprocessing(DalvikVM vm, Instruction inst) {
 		super.preprocessing(vm, inst);
-		if (!interested.isEmpty()
-				&& !simpleBranches.contains(interested.peek())) {
-			interested.pop();
+		if (!interestedSimple.isEmpty()
+				&& !simpleBranches.contains(interestedSimple.peek())) {
+			interestedSimple.pop();
 		}
 	}
 
 	public ContextAnalysis() {
 		super();
-		interested = new Stack<>();
+		interestedSimple = new Stack<>();
 		sinks = new HashSet<>();
 		byteCodes.put(0x08, new CTX_OP_CMP());
 		byteCodes.put(0x0C, new CTX_OP_INVOKE());
