@@ -25,6 +25,9 @@ public class Branch {
 	// The memory element who has conflict values <Memory obj: reg, MVV>
 	protected Map<Register, Object[]> conflicts; 
 	
+	// To avoid inf loop.
+	protected Set<Instruction> met;
+	
 	static final String TAG = Branch.class.getName();
 
 	public Branch(Instruction inst, int index, MethodInfo method) {
@@ -163,6 +166,17 @@ public class Branch {
 		
 		sb.append("[sumpoint: " + sumPoint + "]" + "@" + method.name + "]");
 		return sb.toString();
+	}
+	
+	public void addMet(Instruction cond) {
+		if (met == null) {
+			met = new HashSet<>();
+		}
+		met.add(cond);
+	}
+	
+	public boolean Met(Instruction cond) {
+		return met.contains(cond);
 	}
 
 }

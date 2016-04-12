@@ -1809,18 +1809,10 @@ public class Interpreter {
 		if (r0.getData() == null) {
 			op1 = new PrimitiveInfo(0);
 		} else {
-			if (r0.getData() instanceof SymbolicVar && r0.type != null
-					&& r0.type.isPrimitive()) {
-				op1 = (PrimitiveInfo) ((SymbolicVar) r0.getData()).getValue();
-			} else if (r0.getData() instanceof PrimitiveInfo) {
-				op1 = (PrimitiveInfo) r0.getData();
-			} else if (r0.type != null && r0.type.isPrimitive()
-					&& r0.getData() != null
-					&& !(r0.getData() instanceof PrimitiveInfo)) {
-				r0.setData(PrimitiveInfo.fromObject(r0.getData()));
+			if (r0.getData() instanceof PrimitiveInfo) {
 				op1 = (PrimitiveInfo) r0.getData();
 			} else {
-				op1 = new PrimitiveInfo(1);
+				op1 = new PrimitiveInfo(42);
 			}
 		}
 
@@ -1828,12 +1820,7 @@ public class Interpreter {
 		if (flagZ) {
 			op2 = new PrimitiveInfo(0);
 		} else {
-			Register r1 = vm.getReg(inst.r1);
-			if (r1.getData() instanceof SymbolicVar) {
-				op2 = (PrimitiveInfo) ((SymbolicVar) r1.getData()).getValue();
-			} else {
-				op2 = (PrimitiveInfo) vm.getReg(inst.r1).getData();
-			}
+			op2 = (PrimitiveInfo) vm.getReg(inst.r1).getData();
 		}
 
 		if (inst.rdst != -1) {

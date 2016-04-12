@@ -59,6 +59,7 @@ public class TaintAdv extends Taint {
 				r1 = vm.getReg(inst.r1);
 			}
 
+			Log.bb(TAG, "wtf");
 			// When unknown exists in the branch
 			if (r0 != null
 					&& (r0.getData() instanceof SymbolicVar || out
@@ -81,6 +82,7 @@ public class TaintAdv extends Taint {
 						BiDirBranch branch = new BiDirBranch(inst,
 								vm.getNowPC(), vm.getCurrStackFrame()
 										.getMethod(), vm);
+						branch.addMet(inst);
 						branch.setSumPoint(insns[i]);
 						Log.bb(TAG, "BiDirSumpoint " + insns[i]);
 						bidirBranches.add(branch);
@@ -149,6 +151,7 @@ public class TaintAdv extends Taint {
 				Log.warn(TAG, "New Simple Branch " + branch);
 			}
 
+			branch.addMet(inst);
 			return branch;
 		}
 
@@ -182,7 +185,6 @@ public class TaintAdv extends Taint {
 			} else {
 				// backtrace to last unknown branch
 				branch.restore(vm);
-				Log.bb(TAG, vm.getPC());
 				// vm.restoreFullState();
 				// FIXME currently do not explore all blks yet.
 				branch.setRmFlag(true);
@@ -192,8 +194,8 @@ public class TaintAdv extends Taint {
 		}
 		
 		// To avoid infinity loop
-		if (!simpleBranches.isEmpty() && simpleBranches.peek().getInstructions().contains(inst)
-				|| !bidirBranches.isEmpty() && bidirBranches.peek().getInstructions().contains(inst)) {
+		if (!simpleBranches.isEmpty() && simpleBranches.peek().Met(inst)
+				|| !bidirBranches.isEmpty() && bidirBranches.peek().Met(inst)) {
 			vm.setPass(true);
 			vm.jump(inst, false);
 		}
@@ -222,6 +224,7 @@ public class TaintAdv extends Taint {
 				Log.bb(TAG, "Assigned: " + assigned[1] + " " + assigned[2]);
 				// FIXME Support heap element.
 				if (assigned[0] instanceof Register) {
+					// The original value before the blk will be definitely overwritten. 
 					branch.addValue((Register) assigned[0], assigned[2]);
 				}
 			}
