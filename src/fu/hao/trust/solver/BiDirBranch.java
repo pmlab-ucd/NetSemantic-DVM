@@ -4,6 +4,7 @@ import patdroid.core.MethodInfo;
 import patdroid.dalvik.Instruction;
 import fu.hao.trust.data.Branch;
 import fu.hao.trust.data.VMState;
+import fu.hao.trust.data.VMFullState;
 import fu.hao.trust.dvm.DalvikVM;
 import fu.hao.trust.utils.Log;
 import fu.hao.trust.utils.Settings;
@@ -16,11 +17,14 @@ import fu.hao.trust.utils.Settings;
  * @date: Mar 30, 2016 3:27:47 PM
  */
 public class BiDirBranch extends Branch {
-	VMState state;
+	public Instruction addRetReg = null;
+	
+	private VMState state;
+	VMFullState fullState;
 	/**
 	 * @fieldName: remove
 	 * @fieldType: boolean
-	 * @Description: Whether remove this branch from the stack
+	 * @Description: Whether to remove this branch from the bidirBranches.
 	 */
 	boolean remove;
 
@@ -28,8 +32,9 @@ public class BiDirBranch extends Branch {
 			DalvikVM vm) {
 		super(inst, index, method);
 		Log.warn(Settings.getRuntimeCaller(), "New BiDirBranch " + this);
-		this.state = vm.storeState();
+		//this.fullState = vm.storeState();
 		remove = false;
+		state = new VMState(vm);
 	}
 	
 	public void setRmFlag(boolean remove) {
@@ -40,12 +45,28 @@ public class BiDirBranch extends Branch {
 		return remove;
 	}
 
-	public VMState getState() {
-		return state;
+	public VMFullState getFullState() {
+		return fullState;
 	}
 
 	public BiDirBranch(Instruction inst, int index, MethodInfo method) {
 		super(inst, index, method);
 	}
 
+	public VMState getState() {
+		return state;
+	}
+
+	public void setState(VMState state) {
+		this.state = state;
+	}
+	
+	public void backup(DalvikVM vm) {
+		state = new VMState(vm);
+	}
+
+	public void restore(DalvikVM vm) {
+		state.restore(vm, insts.getLast());
+	}
+	
 }

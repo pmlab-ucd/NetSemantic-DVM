@@ -12,7 +12,7 @@ import java.util.zip.ZipFile;
 
 import fu.hao.trust.analysis.Plugin;
 import fu.hao.trust.analysis.PluginManager;
-import fu.hao.trust.data.VMState;
+import fu.hao.trust.data.VMFullState;
 import fu.hao.trust.solver.BiDirBranch;
 import fu.hao.trust.utils.Log;
 import fu.hao.trust.utils.Settings;
@@ -165,6 +165,10 @@ public class DalvikVM {
 		public Map<Plugin, Map<Object, Instruction>> getPluginRes() {
 			return pluginRes;
 		}
+		
+		public void setPluginRes(Map<Plugin, Map<Object, Instruction>> pluginRes) {
+			this.pluginRes = new HashMap<>(pluginRes);
+		}
 
 		public StackFrame clone(Map<DVMObject, DVMObject> objMap,
 				Map<DVMClass, DVMClass> classMap) {
@@ -246,6 +250,10 @@ public class DalvikVM {
 				}
 			}
 		}
+		
+		public Register[] getRegs() {
+			return regs;
+		}
 
 	}
 
@@ -261,7 +269,8 @@ public class DalvikVM {
 		return newStack;
 	}
 
-	public VMState storeState() {
+	@Deprecated
+	public VMFullState storeState() {
 		Log.warn(
 				TAG,
 				"++++++++++++++++++++++++++++++++++++++Store state! +++++++++++++++++++++++++++++++++++++++++++");
@@ -319,7 +328,7 @@ public class DalvikVM {
 		// FIXME Backup plugin res
 		Method pluginMethod = pluginManager.getMethod();
 
-		VMState state = new VMState(backHeap, newStack, pc[0],
+		VMFullState state = new VMFullState(backHeap, newStack, pc[0],
 				pluginMethod);
 		return state;
 	}
@@ -351,13 +360,14 @@ public class DalvikVM {
 	public void addBiDirBranch(BiDirBranch branch) {
 		bidirBranches.push(branch);
 	}
-	
+
+	@Deprecated
 	public LinkedList<BiDirBranch> getBiDirBranches() {
 		return bidirBranches;
 	}
 	
-
-	public void restoreState() {
+	@Deprecated
+	public void restoreFullState() {
 		if (bidirBranches.isEmpty()) {
 			return;
 		}
@@ -368,7 +378,7 @@ public class DalvikVM {
 		Log.msg(TAG, "bidibranches: " + bidirBranches);
 		BiDirBranch focusBranch = bidirBranches.removeLast();
 		Log.msg(TAG, " bidirBrach: " + focusBranch);
-		VMState state = focusBranch.getState();
+		VMFullState state = focusBranch.getFullState();
 		heap = state.getHeap();
 		stack = state.getStack();
 		pc = getCurrStackFrame().pc;
@@ -396,7 +406,8 @@ public class DalvikVM {
 	private int[] pc = new int[1]; // Point to the position of next instruction
 	private int nowPC; // Point to the current instruction.
 	
-	// Help identify the loop.
+	// Help to identify the loop.
+	@Deprecated
 	Instruction lastBranch;
 
 	Interpreter interpreter;
@@ -412,7 +423,7 @@ public class DalvikVM {
 	PluginManager pluginManager;
 	
 	Object[] assigned;
-
+	
 	public Register getReg(int i) {
 		return stack.getLast().regs[i];
 	}
@@ -670,5 +681,15 @@ public class DalvikVM {
 	public void setNowPC(int nowPC) {
 		this.nowPC = nowPC;
 	}
+	
+	public boolean isPass() {
+		return interpreter.pass;
+	}
+
+	public void setPass(boolean pass) {
+		this.interpreter.pass = pass;
+	}
+
+
 
 }

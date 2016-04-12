@@ -6,10 +6,13 @@ import java.util.Stack;
 
 import fu.hao.trust.data.Branch;
 import fu.hao.trust.data.SymbolicVar;
+import fu.hao.trust.dvm.DVMClass;
+import fu.hao.trust.dvm.DVMObject;
 import fu.hao.trust.dvm.DalvikVM;
 import fu.hao.trust.dvm.DalvikVM.Register;
 import fu.hao.trust.solver.BiDirBranch;
 import fu.hao.trust.utils.Log;
+import patdroid.core.FieldInfo;
 import patdroid.core.MethodInfo;
 import patdroid.dalvik.Instruction;
 
@@ -65,46 +68,49 @@ public class TaintAdv extends Taint {
 							.containsKey(r1))) {
 				vm.setPC(vm.getNowPC() + 1);
 
-				// TODO out.get(vm.getReg(inst.r0))
-				int simpleBranch = -1;
-
 				// Scan to check whether the block contains "Return"
 				Instruction[] insns = vm.getCurrStackFrame().getMethod().insns;
+				MethodInfo method = null;
+				MethodInfo currtMethod = vm.getCurrStackFrame().getMethod();
+				if (bidirBranches.peek() != null) {
+					method = bidirBranches.peek().getMethod();
+				}
 				for (int i = vm.getPC(); i <= (int) inst.extra; i++) {
-					if (insns[i].opcode == Instruction.OP_RETURN
-							|| insns[i].opcode == Instruction.OP_GOTO) {
-						simpleBranch = i;
-						break;
+					if (insns[i].opcode == Instruction.OP_RETURN) {
+						// FIXME In case of multiple conditions.
+						BiDirBranch branch = new BiDirBranch(inst,
+								vm.getNowPC(), vm.getCurrStackFrame()
+										.getMethod(), vm);
+						branch.setSumPoint(insns[i]);
+						Log.bb(TAG, "BiDirSumpoint " + insns[i]);
+						bidirBranches.add(branch);
+						// vm.addBiDirBranch(branch);
+						Log.warn(TAG, "New BiDirBranch " + branch);
+						return out;
+					}
+
+					if (insns[i].opcode == Instruction.OP_GOTO
+							&& currtMethod == method) {
+						BiDirBranch branch = bidirBranches.peek();
+						// Overwrite the previous bidirBranch.
+						branch.addInst(inst);
+						branch.restore(vm);
+						branch.setRmFlag(false);
 					}
 				}
 
-				MethodInfo currtMethod = vm.getCurrStackFrame().getMethod();
-
-				if (simpleBranch == -1) {
-					Branch branch = isNewBranch(vm, inst, currtMethod);
-					if (branch != null) {
-						if (currtMethod.insns[((int) inst.extra) - 1].opcode == Instruction.OP_IF) {
-							branch.addInst(currtMethod.insns[((int) inst.extra) - 1]);
-							Log.bb(TAG, "Add cond inst "
-									+ branch.getInstructions().getLast() + "@"
-									+ branch);
-						} else {
-							branch.setSumPoint(currtMethod.insns[((int) inst.extra)]);
-							Log.bb(TAG, "Set sum point " + inst.extra + " "
-									+ branch.getSumPoint());
-						}
+				Branch branch = isNewBranch(vm, inst, currtMethod);
+				if (branch != null) {
+					if (currtMethod.insns[((int) inst.extra) - 1].opcode == Instruction.OP_IF) {
+						branch.addInst(currtMethod.insns[((int) inst.extra) - 1]);
+						Log.bb(TAG, "Add cond inst "
+								+ branch.getInstructions().getLast() + "@"
+								+ branch);
+					} else {
+						branch.setSumPoint(currtMethod.insns[((int) inst.extra)]);
+						Log.bb(TAG, "Set sum point " + inst.extra + " "
+								+ branch.getSumPoint());
 					}
-				} else {
-					// FIXME In case of multiple conditions.
-					BiDirBranch branch = new BiDirBranch(inst, vm.getNowPC(),
-							vm.getCurrStackFrame().getMethod(), vm);
-					branch.setSumPoint(vm.getCurrStackFrame().getInst(
-							simpleBranch));
-					Log.bb(TAG, "BiDirSumpoint "
-							+ vm.getCurrStackFrame().getInst(simpleBranch));
-					bidirBranches.add(branch);
-					vm.addBiDirBranch(branch);
-					Log.warn(TAG, "New BiDirBranch " + branch);
 				}
 
 				Log.msg(TAG, "ATAINT_OP_IF: " + " " + inst + " " + inst.extra);
@@ -122,7 +128,7 @@ public class TaintAdv extends Taint {
 				if (currtMethod.insns[((int) inst.extra) - 1].opcode == Instruction.OP_IF) {
 					return branch;
 				}
-				
+
 				for (Instruction cond : branch.getInstructions()) {
 					if (((int) cond.extra) == ((int) inst.extra)) {
 						branch.addInst(inst);
@@ -146,72 +152,41 @@ public class TaintAdv extends Taint {
 
 	}
 
-	class ATAINT_OP_MOV_CONST implements Rule {
-		final String TAG = getClass().toString();
-
-		@Override
-		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst,
-				Map<Object, Instruction> in) {
-
-			TAINT_OP_MOV_CONST taintOp = new TAINT_OP_MOV_CONST();
-			Map<Object, Instruction> out = taintOp.flow(vm, inst, in);
-			/*
-			 * if (!simpleBranches.isEmpty()) { // TODO Add only one, but could
-			 * be influenced by multiple APIs //out.put(vm.getReg(inst.rdst),
-			 * addVarsOfBranch.values().iterator() //.next()); //for
-			 * (Instruction met : addVarsOfBranch.values()) { //Log.bb(TAG,
-			 * " dep API " + met); //} Log.warn(TAG, "Found influenced var at "
-			 * + vm.getReg(inst.rdst)); } else { Log.bb(TAG,
-			 * "Not API Recording"); }
-			 */
-
-			return out;
-		}
-
-	}
-
-	class ATAINT_OP_MOV_REG implements Rule {
-		final String TAG = getClass().toString();
-
-		@Override
-		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst,
-				Map<Object, Instruction> in) {
-			TAINT_OP_MOV_REG taintOp = new TAINT_OP_MOV_REG();
-			Map<Object, Instruction> out = taintOp.flow(vm, inst, in);
-			/*
-			 * if (!addVarsOfBranch.isEmpty() &&
-			 * !out.containsKey(vm.getReg(inst.rdst))) { // TODO Now only add
-			 * one, but could be influenced by multiple APIs
-			 * out.put(vm.getReg(inst.rdst), addVarsOfBranch.values().iterator()
-			 * .next());
-			 * 
-			 * if (!(vm.getReg(inst.rdst).getData() instanceof SymbolicVar)) {
-			 * ConcreteVar mcvv; if (vm.getReg(inst.rdst).getData() instanceof
-			 * ConcreteVar) { mcvv = vm.g
-			 * mcvv.addValue(vm.getReg(inst.rdst).getData()); } } Log.warn(TAG,
-			 * "Found influenced var at " + vm.getReg(inst.rdst)); } else {
-			 * Log.bb(TAG, "Not API Recording"); }
-			 */
-
-			return out;
-		}
-
-	}
-
 	/**
-	* @Title: preprocessing
-	* @Author: Hao Fu
-	* @Description: Run before the interpreter.run()
-	* @param @param vm
-	* @param @param inst  
-	* @see fu.hao.trust.analysis.Taint#preprocessing(fu.hao.trust.dvm.DalvikVM, patdroid.dalvik.Instruction)  
-	*/
+	 * @Title: preprocessing
+	 * @Author: Hao Fu
+	 * @Description: Run before the interpreter.run()
+	 * @param @param vm
+	 * @param @param inst
+	 * @see fu.hao.trust.analysis.Taint#preprocessing(fu.hao.trust.dvm.DalvikVM,
+	 *      patdroid.dalvik.Instruction)
+	 */
 	public void preprocessing(DalvikVM vm, Instruction inst) {
 		if (!simpleBranches.isEmpty()
 				&& simpleBranches.peek().getSumPoint() == inst) {
 			Branch branch = simpleBranches.pop();
 			branch.valCombination();
 			Log.bb(TAG, "Remove branch ");
+		}
+
+		if (!bidirBranches.isEmpty()
+				&& bidirBranches.peek().getSumPoint() == inst) {
+			BiDirBranch branch = bidirBranches.peek();
+			Log.msg(TAG, "Arrive at sum point of bidirbranch " + branch);
+
+			if (branch.getRmFlag()) {
+				branch = bidirBranches.removeLast();
+				branch.valCombination();
+			} else {
+				// backtrace to last unknown branch
+				branch.restore(vm);
+				Log.bb(TAG, vm.getPC());
+				// vm.restoreFullState();
+				// FIXME currently do not explore all blks yet.
+				branch.setRmFlag(true);
+				// TODO Add the current plugin result.
+				vm.setPass(true);
+			}
 		}
 
 	}
@@ -230,33 +205,30 @@ public class TaintAdv extends Taint {
 			}
 		}
 
-		if (!vm.getBiDirBranches().isEmpty()
-				&& vm.getBiDirBranches().peek().getSumPoint() == inst) {
-			BiDirBranch branch = vm.getBiDirBranches().peek();
-			Log.msg(TAG, "Arrive at sum point of bidirbranch " + branch);
-			branch.addValue(vm.getReturnReg(), vm.getReturnReg().getData());
-
-			if (branch.getRmFlag()) {
-				branch = vm.getBiDirBranches().removeLast();
-				branch.valCombination();
-			} else {
-				// backtrace to last unknown branch
-				vm.restoreState();
-				// FIXME currently do not explore all blks yet.
-				branch.setRmFlag(true);
+		if (!bidirBranches.isEmpty() && vm.getAssigned() != null) {
+			// Set the assigned var as combined value
+			Object[] assigned = vm.getAssigned();
+			Branch branch = bidirBranches.peek();
+			if (Branch.checkType(assigned[1], assigned[2])) {
+				Log.bb(TAG, "Assigned: " + assigned[1] + " " + assigned[2]);
+				// FIXME Support heap element.
+				if (assigned[0] instanceof Register) {
+					branch.addValue((Register) assigned[0], assigned[2]);
+				}
 			}
 		}
 
 		return super.runAnalysis(vm, inst, in);
 	}
 
-	class ATAINT_OP_MOV_RESULT implements Rule {
-		final String TAG = getClass().getName();
+	class ATAINT_OP_INSTANCE_PUT_FIELD implements Rule {
+		final String TAG = getClass().getSimpleName();
 
 		/**
 		 * @Title: func
-		 * @Description: move-result v0 Move the return value of a previous
-		 *               method invocation into v0.
+		 * @Description: iput v0,v2, Test2.i6:I // field@0002 Stores v1 into
+		 *               field@0002 (entry #2 in the field id table). The
+		 *               instance is referenced by v0
 		 * @param vm
 		 * @param inst
 		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
@@ -265,18 +237,33 @@ public class TaintAdv extends Taint {
 		@Override
 		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst,
 				Map<Object, Instruction> in) {
-			TAINT_OP_MOV_RESULT taintOp = new TAINT_OP_MOV_RESULT();
+			// Backup the original value of over-written heap element
+			TAINT_OP_INSTANCE_PUT_FIELD taintOp = new TAINT_OP_INSTANCE_PUT_FIELD();
 			Map<Object, Instruction> out = taintOp.flow(vm, inst, in);
+			DVMObject obj = (DVMObject) vm.getReg(inst.r0).getData();
+			FieldInfo fieldInfo = (FieldInfo) inst.extra;
+			if (vm.getAssigned() != null) {
+				for (BiDirBranch branch : bidirBranches) {
+					if (!branch.getState().isSaved(obj, fieldInfo)) {
+						branch.getState().saveField(obj,
+								(FieldInfo) vm.getAssigned()[1],
+								vm.getAssigned()[2]);
+					}
+				}
+			}
 
 			return out;
 		}
 	}
 
-	class ATAINT_OP_GOTO implements Rule {
+	class ATAINT_OP_STATIC_PUT_FIELD implements Rule {
+		final String TAG = getClass().getSimpleName();
+
 		/**
 		 * @Title: func
-		 * @Description: goto 0005 // -0010 Jumps to current position-16 words
-		 *               (hex 10). 0005 is the label of the target instruction.
+		 * @Description: iput v0,v2, Test2.i6:I // field@0002 Stores v1 into
+		 *               field@0002 (entry #2 in the field id table). The
+		 *               instance is referenced by v0
 		 * @param vm
 		 * @param inst
 		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
@@ -285,12 +272,21 @@ public class TaintAdv extends Taint {
 		@Override
 		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst,
 				Map<Object, Instruction> in) {
-			if (!vm.getBiDirBranches().isEmpty()
-					&& vm.getBiDirBranches().peek().getMethod().insns.length - 1 == vm
-							.getNowPC()) {
-				vm.getBiDirBranches().peek().setRmFlag(true);
+			// Backup the original value of over-written heap element
+			TAINT_OP_STATIC_PUT_FIELD taintOp = new TAINT_OP_STATIC_PUT_FIELD();
+			Map<Object, Instruction> out = taintOp.flow(vm, inst, in);
+			if (vm.getAssigned() != null) {
+				DVMClass clazz = (DVMClass) vm.getAssigned()[0];
+				String fieldName = (String) vm.getAssigned()[1];
+				for (BiDirBranch branch : bidirBranches) {
+					if (!branch.getState().isSaved(clazz, fieldName)) {
+						branch.getState().saveField(clazz, fieldName,
+								vm.getAssigned()[2]);
+					}
+				}
 			}
-			return in;
+
+			return out;
 		}
 	}
 
@@ -299,9 +295,8 @@ public class TaintAdv extends Taint {
 
 		byteCodes.put(0x08, new ATAINT_OP_CMP());
 
-		auxByteCodes.put(0x01, new ATAINT_OP_MOV_REG());
-		auxByteCodes.put(0x02, new ATAINT_OP_MOV_CONST());
-		auxByteCodes.put(0x15, new ATAINT_OP_MOV_RESULT());
+		auxByteCodes.put(0x35, new ATAINT_OP_STATIC_PUT_FIELD());
+		auxByteCodes.put(0x37, new ATAINT_OP_INSTANCE_PUT_FIELD());
 	}
 
 }

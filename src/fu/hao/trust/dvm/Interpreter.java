@@ -24,6 +24,9 @@ import patdroid.util.Pair;
 public class Interpreter {
 	boolean running = false;
 
+	// Pass the execution of the instruction.
+	boolean pass;
+
 	// The nested class to implement singleton
 	private static class SingletonHolder {
 		private static final Interpreter instance = new Interpreter();
@@ -1539,6 +1542,10 @@ public class Interpreter {
 				Log.warn(TAG, "Type inconsistent! " + vm.getReg(inst.r0).type
 						+ " " + fieldType);
 			}
+			vm.assigned = new Object[3];
+			vm.assigned[0] = dvmClass;
+			vm.assigned[1] = fieldName;
+			vm.assigned[2] = vm.getReg(inst.r0).getData();
 			dvmClass.setStatField(fieldName, vm.getReg(inst.r0).getData());
 			Log.debug(TAG, "expect sput " + fieldName + " from " + owner);
 			Log.debug(TAG, "real sput " + vm.getReg(inst.r0).getData()
@@ -1608,6 +1615,10 @@ public class Interpreter {
 			Object obj = vm.getReg(inst.r0).getData();
 			if (obj instanceof DVMObject) {
 				DVMObject dvmObj = (DVMObject) obj;
+				vm.assigned = new Object[3];
+				vm.assigned[0] = dvmObj;
+				vm.assigned[1] = dvmObj.getFieldObj(fieldInfo);
+				vm.assigned[2] = vm.getReg(inst.r1).getData();
 				dvmObj.setField(fieldInfo, vm.getReg(inst.r1).getData());
 				Log.msg(TAG, "Put field " + dvmObj.getFieldObj(fieldInfo)
 						+ " to the field of " + dvmObj);
@@ -2288,19 +2299,24 @@ public class Interpreter {
 			vm.pluginManager.preprossing(vm, inst);
 		}
 
-		if (byteCodes.containsKey((int) inst.opcode)) {
-			byteCodes.get((int) inst.opcode).func(vm, inst);
-		} else if (auxByteCodes.containsKey((int) inst.opcode_aux)) {
-			auxByteCodes.get((int) inst.opcode_aux).func(vm, inst);
+		if (!pass) {
+			if (byteCodes.containsKey((int) inst.opcode)) {
+				byteCodes.get((int) inst.opcode).func(vm, inst);
+			} else if (auxByteCodes.containsKey((int) inst.opcode_aux)) {
+				auxByteCodes.get((int) inst.opcode_aux).func(vm, inst);
+			} else {
+				Log.err(TAG, "Unsupported opcode " + inst);
+			}
+
+			if (!vm.pluginManager.isEmpty() && vm.getCurrStackFrame() != null) {
+				vm.pluginManager.runAnalysis(vm, inst);
+				vm.getCurrStackFrame().pluginRes = vm.pluginManager
+						.cloneCurrtRes();
+
+				vm.pluginManager.printResults();
+			}
 		} else {
-			Log.err(TAG, "Unsupported opcode " + inst);
-		}
-
-		if (!vm.pluginManager.isEmpty() && vm.getCurrStackFrame() != null) {
-			vm.pluginManager.runAnalysis(vm, inst);
-			vm.getCurrStackFrame().pluginRes = vm.pluginManager.cloneCurrtRes();
-
-			vm.pluginManager.printResults();
+			pass = false;
 		}
 
 	}
