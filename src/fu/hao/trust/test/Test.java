@@ -12,7 +12,7 @@ public class Test {
 		
 		args[0] = "C:/Users/hao/workspace/PJApps/app/app-release.apk";
 		args[1] = "fu.hao.pjapps.MainActivity";
-		args[2] = "testEif";
+		args[2] = "testLoop";
 		args[3] = "ATaint"; //"ATaint";
 		
 		/*

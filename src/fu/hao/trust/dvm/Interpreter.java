@@ -10,7 +10,6 @@ import java.util.Set;
 
 import fu.hao.trust.dvm.DalvikVM.Register;
 import fu.hao.trust.dvm.DalvikVM.StackFrame;
-import fu.hao.trust.solver.BiDirBranch;
 import fu.hao.trust.data.SymbolicVar;
 import fu.hao.trust.solver.Unknown;
 import fu.hao.trust.utils.Log;
@@ -1763,35 +1762,7 @@ public class Interpreter {
 				u1.addConstriant(vm, inst);
 			}
 
-			if (u0 != null || u1 != null) {
-				// To avoid infinite loop
-				for (BiDirBranch branch : vm.getBiDirBranches()) {
-					for (Instruction cond : branch.getInstructions()) {
-						if (cond == inst || vm.lastBranch == inst) {
-							Log.warn(TAG, "Jump out loop");
-							jump(vm, inst, true);
-							// vm.states.pop();
-							return;
-						}
-					}
-				}
-				/*
-				 * // To froce proceed to then part. jump(vm, inst, true);
-				 * 
-				 * if (u0 != null || u1 != null) { Log.warn(TAG, "dibranches: "
-				 * + vm.getBiDirBranches()); BiDirBranch branch = new
-				 * BiDirBranch(inst, vm.getPC(), vm.getCurrStackFrame().method,
-				 * vm.storeState());
-				 * 
-				 * vm.addBiDirBranch(branch);
-				 * 
-				 * if (r1 != null && r1.getData() instanceof Unknown) { // TODO
-				 * }
-				 * 
-				 * Log.warn(TAG, "New BiDirBranch " + branch); // TODO add
-				 * constraint inconsistency check to rm unreachable // code }
-				 */
-			} else {
+			if (u0 == null && u1 == null) {
 				auxByteCodes.get((int) inst.opcode_aux).func(vm, inst);
 			}
 		}

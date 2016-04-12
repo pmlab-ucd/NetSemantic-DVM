@@ -75,7 +75,7 @@ public class TaintAdv extends Taint {
 				if (bidirBranches.peek() != null) {
 					method = bidirBranches.peek().getMethod();
 				}
-				for (int i = vm.getPC(); i <= (int) inst.extra; i++) {
+				for (int i = vm.getPC(); i < (int) inst.extra; i++) {
 					if (insns[i].opcode == Instruction.OP_RETURN) {
 						// FIXME In case of multiple conditions.
 						BiDirBranch branch = new BiDirBranch(inst,
@@ -89,14 +89,16 @@ public class TaintAdv extends Taint {
 						return out;
 					}
 
-					if (insns[i].opcode == Instruction.OP_GOTO
-							&& currtMethod == method) {
-						BiDirBranch branch = bidirBranches.peek();
-						// Overwrite the previous bidirBranch.
-						branch.addInst(inst);
-						branch.restore(vm);
-						branch.setRmFlag(false);
+					if (insns[i].opcode == Instruction.OP_GOTO) {
+						if (currtMethod == method) {
+							BiDirBranch branch = bidirBranches.peek();
+							// Overwrite the previous bidirBranch.
+							branch.addInst(inst);
+							branch.restore(vm);
+							branch.setRmFlag(false);
+						} 
 					}
+
 				}
 
 				Branch branch = isNewBranch(vm, inst, currtMethod);
@@ -187,6 +189,13 @@ public class TaintAdv extends Taint {
 				// TODO Add the current plugin result.
 				vm.setPass(true);
 			}
+		}
+		
+		// To avoid infinity loop
+		if (!simpleBranches.isEmpty() && simpleBranches.peek().getInstructions().contains(inst)
+				|| !bidirBranches.isEmpty() && bidirBranches.peek().getInstructions().contains(inst)) {
+			vm.setPass(true);
+			vm.jump(inst, false);
 		}
 
 	}
