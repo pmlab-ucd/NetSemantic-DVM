@@ -21,6 +21,8 @@ public class BiDirBranch extends Branch {
 	
 	private VMState state;
 	VMFullState fullState;
+	// The start point of <rest>, in theory it should be the sum point.
+	private Instruction restBegin; 
 	/**
 	 * @fieldName: remove
 	 * @fieldType: boolean
@@ -67,6 +69,14 @@ public class BiDirBranch extends Branch {
 
 	public void restore(DalvikVM vm) {
 		state.restore(vm, insts.getLast());
+	}
+
+	public Instruction getRestBegin() {
+		return restBegin;
+	}
+
+	public void setRestBegin(Instruction restBegin) {
+		this.restBegin = restBegin;
 	}
 	
 }

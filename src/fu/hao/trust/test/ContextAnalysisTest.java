@@ -43,7 +43,7 @@ public class ContextAnalysisTest {
 		System.out.println("REs: " + Results.targetCallRes);
 		assertEquals(false, Results.targetCallRes.isEmpty());
 		assertEquals(
-				"[<INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [4]]>]",
+				"[<INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>]",
 				Results.targetCallRes.values().iterator().next().getDepAPIs()
 						.toString());
 	}
@@ -97,7 +97,7 @@ public class ContextAnalysisTest {
 		System.out.println("REs: " + Results.targetCallRes);
 		assertEquals(false, Results.targetCallRes.isEmpty());
 		assertEquals(
-				"[<INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [4]]>]",
+				"[<INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [3]]>]",
 				Results.targetCallRes.values().iterator().next().getDepAPIs()
 						.toString());
 	}

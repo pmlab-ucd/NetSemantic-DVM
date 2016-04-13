@@ -32,9 +32,11 @@ public class ContextAnalysis extends TaintAdv {
 	// InfluenceAnalysis
 	// <Target API call loc, Target call>
 	Map<Instruction, TargetCall> targetCalls;
-	// The interestedSimple branches that have ctxVar inside the conditions. It is a
+	// The interestedSimple branches that have ctxVar inside the conditions. It
+	// is a
 	// subset of simpleBranches.
 	Stack<Branch> interestedSimple;
+	// Add new interested when first meet or bracktrace, rm when encounter the beginning of <rest> 
 	Stack<BiDirBranch> interestedBiDir;
 	// Specification of the target APIs
 	Set<String> targetList;
@@ -70,6 +72,11 @@ public class ContextAnalysis extends TaintAdv {
 							Log.msg(TAG, "Add depAPI " + branch.getElemSrcs());
 							targetCall.addDepAPIs(branch.getElemSrcs());
 						}
+					} else if (!interestedBiDir.isEmpty()) {
+						for (Branch branch : interestedBiDir) {
+							Log.msg(TAG, "Add depAPI " + branch.getElemSrcs());
+							targetCall.addDepAPIs(branch.getElemSrcs());
+						}
 					} else {
 						Log.bb(TAG, "Not API Recording");
 					}
@@ -102,10 +109,12 @@ public class ContextAnalysis extends TaintAdv {
 
 			ATAINT_OP_CMP taintOp = new ATAINT_OP_CMP();
 			Map<Object, Instruction> out = taintOp.flow(vm, inst, in);
-			
-			if (!simpleBranches.isEmpty() && simpleBranches.peek().getInstructions().contains(inst)) {
+
+			if (!simpleBranches.isEmpty()
+					&& simpleBranches.peek().getInstructions().contains(inst)) {
 				branch = simpleBranches.peek();
-			} else if (!bidirBranches.isEmpty() && bidirBranches.peek().getInstructions().contains(inst)) {
+			} else if (!bidirBranches.isEmpty()
+					&& bidirBranches.peek().getInstructions().contains(inst)) {
 				branch = bidirBranches.peek();
 			}
 
@@ -124,35 +133,13 @@ public class ContextAnalysis extends TaintAdv {
 						.containsKey(r1)))) {
 					branch.addElemSrc(out.get(r0) != null ? out.get(r0) : out
 							.get(r1));
-					interestedSimple.add(branch);
+					if (branch instanceof BiDirBranch && !interestedBiDir.contains(branch)) {
+						interestedBiDir.add((BiDirBranch) branch);
+					} else if (!interestedSimple.contains(branch)) {
+						interestedSimple.add(branch);
+					}
 
-					Log.msg(TAG, "New CtxBranch " + branch);
-				}
-			}
-			
-			BiDirBranch dbranch = null;
-			if (!bidirBranches.isEmpty()) {
-				dbranch = bidirBranches.peek();
-			}
-
-			if (branch != null) {
-				Register r0 = null, r1 = null;
-				if (inst.r0 != -1) {
-					r0 = vm.getReg(inst.r0);
-				}
-
-				if (inst.r1 != -1) {
-					r1 = vm.getReg(inst.r1);
-				}
-
-				// When sensitive value exists in the branch
-				if (((r0 != null && out.containsKey(r0)) || (r1 != null && out
-						.containsKey(r1)))) {
-					dbranch.addElemSrc(out.get(r0) != null ? out.get(r0) : out
-							.get(r1));
-					interestedBiDir.add(dbranch);
-
-					Log.msg(TAG, "New CtxBranch " + dbranch);
+					Log.msg(TAG, "Add CtxBranch " + branch);
 				}
 			}
 
@@ -172,14 +159,23 @@ public class ContextAnalysis extends TaintAdv {
 	public Map<Object, Instruction> runAnalysis(DalvikVM vm, Instruction inst,
 			Map<Object, Instruction> in) {
 		Map<Object, Instruction> out = super.runAnalysis(vm, inst, in);
-		// Add ctrl-dep correlated vars
-		if (!interestedSimple.isEmpty() && vm.getAssigned() != null) {
-			// Set the assigned var as combined value
+
+		if (vm.getAssigned() != null) {
 			Object[] assigned = vm.getAssigned();
-			// FIXME Multiple controlling if.
-			out.put((Register) assigned[0], interestedSimple.peek().getElemSrcs()
-					.iterator().next());
-			Log.msg(TAG, "Add correlated tained var " + assigned[0]);
+			// Add ctrl-dep correlated vars
+			if (!interestedSimple.isEmpty()) {
+				// Set the assigned var as combined value
+				// FIXME Multiple controlling if.
+				out.put((Register) assigned[0], interestedSimple.peek()
+						.getElemSrcs().iterator().next());
+				Log.msg(TAG, "Add correlated tained var " + assigned[0]);
+			}
+
+			if (!interestedBiDir.isEmpty()) {
+				out.put((Register) assigned[0], interestedBiDir.peek()
+						.getElemSrcs().iterator().next());
+				Log.msg(TAG, "Add correlated tained var " + assigned[0]);
+			}
 		}
 
 		Results.targetCallRes = targetCalls;
@@ -191,8 +187,21 @@ public class ContextAnalysis extends TaintAdv {
 		super.preprocessing(vm, inst);
 		if (!interestedSimple.isEmpty()
 				&& !simpleBranches.contains(interestedSimple.peek())) {
-			interestedSimple.pop();
+			Log.bb(TAG, "Rm CtxBranch " + interestedSimple.pop());
 		}
+
+
+		if (!interestedBiDir.isEmpty()
+				&& interestedBiDir.peek().getRestBegin() == inst) {
+			Log.bb(TAG, "Rm CtxBranch " + interestedBiDir.pop());
+		}
+		
+		if (hasRestore && !interestedBiDir.contains(bidirBranches.peek())) {
+			interestedBiDir.add(bidirBranches.peek());
+			Log.bb(TAG, "Add CtxBranch " + bidirBranches.peek());
+		}
+		
+		hasRestore = false;
 	}
 
 	public ContextAnalysis() {

@@ -40,6 +40,8 @@ public class TaintAdv extends Taint {
 	 *               combined
 	 */
 	protected Stack<Branch> simpleBranches;
+	
+	protected boolean hasRestore = false;
 
 	class ATAINT_OP_CMP implements Rule {
 		final String TAG = getClass().getName();
@@ -59,7 +61,6 @@ public class TaintAdv extends Taint {
 				r1 = vm.getReg(inst.r1);
 			}
 
-			Log.bb(TAG, "wtf");
 			// When unknown exists in the branch
 			if (r0 != null
 					&& (r0.getData() instanceof SymbolicVar || out
@@ -80,14 +81,24 @@ public class TaintAdv extends Taint {
 					if (insns[i].opcode == Instruction.OP_RETURN) {
 						// FIXME In case of multiple conditions.
 						BiDirBranch branch = new BiDirBranch(inst,
-								vm.getNowPC(), vm.getCurrStackFrame()
-										.getMethod(), vm);
+								vm.getNowPC(), currtMethod, vm);
 						branch.addMet(inst);
 						branch.setSumPoint(insns[i]);
 						Log.bb(TAG, "BiDirSumpoint " + insns[i]);
 						bidirBranches.add(branch);
 						// vm.addBiDirBranch(branch);
-						Log.warn(TAG, "New BiDirBranch " + branch);
+						Log.bb(TAG, "Update BiDirBranch " + branch);
+						// 遇到return后再往前走的第一个goto index即<rest>起始点
+						for (int j = i; j < insns.length; j++) {
+							if (insns[j].opcode == Instruction.OP_GOTO
+									&& (int) insns[j].extra <= i) {
+								Log.bb(TAG, "Set rest begin "
+										+ insns[(int) insns[j].extra]);
+								branch.setRestBegin(insns[(int) insns[j].extra]);
+								break;
+							}
+						}
+
 						return out;
 					}
 
@@ -100,11 +111,11 @@ public class TaintAdv extends Taint {
 							branch.backup(vm);
 							branch.setRmFlag(false);
 							return out;
-						} 
+						}
 					}
 
 				}
-				
+
 				// Jump to <rest>
 				if ((int) inst.extra < vm.getPC()) {
 					if (currtMethod == method) {
@@ -115,7 +126,7 @@ public class TaintAdv extends Taint {
 						branch.backup(vm);
 						branch.setRmFlag(false);
 						return out;
-					} 
+					}
 				}
 
 				Branch branch = isNewBranch(vm, inst, currtMethod);
@@ -193,14 +204,16 @@ public class TaintAdv extends Taint {
 				&& bidirBranches.peek().getSumPoint() == inst) {
 			BiDirBranch branch = bidirBranches.peek();
 			Log.msg(TAG, "Arrive at sum point of bidirbranch " + branch);
-
 			if (branch.getRmFlag()) {
 				branch = bidirBranches.removeLast();
-				branch.valCombination();
+				if (branch.getSumPoint().opcode_aux != Instruction.OP_RETURN_VOID) {
+					branch.valCombination();
+				}
 			} else {
 				// backtrace to last unknown branch
 				Log.bb(TAG, "Back to " + branch);
-				branch.restore(vm);				
+				branch.restore(vm);
+				hasRestore = true;
 				// vm.restoreFullState();
 				// FIXME currently do not explore all blks yet.
 				branch.setRmFlag(true);
@@ -208,7 +221,7 @@ public class TaintAdv extends Taint {
 				vm.setPass(true);
 			}
 		}
-		
+
 		// To avoid infinity loop
 		if (!simpleBranches.isEmpty() && simpleBranches.peek().Met(inst)
 				|| !bidirBranches.isEmpty() && bidirBranches.peek().Met(inst)) {
@@ -240,7 +253,8 @@ public class TaintAdv extends Taint {
 				Log.bb(TAG, "Assigned: " + assigned[1] + " " + assigned[2]);
 				// FIXME Support heap element.
 				if (assigned[0] instanceof Register) {
-					// The original value before the blk will be definitely overwritten. 
+					// The original value before the blk will be definitely
+					// overwritten.
 					branch.addValue((Register) assigned[0], assigned[2]);
 				}
 			}
