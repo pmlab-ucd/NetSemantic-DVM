@@ -87,6 +87,7 @@ public class Branch {
 	}
 	
 	public void valCombination() {
+		Log.bb(TAG, this + " begins value combination: ");
 		for (Register var : conflicts.keySet()) {
 			if (sumPoint.opcode == Instruction.OP_RETURN && var.getIndex() != -1) {
 				continue;

@@ -13,6 +13,7 @@ import fu.hao.trust.data.Results;
 import fu.hao.trust.data.TargetCall;
 import fu.hao.trust.dvm.DalvikVM;
 import fu.hao.trust.dvm.DalvikVM.Register;
+import fu.hao.trust.solver.BiDirBranch;
 //import fu.hao.trust.dvm.DalvikVM.Register;
 import fu.hao.trust.utils.Log;
 
@@ -34,6 +35,7 @@ public class ContextAnalysis extends TaintAdv {
 	// The interestedSimple branches that have ctxVar inside the conditions. It is a
 	// subset of simpleBranches.
 	Stack<Branch> interestedSimple;
+	Stack<BiDirBranch> interestedBiDir;
 	// Specification of the target APIs
 	Set<String> targetList;
 
@@ -101,8 +103,10 @@ public class ContextAnalysis extends TaintAdv {
 			ATAINT_OP_CMP taintOp = new ATAINT_OP_CMP();
 			Map<Object, Instruction> out = taintOp.flow(vm, inst, in);
 			
-			if (!simpleBranches.isEmpty()) {
+			if (!simpleBranches.isEmpty() && simpleBranches.peek().getInstructions().contains(inst)) {
 				branch = simpleBranches.peek();
+			} else if (!bidirBranches.isEmpty() && bidirBranches.peek().getInstructions().contains(inst)) {
+				branch = bidirBranches.peek();
 			}
 
 			if (branch != null) {
@@ -123,6 +127,32 @@ public class ContextAnalysis extends TaintAdv {
 					interestedSimple.add(branch);
 
 					Log.msg(TAG, "New CtxBranch " + branch);
+				}
+			}
+			
+			BiDirBranch dbranch = null;
+			if (!bidirBranches.isEmpty()) {
+				dbranch = bidirBranches.peek();
+			}
+
+			if (branch != null) {
+				Register r0 = null, r1 = null;
+				if (inst.r0 != -1) {
+					r0 = vm.getReg(inst.r0);
+				}
+
+				if (inst.r1 != -1) {
+					r1 = vm.getReg(inst.r1);
+				}
+
+				// When sensitive value exists in the branch
+				if (((r0 != null && out.containsKey(r0)) || (r1 != null && out
+						.containsKey(r1)))) {
+					dbranch.addElemSrc(out.get(r0) != null ? out.get(r0) : out
+							.get(r1));
+					interestedBiDir.add(dbranch);
+
+					Log.msg(TAG, "New CtxBranch " + dbranch);
 				}
 			}
 
@@ -168,6 +198,7 @@ public class ContextAnalysis extends TaintAdv {
 	public ContextAnalysis() {
 		super();
 		interestedSimple = new Stack<>();
+		interestedBiDir = new Stack<>();
 		sinks = new HashSet<>();
 		byteCodes.put(0x08, new CTX_OP_CMP());
 		byteCodes.put(0x0C, new CTX_OP_INVOKE());

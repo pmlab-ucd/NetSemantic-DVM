@@ -101,6 +101,7 @@ public class Log {
 			break;
 		}
 		if (theLevel >= Settings.logLevel) {
+			writeLog(TAG, theLevel, title, msg, out);
 			if (theLevel < MODE_MSG) {
 				System.out.println("[" + TAG + "] - " + title + " - " + msg);
 			} else if (theLevel >= MODE_ERROR) {
@@ -113,7 +114,6 @@ public class Log {
 				System.err.println("[" + TAG + "] - " + title + " - " + msg);
 				// writeLog(TAG, theLevel, title, msg, err);
 			}
-			writeLog(TAG, theLevel, title, msg, out);
 		}
 	}
 

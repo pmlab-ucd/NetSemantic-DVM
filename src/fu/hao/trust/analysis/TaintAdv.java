@@ -96,11 +96,26 @@ public class TaintAdv extends Taint {
 							BiDirBranch branch = bidirBranches.peek();
 							// Overwrite the previous bidirBranch.
 							branch.addInst(inst);
-							branch.restore(vm);
+							Log.bb(TAG, branch);
+							branch.backup(vm);
 							branch.setRmFlag(false);
+							return out;
 						} 
 					}
 
+				}
+				
+				// Jump to <rest>
+				if ((int) inst.extra < vm.getPC()) {
+					if (currtMethod == method) {
+						BiDirBranch branch = bidirBranches.peek();
+						// Overwrite the previous bidirBranch.
+						branch.addInst(inst);
+						Log.bb(TAG, branch);
+						branch.backup(vm);
+						branch.setRmFlag(false);
+						return out;
+					} 
 				}
 
 				Branch branch = isNewBranch(vm, inst, currtMethod);
@@ -184,7 +199,8 @@ public class TaintAdv extends Taint {
 				branch.valCombination();
 			} else {
 				// backtrace to last unknown branch
-				branch.restore(vm);
+				Log.bb(TAG, "Back to " + branch);
+				branch.restore(vm);				
 				// vm.restoreFullState();
 				// FIXME currently do not explore all blks yet.
 				branch.setRmFlag(true);
