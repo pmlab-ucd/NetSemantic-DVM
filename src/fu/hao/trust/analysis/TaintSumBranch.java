@@ -22,7 +22,7 @@ import patdroid.dalvik.Instruction;
  * @author: Hao Fu
  * @date: Mar 27, 2016 12:59:39 PM
  */
-public class TaintAdv extends Taint {
+public class TaintSumBranch extends Taint {
 
 	private final String TAG = getClass().getSimpleName();
 
@@ -332,7 +332,7 @@ public class TaintAdv extends Taint {
 		}
 	}
 
-	public TaintAdv() {
+	public TaintSumBranch() {
 		simpleBranches = new Stack<>();
 
 		byteCodes.put(0x08, new ATAINT_OP_CMP());
