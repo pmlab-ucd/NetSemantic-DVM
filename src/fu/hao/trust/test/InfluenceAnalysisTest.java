@@ -30,7 +30,7 @@ public class InfluenceAnalysisTest {
 		String[] args = new String[4];
 		Settings.logLevel = 2;
 
-		args[0] = "C:/Users/hao/workspace/PJApps/app/PJApps.apk";
+		args[0] = "C:/Users/hao/workspace/PJApps/app/app-release.apk";
 		args[1] = "fu.hao.pjapps.MainActivity";
 		args[2] = "testConnection";
 		args[3] = "Full";

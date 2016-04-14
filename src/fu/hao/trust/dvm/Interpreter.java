@@ -1879,7 +1879,7 @@ public class Interpreter {
 		// The register index referred by args
 		int[] args = (int[]) extra[1];
 		final String TAG = getClass().toString();
-		Object obj = null;
+		Object thisInstance = null;
 		Method method = null;
 		try {
 			// If applicable, directly use reflection to run the method,
@@ -1887,11 +1887,7 @@ public class Interpreter {
 			// Class<?> clazz = Class.forName(mi.myClass.toString());
 			Log.msg(TAG, "arg0 obj: " + vm.getReg(args[0]).getData());
 			Class<?> clazz;
-			// if (vm.getReg(args[0]).getData() == null) {
 			clazz = Class.forName(mi.myClass.toString());
-			// } else {
-			// clazz = vm.getReg(args[0]).getData().getClass();
-			// }
 
 			@SuppressWarnings("rawtypes")
 			Class[] argsClass = new Class[mi.paramTypes.length];
@@ -1909,11 +1905,17 @@ public class Interpreter {
 						Log.debug(TAG, "Init instance: "
 								+ vm.getReg(args[0]).getData());
 					} else {
-						getParams(vm, mi, args, argsClass, params);
+						boolean symbolArg = getParams(vm, mi, args, argsClass,
+								params);
+						Object instance;
+						if (!symbolArg) {
+							instance = new Unknown(mi.returnType);
+						} else {
+							instance = clazz.getConstructor(argsClass)
+									.newInstance(params);
+						}
 						// Overwrite previous declared dvmObj
-						vm.getReg(args[0]).setData(
-								clazz.getConstructor(argsClass).newInstance(
-										params));
+						vm.getReg(args[0]).setData(instance);
 						vm.getReg(args[0]).type = mi.myClass;
 						Log.debug(TAG, "Init instance: "
 								+ vm.getReg(args[0]).getData() + " "
@@ -1923,16 +1925,15 @@ public class Interpreter {
 			} else {
 				Log.debug(TAG, "Reflction class: " + clazz);
 
-				obj = vm.getReg(args[0]).getData();
+				thisInstance = vm.getReg(args[0]).getData();
 
-				if (obj instanceof SymbolicVar) {
-					SymbolicVar bidirVar = (SymbolicVar) obj;
-					obj = bidirVar.getValue();
+				if (thisInstance instanceof SymbolicVar) {
+					thisInstance = ((SymbolicVar) thisInstance).getValue();
 				}
 
-				if (obj == null || obj instanceof DVMObject
+				if (thisInstance == null || thisInstance instanceof DVMObject
 						&& !DVMObject.class.equals(clazz)) {
-					obj = clazz.newInstance();
+					thisInstance = clazz.newInstance();
 				}
 
 				// clazz = obj.getClass();
@@ -1945,17 +1946,20 @@ public class Interpreter {
 						vm.retValReg.setData(null);
 						Log.warn(TAG, "Found noInvokeMethod " + method);
 					} else {
-						vm.retValReg.setData(method.invoke(obj));
+						vm.retValReg.setData(method.invoke(thisInstance));
 					}
 				} else {
 					boolean symbolArg = getParams(vm, mi, args, argsClass,
 							params);
 					method = clazz.getDeclaredMethod(mi.name, argsClass);
-					Log.debug(TAG, "Caller obj: " + obj + ", from class: "
-							+ obj.getClass().toString());
+					Log.debug(TAG, "Caller obj: " + thisInstance
+							+ ", from class: "
+							+ thisInstance.getClass().toString());
 					// handle return val
 					if (symbolArg) {
-						vm.retValReg.setData(method.invoke(obj, params));
+						vm.retValReg.setData(method
+								.invoke(thisInstance, params));
+
 					} else {
 						vm.retValReg.setData(new Unknown(mi.returnType));
 					}
@@ -1966,6 +1970,7 @@ public class Interpreter {
 				}
 				Log.msg(TAG, "Reflction invocation " + method);
 			}
+			vm.retValReg.setType(mi.returnType);
 
 			vm.pluginManager.setMethod(method);
 			jump(vm, inst, true);
@@ -2251,6 +2256,7 @@ public class Interpreter {
 				+ vm.getCurrStackFrame().method);
 		vm.setNowPC(vm.getPC());
 		Log.bb(TAG, "opcode: " + inst.opcode + " " + inst.opcode_aux);
+		inst.setIndex(vm.getNowPC());
 
 		vm.assigned = null;
 		if (!vm.pluginManager.isEmpty() && vm.getCurrStackFrame() != null) {

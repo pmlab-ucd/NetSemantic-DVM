@@ -40,11 +40,125 @@ public class TaintSumBranch extends Taint {
 	 *               combined
 	 */
 	protected Stack<Branch> simpleBranches;
-	
+
 	protected boolean hasRestore = false;
 
 	class ATAINT_OP_CMP implements Rule {
 		final String TAG = getClass().getName();
+
+		private boolean isLoop(DalvikVM vm, Instruction inst) {
+			Instruction[] insns = vm.getCurrStackFrame().getMethod().insns;
+
+			// Scan to check whether the block contains "Return".
+			for (int i = vm.getPC(); i < (int) inst.extra; i++) {
+				if (insns[i].opcode == Instruction.OP_RETURN) {
+					// 遇到return后再往前走的第一个goto index即<rest>起始点
+					for (int j = i; j < insns.length; j++) {
+						if (insns[j].opcode == Instruction.OP_GOTO
+								&& (int) insns[j].extra <= i) {
+							if ((int) insns[j].extra <= vm.getNowPC()) {
+								Log.msg(TAG, "Detect Loop!");
+								return true;
+							}
+						}
+					}
+				}
+			}
+
+			return false;
+		}
+
+		private boolean isNewBiDir(DalvikVM vm, Instruction inst) {
+			Instruction[] insns = vm.getCurrStackFrame().getMethod().insns;
+			MethodInfo currtMethod = vm.getCurrStackFrame().getMethod();
+
+			// Scan to check whether the block contains "Return".
+			for (int i = vm.getPC(); i < (int) inst.extra; i++) {
+				if (insns[i].opcode == Instruction.OP_RETURN) {
+					BiDirBranch branch = new BiDirBranch(inst, vm.getNowPC(),
+							currtMethod, vm);
+					branch.setSumPoint(insns[i]);
+					Log.bb(TAG, "BiDirSumpoint " + insns[i]);
+					bidirBranches.add(branch);
+					// 遇到return后再往前走的第一个goto index即<rest>起始点
+					for (int j = i; j < insns.length; j++) {
+						if (insns[j].opcode == Instruction.OP_GOTO
+								&& (int) insns[j].extra <= i) {
+							Log.bb(TAG, "Set rest begin "
+									+ insns[(int) insns[j].extra]);
+							branch.setRestBegin(insns[(int) insns[j].extra]);
+						}
+					}
+
+					return true;
+				}
+			}
+
+			return false;
+		}
+
+		/**
+		 * @Title: isCondBiDir
+		 * @Author: Hao Fu
+		 * @Description: Whether is a condition statement of a existign
+		 *               bidirBranch
+		 * @param @param vm
+		 * @param @param inst
+		 * @param @return
+		 * @return boolean
+		 * @throws
+		 */
+		private boolean isCondBiDir(DalvikVM vm, Instruction inst) {
+			Instruction[] insns = vm.getCurrStackFrame().getMethod().insns;
+			MethodInfo method = null;
+			MethodInfo currtMethod = vm.getCurrStackFrame().getMethod();
+			if (!bidirBranches.isEmpty()) {
+				method = bidirBranches.getLast().getMethod();
+			}
+
+			if (currtMethod == method) {
+				if ((int) inst.extra < vm.getPC()) {
+					return true;
+				}
+
+				for (int i = vm.getPC(); i < (int) inst.extra; i++) {
+					// Whether is a <cond> of current bidirBranch
+					if (insns[i].opcode == Instruction.OP_GOTO
+							&& (int) insns[i].extra < vm.getPC()) {
+						return true;
+					}
+				}
+			}
+
+			return false;
+		}
+
+		private boolean isNewSimple(DalvikVM vm, Instruction inst) {
+			if (simpleBranches.isEmpty()
+					|| !simpleBranches.peek().getInstructions().contains(inst)) {
+				return true;
+			}
+
+			return false;
+		}
+
+		private boolean isCondSimple(DalvikVM vm, Instruction inst) {
+			if (simpleBranches.isEmpty()) {
+				return false;
+			}
+			// In case of multiple conditions (not multiple blocks).
+			Branch branch = simpleBranches.peek();
+			for (Instruction cond : branch.getInstructions()) {
+				if (((int) cond.extra) == ((int) inst.extra)) {
+					branch.addInst(inst);
+					Log.bb(TAG, "Add cond inst "
+							+ branch.getInstructions().getLast() + "@" + branch);
+					return true;
+				}
+			}
+
+			return false;
+		}
 
 		@Override
 		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst,
@@ -68,69 +182,34 @@ public class TaintSumBranch extends Taint {
 					|| r1 != null
 					&& (r1.getData() instanceof SymbolicVar || out
 							.containsKey(r1))) {
+				// Force to explore <then>
 				vm.setPC(vm.getNowPC() + 1);
 
-				// Scan to check whether the block contains "Return"
-				Instruction[] insns = vm.getCurrStackFrame().getMethod().insns;
-				MethodInfo method = null;
+				// Handling bidirBranch
 				MethodInfo currtMethod = vm.getCurrStackFrame().getMethod();
-				if (bidirBranches.peek() != null) {
-					method = bidirBranches.peek().getMethod();
+				Branch branch = null;
+				if (isLoop(vm, inst)) {
+					return out;
 				}
-				for (int i = vm.getPC(); i < (int) inst.extra; i++) {
-					if (insns[i].opcode == Instruction.OP_RETURN) {
-						// FIXME In case of multiple conditions.
-						BiDirBranch branch = new BiDirBranch(inst,
-								vm.getNowPC(), currtMethod, vm);
-						branch.addMet(inst);
-						branch.setSumPoint(insns[i]);
-						Log.bb(TAG, "BiDirSumpoint " + insns[i]);
-						bidirBranches.add(branch);
-						// vm.addBiDirBranch(branch);
-						Log.bb(TAG, "Update BiDirBranch " + branch);
-						// 遇到return后再往前走的第一个goto index即<rest>起始点
-						for (int j = i; j < insns.length; j++) {
-							if (insns[j].opcode == Instruction.OP_GOTO
-									&& (int) insns[j].extra <= i) {
-								Log.bb(TAG, "Set rest begin "
-										+ insns[(int) insns[j].extra]);
-								branch.setRestBegin(insns[(int) insns[j].extra]);
-								break;
-							}
-						}
-
-						return out;
+				if (isNewBiDir(vm, inst)) {
+					branch = bidirBranches.getLast();
+				} else if (isCondBiDir(vm, inst)) {
+					branch = bidirBranches.getLast();
+					// Overwrite the previous bidirBranch.
+					branch.addInst(inst);
+					Log.bb(TAG, "Add bidir cond " + inst);
+					((BiDirBranch) branch).backup(vm);
+					((BiDirBranch) branch).setRmFlag(false);
+				} else {
+					if (isCondSimple(vm, inst)) {
+						branch = simpleBranches.peek();
+					} else if (isNewSimple(vm, inst)) {
+						// Handling SimpleBranch
+						branch = new Branch(inst, vm.getNowPC(), currtMethod);
+						simpleBranches.add(branch);
+						Log.warn(TAG, "New Simple Branch " + branch);
 					}
-
-					if (insns[i].opcode == Instruction.OP_GOTO) {
-						if (currtMethod == method) {
-							BiDirBranch branch = bidirBranches.peek();
-							// Overwrite the previous bidirBranch.
-							branch.addInst(inst);
-							Log.bb(TAG, branch);
-							branch.backup(vm);
-							branch.setRmFlag(false);
-							return out;
-						}
-					}
-
-				}
-
-				// Jump to <rest>
-				if ((int) inst.extra < vm.getPC()) {
-					if (currtMethod == method) {
-						BiDirBranch branch = bidirBranches.peek();
-						// Overwrite the previous bidirBranch.
-						branch.addInst(inst);
-						Log.bb(TAG, branch);
-						branch.backup(vm);
-						branch.setRmFlag(false);
-						return out;
-					}
-				}
-
-				Branch branch = isNewBranch(vm, inst, currtMethod);
-				if (branch != null) {
+					// Whether is the last blk
 					if (currtMethod.insns[((int) inst.extra) - 1].opcode == Instruction.OP_IF) {
 						branch.addInst(currtMethod.insns[((int) inst.extra) - 1]);
 						Log.bb(TAG, "Add cond inst "
@@ -144,43 +223,11 @@ public class TaintSumBranch extends Taint {
 				}
 
 				Log.msg(TAG, "ATAINT_OP_IF: " + " " + inst + " " + inst.extra);
+				Log.bb(TAG, "Add " + inst + " to met of " + branch);
+				branch.addMet(inst);
 			}
-
 			return out;
 		}
-
-		private Branch isNewBranch(DalvikVM vm, Instruction inst,
-				MethodInfo currtMethod) {
-			Branch branch = simpleBranches.isEmpty() ? null : simpleBranches
-					.peek();
-
-			if (branch != null) {
-				if (currtMethod.insns[((int) inst.extra) - 1].opcode == Instruction.OP_IF) {
-					return branch;
-				}
-
-				for (Instruction cond : branch.getInstructions()) {
-					if (((int) cond.extra) == ((int) inst.extra)) {
-						branch.addInst(inst);
-						Log.bb(TAG, "Add cond inst "
-								+ branch.getInstructions().getLast() + "@"
-								+ branch);
-						return branch;
-					}
-				}
-			}
-
-			// In case of multiple conditions (not multiple blocks).
-			if (branch == null || !branch.getInstructions().contains(inst)) {
-				branch = new Branch(inst, vm.getNowPC(), currtMethod);
-				simpleBranches.add(branch);
-				Log.warn(TAG, "New Simple Branch " + branch);
-			}
-
-			branch.addMet(inst);
-			return branch;
-		}
-
 	}
 
 	/**
@@ -197,21 +244,22 @@ public class TaintSumBranch extends Taint {
 				&& simpleBranches.peek().getSumPoint() == inst) {
 			Branch branch = simpleBranches.pop();
 			branch.valCombination();
-			Log.bb(TAG, "Remove branch ");
+			Log.bb(TAG, "Remove simple branch " + branch);
 		}
 
 		if (!bidirBranches.isEmpty()
-				&& bidirBranches.peek().getSumPoint() == inst) {
-			BiDirBranch branch = bidirBranches.peek();
+				&& bidirBranches.getLast().getSumPoint() == inst) {
+			BiDirBranch branch = bidirBranches.getLast();
 			Log.msg(TAG, "Arrive at sum point of bidirbranch " + branch);
 			if (branch.getRmFlag()) {
+				Log.msg(TAG, "Rm BiDirBranch " + branch);
 				branch = bidirBranches.removeLast();
 				if (branch.getSumPoint().opcode_aux != Instruction.OP_RETURN_VOID) {
 					branch.valCombination();
 				}
 			} else {
 				// backtrace to last unknown branch
-				Log.bb(TAG, "Back to " + branch);
+				Log.bb(TAG, "Back to " + branch.getInstructions().getLast());
 				branch.restore(vm);
 				hasRestore = true;
 				// vm.restoreFullState();
@@ -223,9 +271,12 @@ public class TaintSumBranch extends Taint {
 		}
 
 		// To avoid infinity loop
+		Log.msg(TAG, bidirBranches);
 		if (!simpleBranches.isEmpty() && simpleBranches.peek().Met(inst)
-				|| !bidirBranches.isEmpty() && bidirBranches.peek().Met(inst)) {
+				|| !bidirBranches.isEmpty()
+				&& bidirBranches.getLast().Met(inst)) {
 			vm.setPass(true);
+			// FIXME Not right?
 			vm.jump(inst, false);
 		}
 
@@ -234,28 +285,34 @@ public class TaintSumBranch extends Taint {
 	@Override
 	public Map<Object, Instruction> runAnalysis(DalvikVM vm, Instruction inst,
 			Map<Object, Instruction> in) {
-		if (!simpleBranches.isEmpty() && vm.getAssigned() != null) {
-			// Set the assigned var as combined value
-			Object[] assigned = vm.getAssigned();
-			Branch branch = simpleBranches.peek();
-			if (Branch.checkType(assigned[1], assigned[2])) {
-				Log.bb(TAG, "Assigned: " + assigned[1] + " " + assigned[2]);
-				branch.addValue((Register) assigned[0], assigned[1]);
-				branch.addValue((Register) assigned[0], assigned[2]);
-			}
-		}
-
-		if (!bidirBranches.isEmpty() && vm.getAssigned() != null) {
-			// Set the assigned var as combined value
-			Object[] assigned = vm.getAssigned();
-			Branch branch = bidirBranches.peek();
-			if (Branch.checkType(assigned[1], assigned[2])) {
-				Log.bb(TAG, "Assigned: " + assigned[1] + " " + assigned[2]);
-				// FIXME Support heap element.
-				if (assigned[0] instanceof Register) {
-					// The original value before the blk will be definitely
-					// overwritten.
+		if (vm.getAssigned() != null) {
+			if (!simpleBranches.isEmpty()
+					&& vm.getCurrStackFrame().getMethod() == simpleBranches
+							.peek().getMethod()) {
+				// Set the assigned var as combined value
+				Object[] assigned = vm.getAssigned();
+				Branch branch = simpleBranches.peek();
+				if (Branch.checkType(assigned[1], assigned[2])) {
+					Log.bb(TAG, "Assigned: " + assigned[1] + " " + assigned[2]);
+					branch.addValue((Register) assigned[0], assigned[1]);
 					branch.addValue((Register) assigned[0], assigned[2]);
+				}
+			}
+
+			if (!bidirBranches.isEmpty()
+					&& vm.getCurrStackFrame().getMethod() == bidirBranches
+							.peek().getMethod()) {
+				// Set the assigned var as combined value
+				Object[] assigned = vm.getAssigned();
+				Branch branch = bidirBranches.getLast();
+				if (Branch.checkType(assigned[1], assigned[2])) {
+					Log.bb(TAG, "Assigned: " + assigned[1] + " " + assigned[2]);
+					// FIXME Support heap element.
+					if (assigned[0] instanceof Register) {
+						// The original value before the blk will be definitely
+						// overwritten.
+						branch.addValue((Register) assigned[0], assigned[2]);
+					}
 				}
 			}
 		}

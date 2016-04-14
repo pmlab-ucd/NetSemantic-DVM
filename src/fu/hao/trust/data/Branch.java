@@ -10,6 +10,7 @@ import fu.hao.trust.dvm.DVMObject;
 import fu.hao.trust.dvm.DalvikVM.Register;
 import fu.hao.trust.solver.Unknown;
 import fu.hao.trust.utils.Log;
+import fu.hao.trust.utils.Settings;
 import patdroid.core.ClassInfo;
 import patdroid.core.MethodInfo;
 import patdroid.core.PrimitiveInfo;
@@ -83,7 +84,7 @@ public class Branch {
 			conflicts.get(var)[1] = val;
 		}
 
-		Log.bb(TAG, "Add conflict at var " + var + ", with value " + val);
+		Log.bb(Settings.getRuntimeCaller(), "Add conflict at var " + var + ", with value " + val);
 	}
 	
 	public void valCombination() {

@@ -90,7 +90,10 @@ public class DalvikVM {
 		}
 
 		public String toString() {
-			return "reg " + count + "@" + stackFrame;
+			if (count == -1) {
+				return "[Global RetReg]";
+			}
+			return "[reg " + count + "@" + stackFrame + "]";
 		}
 
 		public void setType(ClassInfo type) {

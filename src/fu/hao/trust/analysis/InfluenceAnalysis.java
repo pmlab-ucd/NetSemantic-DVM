@@ -87,6 +87,7 @@ public class InfluenceAnalysis extends TaintCtrlDep {
 			}
 
 			// Detect influenced API calls
+			Log.bb(TAG, "Method " + getMethod());
 			if (getMethod() != null && !interestedSimple.isEmpty()) {
 				for (Branch branch : interestedSimple) {
 					for (Instruction tgtCall : branch.getElemSrcs()) {

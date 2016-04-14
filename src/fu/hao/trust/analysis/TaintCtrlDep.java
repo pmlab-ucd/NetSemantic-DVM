@@ -9,6 +9,7 @@ import fu.hao.trust.dvm.DalvikVM;
 import fu.hao.trust.dvm.DalvikVM.Register;
 import fu.hao.trust.solver.BiDirBranch;
 import fu.hao.trust.utils.Log;
+import fu.hao.trust.utils.Settings;
 
 /**
  * @ClassName: TaintCtrlDep
@@ -63,7 +64,7 @@ public class TaintCtrlDep extends TaintSumBranch {
 					r1 = vm.getReg(inst.r1);
 				}
 
-				// When sensitive value exists in the branch
+				// When sensitive var exists in the branch.
 				if (((r0 != null && out.containsKey(r0)) || (r1 != null && out
 						.containsKey(r1)))) {
 					branch.addElemSrc(out.get(r0) != null ? out.get(r0) : out
@@ -75,7 +76,8 @@ public class TaintCtrlDep extends TaintSumBranch {
 						interestedSimple.add(branch);
 					}
 
-					Log.msg(TAG, "Add CDTAINTBranch " + branch);
+					Log.msg(Settings.getRuntimeCaller(), "Add CDTaintBranch "
+							+ branch);
 				}
 			}
 
@@ -91,7 +93,9 @@ public class TaintCtrlDep extends TaintSumBranch {
 		if (vm.getAssigned() != null) {
 			Object[] assigned = vm.getAssigned();
 			// Add ctrl-dep correlated vars
-			if (!interestedSimple.isEmpty()) {
+			if (!interestedSimple.isEmpty()
+					&& vm.getCurrStackFrame().getMethod() == interestedSimple
+							.peek().getMethod()) {
 				// Set the assigned var as combined value
 				// FIXME Multiple controlling if.
 				out.put((Register) assigned[0], interestedSimple.peek()
@@ -99,7 +103,9 @@ public class TaintCtrlDep extends TaintSumBranch {
 				Log.msg(TAG, "Add correlated tained var " + assigned[0]);
 			}
 
-			if (!interestedBiDir.isEmpty()) {
+			if (!interestedBiDir.isEmpty()
+					&& vm.getCurrStackFrame().getMethod() == interestedBiDir
+							.peek().getMethod()) {
 				out.put((Register) assigned[0], interestedBiDir.peek()
 						.getElemSrcs().iterator().next());
 				Log.msg(TAG, "Add correlated tained var " + assigned[0]);
@@ -114,17 +120,14 @@ public class TaintCtrlDep extends TaintSumBranch {
 		super.preprocessing(vm, inst);
 		if (!interestedSimple.isEmpty()
 				&& !simpleBranches.contains(interestedSimple.peek())) {
-			Log.bb(TAG, "Rm CDTAINTBranch " + interestedSimple.pop());
+			Log.bb(TAG, "Rm Simple CDTAINTBranch " + interestedSimple.pop());
 		}
 
+		// At RestBegin, check if there exists unexplored block. If yes,
+		// stopping proceeding and restore to explore the unexplored blk.
 		if (!interestedBiDir.isEmpty()
-				&& interestedBiDir.peek().getRestBegin() == inst) {
-			Log.bb(TAG, "Rm CDTAINTBranch " + interestedBiDir.pop());
-		}
-
-		if (hasRestore && !interestedBiDir.contains(bidirBranches.peek())) {
-			interestedBiDir.add(bidirBranches.peek());
-			Log.bb(TAG, "Add CDTAINTBranch " + bidirBranches.peek());
+				&& interestedBiDir.peek().getRestBegin() == inst && !hasRestore) {
+			Log.bb(TAG, "Rm Bidir CDTAINTBranch " + interestedBiDir.pop());
 		}
 
 		hasRestore = false;
