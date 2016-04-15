@@ -1,7 +1,6 @@
 package fu.hao.trust.analysis;
 
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
@@ -162,10 +161,10 @@ public class TaintSumBranch extends Taint {
 		}
 
 		@Override
-		public List<Map<Object, Instruction>> flow(DalvikVM vm,
-				Instruction inst, List<Map<Object, Instruction>> ins) {
+		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
+				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
 			TAINT_OP_IF taintOp = new TAINT_OP_IF();
-			List<Map<Object, Instruction>> outs = taintOp.flow(vm, inst, ins);
+			Map<String, Map<Object, Instruction>> outs = taintOp.flow(vm, inst, ins);
 
 			Register r0 = null, r1 = null;
 			if (inst.r0 != -1) {
@@ -242,11 +241,11 @@ public class TaintSumBranch extends Taint {
 		 *      patdroid.dalvik.Instruction)
 		 */
 		@Override
-		public List<Map<Object, Instruction>> flow(DalvikVM vm,
-				Instruction inst, List<Map<Object, Instruction>> ins) {
+		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
+				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
 			// Backup the original value of over-written heap element
 			TAINT_OP_INSTANCE_PUT_FIELD taintOp = new TAINT_OP_INSTANCE_PUT_FIELD();
-			List<Map<Object, Instruction>> outs = taintOp.flow(vm, inst, ins);
+			Map<String, Map<Object, Instruction>> outs = taintOp.flow(vm, inst, ins);
 			
 			DVMObject obj = (DVMObject) vm.getReg(inst.r0).getData();
 			FieldInfo fieldInfo = (FieldInfo) inst.extra;
@@ -278,11 +277,11 @@ public class TaintSumBranch extends Taint {
 		 *      patdroid.dalvik.Instruction)
 		 */
 		@Override
-		public List<Map<Object, Instruction>> flow(DalvikVM vm,
-				Instruction inst, List<Map<Object, Instruction>> ins) {
+		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
+				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
 			// Backup the original value of over-written heap element
 			TAINT_OP_STATIC_PUT_FIELD taintOp = new TAINT_OP_STATIC_PUT_FIELD();
-			List<Map<Object, Instruction>> outs = taintOp.flow(vm, inst, ins);
+			Map<String, Map<Object, Instruction>> outs = taintOp.flow(vm, inst, ins);
 			
 			if (vm.getAssigned() != null) {
 				DVMClass clazz = (DVMClass) vm.getAssigned()[0];
@@ -357,7 +356,7 @@ public class TaintSumBranch extends Taint {
 	}
 
 	@Override
-	public List<Map<Object, Instruction>> runAnalysis(DalvikVM vm, Instruction inst, List<Map<Object, Instruction>> ins) {
+	public Map<String, Map<Object, Instruction>> runAnalysis(DalvikVM vm, Instruction inst, Map<String, Map<Object, Instruction>> ins) {
 		// Add conflict vars.
 		if (vm.getAssigned() != null && vm.getAssigned()[0] != vm.getReturnReg()) {
 			if (!simpleBranches.isEmpty()
