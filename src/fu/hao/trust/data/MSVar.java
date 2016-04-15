@@ -9,7 +9,7 @@ import java.util.Set;
  * @author: Hao Fu
  * @date: Apr 5, 2016 9:18:24 AM
  */
-public class MSVar {
+public class MSVar extends MultiValueVar {
 	Set<String> values;
 	
 	public MSVar() {

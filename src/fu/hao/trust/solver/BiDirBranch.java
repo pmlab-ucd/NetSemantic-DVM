@@ -21,7 +21,7 @@ public class BiDirBranch extends Branch {
 	
 	private VMState state;
 	VMFullState fullState;
-	// The start point of <rest>, in theory it should be the sum point.
+	// The start point of <rest>, in theory it should be the sum point. Currently only depAPI utilizes it.
 	private Instruction restBegin; 
 	/**
 	 * @fieldName: remove

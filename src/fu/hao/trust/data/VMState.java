@@ -20,7 +20,7 @@ public class VMState {
 	Map<DVMObject, Object[]> backObjFields;
 	Map<DVMClass, Object[]> backClassFields;
 	
-	Map<Plugin, Map<Object, Instruction>> pluginRes;
+	Map<Plugin, Map<String, Map<Object, Instruction>>> pluginRes;
 	
 	private final String TAG = getClass().getSimpleName();
 	

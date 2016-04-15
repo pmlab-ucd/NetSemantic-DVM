@@ -12,8 +12,14 @@ public class Test {
 		
 		args[0] = "C:/Users/hao/workspace/PJApps/app/app-release.apk";
 		args[1] = "fu.hao.pjapps.MainActivity";
-		args[2] = "testConn2";
-		args[3] = "Full"; //"ATaint";
+		//args[2] = "testConn2";
+		//args[3] = "Full"; //"ATaint";
+		
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/app-debug.apk";
+		args[1] = "de.ecspride.LoopExample1";
+		args[2] = "onCreate";
+		args[3] = "Taint";
+		Main.main(args);
 		
 		/*
 		args[0] = "C:/Users/hao/workspace/PJApps/app/663e8eb52c7b4a14e2873b1551748587018661b3.apk";

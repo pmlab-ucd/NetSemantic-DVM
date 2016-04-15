@@ -77,6 +77,7 @@ public class Branch {
 	public void addValue(Register var, Object val) {
 		// Set the original val before the branch
 		if (!conflicts.containsKey(var)) {
+			// The original value.
 			addVar(var);
 			conflicts.get(var)[0] = val;
 		} else {
@@ -88,11 +89,9 @@ public class Branch {
 	}
 	
 	public void valCombination() {
-		Log.bb(TAG, this + " begins value combination: ");
+		Log.bb(TAG, "Begins value combination:" + this);
+		Log.bb(TAG, conflicts);
 		for (Register var : conflicts.keySet()) {
-			if (sumPoint.opcode == Instruction.OP_RETURN && var.getIndex() != -1) {
-				continue;
-			}
 			Log.bb(TAG, "Value combination for var " + var);
 			Object currtVal = null;
 			for (Object val : conflicts.get(var)) {

@@ -1974,6 +1974,10 @@ public class Interpreter {
 
 			vm.pluginManager.setMethod(method);
 			jump(vm, inst, true);
+		} catch (java.lang.InstantiationException e) { 
+			vm.getReg(args[0]).setData(new Unknown(mi.myClass));
+			Log.warn(TAG, "Symbolic new instance created.");
+			jump(vm, inst, true);
 		} catch (java.lang.IllegalArgumentException e) {
 			e.printStackTrace();
 			jump(vm, inst, true);

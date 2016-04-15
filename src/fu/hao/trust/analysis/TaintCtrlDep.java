@@ -1,5 +1,6 @@
 package fu.hao.trust.analysis;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
@@ -39,12 +40,13 @@ public class TaintCtrlDep extends TaintSumBranch {
 		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
 		 *      patdroid.dalvik.Instruction)
 		 */
-		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst,
-				Map<Object, Instruction> in) {
+		@Override
+		public List<Map<Object, Instruction>> flow(DalvikVM vm,
+				Instruction inst, List<Map<Object, Instruction>> ins) {
 			Branch branch = null;
 
 			ATAINT_OP_CMP taintOp = new ATAINT_OP_CMP();
-			Map<Object, Instruction> out = taintOp.flow(vm, inst, in);
+			List<Map<Object, Instruction>> out = taintOp.flow(vm, inst, ins);
 
 			if (!simpleBranches.isEmpty()
 					&& simpleBranches.peek().getInstructions().contains(inst)) {
@@ -81,14 +83,14 @@ public class TaintCtrlDep extends TaintSumBranch {
 				}
 			}
 
-			return out;
+			return outs;
 		}
 	}
 
 	@Override
-	public Map<Object, Instruction> runAnalysis(DalvikVM vm, Instruction inst,
-			Map<Object, Instruction> in) {
-		Map<Object, Instruction> out = super.runAnalysis(vm, inst, in);
+	public List<Map<Object, Instruction>> flow(DalvikVM vm,
+			Instruction inst, List<Map<Object, Instruction>> ins) {
+		List<Map<Object, Instruction>> outs = super.runAnalysis(vm, inst, ins);
 
 		if (vm.getAssigned() != null) {
 			Object[] assigned = vm.getAssigned();
@@ -112,7 +114,7 @@ public class TaintCtrlDep extends TaintSumBranch {
 			}
 		}
 
-		return out;
+		return outs;
 	}
 
 	@Override

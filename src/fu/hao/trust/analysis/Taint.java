@@ -52,27 +52,36 @@ public class Taint extends Plugin {
 		 *      java.util.Set)
 		 */
 		@Override
-		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
+		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
+				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
 			// TODO array
-			Map<Object, Instruction> out = new HashMap<>(in);
-			if (in.containsKey(vm.getReg(inst.r0)) || in.containsKey(vm.getReg(inst.r0).getData())) {
-				out.put(vm.getReg(inst.rdst), in.get(vm.getReg(inst.r0)));
-				out.put(vm.getReg(inst.rdst).getData(), in.get(vm.getReg(inst.r0)));
-			} else {
-				if (out.containsKey(vm.getReg(inst.rdst))) {
-					out.remove(vm.getReg(inst.rdst));
+			Map<String, Map<Object, Instruction>> outs = new HashMap<>();
+			for (String tag : ins.keySet()) {
+				Map<Object, Instruction> in = ins.get(tag);
+				Map<Object, Instruction> out = new HashMap<>(in);
+				if (in.containsKey(vm.getReg(inst.r0))
+						|| in.containsKey(vm.getReg(inst.r0).getData())) {
+					out.put(vm.getReg(inst.rdst), in.get(vm.getReg(inst.r0)));
+					out.put(vm.getReg(inst.rdst).getData(),
+							in.get(vm.getReg(inst.r0)));
+				} else {
+					if (out.containsKey(vm.getReg(inst.rdst))) {
+						out.remove(vm.getReg(inst.rdst));
+					}
+					if (in.containsKey(vm.getReturnReg())) {
+						out.remove(vm.getReturnReg());
+					}
 				}
-				if (in.containsKey(vm.getReturnReg())) {
-					out.remove(vm.getReturnReg());
-				}
+				outs.put(tag, out);
 			}
 
-			return out;
+			return outs;
 		}
 	}
 
 	class TAINT_OP_MOV_CONST implements Rule {
 		final String TAG = getClass().getSimpleName();
+
 		/**
 		 * @Title: flow
 		 * @Description: x = y
@@ -83,49 +92,69 @@ public class Taint extends Plugin {
 		 *      java.util.Set)
 		 */
 		@Override
-		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
-			Map<Object, Instruction> out = new HashMap<>(in);
-			
-			if (out.containsKey(vm.getReg(inst.rdst))) {
-				out.remove(vm.getReg(inst.rdst));
+		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
+				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
+			Map<String, Map<Object, Instruction>> outs = new HashMap<>();
+			for (String tag : ins.keySet()) {
+				Map<Object, Instruction> in = ins.get(tag);
+				Map<Object, Instruction> out = new HashMap<>(in);
+				if (out.containsKey(vm.getReg(inst.rdst))) {
+					out.remove(vm.getReg(inst.rdst));
+				}
+				outs.put(tag, out);
 			}
-			
-			return out;
+
+			return outs;
 		}
 	}
 
 	class TAINT_OP_SP_ARGUMENTS implements Rule {
+
+		final String TAG = getClass().getSimpleName();
+
 		@Override
-		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
+		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
+				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
 			int[] params = (int[]) inst.extra;
 			Register[] callingCtx = vm.getContext();
-			Map<Object, Instruction> out = new HashMap<>();
-			final String TAG = getClass().toString();
+			Map<String, Map<Object, Instruction>> outs = new HashMap<>();
 
-			for (Object res : in.keySet()) {
-				// Copy non-reg objs
-				if (res instanceof Register) {
-					continue;
+			for (String tag : ins.keySet()) {
+				Map<Object, Instruction> in = ins.get(tag);
+				Map<Object, Instruction> out = new HashMap<>(in);
+				for (Object res : in.keySet()) {
+					// Copy non-reg objs
+					if (res instanceof Register) {
+						continue;
+					}
+					out.put(res, in.get(res));
+					Log.bb(TAG, "Copy " + res + " as tainted.");
 				}
-				out.put(res, in.get(res));
-				Log.bb(TAG, "Copy " + res + " as tainted.");
-			}
 
-			if (callingCtx != null) {
-				for (int i = 0; i < callingCtx.length; i++) {
-					if (in.containsKey(callingCtx[i])) {
-						out.put(vm.getReg(params[i]), in.get(callingCtx[i]));
-						out.put(callingCtx[i].getData(), in.get(callingCtx[i]));
-						Log.bb(TAG, "Add " + vm.getReg(params[i]) + "as tainted due to " + callingCtx[i]);
-					} else if (in.containsKey(callingCtx[i].getData())) {
-						out.put(vm.getReg(params[i]), in.get(callingCtx[i].getData()));
-						out.put(callingCtx[i].getData(), in.get(callingCtx[i].getData()));
-						Log.bb(TAG, "Add " + vm.getReg(params[i]) + "as tainted due to " + callingCtx[i].getData());
+				if (callingCtx != null) {
+					for (int i = 0; i < callingCtx.length; i++) {
+						if (in.containsKey(callingCtx[i])) {
+							out.put(vm.getReg(params[i]), in.get(callingCtx[i]));
+							out.put(callingCtx[i].getData(),
+									in.get(callingCtx[i]));
+							Log.bb(TAG, "Add " + vm.getReg(params[i])
+									+ "as tainted due to " + callingCtx[i]);
+						} else if (in.containsKey(callingCtx[i].getData())) {
+							out.put(vm.getReg(params[i]),
+									in.get(callingCtx[i].getData()));
+							out.put(callingCtx[i].getData(),
+									in.get(callingCtx[i].getData()));
+							Log.bb(TAG,
+									"Add " + vm.getReg(params[i])
+											+ "as tainted due to "
+											+ callingCtx[i].getData());
+						}
 					}
 				}
+				outs.put(tag, out);
 			}
 
-			return out;
+			return outs;
 		}
 	}
 
@@ -139,16 +168,24 @@ public class Taint extends Plugin {
 		 *      patdroid.dalvik.Instruction)
 		 */
 		@Override
-		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
-			Map<Object, Instruction> out = new HashMap<>(in);
-			final String TAG = getClass().toString();
-			Log.bb(TAG, "Rdst " + vm.getReg(inst.rdst));
-			
-			if (out.containsKey(vm.getReg(inst.rdst))) {
-				out.remove(vm.getReg(inst.rdst));
-				Log.bb(TAG, "Rm " + vm.getReg(inst.rdst));
+		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
+				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
+			Map<String, Map<Object, Instruction>> outs = new HashMap<>();
+
+			for (String tag : ins.keySet()) {
+				Map<Object, Instruction> in = ins.get(tag);
+				Map<Object, Instruction> out = new HashMap<>(in);
+				final String TAG = getClass().toString();
+				Log.bb(TAG, "Rdst " + vm.getReg(inst.rdst));
+
+				if (out.containsKey(vm.getReg(inst.rdst))) {
+					out.remove(vm.getReg(inst.rdst));
+					Log.bb(TAG, "Rm " + vm.getReg(inst.rdst));
+				}
+
+				outs.put(tag, out);
 			}
-			return out;
+			return outs;
 		}
 	}
 
@@ -164,9 +201,11 @@ public class Taint extends Plugin {
 		 *      patdroid.dalvik.Instruction)
 		 */
 		@Override
-		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
-			Map<Object, Instruction> out = new HashMap<>(in);
-			return out;
+		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
+				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
+			Map<String, Map<Object, Instruction>> outs = new HashMap<>(ins);
+
+			return outs;
 		}
 	}
 
@@ -183,127 +222,147 @@ public class Taint extends Plugin {
 		 *      patdroid.dalvik.Instruction)
 		 */
 		@Override
-		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
+		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
+				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
+			Map<String, Map<Object, Instruction>> outs = new HashMap<>();
 			// TODO Auto-generated method stub
-			Map<Object, Instruction> out = new HashMap<>(in);
-			return out;
+
+			return outs;
 		}
 	}
 
 	class TAINT_OP_INVOKE implements Rule {
+		final String TAG = getClass().toString();
+
 		@Override
-		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
+		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
+				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
 			isSrc = false;
 			Object[] extra = (Object[]) inst.extra;
 			MethodInfo mi = (MethodInfo) extra[0];
 			// The register index referred by args
 			int[] args = (int[]) extra[1];
 
-			Map<Object, Instruction> out = new HashMap<>(in);
-			final String TAG = getClass().toString();
-			if (mi.isConstructor()) {
-				// FIXME
-				/*
-				if (sources.contains(sootSignature)) {
-					Log.warn(TAG, "Found a src!");
-					out.add(vm.getReg(args[0]));
-					out.add(vm.getReg(args[0]).getData());
-				} else {
-					Log.debug(TAG, "Not a src. " + signature);
-					if (out.contains(vm.getReg(args[0]))) {
-						out.remove(vm.getReg(args[0]));
-					}
-				}*/
+			Map<String, Map<Object, Instruction>> outs = new HashMap<>();
 
-				if (!mi.isStatic()) {
-					for (int i = 1; i < args.length; i++) {
-						if (in.containsKey(vm.getReg(args[i]))) {
-							Log.warn(TAG, "Found a tainted init instance!");
-							out.put(vm.getReg(args[0]), in.get(vm.getReg(args[i])));
-							out.put(vm.getReg(args[0]).getData(), in.get(vm.getReg(args[i])));
-							break;
-						} else if (in.containsKey(vm.getReg(args[i]).getData())) {
-							Log.warn(TAG, "Found a tainted init instance!");
-							out.put(vm.getReg(args[0]), in.get(vm.getReg(args[i]).getData()));
-							out.put(vm.getReg(args[0]).getData(), in.get(vm.getReg(args[i]).getData()));
-							break;
+			for (String tag : ins.keySet()) {
+				Map<Object, Instruction> in = ins.get(tag);
+				Map<Object, Instruction> out = new HashMap<>(in);
+				if (mi.isConstructor()) {
+					if (!mi.isStatic()) {
+						// FIXME
+						/*
+						 * if (sources.contains(sootSignature)) { Log.warn(TAG,
+						 * "Found a src!"); out.add(vm.getReg(args[0]));
+						 * out.add(vm.getReg(args[0]).getData()); } else {
+						 * Log.debug(TAG, "Not a src. " + signature); if
+						 * (out.contains(vm.getReg(args[0]))) {
+						 * out.remove(vm.getReg(args[0])); } }
+						 */
+						for (int i = 1; i < args.length; i++) {
+							if (in.containsKey(vm.getReg(args[i]))) {
+								Log.warn(TAG, "Found a tainted init instance!");
+								out.put(vm.getReg(args[0]),
+										in.get(vm.getReg(args[i])));
+								out.put(vm.getReg(args[0]).getData(),
+										in.get(vm.getReg(args[i])));
+								break;
+							} else if (in.containsKey(vm.getReg(args[i])
+									.getData())) {
+								Log.warn(TAG, "Found a tainted init instance!");
+								out.put(vm.getReg(args[0]),
+										in.get(vm.getReg(args[i]).getData()));
+								out.put(vm.getReg(args[0]).getData(),
+										in.get(vm.getReg(args[i]).getData()));
+								break;
+							}
 						}
 					}
-				}
+				} else {
+					// Must be a reflection call;
+					if (getMethod() != null) {
+						StringBuilder signature = new StringBuilder("<");
+						signature.append(mi.myClass);
+						signature.append(": ");
+						signature.append(mi.returnType + " ");
+						signature.append(mi.name + "(");
+						for (int i = 0; i < mi.paramTypes.length - 1; i++) {
+							ClassInfo paramType = mi.paramTypes[i];
+							signature.append(paramType + ",");
+						}
+						if (mi.paramTypes.length > 0) {
+							signature
+									.append(mi.paramTypes[mi.paramTypes.length - 1]);
+						}
+						signature.append(")>");
+						String sootSignature = signature.toString();
 
-				return out;
-			}
+						Log.bb(TAG, sootSignature);
 
-			// Must be a reflection call;
-			if (getMethod() == null) {
-				return out;
-			}
+						if (sinks.contains(sootSignature)) {
+							Log.bb(TAG, "Found a sink invocation. "
+									+ sootSignature);
+							for (int i = 0; i < args.length; i++) {
+								if (in.containsKey(vm.getReg(args[i]))
+										|| in.containsKey(vm.getReg(args[i])
+												.getData())) {
+									Log.warn(TAG, "Found a taint sink "
+											+ sootSignature + " leaking data ["
+											+ vm.getReg(args[i]).getData()
+											+ "] at reg " + args[i] + "!!!");
+									Map<String, String> res = new HashMap<>();
+									res.put(sootSignature, vm.getReg(args[i])
+											.getData().toString());
+									Results.results.add(res);
+								}
+							}
+						} else {
+							// Decide whether add return value.
+							if (sources.contains(sootSignature)) {
+								Log.warn(TAG, "Found a tainted return value!");
+								out.put(vm.getReturnReg(), inst);
+								out.put(vm.getReturnReg().getData(), inst);
+								isSrc = true;
+							} else {
+								Log.debug(TAG, "not a taint call: " + signature);
+							}
 
-			StringBuilder signature = new StringBuilder("<");
-			signature.append(mi.myClass);
-			signature.append(": ");
-			signature.append(mi.returnType + " ");
-			signature.append(mi.name + "(");
-			for (int i = 0; i < mi.paramTypes.length - 1; i++) {
-				ClassInfo paramType = mi.paramTypes[i];
-				signature.append(paramType + ",");
-			}
-			if (mi.paramTypes.length > 0) {
-				signature.append(mi.paramTypes[mi.paramTypes.length - 1]);
-			}
-			signature.append(")>");
-			String sootSignature = signature.toString();
-			
-			Log.bb(TAG, sootSignature);
+							if (vm.getReturnReg().getData() != null
+									|| vm.getReturnReg().getType() != null) {
+								for (int i = 0; i < args.length; i++) {
+									if (in.containsKey(vm.getReg(args[i]))) {
+										Log.warn(TAG,
+												"Found a tainted return val!");
+										out.put(vm.getReturnReg(),
+												in.get(vm.getReg(args[i])));
+										out.put(vm.getReturnReg().getData(),
+												in.get(vm.getReg(args[i])));
+										break;
+									} else if (in.containsKey(vm
+											.getReg(args[i]).getData())) {
+										Log.warn(TAG,
+												"Found a tainted return val!");
+										out.put(vm.getReturnReg(), in.get(vm
+												.getReg(args[i]).getData()));
+										out.put(vm.getReturnReg().getData(), in
+												.get(vm.getReg(args[i])
+														.getData()));
+										break;
+									}
+								}
+							}
+							if (in.size() == out.size()
+									&& in.containsKey(vm.getReturnReg())) {
+								out.remove(vm.getReturnReg());
+							}
+						}
 
-			if (sinks.contains(sootSignature)) {
-				Log.bb(TAG, "Found a sink invocation. " + sootSignature);
-				for (int i = 0; i < args.length; i++) {
-					if (in.containsKey(vm.getReg(args[i])) || in.containsKey(vm.getReg(args[i]).getData())) {
-						Log.warn(TAG, "Found a taint sink " + sootSignature
-								+ " leaking data ["
-								+ vm.getReg(args[i]).getData() + "] at reg " + args[i] + "!!!");
-						Map<String, String> res = new HashMap<>();
-						res.put(sootSignature, vm.getReg(args[i]).getData()
-								.toString());
-						Results.results.add(res);
 					}
 				}
-
-				return out;
+				outs.put(tag, out);
 			}
+			return outs;
 
-			// Decide whether add return value.
-			if (sources.contains(sootSignature)) {
-				Log.warn(TAG, "Found a tainted return value!");
-				out.put(vm.getReturnReg(), inst);
-				out.put(vm.getReturnReg().getData(), inst);
-				isSrc = true;
-			} else {
-				Log.debug(TAG, "not a taint call: " + signature);
-			}
-
-			if (vm.getReturnReg().getData() != null || vm.getReturnReg().getType() != null) {
-				for (int i = 0; i < args.length; i++) {
-					if (in.containsKey(vm.getReg(args[i]))) {
-						Log.warn(TAG, "Found a tainted return val!");
-						out.put(vm.getReturnReg(), in.get(vm.getReg(args[i])));
-						out.put(vm.getReturnReg().getData(), in.get(vm.getReg(args[i])));
-						break;
-					} else if (in.containsKey(vm.getReg(args[i]).getData())) {
-						Log.warn(TAG, "Found a tainted return val!");
-						out.put(vm.getReturnReg(), in.get(vm.getReg(args[i]).getData()));
-						out.put(vm.getReturnReg().getData(), in.get(vm.getReg(args[i]).getData()));
-						break;
-					}
-				}
-			}
-			
-			if (in.size() == out.size() && in.containsKey(vm.getReturnReg())) {
-				out.remove(vm.getReturnReg());
-			}
-
-			return out;
 		}
 	}
 
@@ -320,10 +379,11 @@ public class Taint extends Plugin {
 		 *      patdroid.dalvik.Instruction)
 		 */
 		@Override
-		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
+		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
+				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
+			Map<String, Map<Object, Instruction>> outs = new HashMap<>(ins);
 			// TODO
-			Map<Object, Instruction> out = new HashMap<>(in);
-			return out;
+			return outs;
 		}
 	}
 
@@ -339,10 +399,11 @@ public class Taint extends Plugin {
 		 *      patdroid.dalvik.Instruction)
 		 */
 		@Override
-		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
+		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
+				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
+			Map<String, Map<Object, Instruction>> outs = new HashMap<>(ins);
 			// TODO
-			Map<Object, Instruction> out = new HashMap<>(in);
-			return out;
+			return outs;
 		}
 	}
 
@@ -358,16 +419,17 @@ public class Taint extends Plugin {
 		 *      patdroid.dalvik.Instruction)
 		 */
 		@Override
-		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
+		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
+				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
+			Map<String, Map<Object, Instruction>> outs = new HashMap<>(ins);
 			// TODO long-to-int
-			Map<Object, Instruction> out = new HashMap<>(in);
-			return out;
+			return outs;
 		}
 	}
 
 	class TAINT_OP_MOV_RESULT implements Rule {
 		final String TAG = getClass().getSimpleName();
-		
+
 		/**
 		 * @Title: func
 		 * @Description: move-result v0 Move the return value of a previous
@@ -378,60 +440,83 @@ public class Taint extends Plugin {
 		 *      patdroid.dalvik.Instruction)
 		 */
 		@Override
-		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
-			Map<Object, Instruction> out = new HashMap<>(in);
-			if (in.containsKey(vm.getReturnReg())) {
-				out.put(vm.getReg(inst.rdst), in.get(vm.getReturnReg()));
-				out.put(vm.getReg(inst.rdst).getData(), in.get(vm.getReturnReg()));
-				Log.bb(TAG, "set " + in);
-				Log.bb(TAG, "Add reg " + inst.rdst + " due to ret reg.");
-			} else if (in.containsKey(vm.getReturnReg().getData())) {
-				out.put(vm.getReg(inst.rdst), in.get(vm.getReturnReg().getData()));
-				out.put(vm.getReg(inst.rdst).getData(), in.get(vm.getReturnReg().getData()));
-				Log.bb(TAG, "Add reg " + inst.rdst + " due to ret data.");
-			} else {
-				if (in.containsKey(vm.getReg(inst.rdst))) {
-					out.remove(vm.getReg(inst.rdst));
-					Log.bb(TAG, "Rm reg " + inst.rdst);
+		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
+				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
+			Map<String, Map<Object, Instruction>> outs = new HashMap<>();
+			for (String tag : ins.keySet()) {
+				Map<Object, Instruction> in = ins.get(tag);
+				Map<Object, Instruction> out = new HashMap<>(in);
+				if (in.containsKey(vm.getReturnReg())) {
+					out.put(vm.getReg(inst.rdst), in.get(vm.getReturnReg()));
+					out.put(vm.getReg(inst.rdst).getData(),
+							in.get(vm.getReturnReg()));
+					Log.bb(TAG, "set " + in);
+					Log.bb(TAG, "Add reg " + inst.rdst + " due to ret reg.");
+				} else if (in.containsKey(vm.getReturnReg().getData())) {
+					out.put(vm.getReg(inst.rdst),
+							in.get(vm.getReturnReg().getData()));
+					out.put(vm.getReg(inst.rdst).getData(),
+							in.get(vm.getReturnReg().getData()));
+					Log.bb(TAG, "Add reg " + inst.rdst + " due to ret data.");
+				} else {
+					if (in.containsKey(vm.getReg(inst.rdst))) {
+						out.remove(vm.getReg(inst.rdst));
+						Log.bb(TAG, "Rm reg " + inst.rdst);
+					}
 				}
+
+				if (in.containsKey(vm.getReturnReg())) {
+					out.remove(vm.getReturnReg());
+				}
+				outs.put(tag, out);
 			}
-			
-			if (in.containsKey(vm.getReturnReg())) {
-				out.remove(vm.getReturnReg());
-			}
-			return out;
+			return outs;
 		}
 	}
 
 	class TAINT_OP_MOV_EXCEPTION implements Rule {
 		@Override
-		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
-			// TODO Auto-generated method stub
-			Map<Object, Instruction> out = new HashMap<>(in);
-			if (in.containsKey(vm.getCurrStackFrame().getExceptReg())) {
-				out.put(vm.getReg(inst.rdst), in.get(vm.getCurrStackFrame().getExceptReg()));
-			} else {
+		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
+				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
+			Map<String, Map<Object, Instruction>> outs = new HashMap<>();
+			for (String tag : ins.keySet()) {
+				Map<Object, Instruction> in = ins.get(tag);
+				// TODO Auto-generated method stub
+				Map<Object, Instruction> out = new HashMap<>(in);
 				if (in.containsKey(vm.getCurrStackFrame().getExceptReg())) {
-					out.remove(vm.getCurrStackFrame().getExceptReg());
+					out.put(vm.getReg(inst.rdst),
+							in.get(vm.getCurrStackFrame().getExceptReg()));
+				} else {
+					if (in.containsKey(vm.getCurrStackFrame().getExceptReg())) {
+						out.remove(vm.getCurrStackFrame().getExceptReg());
+					}
 				}
+				outs.put(tag, out);
 			}
-			return out;
+			return outs;
 		}
 	}
-	
+
 	class TAINT_OP_EXCEPTION_THROW implements Rule {
 		@Override
-		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
-			// TODO Auto-generated method stub
-			Map<Object, Instruction> out = new HashMap<>(in);
-			if (in.containsKey(vm.getReg(inst.r0))) {
-				out.put(vm.getCurrStackFrame().getExceptReg(), in.get(vm.getReg(inst.r0)));
-			} else {
-				if (in.containsKey(vm.getCurrStackFrame().getExceptReg())) {
-					out.remove(vm.getCurrStackFrame().getExceptReg());
+		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
+				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
+			Map<String, Map<Object, Instruction>> outs = new HashMap<>();
+			for (String tag : ins.keySet()) {
+				Map<Object, Instruction> in = ins.get(tag);
+				// TODO Auto-generated method stub
+				Map<Object, Instruction> out = new HashMap<>(in);
+				if (in.containsKey(vm.getReg(inst.r0))) {
+					out.put(vm.getCurrStackFrame().getExceptReg(),
+							in.get(vm.getReg(inst.r0)));
+				} else {
+					if (in.containsKey(vm.getCurrStackFrame().getExceptReg())) {
+						out.remove(vm.getCurrStackFrame().getExceptReg());
+					}
 				}
+				outs.put(tag, out);
 			}
-			return out;
+			return outs;
 		}
 	}
 
@@ -446,17 +531,24 @@ public class Taint extends Plugin {
 		 *      patdroid.dalvik.Instruction)
 		 */
 		@Override
-		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
-			Map<Object, Instruction> out = new HashMap<>(in);
-			if (in.containsKey(vm.getReg(inst.r0))) {
-				out.put(vm.getReg(inst.rdst), in.get(vm.getReg(inst.r0)));
-				out.put(vm.getReg(inst.rdst).getData(), in.get(vm.getReg(inst.r0)));
-			} else {
-				if (in.containsKey(vm.getReg(inst.rdst))) {
-					out.remove(vm.getReg(inst.rdst));
+		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
+				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
+			Map<String, Map<Object, Instruction>> outs = new HashMap<>();
+			for (String tag : ins.keySet()) {
+				Map<Object, Instruction> in = ins.get(tag);
+				Map<Object, Instruction> out = new HashMap<>(in);
+				if (in.containsKey(vm.getReg(inst.r0))) {
+					out.put(vm.getReg(inst.rdst), in.get(vm.getReg(inst.r0)));
+					out.put(vm.getReg(inst.rdst).getData(),
+							in.get(vm.getReg(inst.r0)));
+				} else {
+					if (in.containsKey(vm.getReg(inst.rdst))) {
+						out.remove(vm.getReg(inst.rdst));
+					}
 				}
+				outs.put(tag, out);
 			}
-			return out;
+			return outs;
 		}
 	}
 
@@ -469,29 +561,42 @@ public class Taint extends Plugin {
 		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
 		 *      patdroid.dalvik.Instruction)
 		 */
-		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
-			Map<Object, Instruction> out = new HashMap<>(in);
-			if (in.containsKey(vm.getReg(inst.r0))) {
-				out.put(vm.getReg(inst.rdst), in.get(vm.getReg(inst.r0)));
-				out.put(vm.getReg(inst.rdst).getData(), in.get(vm.getReg(inst.r0)));
-			} else if (in.containsKey(vm.getReg(inst.r0).getData())) {
-				out.put(vm.getReg(inst.rdst), in.get(vm.getReg(inst.r0).getData()));
-				out.put(vm.getReg(inst.rdst).getData(), in.get(vm.getReg(inst.r0).getData()));
-			} else {
-				if (inst.r1 != -1 && (in.containsKey(vm.getReg(inst.r1)) )) {
-					out.put(vm.getReg(inst.rdst), in.get(vm.getReg(inst.r1)));
-					out.put(vm.getReg(inst.rdst).getData(), in.get(vm.getReg(inst.r1)));
-				} else if (in.containsKey(vm.getReg(inst.r1).getData())) {
-					out.put(vm.getReg(inst.rdst), in.get(vm.getReg(inst.r1).getData()));
-					out.put(vm.getReg(inst.rdst).getData(), in.get(vm.getReg(inst.r1).getData()));
-				} else {				
-					if (in.containsKey(vm.getReg(inst.rdst))) {
-						out.remove(vm.getReg(inst.rdst));
+		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
+				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
+			Map<String, Map<Object, Instruction>> outs = new HashMap<>();
+			for (String tag : ins.keySet()) {
+				Map<Object, Instruction> in = ins.get(tag);
+				Map<Object, Instruction> out = new HashMap<>(in);
+				if (in.containsKey(vm.getReg(inst.r0))) {
+					out.put(vm.getReg(inst.rdst), in.get(vm.getReg(inst.r0)));
+					out.put(vm.getReg(inst.rdst).getData(),
+							in.get(vm.getReg(inst.r0)));
+				} else if (in.containsKey(vm.getReg(inst.r0).getData())) {
+					out.put(vm.getReg(inst.rdst),
+							in.get(vm.getReg(inst.r0).getData()));
+					out.put(vm.getReg(inst.rdst).getData(),
+							in.get(vm.getReg(inst.r0).getData()));
+				} else {
+					if (inst.r1 != -1 && (in.containsKey(vm.getReg(inst.r1)))) {
+						out.put(vm.getReg(inst.rdst),
+								in.get(vm.getReg(inst.r1)));
+						out.put(vm.getReg(inst.rdst).getData(),
+								in.get(vm.getReg(inst.r1)));
+					} else if (in.containsKey(vm.getReg(inst.r1).getData())) {
+						out.put(vm.getReg(inst.rdst),
+								in.get(vm.getReg(inst.r1).getData()));
+						out.put(vm.getReg(inst.rdst).getData(),
+								in.get(vm.getReg(inst.r1).getData()));
+					} else {
+						if (in.containsKey(vm.getReg(inst.rdst))) {
+							out.remove(vm.getReg(inst.rdst));
+						}
 					}
 				}
+				outs.put(tag, out);
 			}
 
-			return out;
+			return outs;
 		}
 	}
 
@@ -504,19 +609,28 @@ public class Taint extends Plugin {
 		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
 		 *      patdroid.dalvik.Instruction)
 		 */
-		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
-			Map<Object, Instruction> out = new HashMap<>(in);
-			if (inst.r0 != -1 && inst.r1 != -1 && (in.containsKey(vm.getReg(inst.r0)) )) {
-				out.put(vm.getReg(inst.r1), in.get(vm.getReg(inst.r0)));
-				out.put(vm.getReg(inst.r1).getData(), in.get(vm.getReg(inst.r0)));
-			}
+		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
+				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
+			Map<String, Map<Object, Instruction>> outs = new HashMap<>();
+			for (String tag : ins.keySet()) {
+				Map<Object, Instruction> in = ins.get(tag);
+				Map<Object, Instruction> out = new HashMap<>(in);
+				if (inst.r0 != -1 && inst.r1 != -1
+						&& (in.containsKey(vm.getReg(inst.r0)))) {
+					out.put(vm.getReg(inst.r1), in.get(vm.getReg(inst.r0)));
+					out.put(vm.getReg(inst.r1).getData(),
+							in.get(vm.getReg(inst.r0)));
+				}
 
-			if (inst.r1 != -1 && (in.containsKey(vm.getReg(inst.r1)))) {
-				out.put(vm.getReg(inst.r0), in.get(vm.getReg(inst.r1).getData()));
-				out.put(vm.getReg(inst.r0).getData(), in.get(vm.getReg(inst.r1).getData()));
+				if (inst.r1 != -1 && (in.containsKey(vm.getReg(inst.r1)))) {
+					out.put(vm.getReg(inst.r0),
+							in.get(vm.getReg(inst.r1).getData()));
+					out.put(vm.getReg(inst.r0).getData(),
+							in.get(vm.getReg(inst.r1).getData()));
+				}
+				outs.put(tag, out);
 			}
-
-			return out;
+			return outs;
 		}
 	}
 
@@ -532,38 +646,48 @@ public class Taint extends Plugin {
 		 *      patdroid.dalvik.Instruction)
 		 */
 		@Override
-		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
-			Map<Object, Instruction> out = new HashMap<>(in);
-			// array reg
-			// Object[] array = (Object[]) vm.getReg(inst.r0).getData();
-			Object array = vm.getReg(inst.r0).getData();
-			// index reg
-			PrimitiveInfo pindex;
-			if (vm.getReg(inst.r1).getData() instanceof SymbolicVar) {
-				if (((SymbolicVar) vm.getReg(inst.r1).getData()).getValue() instanceof PrimitiveInfo) {
-					pindex = (PrimitiveInfo) ((SymbolicVar) vm.getReg(inst.r1).getData()).getValue();
+		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
+				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
+			Map<String, Map<Object, Instruction>> outs = new HashMap<>();
+			for (String tag : ins.keySet()) {
+				Map<Object, Instruction> in = ins.get(tag);
+				Map<Object, Instruction> out = new HashMap<>(in);
+				// array reg
+				// Object[] array = (Object[]) vm.getReg(inst.r0).getData();
+				Object array = vm.getReg(inst.r0).getData();
+				// index reg
+				PrimitiveInfo pindex;
+				if (vm.getReg(inst.r1).getData() instanceof SymbolicVar) {
+					if (((SymbolicVar) vm.getReg(inst.r1).getData()).getValue() instanceof PrimitiveInfo) {
+						pindex = (PrimitiveInfo) ((SymbolicVar) vm.getReg(
+								inst.r1).getData()).getValue();
+					} else {
+						Log.warn(TAG, "Array get error! index is not a int.");
+						return outs;
+					}
 				} else {
-					Log.warn(TAG, "Array get error! index is not a int.");
-					return out;
+					if (vm.getReg(inst.r1).getData() instanceof PrimitiveInfo) {
+						pindex = (PrimitiveInfo) vm.getReg(inst.r1).getData();
+					} else {
+						Log.warn(TAG, "Wrong type: "
+								+ vm.getReg(inst.r1).getData());
+						pindex = new PrimitiveInfo(0);
+					}
 				}
-			} else {
-				if (vm.getReg(inst.r1).getData() instanceof PrimitiveInfo) {
-					pindex = (PrimitiveInfo) vm.getReg(inst.r1).getData();
-				} else {
-					Log.warn(TAG, "Wrong type: " + vm.getReg(inst.r1).getData());
-					pindex = new PrimitiveInfo(0);
+
+				int index = pindex.intValue();
+				if (in.containsKey(array)) {
+					out.put(vm.getReg(inst.rdst), in.get(array));
+					out.put(vm.getReg(inst.rdst).getData(), in.get(array));
+				} else if (in.containsKey(Array.get(array, index))) {
+					out.put(vm.getReg(inst.rdst),
+							in.get(Array.get(array, index)));
+					out.put(vm.getReg(inst.rdst).getData(),
+							in.get(Array.get(array, index)));
 				}
+				outs.put(tag, out);
 			}
-			
-			int index = pindex.intValue();
-			if (in.containsKey(array)) {
-				out.put(vm.getReg(inst.rdst), in.get(array));
-				out.put(vm.getReg(inst.rdst).getData(), in.get(array));
-			} else if (in.containsKey(Array.get(array, index))) {
-				out.put(vm.getReg(inst.rdst), in.get(Array.get(array, index)));
-				out.put(vm.getReg(inst.rdst).getData(), in.get(Array.get(array, index)));
-			}
-			return out;
+			return outs;
 		}
 	}
 
@@ -579,30 +703,36 @@ public class Taint extends Plugin {
 		 *      patdroid.dalvik.Instruction)
 		 */
 		@Override
-		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
+		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
+				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
+			Map<String, Map<Object, Instruction>> outs = new HashMap<>();
+
 			// TODO taint all?
 			// dest reg
 			Register rdst = vm.getReg(inst.rdst);
-
-			Map<Object, Instruction> out = new HashMap<>(in);
-			if (in.containsKey(rdst)) {
-				// array reg
-				Object[] array = (Object[]) vm.getReg(inst.r0).getData();
-				// index reg
-				int index = ((PrimitiveInfo) vm.getReg(inst.r1).getData())
-						.intValue();
-				out.put(array[index], in.get(rdst));
-				out.put(array[index], in.get(rdst));
-			} else if (in.containsKey(rdst.getData())) {
-				// array reg
-				Object[] array = (Object[]) vm.getReg(inst.r0).getData();
-				// index reg
-				int index = ((PrimitiveInfo) vm.getReg(inst.r1).getData())
-						.intValue();
-				out.put(array[index], in.get(rdst.getData()));
-				out.put(array[index], in.get(rdst.getData()));
+			for (String tag : ins.keySet()) {
+				Map<Object, Instruction> in = ins.get(tag);
+				Map<Object, Instruction> out = new HashMap<>(in);
+				if (in.containsKey(rdst)) {
+					// array reg
+					Object[] array = (Object[]) vm.getReg(inst.r0).getData();
+					// index reg
+					int index = ((PrimitiveInfo) vm.getReg(inst.r1).getData())
+							.intValue();
+					out.put(array[index], in.get(rdst));
+					out.put(array[index], in.get(rdst));
+				} else if (in.containsKey(rdst.getData())) {
+					// array reg
+					Object[] array = (Object[]) vm.getReg(inst.r0).getData();
+					// index reg
+					int index = ((PrimitiveInfo) vm.getReg(inst.r1).getData())
+							.intValue();
+					out.put(array[index], in.get(rdst.getData()));
+					out.put(array[index], in.get(rdst.getData()));
+				}
+				outs.put(tag, out);
 			}
-			return out;
+			return outs;
 		}
 	}
 
@@ -616,23 +746,32 @@ public class Taint extends Plugin {
 		 *      patdroid.dalvik.Instruction)
 		 */
 		@Override
-		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
-			Map<Object, Instruction> out = new HashMap<>(in);
-			if (in.containsKey(vm.getReg(inst.r0))) {
-				out.put(vm.getReg(inst.rdst), in.get(vm.getReg(inst.r0)));
-				out.put(vm.getReg(inst.rdst).getData(), in.get(vm.getReg(inst.r0)));
-			} else {
-				if (inst.r1 != -1 && in.containsKey(vm.getReg(inst.r1))) {
-					out.put(vm.getReg(inst.rdst), in.get(vm.getReg(inst.r1)));
-					out.put(vm.getReg(inst.rdst).getData(), in.get(vm.getReg(inst.r1)));
+		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
+				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
+			Map<String, Map<Object, Instruction>> outs = new HashMap<>();
+			for (String tag : ins.keySet()) {
+				Map<Object, Instruction> in = ins.get(tag);
+				Map<Object, Instruction> out = new HashMap<>(in);
+				if (in.containsKey(vm.getReg(inst.r0))) {
+					out.put(vm.getReg(inst.rdst), in.get(vm.getReg(inst.r0)));
+					out.put(vm.getReg(inst.rdst).getData(),
+							in.get(vm.getReg(inst.r0)));
 				} else {
-					if (in.containsKey(vm.getReg(inst.rdst))) {
-						out.remove(vm.getReg(inst.rdst));
+					if (inst.r1 != -1 && in.containsKey(vm.getReg(inst.r1))) {
+						out.put(vm.getReg(inst.rdst),
+								in.get(vm.getReg(inst.r1)));
+						out.put(vm.getReg(inst.rdst).getData(),
+								in.get(vm.getReg(inst.r1)));
+					} else {
+						if (in.containsKey(vm.getReg(inst.rdst))) {
+							out.remove(vm.getReg(inst.rdst));
+						}
 					}
 				}
+				outs.put(tag, out);
 			}
 
-			return out;
+			return outs;
 		}
 	}
 
@@ -647,40 +786,50 @@ public class Taint extends Plugin {
 		 *      patdroid.dalvik.Instruction)
 		 */
 		@Override
-		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
+		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
+				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
+			Map<String, Map<Object, Instruction>> outs = new HashMap<>();
+
 			@SuppressWarnings("unchecked")
 			Pair<ClassInfo, String> pair = (Pair<ClassInfo, String>) inst.extra;
-			Map<Object, Instruction> out = new HashMap<>(in);
 
-			try {
-				Class<?> clazz = Class.forName(pair.first.toString());
-				Field field = clazz.getDeclaredField(pair.second.toString());
-				// TODO only support static field now
-				if (in.containsKey(field.get(clazz))) {
-					out.put(vm.getReg(inst.r0), in.get(field.get(clazz)));
-				} else if (in.containsKey(vm.getReg(inst.r0))) {
-					out.remove(vm.getReg(inst.r0));
+			for (String tag : ins.keySet()) {
+				Map<Object, Instruction> in = ins.get(tag);
+				Map<Object, Instruction> out = new HashMap<>(in);
+
+				try {
+					Class<?> clazz = Class.forName(pair.first.toString());
+					Field field = clazz
+							.getDeclaredField(pair.second.toString());
+					// TODO only support static field now
+					if (in.containsKey(field.get(clazz))) {
+						out.put(vm.getReg(inst.r0), in.get(field.get(clazz)));
+					} else if (in.containsKey(vm.getReg(inst.r0))) {
+						out.remove(vm.getReg(inst.r0));
+					}
+
+				} catch (Exception e) {
+					ClassInfo owner = pair.first;
+					String fieldName = pair.second;
+
+					DVMClass dvmClass = vm.getClass(owner);
+					if (in.containsKey(dvmClass.getStatField(fieldName))) {
+						out.put(vm.getReg(inst.r0),
+								in.get(dvmClass.getStatField(fieldName)));
+					} else if (in.containsKey(vm.getReg(inst.r0))) {
+						out.remove(vm.getReg(inst.r0));
+					}
 				}
-
-			} catch (Exception e) {
-				ClassInfo owner = pair.first;
-				String fieldName = pair.second;
-
-				DVMClass dvmClass = vm.getClass(owner);
-				if (in.containsKey(dvmClass.getStatField(fieldName))) {
-					out.put(vm.getReg(inst.r0), in.get(dvmClass.getStatField(fieldName)));
-				} else if (in.containsKey(vm.getReg(inst.r0))) {
-					out.remove(vm.getReg(inst.r0));
-				}
+				outs.put(tag, out);
 			}
 
-			return out;
+			return outs;
 		}
 	}
 
 	class TAINT_OP_STATIC_PUT_FIELD implements Rule {
 		final String TAG = getClass().getSimpleName();
-		
+
 		/**
 		 * @Title: func
 		 * @Description: sput v0, Test2.i5:I // field@0001 Stores v0 into
@@ -691,25 +840,32 @@ public class Taint extends Plugin {
 		 *      patdroid.dalvik.Instruction)
 		 */
 		@Override
-		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
-			Map<Object, Instruction> out = new HashMap<>(in);
-			@SuppressWarnings("unchecked")
-			Pair<ClassInfo, String> pair = (Pair<ClassInfo, String>) inst.extra;
-			ClassInfo owner = pair.first;
-			String fieldName = pair.second;
-			DVMClass dvmClass = vm.getClass(owner);
-			if (in.containsKey(vm.getReg(inst.r0))) {
-				Log.bb(TAG, "SPut at " + vm.getReg(inst.r0));
-				out.put(dvmClass.getStatField(fieldName), in.get(vm.getReg(inst.r0)));
-			} else if (in.containsKey(vm.getReg(inst.r0).getData())) {
-				out.put(dvmClass.getStatField(fieldName), in.get(vm.getReg(inst.r0).getData()));
-			} else {
-				if (in.containsKey(dvmClass.getStatField(fieldName))) {
-					out.remove(dvmClass.getStatField(fieldName));
+		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
+				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
+			Map<String, Map<Object, Instruction>> outs = new HashMap<>();
+			for (String tag : ins.keySet()) {
+				Map<Object, Instruction> in = ins.get(tag);
+				Map<Object, Instruction> out = new HashMap<>(in);
+				@SuppressWarnings("unchecked")
+				Pair<ClassInfo, String> pair = (Pair<ClassInfo, String>) inst.extra;
+				ClassInfo owner = pair.first;
+				String fieldName = pair.second;
+				DVMClass dvmClass = vm.getClass(owner);
+				if (in.containsKey(vm.getReg(inst.r0))) {
+					Log.bb(TAG, "SPut at " + vm.getReg(inst.r0));
+					out.put(dvmClass.getStatField(fieldName),
+							in.get(vm.getReg(inst.r0)));
+				} else if (in.containsKey(vm.getReg(inst.r0).getData())) {
+					out.put(dvmClass.getStatField(fieldName),
+							in.get(vm.getReg(inst.r0).getData()));
+				} else {
+					if (in.containsKey(dvmClass.getStatField(fieldName))) {
+						out.remove(dvmClass.getStatField(fieldName));
+					}
 				}
+				outs.put(tag, out);
 			}
-
-			return out;
+			return outs;
 		}
 	}
 
@@ -725,31 +881,39 @@ public class Taint extends Plugin {
 		 *      patdroid.dalvik.Instruction)
 		 */
 		@Override
-		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
-			Map<Object, Instruction> out = new HashMap<>(in);
-			if (!(vm.getReg(inst.r0).getData() instanceof DVMObject)) {
-				Log.warn(TAG, "Object not DVMObject, it is " + vm.getReg(inst.r0).getData());
-				return out;
-			}
-			DVMObject obj = (DVMObject) vm.getReg(inst.r0).getData();
-			FieldInfo fieldInfo = (FieldInfo) inst.extra;
-			Object field = obj.getFieldObj(fieldInfo);
-			
-			if (in.containsKey(field)) {
-					out.put(vm.getReg(inst.r1), in.get(field));
-					Log.bb(TAG, "Add " + obj + "as tainted due to field " + field);
-			} else if (in.containsKey(vm.getReg(inst.r1))) {
-				// value register, has been assigned to new value
-				out.remove(vm.getReg(inst.r1));
-			}
+		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
+				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
+			Map<String, Map<Object, Instruction>> outs = new HashMap<>();
+			for (String tag : ins.keySet()) {
+				Map<Object, Instruction> in = ins.get(tag);
+				Map<Object, Instruction> out = new HashMap<>(in);
+				if (!(vm.getReg(inst.r0).getData() instanceof DVMObject)) {
+					Log.warn(TAG,
+							"Object not DVMObject, it is "
+									+ vm.getReg(inst.r0).getData());
+					return outs;
+				}
+				DVMObject obj = (DVMObject) vm.getReg(inst.r0).getData();
+				FieldInfo fieldInfo = (FieldInfo) inst.extra;
+				Object field = obj.getFieldObj(fieldInfo);
 
-			return out;
+				if (in.containsKey(field)) {
+					out.put(vm.getReg(inst.r1), in.get(field));
+					Log.bb(TAG, "Add " + obj + "as tainted due to field "
+							+ field);
+				} else if (in.containsKey(vm.getReg(inst.r1))) {
+					// value register, has been assigned to new value
+					out.remove(vm.getReg(inst.r1));
+				}
+				outs.put(tag, out);
+			}
+			return outs;
 		}
 	}
 
 	class TAINT_OP_INSTANCE_PUT_FIELD implements Rule {
 		final String TAG = getClass().getSimpleName();
-		
+
 		/**
 		 * @Title: func
 		 * @Description: iput v0,v2, Test2.i6:I // field@0002 Stores v1 into
@@ -761,47 +925,68 @@ public class Taint extends Plugin {
 		 *      patdroid.dalvik.Instruction)
 		 */
 		@Override
-		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
-			Map<Object, Instruction> out = new HashMap<>(in);
-			DVMObject obj = (DVMObject) vm.getReg(inst.r0).getData();
-			FieldInfo fieldInfo = (FieldInfo) inst.extra;
-			
-			if (in.containsKey(vm.getReg(inst.r1))) {
-				out.put(obj.getFieldObj(fieldInfo), in.get(vm.getReg(inst.r1)));
-				Log.bb(TAG, "Add " + obj.getFieldObj(fieldInfo) + "as tainted due to " + vm.getReg(inst.r0));
-			} else if (in.containsKey(vm.getReg(inst.r1).getData())) {
-				out.put(obj.getFieldObj(fieldInfo), in.get(vm.getReg(inst.r1).getData()));
-				Log.bb(TAG, "Add " + obj.getFieldObj(fieldInfo) + "as tainted due to r1 data " + vm.getReg(inst.r1).getData());
-			} else { 
-				if (in.containsKey(obj.getFieldObj(fieldInfo))) {
-					out.remove(obj.getFieldObj(fieldInfo));
-				}
-			}
+		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
+				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
+			Map<String, Map<Object, Instruction>> outs = new HashMap<>();
+			for (String tag : ins.keySet()) {
+				Map<Object, Instruction> in = ins.get(tag);
+				Map<Object, Instruction> out = new HashMap<>(in);
+				DVMObject obj = (DVMObject) vm.getReg(inst.r0).getData();
+				FieldInfo fieldInfo = (FieldInfo) inst.extra;
 
-			return out;
+				if (in.containsKey(vm.getReg(inst.r1))) {
+					out.put(obj.getFieldObj(fieldInfo),
+							in.get(vm.getReg(inst.r1)));
+					Log.bb(TAG, "Add " + obj.getFieldObj(fieldInfo)
+							+ "as tainted due to " + vm.getReg(inst.r0));
+				} else if (in.containsKey(vm.getReg(inst.r1).getData())) {
+					out.put(obj.getFieldObj(fieldInfo),
+							in.get(vm.getReg(inst.r1).getData()));
+					Log.bb(TAG, "Add " + obj.getFieldObj(fieldInfo)
+							+ "as tainted due to r1 data "
+							+ vm.getReg(inst.r1).getData());
+				} else {
+					if (in.containsKey(obj.getFieldObj(fieldInfo))) {
+						out.remove(obj.getFieldObj(fieldInfo));
+					}
+				}
+				outs.put(tag, out);
+			}
+			return outs;
 		}
 	}
-	
+
 	class TAINT_OP_RETURN_SOMETHING implements Rule {
 		final String TAG = getClass().getSimpleName();
-		
+
 		@Override
-		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
-			// TODO Auto-generated method stub
-			Map<Object, Instruction> out = new HashMap<>(in);
-			if (in.containsKey(vm.getReg(inst.r0))) {
-				out.put(vm.getReturnReg(), in.get(vm.getReg(inst.r0)));
-				Log.bb(TAG, "Add " + vm.getReturnReg() + "as tainted due to " + vm.getReg(inst.r0));
-			} else if (in.containsKey(vm.getReg(inst.r0).getData())) {
-				out.put(vm.getReturnReg(), in.get(vm.getReg(inst.r0).getData()));
-				Log.bb(TAG, "Add " + vm.getReturnReg() + "as tainted due to r0 data " + vm.getReg(inst.r0).getData());
-			} else {
-				if (in.containsKey(vm.getReturnReg())) {
-					out.remove(vm.getReturnReg());
-					Log.bb(TAG, "Remove " + vm.getReturnReg() + "as tainted.");
+		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
+				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
+			Map<String, Map<Object, Instruction>> outs = new HashMap<>();
+			for (String tag : ins.keySet()) {
+				Map<Object, Instruction> in = ins.get(tag);
+				// TODO Auto-generated method stub
+				Map<Object, Instruction> out = new HashMap<>(in);
+				if (in.containsKey(vm.getReg(inst.r0))) {
+					out.put(vm.getReturnReg(), in.get(vm.getReg(inst.r0)));
+					Log.bb(TAG, "Add " + vm.getReturnReg()
+							+ "as tainted due to " + vm.getReg(inst.r0));
+				} else if (in.containsKey(vm.getReg(inst.r0).getData())) {
+					out.put(vm.getReturnReg(),
+							in.get(vm.getReg(inst.r0).getData()));
+					Log.bb(TAG, "Add " + vm.getReturnReg()
+							+ "as tainted due to r0 data "
+							+ vm.getReg(inst.r0).getData());
+				} else {
+					if (in.containsKey(vm.getReturnReg())) {
+						out.remove(vm.getReturnReg());
+						Log.bb(TAG, "Remove " + vm.getReturnReg()
+								+ "as tainted.");
+					}
 				}
+				outs.put(tag, out);
 			}
-			return out;
+			return outs;
 		}
 	}
 
@@ -816,7 +1001,7 @@ public class Taint extends Plugin {
 		}
 		sources = parser.getSrcStrs();
 		sinks = parser.getSinkStrs();
-		
+
 		Log.debug(TAG, "srcs: " + sources);
 
 		byteCodes.put(0x07, new TAINT_OP_CMP());
@@ -883,25 +1068,31 @@ public class Taint extends Plugin {
 	}
 
 	@Override
-	public Map<Object, Instruction> runAnalysis(DalvikVM vm, Instruction inst, Map<Object, Instruction> in) {
-		Map<Object, Instruction> out;
+	public Map<String, Map<Object, Instruction>> runAnalysis(DalvikVM vm,
+			Instruction inst, Map<String, Map<Object, Instruction>> ins) {
+		if (ins == null || ins.isEmpty()) {
+			ins = new HashMap<>();
+			Map<Object, Instruction> res = new HashMap<>();
+			ins.put(TAG, res);
+		}
+		Map<String, Map<Object, Instruction>> outs;
 		if (byteCodes.containsKey((int) inst.opcode)) {
-			out = byteCodes.get((int) inst.opcode).flow(vm, inst, in);
+			outs = byteCodes.get((int) inst.opcode).flow(vm, inst, ins);
 		} else if (auxByteCodes.containsKey((int) inst.opcode_aux)) {
-			out = auxByteCodes.get((int) inst.opcode_aux).flow(vm, inst, in);
+			outs = auxByteCodes.get((int) inst.opcode_aux).flow(vm, inst, ins);
 		} else {
 			Log.bb(TAG, "Not a taint op " + inst);
-			out = new HashMap<>(in);
+			outs = new HashMap<>(ins);
 		}
 
-		setCurrtRes(out);
-		return out;
+		setCurrtRes(outs);
+		return outs;
 	}
 
 	@Override
 	public void preprocessing(DalvikVM vm, Instruction inst) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

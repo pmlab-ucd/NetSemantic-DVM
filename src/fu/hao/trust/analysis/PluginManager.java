@@ -22,7 +22,7 @@ public class PluginManager {
 	
 	public void addPlugin(Plugin plugin) {
 		plugins.add(plugin);
-		Map<Object, Instruction> res = new HashMap<>();
+		Map<String, Map<Object, Instruction>> res = new HashMap<>();
 		plugin.setCurrtRes(res);
 	}
 	
@@ -47,17 +47,17 @@ public class PluginManager {
 		}
 	}
 	
-	public Map<Plugin, Map<Object, Instruction>> cloneCurrtRes() {
-		Map<Plugin, Map<Object, Instruction>> cloned = new HashMap<>();
+	public Map<Plugin, Map<String, Map<Object, Instruction>>> cloneCurrtRes() {
+		Map<Plugin, Map<String, Map<Object, Instruction>>> cloned = new HashMap<>();
 		for (Plugin plugin : plugins) {
-			Map<Object, Instruction> newMap = new HashMap<>(plugin.getCurrtRes());
+			Map<String, Map<Object, Instruction>> newMap = new HashMap<>(plugin.getCurrtRes());
 			cloned.put(plugin, newMap);
 		}
 		
 		return cloned;
 	}
 
-	public void setCurrRes(Map<Plugin, Map<Object, Instruction>> currtResults) {
+	public void setCurrRes(Map<Plugin, Map<String, Map<Object, Instruction>>> currtResults) {
 		for (Plugin plugin : plugins) {
 			plugin.setCurrtRes(currtResults.get(plugin));
 		}

@@ -8,10 +8,10 @@ import patdroid.dalvik.Instruction;
 import fu.hao.trust.dvm.DalvikVM;
 
 public abstract class Plugin {
-	private Map<Object, Instruction> currtRes;
+	private Map<String, Map<Object, Instruction>> currtRes;
 	private Method method;
 	
-	public abstract Map<Object, Instruction> runAnalysis(DalvikVM vm, Instruction inst, Map<Object, Instruction> in);
+	public abstract Map<String, Map<Object, Instruction>> runAnalysis(DalvikVM vm, Instruction inst, Map<String,Map<Object, Instruction>> ins);
 	
 	public void reset() {
 		currtRes = new HashMap<>();
@@ -20,11 +20,11 @@ public abstract class Plugin {
 	
 	public abstract void preprocessing(DalvikVM vm, Instruction inst);
 
-	public Map<Object, Instruction> getCurrtRes() {
+	public Map<String, Map<Object, Instruction>> getCurrtRes() {
 		return currtRes;
 	}
 
-	public void setCurrtRes(Map<Object, Instruction> currtRes) {
+	public void setCurrtRes(Map<String, Map<Object, Instruction>> currtRes) {
 		this.currtRes = currtRes;
 	}
 
