@@ -23,12 +23,15 @@ package fu.hao.trust.utils;
 import patdroid.util.Report;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.io.Writer;
 
 import javax.management.RuntimeErrorException;
+
 
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
@@ -50,29 +53,20 @@ public class Log {
 	public static Writer out = stdout;
 	public static Writer err = stderr;
 
-	private static ThreadLocal<String> indent = new ThreadLocal<String>() {
-		@Override
-		protected String initialValue() {
-			return "";
-		}
-	};
-
-	private static void writeLog(String TAG, int theLevel, String title,
-			String msg, Writer w) throws IOException {
-		if (fileWriter == null) {
-			fileWriter = new FileWriter("output/" + Settings.apkName + ".log");
-			out = new BufferedWriter(fileWriter);
-			err = new BufferedWriter(fileWriter);
-		}
+	private static boolean writeLog(String TAG, int theLevel, String title,
+			String msg) throws IOException {
 		if (theLevel >= Settings.logLevel) {
-			try {
-				w.write(TAG + " - " + indent.get() + "[" + title + "]: " + msg
+		Writer output;
+		output = new BufferedWriter(new FileWriter("output/" + Settings.apkName + ".log", true));  //clears file every time
+		output.append(TAG + " - " + "[" + title + "]: " + msg
 						+ "\n");
-			} catch (IOException e) {
-				// logging system should never die
-				exit(1);
-			}
+		output.close();
+		
+			return true;
 		}
+		
+		
+		return false;
 	}
 
 	public static void exit(int r) {
@@ -100,8 +94,8 @@ public class Log {
 		default:
 			break;
 		}
-		if (theLevel >= Settings.logLevel) {
-			writeLog(TAG, theLevel, title, msg, out);
+		
+		if (writeLog(TAG, theLevel, title, msg)) {		
 			if (theLevel < MODE_MSG) {
 				System.out.println("[" + TAG + "] - " + title + " - " + msg);
 			} else if (theLevel >= MODE_ERROR) {
@@ -115,18 +109,6 @@ public class Log {
 				// writeLog(TAG, theLevel, title, msg, err);
 			}
 		}
-	}
-
-	public static void increaseIndent() {
-		indent.set(indent.get() + "  ");
-	}
-
-	public static void decreaseIndent() {
-		indent.set(indent.get().substring(2));
-	}
-
-	public static void resetIndent() {
-		indent.remove();
 	}
 
 	public static void doAssert(String TAG, boolean b, String msg) {
