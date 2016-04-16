@@ -116,8 +116,10 @@ public class Branch {
 			Log.err(TAG, "Inconsistent type: " + val1 + ", " + val2);
 		}
 		
-		if (val1 instanceof PrimitiveInfo || val1 instanceof SymbolicVar) {
+		if (val1 instanceof PrimitiveInfo || val1 instanceof Unknown) {
 			return new Unknown(ClassInfo.primitiveInt);
+		} else if (val1 instanceof SymbolicVar) {
+			return val1;
 		} else if (val1 instanceof String || val1 instanceof MSVar) {
 			// TODO handle MSVar
 			MSVar msv = new MSVar();

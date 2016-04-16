@@ -76,10 +76,10 @@ public class DalvikVM {
 
 		public void setData(Object data) {
 			if (this.data != null || this.type != null) {
-				assigned = new Object[3];
-				assigned[0] = this;
-				assigned[1] = this.data;
-				assigned[2] = data;
+				setAssigned(new Object[3]);
+				getAssigned()[0] = this;
+				getAssigned()[1] = this.data;
+				getAssigned()[2] = data;
 				Log.bb(TAG, "A" + this + " " + data);
 			}
 			this.data = data;
@@ -346,7 +346,7 @@ public class DalvikVM {
 		LinkedList<StackFrame> newStack = cloneStack(objMap, classMap);
 
 		// FIXME Backup plugin res
-		Method pluginMethod = pluginManager.getMethod();
+		Method pluginMethod = getReflectMethod();//pluginManager.getMethod();
 
 		VMFullState state = new VMFullState(backHeap, newStack, pc[0],
 				pluginMethod);
@@ -403,7 +403,7 @@ public class DalvikVM {
 		stack = state.getStack();
 		pc = getCurrStackFrame().pc;
 		pluginManager.setCurrRes(getCurrStackFrame().pluginRes);
-		pluginManager.setMethod(state.getPluginMethod());
+		//pluginManager.setMethod(state.getPluginMethod());
 
 		interpreter.jump(this, focusBranch.getInstructions().iterator().next(),
 				false);
@@ -443,7 +443,9 @@ public class DalvikVM {
 
 	PluginManager pluginManager;
 
-	Object[] assigned;
+	private Object[] assigned;
+	
+	private Method reflectMethod;
 
 	public Register getReg(int i) {
 		return stack.getLast().regs[i];
@@ -721,6 +723,18 @@ public class DalvikVM {
 
 	public void setPass(boolean pass) {
 		this.interpreter.pass = pass;
+	}
+
+	public Method getReflectMethod() {
+		return reflectMethod;
+	}
+
+	public void setReflectMethod(Method reflectMethod) {
+		this.reflectMethod = reflectMethod;
+	}
+
+	public void setAssigned(Object[] assigned) {
+		this.assigned = assigned;
 	}
 
 }

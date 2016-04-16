@@ -10,6 +10,7 @@ import java.util.Set;
 
 import fu.hao.trust.dvm.DalvikVM.Register;
 import fu.hao.trust.dvm.DalvikVM.StackFrame;
+import fu.hao.trust.data.MNVar;
 import fu.hao.trust.data.SymbolicVar;
 import fu.hao.trust.solver.Unknown;
 import fu.hao.trust.utils.Log;
@@ -385,10 +386,9 @@ public class Interpreter {
 							+ " " + vm.retValReg.getData().getClass());
 				}
 				Log.msg(TAG, "reflction invocation " + method);
-				vm.pluginManager.setMethod(method);
+				vm.setReflectMethod(method);
 				jump(vm, inst, true);
 			} catch (java.lang.ClassNotFoundException e) {
-				vm.pluginManager.setMethod(null);
 				invocation(vm, mi, inst, args);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -1541,10 +1541,10 @@ public class Interpreter {
 				Log.warn(TAG, "Type inconsistent! " + vm.getReg(inst.r0).type
 						+ " " + fieldType);
 			}
-			vm.assigned = new Object[3];
-			vm.assigned[0] = dvmClass;
-			vm.assigned[1] = fieldName;
-			vm.assigned[2] = vm.getReg(inst.r0).getData();
+			vm.setAssigned(new Object[3]);
+			vm.getAssigned()[0] = dvmClass;
+			vm.getAssigned()[1] = fieldName;
+			vm.getAssigned()[2] = vm.getReg(inst.r0).getData();
 			dvmClass.setStatField(fieldName, vm.getReg(inst.r0).getData());
 			Log.debug(TAG, "expect sput " + fieldName + " from " + owner);
 			Log.debug(TAG, "real sput " + vm.getReg(inst.r0).getData()
@@ -1614,10 +1614,10 @@ public class Interpreter {
 			Object obj = vm.getReg(inst.r0).getData();
 			if (obj instanceof DVMObject) {
 				DVMObject dvmObj = (DVMObject) obj;
-				vm.assigned = new Object[3];
-				vm.assigned[0] = dvmObj;
-				vm.assigned[1] = dvmObj.getFieldObj(fieldInfo);
-				vm.assigned[2] = vm.getReg(inst.r1).getData();
+				vm.setAssigned(new Object[3]);
+				vm.getAssigned()[0] = dvmObj;
+				vm.getAssigned()[1] = dvmObj.getFieldObj(fieldInfo);
+				vm.getAssigned()[2] = vm.getReg(inst.r1).getData();
 				dvmObj.setField(fieldInfo, vm.getReg(inst.r1).getData());
 				Log.msg(TAG, "Put field " + dvmObj.getFieldObj(fieldInfo)
 						+ " to the field of " + dvmObj);
@@ -1905,10 +1905,10 @@ public class Interpreter {
 						Log.debug(TAG, "Init instance: "
 								+ vm.getReg(args[0]).getData());
 					} else {
-						boolean symbolArg = getParams(vm, mi, args, argsClass,
+						boolean normalArg = getParams(vm, mi, args, argsClass,
 								params);
 						Object instance;
-						if (!symbolArg) {
+						if (!normalArg) {
 							instance = new Unknown(mi.returnType);
 						} else {
 							instance = clazz.getConstructor(argsClass)
@@ -1949,14 +1949,14 @@ public class Interpreter {
 						vm.retValReg.setData(method.invoke(thisInstance));
 					}
 				} else {
-					boolean symbolArg = getParams(vm, mi, args, argsClass,
+					boolean normalArg = getParams(vm, mi, args, argsClass,
 							params);
 					method = clazz.getDeclaredMethod(mi.name, argsClass);
 					Log.debug(TAG, "Caller obj: " + thisInstance
 							+ ", from class: "
 							+ thisInstance.getClass().toString());
 					// handle return val
-					if (symbolArg) {
+					if (normalArg) {
 						vm.retValReg.setData(method
 								.invoke(thisInstance, params));
 
@@ -1971,8 +1971,8 @@ public class Interpreter {
 				Log.msg(TAG, "Reflction invocation " + method);
 			}
 			vm.retValReg.setType(mi.returnType);
-
-			vm.pluginManager.setMethod(method);
+			
+			vm.setReflectMethod(method);
 			jump(vm, inst, true);
 		} catch (java.lang.InstantiationException e) { 
 			vm.getReg(args[0]).setData(new Unknown(mi.myClass));
@@ -1985,7 +1985,6 @@ public class Interpreter {
 			e.printStackTrace();
 			Log.err(TAG, " null pointer ");
 		} catch (java.lang.ClassNotFoundException e) {
-			vm.pluginManager.setMethod(null);
 			Log.debug(TAG, "not a reflction invocation " + mi);
 			invocation(vm, mi, inst, args);
 		} catch (Exception e) {
@@ -2014,6 +2013,7 @@ public class Interpreter {
 			throws ClassNotFoundException {
 		// Start from 1 to ignore "this"
 		for (int i = 1; i < args.length; i++) {
+			Log.bb(TAG, "arg" + i + ": " + vm.getReg(args[i]).getData());
 			if (mi.paramTypes[i - 1].isPrimitive()) {
 				Log.debug(TAG, "Expected para type: " + mi.paramTypes[i - 1]);
 				Object primitive = resolvePrimitive((PrimitiveInfo) vm.getReg(
@@ -2056,9 +2056,12 @@ public class Interpreter {
 						SymbolicVar bidirVar = (SymbolicVar) argData;
 						params[i - 1] = bidirVar.getValue();
 						Log.debug(TAG, "Found symbolic var " + params[i - 1]);
-						return false;
-					} else {
+						if (mi.toString().contains("equals")) {
+							return false;
+						}
+					} else if (argData instanceof MNVar){
 						params[i - 1] = null;
+						return false;
 					}
 				}
 			}
@@ -2256,13 +2259,15 @@ public class Interpreter {
 	}
 
 	public void exec(DalvikVM vm, Instruction inst) {
+		Log.msg(TAG, "\n");
 		Log.msg(TAG, vm.getPC() + " " + inst + " at "
 				+ vm.getCurrStackFrame().method);
 		vm.setNowPC(vm.getPC());
 		Log.bb(TAG, "opcode: " + inst.opcode + " " + inst.opcode_aux);
 		inst.setIndex(vm.getNowPC());
 
-		vm.assigned = null;
+		vm.setAssigned(null);
+		vm.setReflectMethod(null);
 		if (!vm.pluginManager.isEmpty() && vm.getCurrStackFrame() != null) {
 			vm.pluginManager.preprossing(vm, inst);
 		}

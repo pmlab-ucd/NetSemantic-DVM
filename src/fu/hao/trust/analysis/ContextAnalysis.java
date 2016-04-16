@@ -1,16 +1,19 @@
 package fu.hao.trust.analysis;
 
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.Stack;
 
 import patdroid.core.MethodInfo;
 import patdroid.dalvik.Instruction;
 import fu.hao.trust.data.Branch;
-import fu.hao.trust.data.Results;
+import fu.hao.trust.data.CorrelatedDataFact;
+import fu.hao.trust.data.PluginConfig;
 import fu.hao.trust.data.TargetCall;
 import fu.hao.trust.dvm.DalvikVM;
+import fu.hao.trust.solver.BiDirBranch;
+import fu.hao.trust.solver.SensCtxVar;
 import fu.hao.trust.utils.Log;
 
 /**
@@ -20,39 +23,20 @@ import fu.hao.trust.utils.Log;
  * @author: Hao Fu
  * @date: Mar 9, 2016 3:10:38 PM
  */
-public class ContextAnalysis extends TaintCtrlDep {
+public class ContextAnalysis {
 
 	final String TAG = getClass().getSimpleName();
 
-	// Store visited target API calls, equivalent to influenced API in
-	// InfluenceAnalysis
-	// <Target API call loc, Target call>
-	Map<Instruction, TargetCall> targetCalls;
 	// Specification of the target APIs
 	Set<String> targetList;
+	private PluginConfig config;
 
-	class CTX_OP_INVOKE implements Rule {
-		final String TAG = getClass().getName();
-
-		/**
-		 * @Title: flow
-		 * @Description: The op who creates SensCtx variable, and may includes
-		 *               target API calls.
-		 * @param vm
-		 * @param inst
-		 * @param in
-		 * @return
-		 * @see fu.hao.trust.analysis.Rule#flow(fu.hao.trust.dvm.DalvikVM,
-		 *      patdroid.dalvik.Instruction, java.util.Map)
-		 */
-		@Override
-		public Map<Object, Instruction> flow(DalvikVM vm, Instruction inst,
-				Map<Object, Instruction> in) {
-			TAINT_OP_INVOKE taintOp = new TAINT_OP_INVOKE();
-			Map<Object, Instruction> out = taintOp.flow(vm, inst, in);
+	public void ctxInvoke(DalvikVM vm, Instruction inst, CorrelatedDataFact fact, Map<Instruction, TargetCall> targetCalls)  {
 			Object[] extra = (Object[]) inst.extra;
 			MethodInfo mi = (MethodInfo) extra[0];
-
+			Stack<Branch> interestedSimple = fact.getInterestedSimple();
+			Stack<BiDirBranch> interestedBiDir = fact.getInterestedBiDir();
+			
 			if (isTarget(mi.name)) {
 				if (!targetCalls.containsKey(inst)) {
 					TargetCall targetCall = new TargetCall(inst, vm);
@@ -75,11 +59,12 @@ public class ContextAnalysis extends TaintCtrlDep {
 					TargetCall targetCall = targetCalls.get(inst);
 					targetCall.addParams(inst, vm);
 				}
+			} else if (vm.getReflectMethod() != null && config.getSources().contains(Taint.getSootSignature(mi))) {
+				vm.getReturnReg().setData(new SensCtxVar(mi.returnType, vm.getReturnReg().getData(), inst));
+				Log.bb(TAG, "Set SensCtxVar at RetReg.");
 			}
 
 			Log.bb(TAG, "Ret value " + vm.getReturnReg().getData());
-			return out;
-		}
 	}
 
 	private boolean isTarget(String target) {
@@ -89,24 +74,27 @@ public class ContextAnalysis extends TaintCtrlDep {
 
 		return false;
 	}
-
-	@Override
-	public Map<Object, Instruction> runAnalysis(DalvikVM vm, Instruction inst,
-			Map<Object, Instruction> in) {
-		Map<Object, Instruction> out = super.runAnalysis(vm, inst, in);
-
-		Results.targetCallRes = targetCalls;
-		return out;
+	
+	public PluginConfig getConfig() {
+		return config;
 	}
 
 	public ContextAnalysis() {
-		super();
-		sinks = new HashSet<>();
-		byteCodes.put(0x0C, new CTX_OP_INVOKE());
-
-		targetCalls = new HashMap<>();
 		targetList = new HashSet<>();
-
 		targetList.add("openConnection");
+		config = new PluginConfig(TAG, Taint.getDefaultSources(), null);
+	}
+
+	public void ctxInvoke(DalvikVM vm, Instruction inst,
+			Map<Instruction, TargetCall> targetCalls) {
+		ctxInvoke(vm, inst, config.getCorrFact(), targetCalls);
+	}
+
+	public CorrelatedDataFact getFact() {
+		return config.getCorrFact();
+	}
+
+	public void setFact(CorrelatedDataFact fact) {
+		config.setCorrFact(fact);
 	}
 }

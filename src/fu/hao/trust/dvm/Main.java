@@ -12,6 +12,7 @@ import java.util.zip.ZipException;
 import com.opencsv.CSVReader;
 
 import fu.hao.trust.analysis.ContextAnalysis;
+import fu.hao.trust.analysis.FullAnalysis;
 import fu.hao.trust.analysis.InfluenceAnalysis;
 import fu.hao.trust.analysis.Plugin;
 import fu.hao.trust.analysis.PluginManager;
@@ -75,19 +76,12 @@ public class Main {
 					pluginManager.addPlugin(new Taint());
 				} else if (args[i] != null && args[i].equalsIgnoreCase("ATaint")) {
 					pluginManager.addPlugin(new TaintSumBranch());
-				} else if (args[i] != null && args[i].equalsIgnoreCase("Ctx")) {
-					Plugin plugin = new ContextAnalysis();
-					pluginManager.addPlugin(plugin);
-				} else if (args[i] != null && args[i].equalsIgnoreCase("Influ")) {
-					Plugin plugin = new InfluenceAnalysis();
-					pluginManager.addPlugin(plugin);
 				} else if (args[i] != null && args[i].equalsIgnoreCase("Full")) {
 					// TODO
 					Settings.apkPath = args[0];// + "app-release.apk";
 					Settings.suspClass = args[1];
 					Settings.suspMethod = args[2];
-					pluginManager.addPlugin(new ContextAnalysis());
-					pluginManager.addPlugin(new InfluenceAnalysis());
+					pluginManager.addPlugin(new FullAnalysis());
 					main.runMethod(pluginManager);
 					return;
 				}

@@ -13,6 +13,7 @@ import patdroid.core.MethodInfo;
 import patdroid.core.PrimitiveInfo;
 import patdroid.dalvik.Instruction;
 import patdroid.util.Pair;
+import fu.hao.trust.data.PluginConfig;
 import fu.hao.trust.data.Results;
 import fu.hao.trust.data.SymbolicVar;
 import fu.hao.trust.dvm.DVMClass;
@@ -23,23 +24,26 @@ import fu.hao.trust.utils.Log;
 import fu.hao.trust.utils.SrcSinkParser;
 
 public class Taint extends Plugin {
-	// The nested class to implement singleton
-	private static class SingletonHolder {
-		private static final Taint instance = new Taint();
-	}
-
-	// Get THE instance
-	public static final Taint v() {
-		return SingletonHolder.instance;
-	}
-
 	private final String TAG = getClass().getSimpleName();
-	Map<Integer, Rule> auxByteCodes = new HashMap<>();
-	Map<Integer, Rule> byteCodes = new HashMap<>();
+	protected Map<Integer, Rule> auxByteCodes = new HashMap<>();
+	protected Map<Integer, Rule> byteCodes = new HashMap<>();
 
-	Set<String> sources;
-	Set<String> sinks;
-	boolean isSrc;
+	protected Map<String, PluginConfig> configs;
+
+	private static Set<String> defaultSources;
+	private static Set<String> defaultSinks;
+
+	static {
+		SrcSinkParser parser;
+		try {
+			parser = SrcSinkParser.fromFile("SourcesAndSinks.txt");
+			setDefaultSources(parser.getSrcStrs());
+			setDefaultSinks(parser.getSinkStrs());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	class TAINT_OP_MOV_REG implements Rule {
 		/**
@@ -237,7 +241,6 @@ public class Taint extends Plugin {
 		@Override
 		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
 				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
-			isSrc = false;
 			Object[] extra = (Object[]) inst.extra;
 			MethodInfo mi = (MethodInfo) extra[0];
 			// The register index referred by args
@@ -248,6 +251,8 @@ public class Taint extends Plugin {
 			for (String tag : ins.keySet()) {
 				Map<Object, Instruction> in = ins.get(tag);
 				Map<Object, Instruction> out = new HashMap<>(in);
+				Set<String> sources = configs.get(tag).getSources();
+				Set<String> sinks = configs.get(tag).getSinks();
 				if (mi.isConstructor()) {
 					if (!mi.isStatic()) {
 						// FIXME
@@ -280,26 +285,10 @@ public class Taint extends Plugin {
 					}
 				} else {
 					// Must be a reflection call;
-					if (getMethod() != null) {
-						StringBuilder signature = new StringBuilder("<");
-						signature.append(mi.myClass);
-						signature.append(": ");
-						signature.append(mi.returnType + " ");
-						signature.append(mi.name + "(");
-						for (int i = 0; i < mi.paramTypes.length - 1; i++) {
-							ClassInfo paramType = mi.paramTypes[i];
-							signature.append(paramType + ",");
-						}
-						if (mi.paramTypes.length > 0) {
-							signature
-									.append(mi.paramTypes[mi.paramTypes.length - 1]);
-						}
-						signature.append(")>");
-						String sootSignature = signature.toString();
-
+					if (vm.getReflectMethod() != null) {
+						String sootSignature = Taint.getSootSignature(mi);
 						Log.bb(TAG, sootSignature);
-
-						if (sinks.contains(sootSignature)) {
+						if (sinks != null && sinks.contains(sootSignature)) {
 							Log.bb(TAG, "Found a sink invocation. "
 									+ sootSignature);
 							for (int i = 0; i < args.length; i++) {
@@ -318,13 +307,14 @@ public class Taint extends Plugin {
 							}
 						} else {
 							// Decide whether add return value.
-							if (sources.contains(sootSignature)) {
+							if (sources != null
+									&& sources.contains(sootSignature)) {
 								Log.warn(TAG, "Found a tainted return value!");
 								out.put(vm.getReturnReg(), inst);
 								out.put(vm.getReturnReg().getData(), inst);
-								isSrc = true;
 							} else {
-								Log.debug(TAG, "not a taint call: " + signature);
+								Log.debug(TAG, "not a taint call: "
+										+ sootSignature);
 							}
 
 							if (vm.getReturnReg().getData() != null
@@ -991,18 +981,7 @@ public class Taint extends Plugin {
 	}
 
 	public Taint() {
-		SrcSinkParser parser;
-		try {
-			parser = SrcSinkParser.fromFile("SourcesAndSinks.txt");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return;
-		}
-		sources = parser.getSrcStrs();
-		sinks = parser.getSinkStrs();
-
-		Log.debug(TAG, "srcs: " + sources);
+		configs = new HashMap<>();
 
 		byteCodes.put(0x07, new TAINT_OP_CMP());
 		byteCodes.put(0x08, new TAINT_OP_IF());
@@ -1070,10 +1049,17 @@ public class Taint extends Plugin {
 	@Override
 	public Map<String, Map<Object, Instruction>> runAnalysis(DalvikVM vm,
 			Instruction inst, Map<String, Map<Object, Instruction>> ins) {
+		if (configs.isEmpty()) {
+			configs.put(TAG,
+					new PluginConfig(TAG, defaultSources, defaultSinks));
+		}
+
 		if (ins == null || ins.isEmpty()) {
 			ins = new HashMap<>();
-			Map<Object, Instruction> res = new HashMap<>();
-			ins.put(TAG, res);
+			for (String tag : configs.keySet()) {
+				Map<Object, Instruction> res = new HashMap<>();
+				ins.put(tag, res);
+			}
 		}
 		Map<String, Map<Object, Instruction>> outs;
 		if (byteCodes.containsKey((int) inst.opcode)) {
@@ -1092,7 +1078,41 @@ public class Taint extends Plugin {
 	@Override
 	public void preprocessing(DalvikVM vm, Instruction inst) {
 		// TODO Auto-generated method stub
+	}
 
+	public static Set<String> getDefaultSources() {
+		return defaultSources;
+	}
+
+	public static void setDefaultSources(Set<String> defaultSources) {
+		Taint.defaultSources = defaultSources;
+	}
+
+	public static Set<String> getDefaultSinks() {
+		return defaultSinks;
+	}
+
+	public static void setDefaultSinks(Set<String> defaultSinks) {
+		Taint.defaultSinks = defaultSinks;
+	}
+
+	public static String getSootSignature(MethodInfo mi) {
+		StringBuilder signature = new StringBuilder("<");
+		signature.append(mi.myClass);
+		signature.append(": ");
+		signature.append(mi.returnType + " ");
+		signature.append(mi.name + "(");
+		for (int i = 0; i < mi.paramTypes.length - 1; i++) {
+			ClassInfo paramType = mi.paramTypes[i];
+			signature.append(paramType + ",");
+		}
+		if (mi.paramTypes.length > 0) {
+			signature.append(mi.paramTypes[mi.paramTypes.length - 1]);
+		}
+		signature.append(")>");
+		String sootSignature = signature.toString();
+
+		return sootSignature;
 	}
 
 }

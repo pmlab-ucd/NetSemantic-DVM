@@ -1,6 +1,5 @@
 package fu.hao.trust.analysis;
 
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,7 +13,6 @@ public class PluginManager {
 	private final String TAG = getClass().getSimpleName();
 	
 	private List<Plugin> plugins;
-	private Method method;
 	
 	public PluginManager() {
 		plugins = new ArrayList<>();
@@ -28,17 +26,6 @@ public class PluginManager {
 	
 	public List<Plugin> getPlugins() {
 		return plugins;
-	}
-	
-	public Method getMethod() {
-		return method;
-	}
-	
-	public void setMethod(Method method) {
-		this.method = method; 
-		for (Plugin plugin : plugins) {
-			plugin.setMethod(method);
-		}
 	}
 	
 	public void runAnalysis(DalvikVM vm, Instruction inst) {

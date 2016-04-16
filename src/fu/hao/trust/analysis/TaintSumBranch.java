@@ -358,14 +358,14 @@ public class TaintSumBranch extends Taint {
 	@Override
 	public Map<String, Map<Object, Instruction>> runAnalysis(DalvikVM vm, Instruction inst, Map<String, Map<Object, Instruction>> ins) {
 		// Add conflict vars.
-		if (vm.getAssigned() != null && vm.getAssigned()[0] != vm.getReturnReg()) {
+		if (vm.getAssigned() != null && vm.getAssigned()[1] != null && vm.getAssigned()[0] != vm.getReturnReg()) {
 			if (!simpleBranches.isEmpty()
 					&& vm.getCurrStackFrame().getMethod() == simpleBranches
 							.peek().getMethod()) {
 				// Set the assigned var as combined value
 				Object[] assigned = vm.getAssigned();
 				Branch branch = simpleBranches.peek();
-				if (Branch.checkType(assigned[1], assigned[2])) {
+				if (assigned[0] instanceof Register && Branch.checkType(assigned[1], assigned[2])) {
 					Log.bb(TAG, "Assigned: " + assigned[1] + " " + assigned[2]);
 					branch.addValue((Register) assigned[0], assigned[1]);
 					branch.addValue((Register) assigned[0], assigned[2]);
@@ -395,6 +395,7 @@ public class TaintSumBranch extends Taint {
 	}
 
 	public TaintSumBranch() {
+		super();
 		simpleBranches = new Stack<>();
 
 		byteCodes.put(0x08, new ATAINT_OP_CMP());

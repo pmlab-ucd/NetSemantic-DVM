@@ -2,6 +2,7 @@ package fu.hao.trust.test;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import fu.hao.trust.data.Results;
@@ -11,6 +12,11 @@ import fu.hao.trust.utils.Settings;
 public class ContextAnalysisTest {
 	
 	String[] args = new String[4];
+	
+	@Before
+	public void prepare() {
+		args[3] = "Full";
+	}
 
 	@Test
 	public void testCtx() {
@@ -19,8 +25,7 @@ public class ContextAnalysisTest {
 		args[0] = "C:/Users/hao/workspace/PJApps/app/app-release.apk";
 		args[1] = "fu.hao.pjapps.MainActivity";
 		args[2] = "testCtx";
-		args[3] = "Ctx";
-
+		
 		Main.main(args);
 		System.out.println("REs: " + Results.targetCallRes);
 		assertEquals(false, Results.targetCallRes.isEmpty());
@@ -37,7 +42,6 @@ public class ContextAnalysisTest {
 		args[0] = "C:/Users/hao/workspace/PJApps/app/app-release.apk";
 		args[1] = "fu.hao.pjapps.MainActivity";
 		args[2] = "testLoop";
-		args[3] = "Ctx";
 
 		Main.main(args);
 		System.out.println("REs: " + Results.targetCallRes);
@@ -55,7 +59,6 @@ public class ContextAnalysisTest {
 		args[0] = "C:/Users/hao/workspace/PJApps/app/app-release.apk";
 		args[1] = "fu.hao.pjapps.MainActivity";
 		args[2] = "testCtx2";
-		args[3] = "Ctx"; //"ATaint";
 
 		Main.main(args);
 		System.out.println("REs: " + Results.targetCallRes);
@@ -73,7 +76,6 @@ public class ContextAnalysisTest {
 		args[0] = "C:/Users/hao/workspace/PJApps/app/app-release.apk";
 		args[1] = "fu.hao.pjapps.MainActivity";
 		args[2] = "testCondRet";
-		args[3] = "Ctx";
 		
 		Main.main(args);
 		System.out.println("REs: " + Results.targetCallRes);
@@ -91,7 +93,6 @@ public class ContextAnalysisTest {
 		args[0] = "C:/Users/hao/workspace/PJApps/app/app-release.apk";
 		args[1] = "fu.hao.pjapps.MainActivity";
 		args[2] = "testEif2";
-		args[3] = "Ctx";
 
 		Main.main(args);
 		System.out.println("REs: " + Results.targetCallRes);
