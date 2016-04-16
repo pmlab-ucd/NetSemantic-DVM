@@ -176,4 +176,446 @@ class fu.hao.trust.dvm.Interpreter - [DEBUG]: 0 <SPECIAL,ARGUMENT_SET,extra=[7, 
 class fu.hao.trust.dvm.Interpreter - [DEBUG]: args: fu.hao.trust.dvm.DVMObject@7a8dfdd4
 class fu.hao.trust.dvm.DalvikVM - [DEBUG]: getClass android.content.Context at fu.hao.trust.dvm.DalvikVM$Heap@592ed60d
 class fu.hao.trust.dvm.DalvikVM - [DEBUG]: new class representation for android.content.Context at fu.hao.trust.dvm.DalvikVM$Heap@592ed60d
-class fu.hao.trust.dvm.DalvikVM - 
+class fu.hao.trust.dvm.DalvikVM - main - [DEBUG]: BroadcastReceiverLifecycle1.apk
+main - [DEBUG]: C:/Users/hao/workspace/TRUST/sootOutput/BroadcastReceiverLifecycle1.apk_dummy.csv
+DalvikVM - [MSG]: apk java.util.zip.ZipFile@5424dbf6 C:/Users/hao/workspace/DroidBenchProj/Lifecycle_BroadcastReceiverLifecycle1/app/BroadcastReceiverLifecycle1.apk
+DalvikVM - [BB]: class de.ecspride.TestReceiver
+DalvikVM - [WARN]: Run chain de.ecspride.TestReceiver:onReceive at de.ecspride.TestReceiver
+DalvikVM - [MSG]: RUN Method de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+DalvikVM - [BB]: New method call: de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[7, 8, 9]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [2]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: [3]<0 HALT,VIRTUAL,extra=[null, [8, 1]]>
+DalvikVM - [BB]: [4]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [5]<0 ARITHMETIC,CHECK-AND-CAST,dst=r1,type=android.telephony.TelephonyManager>
+DalvikVM - [BB]: [6]<0 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>
+DalvikVM - [BB]: [7]<0 MOV,RESULT,dst=r3,type=java.lang.Object>
+DalvikVM - [BB]: [8]<0 MOV,CONST,dst=r6,type=void,extra=class patdroid.core.PrimitiveInfo?5>
+DalvikVM - [BB]: [9]<0 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?5>
+DalvikVM - [BB]: [10]<0 IF,NE,r0=r6,r1=r1,extra=index:17>
+DalvikVM - [BB]: [11]<0 INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]>
+DalvikVM - [BB]: [12]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [13]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="+49 1234">
+DalvikVM - [BB]: [14]<0 MOV,REG,dst=r4,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [15]<0 MOV,REG,dst=r5,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [16]<0 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]>
+DalvikVM - [BB]: [17]<0 RETURN,VOID>
+DalvikVM - [BB]: New Stack Frame: StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+DalvikVM - [BB]: Stack: [StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]
+Interpreter - [MSG]: RUN BEGIN de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+Interpreter - [MSG]: RUN BEGIN
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: 0 <0 SPECIAL,ARGUMENT_SET,extra=[7, 8, 9]> at de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+Interpreter - [BB]: opcode: 3 7
+Interpreter - [WARN]: null ctx!
+Interpreter - [DEBUG]: args: instance number 1@de.ecspride.ActivityLifecycle1
+VMHeap - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@424be5da
+VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@424be5da
+VMHeap - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@424be5da
+VMHeap - [BB]: new class representation for java.lang.Object at fu.hao.trust.dvm.VMHeap@424be5da
+VMHeap - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@424be5da
+VMHeap - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@424be5da
+class fu.hao.trust.dvm.DVMObject - [BB]: New instance of android.content.Context
+VMHeap - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@424be5da
+VMHeap - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@424be5da
+Interpreter - [DEBUG]: args: instance number 1@android.content.Context
+VMHeap - [BB]: getClass android.content.Intent at fu.hao.trust.dvm.VMHeap@424be5da
+VMHeap - [BB]: new class representation for android.content.Intent at fu.hao.trust.dvm.VMHeap@424be5da
+VMHeap - [BB]: getClass android.content.Intent at fu.hao.trust.dvm.VMHeap@424be5da
+class fu.hao.trust.dvm.DVMObject - [BB]: New instance of android.content.Intent
+VMHeap - [BB]: getClass android.content.Intent at fu.hao.trust.dvm.VMHeap@424be5da
+VMHeap - [BB]: getClass android.content.Intent at fu.hao.trust.dvm.VMHeap@424be5da
+Interpreter - [DEBUG]: args: instance number 1@android.content.Intent
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: Taint Tainted Res: {Taint={}}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: 1 <0 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0> at de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+Interpreter - [BB]: opcode: 1 2
+Interpreter - [DEBUG]: Mov const begin <1 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: A[reg 2@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]] 0
+Interpreter - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 2
+PluginManager - [MSG]: Taint Tainted Res: {Taint={}}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: 2 <0 MOV,CONST,dst=r1,type=java.lang.String,extra="phone"> at de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+Interpreter - [BB]: opcode: 1 2
+Interpreter - [DEBUG]: Mov const begin <2 MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: A[reg 1@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]] phone
+Interpreter - [DEBUG]: data: phone class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 3
+PluginManager - [MSG]: Taint Tainted Res: {Taint={}}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: 3 <0 HALT,VIRTUAL,extra=[null, [8, 1]]> at de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+Interpreter - [BB]: opcode: 15 13
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_HALT -> jump set pc to 4
+Interpreter - [MSG]: Cannot resolve the invocation
+Taint - [BB]: Not a taint op <3 HALT,VIRTUAL,extra=[null, [8, 1]]>
+PluginManager - [MSG]: Taint Tainted Res: {Taint={}}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: 4 <0 MOV,RESULT,dst=r1,type=java.lang.Object> at de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+Interpreter - [BB]: opcode: 1 21
+DalvikVM - [BB]: A[reg 1@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]] null
+OP_MOV_RESULT - [BB]: Result data: null
+OP_MOV_RESULT - [DEBUG]: Result data: null, type: null, to [reg 1@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 5
+PluginManager - [MSG]: Taint Tainted Res: {Taint={}}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: 5 <0 ARITHMETIC,CHECK-AND-CAST,dst=r1,type=android.telephony.TelephonyManager> at de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+Interpreter - [BB]: opcode: 13 18
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_ARITHETIC -> jump set pc to 6
+Taint - [BB]: Not a taint op <5 ARITHMETIC,CHECK-AND-CAST,dst=r1,type=android.telephony.TelephonyManager>
+PluginManager - [MSG]: Taint Tainted Res: {Taint={}}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: 6 <0 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]> at de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+Interpreter - [BB]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [MSG]: arg0 obj: null
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Reflction class: class android.telephony.TelephonyManager
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Return data: 359874043116909 ,class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [MSG]: Reflction invocation public java.lang.String android.telephony.TelephonyManager.getDeviceId()
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 7
+class fu.hao.trust.analysis.Taint$TAINT_OP_INVOKE - [BB]: <android.telephony.TelephonyManager: java.lang.String getDeviceId()>
+class fu.hao.trust.analysis.Taint$TAINT_OP_INVOKE - [WARN]: Found a tainted return value!
+PluginManager - [MSG]: Taint Tainted Res: {Taint={359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [Global RetReg]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: 7 <0 MOV,RESULT,dst=r3,type=java.lang.Object> at de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+Interpreter - [BB]: opcode: 1 21
+DalvikVM - [BB]: A[reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]] 359874043116909
+OP_MOV_RESULT - [BB]: Result data: 359874043116909
+OP_MOV_RESULT - [DEBUG]: Result data: 359874043116909, type: java.lang.String, to [reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 8
+TAINT_OP_MOV_RESULT - [BB]: set {359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [Global RetReg]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
+TAINT_OP_MOV_RESULT - [BB]: Add reg 3 due to ret reg.
+PluginManager - [MSG]: Taint Tainted Res: {Taint={[reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: 8 <0 MOV,CONST,dst=r6,type=void,extra=class patdroid.core.PrimitiveInfo?5> at de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+Interpreter - [BB]: opcode: 1 2
+Interpreter - [DEBUG]: Mov const begin <8 MOV,CONST,dst=r6,type=void,extra=class patdroid.core.PrimitiveInfo?5>
+DalvikVM - [BB]: A[reg 6@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]] 5
+Interpreter - [DEBUG]: data: 5 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 9
+PluginManager - [MSG]: Taint Tainted Res: {Taint={359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: 9 <0 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?5> at de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+Interpreter - [BB]: opcode: 1 2
+Interpreter - [DEBUG]: Mov const begin <9 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?5>
+DalvikVM - [BB]: A[reg 1@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]] 5
+Interpreter - [DEBUG]: data: 5 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 10
+PluginManager - [MSG]: Taint Tainted Res: {Taint={[reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: 10 <0 IF,NE,r0=r6,r1=r1,extra=index:17> at de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+Interpreter - [BB]: opcode: 8 25
+OP_CMP - [DEBUG]: r0 data 5
+Interpreter - [DEBUG]: ops: 5 5
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_IF_NE -> jump set pc to 11
+OP_IF_NE - [DEBUG]: equ: <10 IF,NE,r0=r6,r1=r1,extra=index:17> 5 5
+PluginManager - [MSG]: Taint Tainted Res: {Taint={359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: 11 <0 INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]> at de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+Interpreter - [BB]: opcode: 12 14
+DalvikVM - [BB]: A[Global RetReg] null
+Interpreter - [DEBUG]: reflction class android.telephony.SmsManager
+Interpreter - [DEBUG]: return data: android.telephony.SmsManager@25e94ba9 class android.telephony.SmsManager
+Interpreter - [MSG]: reflction invocation public static android.telephony.SmsManager android.telephony.SmsManager.getDefault()
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_INVOKE_STATIC -> jump set pc to 12
+class fu.hao.trust.analysis.Taint$TAINT_OP_INVOKE - [BB]: <android.telephony.SmsManager: android.telephony.SmsManager getDefault()>
+class fu.hao.trust.analysis.Taint$TAINT_OP_INVOKE - [DEBUG]: not a taint call: <android.telephony.SmsManager: android.telephony.SmsManager getDefault()>
+PluginManager - [MSG]: Taint Tainted Res: {Taint={[reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: 12 <0 MOV,RESULT,dst=r0,type=java.lang.Object> at de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+Interpreter - [BB]: opcode: 1 21
+DalvikVM - [BB]: A[reg 0@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]] android.telephony.SmsManager@25e94ba9
+OP_MOV_RESULT - [BB]: Result data: android.telephony.SmsManager@25e94ba9
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.SmsManager@25e94ba9, type: android.telephony.SmsManager, to [reg 0@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 13
+PluginManager - [MSG]: Taint Tainted Res: {Taint={359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: 13 <0 MOV,CONST,dst=r1,type=java.lang.String,extra="+49 1234"> at de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+Interpreter - [BB]: opcode: 1 2
+Interpreter - [DEBUG]: Mov const begin <13 MOV,CONST,dst=r1,type=java.lang.String,extra="+49 1234">
+DalvikVM - [BB]: A[reg 1@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]] +49 1234
+Interpreter - [DEBUG]: data: +49 1234 class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 14
+PluginManager - [MSG]: Taint Tainted Res: {Taint={[reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: 14 <0 MOV,REG,dst=r4,r0=r2,type=java.lang.Object> at de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+Interpreter - [BB]: opcode: 1 1
+DalvikVM - [BB]: A[reg 4@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]] 0
+class fu.hao.trust.dvm.Interpreter$OP_MOVE_REG - [DEBUG]: mov 0 to 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOVE_REG -> jump set pc to 15
+PluginManager - [MSG]: Taint Tainted Res: {Taint={359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: 15 <0 MOV,REG,dst=r5,r0=r2,type=java.lang.Object> at de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+Interpreter - [BB]: opcode: 1 1
+DalvikVM - [BB]: A[reg 5@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]] 0
+class fu.hao.trust.dvm.Interpreter$OP_MOVE_REG - [DEBUG]: mov 0 to 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOVE_REG -> jump set pc to 16
+PluginManager - [MSG]: Taint Tainted Res: {Taint={[reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: 16 <0 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]> at de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+Interpreter - [BB]: opcode: 12 13
+DalvikVM - [BB]: A[Global RetReg] null
+class fu.hao.trust.dvm.Interpreter - [MSG]: arg0 obj: android.telephony.SmsManager@25e94ba9
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Reflction class: class android.telephony.SmsManager
+Interpreter - [BB]: arg1: +49 1234
+Interpreter - [BB]: arg2: 0
+Interpreter - [WARN]: Mismatch type! arg 2, real para type: class patdroid.core.PrimitiveInfo, expected para type: class java.lang.String
+Interpreter - [BB]: arg3: 359874043116909
+Interpreter - [BB]: arg4: 0
+Interpreter - [WARN]: Mismatch type! arg 4, real para type: class patdroid.core.PrimitiveInfo, expected para type: class android.app.PendingIntent
+Interpreter - [BB]: arg5: 0
+Interpreter - [WARN]: Mismatch type! arg 5, real para type: class patdroid.core.PrimitiveInfo, expected para type: class android.app.PendingIntent
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Caller obj: android.telephony.SmsManager@25e94ba9, from class: class android.telephony.SmsManager
+class fu.hao.trust.dvm.Interpreter - [MSG]: Reflction invocation public void android.telephony.SmsManager.sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 17
+class fu.hao.trust.analysis.Taint$TAINT_OP_INVOKE - [BB]: <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>
+class fu.hao.trust.analysis.Taint$TAINT_OP_INVOKE - [BB]: Found a sink invocation. <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>
+class fu.hao.trust.analysis.Taint$TAINT_OP_INVOKE - [WARN]: Found a taint sink <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)> leaking data [359874043116909] at reg 3!!!
+PluginManager - [MSG]: Taint Tainted Res: {Taint={359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: 17 <0 RETURN,VOID> at de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+Interpreter - [BB]: opcode: 2 3
+class fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]
+DalvikVM - [BB]: stack []
+Interpreter - [MSG]: RUN DONE! The last one is onReceive
+main - [DEBUG]: C:/Users/hao/workspace/TRUST/sootOutput/BroadcastReceiverLifecycle1.apk.csv
+main - [DEBUG]: de.ecspride.TestReceiver
+DalvikVM - [MSG]: Begin run onReceive at C:/Users/hao/workspace/DroidBenchProj/Lifecycle_BroadcastReceiverLifecycle1/app/BroadcastReceiverLifecycle1.apk
+DalvikVM - [MSG]: RUN Method de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+DalvikVM - [BB]: New method call: de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[7, 8, 9]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [2]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: [3]<0 HALT,VIRTUAL,extra=[null, [8, 1]]>
+DalvikVM - [BB]: [4]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [5]<0 ARITHMETIC,CHECK-AND-CAST,dst=r1,type=android.telephony.TelephonyManager>
+DalvikVM - [BB]: [6]<0 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>
+DalvikVM - [BB]: [7]<0 MOV,RESULT,dst=r3,type=java.lang.Object>
+DalvikVM - [BB]: [8]<0 MOV,CONST,dst=r6,type=void,extra=class patdroid.core.PrimitiveInfo?5>
+DalvikVM - [BB]: [9]<0 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?5>
+DalvikVM - [BB]: [10]<0 IF,NE,r0=r6,r1=r1,extra=index:17>
+DalvikVM - [BB]: [11]<0 INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]>
+DalvikVM - [BB]: [12]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [13]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="+49 1234">
+DalvikVM - [BB]: [14]<0 MOV,REG,dst=r4,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [15]<0 MOV,REG,dst=r5,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [16]<0 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]>
+DalvikVM - [BB]: [17]<0 RETURN,VOID>
+DalvikVM - [BB]: New Stack Frame: StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+DalvikVM - [BB]: Stack: [StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]
+Interpreter - [MSG]: RUN BEGIN de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+Interpreter - [MSG]: RUN BEGIN
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: 0 <0 SPECIAL,ARGUMENT_SET,extra=[7, 8, 9]> at de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+Interpreter - [BB]: opcode: 3 7
+Interpreter - [WARN]: null ctx!
+Interpreter - [DEBUG]: args: instance number 1@de.ecspride.ActivityLifecycle1
+VMHeap - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@7154abc4
+VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@7154abc4
+VMHeap - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@7154abc4
+VMHeap - [BB]: new class representation for java.lang.Object at fu.hao.trust.dvm.VMHeap@7154abc4
+VMHeap - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@7154abc4
+VMHeap - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@7154abc4
+class fu.hao.trust.dvm.DVMObject - [BB]: New instance of android.content.Context
+VMHeap - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@7154abc4
+VMHeap - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@7154abc4
+Interpreter - [DEBUG]: args: instance number 1@android.content.Context
+VMHeap - [BB]: getClass android.content.Intent at fu.hao.trust.dvm.VMHeap@7154abc4
+VMHeap - [BB]: new class representation for android.content.Intent at fu.hao.trust.dvm.VMHeap@7154abc4
+VMHeap - [BB]: getClass android.content.Intent at fu.hao.trust.dvm.VMHeap@7154abc4
+class fu.hao.trust.dvm.DVMObject - [BB]: New instance of android.content.Intent
+VMHeap - [BB]: getClass android.content.Intent at fu.hao.trust.dvm.VMHeap@7154abc4
+VMHeap - [BB]: getClass android.content.Intent at fu.hao.trust.dvm.VMHeap@7154abc4
+Interpreter - [DEBUG]: args: instance number 1@android.content.Intent
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_SP_ARGUMENTS -> jump set pc to 1
+TAINT_OP_SP_ARGUMENTS - [BB]: Copy 359874043116909 as tainted.
+PluginManager - [MSG]: Taint Tainted Res: {Taint={[reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: 1 <0 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0> at de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+Interpreter - [BB]: opcode: 1 2
+Interpreter - [DEBUG]: Mov const begin <1 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: A[reg 2@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]] 0
+Interpreter - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 2
+PluginManager - [MSG]: Taint Tainted Res: {Taint={359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: 2 <0 MOV,CONST,dst=r1,type=java.lang.String,extra="phone"> at de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+Interpreter - [BB]: opcode: 1 2
+Interpreter - [DEBUG]: Mov const begin <2 MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: A[reg 1@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]] phone
+Interpreter - [DEBUG]: data: phone class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 3
+PluginManager - [MSG]: Taint Tainted Res: {Taint={[reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: 3 <0 HALT,VIRTUAL,extra=[null, [8, 1]]> at de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+Interpreter - [BB]: opcode: 15 13
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_HALT -> jump set pc to 4
+Interpreter - [MSG]: Cannot resolve the invocation
+Taint - [BB]: Not a taint op <3 HALT,VIRTUAL,extra=[null, [8, 1]]>
+PluginManager - [MSG]: Taint Tainted Res: {Taint={[reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: 4 <0 MOV,RESULT,dst=r1,type=java.lang.Object> at de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+Interpreter - [BB]: opcode: 1 21
+DalvikVM - [BB]: A[reg 1@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]] null
+OP_MOV_RESULT - [BB]: Result data: null
+OP_MOV_RESULT - [DEBUG]: Result data: null, type: null, to [reg 1@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 5
+PluginManager - [MSG]: Taint Tainted Res: {Taint={359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: 5 <0 ARITHMETIC,CHECK-AND-CAST,dst=r1,type=android.telephony.TelephonyManager> at de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+Interpreter - [BB]: opcode: 13 18
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_ARITHETIC -> jump set pc to 6
+Taint - [BB]: Not a taint op <5 ARITHMETIC,CHECK-AND-CAST,dst=r1,type=android.telephony.TelephonyManager>
+PluginManager - [MSG]: Taint Tainted Res: {Taint={359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: 6 <0 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]> at de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+Interpreter - [BB]: opcode: 12 13
+class fu.hao.trust.dvm.Interpreter - [MSG]: arg0 obj: null
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Reflction class: class android.telephony.TelephonyManager
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Return data: 359874043116909 ,class java.lang.String
+class fu.hao.trust.dvm.Interpreter - [MSG]: Reflction invocation public java.lang.String android.telephony.TelephonyManager.getDeviceId()
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 7
+class fu.hao.trust.analysis.Taint$TAINT_OP_INVOKE - [BB]: <android.telephony.TelephonyManager: java.lang.String getDeviceId()>
+class fu.hao.trust.analysis.Taint$TAINT_OP_INVOKE - [WARN]: Found a tainted return value!
+PluginManager - [MSG]: Taint Tainted Res: {Taint={[Global RetReg]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: 7 <0 MOV,RESULT,dst=r3,type=java.lang.Object> at de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+Interpreter - [BB]: opcode: 1 21
+DalvikVM - [BB]: A[reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]] 359874043116909
+OP_MOV_RESULT - [BB]: Result data: 359874043116909
+OP_MOV_RESULT - [DEBUG]: Result data: 359874043116909, type: java.lang.String, to [reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 8
+TAINT_OP_MOV_RESULT - [BB]: set {[Global RetReg]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
+TAINT_OP_MOV_RESULT - [BB]: Add reg 3 due to ret reg.
+PluginManager - [MSG]: Taint Tainted Res: {Taint={359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: 8 <0 MOV,CONST,dst=r6,type=void,extra=class patdroid.core.PrimitiveInfo?5> at de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+Interpreter - [BB]: opcode: 1 2
+Interpreter - [DEBUG]: Mov const begin <8 MOV,CONST,dst=r6,type=void,extra=class patdroid.core.PrimitiveInfo?5>
+DalvikVM - [BB]: A[reg 6@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]] 5
+Interpreter - [DEBUG]: data: 5 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 9
+PluginManager - [MSG]: Taint Tainted Res: {Taint={[reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: 9 <0 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?5> at de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+Interpreter - [BB]: opcode: 1 2
+Interpreter - [DEBUG]: Mov const begin <9 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?5>
+DalvikVM - [BB]: A[reg 1@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]] 5
+Interpreter - [DEBUG]: data: 5 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 10
+PluginManager - [MSG]: Taint Tainted Res: {Taint={359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: 10 <0 IF,NE,r0=r6,r1=r1,extra=index:17> at de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+Interpreter - [BB]: opcode: 8 25
+OP_CMP - [DEBUG]: r0 data 5
+Interpreter - [DEBUG]: ops: 5 5
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_IF_NE -> jump set pc to 11
+OP_IF_NE - [DEBUG]: equ: <10 IF,NE,r0=r6,r1=r1,extra=index:17> 5 5
+PluginManager - [MSG]: Taint Tainted Res: {Taint={[reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: 11 <0 INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]> at de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+Interpreter - [BB]: opcode: 12 14
+DalvikVM - [BB]: A[Global RetReg] null
+Interpreter - [DEBUG]: reflction class android.telephony.SmsManager
+Interpreter - [DEBUG]: return data: android.telephony.SmsManager@374ffe34 class android.telephony.SmsManager
+Interpreter - [MSG]: reflction invocation public static android.telephony.SmsManager android.telephony.SmsManager.getDefault()
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_INVOKE_STATIC -> jump set pc to 12
+class fu.hao.trust.analysis.Taint$TAINT_OP_INVOKE - [BB]: <android.telephony.SmsManager: android.telephony.SmsManager getDefault()>
+class fu.hao.trust.analysis.Taint$TAINT_OP_INVOKE - [DEBUG]: not a taint call: <android.telephony.SmsManager: android.telephony.SmsManager getDefault()>
+PluginManager - [MSG]: Taint Tainted Res: {Taint={359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: 12 <0 MOV,RESULT,dst=r0,type=java.lang.Object> at de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+Interpreter - [BB]: opcode: 1 21
+DalvikVM - [BB]: A[reg 0@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]] android.telephony.SmsManager@374ffe34
+OP_MOV_RESULT - [BB]: Result data: android.telephony.SmsManager@374ffe34
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.SmsManager@374ffe34, type: android.telephony.SmsManager, to [reg 0@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 13
+PluginManager - [MSG]: Taint Tainted Res: {Taint={[reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: 13 <0 MOV,CONST,dst=r1,type=java.lang.String,extra="+49 1234"> at de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+Interpreter - [BB]: opcode: 1 2
+Interpreter - [DEBUG]: Mov const begin <13 MOV,CONST,dst=r1,type=java.lang.String,extra="+49 1234">
+DalvikVM - [BB]: A[reg 1@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]] +49 1234
+Interpreter - [DEBUG]: data: +49 1234 class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 14
+PluginManager - [MSG]: Taint Tainted Res: {Taint={359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: 14 <0 MOV,REG,dst=r4,r0=r2,type=java.lang.Object> at de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+Interpreter - [BB]: opcode: 1 1
+DalvikVM - [BB]: A[reg 4@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]] 0
+class fu.hao.trust.dvm.Interpreter$OP_MOVE_REG - [DEBUG]: mov 0 to 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOVE_REG -> jump set pc to 15
+PluginManager - [MSG]: Taint Tainted Res: {Taint={[reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: 15 <0 MOV,REG,dst=r5,r0=r2,type=java.lang.Object> at de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+Interpreter - [BB]: opcode: 1 1
+DalvikVM - [BB]: A[reg 5@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]] 0
+class fu.hao.trust.dvm.Interpreter$OP_MOVE_REG - [DEBUG]: mov 0 to 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOVE_REG -> jump set pc to 16
+PluginManager - [MSG]: Taint Tainted Res: {Taint={359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: 16 <0 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]> at de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+Interpreter - [BB]: opcode: 12 13
+DalvikVM - [BB]: A[Global RetReg] null
+class fu.hao.trust.dvm.Interpreter - [MSG]: arg0 obj: android.telephony.SmsManager@374ffe34
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Reflction class: class android.telephony.SmsManager
+Interpreter - [BB]: arg1: +49 1234
+Interpreter - [BB]: arg2: 0
+Interpreter - [WARN]: Mismatch type! arg 2, real para type: class patdroid.core.PrimitiveInfo, expected para type: class java.lang.String
+Interpreter - [BB]: arg3: 359874043116909
+Interpreter - [BB]: arg4: 0
+Interpreter - [WARN]: Mismatch type! arg 4, real para type: class patdroid.core.PrimitiveInfo, expected para type: class android.app.PendingIntent
+Interpreter - [BB]: arg5: 0
+Interpreter - [WARN]: Mismatch type! arg 5, real para type: class patdroid.core.PrimitiveInfo, expected para type: class android.app.PendingIntent
+class fu.hao.trust.dvm.Interpreter - [DEBUG]: Caller obj: android.telephony.SmsManager@374ffe34, from class: class android.telephony.SmsManager
+class fu.hao.trust.dvm.Interpreter - [MSG]: Reflction invocation public void android.telephony.SmsManager.sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 17
+class fu.hao.trust.analysis.Taint$TAINT_OP_INVOKE - [BB]: <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>
+class fu.hao.trust.analysis.Taint$TAINT_OP_INVOKE - [BB]: Found a sink invocation. <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>
+class fu.hao.trust.analysis.Taint$TAINT_OP_INVOKE - [WARN]: Found a taint sink <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)> leaking data [359874043116909] at reg 3!!!
+PluginManager - [MSG]: Taint Tainted Res: {Taint={[reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 3@StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: 17 <0 RETURN,VOID> at de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
+Interpreter - [BB]: opcode: 2 3
+class fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]
+DalvikVM - [BB]: stack []
+Interpreter - [MSG]: RUN DONE! The last one is onReceive

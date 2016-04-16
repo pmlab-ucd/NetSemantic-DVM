@@ -1892,6 +1892,7 @@ public class Interpreter {
 			@SuppressWarnings("rawtypes")
 			Class[] argsClass = new Class[mi.paramTypes.length];
 			Object[] params = new Object[args.length - 1];
+			boolean normalArg = true;
 
 			// If args contains a symbolic var, directly set the return val as a
 			// symbolic var.
@@ -1905,8 +1906,7 @@ public class Interpreter {
 						Log.debug(TAG, "Init instance: "
 								+ vm.getReg(args[0]).getData());
 					} else {
-						boolean normalArg = getParams(vm, mi, args, argsClass,
-								params);
+						normalArg = getParams(vm, mi, args, argsClass, params);
 						Object instance;
 						if (!normalArg) {
 							instance = new Unknown(mi.returnType);
@@ -1928,6 +1928,10 @@ public class Interpreter {
 				thisInstance = vm.getReg(args[0]).getData();
 
 				if (thisInstance instanceof SymbolicVar) {
+					if (mi.toString().contains("equals")) {
+						normalArg = false;
+					}
+
 					thisInstance = ((SymbolicVar) thisInstance).getValue();
 				}
 
@@ -1937,7 +1941,6 @@ public class Interpreter {
 				}
 
 				// clazz = obj.getClass();
-				vm.retValReg.type = mi.returnType;
 				if (args.length == 1) {
 					method = clazz.getDeclaredMethod(mi.name);
 					// When method is a memeber of noInvoke, do not really
@@ -1949,8 +1952,10 @@ public class Interpreter {
 						vm.retValReg.setData(method.invoke(thisInstance));
 					}
 				} else {
-					boolean normalArg = getParams(vm, mi, args, argsClass,
-							params);
+					boolean normal = getParams(vm, mi, args, argsClass, params);
+					if (normalArg) {
+						normalArg = normal;
+					}
 					method = clazz.getDeclaredMethod(mi.name, argsClass);
 					Log.debug(TAG, "Caller obj: " + thisInstance
 							+ ", from class: "
@@ -1970,11 +1975,11 @@ public class Interpreter {
 				}
 				Log.msg(TAG, "Reflction invocation " + method);
 			}
+
 			vm.retValReg.setType(mi.returnType);
-			
 			vm.setReflectMethod(method);
 			jump(vm, inst, true);
-		} catch (java.lang.InstantiationException e) { 
+		} catch (java.lang.InstantiationException e) {
 			vm.getReg(args[0]).setData(new Unknown(mi.myClass));
 			Log.warn(TAG, "Symbolic new instance created.");
 			jump(vm, inst, true);
@@ -2059,7 +2064,7 @@ public class Interpreter {
 						if (mi.toString().contains("equals")) {
 							return false;
 						}
-					} else if (argData instanceof MNVar){
+					} else if (argData instanceof MNVar) {
 						params[i - 1] = null;
 						return false;
 					}

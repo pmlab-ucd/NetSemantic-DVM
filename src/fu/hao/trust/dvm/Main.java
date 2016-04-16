@@ -11,10 +11,7 @@ import java.util.zip.ZipException;
 
 import com.opencsv.CSVReader;
 
-import fu.hao.trust.analysis.ContextAnalysis;
 import fu.hao.trust.analysis.FullAnalysis;
-import fu.hao.trust.analysis.InfluenceAnalysis;
-import fu.hao.trust.analysis.Plugin;
 import fu.hao.trust.analysis.PluginManager;
 import fu.hao.trust.analysis.Taint;
 import fu.hao.trust.analysis.TaintSumBranch;
