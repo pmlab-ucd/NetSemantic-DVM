@@ -568,7 +568,7 @@ public class DalvikVM {
 							continue;
 						}
 
-						nres.put(obj, cres.get(tag));
+						nres.put(obj, cres.get(obj));
 					}
 				}
 			}

@@ -62,7 +62,9 @@ public class PluginManager {
 	
 	public void printResults() {
 		for (Plugin plugin : plugins) {
-			Log.msg(TAG, plugin.getClass().getSimpleName() + " Tainted Res: " + plugin.getCurrtRes());
+			for (String tag : plugin.getCurrtRes().keySet()) {
+				Log.msg(TAG, tag + " Tainted Res: " + plugin.getCurrtRes().get(tag));
+			}
 		}
 	}
 	

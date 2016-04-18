@@ -1,13 +1,12 @@
 package fu.hao.trust.data;
 
 import java.util.LinkedList;
-import java.util.List;
 
 public class MultiValueVar {
 	
 	final static String TAG = MultiValueVar.class.getName();
 	
-	List<Object> concreteVals;
+	protected LinkedList<Object> concreteVals;
 	
 	public MultiValueVar() {
 		concreteVals = new LinkedList<>();
@@ -15,6 +14,17 @@ public class MultiValueVar {
 	
 	public void addConcreteVal(Object value) {
 		concreteVals.add(value);
+	}
+	
+	public Object getLastVal() {
+		if (concreteVals.isEmpty()) {
+			return null;
+		}
+		return concreteVals.getLast();
+	}
+	
+	public LinkedList<Object> getConcreteVals() {
+		return concreteVals;
 	}
 	
 	

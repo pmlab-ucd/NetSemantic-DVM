@@ -23,13 +23,13 @@ package fu.hao.trust.utils;
 import patdroid.util.Report;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 
 import javax.management.RuntimeErrorException;
-
 
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
@@ -50,20 +50,27 @@ public class Log {
 			System.err));
 	public static Writer out = stdout;
 	public static Writer err = stderr;
+	static String fileName;
+	
+	static {
+		fileName = "output/" + Settings.apkName + ".log";
+		File file = new File(fileName);
+		if (file.exists()) {
+			file.delete();
+		}
+	}
 
 	private static boolean writeLog(String TAG, int theLevel, String title,
 			String msg) throws IOException {
-		if (theLevel >= Settings.logLevel) {
-		Writer output;
-		output = new BufferedWriter(new FileWriter("output/" + Settings.apkName + ".log", true));  //clears file every time
-		output.append(TAG + " - " + "[" + title + "]: " + msg
-						+ "\n");
-		output.close();
-		
+		if (theLevel >= Settings.logLevel) {	
+			Writer output;
+			output = new BufferedWriter(new FileWriter(fileName, true));
+			output.append(TAG + " - " + "[" + title + "]: " + msg + "\n");
+			output.close();
+
 			return true;
 		}
-		
-		
+
 		return false;
 	}
 
@@ -76,7 +83,7 @@ public class Log {
 		}
 		System.exit(r);
 	}
-	
+
 	protected static void log(String TAG, int theLevel, String title, String msg)
 			throws IOException {
 		switch (theLevel) {
@@ -92,12 +99,12 @@ public class Log {
 		default:
 			break;
 		}
-		
-		if (writeLog(TAG, theLevel, title, msg)) {		
+
+		if (writeLog(TAG, theLevel, title, msg)) {
 			if (theLevel < MODE_MSG) {
 				System.out.println("[" + TAG + "] - " + title + " - " + msg);
 			} else if (theLevel >= MODE_ERROR) {
-				//logger.error(title + " - " + msg);
+				// logger.error(title + " - " + msg);
 				System.err.println("[" + TAG + "] - " + title + " - " + msg);
 				throw new RuntimeErrorException(null, TAG + " - " + msg);
 			} else {
@@ -203,7 +210,7 @@ public class Log {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void bb(String TAG, Object msg) {
 		try {
 			log(TAG, MODE_VERBOSE, "BB", msg.toString());

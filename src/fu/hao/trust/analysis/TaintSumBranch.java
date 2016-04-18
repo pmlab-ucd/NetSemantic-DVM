@@ -177,7 +177,7 @@ public class TaintSumBranch extends Taint {
 
 			// When unknown exists in the branch
 			if (r0 != null
-					&& (r0.getData() instanceof MultiValueVar)
+ && (r0.getData() instanceof MultiValueVar)
 					|| r1 != null
 					&& (r1.getData() instanceof MultiValueVar)) {
 				// Force to explore <then>

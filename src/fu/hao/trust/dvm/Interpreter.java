@@ -10,7 +10,7 @@ import java.util.Set;
 
 import fu.hao.trust.dvm.DalvikVM.Register;
 import fu.hao.trust.dvm.DalvikVM.StackFrame;
-import fu.hao.trust.data.MNVar;
+import fu.hao.trust.data.MultiValueVar;
 import fu.hao.trust.data.SymbolicVar;
 import fu.hao.trust.solver.Unknown;
 import fu.hao.trust.utils.Log;
@@ -1858,7 +1858,6 @@ public class Interpreter {
 			}
 			vm.setPC((int) inst.extra);
 		}
-
 	}
 
 	/**
@@ -1878,7 +1877,7 @@ public class Interpreter {
 		MethodInfo mi = (MethodInfo) extra[0];
 		// The register index referred by args
 		int[] args = (int[]) extra[1];
-		final String TAG = getClass().toString();
+		final String TAG = getClass().getSimpleName();
 		Object thisInstance = null;
 		Method method = null;
 		try {
@@ -1927,12 +1926,20 @@ public class Interpreter {
 
 				thisInstance = vm.getReg(args[0]).getData();
 
-				if (thisInstance instanceof SymbolicVar) {
+				if (thisInstance instanceof MultiValueVar) {
 					if (mi.toString().contains("equals")) {
 						normalArg = false;
 					}
-
-					thisInstance = ((SymbolicVar) thisInstance).getValue();
+					
+					if (thisInstance instanceof SymbolicVar) {
+						thisInstance = ((SymbolicVar) thisInstance).getValue();
+					} else {
+						thisInstance = ((MultiValueVar) thisInstance).getLastVal();
+					}
+				} 
+				
+				if (noInvokeList.contains(mi.name)) {
+					normalArg = false;
 				}
 
 				if (thisInstance == null || thisInstance instanceof DVMObject
@@ -1945,8 +1952,8 @@ public class Interpreter {
 					method = clazz.getDeclaredMethod(mi.name);
 					// When method is a memeber of noInvoke, do not really
 					// invoke it
-					if (noInvokeList.contains(method.getName())) {
-						vm.retValReg.setData(null);
+					if (!normalArg) {
+						vm.retValReg.setData(new Unknown(mi.returnType));
 						Log.warn(TAG, "Found noInvokeMethod " + method);
 					} else {
 						vm.retValReg.setData(method.invoke(thisInstance));
@@ -1964,7 +1971,6 @@ public class Interpreter {
 					if (normalArg) {
 						vm.retValReg.setData(method
 								.invoke(thisInstance, params));
-
 					} else {
 						vm.retValReg.setData(new Unknown(mi.returnType));
 					}
@@ -1975,13 +1981,8 @@ public class Interpreter {
 				}
 				Log.msg(TAG, "Reflction invocation " + method);
 			}
-
 			vm.retValReg.setType(mi.returnType);
 			vm.setReflectMethod(method);
-			jump(vm, inst, true);
-		} catch (java.lang.InstantiationException e) {
-			vm.getReg(args[0]).setData(new Unknown(mi.myClass));
-			Log.warn(TAG, "Symbolic new instance created.");
 			jump(vm, inst, true);
 		} catch (java.lang.IllegalArgumentException e) {
 			e.printStackTrace();
@@ -2064,7 +2065,7 @@ public class Interpreter {
 						if (mi.toString().contains("equals")) {
 							return false;
 						}
-					} else if (argData instanceof MNVar) {
+					} else if (argData instanceof MultiValueVar) {
 						params[i - 1] = null;
 						return false;
 					}

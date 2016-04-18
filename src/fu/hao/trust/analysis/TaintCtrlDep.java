@@ -11,7 +11,6 @@ import fu.hao.trust.dvm.DalvikVM;
 import fu.hao.trust.dvm.DalvikVM.Register;
 import fu.hao.trust.solver.BiDirBranch;
 import fu.hao.trust.utils.Log;
-import fu.hao.trust.utils.Settings;
 
 /**
  * @ClassName: TaintCtrlDep
@@ -76,7 +75,7 @@ public class TaintCtrlDep extends TaintSumBranch {
 							interestedSimple.add(branch);
 						}
 
-						Log.msg(Settings.getRuntimeCaller(),
+						Log.msg(tag,
 								"Add CDTaintBranch " + branch);
 					}
 				}

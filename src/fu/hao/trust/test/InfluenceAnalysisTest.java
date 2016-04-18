@@ -2,6 +2,7 @@ package fu.hao.trust.test;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import fu.hao.trust.data.Results;
@@ -11,6 +12,11 @@ import fu.hao.trust.utils.Settings;
 public class InfluenceAnalysisTest {
 	
 	String[] args = new String[4];
+	
+	@Before
+	public void prepare() {
+		args[3] = "Full";
+	}
 
 	@Test
 	public void testInfluence() {
@@ -20,9 +26,19 @@ public class InfluenceAnalysisTest {
 		args[0] = "C:/Users/hao/workspace/PJApps/app/PJApps.apk";
 		args[1] = "fu.hao.pjapps.MainActivity";
 		args[2] = "testInfluence";
-		args[3] = "Influ";
 
 		Main.main(args);
+		assertEquals(false, Results.targetCallRes.isEmpty());
+		assertEquals(
+				true,
+				Results.targetCallRes
+						.values()
+						.iterator()
+						.next()
+						.getInfluAPIs()
+						.toString()
+						.contains(
+								"<33 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage"));
 	}
 
 	@Test
@@ -33,7 +49,6 @@ public class InfluenceAnalysisTest {
 		args[0] = "C:/Users/hao/workspace/PJApps/app/app-release.apk";
 		args[1] = "fu.hao.pjapps.MainActivity";
 		args[2] = "testConnection";
-		args[3] = "Full";
 		Main.main(args);
 
 		System.out.println("REs: " + Results.results);
@@ -48,7 +63,7 @@ public class InfluenceAnalysisTest {
 						.getInfluAPIs()
 						.toString()
 						.contains(
-								"<INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage"));
+								"<40 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage"));
 	}
 	
 	@Test
@@ -58,7 +73,6 @@ public class InfluenceAnalysisTest {
 		args[0] = "C:/Users/hao/workspace/PJApps/app/app-release.apk";
 		args[1] = "fu.hao.pjapps.MainActivity";
 		args[2] = "testConn2";
-		args[3] = "Full"; //"ATaint";
 		
 		Main.main(args);
 		

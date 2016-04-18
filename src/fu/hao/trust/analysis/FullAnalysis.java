@@ -17,6 +17,7 @@ public class FullAnalysis extends TaintCtrlDep {
 	Map<Instruction, TargetCall> targetCalls;
 	
 	ContextAnalysis ctxAnalysis;
+	InfluenceAnalysis influAnalysis;
 	
 	class FULL_OP_INVOKE extends TAINT_OP_INVOKE {
 		final String TAG = getClass().getSimpleName();
@@ -24,9 +25,12 @@ public class FullAnalysis extends TaintCtrlDep {
 		@Override
 		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
 				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
+			Log.bb(TAG, "targetcalls " + targetCalls);
+			Map<String, Map<Object, Instruction>> outs = super.flow(vm, inst, ins);
 			ctxAnalysis.ctxInvoke(vm, inst, targetCalls);
+			influAnalysis.influInvoke(vm, inst, targetCalls);
 			Log.bb(TAG, "Target calls " + Results.targetCallRes);
-			return super.flow(vm, inst, ins);
+			return outs;
 		}
 	}
 
@@ -34,7 +38,9 @@ public class FullAnalysis extends TaintCtrlDep {
 		targetCalls = new HashMap<>();
 		Results.targetCallRes = targetCalls;
 		ctxAnalysis = new ContextAnalysis();
+		influAnalysis = new InfluenceAnalysis();
 		configs.put(ctxAnalysis.TAG, ctxAnalysis.getConfig());
+		configs.put(influAnalysis.TAG, influAnalysis.getConfig());
 		
 		byteCodes.put(0x0C, new FULL_OP_INVOKE());
 	}
