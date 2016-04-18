@@ -43,7 +43,6 @@ public class InfluenceAnalysisTest {
 
 	@Test
 	public void testConnection() {
-		String[] args = new String[4];
 		Settings.logLevel = 2;
 
 		args[0] = "C:/Users/hao/workspace/PJApps/app/app-release.apk";
@@ -88,7 +87,7 @@ public class InfluenceAnalysisTest {
 						.getInfluAPIs()
 						.toString()
 						.contains(
-								"<INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage"));
+								"<76 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage"));
 	}
 
 }

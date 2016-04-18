@@ -105,7 +105,7 @@ public class TaintCtrlDep extends TaintSumBranch {
 					// FIXME Multiple controlling if.
 					out.put((Register) assigned[0], interestedSimple.peek()
 							.getElemSrcs().iterator().next());
-					Log.msg(TAG, "Add correlated tained var " + assigned[0]);
+					Log.msg(tag, "Add correlated tained var " + assigned[0]);
 				}
 
 				if (!interestedBiDir.isEmpty()
@@ -113,7 +113,7 @@ public class TaintCtrlDep extends TaintSumBranch {
 								.peek().getMethod()) {
 					out.put((Register) assigned[0], interestedBiDir.peek()
 							.getElemSrcs().iterator().next());
-					Log.msg(TAG, "Add correlated tained var " + assigned[0]);
+					Log.msg(tag, "Add correlated tained var " + assigned[0]);
 				}
 			}
 		}
@@ -130,7 +130,7 @@ public class TaintCtrlDep extends TaintSumBranch {
 			Stack<BiDirBranch> interestedBiDir = corrFact.getInterestedBiDir();
 			if (!interestedSimple.isEmpty()
 					&& !simpleBranches.contains(interestedSimple.peek())) {
-				Log.bb(TAG, "Rm Simple CDTAINTBranch " + interestedSimple.pop());
+				Log.bb(config.getTag(), "Rm Simple CDTAINTBranch " + interestedSimple.pop());
 			}
 
 			// At RestBegin, check if there exists unexplored block. If yes,
@@ -138,7 +138,7 @@ public class TaintCtrlDep extends TaintSumBranch {
 			if (!interestedBiDir.isEmpty()
 					&& interestedBiDir.peek().getRestBegin() == inst
 					&& !hasRestore) {
-				Log.bb(TAG, "Rm Bidir CDTAINTBranch " + interestedBiDir.pop());
+				Log.bb(config.getTag(), "Rm Bidir CDTAINTBranch " + interestedBiDir.pop());
 			}
 		}
 

@@ -93,7 +93,7 @@ public class DalvikVM {
 			if (count == -1) {
 				return "[Global RetReg]";
 			}
-			return "[reg " + count + "@" + stackFrame + "]";
+			return "[reg " + count + "@" + stackFrame.method.name + "]";
 		}
 
 		public void setType(ClassInfo type) {
@@ -146,11 +146,11 @@ public class DalvikVM {
 				counter++;
 			}
 
-			if (pluginManager == null) {
-				pluginManager = new PluginManager();
+			if (getPluginManager() == null) {
+				setPluginManager(new PluginManager());
 			}
 
-			for (Plugin plugin : pluginManager.getPlugins()) {
+			for (Plugin plugin : getPluginManager().getPlugins()) {
 				Map<String, Map<Object, Instruction>> clonedRes = new HashMap<>();
 				Map<String, Map<Object, Instruction>> originRes = plugin
 						.getCurrtRes();
@@ -402,7 +402,7 @@ public class DalvikVM {
 		heap = state.getHeap();
 		stack = state.getStack();
 		pc = getCurrStackFrame().pc;
-		pluginManager.setCurrRes(getCurrStackFrame().pluginRes);
+		getPluginManager().setCurrRes(getCurrStackFrame().pluginRes);
 		//pluginManager.setMethod(state.getPluginMethod());
 
 		interpreter.jump(this, focusBranch.getInstructions().iterator().next(),
@@ -441,7 +441,7 @@ public class DalvikVM {
 	// The "this" instance of a component.
 	DVMObject callbackOwner;
 
-	PluginManager pluginManager;
+	private PluginManager pluginManager;
 
 	private Object[] assigned;
 	
@@ -510,7 +510,7 @@ public class DalvikVM {
 		interpreter = Interpreter.v();
 		retValReg = new Register(null, -1);
 		stack = new LinkedList<>();
-		pluginManager.reset();
+		getPluginManager().reset();
 		retValReg.data = null;
 		retValReg.type = null;
 		pc[0] = 0;
@@ -535,6 +535,7 @@ public class DalvikVM {
 		} else {
 			Log.bb(TAG, "New Stack Frame: " + newStackFrame);
 		}
+		pluginManager.setCurrRes(newStackFrame.pluginRes);
 		stack.add(newStackFrame);
 		pc = getCurrStackFrame().pc;
 		Log.bb(TAG, "Stack: " + stack);
@@ -555,25 +556,6 @@ public class DalvikVM {
 		Log.bb(TAG, "stack " + stack);
 
 		if (!stack.isEmpty()) {
-			// Add new tainted heap objs into the caller's res
-			for (Plugin plugin : pluginManager.getPlugins()) {
-				Map<String, Map<Object, Instruction>> callerRes = getCurrStackFrame()
-						.getPluginRes().get(plugin);
-				for (String tag : plugin.getCurrtRes().keySet()) {
-					Map<Object, Instruction> cres = plugin.getCurrtRes().get(
-							tag);
-					Map<Object, Instruction> nres = callerRes.get(tag);
-					for (Object obj : cres.keySet()) {
-						if (obj instanceof Register) {
-							continue;
-						}
-
-						nres.put(obj, cres.get(obj));
-					}
-				}
-			}
-
-			pluginManager.setCurrRes(getCurrStackFrame().getPluginRes());
 			pc = getCurrStackFrame().pc;
 			Log.bb(TAG, "Return to " + pc[0] + "@" + getCurrStackFrame().method);
 		}
@@ -611,7 +593,7 @@ public class DalvikVM {
 		// find all methods with the name "onCreate", most likely there is
 		// only one
 		MethodInfo[] methods = c.findMethodsHere(main);
-		this.pluginManager = pluginManager;
+		this.setPluginManager(pluginManager);
 		if (params == null) {
 			runMethod(methods[0]);
 		} else {
@@ -637,7 +619,7 @@ public class DalvikVM {
 
 		// find all methods with the name "onCreate", most likely there is
 		// only one
-		this.pluginManager = pluginManager;
+		this.setPluginManager(pluginManager);
 
 		for (int i = 1; i < chain.length; i++) {
 			Settings.suspClass = chain[i].split(":")[0];
@@ -735,6 +717,14 @@ public class DalvikVM {
 
 	public void setAssigned(Object[] assigned) {
 		this.assigned = assigned;
+	}
+
+	public PluginManager getPluginManager() {
+		return pluginManager;
+	}
+
+	public void setPluginManager(PluginManager pluginManager) {
+		this.pluginManager = pluginManager;
 	}
 
 }

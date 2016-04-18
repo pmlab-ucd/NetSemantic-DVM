@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import fu.hao.trust.analysis.Plugin;
 import fu.hao.trust.dvm.DalvikVM.Register;
 import fu.hao.trust.dvm.DalvikVM.StackFrame;
 import fu.hao.trust.data.MultiValueVar;
@@ -1930,14 +1931,15 @@ public class Interpreter {
 					if (mi.toString().contains("equals")) {
 						normalArg = false;
 					}
-					
+
 					if (thisInstance instanceof SymbolicVar) {
 						thisInstance = ((SymbolicVar) thisInstance).getValue();
 					} else {
-						thisInstance = ((MultiValueVar) thisInstance).getLastVal();
+						thisInstance = ((MultiValueVar) thisInstance)
+								.getLastVal();
 					}
-				} 
-				
+				}
+
 				if (noInvokeList.contains(mi.name)) {
 					normalArg = false;
 				}
@@ -2274,8 +2276,8 @@ public class Interpreter {
 
 		vm.setAssigned(null);
 		vm.setReflectMethod(null);
-		if (!vm.pluginManager.isEmpty() && vm.getCurrStackFrame() != null) {
-			vm.pluginManager.preprossing(vm, inst);
+		if (!vm.getPluginManager().isEmpty() && vm.getCurrStackFrame() != null) {
+			vm.getPluginManager().preprossing(vm, inst);
 		}
 
 		if (!pass) {
@@ -2287,12 +2289,40 @@ public class Interpreter {
 				Log.err(TAG, "Unsupported opcode " + inst);
 			}
 
-			if (!vm.pluginManager.isEmpty() && vm.getCurrStackFrame() != null) {
-				vm.pluginManager.runAnalysis(vm, inst);
-				vm.getCurrStackFrame().pluginRes = vm.pluginManager
-						.cloneCurrtRes();
+			if (!vm.getPluginManager().isEmpty()
+					&& vm.getCurrStackFrame() != null) {
+				vm.getPluginManager().runAnalysis(vm, inst);
 
-				vm.pluginManager.printResults();
+				if (inst.opcode == Instruction.OP_RETURN) {
+					if (vm.getCurrStackFrame() != null) {
+						// Add new tainted heap objs into the caller's res
+						for (Plugin plugin : vm.getPluginManager().getPlugins()) {
+							Map<String, Map<Object, Instruction>> callerRes = vm
+									.getCurrStackFrame().getPluginRes()
+									.get(plugin);
+							for (String tag : plugin.getCurrtRes().keySet()) {
+								Map<Object, Instruction> cres = plugin
+										.getCurrtRes().get(tag);
+								Map<Object, Instruction> nres = callerRes
+										.get(tag);
+								for (Object obj : cres.keySet()) {
+									if (!(obj instanceof Register)
+											|| obj == vm.getReturnReg()) {
+										nres.put(obj, cres.get(obj));
+									}
+								}
+							}
+						}
+
+						vm.getPluginManager().setCurrRes(
+								vm.getCurrStackFrame().getPluginRes());
+					}
+				} else {
+					vm.getCurrStackFrame().pluginRes = vm.getPluginManager()
+							.cloneCurrtRes();
+				}
+
+				vm.getPluginManager().printResults();
 			}
 		} else {
 			pass = false;

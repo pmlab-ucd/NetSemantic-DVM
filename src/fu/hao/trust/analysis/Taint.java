@@ -953,29 +953,43 @@ public class Taint extends Plugin {
 		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
 				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
 			Map<String, Map<Object, Instruction>> outs = new HashMap<>();
+			boolean rmRet = true;
 			for (String tag : ins.keySet()) {
 				Map<Object, Instruction> in = ins.get(tag);
-				// TODO Auto-generated method stub
 				Map<Object, Instruction> out = new HashMap<>(in);
-				if (in.containsKey(vm.getReg(inst.r0))) {
-					out.put(vm.getReturnReg(), in.get(vm.getReg(inst.r0)));
-					Log.bb(TAG, "Add " + vm.getReturnReg()
-							+ "as tainted due to " + vm.getReg(inst.r0));
-				} else if (in.containsKey(vm.getReg(inst.r0).getData())) {
-					out.put(vm.getReturnReg(),
-							in.get(vm.getReg(inst.r0).getData()));
-					Log.bb(TAG, "Add " + vm.getReturnReg()
-							+ "as tainted due to r0 data "
-							+ vm.getReg(inst.r0).getData());
-				} else {
-					if (in.containsKey(vm.getReturnReg())) {
-						out.remove(vm.getReturnReg());
-						Log.bb(TAG, "Remove " + vm.getReturnReg()
-								+ "as tainted.");
+				for (Object obj : in.keySet()) {
+					if (obj instanceof Register
+							&& ((Register) obj).getIndex() == inst.r0) {
+						out.put(vm.getReturnReg(), in.get(vm.getReg(inst.r0)));
+						Log.bb(TAG, "Add " + vm.getReturnReg()
+								+ " as tainted due to " + vm.getReg(inst.r0));
+						rmRet = false;
 					}
+				}
+
+				if (rmRet && in.containsKey(vm.getReturnReg())) {
+					out.remove(vm.getReturnReg());
+					Log.bb(TAG, "Remove " + vm.getReturnReg() + "as tainted.");
+
 				}
 				outs.put(tag, out);
 			}
+
+			return outs;
+		}
+	}
+
+	class TAINT_OP_RETURN implements Rule {
+		final String TAG = getClass().getSimpleName();
+
+		@Override
+		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
+				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
+			Map<String, Map<Object, Instruction>> outs = ins;
+			if (inst.opcode_aux == Instruction.OP_RETURN_SOMETHING) {
+				outs = new TAINT_OP_RETURN_SOMETHING().flow(vm, inst, ins);
+			}
+
 			return outs;
 		}
 	}
@@ -986,6 +1000,7 @@ public class Taint extends Plugin {
 		byteCodes.put(0x07, new TAINT_OP_CMP());
 		byteCodes.put(0x08, new TAINT_OP_IF());
 		byteCodes.put(0x0C, new TAINT_OP_INVOKE());
+		byteCodes.put(0x02, new TAINT_OP_RETURN());
 
 		auxByteCodes.put(0x01, new TAINT_OP_MOV_REG());
 		auxByteCodes.put(0x02, new TAINT_OP_MOV_CONST());
