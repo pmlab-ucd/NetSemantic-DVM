@@ -63,11 +63,14 @@ public class Taint extends Plugin {
 			for (String tag : ins.keySet()) {
 				Map<Object, Instruction> in = ins.get(tag);
 				Map<Object, Instruction> out = new HashMap<>(in);
-				if (in.containsKey(vm.getReg(inst.r0))
-						|| in.containsKey(vm.getReg(inst.r0).getData())) {
+				if (in.containsKey(vm.getReg(inst.r0))) {
 					out.put(vm.getReg(inst.rdst), in.get(vm.getReg(inst.r0)));
 					out.put(vm.getReg(inst.rdst).getData(),
 							in.get(vm.getReg(inst.r0)));
+				} else if (in.containsKey(vm.getReg(inst.r0).getData())) {
+					out.put(vm.getReg(inst.rdst), in.get(vm.getReg(inst.r0).getData()));
+					out.put(vm.getReg(inst.rdst).getData(),
+							in.get(vm.getReg(inst.r0).getData()));
 				} else {
 					if (out.containsKey(vm.getReg(inst.rdst))) {
 						out.remove(vm.getReg(inst.rdst));
@@ -438,8 +441,10 @@ public class Taint extends Plugin {
 				Map<Object, Instruction> out = new HashMap<>(in);
 				if (in.containsKey(vm.getReturnReg())) {
 					out.put(vm.getReg(inst.rdst), in.get(vm.getReturnReg()));
-					out.put(vm.getReg(inst.rdst).getData(),
+					if (vm.getReg(inst.rdst).getData() != null) {
+						out.put(vm.getReg(inst.rdst).getData(),
 							in.get(vm.getReturnReg()));
+					}
 					Log.bb(TAG, "set " + in);
 					Log.bb(TAG, "Add reg " + inst.rdst + " due to ret reg.");
 				} else if (in.containsKey(vm.getReturnReg().getData())) {
@@ -614,9 +619,9 @@ public class Taint extends Plugin {
 
 				if (inst.r1 != -1 && (in.containsKey(vm.getReg(inst.r1)))) {
 					out.put(vm.getReg(inst.r0),
-							in.get(vm.getReg(inst.r1).getData()));
+							in.get(vm.getReg(inst.r1)));
 					out.put(vm.getReg(inst.r0).getData(),
-							in.get(vm.getReg(inst.r1).getData()));
+							in.get(vm.getReg(inst.r1)));
 				}
 				outs.put(tag, out);
 			}
@@ -669,7 +674,7 @@ public class Taint extends Plugin {
 				if (in.containsKey(array)) {
 					out.put(vm.getReg(inst.rdst), in.get(array));
 					out.put(vm.getReg(inst.rdst).getData(), in.get(array));
-				} else if (in.containsKey(Array.get(array, index))) {
+				} else if (array instanceof Array && in.containsKey(Array.get(array, index))) {
 					out.put(vm.getReg(inst.rdst),
 							in.get(Array.get(array, index)));
 					out.put(vm.getReg(inst.rdst).getData(),
@@ -959,10 +964,11 @@ public class Taint extends Plugin {
 				Map<Object, Instruction> out = new HashMap<>(in);
 				for (Object obj : in.keySet()) {
 					if (obj instanceof Register
+							// Since the callee's reg has already been rm
 							&& ((Register) obj).getIndex() == inst.r0) {
-						out.put(vm.getReturnReg(), in.get(vm.getReg(inst.r0)));
+						out.put(vm.getReturnReg(), in.get(obj));
 						Log.bb(TAG, "Add " + vm.getReturnReg()
-								+ " as tainted due to " + vm.getReg(inst.r0));
+								+ " as tainted due to " + obj);
 						rmRet = false;
 					}
 				}
@@ -1084,6 +1090,18 @@ public class Taint extends Plugin {
 		} else {
 			Log.bb(TAG, "Not a taint op " + inst);
 			outs = new HashMap<>(ins);
+		}
+		
+		for (Map<Object, Instruction> out : outs.values()) {
+			if (out.containsKey(null)) {
+				out.remove(null);
+			}
+			
+			for (Instruction instr : out.values()) {
+				if (instr == null) {
+					Log.err(TAG, "Empty src found at " + inst);
+				}
+			}
 		}
 
 		setCurrtRes(outs);

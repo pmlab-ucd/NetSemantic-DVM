@@ -55,6 +55,7 @@ public class InfluenceAnalysis {
 			// Detect influenced API calls
 			Log.bb(TAG, "Method " + vm.getReflectMethod());
 			if (!interestedSimple.isEmpty()) {
+				Log.bb(TAG, "Not empty simple branch!");
 				for (Branch branch : interestedSimple) {
 					for (Instruction tgtCall : branch.getElemSrcs()) {
 						if (targetCalls != null
@@ -68,6 +69,7 @@ public class InfluenceAnalysis {
 				
 				Log.warn(TAG, "Found influenced API call " + mi);
 			} else if (!interestedBiDir.isEmpty()) {
+				Log.bb(TAG, "Not empty bidir branch!");
 				for (Branch branch : interestedBiDir) {
 					for (Instruction tgtCall : branch.getElemSrcs()) {
 						if (targetCalls != null

@@ -363,7 +363,7 @@ public class Interpreter {
 						}
 						if (mi.paramTypes[i].isPrimitive()) {
 							Object primitive = resolvePrimitive((PrimitiveInfo) vm
-									.getReg(args[i]).getData());
+									.getReg(args[i]).getData(), mi.paramTypes[i]);
 							params[i] = primitive;
 							Class<?> argClass = primClasses.get(primitive
 									.getClass());
@@ -1022,7 +1022,7 @@ public class Interpreter {
 			}
 			Register rdst = vm.getReg(inst.rdst);
 
-			Object obj = resolvePrimitive(op1);
+			Object obj = resolvePrimitive(op1, op1.getKind());
 			Log.debug(TAG, "" + obj.getClass());
 			if (op1.isInteger()) {
 				rdst.type = ClassInfo.primitiveInt;
@@ -1940,11 +1940,10 @@ public class Interpreter {
 				}
 			} else {
 				Log.debug(TAG, "Reflction class: " + clazz);
-
 				thisInstance = vm.getReg(args[0]).getData();
-
 				if (thisInstance instanceof MultiValueVar) {
-					if (mi.toString().contains("equals")) {
+					// FIXME Herustic, should really handle loop
+					if (mi.toString().contains("equals") || mi.toString().contains("split")) {
 						normalArg = false;
 					}
 
@@ -2009,7 +2008,8 @@ public class Interpreter {
 			invocation(vm, mi, inst, args);
 		} catch (Exception e) {
 			e.printStackTrace();
-			Log.warn(TAG, "Error in reflection");
+		
+			Log.warn(TAG, "Error in reflection: " + e.getMessage());
 			jump(vm, inst, true);
 		}
 
@@ -2037,7 +2037,7 @@ public class Interpreter {
 			if (mi.paramTypes[i - 1].isPrimitive()) {
 				Log.debug(TAG, "Expected para type: " + mi.paramTypes[i - 1]);
 				Object primitive = resolvePrimitive((PrimitiveInfo) vm.getReg(
-						args[i]).getData());
+						args[i]).getData(), mi.paramTypes[i - 1]);
 				Class<?> argClass = primClasses.get(primitive.getClass());
 				params[i - 1] = primitive;
 				// Because of a bug in PATDroid.
@@ -2284,11 +2284,10 @@ public class Interpreter {
 
 	public void exec(DalvikVM vm, Instruction inst) {
 		Log.msg(TAG, "\n");
-		Log.msg(TAG, vm.getPC() + " " + inst + " at "
-				+ vm.getCurrStackFrame().method);
 		vm.setNowPC(vm.getPC());
-		Log.bb(TAG, "opcode: " + inst.opcode + " " + inst.opcode_aux);
 		inst.setIndex(vm.getNowPC());
+		Log.msg(TAG, inst + " at "
+				+ vm.getCurrStackFrame().method);
 
 		vm.setAssigned(null);
 		vm.setReflectMethod(null);
@@ -2355,19 +2354,19 @@ public class Interpreter {
 	 * @return Object
 	 * @throws
 	 */
-	public Object resolvePrimitive(PrimitiveInfo op1) {
-		if (op1.isBoolean()) {
-			return new Boolean(op1.booleanValue());
-		} else if (op1.isInteger()) {
-			return new Integer(op1.intValue());
-		} else if (op1.isLong()) {
-			return new Long(op1.longValue());
-		} else if (op1.isFloat()) {
-			return new Float(op1.floatValue());
-		} else if (op1.isDouble()) {
-			return new Double(op1.doubleValue());
-		} else if (op1.isChar()) {
-			return new Character(op1.charValue());
+	public Object resolvePrimitive(PrimitiveInfo op1, ClassInfo type) {
+		if (type.equals(ClassInfo.primitiveBoolean) || op1 != null && op1.isBoolean()) {
+			return new Boolean(op1 == null ? false : op1.booleanValue());
+		} else if (type.equals(ClassInfo.primitiveInt) || op1 != null && op1.isInteger()) {
+			return new Integer(op1 == null ? 0 : op1.intValue());
+		} else if (type.equals(ClassInfo.primitiveLong) || op1 != null && op1.isLong()) {
+			return new Long(op1 == null ? 0 : op1.longValue());
+		} else if (type.equals(ClassInfo.primitiveFloat) || op1 != null && op1.isFloat()) {
+			return new Float(op1 == null ? 0 : op1.floatValue());
+		} else if (type.equals(ClassInfo.primitiveDouble) || op1 != null && op1.isDouble()) {
+			return new Double(op1 == null ? 0 : op1.doubleValue());
+		} else if (type.equals(ClassInfo.primitiveChar) || op1 != null && op1.isChar()) {
+			return new Character(op1 == null ? 0 : op1.charValue());
 		}
 
 		return null;

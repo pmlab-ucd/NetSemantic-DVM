@@ -66,6 +66,7 @@ public class Branch {
 	}
 	
 	public void addElemSrc(Instruction elemSrc) {
+		Log.bb(TAG, "Add elemSrc " + elemSrc);
 		elemSrcs.add(elemSrc);
 	}
 	
