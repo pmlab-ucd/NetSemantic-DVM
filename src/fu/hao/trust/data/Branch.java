@@ -118,12 +118,14 @@ public class Branch {
 		
 		if (val1 instanceof PrimitiveInfo || val1 instanceof Unknown) {
 			return new Unknown(ClassInfo.primitiveInt);
-		} else if (val1 instanceof SymbolicVar) {
+		} else if (val1 instanceof SymbolicVar || val2 instanceof SymbolicVar) {
 			return val1;
 		} else if (val1 instanceof String || val1 instanceof MSVar) {
-			// TODO handle MSVar
-			MSVar msv = new MSVar();
-			msv.addValue(val2);
+			MSVar msv = new MSVar();	
+			msv.addValue(val1);
+			if (val2 instanceof String || val2 instanceof MSVar) {
+				msv.addValue(val2);
+			}
 			return msv;
 		} else if (val1 instanceof DVMObject){
 			MNVar mnv = MNVar.createInstance(val1);
@@ -136,7 +138,8 @@ public class Branch {
 	}
 	
 	public static boolean checkType(Object val1, Object val2) {
-		if (val1 == null || val2 == null) {
+		if (val1 == null || val2 == null || val1 instanceof Integer && (int)val1 == 0
+				|| val1 instanceof PrimitiveInfo && ((PrimitiveInfo) val1).isZero()) {
 			return true;
 		}
 		
@@ -146,8 +149,8 @@ public class Branch {
 			} else {
 				return false;
 			}
-		} else if (val1 instanceof String || val1 instanceof MSVar || val1 instanceof PrimitiveInfo && ((PrimitiveInfo) val1).intValue() == 0) {
-			if (val2 instanceof String || val2 instanceof MSVar || val2 instanceof PrimitiveInfo && ((PrimitiveInfo) val2).intValue() == 0) {
+		} else if (val1 instanceof String || val1 instanceof MSVar) {
+			if (val2 instanceof SymbolicVar || val2 instanceof String || val2 instanceof MSVar || val2 instanceof PrimitiveInfo && ((PrimitiveInfo) val2).intValue() == 0) {
 				return true;
 			} else {
 				return false;

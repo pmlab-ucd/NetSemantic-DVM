@@ -80,8 +80,8 @@ public class TaintSumBranch extends Taint {
 					branch.setSumPoint(insns[i]);
 					Log.bb(TAG, "BiDirSumpoint " + insns[i]);
 					bidirBranches.add(branch);
-					// 遇到return后再往前走的第一个goto index即<rest>起始点
-					for (int j = i; j < insns.length; j++) {
+					// 跳到另一个blk后再往前走的第一个goto index即<rest>起始点
+					for (int j = (int) inst.extra; j < insns.length; j++) {
 						if (insns[j].opcode == Instruction.OP_GOTO
 								&& (int) insns[j].extra <= i) {
 							Log.bb(TAG, "Set rest begin "

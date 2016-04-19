@@ -91,7 +91,7 @@ public class TaintCtrlDep extends TaintSumBranch {
 		Map<String, Map<Object, Instruction>> outs = super.runAnalysis(vm,
 				inst, ins);
 
-		if (vm.getAssigned() != null) {
+		if (vm.getAssigned() != null && vm.getAssigned()[0] instanceof Register) {
 			Object[] assigned = vm.getAssigned();
 			for (String tag : outs.keySet()) {
 				Map<Object, Instruction> out = outs.get(tag);

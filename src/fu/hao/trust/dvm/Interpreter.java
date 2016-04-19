@@ -867,7 +867,12 @@ public class Interpreter {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
 			Object array = vm.getReg(inst.r0).getData();
-			if (array.getClass().isArray()) {
+			ClassInfo type = (ClassInfo) inst.extra;
+			jump(vm, inst, true);
+			
+			if (array == null) {
+				vm.getReg(inst.rdst).setData(new Unknown(type));
+			} else if (array.getClass().isArray()) {
 				// dest reg
 				Register rdst = vm.getReg(inst.rdst);
 				// array reg
@@ -879,15 +884,17 @@ public class Interpreter {
 				rdst.type = vm.getReg(inst.r0).type.getElementClass();
 				Object element = Array.get(array, index);
 				// if (element.getClass().isPrimitive()) {
-				Log.debug(TAG, "elem: " + element + " at " + index + " of "
+				Log.debug(TAG, "Elem: " + element + " at " + index + " of "
 						+ array);
-				if (rdst.type.isPrimitive()) {
+				if (element == null) {
+					rdst.setData(new Unknown(type));
+				} if (rdst.type.isPrimitive()) {
 					rdst.setData(PrimitiveInfo.fromObject(element));
 				} else {
 					rdst.setData(Array.get(vm.getReg(inst.r0).getData(), index));// array[index];
-				}
+				}		
 			}
-			jump(vm, inst, true);
+			
 		}
 	}
 
@@ -1786,6 +1793,8 @@ public class Interpreter {
 				op = (Unknown) vm.getReg(inst.r0).getData();
 				op.addLastArith(inst);
 				Log.warn(TAG, "Unknown found! " + op);
+			} else if (inst.r0 != -1 &&  vm.getReg(inst.r0).getData() == null || inst.r1 != -1 &&  vm.getReg(inst.r1).getData() == null) {
+				vm.getReg(inst.r0).setData(new Unknown(ClassInfo.primitiveInt));
 			} else {
 				auxByteCodes.get((int) inst.opcode_aux).func(vm, inst);
 			}
@@ -1893,6 +1902,10 @@ public class Interpreter {
 			Class[] argsClass = new Class[mi.paramTypes.length];
 			Object[] params = new Object[args.length - 1];
 			boolean normalArg = true;
+			
+			if (noInvokeList.contains(mi.name) || noInvokeList.contains(mi.myClass.fullName)) {
+				normalArg = false;
+			}
 
 			// If args contains a symbolic var, directly set the return val as a
 			// symbolic var.
@@ -1906,7 +1919,10 @@ public class Interpreter {
 						Log.debug(TAG, "Init instance: "
 								+ vm.getReg(args[0]).getData());
 					} else {
-						normalArg = getParams(vm, mi, args, argsClass, params);
+						boolean narg = getParams(vm, mi, args, argsClass, params);
+						if (normalArg) {
+							normalArg = narg;
+						}
 						Object instance;
 						if (!normalArg) {
 							instance = new Unknown(mi.returnType);
@@ -1940,11 +1956,7 @@ public class Interpreter {
 					}
 				}
 
-				if (noInvokeList.contains(mi.name)) {
-					normalArg = false;
-				}
-
-				if (thisInstance == null || thisInstance instanceof DVMObject
+				if (normalArg && thisInstance == null || thisInstance instanceof DVMObject
 						&& !DVMObject.class.equals(clazz)) {
 					thisInstance = clazz.newInstance();
 				}
@@ -1961,16 +1973,16 @@ public class Interpreter {
 						vm.retValReg.setData(method.invoke(thisInstance));
 					}
 				} else {
-					boolean normal = getParams(vm, mi, args, argsClass, params);
+					boolean narg = getParams(vm, mi, args, argsClass, params);
 					if (normalArg) {
-						normalArg = normal;
+						normalArg = narg;
 					}
 					method = clazz.getDeclaredMethod(mi.name, argsClass);
-					Log.debug(TAG, "Caller obj: " + thisInstance
-							+ ", from class: "
-							+ thisInstance.getClass().toString());
 					// handle return val
 					if (normalArg) {
+						Log.debug(TAG, "Caller obj: " + thisInstance
+								+ ", from class: "
+								+ thisInstance.getClass().toString());
 						vm.retValReg.setData(method
 								.invoke(thisInstance, params));
 					} else {
@@ -2264,6 +2276,10 @@ public class Interpreter {
 		noInvokeList.add("connect");
 		noInvokeList.add("getResponseCode");
 		noInvokeList.add("getInputStream");
+		noInvokeList.add("java.io.FileInputStream");
+		noInvokeList.add("java.io.InputStreamReader");
+		noInvokeList.add("java.io.BufferedReader");
+		noInvokeList.add("java.io.File");
 	}
 
 	public void exec(DalvikVM vm, Instruction inst) {
