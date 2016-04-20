@@ -51,18 +51,28 @@ public class Log {
 	public static Writer out = stdout;
 	public static Writer err = stderr;
 	static String fileName;
-	
+
 	static {
-		fileName = "output/" + Settings.apkName + ".log";
-		File file = new File(fileName);
-		if (file.exists()) {
-			file.delete();
+		if (Settings.apkName != null) {
+			fileName = "output/" + Settings.apkName + ".log";
+			File file = new File(fileName);
+			if (file.exists()) {
+				file.delete();
+			}
 		}
 	}
 
 	private static boolean writeLog(String TAG, int theLevel, String title,
 			String msg) throws IOException {
-		if (theLevel >= Settings.logLevel) {	
+		if (fileName == null) {
+			fileName = "output/" + Settings.apkName + ".log";
+			File file = new File(fileName);
+			if (file.exists()) {
+				file.delete();
+			}
+		}
+		
+		if (theLevel >= Settings.logLevel) {
 			Writer output;
 			output = new BufferedWriter(new FileWriter(fileName, true));
 			output.append(TAG + " - " + "[" + title + "]: " + msg + "\n");

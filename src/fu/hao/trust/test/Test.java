@@ -3,6 +3,7 @@ package fu.hao.trust.test;
 import static org.junit.Assert.assertEquals;
 import fu.hao.trust.data.Results;
 import fu.hao.trust.dvm.Main;
+import fu.hao.trust.utils.Log;
 import fu.hao.trust.utils.Settings;
 
 public class Test {
@@ -17,14 +18,14 @@ public class Test {
 		args[3] = "Full"; //"ATaint";*/
 		
 		
-		args[0] = "C:/Users/hao/workspace/PJApps/app/663e8eb52c7b4a14e2873b1551748587018661b3.apk";
-		args[1] = "com.android.main.MainService";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/pjapps/71d2f241f2cb8f4208dd3574df3c3ce0dacdd1c0/71d2f241f2cb8f4208dd3574df3c3ce0dacdd1c0.apk";
+		args[1] = "com.android.MainService";
 		args[2] = "execTask";
 		args[3] = "Full";
 		
 		Main.main(args);
-		System.out.println("REs: " + Results.results);
-		System.out.println("REs: " + Results.targetCallRes);
+		Log.msg(TAG, "REs: " + Results.results);
+		Log.msg(TAG, "REs: " + Results.targetCallRes);
 		
 		assertEquals(false, Results.targetCallRes.isEmpty());
 		assertEquals(

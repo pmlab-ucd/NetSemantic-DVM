@@ -1,0 +1,287 @@
+DalvikVM - [MSG]: Begin run execTask at C:/Users/hao/workspace/DroidBenchProj/apks/pjapps/71d2f241f2cb8f4208dd3574df3c3ce0dacdd1c0/71d2f241f2cb8f4208dd3574df3c3ce0dacdd1c0.apk
+DalvikVM - [MSG]: RUN Method com.android.MainService/execTask[]
+DalvikVM - [BB]: New method call: com.android.MainService/execTask[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[13]>
+DalvikVM - [BB]: [1]<0 STATIC,SGET,r0=r10,type=java.lang.Object,extra=(com.android.MainService, recordlog)>
+DalvikVM - [BB]: [2]<0 INVOKE,STATIC,extra=[com.android.FileAct/readString[java.lang.String], [10]]>
+DalvikVM - [BB]: [3]<0 MOV,RESULT,dst=r6,type=java.lang.Object>
+DalvikVM - [BB]: [4]<0 INVOKE,STATIC,extra=[com.android.StringUtil/getRecordInfo[java.lang.String], [6]]>
+DalvikVM - [BB]: [5]<0 MOV,RESULT,dst=r2,type=java.lang.Object>
+DalvikVM - [BB]: [6]<0 MOV,CONST,dst=r4,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [7]<0 IF,EQZ,r0=r2,extra=index:11>
+DalvikVM - [BB]: [8]<0 ARITHMETIC,ARRAY_LENGTH,dst=r10,r0=r2,type=int>
+DalvikVM - [BB]: [9]<0 MOV,CONST,dst=r11,type=void,extra=class patdroid.core.PrimitiveInfo?3>
+DalvikVM - [BB]: [10]<0 IF,EQ,r0=r10,r1=r11,extra=index:50>
+DalvikVM - [BB]: [11]<0 MOV,CONST,dst=r10,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [12]<0 MOV,CONST,dst=r11,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [13]<0 INVOKE,DIRECT,extra=[com.android.MainService/LogService[int, int], [13, 10, 11]]>
+DalvikVM - [BB]: [14]<0 MOV,RESULT,dst=r7,type=void>
+DalvikVM - [BB]: [15]<0 MOV,CONST,dst=r10,type=void,extra=class patdroid.core.PrimitiveInfo?200>
+DalvikVM - [BB]: [16]<0 IF,NE,r0=r7,r1=r10,extra=index:56>
+DalvikVM - [BB]: [17]<0 MOV,CONST,dst=r10,type=void,extra=class patdroid.core.PrimitiveInfo?3>
+DalvikVM - [BB]: [18]<0 NEW,ARRAY,dst=r2,r0=r10,type=[Ljava.lang.String;>
+DalvikVM - [BB]: [19]<0 INVOKE,STATIC,extra=[com.android.StringUtil/getExecTime[], []]>
+DalvikVM - [BB]: [20]<0 MOV,RESULT,dst=r10,type=java.lang.Object>
+DalvikVM - [BB]: [21]<0 INSTANCE,IPUT,r0=r13,r1=r10,type=java.lang.Object,extra=com.android.MainService.nexttime>
+DalvikVM - [BB]: [22]<0 MOV,CONST,dst=r10,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [23]<0 INSTANCE,IGET,r0=r13,r1=r11,type=java.lang.Object,extra=com.android.MainService.nexttime>
+DalvikVM - [BB]: [24]<0 ARRAY,APUT,dst=r11,r0=r2,r1=r10,type=java.lang.Object>
+DalvikVM - [BB]: [25]<0 MOV,CONST,dst=r10,type=void,extra=class patdroid.core.PrimitiveInfo?2>
+DalvikVM - [BB]: [26]<0 INSTANCE,IGET,r0=r13,r1=r11,type=java.lang.Object,extra=com.android.MainService.servicecenter>
+DalvikVM - [BB]: [27]<0 ARRAY,APUT,dst=r11,r0=r2,r1=r10,type=java.lang.Object>
+DalvikVM - [BB]: [28]<0 NEW,INSTANCE,dst=r10,type=java.lang.StringBuilder>
+DalvikVM - [BB]: [29]<0 INSTANCE,IGET,r0=r13,r1=r11,type=java.lang.Object,extra=com.android.MainService.nexttime>
+DalvikVM - [BB]: [30]<0 INVOKE,STATIC,extra=[java.lang.String/valueOf[java.lang.Object], [11]]>
+DalvikVM - [BB]: [31]<0 MOV,RESULT,dst=r11,type=java.lang.Object>
+DalvikVM - [BB]: [32]<0 INVOKE,DIRECT,extra=[java.lang.StringBuilder/<init>[java.lang.String], [10, 11]]>
+DalvikVM - [BB]: [33]<0 MOV,CONST,dst=r11,type=java.lang.String,extra="|">
+DalvikVM - [BB]: [34]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [10, 11]]>
+DalvikVM - [BB]: [35]<0 MOV,RESULT,dst=r10,type=java.lang.Object>
+DalvikVM - [BB]: [36]<0 INSTANCE,IGET,r0=r13,r1=r11,type=java.lang.Object,extra=com.android.MainService.smallpid>
+DalvikVM - [BB]: [37]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [10, 11]]>
+DalvikVM - [BB]: [38]<0 MOV,RESULT,dst=r10,type=java.lang.Object>
+DalvikVM - [BB]: [39]<0 MOV,CONST,dst=r11,type=java.lang.String,extra="|">
+DalvikVM - [BB]: [40]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [10, 11]]>
+DalvikVM - [BB]: [41]<0 MOV,RESULT,dst=r10,type=java.lang.Object>
+DalvikVM - [BB]: [42]<0 INSTANCE,IGET,r0=r13,r1=r11,type=java.lang.Object,extra=com.android.MainService.servicecenter>
+DalvikVM - [BB]: [43]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [10, 11]]>
+DalvikVM - [BB]: [44]<0 MOV,RESULT,dst=r10,type=java.lang.Object>
+DalvikVM - [BB]: [45]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/toString[], [10]]>
+DalvikVM - [BB]: [46]<0 MOV,RESULT,dst=r5,type=java.lang.Object>
+DalvikVM - [BB]: [47]<0 STATIC,SGET,r0=r10,type=java.lang.Object,extra=(com.android.MainService, recordlog)>
+DalvikVM - [BB]: [48]<0 INVOKE,STATIC,extra=[com.android.FileAct/writeString[java.lang.String, java.lang.String], [5, 10]]>
+DalvikVM - [BB]: [49]<0 MOV,CONST,dst=r4,type=void,extra=class patdroid.core.PrimitiveInfo?1>
+DalvikVM - [BB]: [50]<0 MOV,CONST,dst=r10,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [51]<0 ARRAY,AGET,dst=r10,r0=r2,r1=r10,type=java.lang.Object>
+DalvikVM - [BB]: [52]<0 INVOKE,STATIC,extra=[com.android.StringUtil/getTimeLength[java.lang.String], [10]]>
+DalvikVM - [BB]: [53]<0 MOV,RESULT,dst=r1,type=void>
+DalvikVM - [BB]: [54]<0 IF,NEZ,r0=r1,extra=index:57>
+DalvikVM - [BB]: [55]<0 IF,NEZ,r0=r4,extra=index:57>
+DalvikVM - [BB]: [56]<0 RETURN,VOID>
+DalvikVM - [BB]: [57]<0 INSTANCE,IGET,r0=r13,r1=r10,type=java.lang.Object,extra=com.android.MainService.imei>
+DalvikVM - [BB]: [58]<0 IF,EQZ,r0=r10,extra=index:64>
+DalvikVM - [BB]: [59]<0 MOV,CONST,dst=r10,type=java.lang.String,extra="">
+DalvikVM - [BB]: [60]<0 INSTANCE,IGET,r0=r13,r1=r11,type=java.lang.Object,extra=com.android.MainService.imei>
+DalvikVM - [BB]: [61]<0 INVOKE,VIRTUAL,extra=[java.lang.String/equalsIgnoreCase[java.lang.String], [10, 11]]>
+DalvikVM - [BB]: [62]<0 MOV,RESULT,dst=r10,type=void>
+DalvikVM - [BB]: [63]<0 IF,EQZ,r0=r10,extra=index:98>
+DalvikVM - [BB]: [64]<0 MOV,CONST,dst=r10,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: [65]<0 HALT,VIRTUAL,extra=[null, [13, 10]]>
+DalvikVM - [BB]: [66]<0 MOV,RESULT,dst=r8,type=java.lang.Object>
+DalvikVM - [BB]: [67]<0 ARITHMETIC,CHECK-AND-CAST,dst=r8,type=android.telephony.TelephonyManager>
+DalvikVM - [BB]: [68]<0 IF,EQZ,r0=r8,extra=index:98>
+DalvikVM - [BB]: [69]<0 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [8]]>
+DalvikVM - [BB]: [70]<0 MOV,RESULT,dst=r10,type=java.lang.Object>
+DalvikVM - [BB]: [71]<0 INSTANCE,IPUT,r0=r13,r1=r10,type=java.lang.Object,extra=com.android.MainService.imei>
+DalvikVM - [BB]: [72]<0 HALT,VIRTUAL,extra=[null, [8]]>
+DalvikVM - [BB]: [73]<0 MOV,RESULT,dst=r10,type=java.lang.Object>
+DalvikVM - [BB]: [74]<0 INSTANCE,IPUT,r0=r13,r1=r10,type=java.lang.Object,extra=com.android.MainService.tel>
+DalvikVM - [BB]: [75]<0 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSubscriberId[], [8]]>
+DalvikVM - [BB]: [76]<0 MOV,RESULT,dst=r10,type=java.lang.Object>
+DalvikVM - [BB]: [77]<0 INSTANCE,IPUT,r0=r13,r1=r10,type=java.lang.Object,extra=com.android.MainService.imsi>
+DalvikVM - [BB]: [78]<0 INSTANCE,IGET,r0=r13,r1=r10,type=java.lang.Object,extra=com.android.MainService.imsi>
+DalvikVM - [BB]: [79]<0 IF,EQZ,r0=r10,extra=index:91>
+DalvikVM - [BB]: [80]<0 INSTANCE,IGET,r0=r13,r1=r10,type=java.lang.Object,extra=com.android.MainService.imsi>
+DalvikVM - [BB]: [81]<0 INVOKE,VIRTUAL,extra=[java.lang.String/length[], [10]]>
+DalvikVM - [BB]: [82]<0 MOV,RESULT,dst=r10,type=void>
+DalvikVM - [BB]: [83]<0 MOV,CONST,dst=r11,type=void,extra=class patdroid.core.PrimitiveInfo?5>
+DalvikVM - [BB]: [84]<0 IF,LE,r0=r10,r1=r11,extra=index:91>
+DalvikVM - [BB]: [85]<0 INSTANCE,IGET,r0=r13,r1=r10,type=java.lang.Object,extra=com.android.MainService.imsi>
+DalvikVM - [BB]: [86]<0 MOV,CONST,dst=r11,type=void,extra=class patdroid.core.PrimitiveInfo?3>
+DalvikVM - [BB]: [87]<0 MOV,CONST,dst=r12,type=void,extra=class patdroid.core.PrimitiveInfo?5>
+DalvikVM - [BB]: [88]<0 INVOKE,VIRTUAL,extra=[java.lang.String/substring[int, int], [10, 11, 12]]>
+DalvikVM - [BB]: [89]<0 MOV,RESULT,dst=r10,type=java.lang.Object>
+DalvikVM - [BB]: [90]<0 INSTANCE,IPUT,r0=r13,r1=r10,type=java.lang.Object,extra=com.android.MainService.mnc>
+DalvikVM - [BB]: [91]<0 MOV,CONST,dst=r10,type=java.lang.String,extra="01">
+DalvikVM - [BB]: [92]<0 INSTANCE,IGET,r0=r13,r1=r11,type=java.lang.Object,extra=com.android.MainService.mnc>
+DalvikVM - [BB]: [93]<0 INVOKE,VIRTUAL,extra=[java.lang.String/equalsIgnoreCase[java.lang.String], [10, 11]]>
+DalvikVM - [BB]: [94]<0 MOV,RESULT,dst=r10,type=void>
+DalvikVM - [BB]: [95]<0 IF,EQZ,r0=r10,extra=index:98>
+DalvikVM - [BB]: [96]<0 MOV,CONST,dst=r10,type=java.lang.String,extra="10010">
+DalvikVM - [BB]: [97]<0 INSTANCE,IPUT,r0=r13,r1=r10,type=java.lang.Object,extra=com.android.MainService.testtel>
+DalvikVM - [BB]: [98]<0 MOV,CONST,dst=r10,type=java.lang.String,extra="other">
+DalvikVM - [BB]: [99]<0 MOV,CONST,dst=r11,type=void,extra=class patdroid.core.PrimitiveInfo?2>
+DalvikVM - [BB]: [100]<0 ARRAY,AGET,dst=r11,r0=r2,r1=r11,type=java.lang.Object>
+DalvikVM - [BB]: [101]<0 INVOKE,VIRTUAL,extra=[java.lang.String/equalsIgnoreCase[java.lang.String], [10, 11]]>
+DalvikVM - [BB]: [102]<0 MOV,RESULT,dst=r10,type=void>
+DalvikVM - [BB]: [103]<0 IF,EQZ,r0=r10,extra=index:116>
+DalvikVM - [BB]: [104]<0 MOV,CONST,dst=r10,type=java.lang.String,extra="other">
+DalvikVM - [BB]: [105]<0 INSTANCE,IGET,r0=r13,r1=r11,type=java.lang.Object,extra=com.android.MainService.servicecenter>
+DalvikVM - [BB]: [106]<0 INVOKE,VIRTUAL,extra=[java.lang.String/equalsIgnoreCase[java.lang.String], [10, 11]]>
+DalvikVM - [BB]: [107]<0 MOV,RESULT,dst=r10,type=void>
+DalvikVM - [BB]: [108]<0 IF,EQZ,r0=r10,extra=index:116>
+DalvikVM - [BB]: [109]<0 INSTANCE,IGET,r0=r13,r1=r10,type=java.lang.Object,extra=com.android.MainService.testtel>
+DalvikVM - [BB]: [110]<0 MOV,CONST,dst=r11,type=java.lang.String,extra="801">
+DalvikVM - [BB]: [111]<0 INVOKE,DIRECT,extra=[com.android.MainService/sendSMS[java.lang.String, java.lang.String], [13, 10, 11]]>
+DalvikVM - [BB]: [112]<0 MOV,CONST,dst=r10,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [113]<0 INSTANCE,IPUT,r0=r13,r1=r10,type=boolean,extra=com.android.MainService.issend>
+DalvikVM - [BB]: [114]<0 MOV,CONST,dst=r10,type=AndroidWide,extra=class patdroid.core.PrimitiveInfo?1.26E-321d>
+DalvikVM - [BB]: [115]<0 INVOKE,STATIC,extra=[java.lang.Thread/sleep[long], [10]]>
+DalvikVM - [BB]: [116]<0 NEW,INSTANCE,dst=r10,type=java.lang.StringBuilder>
+DalvikVM - [BB]: [117]<0 MOV,CONST,dst=r11,type=java.lang.String,extra="http://">
+DalvikVM - [BB]: [118]<0 INVOKE,DIRECT,extra=[java.lang.StringBuilder/<init>[java.lang.String], [10, 11]]>
+DalvikVM - [BB]: [119]<0 MOV,CONST,dst=r11,type=java.lang.String,extra="axdmflsadneddrwo3i2df138a8bcao3m">
+DalvikVM - [BB]: [120]<0 MOV,CONST,dst=r12,type=void,extra=class patdroid.core.PrimitiveInfo?1>
+DalvikVM - [BB]: [121]<0 INVOKE,STATIC,extra=[com.android.Base64/encode[java.lang.String, int], [11, 12]]>
+DalvikVM - [BB]: [122]<0 MOV,RESULT,dst=r11,type=java.lang.Object>
+DalvikVM - [BB]: [123]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [10, 11]]>
+DalvikVM - [BB]: [124]<0 MOV,RESULT,dst=r10,type=java.lang.Object>
+DalvikVM - [BB]: [125]<0 MOV,CONST,dst=r11,type=java.lang.String,extra=":8118/push/androidxml/">
+DalvikVM - [BB]: [126]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [10, 11]]>
+DalvikVM - [BB]: [127]<0 MOV,RESULT,dst=r10,type=java.lang.Object>
+DalvikVM - [BB]: [128]<0 INSTANCE,IGET,r0=r13,r1=r11,type=java.lang.Object,extra=com.android.MainService.bigpid>
+DalvikVM - [BB]: [129]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [10, 11]]>
+DalvikVM - [BB]: [130]<0 MOV,RESULT,dst=r10,type=java.lang.Object>
+DalvikVM - [BB]: [131]<0 MOV,CONST,dst=r11,type=java.lang.String,extra="/00/">
+DalvikVM - [BB]: [132]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [10, 11]]>
+DalvikVM - [BB]: [133]<0 MOV,RESULT,dst=r10,type=java.lang.Object>
+DalvikVM - [BB]: [134]<0 INSTANCE,IGET,r0=r13,r1=r11,type=java.lang.Object,extra=com.android.MainService.servicecenter>
+DalvikVM - [BB]: [135]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [10, 11]]>
+DalvikVM - [BB]: [136]<0 MOV,RESULT,dst=r10,type=java.lang.Object>
+DalvikVM - [BB]: [137]<0 MOV,CONST,dst=r11,type=java.lang.String,extra=".xml?sim=">
+DalvikVM - [BB]: [138]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [10, 11]]>
+DalvikVM - [BB]: [139]<0 MOV,RESULT,dst=r10,type=java.lang.Object>
+DalvikVM - [BB]: [140]<0 INSTANCE,IGET,r0=r13,r1=r11,type=java.lang.Object,extra=com.android.MainService.imei>
+DalvikVM - [BB]: [141]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [10, 11]]>
+DalvikVM - [BB]: [142]<0 MOV,RESULT,dst=r10,type=java.lang.Object>
+DalvikVM - [BB]: [143]<0 MOV,CONST,dst=r11,type=java.lang.String,extra="&tel=">
+DalvikVM - [BB]: [144]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [10, 11]]>
+DalvikVM - [BB]: [145]<0 MOV,RESULT,dst=r10,type=java.lang.Object>
+DalvikVM - [BB]: [146]<0 INSTANCE,IGET,r0=r13,r1=r11,type=java.lang.Object,extra=com.android.MainService.tel>
+DalvikVM - [BB]: [147]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [10, 11]]>
+DalvikVM - [BB]: [148]<0 MOV,RESULT,dst=r10,type=java.lang.Object>
+DalvikVM - [BB]: [149]<0 MOV,CONST,dst=r11,type=java.lang.String,extra="&imsi=">
+DalvikVM - [BB]: [150]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [10, 11]]>
+DalvikVM - [BB]: [151]<0 MOV,RESULT,dst=r10,type=java.lang.Object>
+DalvikVM - [BB]: [152]<0 INSTANCE,IGET,r0=r13,r1=r11,type=java.lang.Object,extra=com.android.MainService.imsi>
+DalvikVM - [BB]: [153]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [10, 11]]>
+DalvikVM - [BB]: [154]<0 MOV,RESULT,dst=r10,type=java.lang.Object>
+DalvikVM - [BB]: [155]<0 MOV,CONST,dst=r11,type=java.lang.String,extra="&pid=">
+DalvikVM - [BB]: [156]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [10, 11]]>
+DalvikVM - [BB]: [157]<0 MOV,RESULT,dst=r10,type=java.lang.Object>
+DalvikVM - [BB]: [158]<0 INSTANCE,IGET,r0=r13,r1=r11,type=java.lang.Object,extra=com.android.MainService.smallpid>
+DalvikVM - [BB]: [159]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [10, 11]]>
+DalvikVM - [BB]: [160]<0 MOV,RESULT,dst=r10,type=java.lang.Object>
+DalvikVM - [BB]: [161]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/toString[], [10]]>
+DalvikVM - [BB]: [162]<0 MOV,RESULT,dst=r9,type=java.lang.Object>
+DalvikVM - [BB]: [163]<0 INVOKE,STATIC,extra=[com.android.BaseAuthenicationHttpClient/getStringByURL[java.lang.String], [9]]>
+DalvikVM - [BB]: [164]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [165]<0 IF,EQZ,r0=r0,extra=index:56>
+DalvikVM - [BB]: [166]<0 MOV,CONST,dst=r10,type=java.lang.String,extra="">
+DalvikVM - [BB]: [167]<0 INVOKE,VIRTUAL,extra=[java.lang.String/equals[java.lang.Object], [10, 0]]>
+DalvikVM - [BB]: [168]<0 MOV,RESULT,dst=r10,type=void>
+DalvikVM - [BB]: [169]<0 IF,NEZ,r0=r10,extra=index:56>
+DalvikVM - [BB]: [170]<0 MOV,CONST,dst=r10,type=java.lang.String,extra="<task>">
+DalvikVM - [BB]: [171]<0 MOV,CONST,dst=r11,type=java.lang.String,extra="</task>">
+DalvikVM - [BB]: [172]<0 INVOKE,STATIC,extra=[com.android.StringUtil/getSubString[java.lang.String, java.lang.String, java.lang.String], [0, 10, 11]]>
+DalvikVM - [BB]: [173]<0 MOV,RESULT,dst=r10,type=java.lang.Object>
+DalvikVM - [BB]: [174]<0 INSTANCE,IPUT,r0=r13,r1=r10,type=java.lang.Object,extra=com.android.MainService.task>
+DalvikVM - [BB]: [175]<0 MOV,CONST,dst=r10,type=java.lang.String,extra="no">
+DalvikVM - [BB]: [176]<0 INSTANCE,IGET,r0=r13,r1=r11,type=java.lang.Object,extra=com.android.MainService.task>
+DalvikVM - [BB]: [177]<0 INVOKE,VIRTUAL,extra=[java.lang.String/equalsIgnoreCase[java.lang.String], [10, 11]]>
+DalvikVM - [BB]: [178]<0 MOV,RESULT,dst=r10,type=void>
+DalvikVM - [BB]: [179]<0 IF,NEZ,r0=r10,extra=index:56>
+DalvikVM - [BB]: [180]<0 MOV,CONST,dst=r10,type=java.lang.String,extra="note">
+DalvikVM - [BB]: [181]<0 INSTANCE,IGET,r0=r13,r1=r11,type=java.lang.Object,extra=com.android.MainService.task>
+DalvikVM - [BB]: [182]<0 INVOKE,VIRTUAL,extra=[java.lang.String/equalsIgnoreCase[java.lang.String], [10, 11]]>
+DalvikVM - [BB]: [183]<0 MOV,RESULT,dst=r10,type=void>
+DalvikVM - [BB]: [184]<0 IF,EQZ,r0=r10,extra=index:201>
+DalvikVM - [BB]: [185]<0 INVOKE,DIRECT,extra=[com.android.MainService/sendSms[java.lang.String, [Ljava.lang.String;], [13, 0, 2]]>
+DalvikVM - [BB]: [186]<0 GOTO,extra=index:56>
+DalvikVM - [BB]: [187]<0 MOV,EXCETPION,dst=r10,type=java.lang.Object>
+DalvikVM - [BB]: [188]<0 MOV,REG,dst=r3,r0=r10,type=java.lang.Object>
+DalvikVM - [BB]: [189]<0 MOV,CONST,dst=r10,type=java.lang.String,extra="info">
+DalvikVM - [BB]: [190]<0 NEW,INSTANCE,dst=r11,type=java.lang.StringBuilder>
+DalvikVM - [BB]: [191]<0 MOV,CONST,dst=r12,type=java.lang.String,extra="execTask:">
+DalvikVM - [BB]: [192]<0 INVOKE,DIRECT,extra=[java.lang.StringBuilder/<init>[java.lang.String], [11, 12]]>
+DalvikVM - [BB]: [193]<0 INVOKE,VIRTUAL,extra=[java.lang.Throwable/toString[], [3]]>
+DalvikVM - [BB]: [194]<0 MOV,RESULT,dst=r12,type=java.lang.Object>
+DalvikVM - [BB]: [195]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [11, 12]]>
+DalvikVM - [BB]: [196]<0 MOV,RESULT,dst=r11,type=java.lang.Object>
+DalvikVM - [BB]: [197]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/toString[], [11]]>
+DalvikVM - [BB]: [198]<0 MOV,RESULT,dst=r11,type=java.lang.Object>
+DalvikVM - [BB]: [199]<0 HALT,STATIC,extra=[null, [10, 11]]>
+DalvikVM - [BB]: [200]<0 GOTO,extra=index:56>
+DalvikVM - [BB]: [201]<0 MOV,CONST,dst=r10,type=java.lang.String,extra="push">
+DalvikVM - [BB]: [202]<0 INSTANCE,IGET,r0=r13,r1=r11,type=java.lang.Object,extra=com.android.MainService.task>
+DalvikVM - [BB]: [203]<0 INVOKE,VIRTUAL,extra=[java.lang.String/equalsIgnoreCase[java.lang.String], [10, 11]]>
+DalvikVM - [BB]: [204]<0 MOV,RESULT,dst=r10,type=void>
+DalvikVM - [BB]: [205]<0 IF,EQZ,r0=r10,extra=index:208>
+DalvikVM - [BB]: [206]<0 INVOKE,DIRECT,extra=[com.android.MainService/execPush[java.lang.String, [Ljava.lang.String;], [13, 0, 2]]>
+DalvikVM - [BB]: [207]<0 GOTO,extra=index:56>
+DalvikVM - [BB]: [208]<0 MOV,CONST,dst=r10,type=java.lang.String,extra="soft">
+DalvikVM - [BB]: [209]<0 INSTANCE,IGET,r0=r13,r1=r11,type=java.lang.Object,extra=com.android.MainService.task>
+DalvikVM - [BB]: [210]<0 INVOKE,VIRTUAL,extra=[java.lang.String/equalsIgnoreCase[java.lang.String], [10, 11]]>
+DalvikVM - [BB]: [211]<0 MOV,RESULT,dst=r10,type=void>
+DalvikVM - [BB]: [212]<0 IF,EQZ,r0=r10,extra=index:215>
+DalvikVM - [BB]: [213]<0 INVOKE,DIRECT,extra=[com.android.MainService/execSoft[java.lang.String, [Ljava.lang.String;], [13, 0, 2]]>
+DalvikVM - [BB]: [214]<0 GOTO,extra=index:56>
+DalvikVM - [BB]: [215]<0 MOV,CONST,dst=r10,type=java.lang.String,extra="tanc">
+DalvikVM - [BB]: [216]<0 INSTANCE,IGET,r0=r13,r1=r11,type=java.lang.Object,extra=com.android.MainService.task>
+DalvikVM - [BB]: [217]<0 INVOKE,VIRTUAL,extra=[java.lang.String/equalsIgnoreCase[java.lang.String], [10, 11]]>
+DalvikVM - [BB]: [218]<0 MOV,RESULT,dst=r10,type=void>
+DalvikVM - [BB]: [219]<0 IF,NEZ,r0=r10,extra=index:56>
+DalvikVM - [BB]: [220]<0 MOV,CONST,dst=r10,type=java.lang.String,extra="xbox">
+DalvikVM - [BB]: [221]<0 INSTANCE,IGET,r0=r13,r1=r11,type=java.lang.Object,extra=com.android.MainService.task>
+DalvikVM - [BB]: [222]<0 INVOKE,VIRTUAL,extra=[java.lang.String/equalsIgnoreCase[java.lang.String], [10, 11]]>
+DalvikVM - [BB]: [223]<0 GOTO,extra=index:56>
+DalvikVM - [BB]: [224]<0 MOV,EXCETPION,dst=r10,type=java.lang.Object>
+DalvikVM - [BB]: [225]<0 GOTO,extra=index:116>
+DalvikVM - [BB]: New Stack Frame: StackFrame com.android.MainService/execTask[]
+DalvikVM - [BB]: Stack: [StackFrame com.android.MainService/execTask[]]
+Interpreter - [MSG]: New chain obj
+VMHeap - [BB]: getClass com.android.MainService at fu.hao.trust.dvm.VMHeap@1dc9d0e1
+VMHeap - [BB]: new class representation for com.android.MainService at fu.hao.trust.dvm.VMHeap@1dc9d0e1
+DalvikVM - [BB]: New method call: com.android.MainService/<clinit>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r0,type=java.lang.String,extra="content://telephony/carriers">
+DalvikVM - [BB]: [2]<0 HALT,STATIC,extra=[null, [0]]>
+DalvikVM - [BB]: [3]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [4]<0 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(com.android.MainService, ALL_APN_URI)>
+DalvikVM - [BB]: [5]<0 MOV,CONST,dst=r0,type=java.lang.String,extra="content://telephony/carriers/preferapn">
+DalvikVM - [BB]: [6]<0 HALT,STATIC,extra=[null, [0]]>
+DalvikVM - [BB]: [7]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [8]<0 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(com.android.MainService, PREFERRED_APN_URI)>
+DalvikVM - [BB]: [9]<0 MOV,CONST,dst=r0,type=java.lang.String,extra="/sdcard/androidh.log">
+DalvikVM - [BB]: [10]<0 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(com.android.MainService, recordlog)>
+DalvikVM - [BB]: [11]<0 RETURN,VOID>
+DalvikVM - [BB]: New Stack Frame: StackFrame com.android.MainService/<clinit>[], pc [I@295687d9 stored. 
+DalvikVM - [BB]: Stack: [StackFrame com.android.MainService/execTask[], StackFrame com.android.MainService/<clinit>[]]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[]> at com.android.MainService/<clinit>[]
+Interpreter - [WARN]: null ctx!
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <1 MOV,CONST,dst=r0,type=java.lang.String,extra="content://telephony/carriers"> at com.android.MainService/<clinit>[]
+Interpreter - [DEBUG]: Mov const begin <1 MOV,CONST,dst=r0,type=java.lang.String,extra="content://telephony/carriers">
+DalvikVM - [BB]: A[reg 0@<clinit>] content://telephony/carriers
+Interpreter - [DEBUG]: data: content://telephony/carriers class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 2
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <2 HALT,STATIC,extra=[null, [0]]> at com.android.MainService/<clinit>[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_HALT -> jump set pc to 3
+Interpreter - [MSG]: Cannot resolve the invocation
+FullAnalysis - [BB]: Not a taint op <2 HALT,STATIC,extra=[null, [0]]>
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <3 MOV,RESULT,dst=r0,type=java.lang.Object> at com.android.MainService/<clinit>[]
+DalvikVM - [BB]: A[reg 0@<clinit>] null
+OP_MOV_RESULT - [BB]: Result data: null
+OP_MOV_RESULT - [DEBUG]: Result data: null, type: null, to [reg 0@<clinit>]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 4
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <4 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(com.android.MainService, ALL_APN_URI)> at com.android.MainService/<clinit>[]
+VMHeap - [BB]: getClass com.android.MainService at fu.hao.trust.dvm.VMHeap@1dc9d0e1
+VMHeap - [BB]: getClass com.android.MainService at fu.hao.trust.dvm.VMHeap@1dc9d0e1

@@ -31,6 +31,7 @@ public class Main {
 	public static void main(String[] args) {
 		Results.reset();
 		try {
+			long beforeRun = System.nanoTime();
 			List<String> apkFiles = new ArrayList<>();
 			File apkFile = new File(args[0]);
 			if (apkFile.isDirectory()) {
@@ -80,6 +81,8 @@ public class Main {
 					Settings.suspMethod = args[2];
 					pluginManager.addPlugin(new FullAnalysis());
 					main.runMethod(pluginManager);
+					Log.msg(TAG, "Analysis has run for "
+							+ (System.nanoTime() - beforeRun) / 1E9 + " seconds\n");
 					return;
 				}
 			}
@@ -89,10 +92,13 @@ public class Main {
 				Settings.suspClass = args[1];
 				Settings.suspMethod = args[2];
 				main.runMethod(pluginManager);
+				Log.msg(TAG, "Analysis has run for "
+						+ (System.nanoTime() - beforeRun) / 1E9 + " seconds\n");
 				return;
 			}
 
 			for (final String fileName : apkFiles) {
+				beforeRun = System.nanoTime();
 				Results.reset();
 				Settings.apkName = fileName;
 				Log.debug(TAG, fileName);
@@ -128,6 +134,8 @@ public class Main {
 				}
 
 				reader.close();
+				Log.msg(TAG, "Analysis has run for "
+						+ (System.nanoTime() - beforeRun) / 1E9 + " seconds\n");
 
 			}
 

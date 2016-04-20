@@ -535,7 +535,9 @@ public class DalvikVM {
 		} else {
 			Log.bb(TAG, "New Stack Frame: " + newStackFrame);
 		}
-		pluginManager.setCurrRes(newStackFrame.pluginRes);
+		if (pluginManager != null) {
+			pluginManager.setCurrRes(newStackFrame == null ? null :newStackFrame.pluginRes);
+		}
 		stack.add(newStackFrame);
 		pc = getCurrStackFrame().pc;
 		Log.bb(TAG, "Stack: " + stack);
@@ -577,13 +579,15 @@ public class DalvikVM {
 	public void runMethod(String apk, String className, String main,
 			PluginManager pluginManager, Object[] params) throws ZipException,
 			IOException {
-		Log.msg(TAG, "Begin run " + main + " at " + apk);
 		// for normal java run-time classes
 		// when a class is not loaded, load it with reflection
 		ClassInfo.rootDetailLoader = new ReflectionClassDetailLoader();
 		// pick an apk
 		ZipFile apkFile;
-		apkFile = new ZipFile(new File(apk));
+		File file = new File(apk);
+		Settings.apkName = file.getName() + "_" + className + "_" + main;
+		apkFile = new ZipFile(file);		
+		Log.msg(TAG, "Begin run " + main + " at " + apk);
 		// load all classes, methods, fields and instructions from an apk
 		// we are using smali as the underlying engine
 		new SmaliClassDetailLoader(apkFile, true).loadAll();
