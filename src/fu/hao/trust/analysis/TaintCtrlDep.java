@@ -3,6 +3,7 @@ package fu.hao.trust.analysis;
 import java.util.Map;
 import java.util.Stack;
 
+import patdroid.core.MethodInfo;
 import patdroid.dalvik.Instruction;
 import fu.hao.trust.data.Branch;
 import fu.hao.trust.data.CorrelatedDataFact;
@@ -61,8 +62,10 @@ public class TaintCtrlDep extends TaintSumBranch {
 
 				for (String tag : configs.keySet()) {
 					Map<Object, Instruction> out = outs.get(tag);
-					Stack<Branch> interestedSimple = configs.get(tag).getCorrFact().getInterestedSimple();
-					Stack<BiDirBranch> interestedBiDir = configs.get(tag).getCorrFact().getInterestedBiDir();
+					Stack<Branch> interestedSimple = configs.get(tag)
+							.getCorrFact().getInterestedSimple();
+					Stack<BiDirBranch> interestedBiDir = configs.get(tag)
+							.getCorrFact().getInterestedBiDir();
 					// When sensitive var exists in the branch.
 					if (((r0 != null && out.containsKey(r0)) || (r1 != null && out
 							.containsKey(r1)))) {
@@ -75,8 +78,7 @@ public class TaintCtrlDep extends TaintSumBranch {
 							interestedSimple.add(branch);
 						}
 
-						Log.msg(tag,
-								"Add CDTaintBranch " + branch);
+						Log.msg(tag, "Add CDTaintBranch " + branch);
 					}
 				}
 			}
@@ -95,24 +97,51 @@ public class TaintCtrlDep extends TaintSumBranch {
 			Object[] assigned = vm.getAssigned();
 			for (String tag : outs.keySet()) {
 				Map<Object, Instruction> out = outs.get(tag);
-				Stack<Branch> interestedSimple = configs.get(tag).getCorrFact().getInterestedSimple();
-				Stack<BiDirBranch> interestedBiDir = configs.get(tag).getCorrFact().getInterestedBiDir();
+				Stack<Branch> interestedSimple = configs.get(tag).getCorrFact()
+						.getInterestedSimple();
+				Stack<BiDirBranch> interestedBiDir = configs.get(tag)
+						.getCorrFact().getInterestedBiDir();
 				// Add ctrl-dep correlated vars
 				if (!interestedSimple.isEmpty()
 						&& vm.getCurrStackFrame().getMethod() == interestedSimple
 								.peek().getMethod()) {
 					// Set the assigned var as combined value
 					// FIXME Multiple controlling if.
-					out.put((Register) assigned[0], interestedSimple.peek()
-							.getElemSrcs().iterator().next());
+					for (Instruction elemSrc : interestedSimple.peek()
+							.getElemSrcs()) {
+						Log.warn(TAG, elemSrc);
+						Object[] extra = (Object[]) elemSrc.extra;
+						MethodInfo mi = (MethodInfo) extra[0];
+						PluginConfig config = configs.get(tag);
+
+						if (config.getSources().contains(
+								Taint.getSootSignature(mi))) {
+							out.put((Register) assigned[0], elemSrc);
+						}
+					}
+
+					Log.bb(TAG, "a" + interestedSimple.peek().getElemSrcs());
 					Log.msg(tag, "Add correlated tained var " + assigned[0]);
 				}
 
 				if (!interestedBiDir.isEmpty()
 						&& vm.getCurrStackFrame().getMethod() == interestedBiDir
 								.peek().getMethod()) {
-					out.put((Register) assigned[0], interestedBiDir.peek()
-							.getElemSrcs().iterator().next());
+					// Set the assigned var as combined value
+					// FIXME Multiple controlling if.
+					for (Instruction elemSrc : interestedBiDir.peek()
+							.getElemSrcs()) {
+						Log.warn(TAG, elemSrc);
+						Object[] extra = (Object[]) elemSrc.extra;
+						MethodInfo mi = (MethodInfo) extra[0];
+						PluginConfig config = configs.get(tag);
+
+						if (config.getSources().contains(
+								Taint.getSootSignature(mi))) {
+							out.put((Register) assigned[0], elemSrc);
+						}
+					}
+					Log.bb(TAG, "a" + interestedBiDir.peek().getElemSrcs());
 					Log.msg(tag, "Add correlated tained var " + assigned[0]);
 				}
 			}
@@ -130,7 +159,8 @@ public class TaintCtrlDep extends TaintSumBranch {
 			Stack<BiDirBranch> interestedBiDir = corrFact.getInterestedBiDir();
 			if (!interestedSimple.isEmpty()
 					&& !simpleBranches.contains(interestedSimple.peek())) {
-				Log.bb(config.getTag(), "Rm Simple CDTAINTBranch " + interestedSimple.pop());
+				Log.bb(config.getTag(), "Rm Simple CDTAINTBranch "
+						+ interestedSimple.pop());
 			}
 
 			// At RestBegin, check if there exists unexplored block. If yes,
@@ -138,7 +168,8 @@ public class TaintCtrlDep extends TaintSumBranch {
 			if (!interestedBiDir.isEmpty()
 					&& interestedBiDir.peek().getRestBegin() == inst
 					&& !hasRestore) {
-				Log.bb(config.getTag(), "Rm Bidir CDTAINTBranch " + interestedBiDir.pop());
+				Log.bb(config.getTag(), "Rm Bidir CDTAINTBranch "
+						+ interestedBiDir.pop());
 			}
 		}
 

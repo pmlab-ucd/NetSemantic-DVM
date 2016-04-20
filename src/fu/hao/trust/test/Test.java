@@ -37,7 +37,7 @@ public class Test {
 						.getInfluAPIs()
 						.toString()
 						.contains(
-								"android.telephony.gsm.SmsManager/sendTextMessage"));
+								"SmsManager/sendTextMessage"));
 	}
 		
 	class dd {

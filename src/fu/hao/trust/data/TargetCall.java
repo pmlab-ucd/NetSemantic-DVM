@@ -119,7 +119,7 @@ public class TargetCall {
 		depAPIs.add(APICall);
 	}
 
-	public void addDepAPIs(Set<Instruction> elemSrcs) {
+	public void addDepAPIs(LinkedList<Instruction> elemSrcs) {
 		depAPIs.addAll(elemSrcs);
 	}
 

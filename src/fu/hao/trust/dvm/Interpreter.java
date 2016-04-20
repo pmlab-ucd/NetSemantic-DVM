@@ -362,8 +362,9 @@ public class Interpreter {
 							continue;
 						}
 						if (mi.paramTypes[i].isPrimitive()) {
-							Object primitive = resolvePrimitive((PrimitiveInfo) vm
-									.getReg(args[i]).getData(), mi.paramTypes[i]);
+							Object primitive = resolvePrimitive(
+									(PrimitiveInfo) vm.getReg(args[i])
+											.getData(), mi.paramTypes[i]);
 							params[i] = primitive;
 							Class<?> argClass = primClasses.get(primitive
 									.getClass());
@@ -869,7 +870,7 @@ public class Interpreter {
 			Object array = vm.getReg(inst.r0).getData();
 			ClassInfo type = (ClassInfo) inst.extra;
 			jump(vm, inst, true);
-			
+
 			if (array == null) {
 				vm.getReg(inst.rdst).setData(new Unknown(type));
 			} else if (array.getClass().isArray()) {
@@ -888,13 +889,14 @@ public class Interpreter {
 						+ array);
 				if (element == null) {
 					rdst.setData(new Unknown(type));
-				} if (rdst.type.isPrimitive()) {
+				}
+				if (rdst.type.isPrimitive()) {
 					rdst.setData(PrimitiveInfo.fromObject(element));
 				} else {
 					rdst.setData(Array.get(vm.getReg(inst.r0).getData(), index));// array[index];
-				}		
+				}
 			}
-			
+
 		}
 	}
 
@@ -1545,7 +1547,8 @@ public class Interpreter {
 
 			ClassInfo fieldType = owner.getStaticFieldType(fieldName);
 			DVMClass dvmClass = vm.getClass(owner);
-			if (!vm.getReg(inst.r0).type.isConvertibleTo(fieldType)) {
+			if (vm.getReg(inst.r0).getType() instanceof ClassInfo
+					&& !vm.getReg(inst.r0).getType().isConvertibleTo(fieldType)) {
 				Log.warn(TAG, "Type inconsistent! " + vm.getReg(inst.r0).type
 						+ " " + fieldType);
 			}
@@ -1786,15 +1789,24 @@ public class Interpreter {
 			// If operands contains instance of Unknown, directly set the res
 			// reg (r0) as unknowon
 			Unknown op = null;
+			
 			if (inst.r0 != -1
-					&& vm.getReg(inst.r0).getData() instanceof Unknown
-					|| inst.r1 != -1
-					&& vm.getReg(inst.r1).getData() instanceof Unknown) {
+					&& vm.getReg(inst.r0).getData() instanceof Unknown) {
 				op = (Unknown) vm.getReg(inst.r0).getData();
 				op.addLastArith(inst);
+			} else if (inst.r1 != -1
+					&& vm.getReg(inst.r1).getData() instanceof Unknown) {
+				op = (Unknown) vm.getReg(inst.r1).getData();
+				op.addLastArith(inst);
+				op = new Unknown(ClassInfo.primitiveInt);
+				op.addLastArith(inst);
+				vm.getReg(inst.r0).setData(op);
 				Log.warn(TAG, "Unknown found! " + op);
-			} else if (inst.r0 != -1 &&  vm.getReg(inst.r0).getData() == null || inst.r1 != -1 &&  vm.getReg(inst.r1).getData() == null) {
-				vm.getReg(inst.r0).setData(new Unknown(ClassInfo.primitiveInt));
+			} else if (inst.r0 != -1 && vm.getReg(inst.r0).getData() == null
+					|| inst.r1 != -1 && vm.getReg(inst.r1).getData() == null) {
+				op = new Unknown(ClassInfo.primitiveInt);
+				op.addLastArith(inst);
+				vm.getReg(inst.r0).setData(op);
 			} else {
 				auxByteCodes.get((int) inst.opcode_aux).func(vm, inst);
 			}
@@ -1902,8 +1914,9 @@ public class Interpreter {
 			Class[] argsClass = new Class[mi.paramTypes.length];
 			Object[] params = new Object[args.length - 1];
 			boolean normalArg = true;
-			
-			if (noInvokeList.contains(mi.name) || noInvokeList.contains(mi.myClass.fullName)) {
+
+			if (noInvokeList.contains(mi.name)
+					|| noInvokeList.contains(mi.myClass.fullName)) {
 				normalArg = false;
 			}
 
@@ -1919,7 +1932,8 @@ public class Interpreter {
 						Log.debug(TAG, "Init instance: "
 								+ vm.getReg(args[0]).getData());
 					} else {
-						boolean narg = getParams(vm, mi, args, argsClass, params);
+						boolean narg = getParams(vm, mi, args, argsClass,
+								params);
 						if (normalArg) {
 							normalArg = narg;
 						}
@@ -1943,7 +1957,8 @@ public class Interpreter {
 				thisInstance = vm.getReg(args[0]).getData();
 				if (thisInstance instanceof MultiValueVar) {
 					// FIXME Herustic, should really handle loop
-					if (mi.toString().contains("equals") || mi.toString().contains("split")) {
+					if (mi.toString().contains("equals")
+							|| mi.toString().contains("split")) {
 						normalArg = false;
 					}
 
@@ -1955,7 +1970,8 @@ public class Interpreter {
 					}
 				}
 
-				if (normalArg && thisInstance == null || thisInstance instanceof DVMObject
+				if (normalArg && thisInstance == null
+						|| thisInstance instanceof DVMObject
 						&& !DVMObject.class.equals(clazz)) {
 					thisInstance = clazz.newInstance();
 				}
@@ -2008,7 +2024,7 @@ public class Interpreter {
 			invocation(vm, mi, inst, args);
 		} catch (Exception e) {
 			e.printStackTrace();
-		
+
 			Log.warn(TAG, "Error in reflection: " + e.getMessage());
 			jump(vm, inst, true);
 		}
@@ -2036,8 +2052,9 @@ public class Interpreter {
 			Log.bb(TAG, "arg" + i + ": " + vm.getReg(args[i]).getData());
 			if (mi.paramTypes[i - 1].isPrimitive()) {
 				Log.debug(TAG, "Expected para type: " + mi.paramTypes[i - 1]);
-				Object primitive = resolvePrimitive((PrimitiveInfo) vm.getReg(
-						args[i]).getData(), mi.paramTypes[i - 1]);
+				Object primitive = resolvePrimitive(
+						(PrimitiveInfo) vm.getReg(args[i]).getData(),
+						mi.paramTypes[i - 1]);
 				Class<?> argClass = primClasses.get(primitive.getClass());
 				params[i - 1] = primitive;
 				// Because of a bug in PATDroid.
@@ -2286,8 +2303,7 @@ public class Interpreter {
 		Log.msg(TAG, "\n");
 		vm.setNowPC(vm.getPC());
 		inst.setIndex(vm.getNowPC());
-		Log.msg(TAG, inst + " at "
-				+ vm.getCurrStackFrame().method);
+		Log.msg(TAG, inst + " at " + vm.getCurrStackFrame().method);
 
 		vm.setAssigned(null);
 		vm.setReflectMethod(null);
@@ -2355,17 +2371,23 @@ public class Interpreter {
 	 * @throws
 	 */
 	public Object resolvePrimitive(PrimitiveInfo op1, ClassInfo type) {
-		if (type.equals(ClassInfo.primitiveBoolean) || op1 != null && op1.isBoolean()) {
+		if (type.equals(ClassInfo.primitiveBoolean) || op1 != null
+				&& op1.isBoolean()) {
 			return new Boolean(op1 == null ? false : op1.booleanValue());
-		} else if (type.equals(ClassInfo.primitiveInt) || op1 != null && op1.isInteger()) {
+		} else if (type.equals(ClassInfo.primitiveInt) || op1 != null
+				&& op1.isInteger()) {
 			return new Integer(op1 == null ? 0 : op1.intValue());
-		} else if (type.equals(ClassInfo.primitiveLong) || op1 != null && op1.isLong()) {
+		} else if (type.equals(ClassInfo.primitiveLong) || op1 != null
+				&& op1.isLong()) {
 			return new Long(op1 == null ? 0 : op1.longValue());
-		} else if (type.equals(ClassInfo.primitiveFloat) || op1 != null && op1.isFloat()) {
+		} else if (type.equals(ClassInfo.primitiveFloat) || op1 != null
+				&& op1.isFloat()) {
 			return new Float(op1 == null ? 0 : op1.floatValue());
-		} else if (type.equals(ClassInfo.primitiveDouble) || op1 != null && op1.isDouble()) {
+		} else if (type.equals(ClassInfo.primitiveDouble) || op1 != null
+				&& op1.isDouble()) {
 			return new Double(op1 == null ? 0 : op1.doubleValue());
-		} else if (type.equals(ClassInfo.primitiveChar) || op1 != null && op1.isChar()) {
+		} else if (type.equals(ClassInfo.primitiveChar) || op1 != null
+				&& op1.isChar()) {
 			return new Character(op1 == null ? 0 : op1.charValue());
 		}
 

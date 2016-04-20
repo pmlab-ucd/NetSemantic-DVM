@@ -57,11 +57,13 @@ public class InfluenceAnalysis {
 			if (!interestedSimple.isEmpty()) {
 				Log.bb(TAG, "Not empty simple branch!");
 				for (Branch branch : interestedSimple) {
-					for (Instruction tgtCall : branch.getElemSrcs()) {
+					Log.bb(TAG, "Branch: " + branch);
+					for (Instruction elemSrc : branch.getElemSrcs()) {
+						Log.bb(TAG, "Elem src " + elemSrc);
 						if (targetCalls != null
-								&& targetCalls.containsKey(tgtCall)) {
-							Log.msg(TAG, "tgt " + tgtCall);
-							targetCalls.get(tgtCall).addInfluAPI(inst);
+								&& targetCalls.containsKey(elemSrc)) {
+							Log.msg(TAG, "Target call matched! " + elemSrc);
+							targetCalls.get(elemSrc).addInfluAPI(inst);
 							break;
 						}
 					}
@@ -71,11 +73,11 @@ public class InfluenceAnalysis {
 			} else if (!interestedBiDir.isEmpty()) {
 				Log.bb(TAG, "Not empty bidir branch!");
 				for (Branch branch : interestedBiDir) {
-					for (Instruction tgtCall : branch.getElemSrcs()) {
+					for (Instruction elemSrc : branch.getElemSrcs()) {
 						if (targetCalls != null
-								&& targetCalls.containsKey(tgtCall)) {
-							Log.msg(TAG, "tgt " + tgtCall);
-							targetCalls.get(tgtCall).addInfluAPI(inst);
+								&& targetCalls.containsKey(elemSrc)) {
+							Log.msg(TAG, "Target call matched! " + elemSrc);
+							targetCalls.get(elemSrc).addInfluAPI(inst);
 							break;
 						}
 					}

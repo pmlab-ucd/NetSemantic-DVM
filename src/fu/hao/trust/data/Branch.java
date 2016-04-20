@@ -22,7 +22,7 @@ public class Branch {
 	protected int index;
 	protected Instruction sumPoint;
 	// The src API call that generates the element of the branch.
-	protected Set<Instruction> elemSrcs;
+	protected LinkedList<Instruction> elemSrcs;
 	// The memory element who has conflict values <Memory obj: reg, MVV>
 	protected Map<Register, Object[]> conflicts; 
 	
@@ -38,7 +38,7 @@ public class Branch {
 		this.index = index;
 		sumPoint = method.insns[((int) inst.extra)];
 		conflicts = new HashMap<>();
-		elemSrcs = new HashSet<>();
+		elemSrcs = new LinkedList<>();
 	}
 	
 	public Instruction getSumPoint() {
@@ -61,7 +61,7 @@ public class Branch {
 		return method;
 	}
 	
-	public Set<Instruction> getElemSrcs() {
+	public LinkedList<Instruction> getElemSrcs() {
 		return elemSrcs;
 	}
 	

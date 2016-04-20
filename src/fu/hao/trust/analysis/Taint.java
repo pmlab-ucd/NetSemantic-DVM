@@ -441,11 +441,11 @@ public class Taint extends Plugin {
 				Map<Object, Instruction> out = new HashMap<>(in);
 				if (in.containsKey(vm.getReturnReg())) {
 					out.put(vm.getReg(inst.rdst), in.get(vm.getReturnReg()));
+					Log.bb(TAG, "" +in.get(vm.getReturnReg()));
 					if (vm.getReg(inst.rdst).getData() != null) {
 						out.put(vm.getReg(inst.rdst).getData(),
 							in.get(vm.getReturnReg()));
 					}
-					Log.bb(TAG, "set " + in);
 					Log.bb(TAG, "Add reg " + inst.rdst + " due to ret reg.");
 				} else if (in.containsKey(vm.getReturnReg().getData())) {
 					out.put(vm.getReg(inst.rdst),
