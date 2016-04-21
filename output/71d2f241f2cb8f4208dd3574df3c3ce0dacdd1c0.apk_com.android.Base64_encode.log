@@ -1,0 +1,1278 @@
+DalvikVM - [MSG]: Begin run encode at C:/Users/hao/workspace/DroidBenchProj/apks/pjapps/71d2f241f2cb8f4208dd3574df3c3ce0dacdd1c0/71d2f241f2cb8f4208dd3574df3c3ce0dacdd1c0.apk
+Interpreter - [MSG]: RUN BEGIN com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: RUN BEGIN
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[8, 9]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: params: alfo3gsa3nfdsrfo3isd21d8a8fccosm
+Interpreter - [DEBUG]: params: 1
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <1 MOV,CONST,dst=r6,type=void,extra=class patdroid.core.PrimitiveInfo?3> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: Mov const begin <1 MOV,CONST,dst=r6,type=void,extra=class patdroid.core.PrimitiveInfo?3>
+Interpreter - [DEBUG]: data: 3 class patdroid.core.PrimitiveInfo
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <2 MOV,CONST,dst=r7,type=java.lang.String,extra="."> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: Mov const begin <2 MOV,CONST,dst=r7,type=java.lang.String,extra=".">
+Interpreter - [DEBUG]: data: . class java.lang.String
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <3 IF,EQZ,r0=r8,extra=index:8> at com.android.Base64/encode[java.lang.String, int]
+OP_CMP - [DEBUG]: r0 data alfo3gsa3nfdsrfo3isd21d8a8fccosm
+Interpreter - [DEBUG]: ops: 42 0
+Interpreter - [DEBUG]: not equ: <3 IF,EQZ,r0=r8,extra=index:8>
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <4 INVOKE,VIRTUAL,extra=[java.lang.String/length[], [8]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: alfo3gsa3nfdsrfo3isd21d8a8fccosm
+Interpreter - [DEBUG]: Reflction class: class java.lang.String
+Interpreter - [DEBUG]: Return data: 32 ,class java.lang.Integer
+Interpreter - [MSG]: Reflction invocation public int java.lang.String.length()
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <5 MOV,RESULT,dst=r4,type=void> at com.android.Base64/encode[java.lang.String, int]
+OP_MOV_RESULT - [DEBUG]: Result data: 32, type: int, to [reg 4@encode]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <6 MOV,CONST,dst=r5,type=void,extra=class patdroid.core.PrimitiveInfo?10> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: Mov const begin <6 MOV,CONST,dst=r5,type=void,extra=class patdroid.core.PrimitiveInfo?10>
+Interpreter - [DEBUG]: data: 10 class patdroid.core.PrimitiveInfo
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <7 IF,GE,r0=r4,r1=r5,extra=index:10> at com.android.Base64/encode[java.lang.String, int]
+OP_CMP - [DEBUG]: r0 data 32
+Interpreter - [DEBUG]: ops: 32 10
+Interpreter - [DEBUG]: ge: <7 IF,GE,r0=r4,r1=r5,extra=index:10>
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <10 INVOKE,VIRTUAL,extra=[java.lang.String/length[], [8]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: alfo3gsa3nfdsrfo3isd21d8a8fccosm
+Interpreter - [DEBUG]: Reflction class: class java.lang.String
+Interpreter - [DEBUG]: Return data: 32 ,class java.lang.Integer
+Interpreter - [MSG]: Reflction invocation public int java.lang.String.length()
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <11 MOV,RESULT,dst=r1,type=void> at com.android.Base64/encode[java.lang.String, int]
+OP_MOV_RESULT - [DEBUG]: Result data: 32, type: int, to [reg 1@encode]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <12 NEW,INSTANCE,dst=r2,type=java.lang.StringBuffer> at com.android.Base64/encode[java.lang.String, int]
+OP_NEW_INSTANCE - [DEBUG]: [reg 2@encode]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <13 INVOKE,DIRECT,extra=[java.lang.StringBuffer/<init>[], [2]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: null
+Interpreter - [DEBUG]: Init instance: 
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <14 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: Mov const begin <14 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+Interpreter - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <15 ARITHMETIC,DIV,dst=r4,r0=r1,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <16 IF,LT,r0=r0,r1=r4,extra=index:50> at com.android.Base64/encode[java.lang.String, int]
+OP_CMP - [DEBUG]: r0 data 0
+Interpreter - [DEBUG]: ops: 0 16
+OP_IF_LT - [DEBUG]: less: <16 IF,LT,r0=r0,r1=r4,extra=index:50>
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <50 ARITHMETIC,MUL,dst=r4,r0=r0,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: class java.lang.Integer
+Interpreter - [DEBUG]: end mul 
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <51 ARITHMETIC,ADD,dst=r4,r0=r4,r1=r9,type=int> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 0
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <52 ARITHMETIC,MUL,dst=r5,r0=r0,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: class java.lang.Integer
+Interpreter - [DEBUG]: end mul 
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <53 ARITHMETIC,ADD,dst=r5,r0=r5,r1=r9,type=int> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 0
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <54 ARITHMETIC,ADD,dst=r5,r0=r5,extra=class patdroid.core.PrimitiveInfo?1> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 1
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <55 INVOKE,VIRTUAL,extra=[java.lang.String/substring[int, int], [8, 4, 5]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: alfo3gsa3nfdsrfo3isd21d8a8fccosm
+Interpreter - [DEBUG]: Reflction class: class java.lang.String
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Caller obj: alfo3gsa3nfdsrfo3isd21d8a8fccosm, from class: class java.lang.String
+Interpreter - [DEBUG]: Return data: l ,class java.lang.String
+Interpreter - [MSG]: Reflction invocation public java.lang.String java.lang.String.substring(int,int)
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <56 MOV,RESULT,dst=r3,type=java.lang.Object> at com.android.Base64/encode[java.lang.String, int]
+OP_MOV_RESULT - [DEBUG]: Result data: l, type: java.lang.String, to [reg 3@encode]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <57 INVOKE,VIRTUAL,extra=[java.lang.StringBuffer/append[java.lang.String], [2, 3]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: 
+Interpreter - [DEBUG]: Reflction class: class java.lang.StringBuffer
+Interpreter - [DEBUG]: Caller obj: , from class: class java.lang.StringBuffer
+Interpreter - [DEBUG]: Return data: l ,class java.lang.StringBuffer
+Interpreter - [MSG]: Reflction invocation public synchronized java.lang.StringBuffer java.lang.StringBuffer.append(java.lang.String)
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <58 ARITHMETIC,ADD,dst=r0,r0=r0,extra=class patdroid.core.PrimitiveInfo?1> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 0
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <59 GOTO,extra=index:15> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: goto done: <59 GOTO,extra=index:15>
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <15 ARITHMETIC,DIV,dst=r4,r0=r1,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <16 IF,LT,r0=r0,r1=r4,extra=index:50> at com.android.Base64/encode[java.lang.String, int]
+OP_CMP - [DEBUG]: r0 data 1
+Interpreter - [DEBUG]: ops: 1 16
+OP_IF_LT - [DEBUG]: less: <16 IF,LT,r0=r0,r1=r4,extra=index:50>
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <50 ARITHMETIC,MUL,dst=r4,r0=r0,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: class java.lang.Integer
+Interpreter - [DEBUG]: end mul 
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <51 ARITHMETIC,ADD,dst=r4,r0=r4,r1=r9,type=int> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 2
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <52 ARITHMETIC,MUL,dst=r5,r0=r0,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: class java.lang.Integer
+Interpreter - [DEBUG]: end mul 
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <53 ARITHMETIC,ADD,dst=r5,r0=r5,r1=r9,type=int> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 2
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <54 ARITHMETIC,ADD,dst=r5,r0=r5,extra=class patdroid.core.PrimitiveInfo?1> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 3
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <55 INVOKE,VIRTUAL,extra=[java.lang.String/substring[int, int], [8, 4, 5]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: alfo3gsa3nfdsrfo3isd21d8a8fccosm
+Interpreter - [DEBUG]: Reflction class: class java.lang.String
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Caller obj: alfo3gsa3nfdsrfo3isd21d8a8fccosm, from class: class java.lang.String
+Interpreter - [DEBUG]: Return data: o ,class java.lang.String
+Interpreter - [MSG]: Reflction invocation public java.lang.String java.lang.String.substring(int,int)
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <56 MOV,RESULT,dst=r3,type=java.lang.Object> at com.android.Base64/encode[java.lang.String, int]
+OP_MOV_RESULT - [DEBUG]: Result data: o, type: java.lang.String, to [reg 3@encode]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <57 INVOKE,VIRTUAL,extra=[java.lang.StringBuffer/append[java.lang.String], [2, 3]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: l
+Interpreter - [DEBUG]: Reflction class: class java.lang.StringBuffer
+Interpreter - [DEBUG]: Caller obj: l, from class: class java.lang.StringBuffer
+Interpreter - [DEBUG]: Return data: lo ,class java.lang.StringBuffer
+Interpreter - [MSG]: Reflction invocation public synchronized java.lang.StringBuffer java.lang.StringBuffer.append(java.lang.String)
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <58 ARITHMETIC,ADD,dst=r0,r0=r0,extra=class patdroid.core.PrimitiveInfo?1> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 1
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <59 GOTO,extra=index:15> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: goto done: <59 GOTO,extra=index:15>
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <15 ARITHMETIC,DIV,dst=r4,r0=r1,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <16 IF,LT,r0=r0,r1=r4,extra=index:50> at com.android.Base64/encode[java.lang.String, int]
+OP_CMP - [DEBUG]: r0 data 2
+Interpreter - [DEBUG]: ops: 2 16
+OP_IF_LT - [DEBUG]: less: <16 IF,LT,r0=r0,r1=r4,extra=index:50>
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <50 ARITHMETIC,MUL,dst=r4,r0=r0,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: class java.lang.Integer
+Interpreter - [DEBUG]: end mul 
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <51 ARITHMETIC,ADD,dst=r4,r0=r4,r1=r9,type=int> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 4
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <52 ARITHMETIC,MUL,dst=r5,r0=r0,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: class java.lang.Integer
+Interpreter - [DEBUG]: end mul 
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <53 ARITHMETIC,ADD,dst=r5,r0=r5,r1=r9,type=int> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 4
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <54 ARITHMETIC,ADD,dst=r5,r0=r5,extra=class patdroid.core.PrimitiveInfo?1> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 5
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <55 INVOKE,VIRTUAL,extra=[java.lang.String/substring[int, int], [8, 4, 5]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: alfo3gsa3nfdsrfo3isd21d8a8fccosm
+Interpreter - [DEBUG]: Reflction class: class java.lang.String
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Caller obj: alfo3gsa3nfdsrfo3isd21d8a8fccosm, from class: class java.lang.String
+Interpreter - [DEBUG]: Return data: g ,class java.lang.String
+Interpreter - [MSG]: Reflction invocation public java.lang.String java.lang.String.substring(int,int)
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <56 MOV,RESULT,dst=r3,type=java.lang.Object> at com.android.Base64/encode[java.lang.String, int]
+OP_MOV_RESULT - [DEBUG]: Result data: g, type: java.lang.String, to [reg 3@encode]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <57 INVOKE,VIRTUAL,extra=[java.lang.StringBuffer/append[java.lang.String], [2, 3]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: lo
+Interpreter - [DEBUG]: Reflction class: class java.lang.StringBuffer
+Interpreter - [DEBUG]: Caller obj: lo, from class: class java.lang.StringBuffer
+Interpreter - [DEBUG]: Return data: log ,class java.lang.StringBuffer
+Interpreter - [MSG]: Reflction invocation public synchronized java.lang.StringBuffer java.lang.StringBuffer.append(java.lang.String)
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <58 ARITHMETIC,ADD,dst=r0,r0=r0,extra=class patdroid.core.PrimitiveInfo?1> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 2
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <59 GOTO,extra=index:15> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: goto done: <59 GOTO,extra=index:15>
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <15 ARITHMETIC,DIV,dst=r4,r0=r1,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <16 IF,LT,r0=r0,r1=r4,extra=index:50> at com.android.Base64/encode[java.lang.String, int]
+OP_CMP - [DEBUG]: r0 data 3
+Interpreter - [DEBUG]: ops: 3 16
+OP_IF_LT - [DEBUG]: less: <16 IF,LT,r0=r0,r1=r4,extra=index:50>
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <50 ARITHMETIC,MUL,dst=r4,r0=r0,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: class java.lang.Integer
+Interpreter - [DEBUG]: end mul 
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <51 ARITHMETIC,ADD,dst=r4,r0=r4,r1=r9,type=int> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 6
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <52 ARITHMETIC,MUL,dst=r5,r0=r0,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: class java.lang.Integer
+Interpreter - [DEBUG]: end mul 
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <53 ARITHMETIC,ADD,dst=r5,r0=r5,r1=r9,type=int> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 6
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <54 ARITHMETIC,ADD,dst=r5,r0=r5,extra=class patdroid.core.PrimitiveInfo?1> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 7
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <55 INVOKE,VIRTUAL,extra=[java.lang.String/substring[int, int], [8, 4, 5]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: alfo3gsa3nfdsrfo3isd21d8a8fccosm
+Interpreter - [DEBUG]: Reflction class: class java.lang.String
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Caller obj: alfo3gsa3nfdsrfo3isd21d8a8fccosm, from class: class java.lang.String
+Interpreter - [DEBUG]: Return data: a ,class java.lang.String
+Interpreter - [MSG]: Reflction invocation public java.lang.String java.lang.String.substring(int,int)
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <56 MOV,RESULT,dst=r3,type=java.lang.Object> at com.android.Base64/encode[java.lang.String, int]
+OP_MOV_RESULT - [DEBUG]: Result data: a, type: java.lang.String, to [reg 3@encode]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <57 INVOKE,VIRTUAL,extra=[java.lang.StringBuffer/append[java.lang.String], [2, 3]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: log
+Interpreter - [DEBUG]: Reflction class: class java.lang.StringBuffer
+Interpreter - [DEBUG]: Caller obj: log, from class: class java.lang.StringBuffer
+Interpreter - [DEBUG]: Return data: loga ,class java.lang.StringBuffer
+Interpreter - [MSG]: Reflction invocation public synchronized java.lang.StringBuffer java.lang.StringBuffer.append(java.lang.String)
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <58 ARITHMETIC,ADD,dst=r0,r0=r0,extra=class patdroid.core.PrimitiveInfo?1> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 3
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <59 GOTO,extra=index:15> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: goto done: <59 GOTO,extra=index:15>
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <15 ARITHMETIC,DIV,dst=r4,r0=r1,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <16 IF,LT,r0=r0,r1=r4,extra=index:50> at com.android.Base64/encode[java.lang.String, int]
+OP_CMP - [DEBUG]: r0 data 4
+Interpreter - [DEBUG]: ops: 4 16
+OP_IF_LT - [DEBUG]: less: <16 IF,LT,r0=r0,r1=r4,extra=index:50>
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <50 ARITHMETIC,MUL,dst=r4,r0=r0,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: class java.lang.Integer
+Interpreter - [DEBUG]: end mul 
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <51 ARITHMETIC,ADD,dst=r4,r0=r4,r1=r9,type=int> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 8
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <52 ARITHMETIC,MUL,dst=r5,r0=r0,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: class java.lang.Integer
+Interpreter - [DEBUG]: end mul 
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <53 ARITHMETIC,ADD,dst=r5,r0=r5,r1=r9,type=int> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 8
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <54 ARITHMETIC,ADD,dst=r5,r0=r5,extra=class patdroid.core.PrimitiveInfo?1> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 9
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <55 INVOKE,VIRTUAL,extra=[java.lang.String/substring[int, int], [8, 4, 5]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: alfo3gsa3nfdsrfo3isd21d8a8fccosm
+Interpreter - [DEBUG]: Reflction class: class java.lang.String
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Caller obj: alfo3gsa3nfdsrfo3isd21d8a8fccosm, from class: class java.lang.String
+Interpreter - [DEBUG]: Return data: n ,class java.lang.String
+Interpreter - [MSG]: Reflction invocation public java.lang.String java.lang.String.substring(int,int)
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <56 MOV,RESULT,dst=r3,type=java.lang.Object> at com.android.Base64/encode[java.lang.String, int]
+OP_MOV_RESULT - [DEBUG]: Result data: n, type: java.lang.String, to [reg 3@encode]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <57 INVOKE,VIRTUAL,extra=[java.lang.StringBuffer/append[java.lang.String], [2, 3]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: loga
+Interpreter - [DEBUG]: Reflction class: class java.lang.StringBuffer
+Interpreter - [DEBUG]: Caller obj: loga, from class: class java.lang.StringBuffer
+Interpreter - [DEBUG]: Return data: logan ,class java.lang.StringBuffer
+Interpreter - [MSG]: Reflction invocation public synchronized java.lang.StringBuffer java.lang.StringBuffer.append(java.lang.String)
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <58 ARITHMETIC,ADD,dst=r0,r0=r0,extra=class patdroid.core.PrimitiveInfo?1> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 4
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <59 GOTO,extra=index:15> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: goto done: <59 GOTO,extra=index:15>
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <15 ARITHMETIC,DIV,dst=r4,r0=r1,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <16 IF,LT,r0=r0,r1=r4,extra=index:50> at com.android.Base64/encode[java.lang.String, int]
+OP_CMP - [DEBUG]: r0 data 5
+Interpreter - [DEBUG]: ops: 5 16
+OP_IF_LT - [DEBUG]: less: <16 IF,LT,r0=r0,r1=r4,extra=index:50>
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <50 ARITHMETIC,MUL,dst=r4,r0=r0,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: class java.lang.Integer
+Interpreter - [DEBUG]: end mul 
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <51 ARITHMETIC,ADD,dst=r4,r0=r4,r1=r9,type=int> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 10
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <52 ARITHMETIC,MUL,dst=r5,r0=r0,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: class java.lang.Integer
+Interpreter - [DEBUG]: end mul 
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <53 ARITHMETIC,ADD,dst=r5,r0=r5,r1=r9,type=int> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 10
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <54 ARITHMETIC,ADD,dst=r5,r0=r5,extra=class patdroid.core.PrimitiveInfo?1> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 11
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <55 INVOKE,VIRTUAL,extra=[java.lang.String/substring[int, int], [8, 4, 5]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: alfo3gsa3nfdsrfo3isd21d8a8fccosm
+Interpreter - [DEBUG]: Reflction class: class java.lang.String
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Caller obj: alfo3gsa3nfdsrfo3isd21d8a8fccosm, from class: class java.lang.String
+Interpreter - [DEBUG]: Return data: d ,class java.lang.String
+Interpreter - [MSG]: Reflction invocation public java.lang.String java.lang.String.substring(int,int)
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <56 MOV,RESULT,dst=r3,type=java.lang.Object> at com.android.Base64/encode[java.lang.String, int]
+OP_MOV_RESULT - [DEBUG]: Result data: d, type: java.lang.String, to [reg 3@encode]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <57 INVOKE,VIRTUAL,extra=[java.lang.StringBuffer/append[java.lang.String], [2, 3]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: logan
+Interpreter - [DEBUG]: Reflction class: class java.lang.StringBuffer
+Interpreter - [DEBUG]: Caller obj: logan, from class: class java.lang.StringBuffer
+Interpreter - [DEBUG]: Return data: logand ,class java.lang.StringBuffer
+Interpreter - [MSG]: Reflction invocation public synchronized java.lang.StringBuffer java.lang.StringBuffer.append(java.lang.String)
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <58 ARITHMETIC,ADD,dst=r0,r0=r0,extra=class patdroid.core.PrimitiveInfo?1> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 5
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <59 GOTO,extra=index:15> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: goto done: <59 GOTO,extra=index:15>
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <15 ARITHMETIC,DIV,dst=r4,r0=r1,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <16 IF,LT,r0=r0,r1=r4,extra=index:50> at com.android.Base64/encode[java.lang.String, int]
+OP_CMP - [DEBUG]: r0 data 6
+Interpreter - [DEBUG]: ops: 6 16
+OP_IF_LT - [DEBUG]: less: <16 IF,LT,r0=r0,r1=r4,extra=index:50>
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <50 ARITHMETIC,MUL,dst=r4,r0=r0,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: class java.lang.Integer
+Interpreter - [DEBUG]: end mul 
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <51 ARITHMETIC,ADD,dst=r4,r0=r4,r1=r9,type=int> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 12
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <52 ARITHMETIC,MUL,dst=r5,r0=r0,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: class java.lang.Integer
+Interpreter - [DEBUG]: end mul 
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <53 ARITHMETIC,ADD,dst=r5,r0=r5,r1=r9,type=int> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 12
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <54 ARITHMETIC,ADD,dst=r5,r0=r5,extra=class patdroid.core.PrimitiveInfo?1> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 13
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <55 INVOKE,VIRTUAL,extra=[java.lang.String/substring[int, int], [8, 4, 5]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: alfo3gsa3nfdsrfo3isd21d8a8fccosm
+Interpreter - [DEBUG]: Reflction class: class java.lang.String
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Caller obj: alfo3gsa3nfdsrfo3isd21d8a8fccosm, from class: class java.lang.String
+Interpreter - [DEBUG]: Return data: r ,class java.lang.String
+Interpreter - [MSG]: Reflction invocation public java.lang.String java.lang.String.substring(int,int)
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <56 MOV,RESULT,dst=r3,type=java.lang.Object> at com.android.Base64/encode[java.lang.String, int]
+OP_MOV_RESULT - [DEBUG]: Result data: r, type: java.lang.String, to [reg 3@encode]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <57 INVOKE,VIRTUAL,extra=[java.lang.StringBuffer/append[java.lang.String], [2, 3]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: logand
+Interpreter - [DEBUG]: Reflction class: class java.lang.StringBuffer
+Interpreter - [DEBUG]: Caller obj: logand, from class: class java.lang.StringBuffer
+Interpreter - [DEBUG]: Return data: logandr ,class java.lang.StringBuffer
+Interpreter - [MSG]: Reflction invocation public synchronized java.lang.StringBuffer java.lang.StringBuffer.append(java.lang.String)
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <58 ARITHMETIC,ADD,dst=r0,r0=r0,extra=class patdroid.core.PrimitiveInfo?1> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 6
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <59 GOTO,extra=index:15> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: goto done: <59 GOTO,extra=index:15>
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <15 ARITHMETIC,DIV,dst=r4,r0=r1,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <16 IF,LT,r0=r0,r1=r4,extra=index:50> at com.android.Base64/encode[java.lang.String, int]
+OP_CMP - [DEBUG]: r0 data 7
+Interpreter - [DEBUG]: ops: 7 16
+OP_IF_LT - [DEBUG]: less: <16 IF,LT,r0=r0,r1=r4,extra=index:50>
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <50 ARITHMETIC,MUL,dst=r4,r0=r0,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: class java.lang.Integer
+Interpreter - [DEBUG]: end mul 
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <51 ARITHMETIC,ADD,dst=r4,r0=r4,r1=r9,type=int> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 14
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <52 ARITHMETIC,MUL,dst=r5,r0=r0,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: class java.lang.Integer
+Interpreter - [DEBUG]: end mul 
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <53 ARITHMETIC,ADD,dst=r5,r0=r5,r1=r9,type=int> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 14
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <54 ARITHMETIC,ADD,dst=r5,r0=r5,extra=class patdroid.core.PrimitiveInfo?1> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 15
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <55 INVOKE,VIRTUAL,extra=[java.lang.String/substring[int, int], [8, 4, 5]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: alfo3gsa3nfdsrfo3isd21d8a8fccosm
+Interpreter - [DEBUG]: Reflction class: class java.lang.String
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Caller obj: alfo3gsa3nfdsrfo3isd21d8a8fccosm, from class: class java.lang.String
+Interpreter - [DEBUG]: Return data: o ,class java.lang.String
+Interpreter - [MSG]: Reflction invocation public java.lang.String java.lang.String.substring(int,int)
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <56 MOV,RESULT,dst=r3,type=java.lang.Object> at com.android.Base64/encode[java.lang.String, int]
+OP_MOV_RESULT - [DEBUG]: Result data: o, type: java.lang.String, to [reg 3@encode]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <57 INVOKE,VIRTUAL,extra=[java.lang.StringBuffer/append[java.lang.String], [2, 3]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: logandr
+Interpreter - [DEBUG]: Reflction class: class java.lang.StringBuffer
+Interpreter - [DEBUG]: Caller obj: logandr, from class: class java.lang.StringBuffer
+Interpreter - [DEBUG]: Return data: logandro ,class java.lang.StringBuffer
+Interpreter - [MSG]: Reflction invocation public synchronized java.lang.StringBuffer java.lang.StringBuffer.append(java.lang.String)
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <58 ARITHMETIC,ADD,dst=r0,r0=r0,extra=class patdroid.core.PrimitiveInfo?1> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 7
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <59 GOTO,extra=index:15> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: goto done: <59 GOTO,extra=index:15>
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <15 ARITHMETIC,DIV,dst=r4,r0=r1,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <16 IF,LT,r0=r0,r1=r4,extra=index:50> at com.android.Base64/encode[java.lang.String, int]
+OP_CMP - [DEBUG]: r0 data 8
+Interpreter - [DEBUG]: ops: 8 16
+OP_IF_LT - [DEBUG]: less: <16 IF,LT,r0=r0,r1=r4,extra=index:50>
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <50 ARITHMETIC,MUL,dst=r4,r0=r0,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: class java.lang.Integer
+Interpreter - [DEBUG]: end mul 
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <51 ARITHMETIC,ADD,dst=r4,r0=r4,r1=r9,type=int> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 16
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <52 ARITHMETIC,MUL,dst=r5,r0=r0,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: class java.lang.Integer
+Interpreter - [DEBUG]: end mul 
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <53 ARITHMETIC,ADD,dst=r5,r0=r5,r1=r9,type=int> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 16
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <54 ARITHMETIC,ADD,dst=r5,r0=r5,extra=class patdroid.core.PrimitiveInfo?1> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 17
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <55 INVOKE,VIRTUAL,extra=[java.lang.String/substring[int, int], [8, 4, 5]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: alfo3gsa3nfdsrfo3isd21d8a8fccosm
+Interpreter - [DEBUG]: Reflction class: class java.lang.String
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Caller obj: alfo3gsa3nfdsrfo3isd21d8a8fccosm, from class: class java.lang.String
+Interpreter - [DEBUG]: Return data: i ,class java.lang.String
+Interpreter - [MSG]: Reflction invocation public java.lang.String java.lang.String.substring(int,int)
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <56 MOV,RESULT,dst=r3,type=java.lang.Object> at com.android.Base64/encode[java.lang.String, int]
+OP_MOV_RESULT - [DEBUG]: Result data: i, type: java.lang.String, to [reg 3@encode]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <57 INVOKE,VIRTUAL,extra=[java.lang.StringBuffer/append[java.lang.String], [2, 3]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: logandro
+Interpreter - [DEBUG]: Reflction class: class java.lang.StringBuffer
+Interpreter - [DEBUG]: Caller obj: logandro, from class: class java.lang.StringBuffer
+Interpreter - [DEBUG]: Return data: logandroi ,class java.lang.StringBuffer
+Interpreter - [MSG]: Reflction invocation public synchronized java.lang.StringBuffer java.lang.StringBuffer.append(java.lang.String)
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <58 ARITHMETIC,ADD,dst=r0,r0=r0,extra=class patdroid.core.PrimitiveInfo?1> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 8
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <59 GOTO,extra=index:15> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: goto done: <59 GOTO,extra=index:15>
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <15 ARITHMETIC,DIV,dst=r4,r0=r1,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <16 IF,LT,r0=r0,r1=r4,extra=index:50> at com.android.Base64/encode[java.lang.String, int]
+OP_CMP - [DEBUG]: r0 data 9
+Interpreter - [DEBUG]: ops: 9 16
+OP_IF_LT - [DEBUG]: less: <16 IF,LT,r0=r0,r1=r4,extra=index:50>
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <50 ARITHMETIC,MUL,dst=r4,r0=r0,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: class java.lang.Integer
+Interpreter - [DEBUG]: end mul 
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <51 ARITHMETIC,ADD,dst=r4,r0=r4,r1=r9,type=int> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 18
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <52 ARITHMETIC,MUL,dst=r5,r0=r0,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: class java.lang.Integer
+Interpreter - [DEBUG]: end mul 
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <53 ARITHMETIC,ADD,dst=r5,r0=r5,r1=r9,type=int> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 18
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <54 ARITHMETIC,ADD,dst=r5,r0=r5,extra=class patdroid.core.PrimitiveInfo?1> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 19
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <55 INVOKE,VIRTUAL,extra=[java.lang.String/substring[int, int], [8, 4, 5]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: alfo3gsa3nfdsrfo3isd21d8a8fccosm
+Interpreter - [DEBUG]: Reflction class: class java.lang.String
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Caller obj: alfo3gsa3nfdsrfo3isd21d8a8fccosm, from class: class java.lang.String
+Interpreter - [DEBUG]: Return data: d ,class java.lang.String
+Interpreter - [MSG]: Reflction invocation public java.lang.String java.lang.String.substring(int,int)
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <56 MOV,RESULT,dst=r3,type=java.lang.Object> at com.android.Base64/encode[java.lang.String, int]
+OP_MOV_RESULT - [DEBUG]: Result data: d, type: java.lang.String, to [reg 3@encode]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <57 INVOKE,VIRTUAL,extra=[java.lang.StringBuffer/append[java.lang.String], [2, 3]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: logandroi
+Interpreter - [DEBUG]: Reflction class: class java.lang.StringBuffer
+Interpreter - [DEBUG]: Caller obj: logandroi, from class: class java.lang.StringBuffer
+Interpreter - [DEBUG]: Return data: logandroid ,class java.lang.StringBuffer
+Interpreter - [MSG]: Reflction invocation public synchronized java.lang.StringBuffer java.lang.StringBuffer.append(java.lang.String)
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <58 ARITHMETIC,ADD,dst=r0,r0=r0,extra=class patdroid.core.PrimitiveInfo?1> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 9
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <59 GOTO,extra=index:15> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: goto done: <59 GOTO,extra=index:15>
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <15 ARITHMETIC,DIV,dst=r4,r0=r1,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <16 IF,LT,r0=r0,r1=r4,extra=index:50> at com.android.Base64/encode[java.lang.String, int]
+OP_CMP - [DEBUG]: r0 data 10
+Interpreter - [DEBUG]: ops: 10 16
+OP_IF_LT - [DEBUG]: less: <16 IF,LT,r0=r0,r1=r4,extra=index:50>
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <50 ARITHMETIC,MUL,dst=r4,r0=r0,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: class java.lang.Integer
+Interpreter - [DEBUG]: end mul 
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <51 ARITHMETIC,ADD,dst=r4,r0=r4,r1=r9,type=int> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 20
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <52 ARITHMETIC,MUL,dst=r5,r0=r0,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: class java.lang.Integer
+Interpreter - [DEBUG]: end mul 
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <53 ARITHMETIC,ADD,dst=r5,r0=r5,r1=r9,type=int> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 20
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <54 ARITHMETIC,ADD,dst=r5,r0=r5,extra=class patdroid.core.PrimitiveInfo?1> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 21
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <55 INVOKE,VIRTUAL,extra=[java.lang.String/substring[int, int], [8, 4, 5]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: alfo3gsa3nfdsrfo3isd21d8a8fccosm
+Interpreter - [DEBUG]: Reflction class: class java.lang.String
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Caller obj: alfo3gsa3nfdsrfo3isd21d8a8fccosm, from class: class java.lang.String
+Interpreter - [DEBUG]: Return data: 1 ,class java.lang.String
+Interpreter - [MSG]: Reflction invocation public java.lang.String java.lang.String.substring(int,int)
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <56 MOV,RESULT,dst=r3,type=java.lang.Object> at com.android.Base64/encode[java.lang.String, int]
+OP_MOV_RESULT - [DEBUG]: Result data: 1, type: java.lang.String, to [reg 3@encode]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <57 INVOKE,VIRTUAL,extra=[java.lang.StringBuffer/append[java.lang.String], [2, 3]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: logandroid
+Interpreter - [DEBUG]: Reflction class: class java.lang.StringBuffer
+Interpreter - [DEBUG]: Caller obj: logandroid, from class: class java.lang.StringBuffer
+Interpreter - [DEBUG]: Return data: logandroid1 ,class java.lang.StringBuffer
+Interpreter - [MSG]: Reflction invocation public synchronized java.lang.StringBuffer java.lang.StringBuffer.append(java.lang.String)
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <58 ARITHMETIC,ADD,dst=r0,r0=r0,extra=class patdroid.core.PrimitiveInfo?1> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 10
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <59 GOTO,extra=index:15> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: goto done: <59 GOTO,extra=index:15>
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <15 ARITHMETIC,DIV,dst=r4,r0=r1,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <16 IF,LT,r0=r0,r1=r4,extra=index:50> at com.android.Base64/encode[java.lang.String, int]
+OP_CMP - [DEBUG]: r0 data 11
+Interpreter - [DEBUG]: ops: 11 16
+OP_IF_LT - [DEBUG]: less: <16 IF,LT,r0=r0,r1=r4,extra=index:50>
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <50 ARITHMETIC,MUL,dst=r4,r0=r0,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: class java.lang.Integer
+Interpreter - [DEBUG]: end mul 
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <51 ARITHMETIC,ADD,dst=r4,r0=r4,r1=r9,type=int> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 22
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <52 ARITHMETIC,MUL,dst=r5,r0=r0,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: class java.lang.Integer
+Interpreter - [DEBUG]: end mul 
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <53 ARITHMETIC,ADD,dst=r5,r0=r5,r1=r9,type=int> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 22
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <54 ARITHMETIC,ADD,dst=r5,r0=r5,extra=class patdroid.core.PrimitiveInfo?1> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 23
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <55 INVOKE,VIRTUAL,extra=[java.lang.String/substring[int, int], [8, 4, 5]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: alfo3gsa3nfdsrfo3isd21d8a8fccosm
+Interpreter - [DEBUG]: Reflction class: class java.lang.String
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Caller obj: alfo3gsa3nfdsrfo3isd21d8a8fccosm, from class: class java.lang.String
+Interpreter - [DEBUG]: Return data: 8 ,class java.lang.String
+Interpreter - [MSG]: Reflction invocation public java.lang.String java.lang.String.substring(int,int)
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <56 MOV,RESULT,dst=r3,type=java.lang.Object> at com.android.Base64/encode[java.lang.String, int]
+OP_MOV_RESULT - [DEBUG]: Result data: 8, type: java.lang.String, to [reg 3@encode]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <57 INVOKE,VIRTUAL,extra=[java.lang.StringBuffer/append[java.lang.String], [2, 3]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: logandroid1
+Interpreter - [DEBUG]: Reflction class: class java.lang.StringBuffer
+Interpreter - [DEBUG]: Caller obj: logandroid1, from class: class java.lang.StringBuffer
+Interpreter - [DEBUG]: Return data: logandroid18 ,class java.lang.StringBuffer
+Interpreter - [MSG]: Reflction invocation public synchronized java.lang.StringBuffer java.lang.StringBuffer.append(java.lang.String)
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <58 ARITHMETIC,ADD,dst=r0,r0=r0,extra=class patdroid.core.PrimitiveInfo?1> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 11
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <59 GOTO,extra=index:15> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: goto done: <59 GOTO,extra=index:15>
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <15 ARITHMETIC,DIV,dst=r4,r0=r1,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <16 IF,LT,r0=r0,r1=r4,extra=index:50> at com.android.Base64/encode[java.lang.String, int]
+OP_CMP - [DEBUG]: r0 data 12
+Interpreter - [DEBUG]: ops: 12 16
+OP_IF_LT - [DEBUG]: less: <16 IF,LT,r0=r0,r1=r4,extra=index:50>
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <50 ARITHMETIC,MUL,dst=r4,r0=r0,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: class java.lang.Integer
+Interpreter - [DEBUG]: end mul 
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <51 ARITHMETIC,ADD,dst=r4,r0=r4,r1=r9,type=int> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 24
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <52 ARITHMETIC,MUL,dst=r5,r0=r0,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: class java.lang.Integer
+Interpreter - [DEBUG]: end mul 
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <53 ARITHMETIC,ADD,dst=r5,r0=r5,r1=r9,type=int> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 24
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <54 ARITHMETIC,ADD,dst=r5,r0=r5,extra=class patdroid.core.PrimitiveInfo?1> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 25
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <55 INVOKE,VIRTUAL,extra=[java.lang.String/substring[int, int], [8, 4, 5]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: alfo3gsa3nfdsrfo3isd21d8a8fccosm
+Interpreter - [DEBUG]: Reflction class: class java.lang.String
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Caller obj: alfo3gsa3nfdsrfo3isd21d8a8fccosm, from class: class java.lang.String
+Interpreter - [DEBUG]: Return data: 8 ,class java.lang.String
+Interpreter - [MSG]: Reflction invocation public java.lang.String java.lang.String.substring(int,int)
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <56 MOV,RESULT,dst=r3,type=java.lang.Object> at com.android.Base64/encode[java.lang.String, int]
+OP_MOV_RESULT - [DEBUG]: Result data: 8, type: java.lang.String, to [reg 3@encode]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <57 INVOKE,VIRTUAL,extra=[java.lang.StringBuffer/append[java.lang.String], [2, 3]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: logandroid18
+Interpreter - [DEBUG]: Reflction class: class java.lang.StringBuffer
+Interpreter - [DEBUG]: Caller obj: logandroid18, from class: class java.lang.StringBuffer
+Interpreter - [DEBUG]: Return data: logandroid188 ,class java.lang.StringBuffer
+Interpreter - [MSG]: Reflction invocation public synchronized java.lang.StringBuffer java.lang.StringBuffer.append(java.lang.String)
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <58 ARITHMETIC,ADD,dst=r0,r0=r0,extra=class patdroid.core.PrimitiveInfo?1> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 12
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <59 GOTO,extra=index:15> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: goto done: <59 GOTO,extra=index:15>
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <15 ARITHMETIC,DIV,dst=r4,r0=r1,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <16 IF,LT,r0=r0,r1=r4,extra=index:50> at com.android.Base64/encode[java.lang.String, int]
+OP_CMP - [DEBUG]: r0 data 13
+Interpreter - [DEBUG]: ops: 13 16
+OP_IF_LT - [DEBUG]: less: <16 IF,LT,r0=r0,r1=r4,extra=index:50>
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <50 ARITHMETIC,MUL,dst=r4,r0=r0,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: class java.lang.Integer
+Interpreter - [DEBUG]: end mul 
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <51 ARITHMETIC,ADD,dst=r4,r0=r4,r1=r9,type=int> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 26
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <52 ARITHMETIC,MUL,dst=r5,r0=r0,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: class java.lang.Integer
+Interpreter - [DEBUG]: end mul 
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <53 ARITHMETIC,ADD,dst=r5,r0=r5,r1=r9,type=int> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 26
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <54 ARITHMETIC,ADD,dst=r5,r0=r5,extra=class patdroid.core.PrimitiveInfo?1> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 27
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <55 INVOKE,VIRTUAL,extra=[java.lang.String/substring[int, int], [8, 4, 5]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: alfo3gsa3nfdsrfo3isd21d8a8fccosm
+Interpreter - [DEBUG]: Reflction class: class java.lang.String
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Caller obj: alfo3gsa3nfdsrfo3isd21d8a8fccosm, from class: class java.lang.String
+Interpreter - [DEBUG]: Return data: c ,class java.lang.String
+Interpreter - [MSG]: Reflction invocation public java.lang.String java.lang.String.substring(int,int)
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <56 MOV,RESULT,dst=r3,type=java.lang.Object> at com.android.Base64/encode[java.lang.String, int]
+OP_MOV_RESULT - [DEBUG]: Result data: c, type: java.lang.String, to [reg 3@encode]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <57 INVOKE,VIRTUAL,extra=[java.lang.StringBuffer/append[java.lang.String], [2, 3]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: logandroid188
+Interpreter - [DEBUG]: Reflction class: class java.lang.StringBuffer
+Interpreter - [DEBUG]: Caller obj: logandroid188, from class: class java.lang.StringBuffer
+Interpreter - [DEBUG]: Return data: logandroid188c ,class java.lang.StringBuffer
+Interpreter - [MSG]: Reflction invocation public synchronized java.lang.StringBuffer java.lang.StringBuffer.append(java.lang.String)
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <58 ARITHMETIC,ADD,dst=r0,r0=r0,extra=class patdroid.core.PrimitiveInfo?1> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 13
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <59 GOTO,extra=index:15> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: goto done: <59 GOTO,extra=index:15>
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <15 ARITHMETIC,DIV,dst=r4,r0=r1,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <16 IF,LT,r0=r0,r1=r4,extra=index:50> at com.android.Base64/encode[java.lang.String, int]
+OP_CMP - [DEBUG]: r0 data 14
+Interpreter - [DEBUG]: ops: 14 16
+OP_IF_LT - [DEBUG]: less: <16 IF,LT,r0=r0,r1=r4,extra=index:50>
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <50 ARITHMETIC,MUL,dst=r4,r0=r0,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: class java.lang.Integer
+Interpreter - [DEBUG]: end mul 
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <51 ARITHMETIC,ADD,dst=r4,r0=r4,r1=r9,type=int> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 28
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <52 ARITHMETIC,MUL,dst=r5,r0=r0,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: class java.lang.Integer
+Interpreter - [DEBUG]: end mul 
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <53 ARITHMETIC,ADD,dst=r5,r0=r5,r1=r9,type=int> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 28
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <54 ARITHMETIC,ADD,dst=r5,r0=r5,extra=class patdroid.core.PrimitiveInfo?1> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 29
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <55 INVOKE,VIRTUAL,extra=[java.lang.String/substring[int, int], [8, 4, 5]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: alfo3gsa3nfdsrfo3isd21d8a8fccosm
+Interpreter - [DEBUG]: Reflction class: class java.lang.String
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Caller obj: alfo3gsa3nfdsrfo3isd21d8a8fccosm, from class: class java.lang.String
+Interpreter - [DEBUG]: Return data: o ,class java.lang.String
+Interpreter - [MSG]: Reflction invocation public java.lang.String java.lang.String.substring(int,int)
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <56 MOV,RESULT,dst=r3,type=java.lang.Object> at com.android.Base64/encode[java.lang.String, int]
+OP_MOV_RESULT - [DEBUG]: Result data: o, type: java.lang.String, to [reg 3@encode]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <57 INVOKE,VIRTUAL,extra=[java.lang.StringBuffer/append[java.lang.String], [2, 3]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: logandroid188c
+Interpreter - [DEBUG]: Reflction class: class java.lang.StringBuffer
+Interpreter - [DEBUG]: Caller obj: logandroid188c, from class: class java.lang.StringBuffer
+Interpreter - [DEBUG]: Return data: logandroid188co ,class java.lang.StringBuffer
+Interpreter - [MSG]: Reflction invocation public synchronized java.lang.StringBuffer java.lang.StringBuffer.append(java.lang.String)
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <58 ARITHMETIC,ADD,dst=r0,r0=r0,extra=class patdroid.core.PrimitiveInfo?1> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 14
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <59 GOTO,extra=index:15> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: goto done: <59 GOTO,extra=index:15>
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <15 ARITHMETIC,DIV,dst=r4,r0=r1,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <16 IF,LT,r0=r0,r1=r4,extra=index:50> at com.android.Base64/encode[java.lang.String, int]
+OP_CMP - [DEBUG]: r0 data 15
+Interpreter - [DEBUG]: ops: 15 16
+OP_IF_LT - [DEBUG]: less: <16 IF,LT,r0=r0,r1=r4,extra=index:50>
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <50 ARITHMETIC,MUL,dst=r4,r0=r0,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: class java.lang.Integer
+Interpreter - [DEBUG]: end mul 
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <51 ARITHMETIC,ADD,dst=r4,r0=r4,r1=r9,type=int> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 30
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <52 ARITHMETIC,MUL,dst=r5,r0=r0,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: class java.lang.Integer
+Interpreter - [DEBUG]: end mul 
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <53 ARITHMETIC,ADD,dst=r5,r0=r5,r1=r9,type=int> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 30
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <54 ARITHMETIC,ADD,dst=r5,r0=r5,extra=class patdroid.core.PrimitiveInfo?1> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 31
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <55 INVOKE,VIRTUAL,extra=[java.lang.String/substring[int, int], [8, 4, 5]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: alfo3gsa3nfdsrfo3isd21d8a8fccosm
+Interpreter - [DEBUG]: Reflction class: class java.lang.String
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Caller obj: alfo3gsa3nfdsrfo3isd21d8a8fccosm, from class: class java.lang.String
+Interpreter - [DEBUG]: Return data: m ,class java.lang.String
+Interpreter - [MSG]: Reflction invocation public java.lang.String java.lang.String.substring(int,int)
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <56 MOV,RESULT,dst=r3,type=java.lang.Object> at com.android.Base64/encode[java.lang.String, int]
+OP_MOV_RESULT - [DEBUG]: Result data: m, type: java.lang.String, to [reg 3@encode]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <57 INVOKE,VIRTUAL,extra=[java.lang.StringBuffer/append[java.lang.String], [2, 3]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: logandroid188co
+Interpreter - [DEBUG]: Reflction class: class java.lang.StringBuffer
+Interpreter - [DEBUG]: Caller obj: logandroid188co, from class: class java.lang.StringBuffer
+Interpreter - [DEBUG]: Return data: logandroid188com ,class java.lang.StringBuffer
+Interpreter - [MSG]: Reflction invocation public synchronized java.lang.StringBuffer java.lang.StringBuffer.append(java.lang.String)
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <58 ARITHMETIC,ADD,dst=r0,r0=r0,extra=class patdroid.core.PrimitiveInfo?1> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: data 15
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <59 GOTO,extra=index:15> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: goto done: <59 GOTO,extra=index:15>
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <15 ARITHMETIC,DIV,dst=r4,r0=r1,extra=class patdroid.core.PrimitiveInfo?2> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <16 IF,LT,r0=r0,r1=r4,extra=index:50> at com.android.Base64/encode[java.lang.String, int]
+OP_CMP - [DEBUG]: r0 data 16
+Interpreter - [DEBUG]: ops: 16 16
+OP_IF_LT - [DEBUG]: not lesss: <16 IF,LT,r0=r0,r1=r4,extra=index:50>
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <17 INVOKE,VIRTUAL,extra=[java.lang.StringBuffer/toString[], [2]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: logandroid188com
+Interpreter - [DEBUG]: Reflction class: class java.lang.StringBuffer
+Interpreter - [DEBUG]: Return data: logandroid188com ,class java.lang.String
+Interpreter - [MSG]: Reflction invocation public synchronized java.lang.String java.lang.StringBuffer.toString()
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <18 MOV,RESULT,dst=r8,type=java.lang.Object> at com.android.Base64/encode[java.lang.String, int]
+OP_MOV_RESULT - [DEBUG]: Result data: logandroid188com, type: java.lang.String, to [reg 8@encode]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <19 NEW,INSTANCE,dst=r4,type=java.lang.StringBuilder> at com.android.Base64/encode[java.lang.String, int]
+OP_NEW_INSTANCE - [DEBUG]: [reg 4@encode]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <20 MOV,CONST,dst=r5,type=void,extra=class patdroid.core.PrimitiveInfo?0> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: Mov const begin <20 MOV,CONST,dst=r5,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+Interpreter - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <21 INVOKE,VIRTUAL,extra=[java.lang.String/substring[int, int], [8, 5, 6]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: logandroid188com
+Interpreter - [DEBUG]: Reflction class: class java.lang.String
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Caller obj: logandroid188com, from class: class java.lang.String
+Interpreter - [DEBUG]: Return data: log ,class java.lang.String
+Interpreter - [MSG]: Reflction invocation public java.lang.String java.lang.String.substring(int,int)
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <22 MOV,RESULT,dst=r5,type=java.lang.Object> at com.android.Base64/encode[java.lang.String, int]
+OP_MOV_RESULT - [DEBUG]: Result data: log, type: java.lang.String, to [reg 5@encode]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <23 INVOKE,STATIC,extra=[java.lang.String/valueOf[java.lang.Object], [5]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: reflction class java.lang.String
+Interpreter - [DEBUG]: return data: log class java.lang.String
+Interpreter - [MSG]: reflction invocation public static java.lang.String java.lang.String.valueOf(java.lang.Object)
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <24 MOV,RESULT,dst=r5,type=java.lang.Object> at com.android.Base64/encode[java.lang.String, int]
+OP_MOV_RESULT - [DEBUG]: Result data: log, type: java.lang.String, to [reg 5@encode]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <25 INVOKE,DIRECT,extra=[java.lang.StringBuilder/<init>[java.lang.String], [4, 5]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: null
+Interpreter - [DEBUG]: Init instance: log class java.lang.StringBuilder
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <26 MOV,CONST,dst=r5,type=java.lang.String,extra="."> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: Mov const begin <26 MOV,CONST,dst=r5,type=java.lang.String,extra=".">
+Interpreter - [DEBUG]: data: . class java.lang.String
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <27 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [4, 7]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: log
+Interpreter - [DEBUG]: Reflction class: class java.lang.StringBuilder
+Interpreter - [DEBUG]: Caller obj: log, from class: class java.lang.StringBuilder
+Interpreter - [DEBUG]: Return data: log. ,class java.lang.StringBuilder
+Interpreter - [MSG]: Reflction invocation public java.lang.StringBuilder java.lang.StringBuilder.append(java.lang.String)
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <28 MOV,RESULT,dst=r4,type=java.lang.Object> at com.android.Base64/encode[java.lang.String, int]
+OP_MOV_RESULT - [DEBUG]: Result data: log., type: java.lang.StringBuilder, to [reg 4@encode]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <29 INVOKE,VIRTUAL,extra=[java.lang.String/length[], [8]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: logandroid188com
+Interpreter - [DEBUG]: Reflction class: class java.lang.String
+Interpreter - [DEBUG]: Return data: 16 ,class java.lang.Integer
+Interpreter - [MSG]: Reflction invocation public int java.lang.String.length()
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <30 MOV,RESULT,dst=r5,type=void> at com.android.Base64/encode[java.lang.String, int]
+OP_MOV_RESULT - [DEBUG]: Result data: 16, type: int, to [reg 5@encode]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <31 ARITHMETIC,SUB,dst=r5,r0=r5,r1=r6,type=int> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <32 INVOKE,VIRTUAL,extra=[java.lang.String/substring[int, int], [8, 6, 5]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: logandroid188com
+Interpreter - [DEBUG]: Reflction class: class java.lang.String
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Caller obj: logandroid188com, from class: class java.lang.String
+Interpreter - [DEBUG]: Return data: android188 ,class java.lang.String
+Interpreter - [MSG]: Reflction invocation public java.lang.String java.lang.String.substring(int,int)
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <33 MOV,RESULT,dst=r5,type=java.lang.Object> at com.android.Base64/encode[java.lang.String, int]
+OP_MOV_RESULT - [DEBUG]: Result data: android188, type: java.lang.String, to [reg 5@encode]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <34 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [4, 5]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: log.
+Interpreter - [DEBUG]: Reflction class: class java.lang.StringBuilder
+Interpreter - [DEBUG]: Caller obj: log., from class: class java.lang.StringBuilder
+Interpreter - [DEBUG]: Return data: log.android188 ,class java.lang.StringBuilder
+Interpreter - [MSG]: Reflction invocation public java.lang.StringBuilder java.lang.StringBuilder.append(java.lang.String)
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <35 MOV,RESULT,dst=r4,type=java.lang.Object> at com.android.Base64/encode[java.lang.String, int]
+OP_MOV_RESULT - [DEBUG]: Result data: log.android188, type: java.lang.StringBuilder, to [reg 4@encode]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <36 MOV,CONST,dst=r5,type=java.lang.String,extra="."> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: Mov const begin <36 MOV,CONST,dst=r5,type=java.lang.String,extra=".">
+Interpreter - [DEBUG]: data: . class java.lang.String
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <37 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [4, 7]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: log.android188
+Interpreter - [DEBUG]: Reflction class: class java.lang.StringBuilder
+Interpreter - [DEBUG]: Caller obj: log.android188, from class: class java.lang.StringBuilder
+Interpreter - [DEBUG]: Return data: log.android188. ,class java.lang.StringBuilder
+Interpreter - [MSG]: Reflction invocation public java.lang.StringBuilder java.lang.StringBuilder.append(java.lang.String)
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <38 MOV,RESULT,dst=r4,type=java.lang.Object> at com.android.Base64/encode[java.lang.String, int]
+OP_MOV_RESULT - [DEBUG]: Result data: log.android188., type: java.lang.StringBuilder, to [reg 4@encode]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <39 INVOKE,VIRTUAL,extra=[java.lang.String/length[], [8]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: logandroid188com
+Interpreter - [DEBUG]: Reflction class: class java.lang.String
+Interpreter - [DEBUG]: Return data: 16 ,class java.lang.Integer
+Interpreter - [MSG]: Reflction invocation public int java.lang.String.length()
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <40 MOV,RESULT,dst=r5,type=void> at com.android.Base64/encode[java.lang.String, int]
+OP_MOV_RESULT - [DEBUG]: Result data: 16, type: int, to [reg 5@encode]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <41 ARITHMETIC,SUB,dst=r5,r0=r5,r1=r6,type=int> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <42 INVOKE,VIRTUAL,extra=[java.lang.String/substring[int], [8, 5]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: logandroid188com
+Interpreter - [DEBUG]: Reflction class: class java.lang.String
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Caller obj: logandroid188com, from class: class java.lang.String
+Interpreter - [DEBUG]: Return data: com ,class java.lang.String
+Interpreter - [MSG]: Reflction invocation public java.lang.String java.lang.String.substring(int)
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <43 MOV,RESULT,dst=r5,type=java.lang.Object> at com.android.Base64/encode[java.lang.String, int]
+OP_MOV_RESULT - [DEBUG]: Result data: com, type: java.lang.String, to [reg 5@encode]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <44 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [4, 5]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: log.android188.
+Interpreter - [DEBUG]: Reflction class: class java.lang.StringBuilder
+Interpreter - [DEBUG]: Caller obj: log.android188., from class: class java.lang.StringBuilder
+Interpreter - [DEBUG]: Return data: log.android188.com ,class java.lang.StringBuilder
+Interpreter - [MSG]: Reflction invocation public java.lang.StringBuilder java.lang.StringBuilder.append(java.lang.String)
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <45 MOV,RESULT,dst=r4,type=java.lang.Object> at com.android.Base64/encode[java.lang.String, int]
+OP_MOV_RESULT - [DEBUG]: Result data: log.android188.com, type: java.lang.StringBuilder, to [reg 4@encode]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <46 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/toString[], [4]]> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: arg0 obj: log.android188.com
+Interpreter - [DEBUG]: Reflction class: class java.lang.StringBuilder
+Interpreter - [DEBUG]: Return data: log.android188.com ,class java.lang.String
+Interpreter - [MSG]: Reflction invocation public java.lang.String java.lang.StringBuilder.toString()
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <47 MOV,RESULT,dst=r8,type=java.lang.Object> at com.android.Base64/encode[java.lang.String, int]
+OP_MOV_RESULT - [DEBUG]: Result data: log.android188.com, type: java.lang.String, to [reg 8@encode]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <48 MOV,REG,dst=r4,r0=r8,type=java.lang.Object> at com.android.Base64/encode[java.lang.String, int]
+class fu.hao.trust.dvm.Interpreter$OP_MOVE_REG - [DEBUG]: mov log.android188.com to log.android188.com
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <49 GOTO,extra=index:9> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [DEBUG]: goto done: <49 GOTO,extra=index:9>
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <9 RETURN,VALUE,r0=r4,type=java.lang.Object> at com.android.Base64/encode[java.lang.String, int]
+Interpreter - [MSG]: RUN DONE! The last one is encode

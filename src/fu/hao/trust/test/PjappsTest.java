@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import patdroid.core.PrimitiveInfo;
 import fu.hao.trust.data.Results;
+import fu.hao.trust.data.TargetCall;
 import fu.hao.trust.dvm.DalvikVM;
 import fu.hao.trust.dvm.Main;
 import fu.hao.trust.utils.Log;
@@ -17,8 +18,31 @@ import fu.hao.trust.utils.Settings;
 public class PjappsTest {
 	
 	static String TAG = "test"; 
-
+	
 	@Test
+	public void test71d2f241f2cb8f4208dd3574df3c3ce0dacdd1c0() {
+		String[] args = new String[4];
+		Settings.logLevel = 0;
+
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/pjapps/71d2f241f2cb8f4208dd3574df3c3ce0dacdd1c0/71d2f241f2cb8f4208dd3574df3c3ce0dacdd1c0.apk";
+		args[1] = "com.android.MainService";
+		args[2] = "execTask";
+		args[3] = "Full";
+
+		Main.main(args);
+		boolean containsSms = false;
+		for (TargetCall targetCall : Results.targetCallRes.values()) {
+			Log.msg(TAG, "Result: " + targetCall);
+			if (targetCall.getInfluAPIs().toString().contains("SmsManager/sendTextMessage")) {
+				containsSms = true;
+			}
+		}
+
+		assertEquals(false, Results.targetCallRes.isEmpty());
+		assertEquals(true, containsSms);
+	}
+
+	//@Test
 	public void testcc41c23be6baa51a2d555f397b9ca9144939885f() {
 		String[] args = new String[4];
 		Settings.logLevel = 0;
@@ -45,7 +69,7 @@ public class PjappsTest {
 								"android.telephony.gsm.SmsManager/sendTextMessage"));
 	}
 	
-	@Test
+	//@Test
 	public void test0177c2775de43572eb37e5de2803ff57eb297a9f() {
 		String[] args = new String[4];
 		Settings.logLevel = 0;
@@ -72,7 +96,7 @@ public class PjappsTest {
 								"android.telephony.gsm.SmsManager/sendTextMessage"));
 	}
 	
-	@Test
+	//@Test
 	public void test() {
 		String[] args = new String[4];
 		Settings.logLevel = 0;
@@ -104,7 +128,7 @@ public class PjappsTest {
 
 	}
 	
-	@Test
+	//@Test
 	public void testEncryption() {
 		DalvikVM vm = new DalvikVM();
 		Object[] params = new Object[3];
@@ -114,6 +138,24 @@ public class PjappsTest {
 		try {
 			vm.runMethod("C:/Users/hao/workspace/PJApps/app/663e8eb52c7b4a14e2873b1551748587018661b3.apk",
 					"com.android.main.Base64", "encodebook", null, params);
+		} catch (ZipException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void testEncryption71d2f24() {
+		DalvikVM vm = new DalvikVM();
+		Object[] params = new Object[2];
+		params[0] = "alfo3gsa3nfdsrfo3isd21d8a8fccosm";
+		params[1] = new PrimitiveInfo(1); 
+		try {
+			vm.runMethod("C:/Users/hao/workspace/DroidBenchProj/apks/pjapps/71d2f241f2cb8f4208dd3574df3c3ce0dacdd1c0/71d2f241f2cb8f4208dd3574df3c3ce0dacdd1c0.apk",
+					"com.android.Base64", "encode", null, params);
 		} catch (ZipException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
