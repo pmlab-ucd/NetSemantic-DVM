@@ -164,7 +164,8 @@ public class TaintSumBranch extends Taint {
 		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
 				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
 			TAINT_OP_IF taintOp = new TAINT_OP_IF();
-			Map<String, Map<Object, Instruction>> outs = taintOp.flow(vm, inst, ins);
+			Map<String, Map<Object, Instruction>> outs = taintOp.flow(vm, inst,
+					ins);
 
 			Register r0 = null, r1 = null;
 			if (inst.r0 != -1) {
@@ -176,10 +177,8 @@ public class TaintSumBranch extends Taint {
 			}
 
 			// When unknown exists in the branch
-			if (r0 != null
- && (r0.getData() instanceof MultiValueVar)
-					|| r1 != null
-					&& (r1.getData() instanceof MultiValueVar)) {
+			if (r0 != null && (r0.getData() instanceof MultiValueVar)
+					|| r1 != null && (r1.getData() instanceof MultiValueVar)) {
 				// Force to explore <then>
 				vm.setPC(vm.getNowPC() + 1);
 
@@ -188,7 +187,7 @@ public class TaintSumBranch extends Taint {
 				Branch branch = null;
 				if (isLoop(vm, inst)) {
 					return outs;
-				}	else if (isNewBiDir(vm, inst)) {
+				} else if (isNewBiDir(vm, inst)) {
 					branch = bidirBranches.getLast();
 				} else if (isCondBiDir(vm, inst)) {
 					branch = bidirBranches.getLast();
@@ -226,7 +225,7 @@ public class TaintSumBranch extends Taint {
 			return outs;
 		}
 	}
-	
+
 	class ATAINT_OP_INSTANCE_PUT_FIELD implements Rule {
 		final String TAG = getClass().getSimpleName();
 
@@ -245,8 +244,9 @@ public class TaintSumBranch extends Taint {
 				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
 			// Backup the original value of over-written heap element
 			TAINT_OP_INSTANCE_PUT_FIELD taintOp = new TAINT_OP_INSTANCE_PUT_FIELD();
-			Map<String, Map<Object, Instruction>> outs = taintOp.flow(vm, inst, ins);
-			
+			Map<String, Map<Object, Instruction>> outs = taintOp.flow(vm, inst,
+					ins);
+
 			DVMObject obj = (DVMObject) vm.getReg(inst.r0).getData();
 			FieldInfo fieldInfo = (FieldInfo) inst.extra;
 			if (vm.getAssigned() != null) {
@@ -281,8 +281,9 @@ public class TaintSumBranch extends Taint {
 				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
 			// Backup the original value of over-written heap element
 			TAINT_OP_STATIC_PUT_FIELD taintOp = new TAINT_OP_STATIC_PUT_FIELD();
-			Map<String, Map<Object, Instruction>> outs = taintOp.flow(vm, inst, ins);
-			
+			Map<String, Map<Object, Instruction>> outs = taintOp.flow(vm, inst,
+					ins);
+
 			if (vm.getAssigned() != null) {
 				DVMClass clazz = (DVMClass) vm.getAssigned()[0];
 				String fieldName = (String) vm.getAssigned()[1];
@@ -319,15 +320,16 @@ public class TaintSumBranch extends Taint {
 				&& bidirBranches.getLast().getSumPoint() == inst) {
 			BiDirBranch branch = bidirBranches.getLast();
 			Log.msg(TAG, "Arrive at sum point of bidirbranch " + branch);
-			
+
 			if (inst.opcode_aux == Instruction.OP_RETURN_SOMETHING) {
-				branch.addValue(vm.getReg(inst.r0), vm.getReg(inst.r0).getData());
+				branch.addValue(vm.getReg(inst.r0), vm.getReg(inst.r0)
+						.getData());
 			}
-			
+
 			if (branch.getRmFlag()) {
 				Log.msg(TAG, "Rm BiDirBranch " + branch);
 				branch = bidirBranches.removeLast();
-				
+
 				if (branch.getSumPoint().opcode_aux == Instruction.OP_RETURN_SOMETHING) {
 					branch.valCombination();
 				}
@@ -356,39 +358,43 @@ public class TaintSumBranch extends Taint {
 	}
 
 	@Override
-	public Map<String, Map<Object, Instruction>> runAnalysis(DalvikVM vm, Instruction inst, Map<String, Map<Object, Instruction>> ins) {
+	public Map<String, Map<Object, Instruction>> runAnalysis(DalvikVM vm,
+			Instruction inst, Map<String, Map<Object, Instruction>> ins) {
 		// Add conflict vars.
-		if (vm.getAssigned() != null && vm.getAssigned()[1] != null && vm.getAssigned()[0] != vm.getReturnReg()) {
+		if (vm.getAssigned() != null && vm.getAssigned()[1] != null
+				&& vm.getAssigned()[0] != vm.getReturnReg()) {
 			if (!simpleBranches.isEmpty()
 					&& vm.getCurrStackFrame().getMethod() == simpleBranches
 							.peek().getMethod()) {
 				// Set the assigned var as combined value
 				Object[] assigned = vm.getAssigned();
 				Branch branch = simpleBranches.peek();
-				if (assigned[0] instanceof Register && Branch.checkType(assigned[1], assigned[2])) {
-					Log.bb(TAG, "Assigned: " + assigned[1] + " " + assigned[2]);
-					branch.addValue((Register) assigned[0], assigned[1]);
-					branch.addValue((Register) assigned[0], assigned[2]);
+				if (assigned[0] instanceof Register) {
+					// Mismatch types mean the reg serves as a tmp, the original
+					// val has nothing to do with the new value.
+					if (Branch.checkType(assigned[1], assigned[2])) {
+						Log.bb(TAG, "Assigned: " + assigned[1] + " "
+								+ assigned[2]);
+						branch.addValue((Register) assigned[0], assigned[1]);
+						branch.addValue((Register) assigned[0], assigned[2]);
+					} else {
+						branch.addIgnoreVar((Register) assigned[0]);
+					}
 				}
 			}
 
 			/*
-			if (!bidirBranches.isEmpty()
-					&& vm.getCurrStackFrame().getMethod() == bidirBranches
-							.peek().getMethod()) {
-				// Set the assigned var as combined value
-				Object[] assigned = vm.getAssigned();
-				Branch branch = bidirBranches.getLast();
-				if (Branch.checkType(assigned[1], assigned[2])) {
-					Log.bb(TAG, "Assigned: " + assigned[1] + " " + assigned[2]);
-					// FIXME Support heap element.
-					if (assigned[0] instanceof Register) {
-						// The original value before the blk will be definitely
-						// overwritten.
-						branch.addValue((Register) assigned[0], assigned[2]);
-					}
-				}
-			}*/
+			 * if (!bidirBranches.isEmpty() &&
+			 * vm.getCurrStackFrame().getMethod() == bidirBranches
+			 * .peek().getMethod()) { // Set the assigned var as combined value
+			 * Object[] assigned = vm.getAssigned(); Branch branch =
+			 * bidirBranches.getLast(); if (Branch.checkType(assigned[1],
+			 * assigned[2])) { Log.bb(TAG, "Assigned: " + assigned[1] + " " +
+			 * assigned[2]); // FIXME Support heap element. if (assigned[0]
+			 * instanceof Register) { // The original value before the blk will
+			 * be definitely // overwritten. branch.addValue((Register)
+			 * assigned[0], assigned[2]); } } }
+			 */
 		}
 
 		return super.runAnalysis(vm, inst, ins);

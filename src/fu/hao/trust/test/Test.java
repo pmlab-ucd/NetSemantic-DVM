@@ -8,15 +8,40 @@ import fu.hao.trust.utils.Settings;
 
 public class Test {
 	
-	public void testMain() {
+	public static void main(String[] margs) {				
+		Test t = new Test();
+		t.testMain();
+	}
+	
+	public void testMain2() {
 		String[] args = new String[4];
 		Settings.logLevel = 0;
 		
-		/*args[0] = "C:/Users/hao/workspace/PJApps/app/app-release.apk";
+		args[0] = "C:/Users/hao/workspace/PJApps/app/app-release.apk";
 		args[1] = "fu.hao.pjapps.MainActivity";
-		args[2] = "testInfluence2";
+		args[2] = "execTask71d2f241f";
 		args[3] = "Full"; //"ATaint";*/
 		
+		Main.main(args);
+		Log.msg(TAG, "REs: " + Results.results);
+		Log.msg(TAG, "REs: " + Results.targetCallRes);
+		
+		assertEquals(false, Results.targetCallRes.isEmpty());
+		assertEquals(
+				true,
+				Results.targetCallRes
+						.values()
+						.iterator()
+						.next()
+						.getInfluAPIs()
+						.toString()
+						.contains(
+								"SmsManager/sendTextMessage"));
+	}
+	
+	public void testMain() {
+		String[] args = new String[4];
+		Settings.logLevel = 0;
 		
 		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/pjapps/71d2f241f2cb8f4208dd3574df3c3ce0dacdd1c0/71d2f241f2cb8f4208dd3574df3c3ce0dacdd1c0.apk";
 		args[1] = "com.android.MainService";
@@ -47,12 +72,6 @@ public class Test {
 	static String TAG = "test";  
 	
 	dd i;
-	
-	public static void main(String[] margs) {				
-		Test t = new Test();
-		t.testMain();
-		//t.testFie();
-	}
 	
 	void testFie() {
 		b(i);
