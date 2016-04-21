@@ -20,6 +20,76 @@ public class PjappsTest {
 	static String TAG = "test"; 
 	
 	@Test
+	public void testa7f33bd0441b5151f73fc7f1b30fbf35a9be76e0() {
+		String[] args = new String[4];
+		Settings.logLevel = 0;
+
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/pjapps/a7f33bd0441b5151f73fc7f1b30fbf35a9be76e0/a7f33bd0441b5151f73fc7f1b30fbf35a9be76e0.apk";
+		args[1] = "com.android.main.MainService";
+		args[2] = "execTask";
+		args[3] = "Full";
+
+		Main.main(args);
+		boolean containsSms = false;
+		for (TargetCall targetCall : Results.targetCallRes.values()) {
+			Log.msg(TAG, "Result: " + targetCall);
+			if (targetCall.getInfluAPIs().toString().contains("SmsManager/sendTextMessage")) {
+				containsSms = true;
+			}
+		}
+
+		assertEquals(false, Results.targetCallRes.isEmpty());
+		assertEquals(true, containsSms);
+	}
+	
+	
+	@Test
+	public void test7b4a2e82c0b61e2f260e60bbb2e5c16ea864ad46() {
+		String[] args = new String[4];
+		Settings.logLevel = 0;
+
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/pjapps/7b4a2e82c0b61e2f260e60bbb2e5c16ea864ad46/7b4a2e82c0b61e2f260e60bbb2e5c16ea864ad46.apk";
+		args[1] = "com.android.main.MainService";
+		args[2] = "execTask";
+		args[3] = "Full";
+
+		Main.main(args);
+		boolean containsSms = false;
+		for (TargetCall targetCall : Results.targetCallRes.values()) {
+			Log.msg(TAG, "Result: " + targetCall);
+			if (targetCall.getInfluAPIs().toString().contains("SmsManager/sendTextMessage")) {
+				containsSms = true;
+			}
+		}
+
+		assertEquals(false, Results.targetCallRes.isEmpty());
+		assertEquals(true, containsSms);
+	}
+	
+	@Test
+	public void test2c47ec0a2eb6e88e910f1c16889f8cdedce09507() {
+		String[] args = new String[4];
+		Settings.logLevel = 0;
+
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/pjapps/2c47ec0a2eb6e88e910f1c16889f8cdedce09507/2c47ec0a2eb6e88e910f1c16889f8cdedce09507.apk";
+		args[1] = "com.android.main.MainService";
+		args[2] = "execTask";
+		args[3] = "Full";
+
+		Main.main(args);
+		boolean containsSms = false;
+		for (TargetCall targetCall : Results.targetCallRes.values()) {
+			Log.msg(TAG, "Result: " + targetCall);
+			if (targetCall.getInfluAPIs().toString().contains("SmsManager/sendTextMessage")) {
+				containsSms = true;
+			}
+		}
+
+		assertEquals(false, Results.targetCallRes.isEmpty());
+		assertEquals(true, containsSms);
+	}
+	
+	@Test
 	public void test71d2f241f2cb8f4208dd3574df3c3ce0dacdd1c0() {
 		String[] args = new String[4];
 		Settings.logLevel = 0;

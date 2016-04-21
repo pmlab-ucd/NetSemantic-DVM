@@ -44,8 +44,8 @@ public class Test {
 		String[] args = new String[4];
 		Settings.logLevel = 0;
 
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/pjapps/71d2f241f2cb8f4208dd3574df3c3ce0dacdd1c0/71d2f241f2cb8f4208dd3574df3c3ce0dacdd1c0.apk";
-		args[1] = "com.android.MainService";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/pjapps/a7f33bd0441b5151f73fc7f1b30fbf35a9be76e0/a7f33bd0441b5151f73fc7f1b30fbf35a9be76e0.apk";
+		args[1] = "com.android.main.MainService";
 		args[2] = "execTask";
 		args[3] = "Full";
 
