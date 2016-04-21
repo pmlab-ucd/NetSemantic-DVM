@@ -17,7 +17,29 @@ import fu.hao.trust.utils.Settings;
 
 public class PjappsTest {
 	
-	static String TAG = "test"; 
+	static String TAG = "test";
+	
+	public void test91deec899c6df09ef68f802979c2697d8a8803be() {
+		String[] args = new String[4];
+		Settings.logLevel = 0;
+
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/pjapps/91deec899c6df09ef68f802979c2697d8a8803be/91deec899c6df09ef68f802979c2697d8a8803be.apk";
+		args[1] = "com.android.main.MainService";
+		args[2] = "a";
+		args[3] = "Full";
+
+		Main.main(args);
+		boolean containsSms = false;
+		for (TargetCall targetCall : Results.targetCallRes.values()) {
+			Log.msg(TAG, "Result: " + targetCall);
+			if (targetCall.getInfluAPIs().toString().contains("SmsManager/sendTextMessage")) {
+				containsSms = true;
+			}
+		}
+
+		assertEquals(false, Results.targetCallRes.isEmpty());
+		assertEquals(false, containsSms);
+	}
 	
 	@Test
 	public void testa7f33bd0441b5151f73fc7f1b30fbf35a9be76e0() {

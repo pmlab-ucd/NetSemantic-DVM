@@ -11,7 +11,7 @@ public class Test {
 
 	public static void main(String[] margs) {
 		Test t = new Test();
-		t.testMain();
+		t.test91deec899c6df09ef68f802979c2697d8a8803be();
 	}
 
 	public void testMain2() {
@@ -40,13 +40,13 @@ public class Test {
 								"SmsManager/sendTextMessage"));
 	}
 
-	public void testMain() {
+	public void test91deec899c6df09ef68f802979c2697d8a8803be() {
 		String[] args = new String[4];
 		Settings.logLevel = 0;
 
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/pjapps/a7f33bd0441b5151f73fc7f1b30fbf35a9be76e0/a7f33bd0441b5151f73fc7f1b30fbf35a9be76e0.apk";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/pjapps/91deec899c6df09ef68f802979c2697d8a8803be/91deec899c6df09ef68f802979c2697d8a8803be.apk";
 		args[1] = "com.android.main.MainService";
-		args[2] = "execTask";
+		args[2] = "a";
 		args[3] = "Full";
 
 		Main.main(args);
@@ -59,7 +59,7 @@ public class Test {
 		}
 
 		assertEquals(false, Results.targetCallRes.isEmpty());
-		assertEquals(true, containsSms);
+		assertEquals(false, containsSms);
 	}
 
 	class dd {
