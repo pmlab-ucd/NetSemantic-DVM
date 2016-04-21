@@ -941,7 +941,7 @@ public class Taint extends Plugin {
 							+ "as tainted due to r1 data "
 							+ vm.getReg(inst.r1).getData());
 				} else {
-					if (in.containsKey(obj.getFieldObj(fieldInfo))) {
+					if (obj != null && in.containsKey(obj.getFieldObj(fieldInfo))) {
 						out.remove(obj.getFieldObj(fieldInfo));
 					}
 				}

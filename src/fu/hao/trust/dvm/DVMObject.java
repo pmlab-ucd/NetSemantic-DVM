@@ -3,6 +3,7 @@ package fu.hao.trust.dvm;
 import java.util.HashMap;
 import java.util.Map;
 
+import fu.hao.trust.dvm.DalvikVM.StackFrame;
 import fu.hao.trust.utils.Log;
 import patdroid.core.ClassInfo;
 import patdroid.core.FieldInfo;
@@ -54,8 +55,9 @@ public class DVMObject {
 		
 		MethodInfo oinit = type.getDefaultConstructor();
 		if (oinit != null) {
-			Log.bb(TAG, "not empty constructor");
-			vm.newStackFrame(oinit);
+			Log.bb(TAG, "Not empty constructor");
+			StackFrame constructor = vm.newStackFrame(oinit);
+			constructor.setThisObj(this);
 			vm.setCallContext(null);
 			// vm.getCurrStackFrame().thisObj = null;
 			// To force run the constructor.

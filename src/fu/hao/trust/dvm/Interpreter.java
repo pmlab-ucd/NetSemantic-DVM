@@ -158,9 +158,10 @@ public class Interpreter {
 				int startParam = 0;
 				if (!currMethod.isStatic()) {
 					startParam = 1;
-					vm.getReg(params[0])
-							.setData(vm.getCurrStackFrame().thisObj);
+					vm.getReg(params[0]).setData(
+							vm.getCurrStackFrame().getThisObj());
 					vm.getReg(params[0]).type = currMethod.myClass;
+					vm.getCurrStackFrame().setThisReg(vm.getReg(params[0]));
 					Log.debug(TAG, "args: " + vm.getReg(params[0]).getData());
 				}
 
@@ -185,7 +186,12 @@ public class Interpreter {
 					Log.err(TAG, "invalid ctx for invocation!");
 					return;
 				}
-
+				MethodInfo currMethod = vm.getCurrStackFrame().method;
+				if (!currMethod.isStatic()) {
+					vm.getCurrStackFrame().setThisObj(
+							(DVMObject) vm.getReg(params[0]).getData());
+					vm.getCurrStackFrame().setThisReg(vm.getReg(params[0]));
+				}
 				int i = 0;
 				for (Register argReg : vm.getContext()) {
 					vm.getReg(params[i]).copy(argReg);
@@ -1599,7 +1605,7 @@ public class Interpreter {
 
 				Log.debug(TAG, "Get data: " + vm.getReg(inst.r1).getData());
 			} else {
-				// TODO reflection set field
+				Log.err(TAG, "obj is not a DVMObject!");
 			}
 
 			jump(vm, inst, true);
@@ -1623,6 +1629,7 @@ public class Interpreter {
 			FieldInfo fieldInfo = (FieldInfo) inst.extra;
 			Log.bb(TAG, "field " + fieldInfo);
 			Object obj = vm.getReg(inst.r0).getData();
+			Log.bb(TAG, "Target obj " + obj);
 			if (obj instanceof DVMObject) {
 				DVMObject dvmObj = (DVMObject) obj;
 				vm.setAssigned(new Object[3]);
@@ -1633,7 +1640,7 @@ public class Interpreter {
 				Log.msg(TAG, "Put field " + dvmObj.getFieldObj(fieldInfo)
 						+ " to the field of " + dvmObj);
 			} else {
-				// TODO reflection set field
+				Log.err(TAG, "obj is not a DVMObject!");
 			}
 			jump(vm, inst, true);
 		}
@@ -1765,12 +1772,14 @@ public class Interpreter {
 
 			if (r0.getData() instanceof SymbolicVar) {
 				u0 = (SymbolicVar) r0.getData();
-				u0.addConstriant(vm, inst);
+				// TODO
+				// u0.addConstriant(vm, inst);
 			}
 
 			if (inst.r1 != -1 && r1.getData() instanceof SymbolicVar) {
 				u1 = (SymbolicVar) r1.getData();
-				u1.addConstriant(vm, inst);
+				// TODO
+				// u1.addConstriant(vm, inst);
 			}
 
 			if (u0 == null && u1 == null) {
@@ -1789,7 +1798,7 @@ public class Interpreter {
 			// If operands contains instance of Unknown, directly set the res
 			// reg (r0) as unknowon
 			Unknown op = null;
-			
+
 			if (inst.r0 != -1
 					&& vm.getReg(inst.r0).getData() instanceof Unknown) {
 				op = (Unknown) vm.getReg(inst.r0).getData();
@@ -2160,19 +2169,14 @@ public class Interpreter {
 		// Create a new stack frame and push it to the stack.
 		StackFrame stackFrame = vm.newStackFrame(mi);
 		if (mi.isStatic()) {
-			stackFrame.thisObj = null;
+			stackFrame.setThisObj(null);
 		} else {
 			if (chainThisObj == null) {
 				Log.msg(TAG, "New chain obj");
-				stackFrame.thisObj = new DVMObject(vm, mi.myClass);
-				MethodInfo constructor = mi.myClass.getDefaultConstructor();
-				if (constructor != null) {
-					StackFrame construct = vm.newStackFrame(constructor);
-					construct.thisObj = stackFrame.thisObj;
-				}
-				chainThisObj = stackFrame.thisObj;
+				stackFrame.setThisObj(new DVMObject(vm, mi.myClass));
+				chainThisObj = stackFrame.getThisObj();
 			} else {
-				stackFrame.thisObj = chainThisObj;
+				stackFrame.setThisObj(chainThisObj);
 			}
 		}
 
@@ -2193,9 +2197,15 @@ public class Interpreter {
 		Log.msg(TAG, "RUN BEGIN");
 		running = true;
 		String mname = vm.getCurrStackFrame().method.name;
+		if (vm.getPC() < 0) {
+			vm.setPC(0);
+		}
 		while (vm.getCurrStackFrame() != null
 				&& vm.getCurrStackFrame().method != null
 				&& vm.getPC() < vm.getCurrStackFrame().method.insns.length) {
+			if (vm.getPC() < 0) {
+				vm.setPC(0);
+			}
 			Instruction insns = vm.getCurrStackFrame().method.insns[vm.getPC()];
 			insns.setLoc(vm.getCurrStackFrame().method);
 			exec(vm, insns);
@@ -2323,6 +2333,13 @@ public class Interpreter {
 			if (!vm.getPluginManager().isEmpty()
 					&& vm.getCurrStackFrame() != null) {
 				vm.getPluginManager().runAnalysis(vm, inst);
+
+				if (inst.opcode != Instruction.OP_SP_ARGUMENTS
+						&& vm.getCurrStackFrame().getThisObj() != null
+						&& !vm.getCurrStackFrame().method.isStatic()
+						&& vm.getCurrStackFrame().getThisReg().getData() != vm.getCurrStackFrame().getThisObj()) {
+					Log.err(TAG, "Empty this obj!");
+				}
 
 				if (inst.opcode == Instruction.OP_RETURN) {
 					if (vm.getCurrStackFrame() != null) {
