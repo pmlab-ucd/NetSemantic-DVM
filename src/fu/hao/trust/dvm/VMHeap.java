@@ -7,12 +7,13 @@ import java.util.Set;
 
 import patdroid.core.ClassInfo;
 import fu.hao.trust.utils.Log;
+import fu.hao.trust.utils.Settings;
 
 public class VMHeap {
 	Map<ClassInfo, DVMClass> dvmClasses = new HashMap<>();
 	Map<ClassInfo, Set<DVMObject>> dvmObjs = new HashMap<>();
 	
-	private final String TAG = getClass().getSimpleName();
+	//private final String TAG = getClass().getSimpleName();
 
 	public void setClass(ClassInfo type, DVMClass dvmClass) {
 		dvmClasses.put(type, dvmClass);
@@ -23,13 +24,13 @@ public class VMHeap {
 	}
 
 	public void setClass(DalvikVM vm, ClassInfo type) {
-		Log.bb(TAG, "new class representation for " + type + " at "
+		Log.bb(Settings.getRuntimeCaller(), "new class representation for " + type + " at "
 				+ vm.heap);
 		dvmClasses.put(type, new DVMClass(vm, type));
 	}
 
 	public DVMClass getClass(DalvikVM vm, ClassInfo type) {
-		Log.bb(TAG, "getClass " + type + " at " + vm.heap);
+		Log.bb(Settings.getRuntimeCaller(4), "getClass " + type + " at " + vm.heap);
 		if (!dvmClasses.containsKey(type)) {
 			setClass(vm, type);
 		}

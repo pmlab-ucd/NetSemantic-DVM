@@ -1,17 +1,19 @@
 package fu.hao.trust.analysis;
 
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Stack;
-
 import fu.hao.trust.data.Branch;
 import fu.hao.trust.data.MultiValueVar;
 import fu.hao.trust.dvm.DVMClass;
 import fu.hao.trust.dvm.DVMObject;
-import fu.hao.trust.dvm.DalvikVM;
 import fu.hao.trust.dvm.DalvikVM.Register;
+import fu.hao.trust.dvm.DalvikVM;
 import fu.hao.trust.solver.BiDirBranch;
 import fu.hao.trust.utils.Log;
+
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Stack;
+
+import patdroid.core.ClassInfo;
 import patdroid.core.FieldInfo;
 import patdroid.core.MethodInfo;
 import patdroid.dalvik.Instruction;
@@ -52,7 +54,7 @@ public class TaintSumBranch extends Taint {
 			// Scan to check whether the block contains "Return".
 			for (int i = vm.getPC(); i < (int) inst.extra; i++) {
 				if (insns[i].opcode == Instruction.OP_RETURN) {
-					// 遇到return后再往前走的第一个goto index即<rest>起始点
+					// The first <goto index> after meeting <return> is the start point of <rest>
 					for (int j = i; j < insns.length; j++) {
 						if (insns[j].opcode == Instruction.OP_GOTO
 								&& (int) insns[j].extra <= i) {
@@ -80,7 +82,7 @@ public class TaintSumBranch extends Taint {
 					branch.setSumPoint(insns[i]);
 					Log.bb(TAG, "BiDirSumpoint " + insns[i]);
 					bidirBranches.add(branch);
-					// 跳到另一个blk后再往前走的第一个goto index即<rest>起始点
+					// The fist <goto index> after jumping to another block is the start point of Mrest<
 					for (int j = (int) inst.extra; j < insns.length; j++) {
 						if (insns[j].opcode == Instruction.OP_GOTO
 								&& (int) insns[j].extra <= i) {
@@ -322,7 +324,7 @@ public class TaintSumBranch extends Taint {
 			Log.msg(TAG, "Arrive at sum point of bidirbranch " + branch);
 
 			if (inst.opcode_aux == Instruction.OP_RETURN_SOMETHING) {
-				branch.addValue(vm.getReg(inst.r0), vm.getReg(inst.r0)
+				branch.addValue(vm.getReg(inst.r0), vm.getReg(inst.r0).getType(), vm.getReg(inst.r0)
 						.getData());
 			}
 
@@ -370,13 +372,15 @@ public class TaintSumBranch extends Taint {
 				Object[] assigned = vm.getAssigned();
 				Branch branch = simpleBranches.peek();
 				if (assigned[0] instanceof Register) {
+					ClassInfo typeOld = (ClassInfo) assigned[3];
+					ClassInfo typeNew = (ClassInfo) assigned[4];
 					// Mismatch types mean the reg serves as a tmp, the original
 					// val has nothing to do with the new value.
-					if (Branch.checkType(assigned[1], assigned[2])) {
+					if (Branch.checkType(assigned[1], assigned[2], typeOld, typeNew)) {
 						Log.bb(TAG, "Assigned: " + assigned[1] + " "
 								+ assigned[2]);
-						branch.addValue((Register) assigned[0], assigned[1]);
-						branch.addValue((Register) assigned[0], assigned[2]);
+						branch.addValue((Register) assigned[0], typeOld, assigned[1]);
+						branch.addValue((Register) assigned[0], typeNew, assigned[2]);
 					} else {
 						branch.addIgnoreVar((Register) assigned[0]);
 					}

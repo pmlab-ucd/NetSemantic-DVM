@@ -76,10 +76,12 @@ public class DalvikVM {
 
 		public void setData(Object data) {
 			if (this.data != null || this.type != null) {
-				setAssigned(new Object[3]);
+				setAssigned(new Object[5]);
 				getAssigned()[0] = this;
 				getAssigned()[1] = this.data;
 				getAssigned()[2] = data;
+				getAssigned()[3] = this.type;
+				getAssigned()[4] = type;
 				Log.bb(TAG, "A" + this + " " + data);
 			}
 			this.data = data;
@@ -125,11 +127,11 @@ public class DalvikVM {
 		private Register[] regs = new Register[65536]; // locals
 		Register exceptReg; // Register to store exceptional obj.
 		private Register thisReg;
-		
+
 		public void setThisObj(DVMObject thisObj) {
 			this.thisObj = thisObj;
 		}
-		
+
 		public DVMObject getThisObj() {
 			return thisObj;
 		}
@@ -363,7 +365,7 @@ public class DalvikVM {
 		LinkedList<StackFrame> newStack = cloneStack(objMap, classMap);
 
 		// FIXME Backup plugin res
-		Method pluginMethod = getReflectMethod();//pluginManager.getMethod();
+		Method pluginMethod = getReflectMethod();// pluginManager.getMethod();
 
 		VMFullState state = new VMFullState(backHeap, newStack, getPC(),
 				pluginMethod);
@@ -419,7 +421,7 @@ public class DalvikVM {
 		heap = state.getHeap();
 		stack = state.getStack();
 		getPluginManager().setCurrRes(getCurrStackFrame().pluginRes);
-		//pluginManager.setMethod(state.getPluginMethod());
+		// pluginManager.setMethod(state.getPluginMethod());
 
 		interpreter.jump(this, focusBranch.getInstructions().iterator().next(),
 				false);
@@ -440,7 +442,7 @@ public class DalvikVM {
 	VMHeap heap;
 
 	private LinkedList<StackFrame> stack;
-	//private int[] pc; // Point to the position of next instruction
+	// private int[] pc; // Point to the position of next instruction
 	private int nowPC; // Point to the current instruction.
 
 	// Help to identify the loop.
@@ -460,7 +462,7 @@ public class DalvikVM {
 	private PluginManager pluginManager;
 
 	private Object[] assigned;
-	
+
 	private Method reflectMethod;
 
 	public Register getReg(int i) {
@@ -484,6 +486,7 @@ public class DalvikVM {
 		if (heap.getClass(this, type) == null) {
 			setClass(type, new DVMClass(this, type));
 		}
+		Log.bb(Settings.getRuntimeCaller(), "Get DVMClass for type " + type);
 		return heap.getClass(this, type);
 	}
 
@@ -519,16 +522,17 @@ public class DalvikVM {
 		interpreter = Interpreter.v();
 		retValReg = new Register(null, -1);
 		stack = new LinkedList<>();
+		callingCtx = null;
 	}
 
 	public void reset() {
 		heap = new VMHeap();
 		interpreter = Interpreter.v();
-		retValReg = new Register(null, -1);
 		stack = new LinkedList<>();
 		getPluginManager().reset();
 		retValReg.data = null;
 		retValReg.type = null;
+		callingCtx = null;
 	}
 
 	public Register getReturnReg() {
@@ -551,7 +555,8 @@ public class DalvikVM {
 			Log.bb(TAG, "New Stack Frame: " + newStackFrame);
 		}
 		if (pluginManager != null) {
-			pluginManager.setCurrRes(newStackFrame == null ? null :newStackFrame.pluginRes);
+			pluginManager.setCurrRes(newStackFrame == null ? null
+					: newStackFrame.pluginRes);
 		}
 		stack.add(newStackFrame);
 		Log.bb(TAG, "Stack: " + stack);
@@ -595,7 +600,7 @@ public class DalvikVM {
 		ZipFile apkFile;
 		File file = new File(apk);
 		Settings.apkName = file.getName() + "_" + className + "_" + main;
-		apkFile = new ZipFile(file);		
+		apkFile = new ZipFile(file);
 		Log.msg(TAG, "Begin run " + main + " at " + apk);
 		// load all classes, methods, fields and instructions from an apk
 		// we are using smali as the underlying engine
@@ -607,10 +612,14 @@ public class DalvikVM {
 		// only one
 		MethodInfo[] methods = c.findMethodsHere(main);
 		this.setPluginManager(pluginManager);
-		if (params == null) {
-			runMethod(methods[0]);
-		} else {
-			runMethod(methods[0], params);
+		for (int i = 0; i < methods.length; i++) {
+			if (params == null) {
+				runMethod(methods[i]);
+			} else {
+				runMethod(methods[i], params);
+			}
+			reset();
+			Log.msg(TAG, "FINISHED!");
 		}
 	}
 

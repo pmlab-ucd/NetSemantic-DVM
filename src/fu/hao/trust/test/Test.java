@@ -11,7 +11,7 @@ public class Test {
 
 	public static void main(String[] margs) {
 		Test t = new Test();
-		t.test91deec899c6df09ef68f802979c2697d8a8803be();
+		t.testMain2();
 	}
 
 	public void testMain2() {
@@ -20,7 +20,7 @@ public class Test {
 
 		args[0] = "C:/Users/hao/workspace/PJApps/app/app-release.apk";
 		args[1] = "fu.hao.pjapps.MainActivity";
-		args[2] = "execTask71d2f241f";
+		args[2] = "testCtx";
 		args[3] = "Full"; //"ATaint";*/
 
 		Main.main(args);
@@ -40,11 +40,11 @@ public class Test {
 								"SmsManager/sendTextMessage"));
 	}
 
-	public void test91deec899c6df09ef68f802979c2697d8a8803be() {
+	public void test764bdff985b515ca9207fe8f2fbcf41f7874b5d5() {
 		String[] args = new String[4];
 		Settings.logLevel = 0;
 
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/pjapps/91deec899c6df09ef68f802979c2697d8a8803be/91deec899c6df09ef68f802979c2697d8a8803be.apk";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/pjapps/764bdff985b515ca9207fe8f2fbcf41f7874b5d5/764bdff985b515ca9207fe8f2fbcf41f7874b5d5.apk";
 		args[1] = "com.android.main.MainService";
 		args[2] = "a";
 		args[3] = "Full";
@@ -83,6 +83,7 @@ public class Test {
 	}
 
 	public void test() {
+		// The test case get from.
 		StringBuilder sb = new StringBuilder("hah");
 		System.out.println(sb.toString());
 		int rand = 8;// (int) (Math.random());

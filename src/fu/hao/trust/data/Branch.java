@@ -1,16 +1,15 @@
 package fu.hao.trust.data;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Set;
-
 import fu.hao.trust.dvm.DVMObject;
 import fu.hao.trust.dvm.DalvikVM.Register;
 import fu.hao.trust.solver.Unknown;
 import fu.hao.trust.utils.Log;
 import fu.hao.trust.utils.Settings;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Set;
 import patdroid.core.ClassInfo;
 import patdroid.core.MethodInfo;
 import patdroid.core.PrimitiveInfo;
@@ -24,7 +23,7 @@ public class Branch {
 	// The src API call that generates the element of the branch.
 	protected LinkedList<Instruction> elemSrcs;
 	// The memory element who has conflict values <Memory obj: reg, MVV>
-	protected Map<Register, Object[]> conflicts;
+	protected Map<Register, ConcreteVal[]> conflicts;
 
 	// To avoid inf loop.
 	protected Set<Instruction> met;
@@ -33,6 +32,21 @@ public class Branch {
 	protected Set<Register> ignoreCombVars;
 
 	static final String TAG = Branch.class.getName();
+
+	class ConcreteVal {
+		ClassInfo type;
+		Object val;
+
+		ConcreteVal(ClassInfo type, Object val) {
+			this.type = type;
+			this.val = val;
+		}
+
+		@Override
+		public String toString() {
+			return "[" + val + ":" + val.getClass() + ":" + type + "]";
+		}
+	}
 
 	public Branch(Instruction inst, int index, MethodInfo method) {
 		insts = new LinkedList<>();
@@ -49,6 +63,10 @@ public class Branch {
 			ignoreCombVars = new HashSet<>();
 		}
 		ignoreCombVars.add(reg);
+		
+		if (conflicts.containsKey(reg)) {
+			conflicts.remove(reg);
+		}
 	}
 
 	public Instruction getSumPoint() {
@@ -82,10 +100,10 @@ public class Branch {
 
 	public void addVar(Register var) {
 		// Object[0]: original val, Object[1]: new value
-		conflicts.put(var, new Object[2]);
+		conflicts.put(var, new ConcreteVal[2]);
 	}
 
-	public void addValue(Register var, Object val) {
+	public void addValue(Register var, ClassInfo type, Object val) {
 		if (ignoreCombVars != null && ignoreCombVars.contains(var)) {
 			return;
 		}
@@ -94,12 +112,24 @@ public class Branch {
 		if (!conflicts.containsKey(var)) {
 			// The original value.
 			addVar(var);
-			conflicts.get(var)[0] = val;
-			Log.bb(Settings.getRuntimeCaller(), "Add conflict at var " + var + ", with value " + val);
+			conflicts.get(var)[0] = new ConcreteVal(type, val);
+			Log.bb(Settings.getRuntimeCaller(), "Add conflict at var " + var
+					+ ", with value " + val);
 		} else {
-			// Overwrite the current value in the block
-			conflicts.get(var)[1] = val;
-			Log.bb(Settings.getRuntimeCaller(), "Overwrite at var " + var + ", with value " + val);
+			Object oldVal = conflicts.get(var)[0].val;
+			ClassInfo oldType = conflicts.get(var)[0].type;
+			if (val != null && val.equals(oldVal)) {
+				return;
+			}
+
+			if (checkType(val, oldVal, type, oldType)) {
+				// Overwrite the current value in the block
+				conflicts.get(var)[1] = new ConcreteVal(type, val);
+				Log.bb(Settings.getRuntimeCaller(), "Overwrite at var " + var
+						+ ", with value " + val);
+			} else {
+				addIgnoreVar(var);
+			}
 		}
 
 	}
@@ -110,9 +140,10 @@ public class Branch {
 		for (Register var : conflicts.keySet()) {
 			Log.bb(TAG, "Value combination for var " + var);
 			Object currtVal = null;
-			for (Object val : conflicts.get(var)) {
-				currtVal = valCombination(currtVal, val);
-				Log.bb(TAG, "Currt val " + currtVal + ", with original value " + val);
+			for (ConcreteVal cVal : conflicts.get(var)) {
+				currtVal = valCombination(currtVal, cVal.val);
+				Log.bb(TAG, "Currt val " + currtVal + ", with original value "
+						+ cVal.val);
 			}
 
 			var.setData(currtVal);
@@ -128,8 +159,11 @@ public class Branch {
 			return val1;
 		}
 
-		if (!checkType(val1, val2)) {
-			Log.err(TAG, "Inconsistent type: " + val1 + ", " + val2);
+		if (!checkRuntimeType(val1, val2)) {
+			Log.err(TAG,
+					"Inconsistent type: " + val1 +
+							 ", " + val2);
+
 		}
 
 		if (val1 instanceof PrimitiveInfo || val1 instanceof Unknown) {
@@ -143,7 +177,7 @@ public class Branch {
 				msv.addValue(val2);
 			}
 			return msv;
-		} else if (val1 instanceof DVMObject){
+		} else if (val1 instanceof DVMObject) {
 			MNVar mnv = MNVar.createInstance(val1);
 			mnv.combineValue(val2);
 			return mnv;
@@ -153,9 +187,32 @@ public class Branch {
 		}
 	}
 
-	public static boolean checkType(Object val1, Object val2) {
-		if (val1 == null || val2 == null || val1 instanceof Integer && (int)val1 == 0
-				|| val1 instanceof PrimitiveInfo && ((PrimitiveInfo) val1).isZero()) {
+
+	public static boolean checkClassInfo(ClassInfo type1, ClassInfo type2) {
+		if (type1 == null || type2 == null) {
+			Log.warn(TAG, "Null type");
+		}
+		if (type1 == null || type1.isConvertibleTo(type2) || type2 == null || type2.isConvertibleTo(type1)) {
+			return true;
+		} else {
+			Log.bb(TAG, "Inconsistent ClassInfo: " + type1 + ", " + type2);
+			return false;
+		}
+	}
+
+	public static boolean checkType(Object val1, Object val2, ClassInfo type1,
+			ClassInfo type2) {
+		if (checkClassInfo(type1, type2)) {
+			return checkRuntimeType(val1, val2);
+		} else {
+			return false;
+		}
+	}
+
+	public static boolean checkRuntimeType(Object val1, Object val2) {
+		if (val1 == null || val2 == null || val1 instanceof Integer
+				&& (int) val1 == 0 || val1 instanceof PrimitiveInfo
+				&& ((PrimitiveInfo) val1).isZero()) {
 			return true;
 		}
 
@@ -166,7 +223,10 @@ public class Branch {
 				return false;
 			}
 		} else if (val1 instanceof String || val1 instanceof MSVar) {
-			if (val2 instanceof SymbolicVar || val2 instanceof String || val2 instanceof MSVar || val2 instanceof PrimitiveInfo && ((PrimitiveInfo) val2).intValue() == 0) {
+			if (val2 instanceof Integer || val2 instanceof SymbolicVar
+					|| val2 instanceof String || val2 instanceof MSVar
+					|| val2 instanceof PrimitiveInfo
+					&& ((PrimitiveInfo) val2).intValue() == 0) {
 				return true;
 			} else {
 				return false;

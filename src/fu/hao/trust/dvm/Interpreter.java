@@ -166,6 +166,7 @@ public class Interpreter {
 				}
 
 				int i = startParam;
+				Log.bb(TAG, "Start param from " + i);
 				for (ClassInfo paramClass : currMethod.paramTypes) {
 					if (paramClass.isPrimitive()) {
 						// FIXME
@@ -174,9 +175,11 @@ public class Interpreter {
 					} else if (paramClass.isArray()) {
 						// FIXME
 					} else {
+						/*
 						vm.getReg(params[i]).setData(
-								new DVMObject(vm, paramClass));
+								new DVMObject(vm, paramClass));*/
 						vm.getReg(params[i]).type = paramClass;
+						vm.getReg(params[i]).setData(null);
 					}
 					Log.debug(TAG, "args: " + vm.getReg(params[i]).getData());
 					i++;

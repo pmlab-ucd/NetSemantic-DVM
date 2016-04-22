@@ -51,8 +51,30 @@ public class Settings {
 	
 	public static String getRuntimeCaller() {
 		StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
-		StackTraceElement caller = stackTraceElements[3];
-		return caller.getClassName();
+		StackTraceElement caller;
+		
+		caller = stackTraceElements[3];
+		
+		// 0 is toString()
+		// 1 is this method
+		// 2 is the target
+		// 3 is the caller of the target
+		return "Caller: " + caller.getMethodName() + "@" + caller.getClassName();
 	}
+	
+	public static String getRuntimeCaller(int layer) {
+		StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
+		StackTraceElement caller;
+		if (stackTraceElements.length >= layer) { 
+			caller = stackTraceElements[layer];
+			return "Caller@" + layer + ": " + caller.getMethodName() + "@" + caller.getClassName();
+		} else {
+			caller = stackTraceElements[3];
+			return "Caller: " + caller.getMethodName() + "@" + caller.getClassName(); 
+		}
+		
+		
+	}
+
 
 }

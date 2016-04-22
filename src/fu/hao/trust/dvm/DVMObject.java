@@ -20,7 +20,7 @@ public class DVMObject {
 	private ClassInfo type = null;
 	private Map<FieldInfo, Object> fields = new HashMap<FieldInfo, Object>();
 	private DVMClass dvmClass = null;
-	private final String TAG = getClass().toString();
+	private final String TAG = getClass().getSimpleName();
 	private Object superObj = null;
 	private DalvikVM vm;
 	private int index;
