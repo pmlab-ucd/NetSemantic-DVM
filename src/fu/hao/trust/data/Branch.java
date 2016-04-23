@@ -192,7 +192,7 @@ public class Branch {
 		if (type1 == null || type2 == null) {
 			Log.warn(TAG, "Null type");
 		}
-		if (type1 == null || type1.isConvertibleTo(type2) || type2 == null || type2.isConvertibleTo(type1)) {
+		if (type1 == null || type2 == null || type1.isConvertibleTo(type2) || type2.isConvertibleTo(type1)) {
 			return true;
 		} else {
 			Log.bb(TAG, "Inconsistent ClassInfo: " + type1 + ", " + type2);

@@ -153,7 +153,7 @@ public class Interpreter {
 			int[] params = (int[]) inst.extra;
 
 			if (vm.getContext() == null) {
-				Log.warn(TAG, "null ctx!");
+				Log.warn(TAG, "NULL CallingCtx!");
 				MethodInfo currMethod = vm.getCurrStackFrame().method;
 				int startParam = 0;
 				if (!currMethod.isStatic()) {
@@ -1637,7 +1637,7 @@ public class Interpreter {
 				DVMObject dvmObj = (DVMObject) obj;
 				vm.setAssigned(new Object[3]);
 				vm.getAssigned()[0] = dvmObj;
-				vm.getAssigned()[1] = dvmObj.getFieldObj(fieldInfo);
+				vm.getAssigned()[1] = fieldInfo;
 				vm.getAssigned()[2] = vm.getReg(inst.r1).getData();
 				dvmObj.setField(fieldInfo, vm.getReg(inst.r1).getData());
 				Log.msg(TAG, "Put field " + dvmObj.getFieldObj(fieldInfo)
@@ -2172,14 +2172,15 @@ public class Interpreter {
 		// Create a new stack frame and push it to the stack.
 		StackFrame stackFrame = vm.newStackFrame(mi);
 		if (mi.isStatic()) {
+			Log.bb(TAG, "Entry method is static!");
 			stackFrame.setThisObj(null);
 		} else {
-			if (chainThisObj == null) {
+			if (vm.chainThisObj == null) {
 				Log.msg(TAG, "New chain obj");
 				stackFrame.setThisObj(new DVMObject(vm, mi.myClass));
-				chainThisObj = stackFrame.getThisObj();
+				vm.chainThisObj = stackFrame.getThisObj();
 			} else {
-				stackFrame.setThisObj(chainThisObj);
+				stackFrame.setThisObj(vm.chainThisObj);
 			}
 		}
 
@@ -2188,13 +2189,6 @@ public class Interpreter {
 			run(vm);
 		}
 	}
-
-	/**
-	 * @fieldName: chainThisObj
-	 * @fieldType: DVMObject
-	 * @Description: To help run chain methods.
-	 */
-	DVMObject chainThisObj = null;
 
 	public void run(DalvikVM vm) {
 		Log.msg(TAG, "RUN BEGIN");

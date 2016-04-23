@@ -464,6 +464,13 @@ public class DalvikVM {
 	private Object[] assigned;
 
 	private Method reflectMethod;
+	
+	/**
+	 * @fieldName: chainThisObj
+	 * @fieldType: DVMObject
+	 * @Description: To help run chain methods.
+	 */
+	DVMObject chainThisObj = null;
 
 	public Register getReg(int i) {
 		return stack.getLast().regs[i];
@@ -533,6 +540,7 @@ public class DalvikVM {
 		retValReg.data = null;
 		retValReg.type = null;
 		callingCtx = null;
+		chainThisObj = null;
 	}
 
 	public Register getReturnReg() {
@@ -619,7 +627,7 @@ public class DalvikVM {
 				runMethod(methods[i], params);
 			}
 			reset();
-			Log.msg(TAG, "FINISHED!");
+			Log.msg(TAG, "FINISHED!\n");
 		}
 	}
 
@@ -681,6 +689,7 @@ public class DalvikVM {
 		if (method == null) {
 			Log.err(TAG, "Null Method");
 		}
+		// Put an Null stack frame to simulate the calling ctx.
 		StackFrame stackFrame = newStackFrame(null);
 		for (int i = 0; i < params.length; i++) {
 			stackFrame.regs[i].data = params[i];

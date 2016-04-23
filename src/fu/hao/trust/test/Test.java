@@ -11,7 +11,7 @@ public class Test {
 
 	public static void main(String[] margs) {
 		Test t = new Test();
-		t.testMain2();
+		t.test764bdff985b515ca9207fe8f2fbcf41f7874b5d5();
 	}
 
 	public void testMain2() {
