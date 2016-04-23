@@ -169,8 +169,7 @@ public class Interpreter {
 				Log.bb(TAG, "Start param from " + i);
 				for (ClassInfo paramClass : currMethod.paramTypes) {
 					if (paramClass.isPrimitive()) {
-						// FIXME
-						vm.getReg(params[i]).setData(new PrimitiveInfo(42));
+						vm.getReg(params[i]).setData(new Unknown(paramClass));
 						vm.getReg(params[i]).type = paramClass;
 					} else if (paramClass.isArray()) {
 						// FIXME
