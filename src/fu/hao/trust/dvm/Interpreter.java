@@ -175,11 +175,15 @@ public class Interpreter {
 					} else if (paramClass.isArray()) {
 						// FIXME
 					} else {
-						/*
-						vm.getReg(params[i]).setData(
-								new DVMObject(vm, paramClass));*/
-						vm.getReg(params[i]).type = paramClass;
-						vm.getReg(params[i]).setData(null);
+						try {
+							Class.forName(paramClass.fullName);
+							vm.getReg(params[i]).setData(null);
+						} catch (ClassNotFoundException e) {
+							vm.getReg(params[i]).setData(
+									new DVMObject(vm, paramClass));
+						}
+						
+						vm.getReg(params[i]).type = paramClass;					
 					}
 					Log.debug(TAG, "args: " + vm.getReg(params[i]).getData());
 					i++;
