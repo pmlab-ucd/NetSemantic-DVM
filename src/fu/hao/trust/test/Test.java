@@ -2,6 +2,7 @@ package fu.hao.trust.test;
 
 import static org.junit.Assert.assertEquals;
 import fu.hao.trust.data.Results;
+import fu.hao.trust.data.TargetCall;
 import fu.hao.trust.dvm.Main;
 import fu.hao.trust.utils.Log;
 import fu.hao.trust.utils.Settings;
@@ -10,7 +11,7 @@ public class Test {
 
 	public static void main(String[] margs) {
 		Test t = new Test();
-		t.test0177c2775de43572eb37e5de2803ff57eb297a9f_defaultMark();
+		t.test5c52f10a83f344c1d68c3c79a4b306f667e62f0a_a();
 	}
 
 	public void testMain2() {
@@ -38,30 +39,27 @@ public class Test {
 						.contains(
 								"SmsManager/sendTextMessage"));
 	}
-
-	public void test0177c2775de43572eb37e5de2803ff57eb297a9f_defaultMark() {
+	
+	public void test5c52f10a83f344c1d68c3c79a4b306f667e62f0a_a() {
 		String[] args = new String[4];
 		Settings.logLevel = 0;
-		
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/pjapps/0177c2775de43572eb37e5de2803ff57eb297a9f/0177c2775de43572eb37e5de2803ff57eb297a9f.apk";
+
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/pjapps/5c52f10a83f344c1d68c3c79a4b306f667e62f0a/5c52f10a83f344c1d68c3c79a4b306f667e62f0a.apk";
 		args[1] = "com.android.main.MainService";
-		args[2] = "defaultMark";
+		args[2] = "a";
 		args[3] = "Full";
-		
+
 		Main.main(args);
-		Log.msg(TAG, "REs: " + Results.targetCallRes);
-		
+		boolean containsSms = false;
+		for (TargetCall targetCall : Results.targetCallRes.values()) {
+			Log.msg(TAG, "Result: " + targetCall);
+			if (targetCall.getInfluAPIs().toString().contains("SmsManager/sendTextMessage")) {
+				containsSms = true;
+			}
+		}
+
 		assertEquals(false, Results.targetCallRes.isEmpty());
-		assertEquals(
-				true,
-				Results.targetCallRes
-						.values()
-						.iterator()
-						.next()
-						.getInfluAPIs()
-						.toString()
-						.contains(
-								"android.telephony.gsm.SmsManager/sendTextMessage"));
+		assertEquals(false, containsSms);
 	}
 
 	class dd {

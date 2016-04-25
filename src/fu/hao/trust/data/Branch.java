@@ -141,9 +141,11 @@ public class Branch {
 			Log.bb(TAG, "Value combination for var " + var);
 			Object currtVal = null;
 			for (ConcreteVal cVal : conflicts.get(var)) {
-				currtVal = valCombination(currtVal, cVal.val);
+				if (cVal != null) {
+					currtVal = valCombination(currtVal, cVal.val);
 				Log.bb(TAG, "Currt val " + currtVal + ", with original value "
 						+ cVal.val);
+				}
 			}
 
 			var.setData(currtVal);
@@ -163,7 +165,6 @@ public class Branch {
 			Log.err(TAG,
 					"Inconsistent type: " + val1 +
 							 ", " + val2);
-
 		}
 
 		if (val1 instanceof PrimitiveInfo || val1 instanceof Unknown) {
