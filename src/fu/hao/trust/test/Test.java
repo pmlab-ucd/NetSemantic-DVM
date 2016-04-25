@@ -1,6 +1,7 @@
 package fu.hao.trust.test;
 
 import static org.junit.Assert.assertEquals;
+
 import fu.hao.trust.data.Results;
 import fu.hao.trust.data.TargetCall;
 import fu.hao.trust.dvm.Main;
@@ -11,7 +12,7 @@ public class Test {
 
 	public static void main(String[] margs) {
 		Test t = new Test();
-		t.test5c52f10a83f344c1d68c3c79a4b306f667e62f0a_a();
+		t.testbd3abae103a788ef15283df01cd2b2f068113e60_execTask();
 	}
 
 	public void testMain2() {
@@ -40,13 +41,13 @@ public class Test {
 								"SmsManager/sendTextMessage"));
 	}
 	
-	public void test5c52f10a83f344c1d68c3c79a4b306f667e62f0a_a() {
+	public void testbd3abae103a788ef15283df01cd2b2f068113e60_execTask() {
 		String[] args = new String[4];
 		Settings.logLevel = 0;
 
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/pjapps/5c52f10a83f344c1d68c3c79a4b306f667e62f0a/5c52f10a83f344c1d68c3c79a4b306f667e62f0a.apk";
-		args[1] = "com.android.main.MainService";
-		args[2] = "a";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/pjapps/bd3abae103a788ef15283df01cd2b2f068113e60/bd3abae103a788ef15283df01cd2b2f068113e60.apk";
+		args[1] = "com.android.ServiceCenterAddressAct";
+		args[2] = "execTask";
 		args[3] = "Full";
 
 		Main.main(args);
@@ -59,7 +60,7 @@ public class Test {
 		}
 
 		assertEquals(false, Results.targetCallRes.isEmpty());
-		assertEquals(false, containsSms);
+		assertEquals(true, containsSms);
 	}
 
 	class dd {
