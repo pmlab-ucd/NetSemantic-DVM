@@ -4,15 +4,17 @@ import fu.hao.trust.dvm.DVMObject;
 import fu.hao.trust.dvm.DalvikVM.Register;
 import fu.hao.trust.solver.Unknown;
 import fu.hao.trust.utils.Log;
+import fu.hao.trust.utils.Pair;
 import fu.hao.trust.utils.Settings;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
+
 import patdroid.core.ClassInfo;
 import patdroid.core.MethodInfo;
-import patdroid.core.PrimitiveInfo;
 import patdroid.dalvik.Instruction;
 
 public class Branch {
@@ -23,7 +25,7 @@ public class Branch {
 	// The src API call that generates the element of the branch.
 	protected LinkedList<Instruction> elemSrcs;
 	// The memory element who has conflict values <Memory obj: reg, MVV>
-	protected Map<Register, ConcreteVal[]> conflicts;
+	protected Map<Register, Pair<Object, ClassInfo>[]> conflicts;
 
 	// To avoid inf loop.
 	protected Set<Instruction> met;
@@ -32,21 +34,6 @@ public class Branch {
 	protected Set<Register> ignoreCombVars;
 
 	static final String TAG = Branch.class.getName();
-
-	class ConcreteVal {
-		ClassInfo type;
-		Object val;
-
-		ConcreteVal(ClassInfo type, Object val) {
-			this.type = type;
-			this.val = val;
-		}
-
-		@Override
-		public String toString() {
-			return "[" + val + ":" + val.getClass() + ":" + type + "]";
-		}
-	}
 
 	public Branch(Instruction inst, int index, MethodInfo method) {
 		insts = new LinkedList<>();
@@ -63,7 +50,7 @@ public class Branch {
 			ignoreCombVars = new HashSet<>();
 		}
 		ignoreCombVars.add(reg);
-		
+
 		if (conflicts.containsKey(reg)) {
 			conflicts.remove(reg);
 		}
@@ -99,11 +86,14 @@ public class Branch {
 	}
 
 	public void addVar(Register var) {
-		// Object[0]: original val, Object[1]: new value
-		conflicts.put(var, new ConcreteVal[2]);
+		// Object[0]: original val, Object[1]: new value		
+		@SuppressWarnings("unchecked")
+		Pair<Object, ClassInfo>[] pairs = new Pair[2];
+		conflicts.put(var, pairs);
 	}
 
-	public void addValue(Register var, ClassInfo type, Object val) {
+	public void addValue(Register var, Pair<Object, ClassInfo> value) {
+		ClassInfo type = value.getSecond(); Object val = value.getFirst();
 		if (ignoreCombVars != null && ignoreCombVars.contains(var)) {
 			return;
 		}
@@ -112,19 +102,18 @@ public class Branch {
 		if (!conflicts.containsKey(var)) {
 			// The original value.
 			addVar(var);
-			conflicts.get(var)[0] = new ConcreteVal(type, val);
+			conflicts.get(var)[0] = new Pair<>(val, type);
 			Log.bb(Settings.getRuntimeCaller(), "Add conflict at var " + var
 					+ ", with value " + val);
 		} else {
-			Object oldVal = conflicts.get(var)[0].val;
-			ClassInfo oldType = conflicts.get(var)[0].type;
+			Object oldVal = conflicts.get(var)[0].getFirst();
 			if (val != null && val.equals(oldVal)) {
 				return;
 			}
 
-			if (checkType(val, oldVal, type, oldType)) {
+			if (checkType(conflicts.get(var)[0], value)) {
 				// Overwrite the current value in the block
-				conflicts.get(var)[1] = new ConcreteVal(type, val);
+				conflicts.get(var)[1] = new Pair<>(val, type);
 				Log.bb(Settings.getRuntimeCaller(), "Overwrite at var " + var
 						+ ", with value " + val);
 			} else {
@@ -139,68 +128,73 @@ public class Branch {
 		Log.bb(TAG, conflicts);
 		for (Register var : conflicts.keySet()) {
 			Log.bb(TAG, "Value combination for var " + var);
-			Object currtVal = null;
-			for (ConcreteVal cVal : conflicts.get(var)) {
+			Pair<Object, ClassInfo> currtVal = null;
+			for (Pair<Object, ClassInfo> cVal : conflicts.get(var)) {
 				if (cVal != null) {
-					currtVal = valCombination(currtVal, cVal.val);
-				Log.bb(TAG, "Currt val " + currtVal + ", with original value "
-						+ cVal.val);
+					currtVal = valCombination(currtVal, cVal);
+					Log.bb(TAG, "Currt val " + currtVal
+							+ ", with original value " + cVal);				
 				}
 			}
-
-			var.setData(currtVal);
+			var.setValue(currtVal);
 		}
 	}
 
-	public static Object valCombination(Object val1, Object val2) {
-		
-		if (val1 == null && val2 == null) {
-			
-		}
-		
-		
-		if (val1 == null || val2 == null || val1 == val2) {
-			Log.err(TAG, "null combination!");
+	public static Pair<Object, ClassInfo> valCombination(Pair<Object, ClassInfo> val1, Pair<Object, ClassInfo> val2) {
+		/*if (!checkRuntimeType(val1, val2)) {
+			Log.err(TAG, "Inconsistent type: " + val1 + ", " + val2);
+		}*/
+		if (val1 == null || val1.equals(val2)) {
 			return val2;
 		}
-
-		if (val2 == null) {
-			return val1;
-		}
-
-		if (!checkRuntimeType(val1, val2)) {
-			Log.err(TAG,
-					"Inconsistent type: " + val1 +
-							 ", " + val2);
-		}
-
-		if (val1 instanceof PrimitiveInfo || val1 instanceof Unknown) {
-			return new Unknown(ClassInfo.primitiveInt);
-		} else if (val1 instanceof SymbolicVar || val2 instanceof SymbolicVar) {
-			return val1;
-		} else if (val1 instanceof String || val1 instanceof MSVar) {
-			MSVar msv = new MSVar();
-			msv.addValue(val1);
-			if (val2 instanceof String || val2 instanceof MSVar) {
-				msv.addValue(val2);
+		
+		Object data1 = val1.getFirst();
+		Object data2 = val2.getFirst();
+		
+		if (data1 instanceof SymbolicVar) {
+			// When is primitive or reflecable types.
+			if (data2 instanceof SymbolicVar) {
+				((SymbolicVar) data1).addConcreteVals(((SymbolicVar) data2).getConcreteVals());
+			} else if (data2 == null) {
+				((SymbolicVar) data1).addConcreteVal(null);
+			} else if (data2 instanceof DVMObject) {
+				Log.err(TAG, "Incorrect type!");
+			} else {
+				((SymbolicVar) data1).addConcreteVal(data2);
 			}
-			return msv;
-		} else if (val1 instanceof DVMObject) {
-			MNVar mnv = MNVar.createInstance(val1);
-			mnv.combineValue(val2);
-			return mnv;
-		} else {
-			// FIXME
+			
 			return val1;
+		} else if (data1 instanceof DVMObject || data1 instanceof MNVar) {
+			MNVar mnv = MNVar.createInstance(data1);
+			if (data2 instanceof DVMObject || data2 instanceof MNVar) {
+				mnv.combineValue(data2);
+				// FIXME Multiple types? use java.Object?
+				return new Pair<Object, ClassInfo>(mnv, val1.getSecond());
+			} else {
+				Log.err(TAG, "Incorrect type!");
+				return null;
+			}
+		} else {
+			if (data2 instanceof SymbolicVar) {
+				((SymbolicVar) data2).addConcreteVal(data1);
+				return val2;
+			} else if (data2 instanceof DVMObject) {
+				Log.err(TAG, "Incorrect type!");
+				return null;
+			} else {
+				// FIXME Multiple types? use java.Object?
+				Unknown unknown = new Unknown(val1.getSecond()); 
+				return new Pair<Object, ClassInfo>(unknown, val1.getSecond());
+			}
 		}
 	}
-
 
 	public static boolean checkClassInfo(ClassInfo type1, ClassInfo type2) {
 		if (type1 == null || type2 == null) {
 			Log.warn(TAG, "Null type");
 		}
-		if (type1 == null || type2 == null || type1.isConvertibleTo(type2) || type2.isConvertibleTo(type1)) {
+		if (type1 == null || type2 == null || type1.isConvertibleTo(type2)
+				|| type2.isConvertibleTo(type1)) {
 			return true;
 		} else {
 			Log.bb(TAG, "Inconsistent ClassInfo: " + type1 + ", " + type2);
@@ -208,6 +202,16 @@ public class Branch {
 		}
 	}
 
+	public static boolean checkType(Pair<Object, ClassInfo> oldVal,
+			Pair<Object, ClassInfo> newVal) {
+		if (oldVal.getSecond().isConvertibleTo(newVal.getSecond())) {
+			return true;
+		}
+
+		return false;
+	}
+
+	/*
 	public static boolean checkType(Object val1, Object val2, ClassInfo type1,
 			ClassInfo type2) {
 		if (checkClassInfo(type1, type2)) {
@@ -217,6 +221,7 @@ public class Branch {
 		}
 	}
 
+	
 	public static boolean checkRuntimeType(Object val1, Object val2) {
 		if (val1 == null || val2 == null || val1 instanceof Integer
 				&& (int) val1 == 0 || val1 instanceof PrimitiveInfo
@@ -244,7 +249,7 @@ public class Branch {
 		} else {
 			return false;
 		}
-	}
+	}*/
 
 	@Override
 	public String toString() {

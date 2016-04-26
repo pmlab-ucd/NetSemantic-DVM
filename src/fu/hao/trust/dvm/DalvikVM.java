@@ -88,7 +88,9 @@ public class DalvikVM {
 				getAssigned()[1] = oldVal;
 				value.setFirst(data);
 				value.setSecond(type);
-				getAssigned()[2] = new Pair<>(value.getFirst(), value.getSecond());
+				Pair<Object, ClassInfo> newVal = new Pair<>(value.getFirst(), value.getSecond());
+				getAssigned()[2] = newVal;
+				Log.bb(TAG, "ar" + count + " " + oldVal + ", " + newVal);
 			}
 			
 		}

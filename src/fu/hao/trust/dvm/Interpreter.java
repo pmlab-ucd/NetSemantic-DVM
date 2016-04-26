@@ -224,7 +224,8 @@ public class Interpreter {
 
 			try {
 				Class.forName(inst.type.toString());
-				vm.getReg(inst.rdst).setValue(null, inst.type);
+				vm.getReg(inst.rdst).setValue("Well, I will be born soon..", inst.type);
+				Log.bb(TAG, "Reflecable instance.");
 			} catch (ClassNotFoundException e) {
 				// Do not need to handle reflection type,
 				// since <init> invocation will replace the newObj
@@ -1930,7 +1931,7 @@ public class Interpreter {
 					if (args.length == 1) {
 						vm.getReg(args[0]).setValue(clazz.newInstance(), mi.returnType);
 						Log.debug(TAG, "Init instance: "
-								+ vm.getReg(args[0]).getData());
+								+ vm.getReg(args[0]).getData() + ", " + vm.getReg(args[0]).getData().getClass());
 					} else {
 						boolean narg = getParams(vm, mi, args, argsClass,
 								params);

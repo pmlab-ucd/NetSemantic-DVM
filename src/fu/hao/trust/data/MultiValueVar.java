@@ -16,6 +16,12 @@ public class MultiValueVar {
 		concreteVals.add(value);
 	}
 	
+	public void addConcreteVals(LinkedList<Object> values) {
+		for (Object cval : values) {
+			concreteVals.add(cval);
+		}
+	}
+	
 	public Object getLastVal() {
 		if (concreteVals.isEmpty()) {
 			return null;

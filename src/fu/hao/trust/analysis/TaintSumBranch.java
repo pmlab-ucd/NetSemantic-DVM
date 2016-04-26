@@ -8,6 +8,7 @@ import fu.hao.trust.dvm.DalvikVM.Register;
 import fu.hao.trust.dvm.DalvikVM;
 import fu.hao.trust.solver.BiDirBranch;
 import fu.hao.trust.utils.Log;
+import fu.hao.trust.utils.Pair;
 
 import java.util.LinkedList;
 import java.util.Map;
@@ -324,8 +325,8 @@ public class TaintSumBranch extends Taint {
 			Log.msg(TAG, "Arrive at sum point of bidirbranch " + branch);
 
 			if (inst.opcode_aux == Instruction.OP_RETURN_SOMETHING) {
-				branch.addValue(vm.getReg(inst.r0), vm.getReg(inst.r0).getType(), vm.getReg(inst.r0)
-						.getData());
+				branch.addValue(vm.getReg(inst.r0), new Pair<Object, ClassInfo>(vm.getReg(inst.r0)
+						.getData(), vm.getReg(inst.r0).getType()));
 			}
 
 			if (branch.getRmFlag()) {
@@ -372,15 +373,20 @@ public class TaintSumBranch extends Taint {
 				Object[] assigned = vm.getAssigned();
 				Branch branch = simpleBranches.peek();
 				if (assigned[0] instanceof Register) {
-					ClassInfo typeOld = (ClassInfo) assigned[3];
-					ClassInfo typeNew = (ClassInfo) assigned[4];
+					@SuppressWarnings("unchecked")
+					Pair<Object, ClassInfo> oldVal = (Pair<Object, ClassInfo>) assigned[1];
+					@SuppressWarnings("unchecked")
+					Pair<Object, ClassInfo> newVal = (Pair<Object, ClassInfo>) assigned[2];
 					// Mismatch types mean the reg serves as a tmp, the original
 					// val has nothing to do with the new value.
-					if (Branch.checkType(assigned[1], assigned[2], typeOld, typeNew)) {
-						Log.bb(TAG, "Assigned: " + assigned[1] + " "
-								+ assigned[2]);
-						branch.addValue((Register) assigned[0], typeOld, assigned[1]);
-						branch.addValue((Register) assigned[0], typeNew, assigned[2]);
+					if (Branch.checkType(oldVal, newVal)) {
+						Log.bb(TAG, "Assigned@" + assigned[0] + ": " + oldVal.getFirst() + ", "
+								+ newVal.getFirst());
+						if (oldVal.getFirst() == null) {
+							Log.err(TAG, "NULL Found!");
+						}
+						branch.addValue((Register) assigned[0], oldVal);
+						branch.addValue((Register) assigned[0], newVal);
 					} else {
 						branch.addIgnoreVar((Register) assigned[0]);
 					}

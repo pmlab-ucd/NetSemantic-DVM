@@ -64,7 +64,8 @@ public class ContextAnalysis {
 				Log.bb(TAG, "Set SensCtxVar at RetReg.");
 			}
 
-			Log.bb(TAG, "Ret value " + vm.getReturnReg().getData());
+			if (vm.getReturnReg().isUsed())  
+				Log.bb(TAG, "Ret value " + vm.getReturnReg().getData()) ;
 	}
 
 	private boolean isTarget(String target) {

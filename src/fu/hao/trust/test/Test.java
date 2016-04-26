@@ -2,9 +2,6 @@ package fu.hao.trust.test;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import fu.hao.trust.data.Results;
 import fu.hao.trust.data.TargetCall;
 import fu.hao.trust.dvm.Main;
@@ -16,7 +13,7 @@ public class Test {
 	public static void main(String[] margs) {
 		Test t = new Test();
 		//t.testbd3abae103a788ef15283df01cd2b2f068113e60_execTask();
-		t.testMain();
+		t.testMain2();
 	}
 	
 	public void testbd3abae103a788ef15283df01cd2b2f068113e60_execTask() {
@@ -59,7 +56,7 @@ public class Test {
 
 		args[0] = "C:/Users/hao/workspace/PJApps/app/app-release.apk";
 		args[1] = "fu.hao.pjapps.MainActivity";
-		args[2] = "testCtx";
+		args[2] = "testCtx2";
 		args[3] = "Full"; //"ATaint";*/
 
 		Main.main(args);

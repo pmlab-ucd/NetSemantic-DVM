@@ -25,7 +25,7 @@ public final class Pair<T1, T2> {
 	
 	@Override
 	final public String toString() {
-		return ("(" + first.toString() + ", " + second.toString() + ")");
+		return ("<" + first + ", " + second + ">");
 	}
 	
 	public void setFirst(T1 first) {

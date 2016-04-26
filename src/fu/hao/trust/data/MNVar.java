@@ -6,6 +6,8 @@ import java.util.Map;
 import patdroid.core.ClassInfo;
 import patdroid.core.FieldInfo;
 import fu.hao.trust.dvm.DVMObject;
+import fu.hao.trust.utils.Log;
+import fu.hao.trust.utils.Pair;
 
 /**
  * @ClassName: ConcreteVar
@@ -16,6 +18,7 @@ import fu.hao.trust.dvm.DVMObject;
  */
 public class MNVar extends MultiValueVar {
 	Map<ClassInfo, DVMObject> values;
+	String TAG = getClass().getSimpleName();
 
 	public MNVar(DVMObject value) {
 		values = new HashMap<>();
@@ -37,6 +40,8 @@ public class MNVar extends MultiValueVar {
 					combineValue(mnValue.values.get(classInfo));
 				}
 			}
+		} else {
+			Log.err(TAG, "Incorrect value:" + value);
 		}
 	}
 	
@@ -44,8 +49,9 @@ public class MNVar extends MultiValueVar {
 		if (values.containsKey(dvmObjVal.getType())) {
 			for (FieldInfo fieldInfo : dvmObjVal.getFields().keySet()) {
 				Object field = values.get(dvmObjVal.getType()).getFieldObj(fieldInfo);
-				values.get(dvmObjVal.getType()).setField(fieldInfo, Branch.valCombination(field,
-						dvmObjVal.getFieldObj(fieldInfo)));
+				Pair<Object, ClassInfo> val1 = new Pair<>(field, fieldInfo.getFieldType());
+				Pair<Object, ClassInfo> val2 = new Pair<>(dvmObjVal.getFieldObj(fieldInfo), fieldInfo.getFieldType());	
+				values.get(dvmObjVal.getType()).setField(fieldInfo, Branch.valCombination(val1, val2));
 			}
 		} else {
 			values.put(dvmObjVal.getType(), dvmObjVal);
