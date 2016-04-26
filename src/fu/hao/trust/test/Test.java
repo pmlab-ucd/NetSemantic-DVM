@@ -2,6 +2,9 @@ package fu.hao.trust.test;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import fu.hao.trust.data.Results;
 import fu.hao.trust.data.TargetCall;
 import fu.hao.trust.dvm.Main;
@@ -12,7 +15,42 @@ public class Test {
 
 	public static void main(String[] margs) {
 		Test t = new Test();
-		t.testbd3abae103a788ef15283df01cd2b2f068113e60_execTask();
+		//t.testbd3abae103a788ef15283df01cd2b2f068113e60_execTask();
+		t.testMain();
+	}
+	
+	public void testbd3abae103a788ef15283df01cd2b2f068113e60_execTask() {
+		String[] args = new String[4];
+		Settings.logLevel = 0;
+
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/pjapps/bd3abae103a788ef15283df01cd2b2f068113e60/bd3abae103a788ef15283df01cd2b2f068113e60.apk";
+		args[1] = "com.android.ServiceCenterAddressAct";
+		args[2] = "execTask";
+		args[3] = "Full";
+		
+		Main.main(args);
+		boolean containsSms = false;
+		for (TargetCall targetCall : Results.targetCallRes.values()) {
+			Log.msg(TAG, "Result: " + targetCall);
+			if (targetCall.getInfluAPIs().toString().contains("SmsManager/sendTextMessage")) {
+				containsSms = true;
+			}
+		}
+
+		assertEquals(false, Results.targetCallRes.isEmpty());
+		assertEquals(true, containsSms);
+	}
+	
+	public void testMain() {
+		String[] args = new String[4];
+		args[3] = "Taint";
+		Settings.logLevel = 0;
+		
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FieldAndObjectSensitivity_FieldSensitivity4/app/app-release.apk";
+		args[1] = "de.ecspride.FieldSensitivity4";
+		args[2] = "onCreate";
+		Main.main(args);
+		assertEquals(true, Results.results.isEmpty());
 	}
 
 	public void testMain2() {
@@ -41,27 +79,7 @@ public class Test {
 								"SmsManager/sendTextMessage"));
 	}
 	
-	public void testbd3abae103a788ef15283df01cd2b2f068113e60_execTask() {
-		String[] args = new String[4];
-		Settings.logLevel = 0;
 
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/pjapps/bd3abae103a788ef15283df01cd2b2f068113e60/bd3abae103a788ef15283df01cd2b2f068113e60.apk";
-		args[1] = "com.android.ServiceCenterAddressAct";
-		args[2] = "execTask";
-		args[3] = "Full";
-
-		Main.main(args);
-		boolean containsSms = false;
-		for (TargetCall targetCall : Results.targetCallRes.values()) {
-			Log.msg(TAG, "Result: " + targetCall);
-			if (targetCall.getInfluAPIs().toString().contains("SmsManager/sendTextMessage")) {
-				containsSms = true;
-			}
-		}
-
-		assertEquals(false, Results.targetCallRes.isEmpty());
-		assertEquals(true, containsSms);
-	}
 
 	class dd {
 		int a;

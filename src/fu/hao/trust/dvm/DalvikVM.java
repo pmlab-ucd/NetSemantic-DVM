@@ -15,6 +15,7 @@ import fu.hao.trust.analysis.PluginManager;
 import fu.hao.trust.data.VMFullState;
 import fu.hao.trust.solver.BiDirBranch;
 import fu.hao.trust.utils.Log;
+import fu.hao.trust.utils.Pair;
 import fu.hao.trust.utils.Settings;
 import patdroid.core.ClassInfo;
 import patdroid.core.FieldInfo;
@@ -38,10 +39,10 @@ public class DalvikVM {
 
 	// Dalvik VM Register Bank
 	public class Register {
-		ClassInfo type = null;
 		// data can be instance of: PrimitiveInfo, DVMObject and any class
 		// reflection supports
-		private Object data = null;
+		private Pair<Object, ClassInfo> value;
+
 		private int count = -1;
 		private StackFrame stackFrame;
 
@@ -51,44 +52,49 @@ public class DalvikVM {
 		}
 
 		public void copy(Register y) {
-			this.setType(y.type);
-			this.setData(y.getData());
+			setValue(y.getData(), y.getType());
 		}
 
 		public void copy(Register y, Map<DVMObject, DVMObject> objMap,
 				Map<DVMClass, DVMClass> classMap) {
-			this.type = y.type;
-			this.data = y.data;
+			value.setFirst(y.getData());
+			value.setSecond(y.getType());
 
-			if (this.data instanceof DVMObject) {
+			if (value.getFirst() instanceof DVMObject) {
 				Log.bb(TAG,
-						"backobj for reg " + y.data + " as "
-								+ objMap.get(y.data));
-				this.data = objMap.get(y.data);
-			} else if (this.data instanceof DVMClass) {
-				this.data = classMap.get(y.data);
+						"backobj for reg " + y.getData() + " as "
+								+ objMap.get(y.getData()));
+				value.setFirst(objMap.get(y.getData()));
+			} else if (value.getFirst() instanceof DVMClass) {
+				value.setFirst(classMap.get(y.getData()));
 			}
 		}
 
 		public Object getData() {
-			return data;
+			return value.getFirst();
 		}
 
-		public void setData(Object data) {
-			if (this.data != null || this.type != null) {
-				setAssigned(new Object[5]);
-				getAssigned()[0] = this;
-				getAssigned()[1] = this.data;
-				getAssigned()[2] = data;
-				getAssigned()[3] = this.type;
-				getAssigned()[4] = type;
-				Log.bb(TAG, "A" + this + " " + data);
+		public void setValue(Pair<Object, ClassInfo> value) {
+			setValue(value.getFirst(), value.getSecond());
+		}
+		
+		public void setValue(Object data, ClassInfo type) {
+			if (value == null) {
+				assigned[0] = -1;
+				this.value = new Pair<>(data, type);
+			} else {
+				assigned[0] = this;
+				Pair<Object, ClassInfo> oldVal = new Pair<>(value.getFirst(), value.getSecond());
+				getAssigned()[1] = oldVal;
+				value.setFirst(data);
+				value.setSecond(type);
+				getAssigned()[2] = new Pair<>(value.getFirst(), value.getSecond());
 			}
-			this.data = data;
+			
 		}
 
 		public ClassInfo getType() {
-			return type;
+			return value.getSecond();
 		}
 
 		public String toString() {
@@ -96,10 +102,6 @@ public class DalvikVM {
 				return "[Global RetReg]";
 			}
 			return "[reg " + count + "@" + stackFrame.method.name + "]";
-		}
-
-		public void setType(ClassInfo type) {
-			this.type = type;
 		}
 
 		public StackFrame getStackFrame() {
@@ -112,6 +114,14 @@ public class DalvikVM {
 
 		public int getIndex() {
 			return count;
+		}
+		
+		public void reset() {
+			value = null;
+		}
+		
+		public boolean isUsed() {
+			return value == null ? false : true;
 		}
 
 	}
@@ -207,7 +217,7 @@ public class DalvikVM {
 			// Backup register
 			for (int i = 0; i < regs.length; i++) {
 				frame.regs[i].copy(regs[i], objMap, classMap);
-				if (regs[i].data != null) {
+				if (regs[i].getData() != null) {
 					Log.bb(TAG,
 							"BackupReg " + i + " " + frame.regs[i].getData());
 				}
@@ -275,9 +285,9 @@ public class DalvikVM {
 
 		public void printLocals() {
 			for (int i = 0; i < 65536; i++) {
-				if (regs[i].data != null) {
+				if (regs[i].getData() != null) {
 					Log.bb(TAG, "StackFrame " + method + ", reg " + i + ": "
-							+ regs[i].data);
+							+ regs[i].getData());
 				}
 			}
 		}
@@ -452,7 +462,7 @@ public class DalvikVM {
 	Interpreter interpreter;
 
 	// which reg store the return value of callee called by this method
-	Register retValReg;
+	private Register retValReg;
 
 	private Register[] callingCtx;
 
@@ -461,7 +471,8 @@ public class DalvikVM {
 
 	private PluginManager pluginManager;
 
-	private Object[] assigned;
+	// reg, oldVal, newVal
+	private Object[] assigned = new Object[3];
 
 	private Method reflectMethod;
 	
@@ -470,7 +481,7 @@ public class DalvikVM {
 	 * @fieldType: DVMObject
 	 * @Description: To help run chain methods.
 	 */
-	DVMObject chainThisObj = null;
+	private DVMObject chainThisObj = null;
 
 	public Register getReg(int i) {
 		return stack.getLast().regs[i];
@@ -537,10 +548,9 @@ public class DalvikVM {
 		interpreter = Interpreter.v();
 		stack = new LinkedList<>();
 		getPluginManager().reset();
-		retValReg.data = null;
-		retValReg.type = null;
+		retValReg.reset();
 		callingCtx = null;
-		chainThisObj = null;
+		setChainThisObj(null);
 	}
 
 	public Register getReturnReg() {
@@ -580,9 +590,8 @@ public class DalvikVM {
 	 * @throws
 	 */
 	public void backCallCtx(Register retReg) {
-		Log.bb(TAG, "stack " + stack);
 		stack.removeLast();
-		Log.bb(TAG, "stack " + stack);
+		setCallContext(null);
 	}
 
 	/**
@@ -692,7 +701,7 @@ public class DalvikVM {
 		// Put an Null stack frame to simulate the calling ctx.
 		StackFrame stackFrame = newStackFrame(null);
 		for (int i = 0; i < params.length; i++) {
-			stackFrame.regs[i].data = params[i];
+			stackFrame.regs[i].setValue(params[i], method.paramTypes[i]);
 		}
 
 		int[] args = new int[params.length];
@@ -746,16 +755,20 @@ public class DalvikVM {
 		this.reflectMethod = reflectMethod;
 	}
 
-	public void setAssigned(Object[] assigned) {
-		this.assigned = assigned;
-	}
-
 	public PluginManager getPluginManager() {
 		return pluginManager;
 	}
 
 	public void setPluginManager(PluginManager pluginManager) {
 		this.pluginManager = pluginManager;
+	}
+
+	public DVMObject getChainThisObj() {
+		return chainThisObj;
+	}
+
+	public void setChainThisObj(DVMObject chainThisObj) {
+		this.chainThisObj = chainThisObj;
 	}
 
 }

@@ -23,7 +23,7 @@ public class Unknown extends SymbolicVar {
 	
 	Var var;
 	Store store;
-	ClassInfo type;
+	private ClassInfo type;
 	/**
 	 * @fieldName: last
 	 * @fieldType: Instruction
@@ -34,6 +34,10 @@ public class Unknown extends SymbolicVar {
 	boolean on = true;
 	
 	final String TAG = "Unknown";
+	
+	public ClassInfo getType() {
+		return type;
+	}
 	
 	public Unknown(ClassInfo type) {
 		this.type = type;

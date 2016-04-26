@@ -239,7 +239,7 @@ public class Taint extends Plugin {
 	}
 
 	class TAINT_OP_INVOKE implements Rule {
-		final String TAG = getClass().toString();
+		final String TAG = getClass().getSimpleName();
 
 		@Override
 		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
@@ -275,7 +275,7 @@ public class Taint extends Plugin {
 								out.put(vm.getReg(args[0]).getData(),
 										in.get(vm.getReg(args[i])));
 								break;
-							} else if (in.containsKey(vm.getReg(args[i])
+							} else if (vm.getReg(args[i]).isUsed() && in.containsKey(vm.getReg(args[i])
 									.getData())) {
 								Log.warn(TAG, "Found a tainted init instance!");
 								out.put(vm.getReg(args[0]),

@@ -60,7 +60,7 @@ public class ContextAnalysis {
 					targetCall.addParams(inst, vm);
 				}
 			} else if (vm.getReflectMethod() != null && config.getSources().contains(Taint.getSootSignature(mi))) {
-				vm.getReturnReg().setData(new SensCtxVar(mi.returnType, vm.getReturnReg().getData(), inst));
+				vm.getReturnReg().setValue(new SensCtxVar(mi.returnType, vm.getReturnReg().getData(), inst), mi.returnType);
 				Log.bb(TAG, "Set SensCtxVar at RetReg.");
 			}
 

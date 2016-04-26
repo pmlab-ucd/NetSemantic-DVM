@@ -1,10 +1,11 @@
-package fu.hao.trust.dvm;
+package fu.hao.trust.test;
 
 import java.io.IOException;
 import java.util.zip.ZipException;
 
 import org.junit.Test;
 
+import fu.hao.trust.dvm.DalvikVM;
 import fu.hao.trust.utils.Settings;
 
 public class InterpreterTest {

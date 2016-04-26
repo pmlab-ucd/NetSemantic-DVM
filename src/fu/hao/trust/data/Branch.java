@@ -153,7 +153,14 @@ public class Branch {
 	}
 
 	public static Object valCombination(Object val1, Object val2) {
-		if (val1 == null || val1 == val2) {
+		
+		if (val1 == null && val2 == null) {
+			
+		}
+		
+		
+		if (val1 == null || val2 == null || val1 == val2) {
+			Log.err(TAG, "null combination!");
 			return val2;
 		}
 

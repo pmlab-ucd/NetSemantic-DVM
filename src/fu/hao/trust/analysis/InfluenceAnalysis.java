@@ -40,10 +40,9 @@ public class InfluenceAnalysis {
 		if (vm.getReflectMethod() != null
 				&& config.getSources().contains(Taint.getSootSignature(mi))) {
 			try {
-				// FIXME
-				vm.getReturnReg().setData(
+				vm.getReturnReg().setValue(
 						new InfluVar(mi.returnType,
-								vm.getReturnReg().getData(), inst));
+								vm.getReturnReg().getData(), inst), mi.returnType);
 				Log.warn(TAG, "Add new influencing obj: "
 						+ vm.getReturnReg().getData());
 			} catch (Exception e) {

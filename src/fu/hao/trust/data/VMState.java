@@ -28,7 +28,7 @@ public class VMState {
 		backRegs = new HashMap<>();
 		Register[] regs = vm.getCurrStackFrame().getRegs();
 		for (int i = 0; i < regs.length; i++) {
-			if (regs[i].getData() != null || regs[i].getType() != null) {
+			if (regs[i].isUsed()) {
 				Object[] value = new Object[2];
 				value[0] = regs[i].getType();
 				value[1] = regs[i].getData();
@@ -74,8 +74,7 @@ public class VMState {
 		// Restore registers.
 		for (Integer index : backRegs.keySet()) {
 			Object[] value = backRegs.get(index);
-			vm.getCurrStackFrame().getRegs()[index].setData(value[1]);
-			vm.getCurrStackFrame().getRegs()[index].setType((ClassInfo)value[0]);
+			vm.getCurrStackFrame().getRegs()[index].setValue(value[1], (ClassInfo)value[0]);
 		}
 		
 		vm.getCurrStackFrame().setPluginRes(pluginRes);
