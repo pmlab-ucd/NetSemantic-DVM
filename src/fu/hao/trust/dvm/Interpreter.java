@@ -190,7 +190,7 @@ public class Interpreter {
 					Log.debug(TAG, "params: " + vm.getReg(params[i]).getData());
 					i++;
 				}
-				
+
 				if (!currMethod.isStatic()) {
 					vm.getCurrStackFrame().setThisObj(
 							(DVMObject) vm.getReg(params[0]).getData());
@@ -224,7 +224,9 @@ public class Interpreter {
 
 			try {
 				Class.forName(inst.type.toString());
-				vm.getReg(inst.rdst).setValue("Well, I will be born soon..", inst.type);
+				// vm.getReg(inst.rdst).setValue("Well, I will be born soon..", inst.type);
+				vm.getReg(inst.rdst).reset();
+				// vm.getAssigned()[0] = -1; // not consider assigned here
 				Log.bb(TAG, "Reflecable instance.");
 			} catch (ClassNotFoundException e) {
 				// Do not need to handle reflection type,
@@ -342,7 +344,7 @@ public class Interpreter {
 			MethodInfo mi = (MethodInfo) extra[0];
 			// The register index referred by args
 			int[] args = (int[]) extra[1];
-			
+
 			vm.getReturnReg().reset();
 			try {
 				// If applicable, directly use reflection to run the method,
@@ -1720,7 +1722,7 @@ public class Interpreter {
 	class OP_HALT implements ByteCode {
 		/**
 		 * @Title: func
-		 * @Description: (準 JavaDoc)
+		 * @Description: (�? JavaDoc)
 		 * @param vm
 		 * @param inst
 		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
@@ -1739,7 +1741,7 @@ public class Interpreter {
 
 		/**
 		 * @Title: func
-		 * @Description: (準 JavaDoc)
+		 * @Description: (�? JavaDoc)
 		 * @param vm
 		 * @param inst
 		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
@@ -1908,7 +1910,11 @@ public class Interpreter {
 			// If applicable, directly use reflection to run the method,
 			// the method is inside java.lang
 			// Class<?> clazz = Class.forName(mi.myClass.toString());
-			Log.msg(TAG, "arg0 obj: " + vm.getReg(args[0]).getData());
+			if (vm.getReg(args[0]).isUsed()) {
+				Log.msg(TAG, "arg0 obj: " + vm.getReg(args[0]).getData());
+			} else {
+				Log.warn(TAG, "arg0 is null!");
+			}
 			Class<?> clazz;
 			clazz = Class.forName(mi.myClass.toString());
 
@@ -1954,10 +1960,11 @@ public class Interpreter {
 				}
 			} else {
 				Log.debug(TAG, "Reflction class: " + clazz);
-				thisInstance = vm.getReg(args[0]).getData();
+				thisInstance = vm.getReg(args[0]).isUsed() ? vm.getReg(args[0]).getData() : null;
 				if (thisInstance instanceof MultiValueVar) {
 					// FIXME Herustic, should really handle loop
 					if (isNoInvoke2(mi)) {
+						Log.msg(TAG, "Found noInvoke2 " + mi);
 						normalArg = false;
 					}
 
@@ -2009,7 +2016,7 @@ public class Interpreter {
 				}
 				Log.msg(TAG, "Reflction invocation " + method);
 			}
-			
+
 			if (!normalArg) {
 				Log.warn(TAG, "Abnormal args, contain abstract value.");
 			}
@@ -2032,14 +2039,14 @@ public class Interpreter {
 		}
 
 	}
-	
+
 	private boolean isNoInvoke2(MethodInfo mi) {
 		for (String mname : noInvokeList2) {
 			if (mi.toString().contains(mname)) {
 				return true;
 			}
 		}
-		
+
 		return false;
 	}
 
@@ -2304,11 +2311,13 @@ public class Interpreter {
 		noInvokeList.add("java.io.InputStreamReader");
 		noInvokeList.add("java.io.BufferedReader");
 		noInvokeList.add("java.io.File");
-		
+
 		noInvokeList2 = new HashSet<>();
 		noInvokeList2.add("equals");
 		noInvokeList2.add("split");
 		noInvokeList2.add("index");
+		noInvokeList2.add("substring");
+		noInvokeList2.add("trim");
 	}
 
 	public void exec(DalvikVM vm, Instruction inst) {
@@ -2316,7 +2325,7 @@ public class Interpreter {
 		vm.setNowPC(vm.getPC());
 		inst.setIndex(vm.getNowPC());
 		Log.msg(TAG, inst + " at " + vm.getCurrStackFrame().method);
-		// Reset 
+		// Reset
 		vm.getAssigned()[0] = -1;
 		vm.setReflectMethod(null);
 		if (!vm.getPluginManager().isEmpty() && vm.getCurrStackFrame() != null) {
@@ -2331,7 +2340,7 @@ public class Interpreter {
 			} else {
 				Log.err(TAG, "Unsupported opcode " + inst);
 			}
-			
+
 			if (!vm.getPluginManager().isEmpty()
 					&& vm.getCurrStackFrame() != null) {
 				vm.getPluginManager().runAnalysis(vm, inst);
@@ -2390,10 +2399,11 @@ public class Interpreter {
 	 * @throws
 	 */
 	public Object resolvePrimitive(Object op, ClassInfo type) {
-		if (op instanceof Unknown) {
+		if (op instanceof Unknown && ((Unknown)op).getType() != ClassInfo.primitiveVoid) {
 			type = ((Unknown) op).getType();
+			Log.bb(TAG, "Unknown type " + type);
 		}
-		
+
 		PrimitiveInfo op1 = null;
 		if (op instanceof PrimitiveInfo) {
 			op1 = (PrimitiveInfo) op;
@@ -2415,7 +2425,7 @@ public class Interpreter {
 		} else if (type.equals(ClassInfo.primitiveDouble) || op1 != null
 				&& op1.isDouble()) {
 			return new Double(op1 == null ? 0 : op1.doubleValue());
-		} 
+		}
 
 		return null;
 	}

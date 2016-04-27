@@ -12,8 +12,7 @@ public class Test {
 
 	public static void main(String[] margs) {
 		Test t = new Test();
-		//t.testbd3abae103a788ef15283df01cd2b2f068113e60_execTask();
-		t.testMain2();
+		t.testbd3abae103a788ef15283df01cd2b2f068113e60_execTask();
 	}
 	
 	public void testbd3abae103a788ef15283df01cd2b2f068113e60_execTask() {
