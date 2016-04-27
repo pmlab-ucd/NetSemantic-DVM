@@ -352,7 +352,7 @@ public class Interpreter {
 				// If applicable, directly use reflection to run the method,
 				// the method is inside java.lang
 				Class<?> clazz = Class.forName(mi.myClass.toString());
-				Log.debug(TAG, "reflction " + clazz);
+				Log.debug(TAG, "Reflction " + clazz);
 				@SuppressWarnings("rawtypes")
 				Class[] argsClass = new Class[mi.paramTypes.length];
 				Method method;
@@ -2033,8 +2033,8 @@ public class Interpreter {
 		} catch (java.lang.NullPointerException e) {
 			e.printStackTrace();
 			Log.err(TAG, " null pointer ");
-		} catch (java.lang.ClassNotFoundException e) {
-			Log.debug(TAG, "not a reflction invocation " + mi);
+		} catch (java.lang.ClassNotFoundException | java.lang.NoClassDefFoundError e) {
+			Log.debug(TAG, "Not a reflction invocation " + mi);
 			invocation(vm, mi, inst, args);
 		} catch (java.lang.InstantiationException e) {
 			Log.warn(TAG, e.getMessage());

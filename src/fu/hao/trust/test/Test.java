@@ -11,15 +11,15 @@ public class Test {
 
 	public static void main(String[] margs) {
 		Test t = new Test();
-		t.test25bf619bbea49002e1b127b64d3baa86c85371d8_execTask();
+		t.test97dc3d1e29f12e3b8fecc54f1b244d3a8910877b_execTask();
 		//t.testMain2();
 	}
 	
-	public void test25bf619bbea49002e1b127b64d3baa86c85371d8_execTask() {
+	public void test97dc3d1e29f12e3b8fecc54f1b244d3a8910877b_execTask() {
 		String[] args = new String[4];
 		Settings.logLevel = 0;
 
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/pjapps/25bf619bbea49002e1b127b64d3baa86c85371d8/25bf619bbea49002e1b127b64d3baa86c85371d8.apk";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/pjapps/97dc3d1e29f12e3b8fecc54f1b244d3a8910877b/97dc3d1e29f12e3b8fecc54f1b244d3a8910877b.apk";
 		args[1] = "com.android.main.MainService";
 		args[2] = "execTask";
 		args[3] = "Full";

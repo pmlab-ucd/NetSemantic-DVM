@@ -15,6 +15,7 @@ import java.util.Set;
 
 import patdroid.core.ClassInfo;
 import patdroid.core.MethodInfo;
+import patdroid.core.PrimitiveInfo;
 import patdroid.dalvik.Instruction;
 
 public class Branch {
@@ -86,14 +87,15 @@ public class Branch {
 	}
 
 	public void addVar(Register var) {
-		// Object[0]: original val, Object[1]: new value		
+		// Object[0]: original val, Object[1]: new value
 		@SuppressWarnings("unchecked")
 		Pair<Object, ClassInfo>[] pairs = new Pair[2];
 		conflicts.put(var, pairs);
 	}
 
 	public void addValue(Register var, Pair<Object, ClassInfo> value) {
-		ClassInfo type = value.getSecond(); Object val = value.getFirst();
+		ClassInfo type = value.getSecond();
+		Object val = value.getFirst();
 		if (ignoreCombVars != null && ignoreCombVars.contains(var)) {
 			return;
 		}
@@ -133,28 +135,31 @@ public class Branch {
 				if (cVal != null) {
 					currtVal = valCombination(currtVal, cVal);
 					Log.bb(TAG, "Currt val " + currtVal
-							+ ", with original value " + cVal);				
+							+ ", with original value " + cVal);
 				}
 			}
 			var.setValue(currtVal);
 		}
 	}
 
-	public static Pair<Object, ClassInfo> valCombination(Pair<Object, ClassInfo> val1, Pair<Object, ClassInfo> val2) {
-		/*if (!checkRuntimeType(val1, val2)) {
-			Log.err(TAG, "Inconsistent type: " + val1 + ", " + val2);
-		}*/
-		if (val1 == null || val1.equals(val2)) {
+	public static Pair<Object, ClassInfo> valCombination(
+			Pair<Object, ClassInfo> val1, Pair<Object, ClassInfo> val2) {
+		/*
+		 * if (!checkRuntimeType(val1, val2)) { Log.err(TAG,
+		 * "Inconsistent type: " + val1 + ", " + val2); }
+		 */
+		if (val1 == null || val1.getFirst().equals(val2.getFirst())) {
 			return val2;
 		}
-		
+
 		Object data1 = val1.getFirst();
 		Object data2 = val2.getFirst();
-		
+
 		if (data1 instanceof SymbolicVar) {
 			// When is primitive or reflecable types.
 			if (data2 instanceof SymbolicVar) {
-				((SymbolicVar) data1).addConcreteVals(((SymbolicVar) data2).getConcreteVals());
+				((SymbolicVar) data1).addConcreteVals(((SymbolicVar) data2)
+						.getConcreteVals());
 			} else if (data2 == null) {
 				((SymbolicVar) data1).addConcreteVal(null);
 			} else if (data2 instanceof DVMObject) {
@@ -162,7 +167,7 @@ public class Branch {
 			} else {
 				((SymbolicVar) data1).addConcreteVal(data2);
 			}
-			
+
 			return val1;
 		} else if (data1 instanceof DVMObject || data1 instanceof MNVar) {
 			MNVar mnv = MNVar.createInstance(data1);
@@ -183,7 +188,7 @@ public class Branch {
 				return null;
 			} else {
 				// FIXME Multiple types? use java.Object?
-				Unknown unknown = new Unknown(val1.getSecond()); 
+				Unknown unknown = new Unknown(val1.getSecond());
 				return new Pair<Object, ClassInfo>(unknown, val1.getSecond());
 			}
 		}
@@ -204,52 +209,48 @@ public class Branch {
 
 	public static boolean checkType(Pair<Object, ClassInfo> oldVal,
 			Pair<Object, ClassInfo> newVal) {
-		if (oldVal.getSecond().isConvertibleTo(newVal.getSecond())) {
-			return true;
+		ClassInfo oldType = oldVal.getSecond();
+		ClassInfo newType = newVal.getSecond();
+		if (oldType.isConvertibleTo(newType)) {
+			if ((oldType.equals(ClassInfo.primitiveVoid) || newType
+					.equals(ClassInfo.primitiveVoid))
+					&& checkRuntimeType(oldVal.getFirst(), newVal.getFirst())) {
+				Log.bb(TAG, "Type-old: " + oldVal.getSecond() + ", Type-new: "
+						+ newVal.getSecond());
+				return true;
+			}
 		}
 
 		return false;
 	}
 
-	/*
-	public static boolean checkType(Object val1, Object val2, ClassInfo type1,
-			ClassInfo type2) {
-		if (checkClassInfo(type1, type2)) {
-			return checkRuntimeType(val1, val2);
-		} else {
-			return false;
+	public static boolean checkRuntimeType(Object data1, Object data2) {
+		if (data1 instanceof DVMObject) {
+			if (data2 instanceof DVMObject || data2 instanceof MNVar
+					|| data2 == null) {
+				return true;
+			} else {
+				return false;
+			}
 		}
+
+		if (data1 instanceof PrimitiveInfo) {
+			if (data2 instanceof PrimitiveInfo || data2 == null
+					|| data2 instanceof Unknown) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+		if (data1 instanceof SymbolicVar) {
+			return true;
+		}
+
+		// FIXME use patdroid.getClass to see the reflectable if can be casted.
+
+		return false;
 	}
-
-	
-	public static boolean checkRuntimeType(Object val1, Object val2) {
-		if (val1 == null || val2 == null || val1 instanceof Integer
-				&& (int) val1 == 0 || val1 instanceof PrimitiveInfo
-				&& ((PrimitiveInfo) val1).isZero()) {
-			return true;
-		}
-
-		if (val1 instanceof PrimitiveInfo || val1 instanceof SymbolicVar) {
-			if (val2 instanceof PrimitiveInfo || val2 instanceof SymbolicVar) {
-				return true;
-			} else {
-				return false;
-			}
-		} else if (val1 instanceof String || val1 instanceof MSVar) {
-			if (val2 instanceof Integer || val2 instanceof SymbolicVar
-					|| val2 instanceof String || val2 instanceof MSVar
-					|| val2 instanceof PrimitiveInfo
-					&& ((PrimitiveInfo) val2).intValue() == 0) {
-				return true;
-			} else {
-				return false;
-			}
-		} else if (val1 instanceof DVMObject || val1 instanceof DVMObject) {
-			return true;
-		} else {
-			return false;
-		}
-	}*/
 
 	@Override
 	public String toString() {

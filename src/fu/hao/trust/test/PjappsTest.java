@@ -20,6 +20,29 @@ public class PjappsTest {
 	static String TAG = "test";
 	
 	@Test
+	public void test97dc3d1e29f12e3b8fecc54f1b244d3a8910877b_execTask() {
+		String[] args = new String[4];
+		Settings.logLevel = 0;
+
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/pjapps/97dc3d1e29f12e3b8fecc54f1b244d3a8910877b/97dc3d1e29f12e3b8fecc54f1b244d3a8910877b.apk";
+		args[1] = "com.android.main.MainService";
+		args[2] = "execTask";
+		args[3] = "Full";
+		
+		Main.main(args);
+		boolean containsSms = false;
+		for (TargetCall targetCall : Results.targetCallRes.values()) {
+			Log.msg(TAG, "Result: " + targetCall);
+			if (targetCall.getInfluAPIs().toString().contains("SmsManager/sendTextMessage")) {
+				containsSms = true;
+			}
+		}
+
+		assertEquals(false, Results.targetCallRes.isEmpty());
+		assertEquals(true, containsSms);
+	}
+	
+	@Test
 	public void test25bf619bbea49002e1b127b64d3baa86c85371d8_execTask() {
 		String[] args = new String[4];
 		Settings.logLevel = 0;
