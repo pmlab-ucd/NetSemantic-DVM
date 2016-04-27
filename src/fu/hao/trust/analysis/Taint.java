@@ -335,7 +335,7 @@ public class Taint extends Plugin {
 										out.put(vm.getReturnReg().getData(),
 												in.get(vm.getReg(args[i])));
 										break;
-									} else if (in.containsKey(vm
+									} else if (vm.getReg(args[i]).isUsed() && in.containsKey(vm
 											.getReg(args[i]).getData())) {
 										Log.warn(TAG,
 												"Found a tainted return val!");
@@ -654,14 +654,13 @@ public class Taint extends Plugin {
 				// Object[] array = (Object[]) vm.getReg(inst.r0).getData();
 				Object array = vm.getReg(inst.r0).getData();
 				// index reg
-				PrimitiveInfo pindex;
+				PrimitiveInfo pindex = null;
 				if (vm.getReg(inst.r1).getData() instanceof SymbolicVar) {
 					if (((SymbolicVar) vm.getReg(inst.r1).getData()).getValue() instanceof PrimitiveInfo) {
 						pindex = (PrimitiveInfo) ((SymbolicVar) vm.getReg(
 								inst.r1).getData()).getValue();
 					} else {
 						Log.warn(TAG, "Array get error! index is not a int.");
-						return outs;
 					}
 				} else {
 					if (vm.getReg(inst.r1).getData() instanceof PrimitiveInfo) {
@@ -672,12 +671,12 @@ public class Taint extends Plugin {
 						pindex = new PrimitiveInfo(0);
 					}
 				}
-
-				int index = pindex.intValue();
+				
+				int index = pindex != null ? pindex.intValue() : -1;
 				if (in.containsKey(array)) {
 					out.put(vm.getReg(inst.rdst), in.get(array));
 					out.put(vm.getReg(inst.rdst).getData(), in.get(array));
-				} else if (array instanceof Array
+				} else if (array instanceof Array && index != -1
 						&& in.containsKey(Array.get(array, index))) {
 					out.put(vm.getReg(inst.rdst),
 							in.get(Array.get(array, index)));

@@ -1,7 +1,6 @@
 package fu.hao.trust.test;
 
 import static org.junit.Assert.assertEquals;
-
 import fu.hao.trust.data.Results;
 import fu.hao.trust.data.TargetCall;
 import fu.hao.trust.dvm.Main;
@@ -12,15 +11,16 @@ public class Test {
 
 	public static void main(String[] margs) {
 		Test t = new Test();
-		t.testbd3abae103a788ef15283df01cd2b2f068113e60_execTask();
+		t.test25bf619bbea49002e1b127b64d3baa86c85371d8_execTask();
+		//t.testMain2();
 	}
 	
-	public void testbd3abae103a788ef15283df01cd2b2f068113e60_execTask() {
+	public void test25bf619bbea49002e1b127b64d3baa86c85371d8_execTask() {
 		String[] args = new String[4];
 		Settings.logLevel = 0;
 
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/pjapps/bd3abae103a788ef15283df01cd2b2f068113e60/bd3abae103a788ef15283df01cd2b2f068113e60.apk";
-		args[1] = "com.android.ServiceCenterAddressAct";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/pjapps/25bf619bbea49002e1b127b64d3baa86c85371d8/25bf619bbea49002e1b127b64d3baa86c85371d8.apk";
+		args[1] = "com.android.main.MainService";
 		args[2] = "execTask";
 		args[3] = "Full";
 		
@@ -52,16 +52,16 @@ public class Test {
 	public void testMain2() {
 		String[] args = new String[4];
 		Settings.logLevel = 0;
+		args[3] = "Full";
 
 		args[0] = "C:/Users/hao/workspace/PJApps/app/app-release.apk";
 		args[1] = "fu.hao.pjapps.MainActivity";
-		args[2] = "testCtx2";
-		args[3] = "Full"; //"ATaint";*/
-
+		args[2] = "testInfluence2";
+		
 		Main.main(args);
-		Log.msg(TAG, "REs: " + Results.results);
-		Log.msg(TAG, "REs: " + Results.targetCallRes);
-
+		
+		System.out.println("REs: " + Results.results);
+		System.out.println("REs: " + Results.targetCallRes);
 		assertEquals(false, Results.targetCallRes.isEmpty());
 		assertEquals(
 				true,
@@ -72,7 +72,7 @@ public class Test {
 						.getInfluAPIs()
 						.toString()
 						.contains(
-								"SmsManager/sendTextMessage"));
+								"INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage"));
 	}
 	
 

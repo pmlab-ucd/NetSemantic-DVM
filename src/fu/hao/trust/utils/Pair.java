@@ -13,7 +13,16 @@ public final class Pair<T1, T2> {
 	final public boolean equals(Object o) {
 		if (o instanceof Pair) {
 			Pair<?, ?> u = (Pair<?, ?>)o;
-			return first.equals(u.first) && second.equals(u.second);
+			if (first == null && u.first != null || u.first == null && first != null) {
+					return false;
+			}
+			if (second == null && u.second != null || u.second == null && second != null) {
+				return false;
+			}
+			
+			if (first != null && second != null) {
+				return first.equals(u.first) && second.equals(u.second);
+			}
 		}
 		return false;
 	}

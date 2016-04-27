@@ -54,6 +54,20 @@ public class TaintSumBranch extends Taint {
 
 			// Scan to check whether the block contains "Return".
 			for (int i = vm.getPC(); i < (int) inst.extra; i++) {
+				if (insns[i].opcode == Instruction.OP_GOTO
+						&& (int) insns[i].extra < vm.getPC()) {
+					for (int j = i + 1; j < insns.length; j++) {
+						if (insns[j].opcode == Instruction.OP_GOTO
+								&& (int) insns[j].extra <= i) {
+							if ((int) insns[j].extra <= vm.getNowPC() && (int) insns[j].extra > (int)insns[i].extra) {
+								Log.msg(TAG, "Detect Loop!");
+								return true;
+							}
+						}
+					}
+				}
+				
+				
 				if (insns[i].opcode == Instruction.OP_RETURN) {
 					// The first <goto index> after meeting <return> is the start point of <rest>
 					for (int j = i; j < insns.length; j++) {
@@ -383,7 +397,7 @@ public class TaintSumBranch extends Taint {
 						Log.bb(TAG, "Assigned@" + assigned[0] + ": " + oldVal.getFirst() + ", "
 								+ newVal.getFirst());
 						if (oldVal.getFirst() == null) {
-							Log.err(TAG, "NULL Found!");
+							Log.warn(TAG, "NULL Found!");
 						}
 						branch.addValue((Register) assigned[0], oldVal);
 						branch.addValue((Register) assigned[0], newVal);

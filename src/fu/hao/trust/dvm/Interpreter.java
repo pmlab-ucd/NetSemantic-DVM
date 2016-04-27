@@ -109,8 +109,10 @@ public class Interpreter {
 				Log.err(TAG, "Return error");
 			}
 
+			Object data = vm.getReg(inst.r0).isUsed() ? vm.getReg(inst.r0).getData() : null;
+			ClassInfo type = vm.getReg(inst.r0).isUsed() ? vm.getReg(inst.r0).getType() : null;
 			// the caller stack of this invocation
-			vm.getReturnReg().setValue(vm.getReg(inst.r0).getData(), vm.getReg(inst.r0).getType());
+			vm.getReturnReg().setValue(data, type);
 			Log.bb(TAG, "Return data: " + vm.getReturnReg().getData());
 			vm.backCallCtx(vm.getReg(inst.r0));
 			jump(vm, inst, true);
@@ -260,7 +262,7 @@ public class Interpreter {
 			}
 			int count;
 
-			if (vm.getReg(inst.r0).getData() == null
+			if (!vm.getReg(inst.r0).isUsed() || vm.getReg(inst.r0).getData() == null
 					|| vm.getReg(inst.r0).getData() instanceof Unknown) {
 				count = 42;
 				Log.warn(TAG, "Incorrect size!");
@@ -450,10 +452,10 @@ public class Interpreter {
 			if (array != null && array.getClass().isArray()) {
 				vm.getReg(inst.rdst).setValue(
 						new PrimitiveInfo(Array.getLength(array)), ClassInfo.primitiveInt);
-				Log.debug(TAG, "len " + Array.getLength(array));
+				Log.debug(TAG, "Array len " + Array.getLength(array));
 			} else {
-				Log.warn(TAG, "not an array");
-				vm.getReg(inst.rdst).setValue(new PrimitiveInfo(-1), ClassInfo.primitiveInt);
+				Log.warn(TAG, "Not an array");
+				vm.getReg(inst.rdst).setValue(new Unknown(ClassInfo.primitiveInt), ClassInfo.primitiveInt);
 			}
 		}
 	}
@@ -505,7 +507,7 @@ public class Interpreter {
 				SymbolicVar var = (SymbolicVar) vm.getReturnReg().getData();
 				var.setValue(PrimitiveInfo.fromObject(var.getValue()));
 			} else {
-				if (vm.getReturnReg().getType().isPrimitive()) {
+				if (vm.getReturnReg().isUsed() && vm.getReturnReg().getType() != null && vm.getReturnReg().getType().isPrimitive()) {
 					vm.getReturnReg().setValue(PrimitiveInfo.fromObject(vm.getReturnReg()
 							.getData()), vm.getReturnReg().getType());
 				}
@@ -891,7 +893,6 @@ public class Interpreter {
 				} else {
 					rdst.setValue(element, type);// array[index];
 				}
-				Log.bb(TAG, "rdst " + rdst.getData() + " " + element.getClass());
 			}
 
 		}
@@ -1757,13 +1758,13 @@ public class Interpreter {
 			}
 
 			SymbolicVar u0 = null, u1 = null;
-			Log.debug(TAG, "r0 data " + r0.getData());
+			Log.debug(TAG, "r0 data " + (r0.isUsed() ? r0.getData() : null));
 			if (r0.getData() == null) {
 				Log.warn(TAG, "Null operator found!");
 				r0.setValue(new Unknown(r0.getType()), r0.getType());
 			}
 
-			if (inst.r1 != -1 && vm.getReg(inst.r1).getData() == null) {
+			if (inst.r1 != -1 && r1.getData() == null) {
 				Log.warn(TAG, "Null operator found!");
 				r1.setValue(new Unknown(r1.getType()), r1.getType());
 			}
@@ -1817,6 +1818,10 @@ public class Interpreter {
 				op.addLastArith(inst);
 				vm.getReg(inst.r0).setValue(op, type);
 			} else {
+				auxByteCodes.get((int) inst.opcode_aux).func(vm, inst);
+			}
+			
+			if (inst.opcode_aux == Instruction.OP_A_ARRAY_LENGTH) {
 				auxByteCodes.get((int) inst.opcode_aux).func(vm, inst);
 			}
 
@@ -2031,6 +2036,10 @@ public class Interpreter {
 		} catch (java.lang.ClassNotFoundException e) {
 			Log.debug(TAG, "not a reflction invocation " + mi);
 			invocation(vm, mi, inst, args);
+		} catch (java.lang.InstantiationException e) {
+			Log.warn(TAG, e.getMessage());
+			vm.getReg(args[0]).setValue(new Unknown(mi.myClass), mi.myClass);
+			jump(vm, inst, true);
 		} catch (Exception e) {
 			e.printStackTrace();
 
@@ -2068,11 +2077,12 @@ public class Interpreter {
 			throws ClassNotFoundException {
 		// Start from 1 to ignore "this"
 		for (int i = 1; i < args.length; i++) {
-			Log.bb(TAG, "arg" + i + "@reg" + args[i] + ": " + vm.getReg(args[i]).getData());
+			Object data = vm.getReg(args[i]).isUsed() ? vm.getReg(args[i]).getData() : null;
+			Log.bb(TAG, "arg" + i + "@reg" + args[i] + ": " + data);
 			if (mi.paramTypes[i - 1].isPrimitive()) {
 				Log.debug(TAG, "Expected para type: " + mi.paramTypes[i - 1]);
 				Object primitive = resolvePrimitive(
-						vm.getReg(args[i]).getData(),
+						data,
 						mi.paramTypes[i - 1]);
 				Class<?> argClass = primClasses.get(primitive.getClass());
 				params[i - 1] = primitive;
