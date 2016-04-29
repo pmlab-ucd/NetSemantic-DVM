@@ -55,9 +55,9 @@ public class TaintSumBranch extends Taint {
 		int retPos = -1;
 		
 		private boolean containRet(DalvikVM vm, Instruction inst) {
+			Instruction[] insns = vm.getCurrStackFrame().getMethod().insns;
 			
 			if (retPos == -1) {
-				Instruction[] insns = vm.getCurrStackFrame().getMethod().insns;
 				for (int i = 0; i < insns.length; i++) {
 					if (insns[i].opcode == Instruction.OP_RETURN) {
 						retPos = i;
@@ -67,9 +67,19 @@ public class TaintSumBranch extends Taint {
 			}
 			
 			// Scan to check whether the block contains "Return".
-			if (retPos > vm.getNowPC() && retPos < (int) inst.extra) {
+			int index = (int) inst.extra;
+			if (retPos > vm.getNowPC() && retPos < (int) inst.extra ) {
 				return true;
 			} else {
+				for (int i = vm.getNowPC() + 1; i < index; i++) {
+					if (insns[i].opcode == Instruction.OP_GOTO) {
+						// retPos is in the front and the blk contains goto to get there.
+						if ((int)insns[i].extra <= retPos && retPos < vm.getNowPC()) {
+							return true;
+						}
+					}
+				}
+				
 				return false;
 			}
 		}

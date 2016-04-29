@@ -19,6 +19,53 @@ public class PjappsTest {
 	
 	static String TAG = "test";
 	
+	@Test
+	public void test0399faa155d4eef2135eef91a2573189e99b94b5_execTask() {
+		String[] args = new String[4];
+		Settings.logLevel = 0;
+
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/pjapps/0399faa155d4eef2135eef91a2573189e99b94b5/0399faa155d4eef2135eef91a2573189e99b94b5.apk";
+		args[1] = "com.android.main.MainService";
+		args[2] = "execTask";
+		args[3] = "Full";
+		
+		Main.main(args);
+		boolean containsSms = false;
+		for (TargetCall targetCall : Results.targetCallRes.values()) {
+			Log.msg(TAG, "Result: " + targetCall);
+			if (targetCall.getInfluAPIs().toString().contains("SmsManager/sendTextMessage")) {
+				containsSms = true;
+			}
+		}
+
+		assertEquals(false, Results.targetCallRes.isEmpty());
+		assertEquals(true, containsSms);
+	}
+	
+	@Test
+	public void testc0254995b5fdaf6394771b69af67c89d85183823_execTask() {
+		String[] args = new String[4];
+		Settings.logLevel = 0;
+
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/pjapps/c0254995b5fdaf6394771b69af67c89d85183823/c0254995b5fdaf6394771b69af67c89d85183823.apk";
+		args[1] = "com.android.main.MainService";
+		args[2] = "execTask";
+		args[3] = "Full";
+		
+		Main.main(args);
+		boolean containsSms = false;
+		for (TargetCall targetCall : Results.targetCallRes.values()) {
+			Log.msg(TAG, "Result: " + targetCall);
+			if (targetCall.getInfluAPIs().toString().contains("SmsManager/sendTextMessage")) {
+				containsSms = true;
+			}
+		}
+
+		assertEquals(false, Results.targetCallRes.isEmpty());
+		assertEquals(true, containsSms);
+	}
+	
+	@Test
 	public void test340dd8625a6a5eb0750a402d088141b3ee14225e_a() {
 		String[] args = new String[4];
 		Settings.logLevel = 0;
