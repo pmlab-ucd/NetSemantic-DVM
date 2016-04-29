@@ -52,7 +52,9 @@ public class DalvikVM {
 		}
 
 		public void copy(Register y) {
-			setValue(y.getData(), y.getType());
+			if (y.isUsed()) {
+				setValue(y.getData(), y.getType());
+			}
 		}
 
 		public void copy(Register y, Map<DVMObject, DVMObject> objMap,
@@ -86,13 +88,13 @@ public class DalvikVM {
 				assigned[0] = this;
 				Pair<Object, ClassInfo> oldVal = new Pair<>(value.getFirst(), value.getSecond());
 				getAssigned()[1] = oldVal;
-				value.setFirst(data);
-				value.setSecond(type);
-				Pair<Object, ClassInfo> newVal = new Pair<>(value.getFirst(), value.getSecond());
+				Pair<Object, ClassInfo> newVal = new Pair<>(data, type);
 				getAssigned()[2] = newVal;
 				Log.bb(TAG, "ar" + count + " " + oldVal + ", " + newVal);
 			}
 			
+			value.setFirst(data);
+			value.setSecond(type);
 		}
 
 		public ClassInfo getType() {
@@ -103,7 +105,7 @@ public class DalvikVM {
 			if (count == -1) {
 				return "[Global RetReg]";
 			}
-			return "[reg " + count + "@" + stackFrame.method.name + "]";
+			return "[reg " + count + "@" + stackFrame.method.myClass.getShortName() + "/" + stackFrame.method.name + "]";
 		}
 
 		public StackFrame getStackFrame() {
@@ -304,6 +306,25 @@ public class DalvikVM {
 
 		public void setThisReg(Register thisReg) {
 			this.thisReg = thisReg;
+		}
+		
+		public Map<Plugin, Map<String, Map<Object, Instruction>>> clonePluginRes() {
+			Map<Plugin, Map<String, Map<Object, Instruction>>> pluginRes = new HashMap<>();
+			Map<Plugin, Map<String, Map<Object, Instruction>>> currtRes = getCurrStackFrame().getPluginRes();
+			for (Plugin plugin : currtRes.keySet()) {
+				Map<String, Map<Object, Instruction>> res = new HashMap<>();
+				for (String tag : currtRes.get(plugin).keySet()) {
+					Map<Object, Instruction> out = new HashMap<>();
+					for (Object obj : currtRes.get(plugin).get(tag).keySet()) {
+						out.put(obj, currtRes.get(plugin).get(tag).get(obj));
+					}
+					res.put(tag, out);
+				}
+				pluginRes.put(plugin, res);
+			}
+			
+			
+			return pluginRes;
 		}
 
 	}

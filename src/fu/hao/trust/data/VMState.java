@@ -39,7 +39,7 @@ public class VMState {
 		backObjFields = new HashMap<>();
 		backClassFields = new HashMap<>();
 		
-		pluginRes = new HashMap<>(vm.getCurrStackFrame().getPluginRes());
+		pluginRes = vm.getCurrStackFrame().clonePluginRes(); 
 	}
 	
 	public void saveField(DVMObject dvmObj, FieldInfo fieldInfo, Object data) {
@@ -80,6 +80,7 @@ public class VMState {
 		vm.getCurrStackFrame().setPluginRes(pluginRes);
 		
 		vm.jump(cond, false);
+		vm.getPluginManager().printResults();
 	}
 	
 	public boolean isSaved(DVMObject dvmObj, FieldInfo fieldInfo) {

@@ -10,8 +10,10 @@ import fu.hao.trust.solver.BiDirBranch;
 import fu.hao.trust.utils.Log;
 import fu.hao.trust.utils.Pair;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.Set;
 import java.util.Stack;
 
 import patdroid.core.ClassInfo;
@@ -46,43 +48,87 @@ public class TaintSumBranch extends Taint {
 
 	protected boolean hasRestore = false;
 
+	protected Set<Instruction> loopIfs;
+
 	class ATAINT_OP_CMP implements Rule {
-		final String TAG = getClass().getName();
+		final String TAG = "ATAINT_OP_CMP";
+		int retPos = -1;
+		
+		private boolean containRet(DalvikVM vm, Instruction inst) {
+			
+			if (retPos == -1) {
+				Instruction[] insns = vm.getCurrStackFrame().getMethod().insns;
+				for (int i = 0; i < insns.length; i++) {
+					if (insns[i].opcode == Instruction.OP_RETURN) {
+						retPos = i;
+						break;
+					}
+				}
+			}
+			
+			// Scan to check whether the block contains "Return".
+			if (retPos > vm.getNowPC() && retPos < (int) inst.extra) {
+				return true;
+			} else {
+				return false;
+			}
+		}
 
 		private boolean isLoop(DalvikVM vm, Instruction inst) {
 			Instruction[] insns = vm.getCurrStackFrame().getMethod().insns;
-
-			// Scan to check whether the block contains "Return".
-			for (int i = vm.getPC(); i < (int) inst.extra; i++) {
-				if (insns[i].opcode == Instruction.OP_GOTO
-						&& (int) insns[i].extra < vm.getPC()) {
-					for (int j = i + 1; j < insns.length; j++) {
-						if (insns[j].opcode == Instruction.OP_GOTO
-								&& (int) insns[j].extra <= i) {
-							if ((int) insns[j].extra <= vm.getNowPC() && (int) insns[j].extra > (int)insns[i].extra) {
-								Log.msg(TAG, "Detect Loop!");
-								return true;
-							}
-						}
+			boolean res = false;
+			boolean contRet = containRet(vm, inst);
+			
+			Log.bb(TAG, "ret: " + retPos);
+			if (contRet) {
+				Log.bb(TAG, "cao ");
+				for (int j = (int) inst.extra; j < insns.length; j++) {
+					if (insns[j].opcode == Instruction.OP_GOTO) {
+						Log.bb(TAG, "rii");
+						if ((int) insns[j].extra <= vm.getNowPC()) {
+							Log.msg(TAG, "Loop detected c!");
+							res = true;
+						} 
+						// FIXME ? only the first goto here?
+						break;
 					}
 				}
-				
-				
-				if (insns[i].opcode == Instruction.OP_RETURN) {
-					// The first <goto index> after meeting <return> is the start point of <rest>
-					for (int j = i; j < insns.length; j++) {
-						if (insns[j].opcode == Instruction.OP_GOTO
-								&& (int) insns[j].extra <= i) {
-							if ((int) insns[j].extra <= vm.getNowPC()) {
-								Log.msg(TAG, "Detect Loop!");
-								return true;
-							}
-						}
+			} else {
+				for (int i = vm.getPC(); i < (int) inst.extra; i++) {
+					if (insns[i].opcode == Instruction.OP_GOTO) {
+						int index = (int) insns[i].extra;
+						// the place where goto jumps shoule be greater than if but less than retPos when retPos < pc 
+						if (index <= vm.getNowPC() && (index > retPos || retPos > vm.getNowPC())) {
+							Log.msg(TAG, "Loop detected!");
+							res = true;						
+						} else {
+							res = false;
+						}			
+						
 					}
 				}
 			}
 
-			return false;
+			if (res) {
+				Log.bb(TAG, "loopifs " + loopIfs);
+				if (loopIfs == null) {
+					loopIfs = new HashSet<>();
+				}
+
+				if (!loopIfs.contains(inst)) {
+					if (contRet) {
+						vm.setPC((int) inst.extra);
+					}
+					loopIfs.add(inst);
+				} else {
+					loopIfs.remove(inst);
+					if (!contRet) {
+						vm.setPC((int) inst.extra);
+					}
+				}
+			}
+
+			return res;
 		}
 
 		private boolean isNewBiDir(DalvikVM vm, Instruction inst) {
@@ -97,7 +143,8 @@ public class TaintSumBranch extends Taint {
 					branch.setSumPoint(insns[i]);
 					Log.bb(TAG, "BiDirSumpoint " + insns[i]);
 					bidirBranches.add(branch);
-					// The fist <goto index> after jumping to another block is the start point of Mrest<
+					// The fist <goto index> after jumping to another block is
+					// the start point of Mrest<
 					for (int j = (int) inst.extra; j < insns.length; j++) {
 						if (insns[j].opcode == Instruction.OP_GOTO
 								&& (int) insns[j].extra <= i) {
@@ -192,6 +239,8 @@ public class TaintSumBranch extends Taint {
 			if (inst.r1 != -1) {
 				r1 = vm.getReg(inst.r1);
 			}
+			
+			retPos = -1;
 
 			// When unknown exists in the branch
 			if (r0 != null && (r0.getData() instanceof MultiValueVar)
@@ -339,8 +388,9 @@ public class TaintSumBranch extends Taint {
 			Log.msg(TAG, "Arrive at sum point of bidirbranch " + branch);
 
 			if (inst.opcode_aux == Instruction.OP_RETURN_SOMETHING) {
-				branch.addValue(vm.getReg(inst.r0), new Pair<Object, ClassInfo>(vm.getReg(inst.r0)
-						.getData(), vm.getReg(inst.r0).getType()));
+				branch.addValue(vm.getReg(inst.r0),
+						new Pair<Object, ClassInfo>(vm.getReg(inst.r0)
+								.getData(), vm.getReg(inst.r0).getType()));
 			}
 
 			if (branch.getRmFlag()) {
@@ -349,6 +399,7 @@ public class TaintSumBranch extends Taint {
 
 				if (branch.getSumPoint().opcode_aux == Instruction.OP_RETURN_SOMETHING) {
 					branch.valCombination();
+					branch.pluginResComb(vm);
 				}
 			} else {
 				// backtrace to last unknown branch
@@ -361,15 +412,6 @@ public class TaintSumBranch extends Taint {
 				// TODO Add the current plugin result.
 				vm.setPass(true);
 			}
-		}
-
-		// To avoid infinity loop
-		if (!simpleBranches.isEmpty() && simpleBranches.peek().Met(inst)
-				|| !bidirBranches.isEmpty()
-				&& bidirBranches.getLast().Met(inst)) {
-			vm.setPass(true);
-			// FIXME Not right?
-			vm.jump(inst, false);
 		}
 
 	}
@@ -394,8 +436,10 @@ public class TaintSumBranch extends Taint {
 					// Mismatch types mean the reg serves as a tmp, the original
 					// val has nothing to do with the new value.
 					if (Branch.checkType(oldVal, newVal)) {
-						Log.bb(TAG, "Assigned@" + assigned[0] + ": " + oldVal.getFirst() + ", "
-								+ newVal.getFirst());
+						Log.bb(TAG,
+								"Assigned@" + assigned[0] + ": "
+										+ oldVal.getFirst() + ", "
+										+ newVal.getFirst());
 						if (oldVal.getFirst() == null) {
 							Log.warn(TAG, "NULL Found!");
 						}

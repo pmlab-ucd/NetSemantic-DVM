@@ -1,6 +1,7 @@
 package fu.hao.trust.data;
 
 import fu.hao.trust.dvm.DVMObject;
+import fu.hao.trust.dvm.DalvikVM;
 import fu.hao.trust.dvm.DalvikVM.Register;
 import fu.hao.trust.solver.Unknown;
 import fu.hao.trust.utils.Log;
@@ -140,6 +141,10 @@ public class Branch {
 			}
 			var.setValue(currtVal);
 		}
+	}
+	
+	public void pluginResComb(DalvikVM vm) {
+		
 	}
 
 	public static Pair<Object, ClassInfo> valCombination(

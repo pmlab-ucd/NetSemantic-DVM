@@ -11,17 +11,17 @@ public class Test {
 
 	public static void main(String[] margs) {
 		Test t = new Test();
-		t.test97dc3d1e29f12e3b8fecc54f1b244d3a8910877b_execTask();
+		t.test340dd8625a6a5eb0750a402d088141b3ee14225e_a();
 		//t.testMain2();
 	}
 	
-	public void test97dc3d1e29f12e3b8fecc54f1b244d3a8910877b_execTask() {
+	public void test340dd8625a6a5eb0750a402d088141b3ee14225e_a() {
 		String[] args = new String[4];
 		Settings.logLevel = 0;
 
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/pjapps/97dc3d1e29f12e3b8fecc54f1b244d3a8910877b/97dc3d1e29f12e3b8fecc54f1b244d3a8910877b.apk";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/pjapps/340dd8625a6a5eb0750a402d088141b3ee14225e/340dd8625a6a5eb0750a402d088141b3ee14225e.apk";
 		args[1] = "com.android.main.MainService";
-		args[2] = "execTask";
+		args[2] = "a";
 		args[3] = "Full";
 		
 		Main.main(args);
@@ -56,10 +56,9 @@ public class Test {
 
 		args[0] = "C:/Users/hao/workspace/PJApps/app/app-release.apk";
 		args[1] = "fu.hao.pjapps.MainActivity";
-		args[2] = "testInfluence2";
-		
+		args[2] = "testConnection";
 		Main.main(args);
-		
+
 		System.out.println("REs: " + Results.results);
 		System.out.println("REs: " + Results.targetCallRes);
 		assertEquals(false, Results.targetCallRes.isEmpty());
@@ -72,7 +71,7 @@ public class Test {
 						.getInfluAPIs()
 						.toString()
 						.contains(
-								"INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage"));
+								"<40 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage"));
 	}
 	
 

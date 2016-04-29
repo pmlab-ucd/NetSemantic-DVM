@@ -1,0 +1,270 @@
+DalvikVM - [MSG]: Begin run testLoop at C:/Users/hao/workspace/PJApps/app/app-release.apk
+DalvikVM - [MSG]: RUN Method fu.hao.pjapps.MainActivity/testLoop[]
+DalvikVM - [BB]: New method call: fu.hao.pjapps.MainActivity/testLoop[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[9]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r7,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: [2]<0 INVOKE,VIRTUAL,extra=[android.app.Activity/getSystemService[java.lang.String], [9, 7]]>
+DalvikVM - [BB]: [3]<0 MOV,RESULT,dst=r6,type=java.lang.Object>
+DalvikVM - [BB]: [4]<0 ARITHMETIC,CHECK-AND-CAST,dst=r6,type=android.telephony.TelephonyManager>
+DalvikVM - [BB]: [5]<0 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>
+DalvikVM - [BB]: [6]<0 MOV,RESULT,dst=r2,type=java.lang.Object>
+DalvikVM - [BB]: [7]<0 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [8]<0 IF,EQZ,r0=r2,extra=index:10>
+DalvikVM - [BB]: [9]<0 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?10>
+DalvikVM - [BB]: [10]<0 MOV,CONST,dst=r4,type=void,extra=class patdroid.core.PrimitiveInfo?1>
+DalvikVM - [BB]: [11]<0 MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [12]<0 IF,GE,r0=r3,r1=r1,extra=index:16>
+DalvikVM - [BB]: [13]<0 ARITHMETIC,ADD,dst=r4,r0=r4,extra=class patdroid.core.PrimitiveInfo?-1>
+DalvikVM - [BB]: [14]<0 ARITHMETIC,ADD,dst=r3,r0=r3,extra=class patdroid.core.PrimitiveInfo?1>
+DalvikVM - [BB]: [15]<0 GOTO,extra=index:12>
+DalvikVM - [BB]: [16]<0 IF,LEZ,r0=r4,extra=index:31>
+DalvikVM - [BB]: [17]<0 NEW,INSTANCE,dst=r7,type=java.lang.StringBuilder>
+DalvikVM - [BB]: [18]<0 INVOKE,DIRECT,extra=[java.lang.StringBuilder/<init>[], [7]]>
+DalvikVM - [BB]: [19]<0 MOV,CONST,dst=r8,type=java.lang.String,extra="http://mobilemeego91.com/mm.do?imei=">
+DalvikVM - [BB]: [20]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [7, 8]]>
+DalvikVM - [BB]: [21]<0 MOV,RESULT,dst=r7,type=java.lang.Object>
+DalvikVM - [BB]: [22]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [7, 2]]>
+DalvikVM - [BB]: [23]<0 MOV,RESULT,dst=r7,type=java.lang.Object>
+DalvikVM - [BB]: [24]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/toString[], [7]]>
+DalvikVM - [BB]: [25]<0 MOV,RESULT,dst=r5,type=java.lang.Object>
+DalvikVM - [BB]: [26]<0 NEW,INSTANCE,dst=r7,type=java.net.URL>
+DalvikVM - [BB]: [27]<0 INVOKE,DIRECT,extra=[java.net.URL/<init>[java.lang.String], [7, 5]]>
+DalvikVM - [BB]: [28]<0 INVOKE,VIRTUAL,extra=[java.net.URL/openConnection[], [7]]>
+DalvikVM - [BB]: [29]<0 MOV,RESULT,dst=r7,type=java.lang.Object>
+DalvikVM - [BB]: [30]<0 ARITHMETIC,CHECK-AND-CAST,dst=r7,type=java.net.HttpURLConnection>
+DalvikVM - [BB]: [31]<0 RETURN,VOID>
+DalvikVM - [BB]: [32]<0 MOV,EXCETPION,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [33]<0 INVOKE,VIRTUAL,extra=[java.lang.Throwable/printStackTrace[], [0]]>
+DalvikVM - [BB]: [34]<0 GOTO,extra=index:31>
+DalvikVM - [BB]: New Stack Frame: StackFrame fu.hao.pjapps.MainActivity/testLoop[]
+DalvikVM - [BB]: Stack: [StackFrame fu.hao.pjapps.MainActivity/testLoop[]]
+Interpreter - [MSG]: New chain obj
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass fu.hao.pjapps.MainActivity at fu.hao.trust.dvm.VMHeap@d55beeb
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.pjapps.MainActivity at fu.hao.trust.dvm.VMHeap@d55beeb
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@d55beeb
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@d55beeb
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@d55beeb
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for java.lang.Object at fu.hao.trust.dvm.VMHeap@d55beeb
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type java.lang.Object
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@d55beeb
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@d55beeb
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type fu.hao.pjapps.MainActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass fu.hao.pjapps.MainActivity at fu.hao.trust.dvm.VMHeap@d55beeb
+DVMObject - [BB]: New instance of fu.hao.pjapps.MainActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass fu.hao.pjapps.MainActivity at fu.hao.trust.dvm.VMHeap@d55beeb
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type fu.hao.pjapps.MainActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass fu.hao.pjapps.MainActivity at fu.hao.trust.dvm.VMHeap@d55beeb
+Interpreter - [MSG]: RUN BEGIN fu.hao.pjapps.MainActivity/testLoop[]
+Interpreter - [MSG]: RUN BEGIN
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> run set pc to 0
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[9]> at fu.hao.pjapps.MainActivity/testLoop[]
+Interpreter - [WARN]: NULL CallingCtx!
+Interpreter - [DEBUG]: args: instance number 1@fu.hao.pjapps.MainActivity
+Interpreter - [BB]: Start param from 1
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <1 MOV,CONST,dst=r7,type=java.lang.String,extra="phone"> at fu.hao.pjapps.MainActivity/testLoop[]
+Interpreter - [DEBUG]: Mov const begin <1 MOV,CONST,dst=r7,type=java.lang.String,extra="phone">
+Interpreter - [DEBUG]: data: phone class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 2
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <2 INVOKE,VIRTUAL,extra=[android.app.Activity/getSystemService[java.lang.String], [9, 7]]> at fu.hao.pjapps.MainActivity/testLoop[]
+Interpreter - [MSG]: arg0 obj: instance number 1@fu.hao.pjapps.MainActivity
+Interpreter - [DEBUG]: Reflction class: class android.app.Activity
+Interpreter - [BB]: arg1@reg7: phone
+Interpreter - [DEBUG]: Caller obj: android.app.Activity@4babdf23, from class: class android.app.Activity
+Interpreter - [DEBUG]: Return data: android.telephony.TelephonyManager@73cd0798 ,class android.telephony.TelephonyManager
+Interpreter - [MSG]: Reflction invocation public java.lang.Object android.app.Activity.getSystemService(java.lang.String)
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 3
+FULL_OP_INVOKE - [BB]: targetcalls {}
+InfluenceAnalysis - [BB]: <android.app.Activity: java.lang.Object getSystemService(java.lang.String)>
+InfluenceAnalysis - [DEBUG]: not a taint call: <android.app.Activity: java.lang.Object getSystemService(java.lang.String)>
+ContextAnalysis - [BB]: <android.app.Activity: java.lang.Object getSystemService(java.lang.String)>
+ContextAnalysis - [DEBUG]: not a taint call: <android.app.Activity: java.lang.Object getSystemService(java.lang.String)>
+ContextAnalysis - [BB]: Ret value android.telephony.TelephonyManager@73cd0798
+InfluenceAnalysis - [BB]: Method public java.lang.Object android.app.Activity.getSystemService(java.lang.String)
+InfluenceAnalysis - [MSG]: Not API Recording
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <3 MOV,RESULT,dst=r6,type=java.lang.Object> at fu.hao.pjapps.MainActivity/testLoop[]
+OP_MOV_RESULT - [BB]: Result data: android.telephony.TelephonyManager@73cd0798
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.TelephonyManager@73cd0798, type: java.lang.Object, to [reg 6@MainActivity/testLoop]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 4
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <4 ARITHMETIC,CHECK-AND-CAST,dst=r6,type=android.telephony.TelephonyManager> at fu.hao.pjapps.MainActivity/testLoop[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_ARITHETIC -> jump set pc to 5
+FullAnalysis - [BB]: Not a taint op <4 ARITHMETIC,CHECK-AND-CAST,dst=r6,type=android.telephony.TelephonyManager>
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]> at fu.hao.pjapps.MainActivity/testLoop[]
+Interpreter - [MSG]: arg0 obj: android.telephony.TelephonyManager@73cd0798
+Interpreter - [DEBUG]: Reflction class: class android.telephony.TelephonyManager
+Interpreter - [DEBUG]: Return data: 359874043116909 ,class java.lang.String
+Interpreter - [MSG]: Reflction invocation public java.lang.String android.telephony.TelephonyManager.getDeviceId()
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 6
+FULL_OP_INVOKE - [BB]: targetcalls {}
+InfluenceAnalysis - [BB]: <android.telephony.TelephonyManager: java.lang.String getDeviceId()>
+InfluenceAnalysis - [DEBUG]: not a taint call: <android.telephony.TelephonyManager: java.lang.String getDeviceId()>
+ContextAnalysis - [BB]: <android.telephony.TelephonyManager: java.lang.String getDeviceId()>
+ContextAnalysis - [WARN]: Found a tainted return value!
+DalvikVM - [BB]: ar-1 <359874043116909, java.lang.String>, <[SensCtxVar for 359874043116909], java.lang.String>
+ContextAnalysis - [BB]: Set SensCtxVar at RetReg.
+ContextAnalysis - [BB]: Ret value [SensCtxVar for 359874043116909]
+InfluenceAnalysis - [BB]: Method public java.lang.String android.telephony.TelephonyManager.getDeviceId()
+InfluenceAnalysis - [MSG]: Not API Recording
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {[Global RetReg]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, 359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <6 MOV,RESULT,dst=r2,type=java.lang.Object> at fu.hao.pjapps.MainActivity/testLoop[]
+OP_MOV_RESULT - [BB]: Result data: [SensCtxVar for 359874043116909]
+OP_MOV_RESULT - [DEBUG]: Result data: [SensCtxVar for 359874043116909], type: java.lang.String, to [reg 2@MainActivity/testLoop]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 7
+ContextAnalysis - [BB]: <5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>
+ContextAnalysis - [BB]: Add reg 2 due to ret reg.
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {[reg 2@MainActivity/testLoop]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, [SensCtxVar for 359874043116909]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, 359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <7 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?0> at fu.hao.pjapps.MainActivity/testLoop[]
+Interpreter - [DEBUG]: Mov const begin <7 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+Interpreter - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 8
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {[reg 2@MainActivity/testLoop]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, 359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, [SensCtxVar for 359874043116909]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <8 IF,EQZ,r0=r2,extra=index:10> at fu.hao.pjapps.MainActivity/testLoop[]
+OP_CMP - [DEBUG]: r0 data [SensCtxVar for 359874043116909]
+DalvikVM - [BB]: fu.hao.trust.analysis.TaintCtrlDep$CDTAINT_OP_CMP -> flow set pc to 9
+ATAINT_OP_CMP - [WARN]: New Simple Branch [Branch: 8--[cond: <8 IF,EQZ,r0=r2,extra=index:10>][sumpoint: <0 MOV,CONST,dst=r4,type=void,extra=class patdroid.core.PrimitiveInfo?1>]@testLoop]
+ATAINT_OP_CMP - [BB]: Set sum point 10 <0 MOV,CONST,dst=r4,type=void,extra=class patdroid.core.PrimitiveInfo?1>
+ATAINT_OP_CMP - [MSG]: ATAINT_OP_IF:  <8 IF,EQZ,r0=r2,extra=index:10> 10
+ATAINT_OP_CMP - [BB]: Add <8 IF,EQZ,r0=r2,extra=index:10> to met of [Branch: 8--[cond: <8 IF,EQZ,r0=r2,extra=index:10>][sumpoint: <0 MOV,CONST,dst=r4,type=void,extra=class patdroid.core.PrimitiveInfo?1>]@testLoop]
+fu.hao.trust.data.Branch - [BB]: Add elemSrc <5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>
+ContextAnalysis - [MSG]: Add CDTaintBranch [Branch: 8--[cond: <8 IF,EQZ,r0=r2,extra=index:10>][sumpoint: <0 MOV,CONST,dst=r4,type=void,extra=class patdroid.core.PrimitiveInfo?1>]@testLoop]
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {[reg 2@MainActivity/testLoop]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, [SensCtxVar for 359874043116909]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, 359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <9 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?10> at fu.hao.pjapps.MainActivity/testLoop[]
+Interpreter - [DEBUG]: Mov const begin <9 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?10>
+DalvikVM - [BB]: ar1 <0, void>, <10, void>
+Interpreter - [DEBUG]: data: 10 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 10
+fu.hao.trust.data.Branch - [BB]: Type-old: void, Type-new: void
+FullAnalysis - [BB]: Assigned@[reg 1@MainActivity/testLoop]: 0, 10
+Caller: runAnalysis@fu.hao.trust.analysis.TaintSumBranch - [BB]: Add conflict at var [reg 1@MainActivity/testLoop], with value 0
+fu.hao.trust.data.Branch - [BB]: Type-old: void, Type-new: void
+Caller: runAnalysis@fu.hao.trust.analysis.TaintSumBranch - [BB]: Overwrite at var [reg 1@MainActivity/testLoop], with value 10
+FullAnalysis - [WARN]: <5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>
+FullAnalysis - [BB]: a[<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>]
+ContextAnalysis - [MSG]: Add correlated tained var [reg 1@MainActivity/testLoop]
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {[reg 2@MainActivity/testLoop]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, [reg 1@MainActivity/testLoop]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, 359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, [SensCtxVar for 359874043116909]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <10 MOV,CONST,dst=r4,type=void,extra=class patdroid.core.PrimitiveInfo?1> at fu.hao.pjapps.MainActivity/testLoop[]
+fu.hao.trust.data.Branch - [BB]: Begins value combination:[Branch: 8--[cond: <8 IF,EQZ,r0=r2,extra=index:10>][sumpoint: <10 MOV,CONST,dst=r4,type=void,extra=class patdroid.core.PrimitiveInfo?1>]@testLoop]
+fu.hao.trust.data.Branch - [BB]: {[reg 1@MainActivity/testLoop]=[Lfu.hao.trust.utils.Pair;@391663bd}
+fu.hao.trust.data.Branch - [BB]: Value combination for var [reg 1@MainActivity/testLoop]
+fu.hao.trust.data.Branch - [BB]: Currt val <0, void>, with original value <0, void>
+Unknown - [BB]: Unknown created!
+fu.hao.trust.data.Branch - [BB]: Currt val <[Unknown var, type: void], void>, with original value <10, void>
+DalvikVM - [BB]: ar1 <10, void>, <[Unknown var, type: void], void>
+FullAnalysis - [BB]: Remove simple branch [Branch: 8--[cond: <8 IF,EQZ,r0=r2,extra=index:10>][sumpoint: <10 MOV,CONST,dst=r4,type=void,extra=class patdroid.core.PrimitiveInfo?1>]@testLoop]
+ContextAnalysis - [BB]: Rm Simple CDTAINTBranch [Branch: 8--[cond: <8 IF,EQZ,r0=r2,extra=index:10>][sumpoint: <10 MOV,CONST,dst=r4,type=void,extra=class patdroid.core.PrimitiveInfo?1>]@testLoop]
+Interpreter - [DEBUG]: Mov const begin <10 MOV,CONST,dst=r4,type=void,extra=class patdroid.core.PrimitiveInfo?1>
+Interpreter - [DEBUG]: data: 1 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 11
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {[reg 2@MainActivity/testLoop]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, [reg 1@MainActivity/testLoop]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, [SensCtxVar for 359874043116909]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, 359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <11 MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?0> at fu.hao.pjapps.MainActivity/testLoop[]
+Interpreter - [DEBUG]: Mov const begin <11 MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+Interpreter - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 12
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {[reg 2@MainActivity/testLoop]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, [reg 1@MainActivity/testLoop]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, 359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, [SensCtxVar for 359874043116909]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <12 IF,GE,r0=r3,r1=r1,extra=index:16> at fu.hao.pjapps.MainActivity/testLoop[]
+OP_CMP - [DEBUG]: r0 data 0
+DalvikVM - [BB]: fu.hao.trust.analysis.TaintCtrlDep$CDTAINT_OP_CMP -> flow set pc to 13
+ATAINT_OP_CMP - [MSG]: Loop detected!
+ATAINT_OP_CMP - [BB]: loopifs null
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {0=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, [reg 2@MainActivity/testLoop]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, [reg 1@MainActivity/testLoop]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, [reg 3@MainActivity/testLoop]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, [SensCtxVar for 359874043116909]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, 359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <13 ARITHMETIC,ADD,dst=r4,r0=r4,extra=class patdroid.core.PrimitiveInfo?-1> at fu.hao.pjapps.MainActivity/testLoop[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_ARITHETIC -> jump set pc to 14
+Interpreter - [DEBUG]: data 1
+DalvikVM - [BB]: ar4 <1, void>, <0, int>
+FullAnalysis - [BB]: Not a taint op <13 ARITHMETIC,ADD,dst=r4,r0=r4,extra=class patdroid.core.PrimitiveInfo?-1>
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {0=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, [reg 2@MainActivity/testLoop]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, [reg 1@MainActivity/testLoop]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, [reg 3@MainActivity/testLoop]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, [SensCtxVar for 359874043116909]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, 359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <14 ARITHMETIC,ADD,dst=r3,r0=r3,extra=class patdroid.core.PrimitiveInfo?1> at fu.hao.pjapps.MainActivity/testLoop[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_ARITHETIC -> jump set pc to 15
+Interpreter - [DEBUG]: data 0
+DalvikVM - [BB]: ar3 <0, void>, <1, int>
+FullAnalysis - [BB]: Not a taint op <14 ARITHMETIC,ADD,dst=r3,r0=r3,extra=class patdroid.core.PrimitiveInfo?1>
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {0=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, [reg 2@MainActivity/testLoop]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, [reg 1@MainActivity/testLoop]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, [reg 3@MainActivity/testLoop]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, [SensCtxVar for 359874043116909]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, 359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <15 GOTO,extra=index:12> at fu.hao.pjapps.MainActivity/testLoop[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_GOTO -> jump set pc to 12
+Interpreter - [DEBUG]: goto done: <15 GOTO,extra=index:12>
+FullAnalysis - [BB]: Not a taint op <15 GOTO,extra=index:12>
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {0=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, [reg 2@MainActivity/testLoop]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, [reg 1@MainActivity/testLoop]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, [reg 3@MainActivity/testLoop]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, [SensCtxVar for 359874043116909]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, 359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <12 IF,GE,r0=r3,r1=r1,extra=index:16> at fu.hao.pjapps.MainActivity/testLoop[]
+OP_CMP - [DEBUG]: r0 data 1
+DalvikVM - [BB]: fu.hao.trust.analysis.TaintCtrlDep$CDTAINT_OP_CMP -> flow set pc to 13
+ATAINT_OP_CMP - [MSG]: Loop detected!
+ATAINT_OP_CMP - [BB]: loopifs [<12 IF,GE,r0=r3,r1=r1,extra=index:16>]
+DalvikVM - [BB]: fu.hao.trust.analysis.TaintSumBranch$ATAINT_OP_CMP -> isLoop set pc to 16
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {[Unknown var, type: void]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, [reg 2@MainActivity/testLoop]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, 0=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, 1=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, [reg 1@MainActivity/testLoop]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, [reg 3@MainActivity/testLoop]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, 359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, [SensCtxVar for 359874043116909]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <16 IF,LEZ,r0=r4,extra=index:31> at fu.hao.pjapps.MainActivity/testLoop[]
+OP_CMP - [DEBUG]: r0 data 0
+Interpreter - [DEBUG]: ops: 0 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_IF_LEZ -> jump set pc to 31
+Interpreter - [DEBUG]: not equ: <16 IF,LEZ,r0=r4,extra=index:31>
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {0=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, [reg 2@MainActivity/testLoop]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, [Unknown var, type: void]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, 1=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, [reg 1@MainActivity/testLoop]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, [reg 3@MainActivity/testLoop]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, [SensCtxVar for 359874043116909]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>, 359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [6]]>}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <31 RETURN,VOID> at fu.hao.pjapps.MainActivity/testLoop[]
+class fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID - [DEBUG]: Return void
+Interpreter - [MSG]: RUN DONE! The last one is testLoop
+DalvikVM - [MSG]: FINISHED!
+
+main - [MSG]: Analysis has run for 4.886547955 seconds
+
