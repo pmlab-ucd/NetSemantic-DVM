@@ -841,6 +841,7 @@ public class DalvikVM {
 			}
 			runMethod(constructor, callCtx);
 			chainThisObj = (DVMObject) callCtx[0];
+			stack.clear();
 		} else {
 			for (MethodInfo mi : thisObjType.getAllMethods()) {
 				Log.bb(TAG, mi + " " +  mi.isConstructor());
