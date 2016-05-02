@@ -20,6 +20,29 @@ public class PjappsTest {
 	static String TAG = "test";
 	
 	@Test
+	public void test00983aad12700be0a440296c6173b18a829e9369_a() {
+		String[] args = new String[4];
+		Settings.logLevel = 0;
+
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/pjapps/00983aad12700be0a440296c6173b18a829e9369/00983aad12700be0a440296c6173b18a829e9369.apk";
+		args[1] = "com.android.main.MainService";
+		args[2] = "a";
+		args[3] = "Full";
+		
+		Main.main(args);
+		boolean containsSms = false;
+		for (TargetCall targetCall : Results.targetCallRes.values()) {
+			Log.msg(TAG, "Result: " + targetCall);
+			if (targetCall.getInfluAPIs().toString().contains("SmsManager/sendTextMessage")) {
+				containsSms = true;
+			}
+		}
+
+		assertEquals(false, Results.targetCallRes.isEmpty());
+		assertEquals(true, containsSms);
+	}
+	
+	@Test
 	public void test2c2f4aeaa7861d9f5e707edeb7eb71b77a2ee809_execTask() {
 		String[] args = new String[4];
 		Settings.logLevel = 0;
@@ -1290,7 +1313,7 @@ public class PjappsTest {
 		System.out.println("REs: " + Results.results);
 		System.out.println("REs: " + Results.targetCallRes);
 		
-		DalvikVM vm = new DalvikVM();
+		DalvikVM vm = new DalvikVM(args[0]);
 		Object[] params = new Object[3];
 		params[0] = "3lgoagdmfejekgfos9t15chojm";
 		params[1] = new PrimitiveInfo(3); 
@@ -1310,13 +1333,14 @@ public class PjappsTest {
 	
 	//@Test
 	public void testEncryption() {
-		DalvikVM vm = new DalvikVM();
+		String apk = "C:/Users/hao/workspace/PJApps/app/663e8eb52c7b4a14e2873b1551748587018661b3.apk";
+		DalvikVM vm = new DalvikVM(apk);
 		Object[] params = new Object[3];
 		params[0] = "kl4ofgsmgeje5gko99s1fc2ofm";
 		params[1] = new PrimitiveInfo(3); 
 		params[2] = new PrimitiveInfo(3);
 		try {
-			vm.runMethod("C:/Users/hao/workspace/PJApps/app/663e8eb52c7b4a14e2873b1551748587018661b3.apk",
+			vm.runMethod(apk,
 					"com.android.main.Base64", "encodebook", null, params);
 		} catch (ZipException e) {
 			// TODO Auto-generated catch block
@@ -1329,12 +1353,13 @@ public class PjappsTest {
 	
 	@Test
 	public void testEncryption71d2f24() {
-		DalvikVM vm = new DalvikVM();
+		String apk = "C:/Users/hao/workspace/DroidBenchProj/apks/pjapps/71d2f241f2cb8f4208dd3574df3c3ce0dacdd1c0/71d2f241f2cb8f4208dd3574df3c3ce0dacdd1c0.apk";
+		DalvikVM vm = new DalvikVM(apk);
 		Object[] params = new Object[2];
 		params[0] = "alfo3gsa3nfdsrfo3isd21d8a8fccosm";
 		params[1] = new PrimitiveInfo(1); 
 		try {
-			vm.runMethod("C:/Users/hao/workspace/DroidBenchProj/apks/pjapps/71d2f241f2cb8f4208dd3574df3c3ce0dacdd1c0/71d2f241f2cb8f4208dd3574df3c3ce0dacdd1c0.apk",
+			vm.runMethod(apk,
 					"com.android.Base64", "encode", null, params);
 		} catch (ZipException e) {
 			// TODO Auto-generated catch block

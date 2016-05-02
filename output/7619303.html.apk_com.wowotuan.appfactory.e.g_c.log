@@ -1,0 +1,256 @@
+DalvikVM - [MSG]: Begin run c at C:/Users/hao/workspace/DroidBenchProj/apks/benign/wowotuan/com.wowotuan.appfactory.wangpintaisuniupai/7619303.html.apk
+DalvikVM - [MSG]: RUN Method com.wowotuan.appfactory.e.g/c[]
+DalvikVM - [BB]: New method call: com.wowotuan.appfactory.e.g/c[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[1]>
+DalvikVM - [BB]: [1]<0 INSTANCE,IGET,r0=r1,r1=r0,type=java.lang.Object,extra=com.wowotuan.appfactory.e.g.a>
+DalvikVM - [BB]: [2]<0 IF,EQZ,r0=r0,extra=index:11>
+DalvikVM - [BB]: [3]<0 INSTANCE,IGET,r0=r1,r1=r0,type=java.lang.Object,extra=com.wowotuan.appfactory.e.g.a>
+DalvikVM - [BB]: [4]<0 INVOKE,VIRTUAL,extra=[com.baidu.location.k/c[], [0]]>
+DalvikVM - [BB]: [5]<0 MOV,RESULT,dst=r0,type=void>
+DalvikVM - [BB]: [6]<0 IF,EQZ,r0=r0,extra=index:12>
+DalvikVM - [BB]: [7]<0 INSTANCE,IGET,r0=r1,r1=r0,type=java.lang.Object,extra=com.wowotuan.appfactory.e.g.a>
+DalvikVM - [BB]: [8]<0 INVOKE,VIRTUAL,extra=[com.baidu.location.k/b[], [0]]>
+DalvikVM - [BB]: [9]<0 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?1>
+DalvikVM - [BB]: [10]<0 INSTANCE,IPUT,r0=r1,r1=r0,type=boolean,extra=com.wowotuan.appfactory.e.g.d>
+DalvikVM - [BB]: [11]<0 RETURN,VOID>
+DalvikVM - [BB]: [12]<0 INSTANCE,IGET,r0=r1,r1=r0,type=java.lang.Object,extra=com.wowotuan.appfactory.e.g.a>
+DalvikVM - [BB]: [13]<0 INVOKE,VIRTUAL,extra=[com.baidu.location.k/d[], [0]]>
+DalvikVM - [BB]: [14]<0 INSTANCE,IGET,r0=r1,r1=r0,type=java.lang.Object,extra=com.wowotuan.appfactory.e.g.a>
+DalvikVM - [BB]: [15]<0 INVOKE,VIRTUAL,extra=[com.baidu.location.k/b[], [0]]>
+DalvikVM - [BB]: [16]<0 GOTO,extra=index:9>
+DalvikVM - [BB]: New Stack Frame: StackFrame com.wowotuan.appfactory.e.g/c[]
+DalvikVM - [BB]: Stack: [StackFrame com.wowotuan.appfactory.e.g/c[]]
+Interpreter - [MSG]: New chain obj
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.e.g at fu.hao.trust.dvm.VMHeap@4c907c1d
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for com.wowotuan.appfactory.e.g at fu.hao.trust.dvm.VMHeap@4c907c1d
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@4c907c1d
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for java.lang.Object at fu.hao.trust.dvm.VMHeap@4c907c1d
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type java.lang.Object
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@4c907c1d
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type com.wowotuan.appfactory.e.g
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.e.g at fu.hao.trust.dvm.VMHeap@4c907c1d
+DVMObject - [BB]: New instance of com.wowotuan.appfactory.e.g
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.e.g at fu.hao.trust.dvm.VMHeap@4c907c1d
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type com.wowotuan.appfactory.e.g
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.e.g at fu.hao.trust.dvm.VMHeap@4c907c1d
+Interpreter - [MSG]: RUN BEGIN com.wowotuan.appfactory.e.g/c[]
+Interpreter - [MSG]: RUN BEGIN
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> run set pc to 0
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[1]> at com.wowotuan.appfactory.e.g/c[]
+Interpreter - [WARN]: NULL CallingCtx!
+Interpreter - [DEBUG]: args: instance number 1@com.wowotuan.appfactory.e.g
+Interpreter - [BB]: Start param from 1
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <1 INSTANCE,IGET,r0=r1,r1=r0,type=java.lang.Object,extra=com.wowotuan.appfactory.e.g.a> at com.wowotuan.appfactory.e.g/c[]
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: obj instance number 1@com.wowotuan.appfactory.e.g
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: fieldinfo com.wowotuan.appfactory.e.g.a
+Unknown - [BB]: Unknown created!
+DVMObject - [DEBUG]: put field [Unknown var, type: com.baidu.location.k]
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: [Unknown var, type: com.baidu.location.k]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD -> jump set pc to 2
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <2 IF,EQZ,r0=r0,extra=index:11> at com.wowotuan.appfactory.e.g/c[]
+OP_CMP - [DEBUG]: r0 data [Unknown var, type: com.baidu.location.k]
+DalvikVM - [BB]: fu.hao.trust.analysis.TaintCtrlDep$CDTAINT_OP_CMP -> flow set pc to 3
+ATAINT_OP_CMP - [BB]: ret: 11
+ATAINT_OP_CMP - [WARN]: New Simple Branch [Branch: 2--[cond: <2 IF,EQZ,r0=r0,extra=index:11>][sumpoint: <0 RETURN,VOID>]@c]
+ATAINT_OP_CMP - [BB]: Set sum point 11 <0 RETURN,VOID>
+ATAINT_OP_CMP - [MSG]: ATAINT_OP_IF:  <2 IF,EQZ,r0=r0,extra=index:11> 11
+ATAINT_OP_CMP - [BB]: Add <2 IF,EQZ,r0=r0,extra=index:11> to met of [Branch: 2--[cond: <2 IF,EQZ,r0=r0,extra=index:11>][sumpoint: <0 RETURN,VOID>]@c]
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <3 INSTANCE,IGET,r0=r1,r1=r0,type=java.lang.Object,extra=com.wowotuan.appfactory.e.g.a> at com.wowotuan.appfactory.e.g/c[]
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: obj instance number 1@com.wowotuan.appfactory.e.g
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: fieldinfo com.wowotuan.appfactory.e.g.a
+DalvikVM - [BB]: ar0 <[Unknown var, type: com.baidu.location.k], com.baidu.location.k>, <[Unknown var, type: com.baidu.location.k], com.baidu.location.k>
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: [Unknown var, type: com.baidu.location.k]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD -> jump set pc to 4
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <4 INVOKE,VIRTUAL,extra=[com.baidu.location.k/c[], [0]]> at com.wowotuan.appfactory.e.g/c[]
+Interpreter - [MSG]: arg0 obj: [Unknown var, type: com.baidu.location.k]
+Interpreter - [DEBUG]: Not a reflction invocation com.baidu.location.k/c[]
+Interpreter - [WARN]: NULL "THIS" INSTANCE!
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 5
+FULL_OP_INVOKE - [BB]: targetcalls {}
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <5 MOV,RESULT,dst=r0,type=void> at com.wowotuan.appfactory.e.g/c[]
+Unknown - [BB]: Unknown created!
+DalvikVM - [BB]: ar0 <[Unknown var, type: com.baidu.location.k], com.baidu.location.k>, <[Unknown var, type: void], void>
+OP_MOV_RESULT - [BB]: Result data: [Unknown var, type: void]
+OP_MOV_RESULT - [DEBUG]: Result data: [Unknown var, type: void], type: void, to [reg 0@g/c]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 6
+fu.hao.trust.data.Branch - [BB]: Type-old: com.baidu.location.k, Type-new: void
+FullAnalysis - [BB]: Assigned@[reg 0@g/c]: [Unknown var, type: com.baidu.location.k], [Unknown var, type: void]
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <6 IF,EQZ,r0=r0,extra=index:12> at com.wowotuan.appfactory.e.g/c[]
+OP_CMP - [DEBUG]: r0 data [Unknown var, type: void]
+DalvikVM - [BB]: fu.hao.trust.analysis.TaintCtrlDep$CDTAINT_OP_CMP -> flow set pc to 7
+ATAINT_OP_CMP - [BB]: ret: 11
+ATAINT_OP_CMP - [BB]: cao 
+ATAINT_OP_CMP - [BB]: rii
+fu.hao.trust.solver.BiDirBranch - [WARN]: New BiDirBranch [Branch: 6--[cond: <6 IF,EQZ,r0=r0,extra=index:12>][sumpoint: <0 INSTANCE,IGET,r0=r1,r1=r0,type=java.lang.Object,extra=com.wowotuan.appfactory.e.g.a>]@c]
+ATAINT_OP_CMP - [BB]: BiDirSumpoint <0 RETURN,VOID>
+ATAINT_OP_CMP - [BB]: Set rest begin <0 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?1>
+ATAINT_OP_CMP - [MSG]: ATAINT_OP_IF:  <6 IF,EQZ,r0=r0,extra=index:12> 12
+ATAINT_OP_CMP - [BB]: Add <6 IF,EQZ,r0=r0,extra=index:12> to met of [Branch: 6--[cond: <6 IF,EQZ,r0=r0,extra=index:12>][sumpoint: <0 RETURN,VOID>]@c]
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <7 INSTANCE,IGET,r0=r1,r1=r0,type=java.lang.Object,extra=com.wowotuan.appfactory.e.g.a> at com.wowotuan.appfactory.e.g/c[]
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: obj instance number 1@com.wowotuan.appfactory.e.g
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: fieldinfo com.wowotuan.appfactory.e.g.a
+DalvikVM - [BB]: ar0 <[Unknown var, type: void], void>, <[Unknown var, type: com.baidu.location.k], com.baidu.location.k>
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: [Unknown var, type: com.baidu.location.k]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD -> jump set pc to 8
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <8 INVOKE,VIRTUAL,extra=[com.baidu.location.k/b[], [0]]> at com.wowotuan.appfactory.e.g/c[]
+Interpreter - [MSG]: arg0 obj: [Unknown var, type: com.baidu.location.k]
+Interpreter - [DEBUG]: Not a reflction invocation com.baidu.location.k/b[]
+Interpreter - [WARN]: NULL "THIS" INSTANCE!
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 9
+FULL_OP_INVOKE - [BB]: targetcalls {}
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <9 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?1> at com.wowotuan.appfactory.e.g/c[]
+Interpreter - [DEBUG]: Mov const begin <9 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?1>
+DalvikVM - [BB]: ar0 <[Unknown var, type: com.baidu.location.k], com.baidu.location.k>, <1, void>
+Interpreter - [DEBUG]: data: 1 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 10
+fu.hao.trust.data.Branch - [BB]: Type-old: com.baidu.location.k, Type-new: void
+FullAnalysis - [BB]: Assigned@[reg 0@g/c]: [Unknown var, type: com.baidu.location.k], 1
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <10 INSTANCE,IPUT,r0=r1,r1=r0,type=boolean,extra=com.wowotuan.appfactory.e.g.d> at com.wowotuan.appfactory.e.g/c[]
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_PUT_FIELD - [BB]: field com.wowotuan.appfactory.e.g.d
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.wowotuan.appfactory.e.g
+DVMObject - [DEBUG]: put field 1
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_PUT_FIELD - [MSG]: Put data 1 to the field of instance number 1@com.wowotuan.appfactory.e.g
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_INSTANCE_PUT_FIELD -> jump set pc to 11
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <11 RETURN,VOID> at com.wowotuan.appfactory.e.g/c[]
+fu.hao.trust.data.Branch - [BB]: Begins value combination:[Branch: 2--[cond: <2 IF,EQZ,r0=r0,extra=index:11>][sumpoint: <11 RETURN,VOID>]@c]
+fu.hao.trust.data.Branch - [BB]: {}
+FullAnalysis - [BB]: Remove simple branch [Branch: 2--[cond: <2 IF,EQZ,r0=r0,extra=index:11>][sumpoint: <11 RETURN,VOID>]@c]
+FullAnalysis - [MSG]: Arrive at sum point of bidirbranch [Branch: 6--[cond: <6 IF,EQZ,r0=r0,extra=index:12>][sumpoint: <11 RETURN,VOID>]@c]
+FullAnalysis - [BB]: Back to <6 IF,EQZ,r0=r0,extra=index:12>
+VMState - [MSG]: ++++++++++++++++++++++++++++++++BackTrace+++++++++++++++++++++++++++++++++
+DVMObject - [DEBUG]: put field 1
+DalvikVM - [BB]: ar0 <1, void>, <[Unknown var, type: void], void>
+DalvikVM - [BB]: ar1 <instance number 1@com.wowotuan.appfactory.e.g, com.wowotuan.appfactory.e.g>, <instance number 1@com.wowotuan.appfactory.e.g, com.wowotuan.appfactory.e.g>
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> jump set pc to 12
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+fu.hao.trust.solver.BiDirBranch - [BB]: Add backPlugres: [{fu.hao.trust.analysis.FullAnalysis@1e75d892={InfluenceAnalysis={}, ContextAnalysis={}}}]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <12 INSTANCE,IGET,r0=r1,r1=r0,type=java.lang.Object,extra=com.wowotuan.appfactory.e.g.a> at com.wowotuan.appfactory.e.g/c[]
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: obj instance number 1@com.wowotuan.appfactory.e.g
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: fieldinfo com.wowotuan.appfactory.e.g.a
+DalvikVM - [BB]: ar0 <[Unknown var, type: void], void>, <[Unknown var, type: com.baidu.location.k], com.baidu.location.k>
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: [Unknown var, type: com.baidu.location.k]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD -> jump set pc to 13
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <13 INVOKE,VIRTUAL,extra=[com.baidu.location.k/d[], [0]]> at com.wowotuan.appfactory.e.g/c[]
+Interpreter - [MSG]: arg0 obj: [Unknown var, type: com.baidu.location.k]
+Interpreter - [DEBUG]: Not a reflction invocation com.baidu.location.k/d[]
+Interpreter - [WARN]: NULL "THIS" INSTANCE!
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 14
+FULL_OP_INVOKE - [BB]: targetcalls {}
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <14 INSTANCE,IGET,r0=r1,r1=r0,type=java.lang.Object,extra=com.wowotuan.appfactory.e.g.a> at com.wowotuan.appfactory.e.g/c[]
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: obj instance number 1@com.wowotuan.appfactory.e.g
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: fieldinfo com.wowotuan.appfactory.e.g.a
+DalvikVM - [BB]: ar0 <[Unknown var, type: com.baidu.location.k], com.baidu.location.k>, <[Unknown var, type: com.baidu.location.k], com.baidu.location.k>
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: [Unknown var, type: com.baidu.location.k]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD -> jump set pc to 15
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <15 INVOKE,VIRTUAL,extra=[com.baidu.location.k/b[], [0]]> at com.wowotuan.appfactory.e.g/c[]
+Interpreter - [MSG]: arg0 obj: [Unknown var, type: com.baidu.location.k]
+Interpreter - [DEBUG]: Not a reflction invocation com.baidu.location.k/b[]
+Interpreter - [WARN]: NULL "THIS" INSTANCE!
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 16
+FULL_OP_INVOKE - [BB]: targetcalls {}
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <16 GOTO,extra=index:9> at com.wowotuan.appfactory.e.g/c[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_GOTO -> jump set pc to 9
+Interpreter - [DEBUG]: goto done: <16 GOTO,extra=index:9>
+FullAnalysis - [BB]: Not a taint op <16 GOTO,extra=index:9>
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <9 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?1> at com.wowotuan.appfactory.e.g/c[]
+Interpreter - [DEBUG]: Mov const begin <9 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?1>
+DalvikVM - [BB]: ar0 <[Unknown var, type: com.baidu.location.k], com.baidu.location.k>, <1, void>
+Interpreter - [DEBUG]: data: 1 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 10
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <10 INSTANCE,IPUT,r0=r1,r1=r0,type=boolean,extra=com.wowotuan.appfactory.e.g.d> at com.wowotuan.appfactory.e.g/c[]
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_PUT_FIELD - [BB]: field com.wowotuan.appfactory.e.g.d
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.wowotuan.appfactory.e.g
+DVMObject - [DEBUG]: put field 1
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_PUT_FIELD - [MSG]: Put data 1 to the field of instance number 1@com.wowotuan.appfactory.e.g
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_INSTANCE_PUT_FIELD -> jump set pc to 11
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <11 RETURN,VOID> at com.wowotuan.appfactory.e.g/c[]
+FullAnalysis - [MSG]: Arrive at sum point of bidirbranch [Branch: 6--[cond: <6 IF,EQZ,r0=r0,extra=index:12>][sumpoint: <11 RETURN,VOID>]@c]
+FullAnalysis - [MSG]: Rm BiDirBranch [Branch: 6--[cond: <6 IF,EQZ,r0=r0,extra=index:12>][sumpoint: <11 RETURN,VOID>]@c]
+class fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID - [DEBUG]: Return void
+Interpreter - [MSG]: RUN DONE! The last one is c
+DalvikVM - [MSG]: FINISHED!
+
+main - [MSG]: Analysis has run for 6.319406376 seconds
+

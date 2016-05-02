@@ -11,8 +11,57 @@ public class Test {
 
 	public static void main(String[] margs) {
 		Test t = new Test();
-		t.test00983aad12700be0a440296c6173b18a829e9369_a();
+		//t.test00983aad12700be0a440296c6173b18a829e9369_a();
 		//t.testMain2();
+		//t.testMopub_onCreate();
+		//t.testMopub_loadAd();
+		t.testWo_();
+	}
+	
+	public void testWo_() {
+		String[] args = new String[4];
+		args[3] = "Full";
+		Settings.logLevel = 0;
+		
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/benign/wowotuan/com.wowotuan.appfactory.wangpintaisuniupai/7619303.html.apk";
+		//args[1] = "com.wowotuan.appfactory.gui.activity.bz";
+		//args[2] = "onItemClick";
+		//args[1] = "com.wowotuan.appfactory.gui.activity.CityChoiceActivity";
+		//args[2] = "k";
+		args[1] = "com.wowotuan.appfactory.e.h";
+		//args[1] = "com.wowotuan.appfactory.e.g";
+		args[2] = "a";
+		String[] argTypeNames = new String[1];
+		argTypeNames[0] = "com.wowotuan.appfactory.e.g";
+		Object[] initArgs = new Object[1];
+		initArgs[0] = "NULL";
+		Main.init(argTypeNames, initArgs);
+		Main.main(args);
+		assertEquals(true, Results.results.isEmpty());
+	}
+	
+	public void testMopub_loadAd() {
+		String[] args = new String[4];
+		args[3] = "Full";
+		Settings.logLevel = 0;
+		
+		args[0] = "C:/Users/hao/workspace/MultiThreading/app/app-release.apk";
+		args[1] = "com.mopub.mobileads.WebViewAdUrlGenerator";
+		args[2] = "generateUrlString";
+		Main.main(args);
+		assertEquals(true, Results.results.isEmpty());
+	}
+	
+	public void testMopub_onCreate() {
+		String[] args = new String[4];
+		args[3] = "Full";
+		Settings.logLevel = 0;
+		
+		args[0] = "C:/Users/hao/workspace/MultiThreading/app/app-release.apk";
+		args[1] = "fu.hao.multithreading.MainActivity";
+		args[2] = "onCreate";
+		Main.main(args);
+		assertEquals(true, Results.results.isEmpty());
 	}
 	
 	public void test00983aad12700be0a440296c6173b18a829e9369_a() {

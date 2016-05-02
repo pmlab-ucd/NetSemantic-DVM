@@ -1,0 +1,254 @@
+DalvikVM - [MSG]: Begin run generateUrlString at C:/Users/hao/workspace/MultiThreading/app/app-release.apk
+DalvikVM - [MSG]: RUN Method com.mopub.mobileads.WebViewAdUrlGenerator/generateUrlString[java.lang.String]
+DalvikVM - [BB]: New method call: com.mopub.mobileads.WebViewAdUrlGenerator/generateUrlString[java.lang.String]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[2, 3]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="/m/ad">
+DalvikVM - [BB]: [2]<0 INVOKE,VIRTUAL,extra=[com.mopub.common.BaseUrlGenerator/initUrlString[java.lang.String, java.lang.String], [2, 3, 1]]>
+DalvikVM - [BB]: [3]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="6">
+DalvikVM - [BB]: [4]<0 INVOKE,VIRTUAL,extra=[com.mopub.common.BaseUrlGenerator/setApiVersion[java.lang.String], [2, 1]]>
+DalvikVM - [BB]: [5]<0 INSTANCE,IGET,r0=r2,r1=r1,type=java.lang.Object,extra=com.mopub.mobileads.WebViewAdUrlGenerator.mContext>
+DalvikVM - [BB]: [6]<0 INVOKE,STATIC,extra=[com.mopub.common.ClientMetadata/getInstance[android.content.Context], [1]]>
+DalvikVM - [BB]: [7]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [8]<0 INVOKE,VIRTUAL,extra=[com.mopub.common.AdUrlGenerator/addBaseParams[com.mopub.common.ClientMetadata], [2, 0]]>
+DalvikVM - [BB]: [9]<0 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?1>
+DalvikVM - [BB]: [10]<0 INVOKE,VIRTUAL,extra=[com.mopub.common.AdUrlGenerator/setMraidFlag[boolean], [2, 1]]>
+DalvikVM - [BB]: [11]<0 INSTANCE,IGET,r0=r2,r1=r1,type=boolean,extra=com.mopub.mobileads.WebViewAdUrlGenerator.mIsStorePictureSupported>
+DalvikVM - [BB]: [12]<0 INVOKE,VIRTUAL,extra=[com.mopub.common.BaseUrlGenerator/setExternalStoragePermission[boolean], [2, 1]]>
+DalvikVM - [BB]: [13]<0 INVOKE,VIRTUAL,extra=[com.mopub.common.BaseUrlGenerator/getFinalUrlString[], [2]]>
+DalvikVM - [BB]: [14]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [15]<0 RETURN,VALUE,r0=r1,type=java.lang.Object>
+DalvikVM - [BB]: New Stack Frame: StackFrame com.mopub.mobileads.WebViewAdUrlGenerator/generateUrlString[java.lang.String]
+DalvikVM - [BB]: Stack: [StackFrame com.mopub.mobileads.WebViewAdUrlGenerator/generateUrlString[java.lang.String]]
+Interpreter - [MSG]: New chain obj
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.mopub.mobileads.WebViewAdUrlGenerator at fu.hao.trust.dvm.VMHeap@182828c0
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for com.mopub.mobileads.WebViewAdUrlGenerator at fu.hao.trust.dvm.VMHeap@182828c0
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass com.mopub.common.AdUrlGenerator at fu.hao.trust.dvm.VMHeap@182828c0
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for com.mopub.common.AdUrlGenerator at fu.hao.trust.dvm.VMHeap@182828c0
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass com.mopub.common.BaseUrlGenerator at fu.hao.trust.dvm.VMHeap@182828c0
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for com.mopub.common.BaseUrlGenerator at fu.hao.trust.dvm.VMHeap@182828c0
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@182828c0
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for java.lang.Object at fu.hao.trust.dvm.VMHeap@182828c0
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type java.lang.Object
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@182828c0
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type com.mopub.common.BaseUrlGenerator
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass com.mopub.common.BaseUrlGenerator at fu.hao.trust.dvm.VMHeap@182828c0
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type com.mopub.common.AdUrlGenerator
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass com.mopub.common.AdUrlGenerator at fu.hao.trust.dvm.VMHeap@182828c0
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type com.mopub.mobileads.WebViewAdUrlGenerator
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.mopub.mobileads.WebViewAdUrlGenerator at fu.hao.trust.dvm.VMHeap@182828c0
+DVMObject - [BB]: New instance of com.mopub.mobileads.WebViewAdUrlGenerator
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.mopub.mobileads.WebViewAdUrlGenerator at fu.hao.trust.dvm.VMHeap@182828c0
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type com.mopub.mobileads.WebViewAdUrlGenerator
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.mopub.mobileads.WebViewAdUrlGenerator at fu.hao.trust.dvm.VMHeap@182828c0
+Interpreter - [MSG]: RUN BEGIN com.mopub.mobileads.WebViewAdUrlGenerator/generateUrlString[java.lang.String]
+Interpreter - [MSG]: RUN BEGIN
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> run set pc to 0
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[2, 3]> at com.mopub.mobileads.WebViewAdUrlGenerator/generateUrlString[java.lang.String]
+Interpreter - [WARN]: NULL CallingCtx!
+Interpreter - [DEBUG]: args: instance number 1@com.mopub.mobileads.WebViewAdUrlGenerator
+Interpreter - [BB]: Start param from 1
+Interpreter - [DEBUG]: args: null
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <1 MOV,CONST,dst=r1,type=java.lang.String,extra="/m/ad"> at com.mopub.mobileads.WebViewAdUrlGenerator/generateUrlString[java.lang.String]
+Interpreter - [DEBUG]: Mov const begin <1 MOV,CONST,dst=r1,type=java.lang.String,extra="/m/ad">
+Interpreter - [DEBUG]: data: /m/ad class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 2
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <2 INVOKE,VIRTUAL,extra=[com.mopub.common.BaseUrlGenerator/initUrlString[java.lang.String, java.lang.String], [2, 3, 1]]> at com.mopub.mobileads.WebViewAdUrlGenerator/generateUrlString[java.lang.String]
+Interpreter - [MSG]: arg0 obj: instance number 1@com.mopub.mobileads.WebViewAdUrlGenerator
+Interpreter - [DEBUG]: Not a reflction invocation com.mopub.common.BaseUrlGenerator/initUrlString[java.lang.String, java.lang.String]
+DalvikVM - [BB]: New method call: com.mopub.common.BaseUrlGenerator/initUrlString[java.lang.String, java.lang.String]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[3, 4, 5]>
+DalvikVM - [BB]: [1]<0 INVOKE,STATIC,extra=[com.mopub.network.Networking/useHttps[], []]>
+DalvikVM - [BB]: [2]<0 MOV,RESULT,dst=r1,type=void>
+DalvikVM - [BB]: [3]<0 IF,EQZ,r0=r1,extra=index:18>
+DalvikVM - [BB]: [4]<0 MOV,CONST,dst=r0,type=java.lang.String,extra="https">
+DalvikVM - [BB]: [5]<0 NEW,INSTANCE,dst=r1,type=java.lang.StringBuilder>
+DalvikVM - [BB]: [6]<0 INVOKE,DIRECT,extra=[java.lang.StringBuilder/<init>[java.lang.String], [1, 0]]>
+DalvikVM - [BB]: [7]<0 MOV,CONST,dst=r2,type=java.lang.String,extra="://">
+DalvikVM - [BB]: [8]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [1, 2]]>
+DalvikVM - [BB]: [9]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [10]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [1, 4]]>
+DalvikVM - [BB]: [11]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [12]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [1, 5]]>
+DalvikVM - [BB]: [13]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [14]<0 INSTANCE,IPUT,r0=r3,r1=r1,type=java.lang.Object,extra=com.mopub.common.BaseUrlGenerator.mStringBuilder>
+DalvikVM - [BB]: [15]<0 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?1>
+DalvikVM - [BB]: [16]<0 INSTANCE,IPUT,r0=r3,r1=r1,type=boolean,extra=com.mopub.common.BaseUrlGenerator.mFirstParam>
+DalvikVM - [BB]: [17]<0 RETURN,VOID>
+DalvikVM - [BB]: [18]<0 MOV,CONST,dst=r0,type=java.lang.String,extra="http">
+DalvikVM - [BB]: [19]<0 GOTO,extra=index:5>
+DalvikVM - [BB]: New Stack Frame: StackFrame com.mopub.common.BaseUrlGenerator/initUrlString[java.lang.String, java.lang.String], pc [I@15651b52 stored. 
+DalvikVM - [BB]: Stack: [StackFrame com.mopub.mobileads.WebViewAdUrlGenerator/generateUrlString[java.lang.String], StackFrame com.mopub.common.BaseUrlGenerator/initUrlString[java.lang.String, java.lang.String]]
+FULL_OP_INVOKE - [BB]: targetcalls {}
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> run set pc to 0
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[3, 4, 5]> at com.mopub.common.BaseUrlGenerator/initUrlString[java.lang.String, java.lang.String]
+Interpreter - [DEBUG]: params: instance number 1@com.mopub.mobileads.WebViewAdUrlGenerator
+Interpreter - [DEBUG]: params: null
+Interpreter - [DEBUG]: params: /m/ad
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <1 INVOKE,STATIC,extra=[com.mopub.network.Networking/useHttps[], []]> at com.mopub.common.BaseUrlGenerator/initUrlString[java.lang.String, java.lang.String]
+DalvikVM - [BB]: New method call: com.mopub.network.Networking/useHttps[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[]>
+DalvikVM - [BB]: [1]<0 STATIC,SGET,r0=r0,type=boolean,extra=(com.mopub.network.Networking, sUseHttps)>
+DalvikVM - [BB]: [2]<0 RETURN,VALUE,r0=r0,type=void>
+DalvikVM - [BB]: New Stack Frame: StackFrame com.mopub.network.Networking/useHttps[], pc [I@5bbbe80 stored. 
+DalvikVM - [BB]: Stack: [StackFrame com.mopub.mobileads.WebViewAdUrlGenerator/generateUrlString[java.lang.String], StackFrame com.mopub.common.BaseUrlGenerator/initUrlString[java.lang.String, java.lang.String], StackFrame com.mopub.network.Networking/useHttps[]]
+FULL_OP_INVOKE - [BB]: targetcalls {}
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> run set pc to 0
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[]> at com.mopub.network.Networking/useHttps[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <1 STATIC,SGET,r0=r0,type=boolean,extra=(com.mopub.network.Networking, sUseHttps)> at com.mopub.network.Networking/useHttps[]
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.network.Networking at fu.hao.trust.dvm.VMHeap@182828c0
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for com.mopub.network.Networking at fu.hao.trust.dvm.VMHeap@182828c0
+DalvikVM - [BB]: New method call: com.mopub.network.Networking/<clinit>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r0,type=java.lang.String,extra="http.agent">
+DalvikVM - [BB]: [2]<0 INVOKE,STATIC,extra=[java.lang.System/getProperty[java.lang.String], [0]]>
+DalvikVM - [BB]: [3]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [4]<0 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(com.mopub.network.Networking, DEFAULT_USER_AGENT)>
+DalvikVM - [BB]: [5]<0 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [6]<0 STATIC,SPUT,r0=r0,type=boolean,extra=(com.mopub.network.Networking, sUseHttps)>
+DalvikVM - [BB]: [7]<0 RETURN,VOID>
+DalvikVM - [BB]: New Stack Frame: StackFrame com.mopub.network.Networking/<clinit>[], pc [I@31f78388 stored. 
+DalvikVM - [BB]: Stack: [StackFrame com.mopub.mobileads.WebViewAdUrlGenerator/generateUrlString[java.lang.String], StackFrame com.mopub.common.BaseUrlGenerator/initUrlString[java.lang.String, java.lang.String], StackFrame com.mopub.network.Networking/useHttps[], StackFrame com.mopub.network.Networking/<clinit>[]]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <-1 SPECIAL,ARGUMENT_SET,extra=[]> at com.mopub.network.Networking/<clinit>[]
+Interpreter - [WARN]: NULL CallingCtx!
+Interpreter - [BB]: Start param from 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_SP_ARGUMENTS -> jump set pc to 0
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <0 MOV,CONST,dst=r0,type=java.lang.String,extra="http.agent"> at com.mopub.network.Networking/<clinit>[]
+Interpreter - [DEBUG]: Mov const begin <0 MOV,CONST,dst=r0,type=java.lang.String,extra="http.agent">
+Interpreter - [DEBUG]: data: http.agent class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 1
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <1 INVOKE,STATIC,extra=[java.lang.System/getProperty[java.lang.String], [0]]> at com.mopub.network.Networking/<clinit>[]
+Interpreter - [DEBUG]: Reflction class java.lang.System
+Interpreter - [MSG]: reflction invocation public static java.lang.String java.lang.System.getProperty(java.lang.String)
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_INVOKE_STATIC -> jump set pc to 2
+FULL_OP_INVOKE - [BB]: targetcalls {}
+InfluenceAnalysis - [BB]: <java.lang.System: java.lang.String getProperty(java.lang.String)>
+InfluenceAnalysis - [DEBUG]: not a taint call: <java.lang.System: java.lang.String getProperty(java.lang.String)>
+ContextAnalysis - [BB]: <java.lang.System: java.lang.String getProperty(java.lang.String)>
+ContextAnalysis - [DEBUG]: not a taint call: <java.lang.System: java.lang.String getProperty(java.lang.String)>
+ContextAnalysis - [BB]: Ret value null
+InfluenceAnalysis - [BB]: Method public static java.lang.String java.lang.System.getProperty(java.lang.String)
+InfluenceAnalysis - [MSG]: Not API Recording
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <2 MOV,RESULT,dst=r0,type=java.lang.Object> at com.mopub.network.Networking/<clinit>[]
+DalvikVM - [BB]: ar0 <http.agent, java.lang.String>, <null, java.lang.String>
+OP_MOV_RESULT - [BB]: Result data: null
+OP_MOV_RESULT - [DEBUG]: Result data: null, type: java.lang.String, to [reg 0@Networking/<clinit>]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 3
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <3 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(com.mopub.network.Networking, DEFAULT_USER_AGENT)> at com.mopub.network.Networking/<clinit>[]
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.network.Networking at fu.hao.trust.dvm.VMHeap@182828c0
+Caller: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.mopub.network.Networking
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.network.Networking at fu.hao.trust.dvm.VMHeap@182828c0
+class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: expect sput DEFAULT_USER_AGENT from com.mopub.network.Networking
+class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: real sput null from fu.hao.trust.dvm.DVMClass@365de953
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD -> jump set pc to 4
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.network.Networking at fu.hao.trust.dvm.VMHeap@182828c0
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.mopub.network.Networking
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.network.Networking at fu.hao.trust.dvm.VMHeap@182828c0
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.network.Networking at fu.hao.trust.dvm.VMHeap@182828c0
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.mopub.network.Networking
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.network.Networking at fu.hao.trust.dvm.VMHeap@182828c0
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <4 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0> at com.mopub.network.Networking/<clinit>[]
+Interpreter - [DEBUG]: Mov const begin <4 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: ar0 <null, java.lang.String>, <0, void>
+Interpreter - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 5
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <5 STATIC,SPUT,r0=r0,type=boolean,extra=(com.mopub.network.Networking, sUseHttps)> at com.mopub.network.Networking/<clinit>[]
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.network.Networking at fu.hao.trust.dvm.VMHeap@182828c0
+Caller: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.mopub.network.Networking
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.network.Networking at fu.hao.trust.dvm.VMHeap@182828c0
+class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: expect sput sUseHttps from com.mopub.network.Networking
+class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: real sput 0 from fu.hao.trust.dvm.DVMClass@365de953
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD -> jump set pc to 6
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.network.Networking at fu.hao.trust.dvm.VMHeap@182828c0
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.mopub.network.Networking
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.network.Networking at fu.hao.trust.dvm.VMHeap@182828c0
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.network.Networking at fu.hao.trust.dvm.VMHeap@182828c0
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.mopub.network.Networking
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.network.Networking at fu.hao.trust.dvm.VMHeap@182828c0
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <6 RETURN,VOID> at com.mopub.network.Networking/<clinit>[]
+class fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID -> jump set pc to 2
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@182828c0
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type java.lang.Object
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@182828c0
+Caller: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.mopub.network.Networking
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.network.Networking at fu.hao.trust.dvm.VMHeap@182828c0
+OP_STATIC_GET_FIELD - [DEBUG]: Sget 0, from fu.hao.trust.dvm.DVMClass@365de953
+OP_STATIC_GET_FIELD - [DEBUG]: Expect sget sUseHttps, a boolean from com.mopub.network.Networking
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD -> jump set pc to 3
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.network.Networking at fu.hao.trust.dvm.VMHeap@182828c0
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.mopub.network.Networking
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.network.Networking at fu.hao.trust.dvm.VMHeap@182828c0
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.network.Networking at fu.hao.trust.dvm.VMHeap@182828c0
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.mopub.network.Networking
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.network.Networking at fu.hao.trust.dvm.VMHeap@182828c0
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: RUN DONE! The last one is generateUrlString
+DalvikVM - [MSG]: FINISHED!
+
+main - [MSG]: Analysis has run for 9.370769015 seconds
+

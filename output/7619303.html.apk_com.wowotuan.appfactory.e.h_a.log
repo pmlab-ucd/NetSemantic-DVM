@@ -1,0 +1,119 @@
+DalvikVM - [MSG]: Begin run a at C:/Users/hao/workspace/DroidBenchProj/apks/benign/wowotuan/com.wowotuan.appfactory.wangpintaisuniupai/7619303.html.apk
+DalvikVM - [MSG]: RUN Method com.wowotuan.appfactory.e.h/a[com.baidu.location.BDLocation]
+DalvikVM - [BB]: New method call: com.wowotuan.appfactory.e.h/a[com.baidu.location.BDLocation]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[5, 6]>
+DalvikVM - [BB]: [1]<0 INSTANCE,IGET,r0=r5,r1=r0,type=java.lang.Object,extra=com.wowotuan.appfactory.e.h.a>
+DalvikVM - [BB]: [2]<0 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [3]<0 INVOKE,STATIC,extra=[com.wowotuan.appfactory.e.g/a[com.wowotuan.appfactory.e.g, boolean], [0, 1]]>
+DalvikVM - [BB]: [4]<0 IF,NEZ,r0=r6,extra=index:18>
+DalvikVM - [BB]: [5]<0 INSTANCE,IGET,r0=r5,r1=r0,type=java.lang.Object,extra=com.wowotuan.appfactory.e.h.a>
+DalvikVM - [BB]: [6]<0 INVOKE,VIRTUAL,extra=[com.wowotuan.appfactory.e.g/b[], [0]]>
+DalvikVM - [BB]: [7]<0 NEW,INSTANCE,dst=r0,type=android.content.Intent>
+DalvikVM - [BB]: [8]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="com.wowotuan.appfactory.broadcast.location">
+DalvikVM - [BB]: [9]<0 INVOKE,DIRECT,extra=[android.content.Intent/<init>[java.lang.String], [0, 1]]>
+DalvikVM - [BB]: [10]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="location">
+DalvikVM - [BB]: [11]<0 INSTANCE,IGET,r0=r5,r1=r2,type=java.lang.Object,extra=com.wowotuan.appfactory.e.h.b>
+DalvikVM - [BB]: [12]<0 INVOKE,VIRTUAL,extra=[android.content.Intent/putExtra[java.lang.String, java.lang.String], [0, 1, 2]]>
+DalvikVM - [BB]: [13]<0 INSTANCE,IGET,r0=r5,r1=r1,type=java.lang.Object,extra=com.wowotuan.appfactory.e.h.a>
+DalvikVM - [BB]: [14]<0 INVOKE,STATIC,extra=[com.wowotuan.appfactory.e.g/a[com.wowotuan.appfactory.e.g], [1]]>
+DalvikVM - [BB]: [15]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [16]<0 INVOKE,VIRTUAL,extra=[android.content.Context/sendBroadcast[android.content.Intent], [1, 0]]>
+DalvikVM - [BB]: [17]<0 RETURN,VOID>
+DalvikVM - [BB]: [18]<0 INVOKE,VIRTUAL,extra=[com.baidu.location.BDLocation/e[], [6]]>
+DalvikVM - [BB]: [19]<0 MOV,RESULT,dst=r0,type=void>
+DalvikVM - [BB]: [20]<0 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?61>
+DalvikVM - [BB]: [21]<0 IF,EQ,r0=r0,r1=r1,extra=index:24>
+DalvikVM - [BB]: [22]<0 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?161>
+DalvikVM - [BB]: [23]<0 IF,NE,r0=r0,r1=r1,extra=index:5>
+DalvikVM - [BB]: [24]<0 INVOKE,VIRTUAL,extra=[com.baidu.location.BDLocation/b[], [6]]>
+DalvikVM - [BB]: [25]<0 MOV,RESULT,dst=r0,type=AndroidWide>
+DalvikVM - [BB]: [26]<0 INVOKE,VIRTUAL,extra=[com.baidu.location.BDLocation/c[], [6]]>
+DalvikVM - [BB]: [27]<0 MOV,RESULT,dst=r2,type=AndroidWide>
+DalvikVM - [BB]: [28]<0 NEW,INSTANCE,dst=r4,type=java.lang.StringBuilder>
+DalvikVM - [BB]: [29]<0 INVOKE,DIRECT,extra=[java.lang.StringBuilder/<init>[], [4]]>
+DalvikVM - [BB]: [30]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[double], [4, 2]]>
+DalvikVM - [BB]: [31]<0 MOV,RESULT,dst=r2,type=java.lang.Object>
+DalvikVM - [BB]: [32]<0 MOV,CONST,dst=r3,type=java.lang.String,extra=",">
+DalvikVM - [BB]: [33]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [2, 3]]>
+DalvikVM - [BB]: [34]<0 MOV,RESULT,dst=r2,type=java.lang.Object>
+DalvikVM - [BB]: [35]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[double], [2, 0]]>
+DalvikVM - [BB]: [36]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [37]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/toString[], [0]]>
+DalvikVM - [BB]: [38]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [39]<0 INSTANCE,IPUT,r0=r5,r1=r0,type=java.lang.Object,extra=com.wowotuan.appfactory.e.h.b>
+DalvikVM - [BB]: [40]<0 GOTO,extra=index:5>
+DalvikVM - [BB]: New Stack Frame: StackFrame com.wowotuan.appfactory.e.h/a[com.baidu.location.BDLocation]
+DalvikVM - [BB]: Stack: [StackFrame com.wowotuan.appfactory.e.h/a[com.baidu.location.BDLocation]]
+Interpreter - [MSG]: New chain obj
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.e.h at fu.hao.trust.dvm.VMHeap@8f2e824
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for com.wowotuan.appfactory.e.h at fu.hao.trust.dvm.VMHeap@8f2e824
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@8f2e824
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for java.lang.Object at fu.hao.trust.dvm.VMHeap@8f2e824
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type java.lang.Object
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@8f2e824
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type com.wowotuan.appfactory.e.h
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.e.h at fu.hao.trust.dvm.VMHeap@8f2e824
+DVMObject - [BB]: New instance of com.wowotuan.appfactory.e.h
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.e.h at fu.hao.trust.dvm.VMHeap@8f2e824
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type com.wowotuan.appfactory.e.h
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.e.h at fu.hao.trust.dvm.VMHeap@8f2e824
+Interpreter - [MSG]: RUN BEGIN com.wowotuan.appfactory.e.h/a[com.baidu.location.BDLocation]
+Interpreter - [MSG]: RUN BEGIN
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> run set pc to 0
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[5, 6]> at com.wowotuan.appfactory.e.h/a[com.baidu.location.BDLocation]
+Interpreter - [WARN]: NULL CallingCtx!
+Interpreter - [DEBUG]: args: instance number 1@com.wowotuan.appfactory.e.h
+Interpreter - [BB]: Start param from 1
+Interpreter - [DEBUG]: args: com.baidu.location.BDLocation@3e2469a6
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <1 INSTANCE,IGET,r0=r5,r1=r0,type=java.lang.Object,extra=com.wowotuan.appfactory.e.h.a> at com.wowotuan.appfactory.e.h/a[com.baidu.location.BDLocation]
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: obj instance number 1@com.wowotuan.appfactory.e.h
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: fieldinfo com.wowotuan.appfactory.e.h.a
+Unknown - [BB]: Unknown created!
+DVMObject - [DEBUG]: put field [Unknown var, type: com.wowotuan.appfactory.e.g]
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: [Unknown var, type: com.wowotuan.appfactory.e.g]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD -> jump set pc to 2
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <2 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?0> at com.wowotuan.appfactory.e.h/a[com.baidu.location.BDLocation]
+Interpreter - [DEBUG]: Mov const begin <2 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+Interpreter - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 3
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <3 INVOKE,STATIC,extra=[com.wowotuan.appfactory.e.g/a[com.wowotuan.appfactory.e.g, boolean], [0, 1]]> at com.wowotuan.appfactory.e.h/a[com.baidu.location.BDLocation]
+DalvikVM - [BB]: New method call: com.wowotuan.appfactory.e.g/a[com.wowotuan.appfactory.e.g, boolean]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[0, 1]>
+DalvikVM - [BB]: [1]<0 INSTANCE,IPUT,r0=r0,r1=r1,type=boolean,extra=com.wowotuan.appfactory.e.g.d>
+DalvikVM - [BB]: [2]<0 RETURN,VALUE,r0=r1,type=void>
+DalvikVM - [BB]: New Stack Frame: StackFrame com.wowotuan.appfactory.e.g/a[com.wowotuan.appfactory.e.g, boolean], pc [I@325a2045 stored. 
+DalvikVM - [BB]: Stack: [StackFrame com.wowotuan.appfactory.e.h/a[com.baidu.location.BDLocation], StackFrame com.wowotuan.appfactory.e.g/a[com.wowotuan.appfactory.e.g, boolean]]
+FULL_OP_INVOKE - [BB]: targetcalls {}
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> run set pc to 0
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[0, 1]> at com.wowotuan.appfactory.e.g/a[com.wowotuan.appfactory.e.g, boolean]
+Interpreter - [DEBUG]: params: [Unknown var, type: com.wowotuan.appfactory.e.g]
+Interpreter - [DEBUG]: params: 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <1 INSTANCE,IPUT,r0=r0,r1=r1,type=boolean,extra=com.wowotuan.appfactory.e.g.d> at com.wowotuan.appfactory.e.g/a[com.wowotuan.appfactory.e.g, boolean]
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_PUT_FIELD - [BB]: field com.wowotuan.appfactory.e.g.d
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_PUT_FIELD - [BB]: Target obj [Unknown var, type: com.wowotuan.appfactory.e.g]
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_PUT_FIELD - [ERROR]: obj is not a DVMObject!

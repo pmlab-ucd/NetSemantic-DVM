@@ -1,0 +1,57 @@
+DalvikVM - [MSG]: Begin run k at C:/Users/hao/workspace/DroidBenchProj/apks/benign/wowotuan/com.wowotuan.appfactory.wangpintaisuniupai/7619303.html.apk
+DalvikVM - [MSG]: RUN Method com.wowotuan.appfactory.gui.activity.CityChoiceActivity/k[com.wowotuan.appfactory.gui.activity.CityChoiceActivity]
+DalvikVM - [BB]: New method call: com.wowotuan.appfactory.gui.activity.CityChoiceActivity/k[com.wowotuan.appfactory.gui.activity.CityChoiceActivity]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[1]>
+DalvikVM - [BB]: [1]<0 INSTANCE,IGET,r0=r1,r1=r0,type=java.lang.Object,extra=com.wowotuan.appfactory.gui.activity.CityChoiceActivity.t>
+DalvikVM - [BB]: [2]<0 RETURN,VALUE,r0=r0,type=java.lang.Object>
+DalvikVM - [BB]: New Stack Frame: StackFrame com.wowotuan.appfactory.gui.activity.CityChoiceActivity/k[com.wowotuan.appfactory.gui.activity.CityChoiceActivity]
+DalvikVM - [BB]: Stack: [StackFrame com.wowotuan.appfactory.gui.activity.CityChoiceActivity/k[com.wowotuan.appfactory.gui.activity.CityChoiceActivity]]
+Interpreter - [BB]: Entry method is static!
+Interpreter - [MSG]: RUN BEGIN com.wowotuan.appfactory.gui.activity.CityChoiceActivity/k[com.wowotuan.appfactory.gui.activity.CityChoiceActivity]
+Interpreter - [MSG]: RUN BEGIN
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> run set pc to 0
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[1]> at com.wowotuan.appfactory.gui.activity.CityChoiceActivity/k[com.wowotuan.appfactory.gui.activity.CityChoiceActivity]
+Interpreter - [WARN]: NULL CallingCtx!
+Interpreter - [BB]: Start param from 0
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.gui.activity.CityChoiceActivity at fu.hao.trust.dvm.VMHeap@5af3ad6a
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for com.wowotuan.appfactory.gui.activity.CityChoiceActivity at fu.hao.trust.dvm.VMHeap@5af3ad6a
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@5af3ad6a
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@5af3ad6a
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@5af3ad6a
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for java.lang.Object at fu.hao.trust.dvm.VMHeap@5af3ad6a
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type java.lang.Object
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@5af3ad6a
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@5af3ad6a
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type com.wowotuan.appfactory.gui.activity.CityChoiceActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.gui.activity.CityChoiceActivity at fu.hao.trust.dvm.VMHeap@5af3ad6a
+DVMObject - [BB]: New instance of com.wowotuan.appfactory.gui.activity.CityChoiceActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.gui.activity.CityChoiceActivity at fu.hao.trust.dvm.VMHeap@5af3ad6a
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type com.wowotuan.appfactory.gui.activity.CityChoiceActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.gui.activity.CityChoiceActivity at fu.hao.trust.dvm.VMHeap@5af3ad6a
+Interpreter - [DEBUG]: args: instance number 1@com.wowotuan.appfactory.gui.activity.CityChoiceActivity
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <1 INSTANCE,IGET,r0=r1,r1=r0,type=java.lang.Object,extra=com.wowotuan.appfactory.gui.activity.CityChoiceActivity.t> at com.wowotuan.appfactory.gui.activity.CityChoiceActivity/k[com.wowotuan.appfactory.gui.activity.CityChoiceActivity]
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: obj instance number 1@com.wowotuan.appfactory.gui.activity.CityChoiceActivity
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: fieldinfo com.wowotuan.appfactory.gui.activity.CityChoiceActivity.t
+Unknown - [BB]: Unknown created!
+DVMObject - [DEBUG]: put field [Unknown var, type: com.wowotuan.appfactory.e.g]
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: [Unknown var, type: com.wowotuan.appfactory.e.g]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD -> jump set pc to 2
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <2 RETURN,VALUE,r0=r0,type=java.lang.Object> at com.wowotuan.appfactory.gui.activity.CityChoiceActivity/k[com.wowotuan.appfactory.gui.activity.CityChoiceActivity]
+Interpreter - [BB]: Return data: [Unknown var, type: com.wowotuan.appfactory.e.g]
+Interpreter - [MSG]: RUN DONE! The last one is k
+DalvikVM - [MSG]: FINISHED!
+
+main - [MSG]: Analysis has run for 4.988608341 seconds
+

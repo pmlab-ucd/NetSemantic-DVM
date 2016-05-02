@@ -19,6 +19,7 @@
 
 package fu.hao.trust.utils;
 
+import fu.hao.trust.dvm.DalvikVM;
 import patdroid.util.Log;
 
 public class Settings {
@@ -40,6 +41,8 @@ public class Settings {
 	public static String apkName;
 	public static String suspClass;
 	public static String suspMethod;
+	
+	static DalvikVM vm;
 	
 	public static void reset() {
 		apkPath = null;
@@ -74,6 +77,14 @@ public class Settings {
 		}
 		
 		
+	}
+	
+	public static void setVM(DalvikVM vm) {
+		Settings.vm = vm;
+	}
+	
+	public static DalvikVM getVM() {
+		return vm;
 	}
 
 

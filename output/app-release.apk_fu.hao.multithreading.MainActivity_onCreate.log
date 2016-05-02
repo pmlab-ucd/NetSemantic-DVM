@@ -1,0 +1,515 @@
+DalvikVM - [MSG]: Begin run onCreate at C:/Users/hao/workspace/MultiThreading/app/app-release.apk
+DalvikVM - [MSG]: RUN Method fu.hao.multithreading.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [BB]: New method call: fu.hao.multithreading.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[2, 3]>
+DalvikVM - [BB]: [1]<0 INVOKE,SUPER,extra=[android.support.v7.app.ActionBarActivity/onCreate[android.os.Bundle], [2, 3]]>
+DalvikVM - [BB]: [2]<0 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?2130968599>
+DalvikVM - [BB]: [3]<0 INVOKE,VIRTUAL,extra=[android.support.v7.app.ActionBarActivity/setContentView[int], [2, 0]]>
+DalvikVM - [BB]: [4]<0 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?2131492928>
+DalvikVM - [BB]: [5]<0 INVOKE,VIRTUAL,extra=[android.app.Activity/findViewById[int], [2, 0]]>
+DalvikVM - [BB]: [6]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [7]<0 ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.widget.Button>
+DalvikVM - [BB]: [8]<0 INSTANCE,IPUT,r0=r2,r1=r0,type=java.lang.Object,extra=fu.hao.multithreading.MainActivity.btn>
+DalvikVM - [BB]: [9]<0 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?2131492929>
+DalvikVM - [BB]: [10]<0 INVOKE,VIRTUAL,extra=[android.app.Activity/findViewById[int], [2, 0]]>
+DalvikVM - [BB]: [11]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [12]<0 ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.widget.Button>
+DalvikVM - [BB]: [13]<0 INSTANCE,IPUT,r0=r2,r1=r0,type=java.lang.Object,extra=fu.hao.multithreading.MainActivity.btn_stop>
+DalvikVM - [BB]: [14]<0 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?2131492930>
+DalvikVM - [BB]: [15]<0 INVOKE,VIRTUAL,extra=[android.app.Activity/findViewById[int], [2, 0]]>
+DalvikVM - [BB]: [16]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [17]<0 ARITHMETIC,CHECK-AND-CAST,dst=r0,type=com.mopub.mobileads.MoPubView>
+DalvikVM - [BB]: [18]<0 INSTANCE,IPUT,r0=r2,r1=r0,type=java.lang.Object,extra=fu.hao.multithreading.MainActivity.moPubView>
+DalvikVM - [BB]: [19]<0 INSTANCE,IGET,r0=r2,r1=r0,type=java.lang.Object,extra=fu.hao.multithreading.MainActivity.moPubView>
+DalvikVM - [BB]: [20]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="874b5f624f9744d0a50cd4240ed442e0">
+DalvikVM - [BB]: [21]<0 INVOKE,VIRTUAL,extra=[com.mopub.mobileads.MoPubView/setAdUnitId[java.lang.String], [0, 1]]>
+DalvikVM - [BB]: [22]<0 INSTANCE,IGET,r0=r2,r1=r0,type=java.lang.Object,extra=fu.hao.multithreading.MainActivity.moPubView>
+DalvikVM - [BB]: [23]<0 INVOKE,VIRTUAL,extra=[com.mopub.mobileads.MoPubView/loadAd[], [0]]>
+DalvikVM - [BB]: [24]<0 RETURN,VOID>
+DalvikVM - [BB]: New Stack Frame: StackFrame fu.hao.multithreading.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [BB]: Stack: [StackFrame fu.hao.multithreading.MainActivity/onCreate[android.os.Bundle]]
+Interpreter - [MSG]: New chain obj
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass fu.hao.multithreading.MainActivity at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.multithreading.MainActivity at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.support.v7.app.ActionBarActivity at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.support.v7.app.ActionBarActivity at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.support.v4.app.FragmentActivity at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.support.v4.app.FragmentActivity at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for java.lang.Object at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type java.lang.Object
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.support.v4.app.FragmentActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.support.v4.app.FragmentActivity at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.support.v7.app.ActionBarActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.support.v7.app.ActionBarActivity at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type fu.hao.multithreading.MainActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass fu.hao.multithreading.MainActivity at fu.hao.trust.dvm.VMHeap@4286ae77
+DVMObject - [BB]: New instance of fu.hao.multithreading.MainActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass fu.hao.multithreading.MainActivity at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type fu.hao.multithreading.MainActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass fu.hao.multithreading.MainActivity at fu.hao.trust.dvm.VMHeap@4286ae77
+Interpreter - [MSG]: RUN BEGIN fu.hao.multithreading.MainActivity/onCreate[android.os.Bundle]
+Interpreter - [MSG]: RUN BEGIN
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> run set pc to 0
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[2, 3]> at fu.hao.multithreading.MainActivity/onCreate[android.os.Bundle]
+Interpreter - [WARN]: NULL CallingCtx!
+Interpreter - [DEBUG]: args: instance number 1@fu.hao.multithreading.MainActivity
+Interpreter - [BB]: Start param from 1
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.os.Bundle at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@4286ae77
+DVMObject - [BB]: New instance of android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@4286ae77
+Interpreter - [DEBUG]: args: instance number 1@android.os.Bundle
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <1 INVOKE,SUPER,extra=[android.support.v7.app.ActionBarActivity/onCreate[android.os.Bundle], [2, 3]]> at fu.hao.multithreading.MainActivity/onCreate[android.os.Bundle]
+Interpreter - [MSG]: arg0 obj: instance number 1@fu.hao.multithreading.MainActivity
+Interpreter - [DEBUG]: Not a reflction invocation android.support.v7.app.ActionBarActivity/onCreate[android.os.Bundle]
+Unknown - [BB]: Unknown created!
+Interpreter - [WARN]: Found noInvokeMethod android.support.v7.app.ActionBarActivity/onCreate[android.os.Bundle]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 2
+FULL_OP_INVOKE - [BB]: targetcalls {}
+ContextAnalysis - [BB]: Ret value [Unknown var, type: void]
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <2 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?2130968599> at fu.hao.multithreading.MainActivity/onCreate[android.os.Bundle]
+Interpreter - [DEBUG]: Mov const begin <2 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?2130968599>
+Interpreter - [DEBUG]: data: 2130968599 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 3
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <3 INVOKE,VIRTUAL,extra=[android.support.v7.app.ActionBarActivity/setContentView[int], [2, 0]]> at fu.hao.multithreading.MainActivity/onCreate[android.os.Bundle]
+Interpreter - [MSG]: arg0 obj: instance number 1@fu.hao.multithreading.MainActivity
+Interpreter - [DEBUG]: Not a reflction invocation android.support.v7.app.ActionBarActivity/setContentView[int]
+Unknown - [BB]: Unknown created!
+Interpreter - [WARN]: Found noInvokeMethod android.support.v7.app.ActionBarActivity/setContentView[int]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 4
+FULL_OP_INVOKE - [BB]: targetcalls {}
+ContextAnalysis - [BB]: Ret value [Unknown var, type: void]
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <4 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?2131492928> at fu.hao.multithreading.MainActivity/onCreate[android.os.Bundle]
+Interpreter - [DEBUG]: Mov const begin <4 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?2131492928>
+DalvikVM - [BB]: ar0 <2130968599, void>, <2131492928, void>
+Interpreter - [DEBUG]: data: 2131492928 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 5
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <5 INVOKE,VIRTUAL,extra=[android.app.Activity/findViewById[int], [2, 0]]> at fu.hao.multithreading.MainActivity/onCreate[android.os.Bundle]
+Interpreter - [MSG]: arg0 obj: instance number 1@fu.hao.multithreading.MainActivity
+Interpreter - [DEBUG]: Reflction class: class android.app.Activity
+Interpreter - [BB]: arg1@reg0: 2131492928
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Caller obj: android.app.Activity@57156285, from class: class android.app.Activity
+Interpreter - [DEBUG]: Return data: android.view.View@602349e9 ,class android.view.View
+Interpreter - [MSG]: Reflction invocation public android.view.View android.app.Activity.findViewById(int)
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.view.View at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.ShouldBeReplaced at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.ShouldBeReplaced at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type java.lang.Object
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.ShouldBeReplaced
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.ShouldBeReplaced at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.view.View
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@4286ae77
+DVMObject - [BB]: New instance of android.view.View
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.view.View
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@4286ae77
+DalvikVM - [BB]: ar-1 <android.view.View@602349e9, android.view.View>, <instance number 1@android.view.View, android.view.View>
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 6
+FULL_OP_INVOKE - [BB]: targetcalls {}
+InfluenceAnalysis - [BB]: <android.app.Activity: android.view.View findViewById(int)>
+InfluenceAnalysis - [DEBUG]: not a taint call: <android.app.Activity: android.view.View findViewById(int)>
+ContextAnalysis - [BB]: <android.app.Activity: android.view.View findViewById(int)>
+ContextAnalysis - [DEBUG]: not a taint call: <android.app.Activity: android.view.View findViewById(int)>
+ContextAnalysis - [BB]: Ret value instance number 1@android.view.View
+InfluenceAnalysis - [BB]: Method public android.view.View android.app.Activity.findViewById(int)
+InfluenceAnalysis - [MSG]: Not API Recording
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <6 MOV,RESULT,dst=r0,type=java.lang.Object> at fu.hao.multithreading.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [BB]: ar0 <2131492928, void>, <instance number 1@android.view.View, android.view.View>
+OP_MOV_RESULT - [BB]: Result data: instance number 1@android.view.View
+OP_MOV_RESULT - [DEBUG]: Result data: instance number 1@android.view.View, type: android.view.View, to [reg 0@MainActivity/onCreate]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 7
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <7 ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.widget.Button> at fu.hao.multithreading.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_ARITHETIC -> jump set pc to 8
+OP_A_CHECKCAST - [WARN]: Not consistent type when cast! android.widget.Button, android.view.View
+FullAnalysis - [BB]: Not a taint op <7 ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.widget.Button>
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <8 INSTANCE,IPUT,r0=r2,r1=r0,type=java.lang.Object,extra=fu.hao.multithreading.MainActivity.btn> at fu.hao.multithreading.MainActivity/onCreate[android.os.Bundle]
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_PUT_FIELD - [BB]: field fu.hao.multithreading.MainActivity.btn
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@fu.hao.multithreading.MainActivity
+DVMObject - [DEBUG]: put field instance number 1@android.view.View
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_PUT_FIELD - [MSG]: Put data instance number 1@android.view.View to the field of instance number 1@fu.hao.multithreading.MainActivity
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_INSTANCE_PUT_FIELD -> jump set pc to 9
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <9 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?2131492929> at fu.hao.multithreading.MainActivity/onCreate[android.os.Bundle]
+Interpreter - [DEBUG]: Mov const begin <9 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?2131492929>
+DalvikVM - [BB]: ar0 <instance number 1@android.view.View, android.view.View>, <2131492929, void>
+Interpreter - [DEBUG]: data: 2131492929 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 10
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <10 INVOKE,VIRTUAL,extra=[android.app.Activity/findViewById[int], [2, 0]]> at fu.hao.multithreading.MainActivity/onCreate[android.os.Bundle]
+Interpreter - [MSG]: arg0 obj: instance number 1@fu.hao.multithreading.MainActivity
+Interpreter - [DEBUG]: Reflction class: class android.app.Activity
+Interpreter - [BB]: arg1@reg0: 2131492929
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Caller obj: android.app.Activity@31c59e36, from class: class android.app.Activity
+Interpreter - [DEBUG]: Return data: android.view.View@251604c1 ,class android.view.View
+Interpreter - [MSG]: Reflction invocation public android.view.View android.app.Activity.findViewById(int)
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.view.View
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@4286ae77
+DVMObject - [BB]: New instance of android.view.View
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.view.View
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@4286ae77
+DalvikVM - [BB]: ar-1 <android.view.View@251604c1, android.view.View>, <instance number 2@android.view.View, android.view.View>
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 11
+FULL_OP_INVOKE - [BB]: targetcalls {}
+InfluenceAnalysis - [BB]: <android.app.Activity: android.view.View findViewById(int)>
+InfluenceAnalysis - [DEBUG]: not a taint call: <android.app.Activity: android.view.View findViewById(int)>
+ContextAnalysis - [BB]: <android.app.Activity: android.view.View findViewById(int)>
+ContextAnalysis - [DEBUG]: not a taint call: <android.app.Activity: android.view.View findViewById(int)>
+ContextAnalysis - [BB]: Ret value instance number 2@android.view.View
+InfluenceAnalysis - [BB]: Method public android.view.View android.app.Activity.findViewById(int)
+InfluenceAnalysis - [MSG]: Not API Recording
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <11 MOV,RESULT,dst=r0,type=java.lang.Object> at fu.hao.multithreading.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [BB]: ar0 <2131492929, void>, <instance number 2@android.view.View, android.view.View>
+OP_MOV_RESULT - [BB]: Result data: instance number 2@android.view.View
+OP_MOV_RESULT - [DEBUG]: Result data: instance number 2@android.view.View, type: android.view.View, to [reg 0@MainActivity/onCreate]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 12
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <12 ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.widget.Button> at fu.hao.multithreading.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_ARITHETIC -> jump set pc to 13
+OP_A_CHECKCAST - [WARN]: Not consistent type when cast! android.widget.Button, android.view.View
+FullAnalysis - [BB]: Not a taint op <12 ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.widget.Button>
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <13 INSTANCE,IPUT,r0=r2,r1=r0,type=java.lang.Object,extra=fu.hao.multithreading.MainActivity.btn_stop> at fu.hao.multithreading.MainActivity/onCreate[android.os.Bundle]
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_PUT_FIELD - [BB]: field fu.hao.multithreading.MainActivity.btn_stop
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@fu.hao.multithreading.MainActivity
+DVMObject - [DEBUG]: put field instance number 2@android.view.View
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_PUT_FIELD - [MSG]: Put data instance number 2@android.view.View to the field of instance number 1@fu.hao.multithreading.MainActivity
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_INSTANCE_PUT_FIELD -> jump set pc to 14
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <14 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?2131492930> at fu.hao.multithreading.MainActivity/onCreate[android.os.Bundle]
+Interpreter - [DEBUG]: Mov const begin <14 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?2131492930>
+DalvikVM - [BB]: ar0 <instance number 2@android.view.View, android.view.View>, <2131492930, void>
+Interpreter - [DEBUG]: data: 2131492930 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 15
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <15 INVOKE,VIRTUAL,extra=[android.app.Activity/findViewById[int], [2, 0]]> at fu.hao.multithreading.MainActivity/onCreate[android.os.Bundle]
+Interpreter - [MSG]: arg0 obj: instance number 1@fu.hao.multithreading.MainActivity
+Interpreter - [DEBUG]: Reflction class: class android.app.Activity
+Interpreter - [BB]: arg1@reg0: 2131492930
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Caller obj: android.app.Activity@7505062c, from class: class android.app.Activity
+Interpreter - [DEBUG]: Return data: android.view.View@1cd86eb9 ,class android.view.View
+Interpreter - [MSG]: Reflction invocation public android.view.View android.app.Activity.findViewById(int)
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.view.View
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@4286ae77
+DVMObject - [BB]: New instance of android.view.View
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.view.View
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@4286ae77
+DalvikVM - [BB]: ar-1 <android.view.View@1cd86eb9, android.view.View>, <instance number 3@android.view.View, android.view.View>
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 16
+FULL_OP_INVOKE - [BB]: targetcalls {}
+InfluenceAnalysis - [BB]: <android.app.Activity: android.view.View findViewById(int)>
+InfluenceAnalysis - [DEBUG]: not a taint call: <android.app.Activity: android.view.View findViewById(int)>
+ContextAnalysis - [BB]: <android.app.Activity: android.view.View findViewById(int)>
+ContextAnalysis - [DEBUG]: not a taint call: <android.app.Activity: android.view.View findViewById(int)>
+ContextAnalysis - [BB]: Ret value instance number 3@android.view.View
+InfluenceAnalysis - [BB]: Method public android.view.View android.app.Activity.findViewById(int)
+InfluenceAnalysis - [MSG]: Not API Recording
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <16 MOV,RESULT,dst=r0,type=java.lang.Object> at fu.hao.multithreading.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [BB]: ar0 <2131492930, void>, <instance number 3@android.view.View, android.view.View>
+OP_MOV_RESULT - [BB]: Result data: instance number 3@android.view.View
+OP_MOV_RESULT - [DEBUG]: Result data: instance number 3@android.view.View, type: android.view.View, to [reg 0@MainActivity/onCreate]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 17
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <17 ARITHMETIC,CHECK-AND-CAST,dst=r0,type=com.mopub.mobileads.MoPubView> at fu.hao.multithreading.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_ARITHETIC -> jump set pc to 18
+OP_A_CHECKCAST - [WARN]: Not consistent type when cast! com.mopub.mobileads.MoPubView, android.view.View
+FullAnalysis - [BB]: Not a taint op <17 ARITHMETIC,CHECK-AND-CAST,dst=r0,type=com.mopub.mobileads.MoPubView>
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <18 INSTANCE,IPUT,r0=r2,r1=r0,type=java.lang.Object,extra=fu.hao.multithreading.MainActivity.moPubView> at fu.hao.multithreading.MainActivity/onCreate[android.os.Bundle]
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_PUT_FIELD - [BB]: field fu.hao.multithreading.MainActivity.moPubView
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@fu.hao.multithreading.MainActivity
+DVMObject - [DEBUG]: put field instance number 3@android.view.View
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_PUT_FIELD - [MSG]: Put data instance number 3@android.view.View to the field of instance number 1@fu.hao.multithreading.MainActivity
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_INSTANCE_PUT_FIELD -> jump set pc to 19
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <19 INSTANCE,IGET,r0=r2,r1=r0,type=java.lang.Object,extra=fu.hao.multithreading.MainActivity.moPubView> at fu.hao.multithreading.MainActivity/onCreate[android.os.Bundle]
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: obj instance number 1@fu.hao.multithreading.MainActivity
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: fieldinfo fu.hao.multithreading.MainActivity.moPubView
+DalvikVM - [BB]: ar0 <instance number 3@android.view.View, android.view.View>, <instance number 3@android.view.View, com.mopub.mobileads.MoPubView>
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: instance number 3@android.view.View
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD -> jump set pc to 20
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <20 MOV,CONST,dst=r1,type=java.lang.String,extra="874b5f624f9744d0a50cd4240ed442e0"> at fu.hao.multithreading.MainActivity/onCreate[android.os.Bundle]
+Interpreter - [DEBUG]: Mov const begin <20 MOV,CONST,dst=r1,type=java.lang.String,extra="874b5f624f9744d0a50cd4240ed442e0">
+Interpreter - [DEBUG]: data: 874b5f624f9744d0a50cd4240ed442e0 class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 21
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <21 INVOKE,VIRTUAL,extra=[com.mopub.mobileads.MoPubView/setAdUnitId[java.lang.String], [0, 1]]> at fu.hao.multithreading.MainActivity/onCreate[android.os.Bundle]
+Interpreter - [MSG]: arg0 obj: instance number 3@android.view.View
+Interpreter - [DEBUG]: Not a reflction invocation com.mopub.mobileads.MoPubView/setAdUnitId[java.lang.String]
+DalvikVM - [BB]: New method call: com.mopub.mobileads.MoPubView/setAdUnitId[java.lang.String]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[1, 2]>
+DalvikVM - [BB]: [1]<0 INSTANCE,IGET,r0=r1,r1=r0,type=java.lang.Object,extra=com.mopub.mobileads.MoPubView.mAdViewController>
+DalvikVM - [BB]: [2]<0 IF,EQZ,r0=r0,extra=index:5>
+DalvikVM - [BB]: [3]<0 INSTANCE,IGET,r0=r1,r1=r0,type=java.lang.Object,extra=com.mopub.mobileads.MoPubView.mAdViewController>
+DalvikVM - [BB]: [4]<0 INVOKE,VIRTUAL,extra=[com.mopub.mobileads.AdViewController/setAdUnitId[java.lang.String], [0, 2]]>
+DalvikVM - [BB]: [5]<0 RETURN,VOID>
+DalvikVM - [BB]: New Stack Frame: StackFrame com.mopub.mobileads.MoPubView/setAdUnitId[java.lang.String], pc [I@20bab550 stored. 
+DalvikVM - [BB]: Stack: [StackFrame fu.hao.multithreading.MainActivity/onCreate[android.os.Bundle], StackFrame com.mopub.mobileads.MoPubView/setAdUnitId[java.lang.String]]
+FULL_OP_INVOKE - [BB]: targetcalls {}
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> run set pc to 0
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[1, 2]> at com.mopub.mobileads.MoPubView/setAdUnitId[java.lang.String]
+Interpreter - [DEBUG]: params: instance number 3@android.view.View
+Interpreter - [DEBUG]: params: 874b5f624f9744d0a50cd4240ed442e0
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <1 INSTANCE,IGET,r0=r1,r1=r0,type=java.lang.Object,extra=com.mopub.mobileads.MoPubView.mAdViewController> at com.mopub.mobileads.MoPubView/setAdUnitId[java.lang.String]
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: obj instance number 3@android.view.View
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: fieldinfo com.mopub.mobileads.MoPubView.mAdViewController
+Unknown - [BB]: Unknown created!
+DVMObject - [DEBUG]: put field [Unknown var, type: com.mopub.mobileads.AdViewController]
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: [Unknown var, type: com.mopub.mobileads.AdViewController]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD -> jump set pc to 2
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <2 IF,EQZ,r0=r0,extra=index:5> at com.mopub.mobileads.MoPubView/setAdUnitId[java.lang.String]
+OP_CMP - [DEBUG]: r0 data [Unknown var, type: com.mopub.mobileads.AdViewController]
+DalvikVM - [BB]: fu.hao.trust.analysis.TaintCtrlDep$CDTAINT_OP_CMP -> flow set pc to 3
+ATAINT_OP_CMP - [BB]: ret: 5
+ATAINT_OP_CMP - [WARN]: New Simple Branch [Branch: 2--[cond: <2 IF,EQZ,r0=r0,extra=index:5>][sumpoint: <0 RETURN,VOID>]@setAdUnitId]
+ATAINT_OP_CMP - [BB]: Set sum point 5 <0 RETURN,VOID>
+ATAINT_OP_CMP - [MSG]: ATAINT_OP_IF:  <2 IF,EQZ,r0=r0,extra=index:5> 5
+ATAINT_OP_CMP - [BB]: Add <2 IF,EQZ,r0=r0,extra=index:5> to met of [Branch: 2--[cond: <2 IF,EQZ,r0=r0,extra=index:5>][sumpoint: <0 RETURN,VOID>]@setAdUnitId]
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <3 INSTANCE,IGET,r0=r1,r1=r0,type=java.lang.Object,extra=com.mopub.mobileads.MoPubView.mAdViewController> at com.mopub.mobileads.MoPubView/setAdUnitId[java.lang.String]
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: obj instance number 3@android.view.View
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: fieldinfo com.mopub.mobileads.MoPubView.mAdViewController
+DalvikVM - [BB]: ar0 <[Unknown var, type: com.mopub.mobileads.AdViewController], com.mopub.mobileads.AdViewController>, <[Unknown var, type: com.mopub.mobileads.AdViewController], com.mopub.mobileads.AdViewController>
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: [Unknown var, type: com.mopub.mobileads.AdViewController]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD -> jump set pc to 4
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <4 INVOKE,VIRTUAL,extra=[com.mopub.mobileads.AdViewController/setAdUnitId[java.lang.String], [0, 2]]> at com.mopub.mobileads.MoPubView/setAdUnitId[java.lang.String]
+Interpreter - [MSG]: arg0 obj: [Unknown var, type: com.mopub.mobileads.AdViewController]
+Interpreter - [DEBUG]: Not a reflction invocation com.mopub.mobileads.AdViewController/setAdUnitId[java.lang.String]
+Interpreter - [WARN]: NULL "THIS" INSTANCE!
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 5
+FULL_OP_INVOKE - [BB]: targetcalls {}
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <5 RETURN,VOID> at com.mopub.mobileads.MoPubView/setAdUnitId[java.lang.String]
+fu.hao.trust.data.Branch - [BB]: Begins value combination:[Branch: 2--[cond: <2 IF,EQZ,r0=r0,extra=index:5>][sumpoint: <5 RETURN,VOID>]@setAdUnitId]
+fu.hao.trust.data.Branch - [BB]: {}
+FullAnalysis - [BB]: Remove simple branch [Branch: 2--[cond: <2 IF,EQZ,r0=r0,extra=index:5>][sumpoint: <5 RETURN,VOID>]@setAdUnitId]
+class fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID -> jump set pc to 22
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <22 INSTANCE,IGET,r0=r2,r1=r0,type=java.lang.Object,extra=fu.hao.multithreading.MainActivity.moPubView> at fu.hao.multithreading.MainActivity/onCreate[android.os.Bundle]
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: obj instance number 1@fu.hao.multithreading.MainActivity
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: fieldinfo fu.hao.multithreading.MainActivity.moPubView
+DalvikVM - [BB]: ar0 <instance number 3@android.view.View, com.mopub.mobileads.MoPubView>, <instance number 3@android.view.View, com.mopub.mobileads.MoPubView>
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: instance number 3@android.view.View
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD -> jump set pc to 23
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <23 INVOKE,VIRTUAL,extra=[com.mopub.mobileads.MoPubView/loadAd[], [0]]> at fu.hao.multithreading.MainActivity/onCreate[android.os.Bundle]
+Interpreter - [MSG]: arg0 obj: instance number 3@android.view.View
+Interpreter - [DEBUG]: Not a reflction invocation com.mopub.mobileads.MoPubView/loadAd[]
+DalvikVM - [BB]: New method call: com.mopub.mobileads.MoPubView/loadAd[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[1]>
+DalvikVM - [BB]: [1]<0 INSTANCE,IGET,r0=r1,r1=r0,type=java.lang.Object,extra=com.mopub.mobileads.MoPubView.mAdViewController>
+DalvikVM - [BB]: [2]<0 IF,EQZ,r0=r0,extra=index:5>
+DalvikVM - [BB]: [3]<0 INSTANCE,IGET,r0=r1,r1=r0,type=java.lang.Object,extra=com.mopub.mobileads.MoPubView.mAdViewController>
+DalvikVM - [BB]: [4]<0 INVOKE,VIRTUAL,extra=[com.mopub.mobileads.AdViewController/loadAd[], [0]]>
+DalvikVM - [BB]: [5]<0 RETURN,VOID>
+DalvikVM - [BB]: New Stack Frame: StackFrame com.mopub.mobileads.MoPubView/loadAd[], pc [I@20bab550 stored. 
+DalvikVM - [BB]: Stack: [StackFrame fu.hao.multithreading.MainActivity/onCreate[android.os.Bundle], StackFrame com.mopub.mobileads.MoPubView/loadAd[]]
+FULL_OP_INVOKE - [BB]: targetcalls {}
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> run set pc to 0
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[1]> at com.mopub.mobileads.MoPubView/loadAd[]
+Interpreter - [DEBUG]: params: instance number 3@android.view.View
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <1 INSTANCE,IGET,r0=r1,r1=r0,type=java.lang.Object,extra=com.mopub.mobileads.MoPubView.mAdViewController> at com.mopub.mobileads.MoPubView/loadAd[]
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: obj instance number 3@android.view.View
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: fieldinfo com.mopub.mobileads.MoPubView.mAdViewController
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: [Unknown var, type: com.mopub.mobileads.AdViewController]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD -> jump set pc to 2
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <2 IF,EQZ,r0=r0,extra=index:5> at com.mopub.mobileads.MoPubView/loadAd[]
+OP_CMP - [DEBUG]: r0 data [Unknown var, type: com.mopub.mobileads.AdViewController]
+DalvikVM - [BB]: fu.hao.trust.analysis.TaintCtrlDep$CDTAINT_OP_CMP -> flow set pc to 3
+ATAINT_OP_CMP - [BB]: ret: 5
+ATAINT_OP_CMP - [WARN]: New Simple Branch [Branch: 2--[cond: <2 IF,EQZ,r0=r0,extra=index:5>][sumpoint: <0 RETURN,VOID>]@loadAd]
+ATAINT_OP_CMP - [BB]: Set sum point 5 <0 RETURN,VOID>
+ATAINT_OP_CMP - [MSG]: ATAINT_OP_IF:  <2 IF,EQZ,r0=r0,extra=index:5> 5
+ATAINT_OP_CMP - [BB]: Add <2 IF,EQZ,r0=r0,extra=index:5> to met of [Branch: 2--[cond: <2 IF,EQZ,r0=r0,extra=index:5>][sumpoint: <0 RETURN,VOID>]@loadAd]
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <3 INSTANCE,IGET,r0=r1,r1=r0,type=java.lang.Object,extra=com.mopub.mobileads.MoPubView.mAdViewController> at com.mopub.mobileads.MoPubView/loadAd[]
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: obj instance number 3@android.view.View
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: fieldinfo com.mopub.mobileads.MoPubView.mAdViewController
+DalvikVM - [BB]: ar0 <[Unknown var, type: com.mopub.mobileads.AdViewController], com.mopub.mobileads.AdViewController>, <[Unknown var, type: com.mopub.mobileads.AdViewController], com.mopub.mobileads.AdViewController>
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: [Unknown var, type: com.mopub.mobileads.AdViewController]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD -> jump set pc to 4
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <4 INVOKE,VIRTUAL,extra=[com.mopub.mobileads.AdViewController/loadAd[], [0]]> at com.mopub.mobileads.MoPubView/loadAd[]
+Interpreter - [MSG]: arg0 obj: [Unknown var, type: com.mopub.mobileads.AdViewController]
+Interpreter - [DEBUG]: Not a reflction invocation com.mopub.mobileads.AdViewController/loadAd[]
+Interpreter - [WARN]: NULL "THIS" INSTANCE!
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 5
+FULL_OP_INVOKE - [BB]: targetcalls {}
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <5 RETURN,VOID> at com.mopub.mobileads.MoPubView/loadAd[]
+fu.hao.trust.data.Branch - [BB]: Begins value combination:[Branch: 2--[cond: <2 IF,EQZ,r0=r0,extra=index:5>][sumpoint: <5 RETURN,VOID>]@loadAd]
+fu.hao.trust.data.Branch - [BB]: {}
+FullAnalysis - [BB]: Remove simple branch [Branch: 2--[cond: <2 IF,EQZ,r0=r0,extra=index:5>][sumpoint: <5 RETURN,VOID>]@loadAd]
+class fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID -> jump set pc to 24
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <24 RETURN,VOID> at fu.hao.multithreading.MainActivity/onCreate[android.os.Bundle]
+class fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID - [DEBUG]: Return void
+Interpreter - [MSG]: RUN DONE! The last one is onCreate
+DalvikVM - [MSG]: FINISHED!
+
+main - [MSG]: Analysis has run for 9.205722542 seconds
+

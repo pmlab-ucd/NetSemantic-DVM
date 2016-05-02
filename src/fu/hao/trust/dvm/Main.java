@@ -27,6 +27,8 @@ import fu.hao.trust.utils.Settings;
  */
 public class Main {
 	final static String TAG = "main";
+	static String[] initArgTypes;
+	static Object[] initArgs;
 
 	public static void main(String[] args) {
 		Results.reset();
@@ -79,6 +81,7 @@ public class Main {
 					Settings.apkPath = args[0];// + "app-release.apk";
 					Settings.suspClass = args[1];
 					Settings.suspMethod = args[2];
+					
 					pluginManager.addPlugin(new FullAnalysis());
 					main.runMethod(pluginManager);
 					Log.msg(TAG, "Analysis has run for "
@@ -143,11 +146,17 @@ public class Main {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void init(String[] argTypeNames, Object[] args) {
+		Main.initArgTypes = argTypeNames;
+		Main.initArgs = args;
+	}
 
 	public void runMethod(PluginManager pluginManager) {
 		// DalvikVM vm = DalvikVM.v();
 		// Results.reset();
-		DalvikVM vm = new DalvikVM();
+		DalvikVM vm = new DalvikVM(Settings.apkPath);
+		vm.init(Settings.suspClass, initArgTypes, initArgs);
 		try {
 			vm.runMethod(Settings.apkPath, Settings.suspClass,
 					Settings.suspMethod, pluginManager, null);
@@ -161,7 +170,7 @@ public class Main {
 	public void runMethods(String[] items, PluginManager pluginManager) {
 		// DalvikVM vm = DalvikVM.v();
 		// Results.reset();
-		DalvikVM vm = new DalvikVM();
+		DalvikVM vm = new DalvikVM(Settings.apkPath);
 		try {
 			vm.runMethods(Settings.apkPath, items, pluginManager);
 		} catch (ZipException e) {

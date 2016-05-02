@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import android.ShouldBeReplaced;
 import fu.hao.trust.analysis.Plugin;
 import fu.hao.trust.dvm.DalvikVM.Register;
 import fu.hao.trust.dvm.DalvikVM.StackFrame;
@@ -155,7 +156,7 @@ public class Interpreter {
 				Log.warn(TAG, "NULL CallingCtx!");
 				MethodInfo currMethod = vm.getCurrStackFrame().method;
 				int startParam = 0;
-				if (!currMethod.isStatic()) {
+				if (!currMethod.isStatic()) {			
 					startParam = 1;
 					vm.getReg(params[0]).setValue(
 							vm.getCurrStackFrame().getThisObj(),
@@ -174,11 +175,17 @@ public class Interpreter {
 						// FIXME
 					} else {
 						try {
-							Class.forName(paramClass.fullName);
-							vm.getReg(params[i]).setValue(null, paramClass);
+							Class<?> clazz = Class.forName(paramClass.fullName);
+							vm.getReg(params[i]).setValue(clazz.newInstance(), paramClass);
 						} catch (ClassNotFoundException e) {
 							vm.getReg(params[i]).setValue(
 									new DVMObject(vm, paramClass), paramClass);
+						} catch (InstantiationException e) {
+							vm.getReg(params[i]).setValue(null, paramClass);
+							e.printStackTrace();
+						} catch (IllegalAccessException e) {
+							vm.getReg(params[i]).setValue(null, paramClass);
+							e.printStackTrace();
 						}
 					}
 					Log.debug(TAG,
@@ -499,7 +506,12 @@ public class Interpreter {
 			if (vm.getReg(inst.rdst).getType() != null
 					&& !inst.type.isConvertibleTo(vm.getReg(inst.rdst)
 							.getType())) {
-				Log.err(TAG, "Not consistent type when cast!");
+				if (vm.getReg(inst.rdst).getType().toString().equals("java.lang.Object")
+						|| inst.type.equals("java.lang.Object")) {
+					Log.warn(TAG, "False alarm from PATDroid: Correct type");
+				} else {
+					Log.warn(TAG, "Not consistent type when cast! " + inst.type + ", " + vm.getReg(inst.rdst).getType());
+				}
 			}
 		}
 	}
@@ -2097,6 +2109,10 @@ public class Interpreter {
 			if (vm.getReturnReg().isUsed() && vm.getReturnReg().getData() instanceof Unknown && mi.returnType.toString().contains("String")) {
 				((Unknown)vm.getReturnReg().getData()).addConcreteVal("Unknown");
 			}
+			
+			if (vm.getReturnReg().isUsed() && vm.getReturnReg().getData() instanceof ShouldBeReplaced) {
+				vm.getReturnReg().setValue(new DVMObject(vm, mi.returnType), mi.returnType);
+			}
 			jump(vm, inst, true);
 		} catch (java.lang.IllegalArgumentException e) {
 			e.printStackTrace();
@@ -2235,14 +2251,26 @@ public class Interpreter {
 	public void invocation(DalvikVM vm, MethodInfo mi, Instruction inst,
 			int[] args) {
 		vm.getReturnReg().reset();
+		
+		if (noInvokeList.contains(mi.name)
+				|| noInvokeList.contains(mi.myClass.fullName)
+				|| mi.myClass.fullName.startsWith("android.support")) {			
+			vm.getReturnReg().setValue(new Unknown(mi.returnType),
+					mi.returnType);
+			Log.warn(TAG, "Found noInvokeMethod " + mi);
+			jump(vm, inst, true);
+			return;
+		}
+			
 		// Create a new stack frame and push it to the stack.
 		if (!mi.isStatic()) {
 			if (vm.getReg(args[0]).getData() instanceof Unknown
 					|| vm.getReg(args[0]).getData() == null) {
-				Log.warn(TAG, "NULL Invocator!");
+				Log.warn(TAG, "NULL \"THIS\" INSTANCE!");
 				jump(vm, inst, true);
 				return;
 			}
+			
 			DVMObject thisObj = (DVMObject) vm.getReg(args[0]).getData();
 			if (((int) inst.opcode_aux != 0x0C) && !mi.isConstructor()
 					&& thisObj.getType().getSuperClass().equals(mi.myClass)) {
@@ -2306,6 +2334,9 @@ public class Interpreter {
 
 	@SuppressWarnings("rawtypes")
 	static Map<Class, Class> primClasses = new HashMap<>();
+	
+	// The API calls that creates 
+	Set<String> libObjList = new HashSet<>();
 
 	/**
 	 * interpret auxiliary opcodes
@@ -2393,6 +2424,7 @@ public class Interpreter {
 		noInvokeList.add("java.io.InputStreamReader");
 		noInvokeList.add("java.io.BufferedReader");
 		noInvokeList.add("java.io.File");
+		noInvokeList.add("android.support");
 
 		noInvokeList2 = new HashSet<>();
 		noInvokeList2.add("equals");

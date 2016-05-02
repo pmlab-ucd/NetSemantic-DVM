@@ -25,16 +25,6 @@ import patdroid.dalvik.Instruction;
 import patdroid.smali.SmaliClassDetailLoader;
 
 public class DalvikVM {
-	// The nested class to implement singleton
-	private static class SingletonHolder {
-		private static final DalvikVM instance = new DalvikVM();
-	}
-
-	// Get THE instance
-	public static final DalvikVM v() {
-		return SingletonHolder.instance;
-	}
-
 	private final String TAG = getClass().getSimpleName();
 
 	// Dalvik VM Register Bank
@@ -79,20 +69,21 @@ public class DalvikVM {
 		public void setValue(Pair<Object, ClassInfo> value) {
 			setValue(value.getFirst(), value.getSecond());
 		}
-		
+
 		public void setValue(Object data, ClassInfo type) {
 			if (value == null) {
 				assigned[0] = -1;
 				this.value = new Pair<>(data, type);
 			} else {
 				assigned[0] = this;
-				Pair<Object, ClassInfo> oldVal = new Pair<>(value.getFirst(), value.getSecond());
+				Pair<Object, ClassInfo> oldVal = new Pair<>(value.getFirst(),
+						value.getSecond());
 				getAssigned()[1] = oldVal;
 				Pair<Object, ClassInfo> newVal = new Pair<>(data, type);
 				getAssigned()[2] = newVal;
 				Log.bb(TAG, "ar" + count + " " + oldVal + ", " + newVal);
 			}
-			
+
 			value.setFirst(data);
 			value.setSecond(type);
 		}
@@ -105,7 +96,9 @@ public class DalvikVM {
 			if (count == -1) {
 				return "[Global RetReg]";
 			}
-			return "[reg " + count + "@" + stackFrame.method.myClass.getShortName() + "/" + stackFrame.method.name + "]";
+			return "[reg " + count + "@"
+					+ stackFrame.method.myClass.getShortName() + "/"
+					+ stackFrame.method.name + "]";
 		}
 
 		public StackFrame getStackFrame() {
@@ -119,11 +112,11 @@ public class DalvikVM {
 		public int getIndex() {
 			return count;
 		}
-		
+
 		public void reset() {
 			value = null;
 		}
-		
+
 		public boolean isUsed() {
 			return value == null ? false : true;
 		}
@@ -307,10 +300,11 @@ public class DalvikVM {
 		public void setThisReg(Register thisReg) {
 			this.thisReg = thisReg;
 		}
-		
+
 		public Map<Plugin, Map<String, Map<Object, Instruction>>> clonePluginRes() {
 			Map<Plugin, Map<String, Map<Object, Instruction>>> pluginRes = new HashMap<>();
-			Map<Plugin, Map<String, Map<Object, Instruction>>> currtRes = getCurrStackFrame().getPluginRes();
+			Map<Plugin, Map<String, Map<Object, Instruction>>> currtRes = getCurrStackFrame()
+					.getPluginRes();
 			for (Plugin plugin : currtRes.keySet()) {
 				Map<String, Map<Object, Instruction>> res = new HashMap<>();
 				for (String tag : currtRes.get(plugin).keySet()) {
@@ -322,8 +316,7 @@ public class DalvikVM {
 				}
 				pluginRes.put(plugin, res);
 			}
-			
-			
+
 			return pluginRes;
 		}
 
@@ -498,7 +491,7 @@ public class DalvikVM {
 	private Object[] assigned = new Object[3];
 
 	private Method reflectMethod;
-	
+
 	/**
 	 * @fieldName: chainThisObj
 	 * @fieldType: DVMObject
@@ -558,12 +551,24 @@ public class DalvikVM {
 		}
 	}
 
-	public DalvikVM() {
+	public DalvikVM(String APK) {
 		heap = new VMHeap();
 		interpreter = Interpreter.v();
 		retValReg = new Register(null, -1);
 		stack = new LinkedList<>();
 		callingCtx = null;
+		
+		try {
+			loadAPK(APK);
+		} catch (ZipException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		Settings.setVM(this);
 	}
 
 	public void reset() {
@@ -616,6 +621,22 @@ public class DalvikVM {
 		stack.removeLast();
 		setCallContext(null);
 	}
+	
+	public void loadAPK(String apk) throws ZipException, IOException {
+		// for normal java run-time classes
+		// when a class is not loaded, load it with reflection
+		ClassInfo.rootDetailLoader = new ReflectionClassDetailLoader();
+		// pick an apk
+		ZipFile apkFile;
+		File file = new File(apk);
+		
+		apkFile = new ZipFile(file);
+		
+		// load all classes, methods, fields and instructions from an apk
+		// we are using smali as the underlying engine
+		new SmaliClassDetailLoader(apkFile, true).loadAll();
+		Settings.apkName = file.getName();
+	}
 
 	/**
 	 * @Title: runMethod
@@ -633,24 +654,14 @@ public class DalvikVM {
 	public void runMethod(String apk, String className, String main,
 			PluginManager pluginManager, Object[] params) throws ZipException,
 			IOException {
-		// for normal java run-time classes
-		// when a class is not loaded, load it with reflection
-		ClassInfo.rootDetailLoader = new ReflectionClassDetailLoader();
-		// pick an apk
-		ZipFile apkFile;
-		File file = new File(apk);
-		Settings.apkName = file.getName() + "_" + className + "_" + main;
-		apkFile = new ZipFile(file);
-		Log.msg(TAG, "Begin run " + main + " at " + apk);
-		// load all classes, methods, fields and instructions from an apk
-		// we are using smali as the underlying engine
-		new SmaliClassDetailLoader(apkFile, true).loadAll();
+		Settings.apkName = Settings.apkName + "_" + className + "_" + main;
 		// get the class representation for the MainActivity class in the
 		// apk
 		ClassInfo c = ClassInfo.findClass(className);
 		// find all methods with the name "onCreate", most likely there is
 		// only one
 		MethodInfo[] methods = c.findMethodsHere(main);
+		Log.msg(TAG, "Begin run " + main + " at " + apk);
 		this.setPluginManager(pluginManager);
 		for (int i = 0; i < methods.length; i++) {
 			if (params == null) {
@@ -665,26 +676,15 @@ public class DalvikVM {
 
 	public void runMethods(String apk, String[] chain,
 			PluginManager pluginManager) throws ZipException, IOException {
-		// for normal java run-time classes
-		// when a class is not loaded, load it with reflection
-		ClassInfo.rootDetailLoader = new ReflectionClassDetailLoader();
-		// pick an apk
-		ZipFile apkFile;
-		apkFile = new ZipFile(new File(apk));
-		// load all classes, methods, fields and instructions from an apk
-		// we are using smali as the underlying engine
-		new SmaliClassDetailLoader(apkFile, true).loadAll();
-		// get the class representation for the MainActivity class in the
-		// apk
-
-		Log.msg(TAG, "apk " + apkFile + " " + apk);
+		Log.msg(TAG, "apk " + apk);
 
 		// find all methods with the name "onCreate", most likely there is
 		// only one
 		this.setPluginManager(pluginManager);
 
-		for (int i = 1; i < chain.length; i++) {
+		for (int i = 1; i < chain.length; i++) {			
 			Settings.suspClass = chain[i].split(":")[0];
+			Settings.apkName = Settings.apkName + "_" + Settings.suspClass + "_" + chain[i];
 			ClassInfo c = ClassInfo.findClass(Settings.suspClass);
 			Log.bb(TAG, "class " + c);
 			MethodInfo[] methods = c.findMethodsHere(chain[i].split(":")[1]);
@@ -723,8 +723,9 @@ public class DalvikVM {
 		}
 		// Put an Null stack frame to simulate the calling ctx.
 		StackFrame stackFrame = newStackFrame(null);
-		for (int i = 0; i < params.length; i++) {
-			stackFrame.regs[i].setValue(params[i], method.paramTypes[i]);
+		stackFrame.regs[0].setValue(params[0], method.myClass);
+		for (int i = 1; i < params.length; i++) {
+			stackFrame.regs[i].setValue(params[i], method.paramTypes[i - 1]);
 		}
 
 		int[] args = new int[params.length];
@@ -793,5 +794,67 @@ public class DalvikVM {
 	public void setChainThisObj(DVMObject chainThisObj) {
 		this.chainThisObj = chainThisObj;
 	}
+
+	public void init(String thisObjTypeName, String[] argTypeNames, Object[] args) {
+		ClassInfo thisObjType =  ClassInfo.findClass(thisObjTypeName);
+		ClassInfo[] argTypes = null; 
+		
+		Log.bb(TAG, thisObjType);
+		MethodInfo constructor;
+		if (argTypeNames != null) {
+			argTypes = new ClassInfo[argTypeNames.length];
+			for (int i = 0; i < argTypeNames.length; i++) {
+				argTypes[i] = ClassInfo.findClass(argTypeNames[i]);
+			}
+			for (ClassInfo type : argTypes) {
+				Log.bb(TAG, "init argType " + type);
+			}
+			constructor = thisObjType.getConstructor(argTypes);
+		} else {
+			constructor = thisObjType.getDefaultConstructor();
+		}
+
+		if (constructor != null) {
+			Object[] callCtx = new Object[args.length + 1];
+
+			int i = 0;
+			callCtx[0] = new DVMObject(this, thisObjType);
+			for (ClassInfo type : argTypes) {
+				if (args[i].equals("NULL")) {
+					try {
+						Class<?> clazz = Class.forName(type.fullName);
+						callCtx[i + 1] = clazz.newInstance();
+					} catch (ClassNotFoundException e) {
+						callCtx[i + 1] = new DVMObject(this, type);
+					} catch (InstantiationException e) {
+						callCtx[i + 1] = null;
+						e.printStackTrace();
+					} catch (IllegalAccessException e) {
+						callCtx[i + 1] = null;
+						e.printStackTrace();
+					}
+				} else {
+					callCtx[i + 1] = args[i];
+				}
+
+				i++;
+			}
+			runMethod(constructor, callCtx);
+			chainThisObj = (DVMObject) callCtx[0];
+		} else {
+			for (MethodInfo mi : thisObjType.getAllMethods()) {
+				Log.bb(TAG, mi + " " +  mi.isConstructor());
+				for (ClassInfo type : mi.paramTypes) {
+					Log.bb(TAG, type);
+				}
+				
+			}
+			
+			if (argTypeNames != null) {
+				Log.err(TAG, "Cannot find the constructor!");
+			}
+		}
+
+	} 
 
 }

@@ -1,0 +1,385 @@
+DalvikVM - [MSG]: Begin run generateAdUrl at C:/Users/hao/workspace/MultiThreading/app/app-release.apk
+DalvikVM - [MSG]: RUN Method com.mopub.mobileads.AdViewController/generateAdUrl[]
+DalvikVM - [BB]: New method call: com.mopub.mobileads.AdViewController/generateAdUrl[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[2]>
+DalvikVM - [BB]: [1]<0 INSTANCE,IGET,r0=r2,r1=r0,type=java.lang.Object,extra=com.mopub.mobileads.AdViewController.mUrlGenerator>
+DalvikVM - [BB]: [2]<0 IF,NEZ,r0=r0,extra=index:5>
+DalvikVM - [BB]: [3]<0 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [4]<0 RETURN,VALUE,r0=r0,type=java.lang.Object>
+DalvikVM - [BB]: [5]<0 INSTANCE,IGET,r0=r2,r1=r0,type=java.lang.Object,extra=com.mopub.mobileads.AdViewController.mUrlGenerator>
+DalvikVM - [BB]: [6]<0 INSTANCE,IGET,r0=r2,r1=r1,type=java.lang.Object,extra=com.mopub.mobileads.AdViewController.mAdUnitId>
+DalvikVM - [BB]: [7]<0 INVOKE,VIRTUAL,extra=[com.mopub.common.AdUrlGenerator/withAdUnitId[java.lang.String], [0, 1]]>
+DalvikVM - [BB]: [8]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [9]<0 INSTANCE,IGET,r0=r2,r1=r1,type=java.lang.Object,extra=com.mopub.mobileads.AdViewController.mKeywords>
+DalvikVM - [BB]: [10]<0 INVOKE,VIRTUAL,extra=[com.mopub.common.AdUrlGenerator/withKeywords[java.lang.String], [0, 1]]>
+DalvikVM - [BB]: [11]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [12]<0 INSTANCE,IGET,r0=r2,r1=r1,type=java.lang.Object,extra=com.mopub.mobileads.AdViewController.mLocation>
+DalvikVM - [BB]: [13]<0 INVOKE,VIRTUAL,extra=[com.mopub.common.AdUrlGenerator/withLocation[android.location.Location], [0, 1]]>
+DalvikVM - [BB]: [14]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [15]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="ads.mopub.com">
+DalvikVM - [BB]: [16]<0 INVOKE,VIRTUAL,extra=[com.mopub.common.BaseUrlGenerator/generateUrlString[java.lang.String], [0, 1]]>
+DalvikVM - [BB]: [17]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [18]<0 GOTO,extra=index:4>
+DalvikVM - [BB]: New Stack Frame: StackFrame com.mopub.mobileads.AdViewController/generateAdUrl[]
+DalvikVM - [BB]: Stack: [StackFrame com.mopub.mobileads.AdViewController/generateAdUrl[]]
+Interpreter - [MSG]: New chain obj
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.mopub.mobileads.AdViewController at fu.hao.trust.dvm.VMHeap@124e1099
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for com.mopub.mobileads.AdViewController at fu.hao.trust.dvm.VMHeap@124e1099
+DalvikVM - [BB]: New method call: com.mopub.mobileads.AdViewController/<clinit>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?-2>
+DalvikVM - [BB]: [2]<0 NEW,INSTANCE,dst=r0,type=android.widget.FrameLayout$LayoutParams>
+DalvikVM - [BB]: [3]<0 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?17>
+DalvikVM - [BB]: [4]<0 HALT,DIRECT,extra=[null, [0, 2, 2, 1]]>
+DalvikVM - [BB]: [5]<0 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(com.mopub.mobileads.AdViewController, WRAP_AND_CENTER_LAYOUT_PARAMS)>
+DalvikVM - [BB]: [6]<0 NEW,INSTANCE,dst=r0,type=java.util.WeakHashMap>
+DalvikVM - [BB]: [7]<0 INVOKE,DIRECT,extra=[java.util.WeakHashMap/<init>[], [0]]>
+DalvikVM - [BB]: [8]<0 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(com.mopub.mobileads.AdViewController, sViewShouldHonorServerDimensions)>
+DalvikVM - [BB]: [9]<0 RETURN,VOID>
+DalvikVM - [BB]: New Stack Frame: StackFrame com.mopub.mobileads.AdViewController/<clinit>[], pc [I@6ab7501b stored. 
+DalvikVM - [BB]: Stack: [StackFrame com.mopub.mobileads.AdViewController/generateAdUrl[], StackFrame com.mopub.mobileads.AdViewController/<clinit>[]]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <-1 SPECIAL,ARGUMENT_SET,extra=[]> at com.mopub.mobileads.AdViewController/<clinit>[]
+Interpreter - [WARN]: NULL CallingCtx!
+Interpreter - [BB]: Start param from 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_SP_ARGUMENTS -> jump set pc to 0
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <0 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?-2> at com.mopub.mobileads.AdViewController/<clinit>[]
+Interpreter - [DEBUG]: Mov const begin <0 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?-2>
+Interpreter - [DEBUG]: data: -2 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 1
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <1 NEW,INSTANCE,dst=r0,type=android.widget.FrameLayout$LayoutParams> at com.mopub.mobileads.AdViewController/<clinit>[]
+OP_NEW_INSTANCE - [DEBUG]: [reg 0@AdViewController/<clinit>]
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.widget.FrameLayout$LayoutParams at fu.hao.trust.dvm.VMHeap@124e1099
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.widget.FrameLayout$LayoutParams at fu.hao.trust.dvm.VMHeap@124e1099
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.widget.FrameLayout$LayoutParams
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.widget.FrameLayout$LayoutParams at fu.hao.trust.dvm.VMHeap@124e1099
+DVMObject - [BB]: New instance of android.widget.FrameLayout$LayoutParams
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.widget.FrameLayout$LayoutParams at fu.hao.trust.dvm.VMHeap@124e1099
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.widget.FrameLayout$LayoutParams
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.widget.FrameLayout$LayoutParams at fu.hao.trust.dvm.VMHeap@124e1099
+OP_NEW_INSTANCE - [DEBUG]: begin new object of android.widget.FrameLayout$LayoutParamscreated.
+OP_NEW_INSTANCE - [DEBUG]: new object of android.widget.FrameLayout$LayoutParamscreated.
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_NEW_INSTANCE -> jump set pc to 2
+InfluenceAnalysis - [BB]: Rdst [reg 0@AdViewController/<clinit>]
+ContextAnalysis - [BB]: Rdst [reg 0@AdViewController/<clinit>]
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <2 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?17> at com.mopub.mobileads.AdViewController/<clinit>[]
+Interpreter - [DEBUG]: Mov const begin <2 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?17>
+Interpreter - [DEBUG]: data: 17 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 3
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <3 HALT,DIRECT,extra=[null, [0, 2, 2, 1]]> at com.mopub.mobileads.AdViewController/<clinit>[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_HALT -> jump set pc to 4
+Interpreter - [MSG]: Cannot resolve the invocation
+FullAnalysis - [BB]: Not a taint op <3 HALT,DIRECT,extra=[null, [0, 2, 2, 1]]>
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <4 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(com.mopub.mobileads.AdViewController, WRAP_AND_CENTER_LAYOUT_PARAMS)> at com.mopub.mobileads.AdViewController/<clinit>[]
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.mobileads.AdViewController at fu.hao.trust.dvm.VMHeap@124e1099
+Caller: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.mopub.mobileads.AdViewController
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.mobileads.AdViewController at fu.hao.trust.dvm.VMHeap@124e1099
+class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: expect sput WRAP_AND_CENTER_LAYOUT_PARAMS from com.mopub.mobileads.AdViewController
+class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: real sput instance number 1@android.widget.FrameLayout$LayoutParams from fu.hao.trust.dvm.DVMClass@386eaf0d
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD -> jump set pc to 5
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.mobileads.AdViewController at fu.hao.trust.dvm.VMHeap@124e1099
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.mopub.mobileads.AdViewController
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.mobileads.AdViewController at fu.hao.trust.dvm.VMHeap@124e1099
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.mobileads.AdViewController at fu.hao.trust.dvm.VMHeap@124e1099
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.mopub.mobileads.AdViewController
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.mobileads.AdViewController at fu.hao.trust.dvm.VMHeap@124e1099
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <5 NEW,INSTANCE,dst=r0,type=java.util.WeakHashMap> at com.mopub.mobileads.AdViewController/<clinit>[]
+OP_NEW_INSTANCE - [DEBUG]: [reg 0@AdViewController/<clinit>]
+OP_NEW_INSTANCE - [BB]: Reflecable instance.
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_NEW_INSTANCE -> jump set pc to 6
+InfluenceAnalysis - [BB]: Rdst [reg 0@AdViewController/<clinit>]
+ContextAnalysis - [BB]: Rdst [reg 0@AdViewController/<clinit>]
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <6 INVOKE,DIRECT,extra=[java.util.WeakHashMap/<init>[], [0]]> at com.mopub.mobileads.AdViewController/<clinit>[]
+Interpreter - [WARN]: arg0 is null!
+Interpreter - [DEBUG]: Init instance: {}, class java.util.WeakHashMap
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 7
+FULL_OP_INVOKE - [BB]: targetcalls {}
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <7 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(com.mopub.mobileads.AdViewController, sViewShouldHonorServerDimensions)> at com.mopub.mobileads.AdViewController/<clinit>[]
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.mobileads.AdViewController at fu.hao.trust.dvm.VMHeap@124e1099
+Caller: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.mopub.mobileads.AdViewController
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.mobileads.AdViewController at fu.hao.trust.dvm.VMHeap@124e1099
+class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [WARN]: Type inconsistent! void java.util.WeakHashMap
+class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: expect sput sViewShouldHonorServerDimensions from com.mopub.mobileads.AdViewController
+class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: real sput {} from fu.hao.trust.dvm.DVMClass@386eaf0d
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD -> jump set pc to 8
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.mobileads.AdViewController at fu.hao.trust.dvm.VMHeap@124e1099
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.mopub.mobileads.AdViewController
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.mobileads.AdViewController at fu.hao.trust.dvm.VMHeap@124e1099
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.mobileads.AdViewController at fu.hao.trust.dvm.VMHeap@124e1099
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.mopub.mobileads.AdViewController
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.mobileads.AdViewController at fu.hao.trust.dvm.VMHeap@124e1099
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <8 RETURN,VOID> at com.mopub.mobileads.AdViewController/<clinit>[]
+class fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID -> jump set pc to 0
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@124e1099
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for java.lang.Object at fu.hao.trust.dvm.VMHeap@124e1099
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type java.lang.Object
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@124e1099
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type com.mopub.mobileads.AdViewController
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.mopub.mobileads.AdViewController at fu.hao.trust.dvm.VMHeap@124e1099
+DVMObject - [BB]: New instance of com.mopub.mobileads.AdViewController
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.mopub.mobileads.AdViewController at fu.hao.trust.dvm.VMHeap@124e1099
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type com.mopub.mobileads.AdViewController
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.mopub.mobileads.AdViewController at fu.hao.trust.dvm.VMHeap@124e1099
+Interpreter - [MSG]: RUN BEGIN com.mopub.mobileads.AdViewController/generateAdUrl[]
+Interpreter - [MSG]: RUN BEGIN
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[2]> at com.mopub.mobileads.AdViewController/generateAdUrl[]
+Interpreter - [WARN]: NULL CallingCtx!
+Interpreter - [DEBUG]: args: instance number 1@com.mopub.mobileads.AdViewController
+Interpreter - [BB]: Start param from 1
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <1 INSTANCE,IGET,r0=r2,r1=r0,type=java.lang.Object,extra=com.mopub.mobileads.AdViewController.mUrlGenerator> at com.mopub.mobileads.AdViewController/generateAdUrl[]
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: obj instance number 1@com.mopub.mobileads.AdViewController
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: fieldinfo com.mopub.mobileads.AdViewController.mUrlGenerator
+Unknown - [BB]: Unknown created!
+DVMObject - [DEBUG]: put field [Unknown var, type: com.mopub.mobileads.WebViewAdUrlGenerator]
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: [Unknown var, type: com.mopub.mobileads.WebViewAdUrlGenerator]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD -> jump set pc to 2
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <2 IF,NEZ,r0=r0,extra=index:5> at com.mopub.mobileads.AdViewController/generateAdUrl[]
+OP_CMP - [DEBUG]: r0 data [Unknown var, type: com.mopub.mobileads.WebViewAdUrlGenerator]
+DalvikVM - [BB]: fu.hao.trust.analysis.TaintCtrlDep$CDTAINT_OP_CMP -> flow set pc to 3
+ATAINT_OP_CMP - [BB]: ret: 4
+ATAINT_OP_CMP - [BB]: cao 
+ATAINT_OP_CMP - [BB]: rii
+fu.hao.trust.solver.BiDirBranch - [WARN]: New BiDirBranch [Branch: 2--[cond: <2 IF,NEZ,r0=r0,extra=index:5>][sumpoint: <0 INSTANCE,IGET,r0=r2,r1=r0,type=java.lang.Object,extra=com.mopub.mobileads.AdViewController.mUrlGenerator>]@generateAdUrl]
+ATAINT_OP_CMP - [BB]: BiDirSumpoint <0 RETURN,VALUE,r0=r0,type=java.lang.Object>
+ATAINT_OP_CMP - [BB]: Set rest begin <0 RETURN,VALUE,r0=r0,type=java.lang.Object>
+ATAINT_OP_CMP - [MSG]: ATAINT_OP_IF:  <2 IF,NEZ,r0=r0,extra=index:5> 5
+ATAINT_OP_CMP - [BB]: Add <2 IF,NEZ,r0=r0,extra=index:5> to met of [Branch: 2--[cond: <2 IF,NEZ,r0=r0,extra=index:5>][sumpoint: <0 RETURN,VALUE,r0=r0,type=java.lang.Object>]@generateAdUrl]
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <3 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0> at com.mopub.mobileads.AdViewController/generateAdUrl[]
+Interpreter - [DEBUG]: Mov const begin <3 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: ar0 <[Unknown var, type: com.mopub.mobileads.WebViewAdUrlGenerator], com.mopub.mobileads.WebViewAdUrlGenerator>, <0, void>
+Interpreter - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 4
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <4 RETURN,VALUE,r0=r0,type=java.lang.Object> at com.mopub.mobileads.AdViewController/generateAdUrl[]
+FullAnalysis - [MSG]: Arrive at sum point of bidirbranch [Branch: 2--[cond: <2 IF,NEZ,r0=r0,extra=index:5>][sumpoint: <4 RETURN,VALUE,r0=r0,type=java.lang.Object>]@generateAdUrl]
+Caller: preprocessing@fu.hao.trust.analysis.TaintSumBranch - [BB]: Add conflict at var [reg 0@AdViewController/generateAdUrl], with value 0
+FullAnalysis - [BB]: Back to <2 IF,NEZ,r0=r0,extra=index:5>
+VMState - [MSG]: ++++++++++++++++++++++++++++++++BackTrace+++++++++++++++++++++++++++++++++
+DalvikVM - [BB]: ar0 <0, void>, <[Unknown var, type: com.mopub.mobileads.WebViewAdUrlGenerator], com.mopub.mobileads.WebViewAdUrlGenerator>
+DalvikVM - [BB]: ar2 <instance number 1@com.mopub.mobileads.AdViewController, com.mopub.mobileads.AdViewController>, <instance number 1@com.mopub.mobileads.AdViewController, com.mopub.mobileads.AdViewController>
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> jump set pc to 5
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+fu.hao.trust.solver.BiDirBranch - [BB]: Add backPlugres: [{fu.hao.trust.analysis.FullAnalysis@2f04995e={InfluenceAnalysis={}, ContextAnalysis={}}}]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <5 INSTANCE,IGET,r0=r2,r1=r0,type=java.lang.Object,extra=com.mopub.mobileads.AdViewController.mUrlGenerator> at com.mopub.mobileads.AdViewController/generateAdUrl[]
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: obj instance number 1@com.mopub.mobileads.AdViewController
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: fieldinfo com.mopub.mobileads.AdViewController.mUrlGenerator
+DalvikVM - [BB]: ar0 <[Unknown var, type: com.mopub.mobileads.WebViewAdUrlGenerator], com.mopub.mobileads.WebViewAdUrlGenerator>, <[Unknown var, type: com.mopub.mobileads.WebViewAdUrlGenerator], com.mopub.mobileads.WebViewAdUrlGenerator>
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: [Unknown var, type: com.mopub.mobileads.WebViewAdUrlGenerator]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD -> jump set pc to 6
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <6 INSTANCE,IGET,r0=r2,r1=r1,type=java.lang.Object,extra=com.mopub.mobileads.AdViewController.mAdUnitId> at com.mopub.mobileads.AdViewController/generateAdUrl[]
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: obj instance number 1@com.mopub.mobileads.AdViewController
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: fieldinfo com.mopub.mobileads.AdViewController.mAdUnitId
+Unknown - [BB]: Unknown created!
+DVMObject - [DEBUG]: put field [Unknown var, type: java.lang.String]
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: [Unknown var, type: java.lang.String]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD -> jump set pc to 7
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <7 INVOKE,VIRTUAL,extra=[com.mopub.common.AdUrlGenerator/withAdUnitId[java.lang.String], [0, 1]]> at com.mopub.mobileads.AdViewController/generateAdUrl[]
+Interpreter - [MSG]: arg0 obj: [Unknown var, type: com.mopub.mobileads.WebViewAdUrlGenerator]
+Interpreter - [DEBUG]: Not a reflction invocation com.mopub.common.AdUrlGenerator/withAdUnitId[java.lang.String]
+Interpreter - [WARN]: NULL "THIS" INSTANCE!
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 8
+FULL_OP_INVOKE - [BB]: targetcalls {}
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <8 MOV,RESULT,dst=r0,type=java.lang.Object> at com.mopub.mobileads.AdViewController/generateAdUrl[]
+Unknown - [BB]: Unknown created!
+DalvikVM - [BB]: ar0 <[Unknown var, type: com.mopub.mobileads.WebViewAdUrlGenerator], com.mopub.mobileads.WebViewAdUrlGenerator>, <[Unknown var, type: java.lang.Object], java.lang.Object>
+OP_MOV_RESULT - [BB]: Result data: [Unknown var, type: java.lang.Object]
+OP_MOV_RESULT - [DEBUG]: Result data: [Unknown var, type: java.lang.Object], type: java.lang.Object, to [reg 0@AdViewController/generateAdUrl]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 9
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <9 INSTANCE,IGET,r0=r2,r1=r1,type=java.lang.Object,extra=com.mopub.mobileads.AdViewController.mKeywords> at com.mopub.mobileads.AdViewController/generateAdUrl[]
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: obj instance number 1@com.mopub.mobileads.AdViewController
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: fieldinfo com.mopub.mobileads.AdViewController.mKeywords
+Unknown - [BB]: Unknown created!
+DVMObject - [DEBUG]: put field [Unknown var, type: java.lang.String]
+DalvikVM - [BB]: ar1 <[Unknown var, type: java.lang.String], java.lang.String>, <[Unknown var, type: java.lang.String], java.lang.String>
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: [Unknown var, type: java.lang.String]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD -> jump set pc to 10
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <10 INVOKE,VIRTUAL,extra=[com.mopub.common.AdUrlGenerator/withKeywords[java.lang.String], [0, 1]]> at com.mopub.mobileads.AdViewController/generateAdUrl[]
+Interpreter - [MSG]: arg0 obj: [Unknown var, type: java.lang.Object]
+Interpreter - [DEBUG]: Not a reflction invocation com.mopub.common.AdUrlGenerator/withKeywords[java.lang.String]
+Interpreter - [WARN]: NULL "THIS" INSTANCE!
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 11
+FULL_OP_INVOKE - [BB]: targetcalls {}
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <11 MOV,RESULT,dst=r0,type=java.lang.Object> at com.mopub.mobileads.AdViewController/generateAdUrl[]
+Unknown - [BB]: Unknown created!
+DalvikVM - [BB]: ar0 <[Unknown var, type: java.lang.Object], java.lang.Object>, <[Unknown var, type: java.lang.Object], java.lang.Object>
+OP_MOV_RESULT - [BB]: Result data: [Unknown var, type: java.lang.Object]
+OP_MOV_RESULT - [DEBUG]: Result data: [Unknown var, type: java.lang.Object], type: java.lang.Object, to [reg 0@AdViewController/generateAdUrl]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 12
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <12 INSTANCE,IGET,r0=r2,r1=r1,type=java.lang.Object,extra=com.mopub.mobileads.AdViewController.mLocation> at com.mopub.mobileads.AdViewController/generateAdUrl[]
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: obj instance number 1@com.mopub.mobileads.AdViewController
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: fieldinfo com.mopub.mobileads.AdViewController.mLocation
+Unknown - [BB]: Unknown created!
+DVMObject - [DEBUG]: put field [Unknown var, type: android.location.Location]
+DalvikVM - [BB]: ar1 <[Unknown var, type: java.lang.String], java.lang.String>, <[Unknown var, type: android.location.Location], android.location.Location>
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: [Unknown var, type: android.location.Location]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD -> jump set pc to 13
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <13 INVOKE,VIRTUAL,extra=[com.mopub.common.AdUrlGenerator/withLocation[android.location.Location], [0, 1]]> at com.mopub.mobileads.AdViewController/generateAdUrl[]
+Interpreter - [MSG]: arg0 obj: [Unknown var, type: java.lang.Object]
+Interpreter - [DEBUG]: Not a reflction invocation com.mopub.common.AdUrlGenerator/withLocation[android.location.Location]
+Interpreter - [WARN]: NULL "THIS" INSTANCE!
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 14
+FULL_OP_INVOKE - [BB]: targetcalls {}
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <14 MOV,RESULT,dst=r0,type=java.lang.Object> at com.mopub.mobileads.AdViewController/generateAdUrl[]
+Unknown - [BB]: Unknown created!
+DalvikVM - [BB]: ar0 <[Unknown var, type: java.lang.Object], java.lang.Object>, <[Unknown var, type: java.lang.Object], java.lang.Object>
+OP_MOV_RESULT - [BB]: Result data: [Unknown var, type: java.lang.Object]
+OP_MOV_RESULT - [DEBUG]: Result data: [Unknown var, type: java.lang.Object], type: java.lang.Object, to [reg 0@AdViewController/generateAdUrl]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 15
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <15 MOV,CONST,dst=r1,type=java.lang.String,extra="ads.mopub.com"> at com.mopub.mobileads.AdViewController/generateAdUrl[]
+Interpreter - [DEBUG]: Mov const begin <15 MOV,CONST,dst=r1,type=java.lang.String,extra="ads.mopub.com">
+DalvikVM - [BB]: ar1 <[Unknown var, type: android.location.Location], android.location.Location>, <ads.mopub.com, java.lang.String>
+Interpreter - [DEBUG]: data: ads.mopub.com class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 16
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <16 INVOKE,VIRTUAL,extra=[com.mopub.common.BaseUrlGenerator/generateUrlString[java.lang.String], [0, 1]]> at com.mopub.mobileads.AdViewController/generateAdUrl[]
+Interpreter - [MSG]: arg0 obj: [Unknown var, type: java.lang.Object]
+Interpreter - [DEBUG]: Not a reflction invocation com.mopub.common.BaseUrlGenerator/generateUrlString[java.lang.String]
+Interpreter - [WARN]: NULL "THIS" INSTANCE!
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 17
+FULL_OP_INVOKE - [BB]: targetcalls {}
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <17 MOV,RESULT,dst=r0,type=java.lang.Object> at com.mopub.mobileads.AdViewController/generateAdUrl[]
+Unknown - [BB]: Unknown created!
+DalvikVM - [BB]: ar0 <[Unknown var, type: java.lang.Object], java.lang.Object>, <[Unknown var, type: java.lang.Object], java.lang.Object>
+OP_MOV_RESULT - [BB]: Result data: [Unknown var, type: java.lang.Object]
+OP_MOV_RESULT - [DEBUG]: Result data: [Unknown var, type: java.lang.Object], type: java.lang.Object, to [reg 0@AdViewController/generateAdUrl]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 18
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <18 GOTO,extra=index:4> at com.mopub.mobileads.AdViewController/generateAdUrl[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_GOTO -> jump set pc to 4
+Interpreter - [DEBUG]: goto done: <18 GOTO,extra=index:4>
+FullAnalysis - [BB]: Not a taint op <18 GOTO,extra=index:4>
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <4 RETURN,VALUE,r0=r0,type=java.lang.Object> at com.mopub.mobileads.AdViewController/generateAdUrl[]
+FullAnalysis - [MSG]: Arrive at sum point of bidirbranch [Branch: 2--[cond: <2 IF,NEZ,r0=r0,extra=index:5>][sumpoint: <4 RETURN,VALUE,r0=r0,type=java.lang.Object>]@generateAdUrl]
+FullAnalysis - [MSG]: Rm BiDirBranch [Branch: 2--[cond: <2 IF,NEZ,r0=r0,extra=index:5>][sumpoint: <4 RETURN,VALUE,r0=r0,type=java.lang.Object>]@generateAdUrl]
+fu.hao.trust.data.Branch - [BB]: Begins value combination:[Branch: 2--[cond: <2 IF,NEZ,r0=r0,extra=index:5>][sumpoint: <4 RETURN,VALUE,r0=r0,type=java.lang.Object>]@generateAdUrl]
+fu.hao.trust.data.Branch - [BB]: {}
+fu.hao.trust.solver.BiDirBranch - [BB]: P {}
+fu.hao.trust.solver.BiDirBranch - [BB]: O {}
+fu.hao.trust.solver.BiDirBranch - [BB]: P {}
+fu.hao.trust.solver.BiDirBranch - [BB]: O {}
+fu.hao.trust.solver.BiDirBranch - [BB]: Done pluginRes Combination!
+DalvikVM - [BB]: ar-1 <[Unknown var, type: java.lang.Object], java.lang.Object>, <[Unknown var, type: java.lang.Object], java.lang.Object>
+Interpreter - [BB]: Return data: [Unknown var, type: java.lang.Object]
+Interpreter - [MSG]: RUN DONE! The last one is generateAdUrl
+DalvikVM - [MSG]: FINISHED!
+
+main - [MSG]: Analysis has run for 9.265199388 seconds
+

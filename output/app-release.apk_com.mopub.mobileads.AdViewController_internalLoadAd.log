@@ -1,0 +1,1076 @@
+DalvikVM - [MSG]: Begin run internalLoadAd at C:/Users/hao/workspace/MultiThreading/app/app-release.apk
+DalvikVM - [MSG]: RUN Method com.mopub.mobileads.AdViewController/internalLoadAd[]
+DalvikVM - [BB]: New method call: com.mopub.mobileads.AdViewController/internalLoadAd[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[2]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?1>
+DalvikVM - [BB]: [2]<0 INSTANCE,IPUT,r0=r2,r1=r1,type=boolean,extra=com.mopub.mobileads.AdViewController.mAdWasLoaded>
+DalvikVM - [BB]: [3]<0 INSTANCE,IGET,r0=r2,r1=r1,type=java.lang.Object,extra=com.mopub.mobileads.AdViewController.mAdUnitId>
+DalvikVM - [BB]: [4]<0 HALT,STATIC,extra=[null, [1]]>
+DalvikVM - [BB]: [5]<0 MOV,RESULT,dst=r1,type=void>
+DalvikVM - [BB]: [6]<0 IF,EQZ,r0=r1,extra=index:10>
+DalvikVM - [BB]: [7]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="Can't load an ad in this ad view because the ad unit ID is not set. Did you forget to call setAdUnitId()?">
+DalvikVM - [BB]: [8]<0 INVOKE,STATIC,extra=[com.mopub.common.logging.MoPubLog/d[java.lang.String], [1]]>
+DalvikVM - [BB]: [9]<0 RETURN,VOID>
+DalvikVM - [BB]: [10]<0 INVOKE,DIRECT,extra=[com.mopub.mobileads.AdViewController/isNetworkAvailable[], [2]]>
+DalvikVM - [BB]: [11]<0 MOV,RESULT,dst=r1,type=void>
+DalvikVM - [BB]: [12]<0 IF,NEZ,r0=r1,extra=index:17>
+DalvikVM - [BB]: [13]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="Can't load an ad because there is no network connectivity.">
+DalvikVM - [BB]: [14]<0 INVOKE,STATIC,extra=[com.mopub.common.logging.MoPubLog/d[java.lang.String], [1]]>
+DalvikVM - [BB]: [15]<0 INVOKE,VIRTUAL,extra=[com.mopub.mobileads.AdViewController/scheduleRefreshTimerIfEnabled[], [2]]>
+DalvikVM - [BB]: [16]<0 GOTO,extra=index:9>
+DalvikVM - [BB]: [17]<0 INVOKE,VIRTUAL,extra=[com.mopub.mobileads.AdViewController/generateAdUrl[], [2]]>
+DalvikVM - [BB]: [18]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [19]<0 INVOKE,VIRTUAL,extra=[com.mopub.mobileads.AdViewController/loadNonJavascript[java.lang.String], [2, 0]]>
+DalvikVM - [BB]: [20]<0 GOTO,extra=index:9>
+DalvikVM - [BB]: New Stack Frame: StackFrame com.mopub.mobileads.AdViewController/internalLoadAd[]
+DalvikVM - [BB]: Stack: [StackFrame com.mopub.mobileads.AdViewController/internalLoadAd[]]
+Interpreter - [MSG]: New chain obj
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.mopub.mobileads.AdViewController at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for com.mopub.mobileads.AdViewController at fu.hao.trust.dvm.VMHeap@4286ae77
+DalvikVM - [BB]: New method call: com.mopub.mobileads.AdViewController/<clinit>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?-2>
+DalvikVM - [BB]: [2]<0 NEW,INSTANCE,dst=r0,type=android.widget.FrameLayout$LayoutParams>
+DalvikVM - [BB]: [3]<0 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?17>
+DalvikVM - [BB]: [4]<0 HALT,DIRECT,extra=[null, [0, 2, 2, 1]]>
+DalvikVM - [BB]: [5]<0 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(com.mopub.mobileads.AdViewController, WRAP_AND_CENTER_LAYOUT_PARAMS)>
+DalvikVM - [BB]: [6]<0 NEW,INSTANCE,dst=r0,type=java.util.WeakHashMap>
+DalvikVM - [BB]: [7]<0 INVOKE,DIRECT,extra=[java.util.WeakHashMap/<init>[], [0]]>
+DalvikVM - [BB]: [8]<0 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(com.mopub.mobileads.AdViewController, sViewShouldHonorServerDimensions)>
+DalvikVM - [BB]: [9]<0 RETURN,VOID>
+DalvikVM - [BB]: New Stack Frame: StackFrame com.mopub.mobileads.AdViewController/<clinit>[], pc [I@5324a927 stored. 
+DalvikVM - [BB]: Stack: [StackFrame com.mopub.mobileads.AdViewController/internalLoadAd[], StackFrame com.mopub.mobileads.AdViewController/<clinit>[]]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <-1 SPECIAL,ARGUMENT_SET,extra=[]> at com.mopub.mobileads.AdViewController/<clinit>[]
+Interpreter - [WARN]: NULL CallingCtx!
+Interpreter - [BB]: Start param from 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_SP_ARGUMENTS -> jump set pc to 0
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <0 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?-2> at com.mopub.mobileads.AdViewController/<clinit>[]
+Interpreter - [DEBUG]: Mov const begin <0 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?-2>
+Interpreter - [DEBUG]: data: -2 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 1
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <1 NEW,INSTANCE,dst=r0,type=android.widget.FrameLayout$LayoutParams> at com.mopub.mobileads.AdViewController/<clinit>[]
+OP_NEW_INSTANCE - [DEBUG]: [reg 0@AdViewController/<clinit>]
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.widget.FrameLayout$LayoutParams at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.widget.FrameLayout$LayoutParams at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.widget.FrameLayout$LayoutParams
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.widget.FrameLayout$LayoutParams at fu.hao.trust.dvm.VMHeap@4286ae77
+DVMObject - [BB]: New instance of android.widget.FrameLayout$LayoutParams
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.widget.FrameLayout$LayoutParams at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.widget.FrameLayout$LayoutParams
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.widget.FrameLayout$LayoutParams at fu.hao.trust.dvm.VMHeap@4286ae77
+OP_NEW_INSTANCE - [DEBUG]: begin new object of android.widget.FrameLayout$LayoutParamscreated.
+OP_NEW_INSTANCE - [DEBUG]: new object of android.widget.FrameLayout$LayoutParamscreated.
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_NEW_INSTANCE -> jump set pc to 2
+InfluenceAnalysis - [BB]: Rdst [reg 0@AdViewController/<clinit>]
+ContextAnalysis - [BB]: Rdst [reg 0@AdViewController/<clinit>]
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <2 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?17> at com.mopub.mobileads.AdViewController/<clinit>[]
+Interpreter - [DEBUG]: Mov const begin <2 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?17>
+Interpreter - [DEBUG]: data: 17 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 3
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <3 HALT,DIRECT,extra=[null, [0, 2, 2, 1]]> at com.mopub.mobileads.AdViewController/<clinit>[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_HALT -> jump set pc to 4
+Interpreter - [MSG]: Cannot resolve the invocation
+FullAnalysis - [BB]: Not a taint op <3 HALT,DIRECT,extra=[null, [0, 2, 2, 1]]>
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <4 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(com.mopub.mobileads.AdViewController, WRAP_AND_CENTER_LAYOUT_PARAMS)> at com.mopub.mobileads.AdViewController/<clinit>[]
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.mobileads.AdViewController at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.mopub.mobileads.AdViewController
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.mobileads.AdViewController at fu.hao.trust.dvm.VMHeap@4286ae77
+class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: expect sput WRAP_AND_CENTER_LAYOUT_PARAMS from com.mopub.mobileads.AdViewController
+class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: real sput instance number 1@android.widget.FrameLayout$LayoutParams from fu.hao.trust.dvm.DVMClass@605e1bc1
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD -> jump set pc to 5
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.mobileads.AdViewController at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.mopub.mobileads.AdViewController
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.mobileads.AdViewController at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.mobileads.AdViewController at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.mopub.mobileads.AdViewController
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.mobileads.AdViewController at fu.hao.trust.dvm.VMHeap@4286ae77
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <5 NEW,INSTANCE,dst=r0,type=java.util.WeakHashMap> at com.mopub.mobileads.AdViewController/<clinit>[]
+OP_NEW_INSTANCE - [DEBUG]: [reg 0@AdViewController/<clinit>]
+OP_NEW_INSTANCE - [BB]: Reflecable instance.
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_NEW_INSTANCE -> jump set pc to 6
+InfluenceAnalysis - [BB]: Rdst [reg 0@AdViewController/<clinit>]
+ContextAnalysis - [BB]: Rdst [reg 0@AdViewController/<clinit>]
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <6 INVOKE,DIRECT,extra=[java.util.WeakHashMap/<init>[], [0]]> at com.mopub.mobileads.AdViewController/<clinit>[]
+Interpreter - [WARN]: arg0 is null!
+Interpreter - [DEBUG]: Init instance: {}, class java.util.WeakHashMap
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 7
+FULL_OP_INVOKE - [BB]: targetcalls {}
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <7 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(com.mopub.mobileads.AdViewController, sViewShouldHonorServerDimensions)> at com.mopub.mobileads.AdViewController/<clinit>[]
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.mobileads.AdViewController at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.mopub.mobileads.AdViewController
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.mobileads.AdViewController at fu.hao.trust.dvm.VMHeap@4286ae77
+class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [WARN]: Type inconsistent! void java.util.WeakHashMap
+class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: expect sput sViewShouldHonorServerDimensions from com.mopub.mobileads.AdViewController
+class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: real sput {} from fu.hao.trust.dvm.DVMClass@605e1bc1
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD -> jump set pc to 8
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.mobileads.AdViewController at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.mopub.mobileads.AdViewController
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.mobileads.AdViewController at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.mobileads.AdViewController at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.mopub.mobileads.AdViewController
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.mobileads.AdViewController at fu.hao.trust.dvm.VMHeap@4286ae77
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <8 RETURN,VOID> at com.mopub.mobileads.AdViewController/<clinit>[]
+class fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID -> jump set pc to 0
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for java.lang.Object at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type java.lang.Object
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type com.mopub.mobileads.AdViewController
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.mopub.mobileads.AdViewController at fu.hao.trust.dvm.VMHeap@4286ae77
+DVMObject - [BB]: New instance of com.mopub.mobileads.AdViewController
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.mopub.mobileads.AdViewController at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type com.mopub.mobileads.AdViewController
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.mopub.mobileads.AdViewController at fu.hao.trust.dvm.VMHeap@4286ae77
+Interpreter - [MSG]: RUN BEGIN com.mopub.mobileads.AdViewController/internalLoadAd[]
+Interpreter - [MSG]: RUN BEGIN
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[2]> at com.mopub.mobileads.AdViewController/internalLoadAd[]
+Interpreter - [WARN]: NULL CallingCtx!
+Interpreter - [DEBUG]: args: instance number 1@com.mopub.mobileads.AdViewController
+Interpreter - [BB]: Start param from 1
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <1 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?1> at com.mopub.mobileads.AdViewController/internalLoadAd[]
+Interpreter - [DEBUG]: Mov const begin <1 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?1>
+Interpreter - [DEBUG]: data: 1 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 2
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <2 INSTANCE,IPUT,r0=r2,r1=r1,type=boolean,extra=com.mopub.mobileads.AdViewController.mAdWasLoaded> at com.mopub.mobileads.AdViewController/internalLoadAd[]
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_PUT_FIELD - [BB]: field com.mopub.mobileads.AdViewController.mAdWasLoaded
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.mopub.mobileads.AdViewController
+DVMObject - [DEBUG]: put field 1
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_PUT_FIELD - [MSG]: Put data 1 to the field of instance number 1@com.mopub.mobileads.AdViewController
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_INSTANCE_PUT_FIELD -> jump set pc to 3
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <3 INSTANCE,IGET,r0=r2,r1=r1,type=java.lang.Object,extra=com.mopub.mobileads.AdViewController.mAdUnitId> at com.mopub.mobileads.AdViewController/internalLoadAd[]
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: obj instance number 1@com.mopub.mobileads.AdViewController
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: fieldinfo com.mopub.mobileads.AdViewController.mAdUnitId
+Unknown - [BB]: Unknown created!
+DVMObject - [DEBUG]: put field [Unknown var, type: java.lang.String]
+DalvikVM - [BB]: ar1 <1, void>, <[Unknown var, type: java.lang.String], java.lang.String>
+class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: [Unknown var, type: java.lang.String]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD -> jump set pc to 4
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <4 HALT,STATIC,extra=[null, [1]]> at com.mopub.mobileads.AdViewController/internalLoadAd[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_HALT -> jump set pc to 5
+Interpreter - [MSG]: Cannot resolve the invocation
+FullAnalysis - [BB]: Not a taint op <4 HALT,STATIC,extra=[null, [1]]>
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <5 MOV,RESULT,dst=r1,type=void> at com.mopub.mobileads.AdViewController/internalLoadAd[]
+Unknown - [BB]: Unknown created!
+DalvikVM - [BB]: ar1 <[Unknown var, type: java.lang.String], java.lang.String>, <[Unknown var, type: void], void>
+OP_MOV_RESULT - [BB]: Result data: [Unknown var, type: void]
+OP_MOV_RESULT - [DEBUG]: Result data: [Unknown var, type: void], type: void, to [reg 1@AdViewController/internalLoadAd]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 6
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <6 IF,EQZ,r0=r1,extra=index:10> at com.mopub.mobileads.AdViewController/internalLoadAd[]
+OP_CMP - [DEBUG]: r0 data [Unknown var, type: void]
+DalvikVM - [BB]: fu.hao.trust.analysis.TaintCtrlDep$CDTAINT_OP_CMP -> flow set pc to 7
+ATAINT_OP_CMP - [BB]: ret: 9
+ATAINT_OP_CMP - [BB]: cao 
+ATAINT_OP_CMP - [BB]: rii
+fu.hao.trust.solver.BiDirBranch - [WARN]: New BiDirBranch [Branch: 6--[cond: <6 IF,EQZ,r0=r1,extra=index:10>][sumpoint: <0 INVOKE,DIRECT,extra=[com.mopub.mobileads.AdViewController/isNetworkAvailable[], [2]]>]@internalLoadAd]
+ATAINT_OP_CMP - [BB]: BiDirSumpoint <0 RETURN,VOID>
+ATAINT_OP_CMP - [BB]: Set rest begin <0 RETURN,VOID>
+ATAINT_OP_CMP - [BB]: Set rest begin <0 RETURN,VOID>
+ATAINT_OP_CMP - [MSG]: ATAINT_OP_IF:  <6 IF,EQZ,r0=r1,extra=index:10> 10
+ATAINT_OP_CMP - [BB]: Add <6 IF,EQZ,r0=r1,extra=index:10> to met of [Branch: 6--[cond: <6 IF,EQZ,r0=r1,extra=index:10>][sumpoint: <0 RETURN,VOID>]@internalLoadAd]
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <7 MOV,CONST,dst=r1,type=java.lang.String,extra="Can't load an ad in this ad view because the ad unit ID is not set. Did you forget to call setAdUnitId()?"> at com.mopub.mobileads.AdViewController/internalLoadAd[]
+Interpreter - [DEBUG]: Mov const begin <7 MOV,CONST,dst=r1,type=java.lang.String,extra="Can't load an ad in this ad view because the ad unit ID is not set. Did you forget to call setAdUnitId()?">
+DalvikVM - [BB]: ar1 <[Unknown var, type: void], void>, <Can't load an ad in this ad view because the ad unit ID is not set. Did you forget to call setAdUnitId()?, java.lang.String>
+Interpreter - [DEBUG]: data: Can't load an ad in this ad view because the ad unit ID is not set. Did you forget to call setAdUnitId()? class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 8
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <8 INVOKE,STATIC,extra=[com.mopub.common.logging.MoPubLog/d[java.lang.String], [1]]> at com.mopub.mobileads.AdViewController/internalLoadAd[]
+DalvikVM - [BB]: New method call: com.mopub.common.logging.MoPubLog/d[java.lang.String]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[1]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [2]<0 INVOKE,STATIC,extra=[com.mopub.common.logging.MoPubLog/d[java.lang.String, java.lang.Throwable], [1, 0]]>
+DalvikVM - [BB]: [3]<0 RETURN,VOID>
+DalvikVM - [BB]: New Stack Frame: StackFrame com.mopub.common.logging.MoPubLog/d[java.lang.String], pc [I@5324a927 stored. 
+DalvikVM - [BB]: Stack: [StackFrame com.mopub.mobileads.AdViewController/internalLoadAd[], StackFrame com.mopub.common.logging.MoPubLog/d[java.lang.String]]
+FULL_OP_INVOKE - [BB]: targetcalls {}
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> run set pc to 0
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[1]> at com.mopub.common.logging.MoPubLog/d[java.lang.String]
+Interpreter - [DEBUG]: params: Can't load an ad in this ad view because the ad unit ID is not set. Did you forget to call setAdUnitId()?
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <1 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0> at com.mopub.common.logging.MoPubLog/d[java.lang.String]
+Interpreter - [DEBUG]: Mov const begin <1 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+Interpreter - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 2
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <2 INVOKE,STATIC,extra=[com.mopub.common.logging.MoPubLog/d[java.lang.String, java.lang.Throwable], [1, 0]]> at com.mopub.common.logging.MoPubLog/d[java.lang.String]
+DalvikVM - [BB]: New method call: com.mopub.common.logging.MoPubLog/d[java.lang.String, java.lang.Throwable]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[2, 3]>
+DalvikVM - [BB]: [1]<0 STATIC,SGET,r0=r0,type=java.lang.Object,extra=(com.mopub.common.logging.MoPubLog, LOGGER)>
+DalvikVM - [BB]: [2]<0 STATIC,SGET,r0=r1,type=java.lang.Object,extra=(java.util.logging.Level, CONFIG)>
+DalvikVM - [BB]: [3]<0 INVOKE,VIRTUAL,extra=[java.util.logging.Logger/log[java.util.logging.Level, java.lang.String, java.lang.Throwable], [0, 1, 2, 3]]>
+DalvikVM - [BB]: [4]<0 RETURN,VOID>
+DalvikVM - [BB]: New Stack Frame: StackFrame com.mopub.common.logging.MoPubLog/d[java.lang.String, java.lang.Throwable], pc [I@5fc33fa0 stored. 
+DalvikVM - [BB]: Stack: [StackFrame com.mopub.mobileads.AdViewController/internalLoadAd[], StackFrame com.mopub.common.logging.MoPubLog/d[java.lang.String], StackFrame com.mopub.common.logging.MoPubLog/d[java.lang.String, java.lang.Throwable]]
+FULL_OP_INVOKE - [BB]: targetcalls {}
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> run set pc to 0
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[2, 3]> at com.mopub.common.logging.MoPubLog/d[java.lang.String, java.lang.Throwable]
+Interpreter - [DEBUG]: params: Can't load an ad in this ad view because the ad unit ID is not set. Did you forget to call setAdUnitId()?
+Interpreter - [DEBUG]: params: 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <1 STATIC,SGET,r0=r0,type=java.lang.Object,extra=(com.mopub.common.logging.MoPubLog, LOGGER)> at com.mopub.common.logging.MoPubLog/d[java.lang.String, java.lang.Throwable]
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for com.mopub.common.logging.MoPubLog at fu.hao.trust.dvm.VMHeap@4286ae77
+DalvikVM - [BB]: New method call: com.mopub.common.logging.MoPubLog/<clinit>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r0,type=java.lang.String,extra="com.mopub">
+DalvikVM - [BB]: [2]<0 INVOKE,STATIC,extra=[java.util.logging.Logger/getLogger[java.lang.String], [0]]>
+DalvikVM - [BB]: [3]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [4]<0 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(com.mopub.common.logging.MoPubLog, LOGGER)>
+DalvikVM - [BB]: [5]<0 NEW,INSTANCE,dst=r0,type=com.mopub.common.logging.MoPubLog$MoPubLogHandler>
+DalvikVM - [BB]: [6]<0 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [7]<0 INVOKE,DIRECT,extra=[com.mopub.common.logging.MoPubLog$MoPubLogHandler/<init>[com.mopub.common.logging.MoPubLog$1], [0, 1]]>
+DalvikVM - [BB]: [8]<0 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(com.mopub.common.logging.MoPubLog, LOG_HANDLER)>
+DalvikVM - [BB]: [9]<0 STATIC,SGET,r0=r0,type=java.lang.Object,extra=(com.mopub.common.logging.MoPubLog, LOGGER)>
+DalvikVM - [BB]: [10]<0 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [11]<0 INVOKE,VIRTUAL,extra=[java.util.logging.Logger/setUseParentHandlers[boolean], [0, 1]]>
+DalvikVM - [BB]: [12]<0 STATIC,SGET,r0=r0,type=java.lang.Object,extra=(com.mopub.common.logging.MoPubLog, LOGGER)>
+DalvikVM - [BB]: [13]<0 STATIC,SGET,r0=r1,type=java.lang.Object,extra=(java.util.logging.Level, ALL)>
+DalvikVM - [BB]: [14]<0 INVOKE,VIRTUAL,extra=[java.util.logging.Logger/setLevel[java.util.logging.Level], [0, 1]]>
+DalvikVM - [BB]: [15]<0 STATIC,SGET,r0=r0,type=java.lang.Object,extra=(com.mopub.common.logging.MoPubLog, LOG_HANDLER)>
+DalvikVM - [BB]: [16]<0 STATIC,SGET,r0=r1,type=java.lang.Object,extra=(java.util.logging.Level, FINE)>
+DalvikVM - [BB]: [17]<0 INVOKE,VIRTUAL,extra=[java.util.logging.Handler/setLevel[java.util.logging.Level], [0, 1]]>
+DalvikVM - [BB]: [18]<0 INVOKE,STATIC,extra=[java.util.logging.LogManager/getLogManager[], []]>
+DalvikVM - [BB]: [19]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [20]<0 STATIC,SGET,r0=r1,type=java.lang.Object,extra=(com.mopub.common.logging.MoPubLog, LOGGER)>
+DalvikVM - [BB]: [21]<0 INVOKE,VIRTUAL,extra=[java.util.logging.LogManager/addLogger[java.util.logging.Logger], [0, 1]]>
+DalvikVM - [BB]: [22]<0 STATIC,SGET,r0=r0,type=java.lang.Object,extra=(com.mopub.common.logging.MoPubLog, LOGGER)>
+DalvikVM - [BB]: [23]<0 STATIC,SGET,r0=r1,type=java.lang.Object,extra=(com.mopub.common.logging.MoPubLog, LOG_HANDLER)>
+DalvikVM - [BB]: [24]<0 INVOKE,STATIC,extra=[com.mopub.common.logging.MoPubLog/addHandler[java.util.logging.Logger, java.util.logging.Handler], [0, 1]]>
+DalvikVM - [BB]: [25]<0 RETURN,VOID>
+DalvikVM - [BB]: New Stack Frame: StackFrame com.mopub.common.logging.MoPubLog/<clinit>[], pc [I@6c9b967b stored. 
+DalvikVM - [BB]: Stack: [StackFrame com.mopub.mobileads.AdViewController/internalLoadAd[], StackFrame com.mopub.common.logging.MoPubLog/d[java.lang.String], StackFrame com.mopub.common.logging.MoPubLog/d[java.lang.String, java.lang.Throwable], StackFrame com.mopub.common.logging.MoPubLog/<clinit>[]]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <-1 SPECIAL,ARGUMENT_SET,extra=[]> at com.mopub.common.logging.MoPubLog/<clinit>[]
+Interpreter - [WARN]: NULL CallingCtx!
+Interpreter - [BB]: Start param from 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_SP_ARGUMENTS -> jump set pc to 0
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <0 MOV,CONST,dst=r0,type=java.lang.String,extra="com.mopub"> at com.mopub.common.logging.MoPubLog/<clinit>[]
+Interpreter - [DEBUG]: Mov const begin <0 MOV,CONST,dst=r0,type=java.lang.String,extra="com.mopub">
+Interpreter - [DEBUG]: data: com.mopub class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 1
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <1 INVOKE,STATIC,extra=[java.util.logging.Logger/getLogger[java.lang.String], [0]]> at com.mopub.common.logging.MoPubLog/<clinit>[]
+Interpreter - [DEBUG]: Reflction class java.util.logging.Logger
+Interpreter - [MSG]: reflction invocation public static java.util.logging.Logger java.util.logging.Logger.getLogger(java.lang.String)
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_INVOKE_STATIC -> jump set pc to 2
+FULL_OP_INVOKE - [BB]: targetcalls {}
+InfluenceAnalysis - [BB]: <java.util.logging.Logger: java.util.logging.Logger getLogger(java.lang.String)>
+InfluenceAnalysis - [DEBUG]: not a taint call: <java.util.logging.Logger: java.util.logging.Logger getLogger(java.lang.String)>
+ContextAnalysis - [BB]: <java.util.logging.Logger: java.util.logging.Logger getLogger(java.lang.String)>
+ContextAnalysis - [DEBUG]: not a taint call: <java.util.logging.Logger: java.util.logging.Logger getLogger(java.lang.String)>
+ContextAnalysis - [BB]: Ret value java.util.logging.Logger@12fc2eac
+InfluenceAnalysis - [BB]: Method public static java.util.logging.Logger java.util.logging.Logger.getLogger(java.lang.String)
+InfluenceAnalysis - [MSG]: Not API Recording
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <2 MOV,RESULT,dst=r0,type=java.lang.Object> at com.mopub.common.logging.MoPubLog/<clinit>[]
+DalvikVM - [BB]: ar0 <com.mopub, java.lang.String>, <java.util.logging.Logger@12fc2eac, java.util.logging.Logger>
+OP_MOV_RESULT - [BB]: Result data: java.util.logging.Logger@12fc2eac
+OP_MOV_RESULT - [DEBUG]: Result data: java.util.logging.Logger@12fc2eac, type: java.util.logging.Logger, to [reg 0@MoPubLog/<clinit>]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 3
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <3 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(com.mopub.common.logging.MoPubLog, LOGGER)> at com.mopub.common.logging.MoPubLog/<clinit>[]
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.mopub.common.logging.MoPubLog
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog at fu.hao.trust.dvm.VMHeap@4286ae77
+class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: expect sput LOGGER from com.mopub.common.logging.MoPubLog
+class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: real sput java.util.logging.Logger@12fc2eac from fu.hao.trust.dvm.DVMClass@6a5c27f0
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD -> jump set pc to 4
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.mopub.common.logging.MoPubLog
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.mopub.common.logging.MoPubLog
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog at fu.hao.trust.dvm.VMHeap@4286ae77
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <4 NEW,INSTANCE,dst=r0,type=com.mopub.common.logging.MoPubLog$MoPubLogHandler> at com.mopub.common.logging.MoPubLog/<clinit>[]
+OP_NEW_INSTANCE - [DEBUG]: [reg 0@MoPubLog/<clinit>]
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+DalvikVM - [BB]: New method call: com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?2>
+DalvikVM - [BB]: [2]<0 NEW,INSTANCE,dst=r0,type=java.util.HashMap>
+DalvikVM - [BB]: [3]<0 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?7>
+DalvikVM - [BB]: [4]<0 INVOKE,DIRECT,extra=[java.util.HashMap/<init>[int], [0, 1]]>
+DalvikVM - [BB]: [5]<0 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(com.mopub.common.logging.MoPubLog$MoPubLogHandler, LEVEL_TO_LOG)>
+DalvikVM - [BB]: [6]<0 STATIC,SGET,r0=r0,type=java.lang.Object,extra=(com.mopub.common.logging.MoPubLog$MoPubLogHandler, LEVEL_TO_LOG)>
+DalvikVM - [BB]: [7]<0 STATIC,SGET,r0=r1,type=java.lang.Object,extra=(java.util.logging.Level, FINEST)>
+DalvikVM - [BB]: [8]<0 INVOKE,STATIC,extra=[java.lang.Integer/valueOf[int], [3]]>
+DalvikVM - [BB]: [9]<0 MOV,RESULT,dst=r2,type=java.lang.Object>
+DalvikVM - [BB]: [10]<0 INVOKE,INTERFACE,extra=[java.util.Map/put[java.lang.Object, java.lang.Object], [0, 1, 2]]>
+DalvikVM - [BB]: [11]<0 STATIC,SGET,r0=r0,type=java.lang.Object,extra=(com.mopub.common.logging.MoPubLog$MoPubLogHandler, LEVEL_TO_LOG)>
+DalvikVM - [BB]: [12]<0 STATIC,SGET,r0=r1,type=java.lang.Object,extra=(java.util.logging.Level, FINER)>
+DalvikVM - [BB]: [13]<0 INVOKE,STATIC,extra=[java.lang.Integer/valueOf[int], [3]]>
+DalvikVM - [BB]: [14]<0 MOV,RESULT,dst=r2,type=java.lang.Object>
+DalvikVM - [BB]: [15]<0 INVOKE,INTERFACE,extra=[java.util.Map/put[java.lang.Object, java.lang.Object], [0, 1, 2]]>
+DalvikVM - [BB]: [16]<0 STATIC,SGET,r0=r0,type=java.lang.Object,extra=(com.mopub.common.logging.MoPubLog$MoPubLogHandler, LEVEL_TO_LOG)>
+DalvikVM - [BB]: [17]<0 STATIC,SGET,r0=r1,type=java.lang.Object,extra=(java.util.logging.Level, FINE)>
+DalvikVM - [BB]: [18]<0 INVOKE,STATIC,extra=[java.lang.Integer/valueOf[int], [3]]>
+DalvikVM - [BB]: [19]<0 MOV,RESULT,dst=r2,type=java.lang.Object>
+DalvikVM - [BB]: [20]<0 INVOKE,INTERFACE,extra=[java.util.Map/put[java.lang.Object, java.lang.Object], [0, 1, 2]]>
+DalvikVM - [BB]: [21]<0 STATIC,SGET,r0=r0,type=java.lang.Object,extra=(com.mopub.common.logging.MoPubLog$MoPubLogHandler, LEVEL_TO_LOG)>
+DalvikVM - [BB]: [22]<0 STATIC,SGET,r0=r1,type=java.lang.Object,extra=(java.util.logging.Level, CONFIG)>
+DalvikVM - [BB]: [23]<0 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?3>
+DalvikVM - [BB]: [24]<0 INVOKE,STATIC,extra=[java.lang.Integer/valueOf[int], [2]]>
+DalvikVM - [BB]: [25]<0 MOV,RESULT,dst=r2,type=java.lang.Object>
+DalvikVM - [BB]: [26]<0 INVOKE,INTERFACE,extra=[java.util.Map/put[java.lang.Object, java.lang.Object], [0, 1, 2]]>
+DalvikVM - [BB]: [27]<0 STATIC,SGET,r0=r0,type=java.lang.Object,extra=(com.mopub.common.logging.MoPubLog$MoPubLogHandler, LEVEL_TO_LOG)>
+DalvikVM - [BB]: [28]<0 STATIC,SGET,r0=r1,type=java.lang.Object,extra=(java.util.logging.Level, INFO)>
+DalvikVM - [BB]: [29]<0 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?4>
+DalvikVM - [BB]: [30]<0 INVOKE,STATIC,extra=[java.lang.Integer/valueOf[int], [2]]>
+DalvikVM - [BB]: [31]<0 MOV,RESULT,dst=r2,type=java.lang.Object>
+DalvikVM - [BB]: [32]<0 INVOKE,INTERFACE,extra=[java.util.Map/put[java.lang.Object, java.lang.Object], [0, 1, 2]]>
+DalvikVM - [BB]: [33]<0 STATIC,SGET,r0=r0,type=java.lang.Object,extra=(com.mopub.common.logging.MoPubLog$MoPubLogHandler, LEVEL_TO_LOG)>
+DalvikVM - [BB]: [34]<0 STATIC,SGET,r0=r1,type=java.lang.Object,extra=(java.util.logging.Level, WARNING)>
+DalvikVM - [BB]: [35]<0 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?5>
+DalvikVM - [BB]: [36]<0 INVOKE,STATIC,extra=[java.lang.Integer/valueOf[int], [2]]>
+DalvikVM - [BB]: [37]<0 MOV,RESULT,dst=r2,type=java.lang.Object>
+DalvikVM - [BB]: [38]<0 INVOKE,INTERFACE,extra=[java.util.Map/put[java.lang.Object, java.lang.Object], [0, 1, 2]]>
+DalvikVM - [BB]: [39]<0 STATIC,SGET,r0=r0,type=java.lang.Object,extra=(com.mopub.common.logging.MoPubLog$MoPubLogHandler, LEVEL_TO_LOG)>
+DalvikVM - [BB]: [40]<0 STATIC,SGET,r0=r1,type=java.lang.Object,extra=(java.util.logging.Level, SEVERE)>
+DalvikVM - [BB]: [41]<0 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?6>
+DalvikVM - [BB]: [42]<0 INVOKE,STATIC,extra=[java.lang.Integer/valueOf[int], [2]]>
+DalvikVM - [BB]: [43]<0 MOV,RESULT,dst=r2,type=java.lang.Object>
+DalvikVM - [BB]: [44]<0 INVOKE,INTERFACE,extra=[java.util.Map/put[java.lang.Object, java.lang.Object], [0, 1, 2]]>
+DalvikVM - [BB]: [45]<0 RETURN,VOID>
+DalvikVM - [BB]: New Stack Frame: StackFrame com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[], pc [I@5bdc8869 stored. 
+DalvikVM - [BB]: Stack: [StackFrame com.mopub.mobileads.AdViewController/internalLoadAd[], StackFrame com.mopub.common.logging.MoPubLog/d[java.lang.String], StackFrame com.mopub.common.logging.MoPubLog/d[java.lang.String, java.lang.Throwable], StackFrame com.mopub.common.logging.MoPubLog/<clinit>[], StackFrame com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <-1 SPECIAL,ARGUMENT_SET,extra=[]> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+Interpreter - [WARN]: NULL CallingCtx!
+Interpreter - [BB]: Start param from 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_SP_ARGUMENTS -> jump set pc to 0
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <0 MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?2> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+Interpreter - [DEBUG]: Mov const begin <0 MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?2>
+Interpreter - [DEBUG]: data: 2 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 1
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <1 NEW,INSTANCE,dst=r0,type=java.util.HashMap> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+OP_NEW_INSTANCE - [DEBUG]: [reg 0@MoPubLog$MoPubLogHandler/<clinit>]
+OP_NEW_INSTANCE - [BB]: Reflecable instance.
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_NEW_INSTANCE -> jump set pc to 2
+InfluenceAnalysis - [BB]: Rdst [reg 0@MoPubLog$MoPubLogHandler/<clinit>]
+ContextAnalysis - [BB]: Rdst [reg 0@MoPubLog$MoPubLogHandler/<clinit>]
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <2 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?7> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+Interpreter - [DEBUG]: Mov const begin <2 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?7>
+Interpreter - [DEBUG]: data: 7 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 3
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <3 INVOKE,DIRECT,extra=[java.util.HashMap/<init>[int], [0, 1]]> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+Interpreter - [WARN]: arg0 is null!
+Interpreter - [BB]: arg1@reg1: 7
+Interpreter - [DEBUG]: Expected para type: int
+Interpreter - [DEBUG]: Real para int
+Interpreter - [DEBUG]: Init instance: {} class java.util.HashMap
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 4
+FULL_OP_INVOKE - [BB]: targetcalls {}
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <4 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(com.mopub.common.logging.MoPubLog$MoPubLogHandler, LEVEL_TO_LOG)> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.mopub.common.logging.MoPubLog$MoPubLogHandler
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: expect sput LEVEL_TO_LOG from com.mopub.common.logging.MoPubLog$MoPubLogHandler
+class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: real sput {} from fu.hao.trust.dvm.DVMClass@6b7fd49c
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD -> jump set pc to 5
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.mopub.common.logging.MoPubLog$MoPubLogHandler
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.mopub.common.logging.MoPubLog$MoPubLogHandler
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <5 STATIC,SGET,r0=r0,type=java.lang.Object,extra=(com.mopub.common.logging.MoPubLog$MoPubLogHandler, LEVEL_TO_LOG)> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.mopub.common.logging.MoPubLog$MoPubLogHandler
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+DalvikVM - [BB]: ar0 <{}, java.util.HashMap>, <{}, java.util.Map>
+OP_STATIC_GET_FIELD - [DEBUG]: Sget {}, from fu.hao.trust.dvm.DVMClass@6b7fd49c
+OP_STATIC_GET_FIELD - [DEBUG]: Expect sget LEVEL_TO_LOG, a java.util.Map from com.mopub.common.logging.MoPubLog$MoPubLogHandler
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD -> jump set pc to 6
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.mopub.common.logging.MoPubLog$MoPubLogHandler
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.mopub.common.logging.MoPubLog$MoPubLogHandler
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <6 STATIC,SGET,r0=r1,type=java.lang.Object,extra=(java.util.logging.Level, FINEST)> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+DalvikVM - [BB]: ar1 <7, void>, <FINEST, patdroid.core.PrimitiveInfo>
+OP_STATIC_GET_FIELD - [DEBUG]: Refleciton FINEST
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD -> jump set pc to 7
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <7 INVOKE,STATIC,extra=[java.lang.Integer/valueOf[int], [3]]> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+Interpreter - [DEBUG]: Reflction class java.lang.Integer
+Interpreter - [MSG]: reflction invocation public static java.lang.Integer java.lang.Integer.valueOf(int)
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_INVOKE_STATIC -> jump set pc to 8
+FULL_OP_INVOKE - [BB]: targetcalls {}
+InfluenceAnalysis - [BB]: <java.lang.Integer: java.lang.Integer valueOf(int)>
+InfluenceAnalysis - [DEBUG]: not a taint call: <java.lang.Integer: java.lang.Integer valueOf(int)>
+ContextAnalysis - [BB]: <java.lang.Integer: java.lang.Integer valueOf(int)>
+ContextAnalysis - [DEBUG]: not a taint call: <java.lang.Integer: java.lang.Integer valueOf(int)>
+ContextAnalysis - [BB]: Ret value 2
+InfluenceAnalysis - [BB]: Method public static java.lang.Integer java.lang.Integer.valueOf(int)
+InfluenceAnalysis - [MSG]: Not API Recording
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <8 MOV,RESULT,dst=r2,type=java.lang.Object> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+OP_MOV_RESULT - [BB]: Result data: 2
+OP_MOV_RESULT - [DEBUG]: Result data: 2, type: java.lang.Integer, to [reg 2@MoPubLog$MoPubLogHandler/<clinit>]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 9
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <9 INVOKE,INTERFACE,extra=[java.util.Map/put[java.lang.Object, java.lang.Object], [0, 1, 2]]> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+Interpreter - [MSG]: arg0 obj: {}
+Interpreter - [DEBUG]: Reflction class: interface java.util.Map
+Interpreter - [BB]: arg1@reg1: FINEST
+Interpreter - [BB]: arg2@reg2: 2
+Interpreter - [WARN]: Mismatch type! arg 2, real para type: class java.lang.Integer, expected para type: class java.lang.Object
+Interpreter - [DEBUG]: Caller obj: {}, from class: class java.util.HashMap
+Interpreter - [MSG]: Reflction invocation public abstract java.lang.Object java.util.Map.put(java.lang.Object,java.lang.Object)
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 10
+FULL_OP_INVOKE - [BB]: targetcalls {}
+InfluenceAnalysis - [BB]: <java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>
+InfluenceAnalysis - [DEBUG]: not a taint call: <java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>
+ContextAnalysis - [BB]: <java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>
+ContextAnalysis - [DEBUG]: not a taint call: <java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>
+ContextAnalysis - [BB]: Ret value null
+InfluenceAnalysis - [BB]: Method public abstract java.lang.Object java.util.Map.put(java.lang.Object,java.lang.Object)
+InfluenceAnalysis - [MSG]: Not API Recording
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <10 STATIC,SGET,r0=r0,type=java.lang.Object,extra=(com.mopub.common.logging.MoPubLog$MoPubLogHandler, LEVEL_TO_LOG)> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.mopub.common.logging.MoPubLog$MoPubLogHandler
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+DalvikVM - [BB]: ar0 <{FINEST=null}, java.util.Map>, <{FINEST=null}, java.util.Map>
+OP_STATIC_GET_FIELD - [DEBUG]: Sget {FINEST=null}, from fu.hao.trust.dvm.DVMClass@6b7fd49c
+OP_STATIC_GET_FIELD - [DEBUG]: Expect sget LEVEL_TO_LOG, a java.util.Map from com.mopub.common.logging.MoPubLog$MoPubLogHandler
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD -> jump set pc to 11
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.mopub.common.logging.MoPubLog$MoPubLogHandler
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.mopub.common.logging.MoPubLog$MoPubLogHandler
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <11 STATIC,SGET,r0=r1,type=java.lang.Object,extra=(java.util.logging.Level, FINER)> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+DalvikVM - [BB]: ar1 <FINEST, patdroid.core.PrimitiveInfo>, <FINER, java.util.logging.Level>
+OP_STATIC_GET_FIELD - [DEBUG]: Refleciton FINER
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD -> jump set pc to 12
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <12 INVOKE,STATIC,extra=[java.lang.Integer/valueOf[int], [3]]> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+Interpreter - [DEBUG]: Reflction class java.lang.Integer
+Interpreter - [MSG]: reflction invocation public static java.lang.Integer java.lang.Integer.valueOf(int)
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_INVOKE_STATIC -> jump set pc to 13
+FULL_OP_INVOKE - [BB]: targetcalls {}
+InfluenceAnalysis - [BB]: <java.lang.Integer: java.lang.Integer valueOf(int)>
+InfluenceAnalysis - [DEBUG]: not a taint call: <java.lang.Integer: java.lang.Integer valueOf(int)>
+ContextAnalysis - [BB]: <java.lang.Integer: java.lang.Integer valueOf(int)>
+ContextAnalysis - [DEBUG]: not a taint call: <java.lang.Integer: java.lang.Integer valueOf(int)>
+ContextAnalysis - [BB]: Ret value 2
+InfluenceAnalysis - [BB]: Method public static java.lang.Integer java.lang.Integer.valueOf(int)
+InfluenceAnalysis - [MSG]: Not API Recording
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <13 MOV,RESULT,dst=r2,type=java.lang.Object> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+DalvikVM - [BB]: ar2 <2, java.lang.Integer>, <2, java.lang.Integer>
+OP_MOV_RESULT - [BB]: Result data: 2
+OP_MOV_RESULT - [DEBUG]: Result data: 2, type: java.lang.Integer, to [reg 2@MoPubLog$MoPubLogHandler/<clinit>]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 14
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <14 INVOKE,INTERFACE,extra=[java.util.Map/put[java.lang.Object, java.lang.Object], [0, 1, 2]]> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+Interpreter - [MSG]: arg0 obj: {FINEST=null}
+Interpreter - [DEBUG]: Reflction class: interface java.util.Map
+Interpreter - [BB]: arg1@reg1: FINER
+Interpreter - [BB]: arg2@reg2: 2
+Interpreter - [WARN]: Mismatch type! arg 2, real para type: class java.lang.Integer, expected para type: class java.lang.Object
+Interpreter - [DEBUG]: Caller obj: {FINEST=null}, from class: class java.util.HashMap
+Interpreter - [MSG]: Reflction invocation public abstract java.lang.Object java.util.Map.put(java.lang.Object,java.lang.Object)
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 15
+FULL_OP_INVOKE - [BB]: targetcalls {}
+InfluenceAnalysis - [BB]: <java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>
+InfluenceAnalysis - [DEBUG]: not a taint call: <java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>
+ContextAnalysis - [BB]: <java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>
+ContextAnalysis - [DEBUG]: not a taint call: <java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>
+ContextAnalysis - [BB]: Ret value null
+InfluenceAnalysis - [BB]: Method public abstract java.lang.Object java.util.Map.put(java.lang.Object,java.lang.Object)
+InfluenceAnalysis - [MSG]: Not API Recording
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <15 STATIC,SGET,r0=r0,type=java.lang.Object,extra=(com.mopub.common.logging.MoPubLog$MoPubLogHandler, LEVEL_TO_LOG)> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.mopub.common.logging.MoPubLog$MoPubLogHandler
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+DalvikVM - [BB]: ar0 <{FINER=null, FINEST=null}, java.util.Map>, <{FINER=null, FINEST=null}, java.util.Map>
+OP_STATIC_GET_FIELD - [DEBUG]: Sget {FINER=null, FINEST=null}, from fu.hao.trust.dvm.DVMClass@6b7fd49c
+OP_STATIC_GET_FIELD - [DEBUG]: Expect sget LEVEL_TO_LOG, a java.util.Map from com.mopub.common.logging.MoPubLog$MoPubLogHandler
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD -> jump set pc to 16
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.mopub.common.logging.MoPubLog$MoPubLogHandler
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.mopub.common.logging.MoPubLog$MoPubLogHandler
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <16 STATIC,SGET,r0=r1,type=java.lang.Object,extra=(java.util.logging.Level, FINE)> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+DalvikVM - [BB]: ar1 <FINER, java.util.logging.Level>, <FINE, java.util.logging.Level>
+OP_STATIC_GET_FIELD - [DEBUG]: Refleciton FINE
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD -> jump set pc to 17
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <17 INVOKE,STATIC,extra=[java.lang.Integer/valueOf[int], [3]]> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+Interpreter - [DEBUG]: Reflction class java.lang.Integer
+Interpreter - [MSG]: reflction invocation public static java.lang.Integer java.lang.Integer.valueOf(int)
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_INVOKE_STATIC -> jump set pc to 18
+FULL_OP_INVOKE - [BB]: targetcalls {}
+InfluenceAnalysis - [BB]: <java.lang.Integer: java.lang.Integer valueOf(int)>
+InfluenceAnalysis - [DEBUG]: not a taint call: <java.lang.Integer: java.lang.Integer valueOf(int)>
+ContextAnalysis - [BB]: <java.lang.Integer: java.lang.Integer valueOf(int)>
+ContextAnalysis - [DEBUG]: not a taint call: <java.lang.Integer: java.lang.Integer valueOf(int)>
+ContextAnalysis - [BB]: Ret value 2
+InfluenceAnalysis - [BB]: Method public static java.lang.Integer java.lang.Integer.valueOf(int)
+InfluenceAnalysis - [MSG]: Not API Recording
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <18 MOV,RESULT,dst=r2,type=java.lang.Object> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+DalvikVM - [BB]: ar2 <2, java.lang.Integer>, <2, java.lang.Integer>
+OP_MOV_RESULT - [BB]: Result data: 2
+OP_MOV_RESULT - [DEBUG]: Result data: 2, type: java.lang.Integer, to [reg 2@MoPubLog$MoPubLogHandler/<clinit>]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 19
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <19 INVOKE,INTERFACE,extra=[java.util.Map/put[java.lang.Object, java.lang.Object], [0, 1, 2]]> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+Interpreter - [MSG]: arg0 obj: {FINER=null, FINEST=null}
+Interpreter - [DEBUG]: Reflction class: interface java.util.Map
+Interpreter - [BB]: arg1@reg1: FINE
+Interpreter - [BB]: arg2@reg2: 2
+Interpreter - [WARN]: Mismatch type! arg 2, real para type: class java.lang.Integer, expected para type: class java.lang.Object
+Interpreter - [DEBUG]: Caller obj: {FINER=null, FINEST=null}, from class: class java.util.HashMap
+Interpreter - [MSG]: Reflction invocation public abstract java.lang.Object java.util.Map.put(java.lang.Object,java.lang.Object)
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 20
+FULL_OP_INVOKE - [BB]: targetcalls {}
+InfluenceAnalysis - [BB]: <java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>
+InfluenceAnalysis - [DEBUG]: not a taint call: <java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>
+ContextAnalysis - [BB]: <java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>
+ContextAnalysis - [DEBUG]: not a taint call: <java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>
+ContextAnalysis - [BB]: Ret value null
+InfluenceAnalysis - [BB]: Method public abstract java.lang.Object java.util.Map.put(java.lang.Object,java.lang.Object)
+InfluenceAnalysis - [MSG]: Not API Recording
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <20 STATIC,SGET,r0=r0,type=java.lang.Object,extra=(com.mopub.common.logging.MoPubLog$MoPubLogHandler, LEVEL_TO_LOG)> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.mopub.common.logging.MoPubLog$MoPubLogHandler
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+DalvikVM - [BB]: ar0 <{FINE=null, FINER=null, FINEST=null}, java.util.Map>, <{FINE=null, FINER=null, FINEST=null}, java.util.Map>
+OP_STATIC_GET_FIELD - [DEBUG]: Sget {FINE=null, FINER=null, FINEST=null}, from fu.hao.trust.dvm.DVMClass@6b7fd49c
+OP_STATIC_GET_FIELD - [DEBUG]: Expect sget LEVEL_TO_LOG, a java.util.Map from com.mopub.common.logging.MoPubLog$MoPubLogHandler
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD -> jump set pc to 21
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.mopub.common.logging.MoPubLog$MoPubLogHandler
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.mopub.common.logging.MoPubLog$MoPubLogHandler
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <21 STATIC,SGET,r0=r1,type=java.lang.Object,extra=(java.util.logging.Level, CONFIG)> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+DalvikVM - [BB]: ar1 <FINE, java.util.logging.Level>, <CONFIG, java.util.logging.Level>
+OP_STATIC_GET_FIELD - [DEBUG]: Refleciton CONFIG
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD -> jump set pc to 22
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <22 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?3> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+Interpreter - [DEBUG]: Mov const begin <22 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?3>
+DalvikVM - [BB]: ar2 <2, java.lang.Integer>, <3, void>
+Interpreter - [DEBUG]: data: 3 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 23
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <23 INVOKE,STATIC,extra=[java.lang.Integer/valueOf[int], [2]]> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+Interpreter - [DEBUG]: Reflction class java.lang.Integer
+Interpreter - [MSG]: reflction invocation public static java.lang.Integer java.lang.Integer.valueOf(int)
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_INVOKE_STATIC -> jump set pc to 24
+FULL_OP_INVOKE - [BB]: targetcalls {}
+InfluenceAnalysis - [BB]: <java.lang.Integer: java.lang.Integer valueOf(int)>
+InfluenceAnalysis - [DEBUG]: not a taint call: <java.lang.Integer: java.lang.Integer valueOf(int)>
+ContextAnalysis - [BB]: <java.lang.Integer: java.lang.Integer valueOf(int)>
+ContextAnalysis - [DEBUG]: not a taint call: <java.lang.Integer: java.lang.Integer valueOf(int)>
+ContextAnalysis - [BB]: Ret value 3
+InfluenceAnalysis - [BB]: Method public static java.lang.Integer java.lang.Integer.valueOf(int)
+InfluenceAnalysis - [MSG]: Not API Recording
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <24 MOV,RESULT,dst=r2,type=java.lang.Object> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+DalvikVM - [BB]: ar2 <3, void>, <3, java.lang.Integer>
+OP_MOV_RESULT - [BB]: Result data: 3
+OP_MOV_RESULT - [DEBUG]: Result data: 3, type: java.lang.Integer, to [reg 2@MoPubLog$MoPubLogHandler/<clinit>]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 25
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <25 INVOKE,INTERFACE,extra=[java.util.Map/put[java.lang.Object, java.lang.Object], [0, 1, 2]]> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+Interpreter - [MSG]: arg0 obj: {FINE=null, FINER=null, FINEST=null}
+Interpreter - [DEBUG]: Reflction class: interface java.util.Map
+Interpreter - [BB]: arg1@reg1: CONFIG
+Interpreter - [BB]: arg2@reg2: 3
+Interpreter - [WARN]: Mismatch type! arg 2, real para type: class java.lang.Integer, expected para type: class java.lang.Object
+Interpreter - [DEBUG]: Caller obj: {FINE=null, FINER=null, FINEST=null}, from class: class java.util.HashMap
+Interpreter - [MSG]: Reflction invocation public abstract java.lang.Object java.util.Map.put(java.lang.Object,java.lang.Object)
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 26
+FULL_OP_INVOKE - [BB]: targetcalls {}
+InfluenceAnalysis - [BB]: <java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>
+InfluenceAnalysis - [DEBUG]: not a taint call: <java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>
+ContextAnalysis - [BB]: <java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>
+ContextAnalysis - [DEBUG]: not a taint call: <java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>
+ContextAnalysis - [BB]: Ret value null
+InfluenceAnalysis - [BB]: Method public abstract java.lang.Object java.util.Map.put(java.lang.Object,java.lang.Object)
+InfluenceAnalysis - [MSG]: Not API Recording
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <26 STATIC,SGET,r0=r0,type=java.lang.Object,extra=(com.mopub.common.logging.MoPubLog$MoPubLogHandler, LEVEL_TO_LOG)> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.mopub.common.logging.MoPubLog$MoPubLogHandler
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+DalvikVM - [BB]: ar0 <{FINE=null, CONFIG=null, FINER=null, FINEST=null}, java.util.Map>, <{FINE=null, CONFIG=null, FINER=null, FINEST=null}, java.util.Map>
+OP_STATIC_GET_FIELD - [DEBUG]: Sget {FINE=null, CONFIG=null, FINER=null, FINEST=null}, from fu.hao.trust.dvm.DVMClass@6b7fd49c
+OP_STATIC_GET_FIELD - [DEBUG]: Expect sget LEVEL_TO_LOG, a java.util.Map from com.mopub.common.logging.MoPubLog$MoPubLogHandler
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD -> jump set pc to 27
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.mopub.common.logging.MoPubLog$MoPubLogHandler
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.mopub.common.logging.MoPubLog$MoPubLogHandler
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <27 STATIC,SGET,r0=r1,type=java.lang.Object,extra=(java.util.logging.Level, INFO)> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+DalvikVM - [BB]: ar1 <CONFIG, java.util.logging.Level>, <INFO, java.util.logging.Level>
+OP_STATIC_GET_FIELD - [DEBUG]: Refleciton INFO
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD -> jump set pc to 28
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <28 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?4> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+Interpreter - [DEBUG]: Mov const begin <28 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?4>
+DalvikVM - [BB]: ar2 <3, java.lang.Integer>, <4, void>
+Interpreter - [DEBUG]: data: 4 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 29
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <29 INVOKE,STATIC,extra=[java.lang.Integer/valueOf[int], [2]]> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+Interpreter - [DEBUG]: Reflction class java.lang.Integer
+Interpreter - [MSG]: reflction invocation public static java.lang.Integer java.lang.Integer.valueOf(int)
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_INVOKE_STATIC -> jump set pc to 30
+FULL_OP_INVOKE - [BB]: targetcalls {}
+InfluenceAnalysis - [BB]: <java.lang.Integer: java.lang.Integer valueOf(int)>
+InfluenceAnalysis - [DEBUG]: not a taint call: <java.lang.Integer: java.lang.Integer valueOf(int)>
+ContextAnalysis - [BB]: <java.lang.Integer: java.lang.Integer valueOf(int)>
+ContextAnalysis - [DEBUG]: not a taint call: <java.lang.Integer: java.lang.Integer valueOf(int)>
+ContextAnalysis - [BB]: Ret value 4
+InfluenceAnalysis - [BB]: Method public static java.lang.Integer java.lang.Integer.valueOf(int)
+InfluenceAnalysis - [MSG]: Not API Recording
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <30 MOV,RESULT,dst=r2,type=java.lang.Object> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+DalvikVM - [BB]: ar2 <4, void>, <4, java.lang.Integer>
+OP_MOV_RESULT - [BB]: Result data: 4
+OP_MOV_RESULT - [DEBUG]: Result data: 4, type: java.lang.Integer, to [reg 2@MoPubLog$MoPubLogHandler/<clinit>]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 31
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <31 INVOKE,INTERFACE,extra=[java.util.Map/put[java.lang.Object, java.lang.Object], [0, 1, 2]]> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+Interpreter - [MSG]: arg0 obj: {FINE=null, CONFIG=null, FINER=null, FINEST=null}
+Interpreter - [DEBUG]: Reflction class: interface java.util.Map
+Interpreter - [BB]: arg1@reg1: INFO
+Interpreter - [BB]: arg2@reg2: 4
+Interpreter - [WARN]: Mismatch type! arg 2, real para type: class java.lang.Integer, expected para type: class java.lang.Object
+Interpreter - [DEBUG]: Caller obj: {FINE=null, CONFIG=null, FINER=null, FINEST=null}, from class: class java.util.HashMap
+Interpreter - [MSG]: Reflction invocation public abstract java.lang.Object java.util.Map.put(java.lang.Object,java.lang.Object)
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 32
+FULL_OP_INVOKE - [BB]: targetcalls {}
+InfluenceAnalysis - [BB]: <java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>
+InfluenceAnalysis - [DEBUG]: not a taint call: <java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>
+ContextAnalysis - [BB]: <java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>
+ContextAnalysis - [DEBUG]: not a taint call: <java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>
+ContextAnalysis - [BB]: Ret value null
+InfluenceAnalysis - [BB]: Method public abstract java.lang.Object java.util.Map.put(java.lang.Object,java.lang.Object)
+InfluenceAnalysis - [MSG]: Not API Recording
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <32 STATIC,SGET,r0=r0,type=java.lang.Object,extra=(com.mopub.common.logging.MoPubLog$MoPubLogHandler, LEVEL_TO_LOG)> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.mopub.common.logging.MoPubLog$MoPubLogHandler
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+DalvikVM - [BB]: ar0 <{FINE=null, CONFIG=null, FINER=null, INFO=null, FINEST=null}, java.util.Map>, <{FINE=null, CONFIG=null, FINER=null, INFO=null, FINEST=null}, java.util.Map>
+OP_STATIC_GET_FIELD - [DEBUG]: Sget {FINE=null, CONFIG=null, FINER=null, INFO=null, FINEST=null}, from fu.hao.trust.dvm.DVMClass@6b7fd49c
+OP_STATIC_GET_FIELD - [DEBUG]: Expect sget LEVEL_TO_LOG, a java.util.Map from com.mopub.common.logging.MoPubLog$MoPubLogHandler
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD -> jump set pc to 33
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.mopub.common.logging.MoPubLog$MoPubLogHandler
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.mopub.common.logging.MoPubLog$MoPubLogHandler
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <33 STATIC,SGET,r0=r1,type=java.lang.Object,extra=(java.util.logging.Level, WARNING)> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+DalvikVM - [BB]: ar1 <INFO, java.util.logging.Level>, <WARNING, java.util.logging.Level>
+OP_STATIC_GET_FIELD - [DEBUG]: Refleciton WARNING
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD -> jump set pc to 34
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <34 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?5> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+Interpreter - [DEBUG]: Mov const begin <34 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?5>
+DalvikVM - [BB]: ar2 <4, java.lang.Integer>, <5, void>
+Interpreter - [DEBUG]: data: 5 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 35
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <35 INVOKE,STATIC,extra=[java.lang.Integer/valueOf[int], [2]]> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+Interpreter - [DEBUG]: Reflction class java.lang.Integer
+Interpreter - [MSG]: reflction invocation public static java.lang.Integer java.lang.Integer.valueOf(int)
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_INVOKE_STATIC -> jump set pc to 36
+FULL_OP_INVOKE - [BB]: targetcalls {}
+InfluenceAnalysis - [BB]: <java.lang.Integer: java.lang.Integer valueOf(int)>
+InfluenceAnalysis - [DEBUG]: not a taint call: <java.lang.Integer: java.lang.Integer valueOf(int)>
+ContextAnalysis - [BB]: <java.lang.Integer: java.lang.Integer valueOf(int)>
+ContextAnalysis - [DEBUG]: not a taint call: <java.lang.Integer: java.lang.Integer valueOf(int)>
+ContextAnalysis - [BB]: Ret value 5
+InfluenceAnalysis - [BB]: Method public static java.lang.Integer java.lang.Integer.valueOf(int)
+InfluenceAnalysis - [MSG]: Not API Recording
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <36 MOV,RESULT,dst=r2,type=java.lang.Object> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+DalvikVM - [BB]: ar2 <5, void>, <5, java.lang.Integer>
+OP_MOV_RESULT - [BB]: Result data: 5
+OP_MOV_RESULT - [DEBUG]: Result data: 5, type: java.lang.Integer, to [reg 2@MoPubLog$MoPubLogHandler/<clinit>]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 37
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <37 INVOKE,INTERFACE,extra=[java.util.Map/put[java.lang.Object, java.lang.Object], [0, 1, 2]]> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+Interpreter - [MSG]: arg0 obj: {FINE=null, CONFIG=null, FINER=null, INFO=null, FINEST=null}
+Interpreter - [DEBUG]: Reflction class: interface java.util.Map
+Interpreter - [BB]: arg1@reg1: WARNING
+Interpreter - [BB]: arg2@reg2: 5
+Interpreter - [WARN]: Mismatch type! arg 2, real para type: class java.lang.Integer, expected para type: class java.lang.Object
+Interpreter - [DEBUG]: Caller obj: {FINE=null, CONFIG=null, FINER=null, INFO=null, FINEST=null}, from class: class java.util.HashMap
+Interpreter - [MSG]: Reflction invocation public abstract java.lang.Object java.util.Map.put(java.lang.Object,java.lang.Object)
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 38
+FULL_OP_INVOKE - [BB]: targetcalls {}
+InfluenceAnalysis - [BB]: <java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>
+InfluenceAnalysis - [DEBUG]: not a taint call: <java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>
+ContextAnalysis - [BB]: <java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>
+ContextAnalysis - [DEBUG]: not a taint call: <java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>
+ContextAnalysis - [BB]: Ret value null
+InfluenceAnalysis - [BB]: Method public abstract java.lang.Object java.util.Map.put(java.lang.Object,java.lang.Object)
+InfluenceAnalysis - [MSG]: Not API Recording
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <38 STATIC,SGET,r0=r0,type=java.lang.Object,extra=(com.mopub.common.logging.MoPubLog$MoPubLogHandler, LEVEL_TO_LOG)> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.mopub.common.logging.MoPubLog$MoPubLogHandler
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+DalvikVM - [BB]: ar0 <{FINE=null, CONFIG=null, FINER=null, WARNING=null, INFO=null, FINEST=null}, java.util.Map>, <{FINE=null, CONFIG=null, FINER=null, WARNING=null, INFO=null, FINEST=null}, java.util.Map>
+OP_STATIC_GET_FIELD - [DEBUG]: Sget {FINE=null, CONFIG=null, FINER=null, WARNING=null, INFO=null, FINEST=null}, from fu.hao.trust.dvm.DVMClass@6b7fd49c
+OP_STATIC_GET_FIELD - [DEBUG]: Expect sget LEVEL_TO_LOG, a java.util.Map from com.mopub.common.logging.MoPubLog$MoPubLogHandler
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD -> jump set pc to 39
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.mopub.common.logging.MoPubLog$MoPubLogHandler
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.mopub.common.logging.MoPubLog$MoPubLogHandler
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.mopub.common.logging.MoPubLog$MoPubLogHandler at fu.hao.trust.dvm.VMHeap@4286ae77
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <39 STATIC,SGET,r0=r1,type=java.lang.Object,extra=(java.util.logging.Level, SEVERE)> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+DalvikVM - [BB]: ar1 <WARNING, java.util.logging.Level>, <SEVERE, java.util.logging.Level>
+OP_STATIC_GET_FIELD - [DEBUG]: Refleciton SEVERE
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD -> jump set pc to 40
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <40 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?6> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+Interpreter - [DEBUG]: Mov const begin <40 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?6>
+DalvikVM - [BB]: ar2 <5, java.lang.Integer>, <6, void>
+Interpreter - [DEBUG]: data: 6 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 41
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <41 INVOKE,STATIC,extra=[java.lang.Integer/valueOf[int], [2]]> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+Interpreter - [DEBUG]: Reflction class java.lang.Integer
+Interpreter - [MSG]: reflction invocation public static java.lang.Integer java.lang.Integer.valueOf(int)
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_INVOKE_STATIC -> jump set pc to 42
+FULL_OP_INVOKE - [BB]: targetcalls {}
+InfluenceAnalysis - [BB]: <java.lang.Integer: java.lang.Integer valueOf(int)>
+InfluenceAnalysis - [DEBUG]: not a taint call: <java.lang.Integer: java.lang.Integer valueOf(int)>
+ContextAnalysis - [BB]: <java.lang.Integer: java.lang.Integer valueOf(int)>
+ContextAnalysis - [DEBUG]: not a taint call: <java.lang.Integer: java.lang.Integer valueOf(int)>
+ContextAnalysis - [BB]: Ret value 6
+InfluenceAnalysis - [BB]: Method public static java.lang.Integer java.lang.Integer.valueOf(int)
+InfluenceAnalysis - [MSG]: Not API Recording
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <42 MOV,RESULT,dst=r2,type=java.lang.Object> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+DalvikVM - [BB]: ar2 <6, void>, <6, java.lang.Integer>
+OP_MOV_RESULT - [BB]: Result data: 6
+OP_MOV_RESULT - [DEBUG]: Result data: 6, type: java.lang.Integer, to [reg 2@MoPubLog$MoPubLogHandler/<clinit>]
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 43
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <43 INVOKE,INTERFACE,extra=[java.util.Map/put[java.lang.Object, java.lang.Object], [0, 1, 2]]> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+Interpreter - [MSG]: arg0 obj: {FINE=null, CONFIG=null, FINER=null, WARNING=null, INFO=null, FINEST=null}
+Interpreter - [DEBUG]: Reflction class: interface java.util.Map
+Interpreter - [BB]: arg1@reg1: SEVERE
+Interpreter - [BB]: arg2@reg2: 6
+Interpreter - [WARN]: Mismatch type! arg 2, real para type: class java.lang.Integer, expected para type: class java.lang.Object
+Interpreter - [DEBUG]: Caller obj: {FINE=null, CONFIG=null, FINER=null, WARNING=null, INFO=null, FINEST=null}, from class: class java.util.HashMap
+Interpreter - [MSG]: Reflction invocation public abstract java.lang.Object java.util.Map.put(java.lang.Object,java.lang.Object)
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 44
+FULL_OP_INVOKE - [BB]: targetcalls {}
+InfluenceAnalysis - [BB]: <java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>
+InfluenceAnalysis - [DEBUG]: not a taint call: <java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>
+ContextAnalysis - [BB]: <java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>
+ContextAnalysis - [DEBUG]: not a taint call: <java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>
+ContextAnalysis - [BB]: Ret value null
+InfluenceAnalysis - [BB]: Method public abstract java.lang.Object java.util.Map.put(java.lang.Object,java.lang.Object)
+InfluenceAnalysis - [MSG]: Not API Recording
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <44 RETURN,VOID> at com.mopub.common.logging.MoPubLog$MoPubLogHandler/<clinit>[]
+class fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID -> jump set pc to 5
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.util.logging.Handler at fu.hao.trust.dvm.VMHeap@4286ae77
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for java.util.logging.Handler at fu.hao.trust.dvm.VMHeap@4286ae77
+DalvikVM - [BB]: New method call: java.util.logging.Handler/<clinit>[]
