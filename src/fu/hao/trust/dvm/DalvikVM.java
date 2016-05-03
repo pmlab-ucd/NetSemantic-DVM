@@ -721,11 +721,43 @@ public class DalvikVM {
 		if (method == null) {
 			Log.err(TAG, "Null Method");
 		}
+		
+		if (params.length == method.paramTypes.length) {
+			Object[] oldParams = params;
+			params = new Object[method.paramTypes.length + 1];
+			params[0] = null;
+			for (int i = 0; i < oldParams.length; i++) {
+				params[i + 1] = oldParams[i];
+			}
+		}
+		
 		// Put an Null stack frame to simulate the calling ctx.
-		StackFrame stackFrame = newStackFrame(null);
-		stackFrame.regs[0].setValue(params[0], method.myClass);
+		Register reg = new Register(null, 0);
+		if (params[0] == null || params[0].equals("NULL")) {
+			params[0] = new DVMObject(this, method.myClass);
+		}
+		reg.setValue(params[0], method.myClass);
+		callingCtx = new Register[params.length];
+		callingCtx[0] = reg;
 		for (int i = 1; i < params.length; i++) {
-			stackFrame.regs[i].setValue(params[i], method.paramTypes[i - 1]);
+			if (params[i].equals("NULL")) {
+				try {
+					Class<?> clazz = Class.forName(method.paramTypes[i - 1].fullName);
+					params[i] = clazz.newInstance();
+				} catch (ClassNotFoundException e) {
+					params[i] = new DVMObject(this, method.paramTypes[i - 1]);
+				} catch (InstantiationException e) {
+					params[i] = null;
+					e.printStackTrace();
+				} catch (IllegalAccessException e) {
+					params[i] = null;
+					e.printStackTrace();
+				}
+			}
+			
+			reg = new Register(null, i);
+			reg.setValue(params[i], method.paramTypes[i - 1]);
+			callingCtx[i] = reg;
 		}
 
 		int[] args = new int[params.length];
@@ -733,7 +765,6 @@ public class DalvikVM {
 			args[i] = i;
 		}
 
-		setCallContext(args);
 		interpreter.runMethod(this, method);
 	}
 
@@ -795,7 +826,7 @@ public class DalvikVM {
 		this.chainThisObj = chainThisObj;
 	}
 
-	public void init(String thisObjTypeName, String[] argTypeNames, Object[] args) {
+	public void initThisObj(String thisObjTypeName, String[] argTypeNames, Object[] args) {
 		ClassInfo thisObjType =  ClassInfo.findClass(thisObjTypeName);
 		ClassInfo[] argTypes = null; 
 		
@@ -856,6 +887,6 @@ public class DalvikVM {
 			}
 		}
 
-	} 
+	}
 
 }

@@ -1,6 +1,7 @@
 package fu.hao.trust.test;
 
 import static org.junit.Assert.assertEquals;
+import android.content.Intent;
 import fu.hao.trust.data.Results;
 import fu.hao.trust.data.TargetCall;
 import fu.hao.trust.dvm.Main;
@@ -28,6 +29,29 @@ public class Test {
 		//args[2] = "onItemClick";
 		//args[1] = "com.wowotuan.appfactory.gui.activity.CityChoiceActivity";
 		//args[2] = "k";
+		args[1] = "com.wowotuan.appfactory.gui.activity.ca";
+		//args[1] = "com.wowotuan.appfactory.e.g";
+		args[2] = "onReceive";
+		Object[] initArgs = new Object[2];
+		Intent intent = new Intent("com.wowotuan.appfactory.broadcast.location");
+		intent.putExtra("location", "121.1, 131.1");
+		initArgs[1] = intent; 
+		initArgs[0] = "NULL";
+		Main.initMI(initArgs);
+		Main.main(args);
+		assertEquals(true, Results.results.isEmpty());
+	}
+	
+	public void testWo_1() {
+		String[] args = new String[4];
+		args[3] = "Full";
+		Settings.logLevel = 0;
+		
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/benign/wowotuan/com.wowotuan.appfactory.wangpintaisuniupai/7619303.html.apk";
+		//args[1] = "com.wowotuan.appfactory.gui.activity.bz";
+		//args[2] = "onItemClick";
+		//args[1] = "com.wowotuan.appfactory.gui.activity.CityChoiceActivity";
+		//args[2] = "k";
 		args[1] = "com.wowotuan.appfactory.e.h";
 		//args[1] = "com.wowotuan.appfactory.e.g";
 		args[2] = "a";
@@ -35,7 +59,7 @@ public class Test {
 		argTypeNames[0] = "com.wowotuan.appfactory.e.g";
 		Object[] initArgs = new Object[1];
 		initArgs[0] = "NULL";
-		Main.init(argTypeNames, initArgs);
+		Main.initThisObj(argTypeNames, initArgs);
 		Main.main(args);
 		assertEquals(true, Results.results.isEmpty());
 	}

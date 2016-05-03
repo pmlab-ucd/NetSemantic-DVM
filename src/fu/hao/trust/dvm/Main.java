@@ -27,8 +27,12 @@ import fu.hao.trust.utils.Settings;
  */
 public class Main {
 	final static String TAG = "main";
+	// for the constructor 
 	static String[] initArgTypes;
 	static Object[] initArgs;
+	
+	// for the method with parameters
+	static Object[] miParams;
 
 	public static void main(String[] args) {
 		Results.reset();
@@ -147,19 +151,23 @@ public class Main {
 		}
 	}
 	
-	public static void init(String[] argTypeNames, Object[] args) {
+	public static void initThisObj(String[] argTypeNames, Object[] args) {
 		Main.initArgTypes = argTypeNames;
 		Main.initArgs = args;
+	}
+	
+	public static void initMI(Object[] params) {
+		Main.miParams = params;
 	}
 
 	public void runMethod(PluginManager pluginManager) {
 		// DalvikVM vm = DalvikVM.v();
 		// Results.reset();
 		DalvikVM vm = new DalvikVM(Settings.apkPath);
-		vm.init(Settings.suspClass, initArgTypes, initArgs);
+		vm.initThisObj(Settings.suspClass, initArgTypes, initArgs);
 		try {
 			vm.runMethod(Settings.apkPath, Settings.suspClass,
-					Settings.suspMethod, pluginManager, null);
+					Settings.suspMethod, pluginManager, miParams);
 		} catch (ZipException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
