@@ -16,6 +16,10 @@ public class ContextAnalysisTest {
 	@Before
 	public void prepare() {
 		args[3] = "Full";
+		Object[] initArgs = new Object[1];
+		initArgs[0] = "android.app.Activity";
+		//initArgs[1] = "NULL";
+		Main.initMI(initArgs);
 	}
 
 	@Test

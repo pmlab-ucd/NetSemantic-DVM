@@ -1,22 +1,22 @@
 DalvikVM - [BB]: com.wowotuan.appfactory.gui.activity.ca
+DalvikVM - [BB]: com.wowotuan.appfactory.gui.activity.ca/<init>[com.wowotuan.appfactory.gui.activity.CityChoiceActivity] true
+DalvikVM - [BB]: com.wowotuan.appfactory.gui.activity.CityChoiceActivity
 DalvikVM - [BB]: com.wowotuan.appfactory.gui.activity.ca/onReceive[android.content.Context, android.content.Intent] false
 DalvikVM - [BB]: android.content.Context
 DalvikVM - [BB]: android.content.Intent
-DalvikVM - [BB]: com.wowotuan.appfactory.gui.activity.ca/<init>[com.wowotuan.appfactory.gui.activity.CityChoiceActivity] true
-DalvikVM - [BB]: com.wowotuan.appfactory.gui.activity.CityChoiceActivity
 DalvikVM - [MSG]: Begin run onReceive at C:/Users/hao/workspace/DroidBenchProj/apks/benign/wowotuan/com.wowotuan.appfactory.wangpintaisuniupai/7619303.html.apk
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.gui.activity.ca at fu.hao.trust.dvm.VMHeap@515f00
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for com.wowotuan.appfactory.gui.activity.ca at fu.hao.trust.dvm.VMHeap@515f00
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.BroadcastReceiver at fu.hao.trust.dvm.VMHeap@515f00
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.BroadcastReceiver at fu.hao.trust.dvm.VMHeap@515f00
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.gui.activity.ca at fu.hao.trust.dvm.VMHeap@2adaf6a
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for com.wowotuan.appfactory.gui.activity.ca at fu.hao.trust.dvm.VMHeap@2adaf6a
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.BroadcastReceiver at fu.hao.trust.dvm.VMHeap@2adaf6a
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.BroadcastReceiver at fu.hao.trust.dvm.VMHeap@2adaf6a
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.BroadcastReceiver
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.BroadcastReceiver at fu.hao.trust.dvm.VMHeap@515f00
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.BroadcastReceiver at fu.hao.trust.dvm.VMHeap@2adaf6a
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type com.wowotuan.appfactory.gui.activity.ca
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.gui.activity.ca at fu.hao.trust.dvm.VMHeap@515f00
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.gui.activity.ca at fu.hao.trust.dvm.VMHeap@2adaf6a
 DVMObject - [BB]: New instance of com.wowotuan.appfactory.gui.activity.ca
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.gui.activity.ca at fu.hao.trust.dvm.VMHeap@515f00
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.gui.activity.ca at fu.hao.trust.dvm.VMHeap@2adaf6a
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type com.wowotuan.appfactory.gui.activity.ca
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.gui.activity.ca at fu.hao.trust.dvm.VMHeap@515f00
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.gui.activity.ca at fu.hao.trust.dvm.VMHeap@2adaf6a
 DalvikVM - [BB]: New method call: com.wowotuan.appfactory.gui.activity.ca/onReceive[android.content.Context, android.content.Intent]
 DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>
 DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r4,type=void,extra=class patdroid.core.PrimitiveInfo?1>
@@ -27,7 +27,7 @@ DalvikVM - [BB]: [5]<0 INVOKE,VIRTUAL,extra=[java.lang.String/equals[java.lang.O
 DalvikVM - [BB]: [6]<0 MOV,RESULT,dst=r0,type=void>
 DalvikVM - [BB]: [7]<0 IF,EQZ,r0=r0,extra=index:42>
 DalvikVM - [BB]: [8]<0 MOV,CONST,dst=r0,type=java.lang.String,extra="location">
-DalvikVM - [BB]: [9]<0 HALT,VIRTUAL,extra=[null, [7, 0]]>
+DalvikVM - [BB]: [9]<0 INVOKE,VIRTUAL,extra=[android.content.Intent/getStringExtra[java.lang.String], [7, 0]]>
 DalvikVM - [BB]: [10]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
 DalvikVM - [BB]: [11]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="">
 DalvikVM - [BB]: [12]<0 INVOKE,VIRTUAL,extra=[java.lang.String/equals[java.lang.Object], [0, 1]]>
@@ -75,18 +75,18 @@ DalvikVM - [BB]: [53]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
 DalvikVM - [BB]: [54]<0 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?2131230752>
 DalvikVM - [BB]: [55]<0 HALT,VIRTUAL,extra=[null, [1, 2]]>
 DalvikVM - [BB]: [56]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
-DalvikVM - [BB]: [57]<0 HALT,VIRTUAL,extra=[null, [0, 1]]>
+DalvikVM - [BB]: [57]<0 INVOKE,VIRTUAL,extra=[android.widget.TextView/setText[java.lang.CharSequence], [0, 1]]>
 DalvikVM - [BB]: [58]<0 GOTO,extra=index:42>
 DalvikVM - [BB]: New Stack Frame: StackFrame com.wowotuan.appfactory.gui.activity.ca/onReceive[android.content.Context, android.content.Intent]
 DalvikVM - [BB]: Stack: [StackFrame com.wowotuan.appfactory.gui.activity.ca/onReceive[android.content.Context, android.content.Intent]]
 Interpreter - [MSG]: New chain obj
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.gui.activity.ca at fu.hao.trust.dvm.VMHeap@515f00
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.gui.activity.ca at fu.hao.trust.dvm.VMHeap@2adaf6a
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type com.wowotuan.appfactory.gui.activity.ca
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.gui.activity.ca at fu.hao.trust.dvm.VMHeap@515f00
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.gui.activity.ca at fu.hao.trust.dvm.VMHeap@2adaf6a
 DVMObject - [BB]: New instance of com.wowotuan.appfactory.gui.activity.ca
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.gui.activity.ca at fu.hao.trust.dvm.VMHeap@515f00
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.gui.activity.ca at fu.hao.trust.dvm.VMHeap@2adaf6a
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type com.wowotuan.appfactory.gui.activity.ca
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.gui.activity.ca at fu.hao.trust.dvm.VMHeap@515f00
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.gui.activity.ca at fu.hao.trust.dvm.VMHeap@2adaf6a
 Interpreter - [MSG]: RUN BEGIN com.wowotuan.appfactory.gui.activity.ca/onReceive[android.content.Context, android.content.Intent]
 Interpreter - [MSG]: RUN BEGIN
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> run set pc to 0
@@ -94,7 +94,7 @@ Interpreter - [MSG]:
 
 Interpreter - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]> at com.wowotuan.appfactory.gui.activity.ca/onReceive[android.content.Context, android.content.Intent]
 Interpreter - [DEBUG]: params: instance number 1@com.wowotuan.appfactory.gui.activity.ca
-Interpreter - [DEBUG]: params: android.content.Context@24245514
+Interpreter - [DEBUG]: params: android.content.Context@69cce612
 Interpreter - [DEBUG]: params: [intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}]
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_SP_ARGUMENTS -> jump set pc to 1
 PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
@@ -193,19 +193,31 @@ PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
 PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
 Interpreter - [MSG]: 
 
-Interpreter - [MSG]: <9 HALT,VIRTUAL,extra=[null, [7, 0]]> at com.wowotuan.appfactory.gui.activity.ca/onReceive[android.content.Context, android.content.Intent]
-DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_HALT -> jump set pc to 10
-Interpreter - [MSG]: Cannot resolve the invocation
-FullAnalysis - [BB]: Not a taint op <9 HALT,VIRTUAL,extra=[null, [7, 0]]>
+Interpreter - [MSG]: <9 INVOKE,VIRTUAL,extra=[android.content.Intent/getStringExtra[java.lang.String], [7, 0]]> at com.wowotuan.appfactory.gui.activity.ca/onReceive[android.content.Context, android.content.Intent]
+Interpreter - [MSG]: arg0 obj: [intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}]
+Interpreter - [DEBUG]: Reflction class: class android.content.Intent
+Interpreter - [BB]: arg1@reg0: location
+Interpreter - [DEBUG]: Caller obj: [intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}], from class: class android.content.Intent
+Interpreter - [DEBUG]: Return data: 121.1, 131.1 ,class java.lang.String
+Interpreter - [MSG]: Reflction invocation public java.lang.String android.content.Intent.getStringExtra(java.lang.String)
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 10
+FULL_OP_INVOKE - [BB]: targetcalls {}
+InfluenceAnalysis - [BB]: <android.content.Intent: java.lang.String getStringExtra(java.lang.String)>
+InfluenceAnalysis - [DEBUG]: not a taint call: <android.content.Intent: java.lang.String getStringExtra(java.lang.String)>
+ContextAnalysis - [BB]: <android.content.Intent: java.lang.String getStringExtra(java.lang.String)>
+ContextAnalysis - [DEBUG]: not a taint call: <android.content.Intent: java.lang.String getStringExtra(java.lang.String)>
+ContextAnalysis - [BB]: Ret value 121.1, 131.1
+InfluenceAnalysis - [BB]: Method public java.lang.String android.content.Intent.getStringExtra(java.lang.String)
+InfluenceAnalysis - [MSG]: Not API Recording
+FULL_OP_INVOKE - [BB]: Target calls {}
 PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
 PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <10 MOV,RESULT,dst=r0,type=java.lang.Object> at com.wowotuan.appfactory.gui.activity.ca/onReceive[android.content.Context, android.content.Intent]
-Unknown - [BB]: Unknown created!
-DalvikVM - [BB]: ar0 <location, java.lang.String>, <[Unknown var, type: java.lang.Object], java.lang.Object>
-OP_MOV_RESULT - [BB]: Result data: [Unknown var, type: java.lang.Object]
-OP_MOV_RESULT - [DEBUG]: Result data: [Unknown var, type: java.lang.Object], type: java.lang.Object, to [reg 0@ca/onReceive]
+DalvikVM - [BB]: ar0 <location, java.lang.String>, <121.1, 131.1, java.lang.String>
+OP_MOV_RESULT - [BB]: Result data: 121.1, 131.1
+OP_MOV_RESULT - [DEBUG]: Result data: 121.1, 131.1, type: java.lang.String, to [reg 0@ca/onReceive]
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 11
 PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
 PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
@@ -221,21 +233,19 @@ PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <12 INVOKE,VIRTUAL,extra=[java.lang.String/equals[java.lang.Object], [0, 1]]> at com.wowotuan.appfactory.gui.activity.ca/onReceive[android.content.Context, android.content.Intent]
-Interpreter - [MSG]: arg0 obj: [Unknown var, type: java.lang.Object]
+Interpreter - [MSG]: arg0 obj: 121.1, 131.1
 Interpreter - [DEBUG]: Reflction class: class java.lang.String
-Interpreter - [MSG]: Found noInvoke2 java.lang.String/equals[java.lang.Object]
 Interpreter - [BB]: arg1@reg1: 
-Unknown - [BB]: Unknown created!
-Interpreter - [DEBUG]: Return data: [Unknown var, type: boolean] ,class fu.hao.trust.solver.Unknown
+Interpreter - [DEBUG]: Caller obj: 121.1, 131.1, from class: class java.lang.String
+Interpreter - [DEBUG]: Return data: false ,class java.lang.Boolean
 Interpreter - [MSG]: Reflction invocation public boolean java.lang.String.equals(java.lang.Object)
-Interpreter - [WARN]: Abnormal args, contain abstract value.
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 13
 FULL_OP_INVOKE - [BB]: targetcalls {}
 InfluenceAnalysis - [BB]: <java.lang.String: boolean equals(java.lang.Object)>
 InfluenceAnalysis - [DEBUG]: not a taint call: <java.lang.String: boolean equals(java.lang.Object)>
 ContextAnalysis - [BB]: <java.lang.String: boolean equals(java.lang.Object)>
 ContextAnalysis - [DEBUG]: not a taint call: <java.lang.String: boolean equals(java.lang.Object)>
-ContextAnalysis - [BB]: Ret value [Unknown var, type: boolean]
+ContextAnalysis - [BB]: Ret value false
 InfluenceAnalysis - [BB]: Method public boolean java.lang.String.equals(java.lang.Object)
 InfluenceAnalysis - [MSG]: Not API Recording
 FULL_OP_INVOKE - [BB]: Target calls {}
@@ -244,45 +254,40 @@ PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <13 MOV,RESULT,dst=r1,type=void> at com.wowotuan.appfactory.gui.activity.ca/onReceive[android.content.Context, android.content.Intent]
-DalvikVM - [BB]: ar1 <, java.lang.String>, <[Unknown var, type: boolean], boolean>
-OP_MOV_RESULT - [BB]: Result data: [Unknown var, type: boolean]
-OP_MOV_RESULT - [DEBUG]: Result data: [Unknown var, type: boolean], type: boolean, to [reg 1@ca/onReceive]
+DalvikVM - [BB]: ar-1 <false, boolean>, <false, boolean>
+DalvikVM - [BB]: ar1 <, java.lang.String>, <false, boolean>
+OP_MOV_RESULT - [BB]: Result data: false
+OP_MOV_RESULT - [DEBUG]: Result data: false, type: boolean, to [reg 1@ca/onReceive]
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 14
 PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
 PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <14 IF,NEZ,r0=r1,extra=index:43> at com.wowotuan.appfactory.gui.activity.ca/onReceive[android.content.Context, android.content.Intent]
-OP_CMP - [DEBUG]: r0 data [Unknown var, type: boolean]
-DalvikVM - [BB]: fu.hao.trust.analysis.TaintCtrlDep$CDTAINT_OP_CMP -> flow set pc to 15
-ATAINT_OP_CMP - [BB]: ret: 42
-ATAINT_OP_CMP - [BB]: cao 
-ATAINT_OP_CMP - [BB]: rii
-fu.hao.trust.solver.BiDirBranch - [WARN]: New BiDirBranch [Branch: 14--[cond: <14 IF,NEZ,r0=r1,extra=index:43>][sumpoint: <0 INSTANCE,IGET,r0=r5,r1=r0,type=java.lang.Object,extra=com.wowotuan.appfactory.gui.activity.ca.a>]@onReceive]
-ATAINT_OP_CMP - [BB]: BiDirSumpoint <0 RETURN,VOID>
-ATAINT_OP_CMP - [BB]: Set rest begin <0 RETURN,VOID>
-ATAINT_OP_CMP - [MSG]: ATAINT_OP_IF:  <14 IF,NEZ,r0=r1,extra=index:43> 43
-ATAINT_OP_CMP - [BB]: Add <14 IF,NEZ,r0=r1,extra=index:43> to met of [Branch: 14--[cond: <14 IF,NEZ,r0=r1,extra=index:43>][sumpoint: <0 RETURN,VOID>]@onReceive]
+OP_CMP - [DEBUG]: r0 data false
+Interpreter - [DEBUG]: ops: false 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_IF_NEZ -> jump set pc to 15
+Interpreter - [DEBUG]: Equ: <14 IF,NEZ,r0=r1,extra=index:43>
 PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {}
 PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <15 NEW,INSTANCE,dst=r1,type=com.wowotuan.appfactory.dto.RequestCityLocationDto> at com.wowotuan.appfactory.gui.activity.ca/onReceive[android.content.Context, android.content.Intent]
 OP_NEW_INSTANCE - [DEBUG]: [reg 1@ca/onReceive]
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.dto.RequestCityLocationDto at fu.hao.trust.dvm.VMHeap@515f00
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for com.wowotuan.appfactory.dto.RequestCityLocationDto at fu.hao.trust.dvm.VMHeap@515f00
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@515f00
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for java.lang.Object at fu.hao.trust.dvm.VMHeap@515f00
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.dto.RequestCityLocationDto at fu.hao.trust.dvm.VMHeap@2adaf6a
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for com.wowotuan.appfactory.dto.RequestCityLocationDto at fu.hao.trust.dvm.VMHeap@2adaf6a
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@2adaf6a
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for java.lang.Object at fu.hao.trust.dvm.VMHeap@2adaf6a
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type java.lang.Object
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@515f00
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@2adaf6a
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type com.wowotuan.appfactory.dto.RequestCityLocationDto
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.dto.RequestCityLocationDto at fu.hao.trust.dvm.VMHeap@515f00
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.dto.RequestCityLocationDto at fu.hao.trust.dvm.VMHeap@2adaf6a
 DVMObject - [BB]: New instance of com.wowotuan.appfactory.dto.RequestCityLocationDto
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.dto.RequestCityLocationDto at fu.hao.trust.dvm.VMHeap@515f00
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.dto.RequestCityLocationDto at fu.hao.trust.dvm.VMHeap@2adaf6a
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type com.wowotuan.appfactory.dto.RequestCityLocationDto
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.dto.RequestCityLocationDto at fu.hao.trust.dvm.VMHeap@515f00
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.dto.RequestCityLocationDto at fu.hao.trust.dvm.VMHeap@2adaf6a
 OP_NEW_INSTANCE - [DEBUG]: begin new object of com.wowotuan.appfactory.dto.RequestCityLocationDtocreated.
-DalvikVM - [BB]: ar1 <[Unknown var, type: boolean], boolean>, <instance number 1@com.wowotuan.appfactory.dto.RequestCityLocationDto, com.wowotuan.appfactory.dto.RequestCityLocationDto>
+DalvikVM - [BB]: ar1 <false, boolean>, <instance number 1@com.wowotuan.appfactory.dto.RequestCityLocationDto, com.wowotuan.appfactory.dto.RequestCityLocationDto>
 OP_NEW_INSTANCE - [DEBUG]: new object of com.wowotuan.appfactory.dto.RequestCityLocationDtocreated.
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_NEW_INSTANCE -> jump set pc to 16
 InfluenceAnalysis - [BB]: Rdst [reg 1@ca/onReceive]
@@ -300,7 +305,7 @@ DalvikVM - [BB]: [1]<0 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [1]]>
 DalvikVM - [BB]: [2]<0 MOV,CONST,dst=r0,type=java.lang.String,extra="GetCitysLocation">
 DalvikVM - [BB]: [3]<0 INSTANCE,IPUT,r0=r1,r1=r0,type=java.lang.Object,extra=com.wowotuan.appfactory.dto.RequestCityLocationDto.cmd>
 DalvikVM - [BB]: [4]<0 RETURN,VOID>
-DalvikVM - [BB]: New Stack Frame: StackFrame com.wowotuan.appfactory.dto.RequestCityLocationDto/<init>[], pc [I@30a80268 stored. 
+DalvikVM - [BB]: New Stack Frame: StackFrame com.wowotuan.appfactory.dto.RequestCityLocationDto/<init>[], pc [I@929d69e stored. 
 DalvikVM - [BB]: Stack: [StackFrame com.wowotuan.appfactory.gui.activity.ca/onReceive[android.content.Context, android.content.Intent], StackFrame com.wowotuan.appfactory.dto.RequestCityLocationDto/<init>[]]
 FULL_OP_INVOKE - [BB]: targetcalls {}
 FULL_OP_INVOKE - [BB]: Target calls {}
@@ -366,7 +371,7 @@ DalvikVM - [BB]: New method call: com.wowotuan.appfactory.gui.activity.CityChoic
 DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[1]>
 DalvikVM - [BB]: [1]<0 INSTANCE,IGET,r0=r1,r1=r0,type=java.lang.Object,extra=com.wowotuan.appfactory.gui.activity.CityChoiceActivity.v>
 DalvikVM - [BB]: [2]<0 RETURN,VALUE,r0=r0,type=java.lang.Object>
-DalvikVM - [BB]: New Stack Frame: StackFrame com.wowotuan.appfactory.gui.activity.CityChoiceActivity/i[com.wowotuan.appfactory.gui.activity.CityChoiceActivity], pc [I@30a80268 stored. 
+DalvikVM - [BB]: New Stack Frame: StackFrame com.wowotuan.appfactory.gui.activity.CityChoiceActivity/i[com.wowotuan.appfactory.gui.activity.CityChoiceActivity], pc [I@929d69e stored. 
 DalvikVM - [BB]: Stack: [StackFrame com.wowotuan.appfactory.gui.activity.ca/onReceive[android.content.Context, android.content.Intent], StackFrame com.wowotuan.appfactory.gui.activity.CityChoiceActivity/i[com.wowotuan.appfactory.gui.activity.CityChoiceActivity]]
 FULL_OP_INVOKE - [BB]: targetcalls {}
 FULL_OP_INVOKE - [BB]: Target calls {}

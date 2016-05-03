@@ -15,6 +15,8 @@ import fu.hao.trust.utils.Settings;
 
 public class MainTest {
 	String[] args = new String[4];
+	Object[] initArgs = new Object[2];
+
 	
 	TelephonyManager tm;
 
@@ -22,6 +24,9 @@ public class MainTest {
 		Settings.logLevel = 0;
 		args[3] = "Taint";
 		tm = new TelephonyManager();
+		initArgs[0] = "android.app.Activity";
+		initArgs[1] = "NULL";
+		Main.initMI(initArgs);
 	}
 	
 	//@Test

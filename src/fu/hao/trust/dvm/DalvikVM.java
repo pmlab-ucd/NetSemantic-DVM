@@ -10,6 +10,7 @@ import java.util.Set;
 import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 
+import android.app.Activity;
 import fu.hao.trust.analysis.Plugin;
 import fu.hao.trust.analysis.PluginManager;
 import fu.hao.trust.data.VMFullState;
@@ -735,6 +736,8 @@ public class DalvikVM {
 		Register reg = new Register(null, 0);
 		if (params[0] == null || params[0].equals("NULL")) {
 			params[0] = new DVMObject(this, method.myClass);
+		} else if (params[0].equals("android.app.Activity")) {
+			params[0] = new Activity(this, method.myClass);
 		}
 		reg.setValue(params[0], method.myClass);
 		callingCtx = new Register[params.length];

@@ -15,13 +15,13 @@ import patdroid.core.FieldInfo;
  * @date: Feb 23, 2016 11:28:14 AM
  */
 public class DVMObject {
-	private ClassInfo type = null;
-	private Map<FieldInfo, Object> fields = new HashMap<FieldInfo, Object>();
-	private DVMClass dvmClass = null;
-	private final String TAG = getClass().getSimpleName();
-	private Object superObj = null;
-	private DalvikVM vm;
-	private int index;
+	protected ClassInfo type = null;
+	protected Map<FieldInfo, Object> fields = new HashMap<FieldInfo, Object>();
+	protected DVMClass dvmClass = null;
+	protected final String TAG = getClass().getSimpleName();
+	protected Object superObj = null;
+	protected DalvikVM vm;
+	protected int index;
 
 	public DVMObject(DalvikVM vm, ClassInfo type) {
 		this.vm = vm;

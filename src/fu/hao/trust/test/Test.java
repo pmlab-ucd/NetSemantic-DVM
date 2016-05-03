@@ -1,6 +1,10 @@
 package fu.hao.trust.test;
 
 import static org.junit.Assert.assertEquals;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import android.content.Intent;
 import fu.hao.trust.data.Results;
 import fu.hao.trust.data.TargetCall;
@@ -13,7 +17,7 @@ public class Test {
 	public static void main(String[] margs) {
 		Test t = new Test();
 		//t.test00983aad12700be0a440296c6173b18a829e9369_a();
-		//t.testMain2();
+		//t.testMain();
 		//t.testMopub_onCreate();
 		//t.testMopub_loadAd();
 		t.testWo_();
@@ -84,6 +88,12 @@ public class Test {
 		args[0] = "C:/Users/hao/workspace/MultiThreading/app/app-release.apk";
 		args[1] = "fu.hao.multithreading.MainActivity";
 		args[2] = "onCreate";
+		
+		Object[] initArgs = new Object[2];
+		initArgs[0] = "android.app.Activity";
+		initArgs[1] = "NULL";
+		Main.initMI(initArgs);
+		
 		Main.main(args);
 		assertEquals(true, Results.results.isEmpty());
 	}
@@ -115,11 +125,19 @@ public class Test {
 		args[3] = "Taint";
 		Settings.logLevel = 0;
 		
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FieldAndObjectSensitivity_FieldSensitivity4/app/app-release.apk";
-		args[1] = "de.ecspride.FieldSensitivity4";
+		args[0] = "C:/Users/hao/workspace/GeneralJava_Loop1/app/app-debug.apk";
+		args[1] = "de.ecspride.LoopExample1";
 		args[2] = "onCreate";
+		
+		Object[] initArgs = new Object[2];
+		initArgs[0] = "android.app.Activity";
+		initArgs[1] = "NULL";
+		Main.initMI(initArgs);
 		Main.main(args);
-		assertEquals(true, Results.results.isEmpty());
+		Map<String, String> res = new HashMap<>();
+		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
+				"3_5_9_8_7_4_0_4_3_1_1_6_9_0_9_");
+		assertEquals(true, Results.results.contains(res));
 	}
 
 	public void testMain2() {

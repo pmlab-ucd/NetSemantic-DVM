@@ -2061,9 +2061,7 @@ public class Interpreter {
 					}
 				}
 
-				if (normalArg && thisInstance == null
-						|| thisInstance instanceof DVMObject
-						&& !DVMObject.class.equals(clazz)) {
+				if (normalArg && thisInstance == null) {
 					thisInstance = clazz.newInstance();
 				}
 
@@ -2136,12 +2134,12 @@ public class Interpreter {
 			Log.debug(TAG, "Not a reflction invocation " + mi);
 			invocation(vm, mi, inst, args);
 		} catch (java.lang.InstantiationException e) {
-			Log.warn(TAG, e.getMessage());
+			Log.warn(TAG, "Init exception: " + e.getMessage());
+			e.printStackTrace();
 			vm.getReg(args[0]).setValue(new Unknown(mi.myClass), mi.myClass);
 			jump(vm, inst, true);
 		} catch (Exception e) {
 			e.printStackTrace();
-
 			Log.warn(TAG, "Error in reflection: " + e.getMessage());
 			jump(vm, inst, true);
 		}
@@ -2491,7 +2489,8 @@ public class Interpreter {
 						&& !vm.getCurrStackFrame().method.isStatic()
 						&& vm.getCurrStackFrame().getThisReg().getData() != vm
 								.getCurrStackFrame().getThisObj()) {
-					Log.err(TAG, "Empty this obj!");
+					Log.err(TAG, "Inconsistent this obj!" + vm.getCurrStackFrame().getThisReg().getData() + ", " + vm
+							.getCurrStackFrame().getThisObj());
 				}
 
 				if (inst.opcode == Instruction.OP_RETURN) {
