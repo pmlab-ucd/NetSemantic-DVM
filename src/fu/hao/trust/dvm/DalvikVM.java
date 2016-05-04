@@ -11,6 +11,8 @@ import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 
 import android.app.Activity;
+import android.os.AsyncTask;
+import android.view.View;
 import fu.hao.trust.analysis.Plugin;
 import fu.hao.trust.analysis.PluginManager;
 import fu.hao.trust.data.VMFullState;
@@ -135,6 +137,7 @@ public class DalvikVM {
 		private Register[] regs = new Register[65536]; // locals
 		Register exceptReg; // Register to store exceptional obj.
 		private Register thisReg;
+		private Register[] callCtx;
 
 		public void setThisObj(DVMObject thisObj) {
 			this.thisObj = thisObj;
@@ -187,7 +190,13 @@ public class DalvikVM {
 
 				pluginRes.put(plugin, clonedRes);
 			}
-
+			
+			if (callingCtx != null) {
+				callCtx = new Register[callingCtx.length];
+				for (int i = 0; i < callingCtx.length; i++) {
+					callCtx[i] = callingCtx[i];
+				}
+			}
 		}
 
 		public Map<Plugin, Map<String, Map<Object, Instruction>>> getPluginRes() {
@@ -321,6 +330,14 @@ public class DalvikVM {
 			return pluginRes;
 		}
 
+		public Register[] getCallCtx() {
+			return callCtx;
+		}
+
+		public void setCallCtx(Register[] callCtx) {
+			this.callCtx = callCtx;
+		}
+
 	}
 
 	public LinkedList<StackFrame> cloneStack(Map<DVMObject, DVMObject> objMap,
@@ -405,7 +422,7 @@ public class DalvikVM {
 			if (objMap.containsKey(field)) {
 				newField = objMap.get(field);
 			} else {
-				newField = new DVMObject(this, ((DVMObject) field).getType());
+				newField = newVMObject(((DVMObject) field).getType());
 				objMap.put((DVMObject) field, newField);
 			}
 			return newField;
@@ -484,7 +501,7 @@ public class DalvikVM {
 	private Register[] callingCtx;
 
 	// The "this" instance of a component.
-	DVMObject callbackOwner;
+	//DVMObject callbackOwner;
 
 	private PluginManager pluginManager;
 
@@ -537,7 +554,11 @@ public class DalvikVM {
 		return heap.dvmObjs.get(type);
 	}
 
-	public Register[] getContext() {
+	public Register[] getCallContext() {
+		return getCurrStackFrame().getCallCtx();
+	}
+	
+	public Register[] getGlobalCallCtx() {
 		return callingCtx;
 	}
 
@@ -551,6 +572,14 @@ public class DalvikVM {
 			callingCtx[i] = getReg(is[i]);
 		}
 	}
+	
+	public void resetCallCtx() {
+		callingCtx = null;
+	}
+	
+	public void setCallContext(Register[] regs) {
+		callingCtx = regs;
+	}
 
 	public DalvikVM(String APK) {
 		heap = new VMHeap();
@@ -558,7 +587,7 @@ public class DalvikVM {
 		retValReg = new Register(null, -1);
 		stack = new LinkedList<>();
 		callingCtx = null;
-		
+
 		try {
 			loadAPK(APK);
 		} catch (ZipException e) {
@@ -595,6 +624,28 @@ public class DalvikVM {
 
 	public StackFrame newStackFrame(MethodInfo mi) {
 		StackFrame newStackFrame = new StackFrame(mi);
+		
+		if (mi.isConstructor()) {
+			for (Instruction inst : mi.insns) {
+				if (inst.opcode == Instruction.OP_INVOKE_OP) {
+					Object[] extra = (Object[]) inst.extra;
+					MethodInfo mee = (MethodInfo) extra[0];
+					if (mee.isConstructor() && mee.insns != null) {
+						for (Instruction ins : mee.insns) {
+							if (ins.opcode == Instruction.OP_INVOKE_OP) {
+								Object[] extra2 = (Object[]) ins.extra;
+								MethodInfo me = (MethodInfo) extra2[0];
+								if (me.name.equals(mi.name) || me.equals(mi)) {
+									inst.opcode = Instruction.OP_HALT;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		
 		if (getCurrStackFrame() != null) {
 			Log.bb(TAG, "New Stack Frame: " + newStackFrame + ", pc "
 					+ getCurrStackFrame().pc + " stored. ");
@@ -620,9 +671,10 @@ public class DalvikVM {
 	 */
 	public void backCallCtx(Register retReg) {
 		stack.removeLast();
-		setCallContext(null);
+		callingCtx = null;
+		Log.bb(TAG, "Back to the last stack frame." + getCurrStackFrame());
 	}
-	
+
 	public void loadAPK(String apk) throws ZipException, IOException {
 		// for normal java run-time classes
 		// when a class is not loaded, load it with reflection
@@ -630,9 +682,9 @@ public class DalvikVM {
 		// pick an apk
 		ZipFile apkFile;
 		File file = new File(apk);
-		
+
 		apkFile = new ZipFile(file);
-		
+
 		// load all classes, methods, fields and instructions from an apk
 		// we are using smali as the underlying engine
 		new SmaliClassDetailLoader(apkFile, true).loadAll();
@@ -668,7 +720,7 @@ public class DalvikVM {
 			if (params == null) {
 				runMethod(methods[i]);
 			} else {
-				runMethod(methods[i], params);
+				runMethod(methods[i], params, false);
 			}
 			reset();
 			Log.msg(TAG, "FINISHED!\n");
@@ -683,9 +735,10 @@ public class DalvikVM {
 		// only one
 		this.setPluginManager(pluginManager);
 
-		for (int i = 1; i < chain.length; i++) {			
+		for (int i = 1; i < chain.length; i++) {
 			Settings.suspClass = chain[i].split(":")[0];
-			Settings.apkName = Settings.apkName + "_" + Settings.suspClass + "_" + chain[i];
+			Settings.apkName = Settings.apkName + "_" + Settings.suspClass
+					+ "_" + chain[i];
 			ClassInfo c = ClassInfo.findClass(Settings.suspClass);
 			Log.bb(TAG, "class " + c);
 			MethodInfo[] methods = c.findMethodsHere(chain[i].split(":")[1]);
@@ -715,14 +768,20 @@ public class DalvikVM {
 			return;
 		}
 
-		interpreter.runMethod(this, method);
+		interpreter.runMethod(this, method, false);
 	}
 
-	public void runMethod(MethodInfo method, Object[] params) {
+	public void runMethod(MethodInfo method, Object[] params, boolean force) {
+		Log.msg(TAG, "Instrumented Method: " + method);
+		if (params == null) {
+			resetCallCtx();
+			runMethod(method);
+			return;
+		}
 		if (method == null) {
 			Log.err(TAG, "Null Method");
 		}
-		
+
 		if (params.length == method.paramTypes.length) {
 			Object[] oldParams = params;
 			params = new Object[method.paramTypes.length + 1];
@@ -730,25 +789,33 @@ public class DalvikVM {
 			for (int i = 0; i < oldParams.length; i++) {
 				params[i + 1] = oldParams[i];
 			}
+			
 		}
 		
+		Log.bb(TAG, "paramLen" + params.length + ", " + method.paramTypes.length);
+
 		// Put an Null stack frame to simulate the calling ctx.
 		Register reg = new Register(null, 0);
 		if (params[0] == null || params[0].equals("NULL")) {
-			params[0] = new DVMObject(this, method.myClass);
-		} else if (params[0].equals("android.app.Activity")) {
-			params[0] = new Activity(this, method.myClass);
+			params[0] = newVMObject(method.myClass);
 		}
+		
 		reg.setValue(params[0], method.myClass);
 		callingCtx = new Register[params.length];
 		callingCtx[0] = reg;
 		for (int i = 1; i < params.length; i++) {
+			Log.bb(TAG, "param: " + params[i]);
+			if (params[i] instanceof Register) {
+				callingCtx[i] = (Register) params[i];
+				continue;
+			}
 			if (params[i].equals("NULL")) {
 				try {
-					Class<?> clazz = Class.forName(method.paramTypes[i - 1].fullName);
+					Class<?> clazz = Class
+							.forName(method.paramTypes[i - 1].fullName);
 					params[i] = clazz.newInstance();
 				} catch (ClassNotFoundException e) {
-					params[i] = new DVMObject(this, method.paramTypes[i - 1]);
+					params[i] = newVMObject(method.paramTypes[i - 1]);
 				} catch (InstantiationException e) {
 					params[i] = null;
 					e.printStackTrace();
@@ -757,6 +824,7 @@ public class DalvikVM {
 					e.printStackTrace();
 				}
 			}
+			
 			
 			reg = new Register(null, i);
 			reg.setValue(params[i], method.paramTypes[i - 1]);
@@ -768,7 +836,7 @@ public class DalvikVM {
 			args[i] = i;
 		}
 
-		interpreter.runMethod(this, method);
+		interpreter.runMethod(this, method, force);
 	}
 
 	public int getPC() {
@@ -791,6 +859,14 @@ public class DalvikVM {
 
 	public int getNowPC() {
 		return nowPC;
+	}
+
+	public Instruction getCurrtInst() {
+		if (getCurrStackFrame() != null) {
+			return getCurrStackFrame().getInst(nowPC);
+		}
+
+		return null;
 	}
 
 	public void setNowPC(int nowPC) {
@@ -829,10 +905,11 @@ public class DalvikVM {
 		this.chainThisObj = chainThisObj;
 	}
 
-	public void initThisObj(String thisObjTypeName, String[] argTypeNames, Object[] args) {
-		ClassInfo thisObjType =  ClassInfo.findClass(thisObjTypeName);
-		ClassInfo[] argTypes = null; 
-		
+	public void initThisObj(String thisObjTypeName, String[] argTypeNames,
+			Object[] args) {
+		ClassInfo thisObjType = ClassInfo.findClass(thisObjTypeName);
+		ClassInfo[] argTypes = null;
+
 		Log.bb(TAG, thisObjType);
 		MethodInfo constructor;
 		if (argTypeNames != null) {
@@ -852,14 +929,14 @@ public class DalvikVM {
 			Object[] callCtx = new Object[args.length + 1];
 
 			int i = 0;
-			callCtx[0] = new DVMObject(this, thisObjType);
+			callCtx[0] = newVMObject(thisObjType);
 			for (ClassInfo type : argTypes) {
 				if (args[i].equals("NULL")) {
 					try {
 						Class<?> clazz = Class.forName(type.fullName);
 						callCtx[i + 1] = clazz.newInstance();
 					} catch (ClassNotFoundException e) {
-						callCtx[i + 1] = new DVMObject(this, type);
+						callCtx[i + 1] = newVMObject(type);
 					} catch (InstantiationException e) {
 						callCtx[i + 1] = null;
 						e.printStackTrace();
@@ -873,23 +950,34 @@ public class DalvikVM {
 
 				i++;
 			}
-			runMethod(constructor, callCtx);
+			runMethod(constructor, callCtx, false);
 			chainThisObj = (DVMObject) callCtx[0];
 			stack.clear();
 		} else {
-			for (MethodInfo mi : thisObjType.getAllMethods()) {
-				Log.bb(TAG, mi + " " +  mi.isConstructor());
-				for (ClassInfo type : mi.paramTypes) {
-					Log.bb(TAG, type);
-				}
-				
-			}
-			
 			if (argTypeNames != null) {
 				Log.err(TAG, "Cannot find the constructor!");
 			}
 		}
 
+	}
+
+	public DVMObject newVMObject(ClassInfo type) {
+		ClassInfo oType = type;
+		String typeName = type.toString();
+		while (type.getSuperClass() != null) {
+			if (typeName.contains("Activity")) {
+				return new Activity(this, type);
+			} else if (typeName.contains("View")) {
+				return new View(this, type);
+			} else if (typeName.contains("AsyncTask")) {
+				return new AsyncTask(this, type);
+			}
+			
+			type = type.getSuperClass();
+			typeName = type.toString();
+		}
+
+		return new DVMObject(this, oType);
 	}
 
 }

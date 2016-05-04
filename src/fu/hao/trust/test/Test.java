@@ -17,10 +17,10 @@ public class Test {
 	public static void main(String[] margs) {
 		Test t = new Test();
 		//t.test00983aad12700be0a440296c6173b18a829e9369_a();
-		//t.testMain();
+		t.testMain();
 		//t.testMopub_onCreate();
 		//t.testMopub_loadAd();
-		t.testWo_();
+		//t.testWo_();
 	}
 	
 	public void testWo_() {
@@ -31,16 +31,19 @@ public class Test {
 		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/benign/wowotuan/com.wowotuan.appfactory.wangpintaisuniupai/7619303.html.apk";
 		//args[1] = "com.wowotuan.appfactory.gui.activity.bz";
 		//args[2] = "onItemClick";
-		//args[1] = "com.wowotuan.appfactory.gui.activity.CityChoiceActivity";
-		//args[2] = "k";
-		args[1] = "com.wowotuan.appfactory.gui.activity.ca";
-		//args[1] = "com.wowotuan.appfactory.e.g";
-		args[2] = "onReceive";
+		args[1] = "com.wowotuan.appfactory.gui.activity.CityChoiceActivity";
+		args[2] = "onCreate";
 		Object[] initArgs = new Object[2];
+		initArgs[0] = "NULL";
+		initArgs[1] = "NULL";
+		//args[1] = "com.wowotuan.appfactory.gui.activity.ca";
+		//args[1] = "com.wowotuan.appfactory.e.g";
+		//args[2] = "onReceive";
+		/*Object[] initArgs = new Object[2];
 		Intent intent = new Intent("com.wowotuan.appfactory.broadcast.location");
 		intent.putExtra("location", "121.1, 131.1");
 		initArgs[1] = intent; 
-		initArgs[0] = "NULL";
+		initArgs[0] = "NULL";*/
 		Main.initMI(initArgs);
 		Main.main(args);
 		assertEquals(true, Results.results.isEmpty());
@@ -125,18 +128,12 @@ public class Test {
 		args[3] = "Taint";
 		Settings.logLevel = 0;
 		
-		args[0] = "C:/Users/hao/workspace/GeneralJava_Loop1/app/app-debug.apk";
-		args[1] = "de.ecspride.LoopExample1";
-		args[2] = "onCreate";
-		
-		Object[] initArgs = new Object[2];
-		initArgs[0] = "android.app.Activity";
-		initArgs[1] = "NULL";
-		Main.initMI(initArgs);
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Callbacks_Button2/app/";
 		Main.main(args);
+		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
 		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
-				"3_5_9_8_7_4_0_4_3_1_1_6_9_0_9_");
+				"359874043116909");
 		assertEquals(true, Results.results.contains(res));
 	}
 

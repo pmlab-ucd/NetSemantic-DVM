@@ -1,6 +1,6 @@
 main - [DEBUG]: Callbacks_Button1.apk
 main - [DEBUG]: C:/Users/hao/workspace/TRUST/sootOutput/Callbacks_Button1.apk_dummy.csv
-DalvikVM - [MSG]: apk java.util.zip.ZipFile@590864d2 C:/Users/hao/workspace/DroidBenchProj/Callbacks_Button1/app/Callbacks_Button1.apk
+DalvikVM - [MSG]: apk C:/Users/hao/workspace/DroidBenchProj/Callbacks_Button1/app/Callbacks_Button1.apk
 DalvikVM - [BB]: class de.ecspride.Button1
 DalvikVM - [WARN]: Run chain de.ecspride.Button1:onCreate at de.ecspride.Button1
 DalvikVM - [MSG]: RUN Method de.ecspride.Button1/onCreate[android.os.Bundle]
@@ -10,7 +10,7 @@ DalvikVM - [BB]: [1]<0 HALT,SUPER,extra=[null, [2, 3]]>
 DalvikVM - [BB]: [2]<0 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
 DalvikVM - [BB]: [3]<0 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [2, 1]]>
 DalvikVM - [BB]: [4]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
-DalvikVM - [BB]: [5]<0 INVOKE,VIRTUAL,extra=[android.app.Activity/getSystemService[java.lang.String], [2, 1]]>
+DalvikVM - [BB]: [5]<0 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [2, 1]]>
 DalvikVM - [BB]: [6]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
 DalvikVM - [BB]: [7]<0 ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.telephony.TelephonyManager>
 DalvikVM - [BB]: [8]<0 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>
@@ -20,78 +20,43 @@ DalvikVM - [BB]: [11]<0 RETURN,VOID>
 DalvikVM - [BB]: New Stack Frame: StackFrame de.ecspride.Button1/onCreate[android.os.Bundle]
 DalvikVM - [BB]: Stack: [StackFrame de.ecspride.Button1/onCreate[android.os.Bundle]]
 Interpreter - [MSG]: New chain obj
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@6d667cff
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@6d667cff
-DalvikVM - [BB]: New method call: de.ecspride.Button1/<clinit>[]
-DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[]>
-DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
-DalvikVM - [BB]: [2]<0 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(de.ecspride.Button1, imei)>
-DalvikVM - [BB]: [3]<0 RETURN,VOID>
-DalvikVM - [BB]: New Stack Frame: StackFrame de.ecspride.Button1/<clinit>[], pc [I@1924a3cc stored. 
-DalvikVM - [BB]: Stack: [StackFrame de.ecspride.Button1/onCreate[android.os.Bundle], StackFrame de.ecspride.Button1/<clinit>[]]
-Interpreter - [MSG]: 
-
-Interpreter - [MSG]: <-1 SPECIAL,ARGUMENT_SET,extra=[]> at de.ecspride.Button1/<clinit>[]
-Interpreter - [WARN]: NULL CallingCtx!
-Interpreter - [BB]: Start param from 0
-DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_SP_ARGUMENTS -> jump set pc to 0
-PluginManager - [MSG]: Taint Tainted Res: {}
-Interpreter - [MSG]: 
-
-Interpreter - [MSG]: <0 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0> at de.ecspride.Button1/<clinit>[]
-Interpreter - [DEBUG]: Mov const begin <0 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
-Interpreter - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
-DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 1
-PluginManager - [MSG]: Taint Tainted Res: {}
-Interpreter - [MSG]: 
-
-Interpreter - [MSG]: <1 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(de.ecspride.Button1, imei)> at de.ecspride.Button1/<clinit>[]
-Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@6d667cff
-Caller: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type de.ecspride.Button1
-Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@6d667cff
-class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [WARN]: Type inconsistent! void java.lang.String
-class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: expect sput imei from de.ecspride.Button1
-class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: real sput 0 from fu.hao.trust.dvm.DVMClass@7407beda
-DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD -> jump set pc to 2
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@6d667cff
-Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type de.ecspride.Button1
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@6d667cff
-PluginManager - [MSG]: Taint Tainted Res: {}
-Interpreter - [MSG]: 
-
-Interpreter - [MSG]: <2 RETURN,VOID> at de.ecspride.Button1/<clinit>[]
-class fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID - [DEBUG]: Return void
-DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID -> jump set pc to 0
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@6d667cff
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@6d667cff
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@6d667cff
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for java.lang.Object at fu.hao.trust.dvm.VMHeap@6d667cff
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@6f8daedc
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@6f8daedc
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@6f8daedc
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@6f8daedc
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@6f8daedc
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@6f8daedc
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@6f8daedc
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for java.lang.Object at fu.hao.trust.dvm.VMHeap@6f8daedc
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type java.lang.Object
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@6d667cff
-Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.app.Activity
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@6d667cff
-Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type de.ecspride.Button1
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@6d667cff
-DVMObject - [BB]: New instance of de.ecspride.Button1
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@6d667cff
-Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type de.ecspride.Button1
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@6d667cff
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@6f8daedc
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@6f8daedc
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.Context
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@6f8daedc
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@6f8daedc
+Activity - [BB]: New instance of android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@6f8daedc
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@6f8daedc
+Activity - [BB]: New Activity Created!
 Interpreter - [MSG]: RUN BEGIN de.ecspride.Button1/onCreate[android.os.Bundle]
-Interpreter - [MSG]: RUN BEGIN
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> run set pc to 0
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[2, 3]> at de.ecspride.Button1/onCreate[android.os.Bundle]
 Interpreter - [WARN]: NULL CallingCtx!
-Interpreter - [DEBUG]: args: instance number 1@de.ecspride.Button1
+Interpreter - [DEBUG]: args: Activity:instance number 1@android.app.Activity
 Interpreter - [BB]: Start param from 1
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@6d667cff
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.os.Bundle at fu.hao.trust.dvm.VMHeap@6d667cff
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@6f8daedc
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.os.Bundle at fu.hao.trust.dvm.VMHeap@6f8daedc
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.os.Bundle
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@6d667cff
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@6f8daedc
 DVMObject - [BB]: New instance of android.os.Bundle
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@6d667cff
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@6f8daedc
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.os.Bundle
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@6d667cff
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@6f8daedc
 Interpreter - [DEBUG]: args: instance number 1@android.os.Bundle
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_SP_ARGUMENTS -> jump set pc to 1
 PluginManager - [MSG]: Taint Tainted Res: {}
@@ -112,42 +77,43 @@ PluginManager - [MSG]: Taint Tainted Res: {}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <3 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [2, 1]]> at de.ecspride.Button1/onCreate[android.os.Bundle]
-Interpreter - [MSG]: arg0 obj: instance number 1@de.ecspride.Button1
+Interpreter - [MSG]: arg0 obj: Activity:instance number 1@android.app.Activity
 Interpreter - [DEBUG]: Reflction class: class android.app.Activity
 Interpreter - [BB]: arg1@reg1: 2130903040
 Interpreter - [DEBUG]: Expected para type: int
 Interpreter - [DEBUG]: Real para int
-Interpreter - [DEBUG]: Caller obj: android.app.Activity@a41f08, from class: class android.app.Activity
+Interpreter - [DEBUG]: Caller obj: Activity:instance number 1@android.app.Activity, from class: class android.app.Activity
 Interpreter - [MSG]: Reflction invocation public void android.app.Activity.setContentView(int)
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 4
-class fu.hao.trust.analysis.Taint$TAINT_OP_INVOKE - [BB]: <android.app.Activity: void setContentView(int)>
-class fu.hao.trust.analysis.Taint$TAINT_OP_INVOKE - [DEBUG]: not a taint call: <android.app.Activity: void setContentView(int)>
+Taint - [BB]: <android.app.Activity: void setContentView(int)>
+Taint - [DEBUG]: not a taint call: <android.app.Activity: void setContentView(int)>
 PluginManager - [MSG]: Taint Tainted Res: {}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <4 MOV,CONST,dst=r1,type=java.lang.String,extra="phone"> at de.ecspride.Button1/onCreate[android.os.Bundle]
 Interpreter - [DEBUG]: Mov const begin <4 MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: ar1 <2130903040, void>, <phone, java.lang.String>
 Interpreter - [DEBUG]: data: phone class java.lang.String
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 5
 PluginManager - [MSG]: Taint Tainted Res: {}
 Interpreter - [MSG]: 
 
-Interpreter - [MSG]: <5 INVOKE,VIRTUAL,extra=[android.app.Activity/getSystemService[java.lang.String], [2, 1]]> at de.ecspride.Button1/onCreate[android.os.Bundle]
-Interpreter - [MSG]: arg0 obj: instance number 1@de.ecspride.Button1
-Interpreter - [DEBUG]: Reflction class: class android.app.Activity
+Interpreter - [MSG]: <5 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [2, 1]]> at de.ecspride.Button1/onCreate[android.os.Bundle]
+Interpreter - [MSG]: arg0 obj: Activity:instance number 1@android.app.Activity
+Interpreter - [DEBUG]: Reflction class: class android.content.Context
 Interpreter - [BB]: arg1@reg1: phone
-Interpreter - [DEBUG]: Caller obj: android.app.Activity@3665ea4b, from class: class android.app.Activity
-Interpreter - [DEBUG]: Return data: android.telephony.TelephonyManager@5cf8fdd3 ,class android.telephony.TelephonyManager
-Interpreter - [MSG]: Reflction invocation public java.lang.Object android.app.Activity.getSystemService(java.lang.String)
+Interpreter - [DEBUG]: Caller obj: Activity:instance number 1@android.app.Activity, from class: class android.app.Activity
+Interpreter - [DEBUG]: Return data: android.telephony.TelephonyManager@12fcc66a ,class android.telephony.TelephonyManager
+Interpreter - [MSG]: Reflction invocation public java.lang.Object android.content.Context.getSystemService(java.lang.String)
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 6
-class fu.hao.trust.analysis.Taint$TAINT_OP_INVOKE - [BB]: <android.app.Activity: java.lang.Object getSystemService(java.lang.String)>
-class fu.hao.trust.analysis.Taint$TAINT_OP_INVOKE - [DEBUG]: not a taint call: <android.app.Activity: java.lang.Object getSystemService(java.lang.String)>
+Taint - [BB]: <android.content.Context: java.lang.Object getSystemService(java.lang.String)>
+Taint - [DEBUG]: not a taint call: <android.content.Context: java.lang.Object getSystemService(java.lang.String)>
 PluginManager - [MSG]: Taint Tainted Res: {}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <6 MOV,RESULT,dst=r0,type=java.lang.Object> at de.ecspride.Button1/onCreate[android.os.Bundle]
-OP_MOV_RESULT - [BB]: Result data: android.telephony.TelephonyManager@5cf8fdd3
-OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.TelephonyManager@5cf8fdd3, type: java.lang.Object, to [reg 0@onCreate]
+OP_MOV_RESULT - [BB]: Result data: android.telephony.TelephonyManager@12fcc66a
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.TelephonyManager@12fcc66a, type: java.lang.Object, to [reg 0@Button1/onCreate]
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 7
 PluginManager - [MSG]: Taint Tainted Res: {}
 Interpreter - [MSG]: 
@@ -159,207 +125,1128 @@ PluginManager - [MSG]: Taint Tainted Res: {}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]> at de.ecspride.Button1/onCreate[android.os.Bundle]
-Interpreter - [MSG]: arg0 obj: android.telephony.TelephonyManager@5cf8fdd3
+Interpreter - [MSG]: arg0 obj: android.telephony.TelephonyManager@12fcc66a
 Interpreter - [DEBUG]: Reflction class: class android.telephony.TelephonyManager
 Interpreter - [DEBUG]: Return data: 359874043116909 ,class java.lang.String
 Interpreter - [MSG]: Reflction invocation public java.lang.String android.telephony.TelephonyManager.getDeviceId()
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 9
-class fu.hao.trust.analysis.Taint$TAINT_OP_INVOKE - [BB]: <android.telephony.TelephonyManager: java.lang.String getDeviceId()>
-class fu.hao.trust.analysis.Taint$TAINT_OP_INVOKE - [WARN]: Found a tainted return value!
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Global RetReg]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Taint - [BB]: <android.telephony.TelephonyManager: java.lang.String getDeviceId()>
+Taint - [WARN]: Found a tainted return value!
+PluginManager - [MSG]: Taint Tainted Res: {[Global RetReg]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <9 MOV,RESULT,dst=r1,type=java.lang.Object> at de.ecspride.Button1/onCreate[android.os.Bundle]
+DalvikVM - [BB]: ar1 <phone, java.lang.String>, <359874043116909, java.lang.String>
 OP_MOV_RESULT - [BB]: Result data: 359874043116909
-OP_MOV_RESULT - [DEBUG]: Result data: 359874043116909, type: java.lang.String, to [reg 1@onCreate]
+OP_MOV_RESULT - [DEBUG]: Result data: 359874043116909, type: java.lang.String, to [reg 1@Button1/onCreate]
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 10
-TAINT_OP_MOV_RESULT - [BB]: <8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>
-TAINT_OP_MOV_RESULT - [BB]: Add reg 1 due to ret reg.
-PluginManager - [MSG]: Taint Tainted Res: {[reg 1@onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Taint - [BB]: <8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>
+Taint - [BB]: Add reg 1 due to ret reg.
+PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 1@Button1/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <10 STATIC,SPUT,r0=r1,type=java.lang.Object,extra=(de.ecspride.Button1, imei)> at de.ecspride.Button1/onCreate[android.os.Bundle]
-Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@6d667cff
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@6f8daedc
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@6f8daedc
+DalvikVM - [MSG]: Instrumented Method: de.ecspride.Button1/<clinit>[]
+DalvikVM - [MSG]: RUN Method de.ecspride.Button1/<clinit>[]
+DalvikVM - [BB]: New method call: de.ecspride.Button1/<clinit>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [2]<0 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(de.ecspride.Button1, imei)>
+DalvikVM - [BB]: [3]<0 RETURN,VOID>
+DalvikVM - [BB]: New Stack Frame: StackFrame de.ecspride.Button1/<clinit>[], pc [I@29a3139 stored. 
+DalvikVM - [BB]: Stack: [StackFrame de.ecspride.Button1/onCreate[android.os.Bundle], StackFrame de.ecspride.Button1/<clinit>[]]
+Interpreter - [BB]: Entry method is static!
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@6f8daedc
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@6f8daedc
 Caller: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type de.ecspride.Button1
-Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@6d667cff
-class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: expect sput imei from de.ecspride.Button1
-class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: real sput 359874043116909 from fu.hao.trust.dvm.DVMClass@7407beda
-DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD -> jump set pc to 11
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@6d667cff
-Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type de.ecspride.Button1
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@6d667cff
-TAINT_OP_STATIC_PUT_FIELD - [BB]: SPut at [reg 1@onCreate]
-PluginManager - [MSG]: Taint Tainted Res: {[reg 1@onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
-Interpreter - [MSG]: 
-
-Interpreter - [MSG]: <11 RETURN,VOID> at de.ecspride.Button1/onCreate[android.os.Bundle]
-class fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID - [DEBUG]: Return void
-Interpreter - [MSG]: RUN DONE! The last one is onCreate
-DalvikVM - [BB]: class de.ecspride.Button1
-DalvikVM - [WARN]: Run chain de.ecspride.Button1:sendMessage at de.ecspride.Button1
-DalvikVM - [MSG]: RUN Method de.ecspride.Button1/sendMessage[android.view.View]
-DalvikVM - [BB]: New method call: de.ecspride.Button1/sendMessage[android.view.View]
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@6f8daedc
+DalvikVM - [BB]: de.ecspride.MainActivity
+DalvikVM - [MSG]: Begin run onCreate at C:/Users/hao/workspace/DroidBenchProj/GeneralJava_SourceCodeSpecific1/app/app-debug.apk
+DalvikVM - [MSG]: Instrumented Method: de.ecspride.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [BB]: paramLen2, 1
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@16acebb0
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@16acebb0
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@16acebb0
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@16acebb0
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@16acebb0
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@16acebb0
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@16acebb0
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@16acebb0
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@16acebb0
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for java.lang.Object at fu.hao.trust.dvm.VMHeap@16acebb0
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type java.lang.Object
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@16acebb0
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@16acebb0
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.Context
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@16acebb0
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@16acebb0
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type de.ecspride.MainActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@16acebb0
+Activity - [BB]: New instance of de.ecspride.MainActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@16acebb0
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type de.ecspride.MainActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@16acebb0
+Activity - [BB]: New Activity Created!
+DalvikVM - [BB]: param: NULL
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@16acebb0
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.os.Bundle at fu.hao.trust.dvm.VMHeap@16acebb0
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@16acebb0
+DVMObject - [BB]: New instance of android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@16acebb0
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@16acebb0
+DalvikVM - [BB]: New method call: de.ecspride.MainActivity/onCreate[android.os.Bundle]
 DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[6, 7]>
+DalvikVM - [BB]: [1]<0 HALT,SUPER,extra=[null, [6, 7]]>
+DalvikVM - [BB]: [2]<0 MOV,CONST,dst=r5,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+DalvikVM - [BB]: [3]<0 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [6, 5]]>
+DalvikVM - [BB]: [4]<0 MOV,CONST,dst=r5,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: [5]<0 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [6, 5]]>
+DalvikVM - [BB]: [6]<0 MOV,RESULT,dst=r4,type=java.lang.Object>
+DalvikVM - [BB]: [7]<0 ARITHMETIC,CHECK-AND-CAST,dst=r4,type=android.telephony.TelephonyManager>
+DalvikVM - [BB]: [8]<0 NEW,INSTANCE,dst=r3,type=java.util.HashSet>
+DalvikVM - [BB]: [9]<0 INVOKE,DIRECT,extra=[java.util.HashSet/<init>[], [3]]>
+DalvikVM - [BB]: [10]<0 MOV,CONST,dst=r5,type=java.lang.String,extra="+49 123456">
+DalvikVM - [BB]: [11]<0 INVOKE,INTERFACE,extra=[java.util.Set/add[java.lang.Object], [3, 5]]>
+DalvikVM - [BB]: [12]<0 MOV,CONST,dst=r5,type=java.lang.String,extra="+49 654321">
+DalvikVM - [BB]: [13]<0 INVOKE,INTERFACE,extra=[java.util.Set/add[java.lang.Object], [3, 5]]>
+DalvikVM - [BB]: [14]<0 MOV,CONST,dst=r5,type=java.lang.String,extra="+49 111111">
+DalvikVM - [BB]: [15]<0 INVOKE,INTERFACE,extra=[java.util.Set/add[java.lang.Object], [3, 5]]>
+DalvikVM - [BB]: [16]<0 MOV,CONST,dst=r5,type=java.lang.String,extra="+49 222222">
+DalvikVM - [BB]: [17]<0 INVOKE,INTERFACE,extra=[java.util.Set/add[java.lang.Object], [3, 5]]>
+DalvikVM - [BB]: [18]<0 MOV,CONST,dst=r5,type=java.lang.String,extra="+49 333333">
+DalvikVM - [BB]: [19]<0 INVOKE,INTERFACE,extra=[java.util.Set/add[java.lang.Object], [3, 5]]>
+DalvikVM - [BB]: [20]<0 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?33>
+DalvikVM - [BB]: [21]<0 ARITHMETIC,ADD,dst=r1,r0=r0,extra=class patdroid.core.PrimitiveInfo?43>
+DalvikVM - [BB]: [22]<0 IF,NE,r0=r0,r1=r1,extra=index:26>
+DalvikVM - [BB]: [23]<0 MOV,CONST,dst=r2,type=java.lang.String,extra="no taint">
+DalvikVM - [BB]: [24]<0 INVOKE,DIRECT,extra=[de.ecspride.MainActivity/sendSMS[java.util.Set, java.lang.String], [6, 3, 2]]>
+DalvikVM - [BB]: [25]<0 RETURN,VOID>
+DalvikVM - [BB]: [26]<0 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [4]]>
+DalvikVM - [BB]: [27]<0 MOV,RESULT,dst=r2,type=java.lang.Object>
+DalvikVM - [BB]: [28]<0 GOTO,extra=index:24>
+DalvikVM - [BB]: New Stack Frame: StackFrame de.ecspride.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [BB]: Stack: [StackFrame de.ecspride.MainActivity/onCreate[android.os.Bundle]]
+Interpreter - [MSG]: New chain obj
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@16acebb0
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type de.ecspride.MainActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@16acebb0
+Activity - [BB]: New instance of de.ecspride.MainActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@16acebb0
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type de.ecspride.MainActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@16acebb0
+Activity - [BB]: New Activity Created!
+DalvikVM - [MSG]: FINISHED!
+
+main - [MSG]: Analysis has run for 1.214918211 seconds
+
+DalvikVM - [BB]: de.ecspride.LoopExample1
+DalvikVM - [MSG]: Begin run onCreate at C:/Users/hao/workspace/GeneralJava_Loop1/app/app-debug.apk
+DalvikVM - [MSG]: Instrumented Method: de.ecspride.LoopExample1/onCreate[android.os.Bundle]
+DalvikVM - [BB]: paramLen2, 1
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@14332f47
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@14332f47
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@14332f47
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@14332f47
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@14332f47
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@14332f47
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@14332f47
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for java.lang.Object at fu.hao.trust.dvm.VMHeap@14332f47
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type java.lang.Object
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@14332f47
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@14332f47
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.Context
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@14332f47
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@14332f47
+Activity - [BB]: New instance of android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@14332f47
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@14332f47
+Activity - [BB]: New Activity Created!
+DalvikVM - [BB]: param: NULL
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@14332f47
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.os.Bundle at fu.hao.trust.dvm.VMHeap@14332f47
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@14332f47
+DVMObject - [BB]: New instance of android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@14332f47
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@14332f47
+DalvikVM - [BB]: New method call: de.ecspride.LoopExample1/onCreate[android.os.Bundle]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[12, 13]>
 DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
-DalvikVM - [BB]: [2]<0 STATIC,SGET,r0=r1,type=java.lang.Object,extra=(de.ecspride.Button1, imei)>
-DalvikVM - [BB]: [3]<0 MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?1>
-DalvikVM - [BB]: [4]<0 HALT,STATIC,extra=[null, [6, 1, 3]]>
-DalvikVM - [BB]: [5]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
-DalvikVM - [BB]: [6]<0 HALT,VIRTUAL,extra=[null, [1]]>
-DalvikVM - [BB]: [7]<0 INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]>
-DalvikVM - [BB]: [8]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
-DalvikVM - [BB]: [9]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="+49">
-DalvikVM - [BB]: [10]<0 STATIC,SGET,r0=r3,type=java.lang.Object,extra=(de.ecspride.Button1, imei)>
-DalvikVM - [BB]: [11]<0 MOV,REG,dst=r4,r0=r2,type=java.lang.Object>
-DalvikVM - [BB]: [12]<0 MOV,REG,dst=r5,r0=r2,type=java.lang.Object>
-DalvikVM - [BB]: [13]<0 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]>
-DalvikVM - [BB]: [14]<0 RETURN,VOID>
-DalvikVM - [BB]: New Stack Frame: StackFrame de.ecspride.Button1/sendMessage[android.view.View]
-DalvikVM - [BB]: Stack: [StackFrame de.ecspride.Button1/sendMessage[android.view.View]]
-Interpreter - [MSG]: RUN BEGIN de.ecspride.Button1/sendMessage[android.view.View]
-Interpreter - [MSG]: RUN BEGIN
-DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> run set pc to 0
-Interpreter - [MSG]: 
+DalvikVM - [BB]: [2]<0 HALT,SUPER,extra=[null, [12, 13]]>
+DalvikVM - [BB]: [3]<0 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+DalvikVM - [BB]: [4]<0 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [12, 1]]>
+DalvikVM - [BB]: [5]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: [6]<0 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [12, 1]]>
+DalvikVM - [BB]: [7]<0 MOV,RESULT,dst=r11,type=java.lang.Object>
+DalvikVM - [BB]: [8]<0 ARITHMETIC,CHECK-AND-CAST,dst=r11,type=android.telephony.TelephonyManager>
+DalvikVM - [BB]: [9]<0 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [11]]>
+DalvikVM - [BB]: [10]<0 MOV,RESULT,dst=r9,type=java.lang.Object>
+DalvikVM - [BB]: [11]<0 MOV,CONST,dst=r3,type=java.lang.String,extra="">
+DalvikVM - [BB]: [12]<0 INVOKE,VIRTUAL,extra=[java.lang.String/toCharArray[], [9]]>
+DalvikVM - [BB]: [13]<0 MOV,RESULT,dst=r6,type=java.lang.Object>
+DalvikVM - [BB]: [14]<0 ARITHMETIC,ARRAY_LENGTH,dst=r10,r0=r6,type=int>
+DalvikVM - [BB]: [15]<0 MOV,CONST,dst=r8,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [16]<0 IF,GE,r0=r8,r1=r10,extra=index:31>
+DalvikVM - [BB]: [17]<0 ARRAY,AGET,dst=r7,r0=r6,r1=r8,type=char>
+DalvikVM - [BB]: [18]<0 NEW,INSTANCE,dst=r1,type=java.lang.StringBuilder>
+DalvikVM - [BB]: [19]<0 INVOKE,DIRECT,extra=[java.lang.StringBuilder/<init>[], [1]]>
+DalvikVM - [BB]: [20]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [1, 3]]>
+DalvikVM - [BB]: [21]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [22]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[char], [1, 7]]>
+DalvikVM - [BB]: [23]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [24]<0 MOV,CONST,dst=r4,type=java.lang.String,extra="_">
+DalvikVM - [BB]: [25]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [1, 4]]>
+DalvikVM - [BB]: [26]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [27]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/toString[], [1]]>
+DalvikVM - [BB]: [28]<0 MOV,RESULT,dst=r3,type=java.lang.Object>
+DalvikVM - [BB]: [29]<0 ARITHMETIC,ADD,dst=r8,r0=r8,extra=class patdroid.core.PrimitiveInfo?1>
+DalvikVM - [BB]: [30]<0 GOTO,extra=index:16>
+DalvikVM - [BB]: [31]<0 INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]>
+DalvikVM - [BB]: [32]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [33]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="+49 1234">
+DalvikVM - [BB]: [34]<0 MOV,REG,dst=r4,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [35]<0 MOV,REG,dst=r5,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [36]<0 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]>
+DalvikVM - [BB]: [37]<0 RETURN,VOID>
+DalvikVM - [BB]: New Stack Frame: StackFrame de.ecspride.LoopExample1/onCreate[android.os.Bundle]
+DalvikVM - [BB]: Stack: [StackFrame de.ecspride.LoopExample1/onCreate[android.os.Bundle]]
+Interpreter - [MSG]: New chain obj
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@14332f47
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@14332f47
+Activity - [BB]: New instance of android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@14332f47
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@14332f47
+Activity - [BB]: New Activity Created!
+DalvikVM - [MSG]: FINISHED!
 
-Interpreter - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[6, 7]> at de.ecspride.Button1/sendMessage[android.view.View]
-Interpreter - [WARN]: NULL CallingCtx!
-Interpreter - [DEBUG]: args: instance number 1@de.ecspride.Button1
-Interpreter - [BB]: Start param from 1
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@6d667cff
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.view.View at fu.hao.trust.dvm.VMHeap@6d667cff
-Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.view.View
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@6d667cff
-DVMObject - [BB]: New instance of android.view.View
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@6d667cff
-Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.view.View
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@6d667cff
-Interpreter - [DEBUG]: args: instance number 1@android.view.View
-DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_SP_ARGUMENTS -> jump set pc to 1
-TAINT_OP_SP_ARGUMENTS - [BB]: Copy 359874043116909 as tainted.
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
-Interpreter - [MSG]: 
+main - [MSG]: Analysis has run for 2.011671751 seconds
 
-Interpreter - [MSG]: <1 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0> at de.ecspride.Button1/sendMessage[android.view.View]
-Interpreter - [DEBUG]: Mov const begin <1 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
-Interpreter - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
-DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 2
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
-Interpreter - [MSG]: 
+DalvikVM - [BB]: de.ecspride.LoopExample2
+DalvikVM - [MSG]: Begin run onCreate at C:/Users/hao/workspace/GeneralJava_Loop2/app/app-debug.apk
+DalvikVM - [MSG]: Instrumented Method: de.ecspride.LoopExample2/onCreate[android.os.Bundle]
+DalvikVM - [BB]: paramLen2, 1
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@6c08e2cf
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@6c08e2cf
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@6c08e2cf
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@6c08e2cf
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@6c08e2cf
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@6c08e2cf
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@6c08e2cf
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for java.lang.Object at fu.hao.trust.dvm.VMHeap@6c08e2cf
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type java.lang.Object
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@6c08e2cf
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@6c08e2cf
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.Context
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@6c08e2cf
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@6c08e2cf
+Activity - [BB]: New instance of android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@6c08e2cf
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@6c08e2cf
+Activity - [BB]: New Activity Created!
+DalvikVM - [BB]: param: NULL
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@6c08e2cf
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.os.Bundle at fu.hao.trust.dvm.VMHeap@6c08e2cf
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@6c08e2cf
+DVMObject - [BB]: New instance of android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@6c08e2cf
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@6c08e2cf
+DalvikVM - [BB]: New method call: de.ecspride.LoopExample2/onCreate[android.os.Bundle]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[13, 14]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [2]<0 HALT,SUPER,extra=[null, [13, 14]]>
+DalvikVM - [BB]: [3]<0 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+DalvikVM - [BB]: [4]<0 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [13, 1]]>
+DalvikVM - [BB]: [5]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: [6]<0 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [13, 1]]>
+DalvikVM - [BB]: [7]<0 MOV,RESULT,dst=r12,type=java.lang.Object>
+DalvikVM - [BB]: [8]<0 ARITHMETIC,CHECK-AND-CAST,dst=r12,type=android.telephony.TelephonyManager>
+DalvikVM - [BB]: [9]<0 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [12]]>
+DalvikVM - [BB]: [10]<0 MOV,RESULT,dst=r10,type=java.lang.Object>
+DalvikVM - [BB]: [11]<0 MOV,CONST,dst=r3,type=java.lang.String,extra="">
+DalvikVM - [BB]: [12]<0 MOV,CONST,dst=r8,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [13]<0 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?10>
+DalvikVM - [BB]: [14]<0 IF,GE,r0=r8,r1=r1,extra=index:38>
+DalvikVM - [BB]: [15]<0 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?9>
+DalvikVM - [BB]: [16]<0 IF,NE,r0=r8,r1=r1,extra=index:36>
+DalvikVM - [BB]: [17]<0 INVOKE,VIRTUAL,extra=[java.lang.String/toCharArray[], [10]]>
+DalvikVM - [BB]: [18]<0 MOV,RESULT,dst=r6,type=java.lang.Object>
+DalvikVM - [BB]: [19]<0 ARITHMETIC,ARRAY_LENGTH,dst=r11,r0=r6,type=int>
+DalvikVM - [BB]: [20]<0 MOV,CONST,dst=r9,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [21]<0 IF,GE,r0=r9,r1=r11,extra=index:36>
+DalvikVM - [BB]: [22]<0 ARRAY,AGET,dst=r7,r0=r6,r1=r9,type=char>
+DalvikVM - [BB]: [23]<0 NEW,INSTANCE,dst=r1,type=java.lang.StringBuilder>
+DalvikVM - [BB]: [24]<0 INVOKE,DIRECT,extra=[java.lang.StringBuilder/<init>[], [1]]>
+DalvikVM - [BB]: [25]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [1, 3]]>
+DalvikVM - [BB]: [26]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [27]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[char], [1, 7]]>
+DalvikVM - [BB]: [28]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [29]<0 MOV,CONST,dst=r4,type=java.lang.String,extra="_">
+DalvikVM - [BB]: [30]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [1, 4]]>
+DalvikVM - [BB]: [31]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [32]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/toString[], [1]]>
+DalvikVM - [BB]: [33]<0 MOV,RESULT,dst=r3,type=java.lang.Object>
+DalvikVM - [BB]: [34]<0 ARITHMETIC,ADD,dst=r9,r0=r9,extra=class patdroid.core.PrimitiveInfo?1>
+DalvikVM - [BB]: [35]<0 GOTO,extra=index:21>
+DalvikVM - [BB]: [36]<0 ARITHMETIC,ADD,dst=r8,r0=r8,extra=class patdroid.core.PrimitiveInfo?1>
+DalvikVM - [BB]: [37]<0 GOTO,extra=index:13>
+DalvikVM - [BB]: [38]<0 INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]>
+DalvikVM - [BB]: [39]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [40]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="+49 1234">
+DalvikVM - [BB]: [41]<0 MOV,REG,dst=r4,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [42]<0 MOV,REG,dst=r5,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [43]<0 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]>
+DalvikVM - [BB]: [44]<0 RETURN,VOID>
+DalvikVM - [BB]: New Stack Frame: StackFrame de.ecspride.LoopExample2/onCreate[android.os.Bundle]
+DalvikVM - [BB]: Stack: [StackFrame de.ecspride.LoopExample2/onCreate[android.os.Bundle]]
+Interpreter - [MSG]: New chain obj
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@6c08e2cf
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@6c08e2cf
+Activity - [BB]: New instance of android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@6c08e2cf
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@6c08e2cf
+Activity - [BB]: New Activity Created!
+DalvikVM - [MSG]: FINISHED!
 
-Interpreter - [MSG]: <2 STATIC,SGET,r0=r1,type=java.lang.Object,extra=(de.ecspride.Button1, imei)> at de.ecspride.Button1/sendMessage[android.view.View]
-Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@6d667cff
-Caller: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type de.ecspride.Button1
-Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@6d667cff
-OP_STATIC_GET_FIELD - [DEBUG]: Sget 359874043116909, from fu.hao.trust.dvm.DVMClass@7407beda
-OP_STATIC_GET_FIELD - [DEBUG]: Expect sget imei, a java.lang.String from de.ecspride.Button1
-DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD -> jump set pc to 3
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@6d667cff
-Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type de.ecspride.Button1
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@6d667cff
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 1@sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
-Interpreter - [MSG]: 
+main - [MSG]: Analysis has run for 1.036104494 seconds
 
-Interpreter - [MSG]: <3 MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?1> at de.ecspride.Button1/sendMessage[android.view.View]
-Interpreter - [DEBUG]: Mov const begin <3 MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?1>
-Interpreter - [DEBUG]: data: 1 class patdroid.core.PrimitiveInfo
-DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 4
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 1@sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
-Interpreter - [MSG]: 
+DalvikVM - [BB]: de.ecspride.UnreachableCode
+DalvikVM - [MSG]: Begin run onCreate at C:/Users/hao/workspace/DroidBenchProj/GeneralJava_UnreachableCode/app/app-release.apk
+DalvikVM - [MSG]: Instrumented Method: de.ecspride.UnreachableCode/onCreate[android.os.Bundle]
+DalvikVM - [BB]: paramLen2, 1
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@1e1ede55
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@1e1ede55
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@1e1ede55
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@1e1ede55
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@1e1ede55
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@1e1ede55
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@1e1ede55
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for java.lang.Object at fu.hao.trust.dvm.VMHeap@1e1ede55
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type java.lang.Object
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@1e1ede55
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@1e1ede55
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.Context
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@1e1ede55
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@1e1ede55
+Activity - [BB]: New instance of android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@1e1ede55
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@1e1ede55
+Activity - [BB]: New Activity Created!
+DalvikVM - [BB]: param: NULL
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@1e1ede55
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.os.Bundle at fu.hao.trust.dvm.VMHeap@1e1ede55
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@1e1ede55
+DVMObject - [BB]: New instance of android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@1e1ede55
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@1e1ede55
+DalvikVM - [BB]: New method call: de.ecspride.UnreachableCode/onCreate[android.os.Bundle]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[1, 2]>
+DalvikVM - [BB]: [1]<0 HALT,SUPER,extra=[null, [1, 2]]>
+DalvikVM - [BB]: [2]<0 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+DalvikVM - [BB]: [3]<0 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [1, 0]]>
+DalvikVM - [BB]: [4]<0 RETURN,VOID>
+DalvikVM - [BB]: New Stack Frame: StackFrame de.ecspride.UnreachableCode/onCreate[android.os.Bundle]
+DalvikVM - [BB]: Stack: [StackFrame de.ecspride.UnreachableCode/onCreate[android.os.Bundle]]
+Interpreter - [MSG]: New chain obj
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@1e1ede55
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@1e1ede55
+Activity - [BB]: New instance of android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@1e1ede55
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@1e1ede55
+Activity - [BB]: New Activity Created!
+DalvikVM - [MSG]: FINISHED!
 
-Interpreter - [MSG]: <4 HALT,STATIC,extra=[null, [6, 1, 3]]> at de.ecspride.Button1/sendMessage[android.view.View]
-DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_HALT -> jump set pc to 5
-Interpreter - [MSG]: Cannot resolve the invocation
-Taint - [BB]: Not a taint op <4 HALT,STATIC,extra=[null, [6, 1, 3]]>
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 1@sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
-Interpreter - [MSG]: 
+main - [MSG]: Analysis has run for 0.550601304 seconds
 
-Interpreter - [MSG]: <5 MOV,RESULT,dst=r1,type=java.lang.Object> at de.ecspride.Button1/sendMessage[android.view.View]
-Unknown - [BB]: Unknown created!
-OP_MOV_RESULT - [BB]: Result data: [Unknown var, type: java.lang.Object]
-OP_MOV_RESULT - [DEBUG]: Result data: [Unknown var, type: java.lang.Object], type: java.lang.Object, to [reg 1@sendMessage]
-DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 6
-TAINT_OP_MOV_RESULT - [BB]: Rm reg 1
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
-Interpreter - [MSG]: 
+DalvikVM - [BB]: de.ecspride.ObjectSensitivity1
+DalvikVM - [MSG]: Begin run onCreate at C:/Users/hao/workspace/DroidBenchProj/FieldAndObjectSensitivity_ObjectSensitivity1/app/app-release.apk
+DalvikVM - [MSG]: Instrumented Method: de.ecspride.ObjectSensitivity1/onCreate[android.os.Bundle]
+DalvikVM - [BB]: paramLen2, 1
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@dd3826f
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@dd3826f
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@dd3826f
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@dd3826f
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@dd3826f
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@dd3826f
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@dd3826f
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for java.lang.Object at fu.hao.trust.dvm.VMHeap@dd3826f
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type java.lang.Object
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@dd3826f
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@dd3826f
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.Context
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@dd3826f
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@dd3826f
+Activity - [BB]: New instance of android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@dd3826f
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@dd3826f
+Activity - [BB]: New Activity Created!
+DalvikVM - [BB]: param: NULL
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@dd3826f
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.os.Bundle at fu.hao.trust.dvm.VMHeap@dd3826f
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@dd3826f
+DVMObject - [BB]: New instance of android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@dd3826f
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@dd3826f
+DalvikVM - [BB]: New method call: de.ecspride.ObjectSensitivity1/onCreate[android.os.Bundle]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[9, 10]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [2]<0 HALT,SUPER,extra=[null, [9, 10]]>
+DalvikVM - [BB]: [3]<0 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+DalvikVM - [BB]: [4]<0 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [9, 1]]>
+DalvikVM - [BB]: [5]<0 NEW,INSTANCE,dst=r6,type=java.util.LinkedList>
+DalvikVM - [BB]: [6]<0 INVOKE,DIRECT,extra=[java.util.LinkedList/<init>[], [6]]>
+DalvikVM - [BB]: [7]<0 NEW,INSTANCE,dst=r7,type=java.util.LinkedList>
+DalvikVM - [BB]: [8]<0 INVOKE,DIRECT,extra=[java.util.LinkedList/<init>[], [7]]>
+DalvikVM - [BB]: [9]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: [10]<0 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [9, 1]]>
+DalvikVM - [BB]: [11]<0 MOV,RESULT,dst=r8,type=java.lang.Object>
+DalvikVM - [BB]: [12]<0 ARITHMETIC,CHECK-AND-CAST,dst=r8,type=android.telephony.TelephonyManager>
+DalvikVM - [BB]: [13]<0 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [8]]>
+DalvikVM - [BB]: [14]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [15]<0 INVOKE,VIRTUAL,extra=[java.util.LinkedList/add[java.lang.Object], [6, 1]]>
+DalvikVM - [BB]: [16]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="123">
+DalvikVM - [BB]: [17]<0 INVOKE,VIRTUAL,extra=[java.util.LinkedList/add[java.lang.Object], [7, 1]]>
+DalvikVM - [BB]: [18]<0 INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]>
+DalvikVM - [BB]: [19]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [20]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="+49 1234">
+DalvikVM - [BB]: [21]<0 MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [22]<0 INVOKE,VIRTUAL,extra=[java.util.LinkedList/get[int], [7, 3]]>
+DalvikVM - [BB]: [23]<0 MOV,RESULT,dst=r3,type=java.lang.Object>
+DalvikVM - [BB]: [24]<0 ARITHMETIC,CHECK-AND-CAST,dst=r3,type=java.lang.String>
+DalvikVM - [BB]: [25]<0 MOV,REG,dst=r4,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [26]<0 MOV,REG,dst=r5,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [27]<0 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]>
+DalvikVM - [BB]: [28]<0 RETURN,VOID>
+DalvikVM - [BB]: New Stack Frame: StackFrame de.ecspride.ObjectSensitivity1/onCreate[android.os.Bundle]
+DalvikVM - [BB]: Stack: [StackFrame de.ecspride.ObjectSensitivity1/onCreate[android.os.Bundle]]
+Interpreter - [MSG]: New chain obj
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@dd3826f
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@dd3826f
+Activity - [BB]: New instance of android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@dd3826f
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@dd3826f
+Activity - [BB]: New Activity Created!
+DalvikVM - [MSG]: FINISHED!
 
-Interpreter - [MSG]: <6 HALT,VIRTUAL,extra=[null, [1]]> at de.ecspride.Button1/sendMessage[android.view.View]
-DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_HALT -> jump set pc to 7
-Interpreter - [MSG]: Cannot resolve the invocation
-Taint - [BB]: Not a taint op <6 HALT,VIRTUAL,extra=[null, [1]]>
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
-Interpreter - [MSG]: 
+main - [MSG]: Analysis has run for 0.646514603 seconds
 
-Interpreter - [MSG]: <7 INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]> at de.ecspride.Button1/sendMessage[android.view.View]
-Interpreter - [DEBUG]: reflction class android.telephony.SmsManager
-Interpreter - [MSG]: reflction invocation public static android.telephony.SmsManager android.telephony.SmsManager.getDefault()
-DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_INVOKE_STATIC -> jump set pc to 8
-class fu.hao.trust.analysis.Taint$TAINT_OP_INVOKE - [BB]: <android.telephony.SmsManager: android.telephony.SmsManager getDefault()>
-class fu.hao.trust.analysis.Taint$TAINT_OP_INVOKE - [DEBUG]: not a taint call: <android.telephony.SmsManager: android.telephony.SmsManager getDefault()>
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
-Interpreter - [MSG]: 
+DalvikVM - [BB]: de.ecspride.OverwiteValue
+DalvikVM - [MSG]: Begin run onCreate at C:/Users/hao/workspace/DroidBenchProj/FieldAndObjectSensitivity_ObjectSensitivity2/app/app-release.apk
+DalvikVM - [MSG]: Instrumented Method: de.ecspride.OverwiteValue/onCreate[android.os.Bundle]
+DalvikVM - [BB]: paramLen2, 1
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@14cf3da1
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@14cf3da1
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@14cf3da1
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@14cf3da1
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@14cf3da1
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@14cf3da1
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@14cf3da1
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for java.lang.Object at fu.hao.trust.dvm.VMHeap@14cf3da1
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type java.lang.Object
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@14cf3da1
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@14cf3da1
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.Context
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@14cf3da1
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@14cf3da1
+Activity - [BB]: New instance of android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@14cf3da1
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@14cf3da1
+Activity - [BB]: New Activity Created!
+DalvikVM - [BB]: param: NULL
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@14cf3da1
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.os.Bundle at fu.hao.trust.dvm.VMHeap@14cf3da1
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@14cf3da1
+DVMObject - [BB]: New instance of android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@14cf3da1
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@14cf3da1
+DalvikVM - [BB]: New method call: de.ecspride.OverwiteValue/onCreate[android.os.Bundle]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[13, 14]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [2]<0 HALT,SUPER,extra=[null, [13, 14]]>
+DalvikVM - [BB]: [3]<0 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+DalvikVM - [BB]: [4]<0 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [13, 1]]>
+DalvikVM - [BB]: [5]<0 NEW,INSTANCE,dst=r10,type=de.ecspride.DataStore>
+DalvikVM - [BB]: [6]<0 INVOKE,DIRECT,extra=[de.ecspride.DataStore/<init>[], [10]]>
+DalvikVM - [BB]: [7]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: [8]<0 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [13, 1]]>
+DalvikVM - [BB]: [9]<0 MOV,RESULT,dst=r12,type=java.lang.Object>
+DalvikVM - [BB]: [10]<0 ARITHMETIC,CHECK-AND-CAST,dst=r12,type=android.telephony.TelephonyManager>
+DalvikVM - [BB]: [11]<0 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [12]]>
+DalvikVM - [BB]: [12]<0 MOV,RESULT,dst=r11,type=java.lang.Object>
+DalvikVM - [BB]: [13]<0 MOV,REG,dst=r3,r0=r11,type=java.lang.Object>
+DalvikVM - [BB]: [14]<0 INSTANCE,IPUT,r0=r10,r1=r11,type=java.lang.Object,extra=de.ecspride.DataStore.field>
+DalvikVM - [BB]: [15]<0 MOV,CONST,dst=r3,type=java.lang.String,extra="abc">
+DalvikVM - [BB]: [16]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="def">
+DalvikVM - [BB]: [17]<0 INSTANCE,IPUT,r0=r10,r1=r1,type=java.lang.Object,extra=de.ecspride.DataStore.field>
+DalvikVM - [BB]: [18]<0 INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]>
+DalvikVM - [BB]: [19]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [20]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="+49">
+DalvikVM - [BB]: [21]<0 MOV,REG,dst=r4,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [22]<0 MOV,REG,dst=r5,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [23]<0 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]>
+DalvikVM - [BB]: [24]<0 MOV,CONST,dst=r5,type=java.lang.String,extra="+49">
+DalvikVM - [BB]: [25]<0 INSTANCE,IGET,r0=r10,r1=r7,type=java.lang.Object,extra=de.ecspride.DataStore.field>
+DalvikVM - [BB]: [26]<0 MOV,REG,dst=r4,r0=r0,type=java.lang.Object>
+DalvikVM - [BB]: [27]<0 MOV,REG,dst=r6,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [28]<0 MOV,REG,dst=r8,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [29]<0 MOV,REG,dst=r9,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [30]<0 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [4, 5, 6, 7, 8, 9]]>
+DalvikVM - [BB]: [31]<0 RETURN,VOID>
+DalvikVM - [BB]: New Stack Frame: StackFrame de.ecspride.OverwiteValue/onCreate[android.os.Bundle]
+DalvikVM - [BB]: Stack: [StackFrame de.ecspride.OverwiteValue/onCreate[android.os.Bundle]]
+Interpreter - [MSG]: New chain obj
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@14cf3da1
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@14cf3da1
+Activity - [BB]: New instance of android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@14cf3da1
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@14cf3da1
+Activity - [BB]: New Activity Created!
+DalvikVM - [MSG]: FINISHED!
 
-Interpreter - [MSG]: <8 MOV,RESULT,dst=r0,type=java.lang.Object> at de.ecspride.Button1/sendMessage[android.view.View]
-OP_MOV_RESULT - [BB]: Result data: android.telephony.SmsManager@b4b6df0
-OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.SmsManager@b4b6df0, type: android.telephony.SmsManager, to [reg 0@sendMessage]
-DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 9
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
-Interpreter - [MSG]: 
+main - [MSG]: Analysis has run for 1.327368867 seconds
 
-Interpreter - [MSG]: <9 MOV,CONST,dst=r1,type=java.lang.String,extra="+49"> at de.ecspride.Button1/sendMessage[android.view.View]
-Interpreter - [DEBUG]: Mov const begin <9 MOV,CONST,dst=r1,type=java.lang.String,extra="+49">
-Interpreter - [DEBUG]: data: +49 class java.lang.String
-DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_CONST -> jump set pc to 10
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
-Interpreter - [MSG]: 
+DalvikVM - [BB]: de.ecspride.FieldSensitivity1
+DalvikVM - [MSG]: Begin run onCreate at C:/Users/hao/workspace/DroidBenchProj/FieldAndObjectSensitivity_FieldSensitivity1/app/app-release.apk
+DalvikVM - [MSG]: Instrumented Method: de.ecspride.FieldSensitivity1/onCreate[android.os.Bundle]
+DalvikVM - [BB]: paramLen2, 1
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@37250eeb
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@37250eeb
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@37250eeb
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@37250eeb
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@37250eeb
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@37250eeb
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@37250eeb
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for java.lang.Object at fu.hao.trust.dvm.VMHeap@37250eeb
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type java.lang.Object
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@37250eeb
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@37250eeb
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.Context
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@37250eeb
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@37250eeb
+Activity - [BB]: New instance of android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@37250eeb
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@37250eeb
+Activity - [BB]: New Activity Created!
+DalvikVM - [BB]: param: NULL
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@37250eeb
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.os.Bundle at fu.hao.trust.dvm.VMHeap@37250eeb
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@37250eeb
+DVMObject - [BB]: New instance of android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@37250eeb
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@37250eeb
+DalvikVM - [BB]: New method call: de.ecspride.FieldSensitivity1/onCreate[android.os.Bundle]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[1, 2]>
+DalvikVM - [BB]: [1]<0 HALT,SUPER,extra=[null, [1, 2]]>
+DalvikVM - [BB]: [2]<0 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+DalvikVM - [BB]: [3]<0 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [1, 0]]>
+DalvikVM - [BB]: [4]<0 INSTANCE,IGET,r0=r1,r1=r0,type=java.lang.Object,extra=de.ecspride.FieldSensitivity1.d1>
+DalvikVM - [BB]: [5]<0 INVOKE,DIRECT,extra=[de.ecspride.FieldSensitivity1/setTaint[de.ecspride.Datacontainer], [1, 0]]>
+DalvikVM - [BB]: [6]<0 INVOKE,DIRECT,extra=[de.ecspride.FieldSensitivity1/sendTaint[], [1]]>
+DalvikVM - [BB]: [7]<0 RETURN,VOID>
+DalvikVM - [BB]: New Stack Frame: StackFrame de.ecspride.FieldSensitivity1/onCreate[android.os.Bundle]
+DalvikVM - [BB]: Stack: [StackFrame de.ecspride.FieldSensitivity1/onCreate[android.os.Bundle]]
+Interpreter - [MSG]: New chain obj
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@37250eeb
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@37250eeb
+Activity - [BB]: New instance of android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@37250eeb
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@37250eeb
+Activity - [BB]: New Activity Created!
+DalvikVM - [MSG]: FINISHED!
 
-Interpreter - [MSG]: <10 STATIC,SGET,r0=r3,type=java.lang.Object,extra=(de.ecspride.Button1, imei)> at de.ecspride.Button1/sendMessage[android.view.View]
-Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@6d667cff
-Caller: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type de.ecspride.Button1
-Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@6d667cff
-OP_STATIC_GET_FIELD - [DEBUG]: Sget 359874043116909, from fu.hao.trust.dvm.DVMClass@7407beda
-OP_STATIC_GET_FIELD - [DEBUG]: Expect sget imei, a java.lang.String from de.ecspride.Button1
-DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD -> jump set pc to 11
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@6d667cff
-Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type de.ecspride.Button1
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@6d667cff
-PluginManager - [MSG]: Taint Tainted Res: {[reg 3@sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
-Interpreter - [MSG]: 
+main - [MSG]: Analysis has run for 4.813041278 seconds
 
-Interpreter - [MSG]: <11 MOV,REG,dst=r4,r0=r2,type=java.lang.Object> at de.ecspride.Button1/sendMessage[android.view.View]
-class fu.hao.trust.dvm.Interpreter$OP_MOVE_REG - [DEBUG]: mov 0 to 0
-DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOVE_REG -> jump set pc to 12
-PluginManager - [MSG]: Taint Tainted Res: {[reg 3@sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
-Interpreter - [MSG]: 
+DalvikVM - [BB]: de.ecspride.FieldSensitivity2
+DalvikVM - [MSG]: Begin run onCreate at C:/Users/hao/workspace/DroidBenchProj/FieldAndObjectSensitivity_FieldSensitivity2/app/app-release.apk
+DalvikVM - [MSG]: Instrumented Method: de.ecspride.FieldSensitivity2/onCreate[android.os.Bundle]
+DalvikVM - [BB]: paramLen2, 1
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@74840baa
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@74840baa
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@74840baa
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@74840baa
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@74840baa
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@74840baa
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@74840baa
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for java.lang.Object at fu.hao.trust.dvm.VMHeap@74840baa
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type java.lang.Object
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@74840baa
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@74840baa
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.Context
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@74840baa
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@74840baa
+Activity - [BB]: New instance of android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@74840baa
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@74840baa
+Activity - [BB]: New Activity Created!
+DalvikVM - [BB]: param: NULL
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@74840baa
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.os.Bundle at fu.hao.trust.dvm.VMHeap@74840baa
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@74840baa
+DVMObject - [BB]: New instance of android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@74840baa
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@74840baa
+DalvikVM - [BB]: New method call: de.ecspride.FieldSensitivity2/onCreate[android.os.Bundle]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[8, 9]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [2]<0 HALT,SUPER,extra=[null, [8, 9]]>
+DalvikVM - [BB]: [3]<0 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+DalvikVM - [BB]: [4]<0 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [8, 1]]>
+DalvikVM - [BB]: [5]<0 NEW,INSTANCE,dst=r6,type=de.ecspride.Datacontainer>
+DalvikVM - [BB]: [6]<0 INVOKE,DIRECT,extra=[de.ecspride.Datacontainer/<init>[], [6]]>
+DalvikVM - [BB]: [7]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="abc">
+DalvikVM - [BB]: [8]<0 INVOKE,VIRTUAL,extra=[de.ecspride.Datacontainer/setDescription[java.lang.String], [6, 1]]>
+DalvikVM - [BB]: [9]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: [10]<0 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [8, 1]]>
+DalvikVM - [BB]: [11]<0 MOV,RESULT,dst=r7,type=java.lang.Object>
+DalvikVM - [BB]: [12]<0 ARITHMETIC,CHECK-AND-CAST,dst=r7,type=android.telephony.TelephonyManager>
+DalvikVM - [BB]: [13]<0 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [7]]>
+DalvikVM - [BB]: [14]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [15]<0 INVOKE,VIRTUAL,extra=[de.ecspride.Datacontainer/setSecret[java.lang.String], [6, 1]]>
+DalvikVM - [BB]: [16]<0 INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]>
+DalvikVM - [BB]: [17]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [18]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="+49 1234">
+DalvikVM - [BB]: [19]<0 INVOKE,VIRTUAL,extra=[de.ecspride.Datacontainer/getDescription[], [6]]>
+DalvikVM - [BB]: [20]<0 MOV,RESULT,dst=r3,type=java.lang.Object>
+DalvikVM - [BB]: [21]<0 MOV,REG,dst=r4,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [22]<0 MOV,REG,dst=r5,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [23]<0 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]>
+DalvikVM - [BB]: [24]<0 RETURN,VOID>
+DalvikVM - [BB]: New Stack Frame: StackFrame de.ecspride.FieldSensitivity2/onCreate[android.os.Bundle]
+DalvikVM - [BB]: Stack: [StackFrame de.ecspride.FieldSensitivity2/onCreate[android.os.Bundle]]
+Interpreter - [MSG]: New chain obj
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@74840baa
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@74840baa
+Activity - [BB]: New instance of android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@74840baa
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@74840baa
+Activity - [BB]: New Activity Created!
+DalvikVM - [MSG]: FINISHED!
 
-Interpreter - [MSG]: <12 MOV,REG,dst=r5,r0=r2,type=java.lang.Object> at de.ecspride.Button1/sendMessage[android.view.View]
-class fu.hao.trust.dvm.Interpreter$OP_MOVE_REG - [DEBUG]: mov 0 to 0
-DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOVE_REG -> jump set pc to 13
-PluginManager - [MSG]: Taint Tainted Res: {[reg 3@sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
-Interpreter - [MSG]: 
+main - [MSG]: Analysis has run for 0.55878521 seconds
 
-Interpreter - [MSG]: <13 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]> at de.ecspride.Button1/sendMessage[android.view.View]
-Interpreter - [MSG]: arg0 obj: android.telephony.SmsManager@b4b6df0
-Interpreter - [DEBUG]: Reflction class: class android.telephony.SmsManager
-Interpreter - [BB]: arg1@reg1: +49
-Interpreter - [BB]: arg2@reg2: 0
-Interpreter - [WARN]: Mismatch type! arg 2, real para type: class patdroid.core.PrimitiveInfo, expected para type: class java.lang.String
-Interpreter - [BB]: arg3@reg3: 359874043116909
-Interpreter - [BB]: arg4@reg4: 0
-Interpreter - [WARN]: Mismatch type! arg 4, real para type: class patdroid.core.PrimitiveInfo, expected para type: class android.app.PendingIntent
-Interpreter - [BB]: arg5@reg5: 0
-Interpreter - [WARN]: Mismatch type! arg 5, real para type: class patdroid.core.PrimitiveInfo, expected para type: class android.app.PendingIntent
-Interpreter - [DEBUG]: Caller obj: android.telephony.SmsManager@b4b6df0, from class: class android.telephony.SmsManager
-Interpreter - [MSG]: Reflction invocation public void android.telephony.SmsManager.sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)
-DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 14
-class fu.hao.trust.analysis.Taint$TAINT_OP_INVOKE - [BB]: <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>
-class fu.hao.trust.analysis.Taint$TAINT_OP_INVOKE - [BB]: Found a sink invocation. <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>
-class fu.hao.trust.analysis.Taint$TAINT_OP_INVOKE - [WARN]: Found a taint sink <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)> leaking data [359874043116909] at reg 3!!!
-PluginManager - [MSG]: Taint Tainted Res: {[reg 3@sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
-Interpreter - [MSG]: 
+DalvikVM - [BB]: de.ecspride.FieldSensitivity3
+DalvikVM - [MSG]: Begin run onCreate at C:/Users/hao/workspace/DroidBenchProj/FieldAndObjectSensitivity_FieldSensitivity3/app/app-release.apk
+DalvikVM - [MSG]: Instrumented Method: de.ecspride.FieldSensitivity3/onCreate[android.os.Bundle]
+DalvikVM - [BB]: paramLen2, 1
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@12c04f11
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@12c04f11
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@12c04f11
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@12c04f11
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@12c04f11
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@12c04f11
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@12c04f11
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for java.lang.Object at fu.hao.trust.dvm.VMHeap@12c04f11
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type java.lang.Object
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@12c04f11
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@12c04f11
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.Context
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@12c04f11
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@12c04f11
+Activity - [BB]: New instance of android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@12c04f11
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@12c04f11
+Activity - [BB]: New Activity Created!
+DalvikVM - [BB]: param: NULL
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@12c04f11
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.os.Bundle at fu.hao.trust.dvm.VMHeap@12c04f11
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@12c04f11
+DVMObject - [BB]: New instance of android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@12c04f11
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@12c04f11
+DalvikVM - [BB]: New method call: de.ecspride.FieldSensitivity3/onCreate[android.os.Bundle]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[8, 9]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [2]<0 HALT,SUPER,extra=[null, [8, 9]]>
+DalvikVM - [BB]: [3]<0 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+DalvikVM - [BB]: [4]<0 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [8, 1]]>
+DalvikVM - [BB]: [5]<0 NEW,INSTANCE,dst=r6,type=de.ecspride.Datacontainer>
+DalvikVM - [BB]: [6]<0 INVOKE,DIRECT,extra=[de.ecspride.Datacontainer/<init>[], [6]]>
+DalvikVM - [BB]: [7]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="abc">
+DalvikVM - [BB]: [8]<0 INVOKE,VIRTUAL,extra=[de.ecspride.Datacontainer/setDescription[java.lang.String], [6, 1]]>
+DalvikVM - [BB]: [9]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: [10]<0 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [8, 1]]>
+DalvikVM - [BB]: [11]<0 MOV,RESULT,dst=r7,type=java.lang.Object>
+DalvikVM - [BB]: [12]<0 ARITHMETIC,CHECK-AND-CAST,dst=r7,type=android.telephony.TelephonyManager>
+DalvikVM - [BB]: [13]<0 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [7]]>
+DalvikVM - [BB]: [14]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [15]<0 INVOKE,VIRTUAL,extra=[de.ecspride.Datacontainer/setSecret[java.lang.String], [6, 1]]>
+DalvikVM - [BB]: [16]<0 INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]>
+DalvikVM - [BB]: [17]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [18]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="+49 1234">
+DalvikVM - [BB]: [19]<0 INVOKE,VIRTUAL,extra=[de.ecspride.Datacontainer/getSecret[], [6]]>
+DalvikVM - [BB]: [20]<0 MOV,RESULT,dst=r3,type=java.lang.Object>
+DalvikVM - [BB]: [21]<0 MOV,REG,dst=r4,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [22]<0 MOV,REG,dst=r5,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [23]<0 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]>
+DalvikVM - [BB]: [24]<0 RETURN,VOID>
+DalvikVM - [BB]: New Stack Frame: StackFrame de.ecspride.FieldSensitivity3/onCreate[android.os.Bundle]
+DalvikVM - [BB]: Stack: [StackFrame de.ecspride.FieldSensitivity3/onCreate[android.os.Bundle]]
+Interpreter - [MSG]: New chain obj
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@12c04f11
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@12c04f11
+Activity - [BB]: New instance of android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@12c04f11
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@12c04f11
+Activity - [BB]: New Activity Created!
+DalvikVM - [MSG]: FINISHED!
 
-Interpreter - [MSG]: <14 RETURN,VOID> at de.ecspride.Button1/sendMessage[android.view.View]
-class fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID - [DEBUG]: Return void
-Interpreter - [MSG]: RUN DONE! The last one is sendMessage
-main - [DEBUG]: C:/Users/hao/workspace/TRUST/sootOutput/Callbacks_Button1.apk.csv
-main - [MSG]: Analysis has run for 2.76869171 seconds
+main - [MSG]: Analysis has run for 0.439767654 seconds
 
+DalvikVM - [BB]: de.ecspride.FieldSensitivity4
+DalvikVM - [MSG]: Begin run onCreate at C:/Users/hao/workspace/DroidBenchProj/FieldAndObjectSensitivity_FieldSensitivity4/app/app-release.apk
+DalvikVM - [MSG]: Instrumented Method: de.ecspride.FieldSensitivity4/onCreate[android.os.Bundle]
+DalvikVM - [BB]: paramLen2, 1
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@36cc34d9
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@36cc34d9
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@36cc34d9
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@36cc34d9
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@36cc34d9
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@36cc34d9
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@36cc34d9
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for java.lang.Object at fu.hao.trust.dvm.VMHeap@36cc34d9
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type java.lang.Object
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@36cc34d9
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@36cc34d9
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.Context
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@36cc34d9
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@36cc34d9
+Activity - [BB]: New instance of android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@36cc34d9
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@36cc34d9
+Activity - [BB]: New Activity Created!
+DalvikVM - [BB]: param: NULL
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@36cc34d9
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.os.Bundle at fu.hao.trust.dvm.VMHeap@36cc34d9
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@36cc34d9
+DVMObject - [BB]: New instance of android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@36cc34d9
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@36cc34d9
+DalvikVM - [BB]: New method call: de.ecspride.FieldSensitivity4/onCreate[android.os.Bundle]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[9, 10]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [2]<0 HALT,SUPER,extra=[null, [9, 10]]>
+DalvikVM - [BB]: [3]<0 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+DalvikVM - [BB]: [4]<0 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [9, 1]]>
+DalvikVM - [BB]: [5]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: [6]<0 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [9, 1]]>
+DalvikVM - [BB]: [7]<0 MOV,RESULT,dst=r8,type=java.lang.Object>
+DalvikVM - [BB]: [8]<0 ARITHMETIC,CHECK-AND-CAST,dst=r8,type=android.telephony.TelephonyManager>
+DalvikVM - [BB]: [9]<0 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [8]]>
+DalvikVM - [BB]: [10]<0 MOV,RESULT,dst=r7,type=java.lang.Object>
+DalvikVM - [BB]: [11]<0 NEW,INSTANCE,dst=r6,type=de.ecspride.FieldSensitivity4$Datacontainer>
+DalvikVM - [BB]: [12]<0 INVOKE,DIRECT,extra=[de.ecspride.FieldSensitivity4$Datacontainer/<init>[de.ecspride.FieldSensitivity4], [6, 9]]>
+DalvikVM - [BB]: [13]<0 INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]>
+DalvikVM - [BB]: [14]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [15]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="+49 1234">
+DalvikVM - [BB]: [16]<0 INSTANCE,IGET,r0=r6,r1=r3,type=java.lang.Object,extra=de.ecspride.FieldSensitivity4$Datacontainer.value>
+DalvikVM - [BB]: [17]<0 MOV,REG,dst=r4,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [18]<0 MOV,REG,dst=r5,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [19]<0 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]>
+DalvikVM - [BB]: [20]<0 INSTANCE,IPUT,r0=r6,r1=r7,type=java.lang.Object,extra=de.ecspride.FieldSensitivity4$Datacontainer.value>
+DalvikVM - [BB]: [21]<0 RETURN,VOID>
+DalvikVM - [BB]: New Stack Frame: StackFrame de.ecspride.FieldSensitivity4/onCreate[android.os.Bundle]
+DalvikVM - [BB]: Stack: [StackFrame de.ecspride.FieldSensitivity4/onCreate[android.os.Bundle]]
+Interpreter - [MSG]: New chain obj
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@36cc34d9
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@36cc34d9
+Activity - [BB]: New instance of android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@36cc34d9
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@36cc34d9
+Activity - [BB]: New Activity Created!
+DalvikVM - [MSG]: FINISHED!
+
+main - [MSG]: Analysis has run for 0.69413751 seconds
+
+DalvikVM - [BB]: de.ecspride.MainActivity
+DalvikVM - [MSG]: Begin run onCreate at C:/Users/hao/workspace/DroidBenchProj/GeneralJava_StaticInitialization1/app/app-release.apk
+DalvikVM - [MSG]: Instrumented Method: de.ecspride.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [BB]: paramLen2, 1
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@2445ac2e
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@2445ac2e
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@2445ac2e
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@2445ac2e
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@2445ac2e
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@2445ac2e
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@2445ac2e
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@2445ac2e
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@2445ac2e
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for java.lang.Object at fu.hao.trust.dvm.VMHeap@2445ac2e
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type java.lang.Object
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@2445ac2e
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@2445ac2e
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.Context
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@2445ac2e
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@2445ac2e
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type de.ecspride.MainActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@2445ac2e
+Activity - [BB]: New instance of de.ecspride.MainActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@2445ac2e
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type de.ecspride.MainActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@2445ac2e
+Activity - [BB]: New Activity Created!
+DalvikVM - [BB]: param: NULL
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@2445ac2e
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.os.Bundle at fu.hao.trust.dvm.VMHeap@2445ac2e
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@2445ac2e
+DVMObject - [BB]: New instance of android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@2445ac2e
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@2445ac2e
+DalvikVM - [BB]: New method call: de.ecspride.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[2, 3]>
+DalvikVM - [BB]: [1]<0 HALT,SUPER,extra=[null, [2, 3]]>
+DalvikVM - [BB]: [2]<0 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+DalvikVM - [BB]: [3]<0 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [2, 1]]>
+DalvikVM - [BB]: [4]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: [5]<0 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [2, 1]]>
+DalvikVM - [BB]: [6]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [7]<0 ARITHMETIC,CHECK-AND-CAST,dst=r1,type=android.telephony.TelephonyManager>
+DalvikVM - [BB]: [8]<0 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>
+DalvikVM - [BB]: [9]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [10]<0 STATIC,SPUT,r0=r1,type=java.lang.Object,extra=(de.ecspride.MainActivity, im)>
+DalvikVM - [BB]: [11]<0 NEW,INSTANCE,dst=r0,type=de.ecspride.MainActivity$StaticInitClass1>
+DalvikVM - [BB]: [12]<0 INVOKE,DIRECT,extra=[de.ecspride.MainActivity$StaticInitClass1/<init>[], [0]]>
+DalvikVM - [BB]: [13]<0 RETURN,VOID>
+DalvikVM - [BB]: New Stack Frame: StackFrame de.ecspride.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [BB]: Stack: [StackFrame de.ecspride.MainActivity/onCreate[android.os.Bundle]]
+Interpreter - [MSG]: New chain obj
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@2445ac2e
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type de.ecspride.MainActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@2445ac2e
+Activity - [BB]: New instance of de.ecspride.MainActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@2445ac2e
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type de.ecspride.MainActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@2445ac2e
+Activity - [BB]: New Activity Created!
+DalvikVM - [MSG]: FINISHED!
+
+main - [MSG]: Analysis has run for 0.47740357 seconds
+
+DalvikVM - [BB]: de.ecspride.MainActivity
+DalvikVM - [MSG]: Begin run onCreate at C:/Users/hao/workspace/DroidBenchProj/GeneralJava_StaticInitialization2/app/app-release.apk
+DalvikVM - [MSG]: Instrumented Method: de.ecspride.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [BB]: paramLen2, 1
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@2b361466
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@2b361466
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@2b361466
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@2b361466
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@2b361466
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@2b361466
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@2b361466
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@2b361466
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@2b361466
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for java.lang.Object at fu.hao.trust.dvm.VMHeap@2b361466
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type java.lang.Object
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@2b361466
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@2b361466
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.Context
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@2b361466
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@2b361466
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type de.ecspride.MainActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@2b361466
+Activity - [BB]: New instance of de.ecspride.MainActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@2b361466
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type de.ecspride.MainActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@2b361466
+Activity - [BB]: New Activity Created!
+DalvikVM - [BB]: param: NULL
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@2b361466
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.os.Bundle at fu.hao.trust.dvm.VMHeap@2b361466
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@2b361466
+DVMObject - [BB]: New instance of android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@2b361466
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@2b361466
+DalvikVM - [BB]: New method call: de.ecspride.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[7, 8]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [2]<0 HALT,SUPER,extra=[null, [7, 8]]>
+DalvikVM - [BB]: [3]<0 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+DalvikVM - [BB]: [4]<0 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [7, 1]]>
+DalvikVM - [BB]: [5]<0 STATIC,SPUT,r0=r7,type=java.lang.Object,extra=(de.ecspride.MainActivity, c)>
+DalvikVM - [BB]: [6]<0 NEW,INSTANCE,dst=r6,type=de.ecspride.MainActivity$StaticInitClass1>
+DalvikVM - [BB]: [7]<0 INVOKE,DIRECT,extra=[de.ecspride.MainActivity$StaticInitClass1/<init>[], [6]]>
+DalvikVM - [BB]: [8]<0 INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]>
+DalvikVM - [BB]: [9]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [10]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="+49 1234">
+DalvikVM - [BB]: [11]<0 STATIC,SGET,r0=r3,type=java.lang.Object,extra=(de.ecspride.MainActivity, im)>
+DalvikVM - [BB]: [12]<0 MOV,REG,dst=r4,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [13]<0 MOV,REG,dst=r5,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [14]<0 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]>
+DalvikVM - [BB]: [15]<0 RETURN,VOID>
+DalvikVM - [BB]: New Stack Frame: StackFrame de.ecspride.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [BB]: Stack: [StackFrame de.ecspride.MainActivity/onCreate[android.os.Bundle]]
+Interpreter - [MSG]: New chain obj
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@2b361466
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type de.ecspride.MainActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@2b361466
+Activity - [BB]: New instance of de.ecspride.MainActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@2b361466
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type de.ecspride.MainActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@2b361466
+Activity - [BB]: New Activity Created!
+DalvikVM - [MSG]: FINISHED!
+
+main - [MSG]: Analysis has run for 0.569454921 seconds
+
+DalvikVM - [BB]: de.ecspride.InheritedObjects1
+DalvikVM - [MSG]: Begin run onCreate at C:/Users/hao/workspace/DroidBenchProj/FieldAndObjectSensitivity_InheritedObjects1/app/app-release.apk
+DalvikVM - [MSG]: Instrumented Method: de.ecspride.InheritedObjects1/onCreate[android.os.Bundle]
+DalvikVM - [BB]: paramLen2, 1
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@63b5c657
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@63b5c657
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@63b5c657
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@63b5c657
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@63b5c657
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@63b5c657
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@63b5c657
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for java.lang.Object at fu.hao.trust.dvm.VMHeap@63b5c657
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type java.lang.Object
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@63b5c657
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@63b5c657
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.Context
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@63b5c657
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@63b5c657
+Activity - [BB]: New instance of android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@63b5c657
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@63b5c657
+Activity - [BB]: New Activity Created!
+DalvikVM - [BB]: param: NULL
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@63b5c657
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.os.Bundle at fu.hao.trust.dvm.VMHeap@63b5c657
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@63b5c657
+DVMObject - [BB]: New instance of android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@63b5c657
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@63b5c657
+DalvikVM - [BB]: New method call: de.ecspride.InheritedObjects1/onCreate[android.os.Bundle]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[9, 10]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [2]<0 HALT,SUPER,extra=[null, [9, 10]]>
+DalvikVM - [BB]: [3]<0 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+DalvikVM - [BB]: [4]<0 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [9, 1]]>
+DalvikVM - [BB]: [5]<0 MOV,CONST,dst=r6,type=void,extra=class patdroid.core.PrimitiveInfo?46>
+DalvikVM - [BB]: [6]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: [7]<0 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [9, 1]]>
+DalvikVM - [BB]: [8]<0 MOV,RESULT,dst=r8,type=java.lang.Object>
+DalvikVM - [BB]: [9]<0 ARITHMETIC,CHECK-AND-CAST,dst=r8,type=android.telephony.TelephonyManager>
+DalvikVM - [BB]: [10]<0 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?46>
+DalvikVM - [BB]: [11]<0 IF,NE,r0=r6,r1=r1,extra=index:24>
+DalvikVM - [BB]: [12]<0 NEW,INSTANCE,dst=r7,type=de.ecspride.VarA>
+DalvikVM - [BB]: [13]<0 INVOKE,DIRECT,extra=[de.ecspride.VarA/<init>[], [7]]>
+DalvikVM - [BB]: [14]<0 INSTANCE,IPUT,r0=r7,r1=r8,type=java.lang.Object,extra=de.ecspride.General.man>
+DalvikVM - [BB]: [15]<0 INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]>
+DalvikVM - [BB]: [16]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [17]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="+49 1234">
+DalvikVM - [BB]: [18]<0 INVOKE,VIRTUAL,extra=[de.ecspride.General/getInfo[], [7]]>
+DalvikVM - [BB]: [19]<0 MOV,RESULT,dst=r3,type=java.lang.Object>
+DalvikVM - [BB]: [20]<0 MOV,REG,dst=r4,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [21]<0 MOV,REG,dst=r5,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [22]<0 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]>
+DalvikVM - [BB]: [23]<0 RETURN,VOID>
+DalvikVM - [BB]: [24]<0 NEW,INSTANCE,dst=r7,type=de.ecspride.VarB>
+DalvikVM - [BB]: [25]<0 INVOKE,DIRECT,extra=[de.ecspride.VarB/<init>[], [7]]>
+DalvikVM - [BB]: [26]<0 INSTANCE,IPUT,r0=r7,r1=r8,type=java.lang.Object,extra=de.ecspride.General.man>
+DalvikVM - [BB]: [27]<0 GOTO,extra=index:15>
+DalvikVM - [BB]: New Stack Frame: StackFrame de.ecspride.InheritedObjects1/onCreate[android.os.Bundle]
+DalvikVM - [BB]: Stack: [StackFrame de.ecspride.InheritedObjects1/onCreate[android.os.Bundle]]
+Interpreter - [MSG]: New chain obj
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@63b5c657
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@63b5c657
+Activity - [BB]: New instance of android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@63b5c657
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@63b5c657
+Activity - [BB]: New Activity Created!
+DalvikVM - [MSG]: FINISHED!
+
+main - [MSG]: Analysis has run for 0.363429597 seconds
+
+main - [DEBUG]: GeneralJava_Exceptions1.apk
+main - [DEBUG]: C:/Users/hao/workspace/TRUST/sootOutput/GeneralJava_Exceptions1.apk_dummy.csv
+DalvikVM - [MSG]: apk C:/Users/hao/workspace/DroidBenchProj/GeneralJava_Exceptions1/app/GeneralJava_Exceptions1.apk
+DalvikVM - [BB]: class de.ecspride.Exceptions1
+DalvikVM - [WARN]: Run chain de.ecspride.Exceptions1:onCreate at de.ecspride.Exceptions1
+DalvikVM - [MSG]: RUN Method de.ecspride.Exceptions1/onCreate[android.os.Bundle]
+DalvikVM - [BB]: New method call: de.ecspride.Exceptions1/onCreate[android.os.Bundle]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[8, 9]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [2]<0 HALT,SUPER,extra=[null, [8, 9]]>
+DalvikVM - [BB]: [3]<0 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+DalvikVM - [BB]: [4]<0 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [8, 1]]>
+DalvikVM - [BB]: [5]<0 MOV,CONST,dst=r3,type=java.lang.String,extra="">
+DalvikVM - [BB]: [6]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: [7]<0 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [8, 1]]>
+DalvikVM - [BB]: [8]<0 MOV,RESULT,dst=r7,type=java.lang.Object>
+DalvikVM - [BB]: [9]<0 ARITHMETIC,CHECK-AND-CAST,dst=r7,type=android.telephony.TelephonyManager>
+DalvikVM - [BB]: [10]<0 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [7]]>
+DalvikVM - [BB]: [11]<0 MOV,RESULT,dst=r3,type=java.lang.Object>
+DalvikVM - [BB]: [12]<0 NEW,INSTANCE,dst=r1,type=java.lang.RuntimeException>
+DalvikVM - [BB]: [13]<0 INVOKE,DIRECT,extra=[java.lang.RuntimeException/<init>[], [1]]>
+DalvikVM - [BB]: [14]<0 EXCEPTION,THROW,r0=r1,type=java.lang.Object>
+DalvikVM - [BB]: [15]<0 MOV,EXCETPION,dst=r6,type=java.lang.Object>
+DalvikVM - [BB]: [16]<0 INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]>
+DalvikVM - [BB]: [17]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [18]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="+49 1234">
+DalvikVM - [BB]: [19]<0 MOV,REG,dst=r4,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [20]<0 MOV,REG,dst=r5,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [21]<0 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]>
+DalvikVM - [BB]: [22]<0 RETURN,VOID>
+DalvikVM - [BB]: New Stack Frame: StackFrame de.ecspride.Exceptions1/onCreate[android.os.Bundle]
+DalvikVM - [BB]: Stack: [StackFrame de.ecspride.Exceptions1/onCreate[android.os.Bundle]]
+Interpreter - [MSG]: New chain obj
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@3e395319
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@3e395319
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@3e395319
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@3e395319
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@3e395319
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@3e395319
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@3e395319
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for java.lang.Object at fu.hao.trust.dvm.VMHeap@3e395319
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type java.lang.Object
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@3e395319
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@3e395319
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.Context
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@3e395319
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@3e395319
+Activity - [BB]: New instance of android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@3e395319
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@3e395319
+Activity - [BB]: New Activity Created!
+main - [DEBUG]: Exceptions4.apk
+main - [DEBUG]: C:/Users/hao/workspace/TRUST/sootOutput/Exceptions4.apk_dummy.csv
+DalvikVM - [MSG]: apk C:/Users/hao/workspace/DroidBenchProj/GeneralJava_Exceptions4/app/Exceptions4.apk
+DalvikVM - [BB]: class de.ecspride.Exceptions4
+DalvikVM - [WARN]: Run chain de.ecspride.Exceptions4:onCreate at de.ecspride.Exceptions4
+DalvikVM - [MSG]: RUN Method de.ecspride.Exceptions4/onCreate[android.os.Bundle]
+DalvikVM - [BB]: New method call: de.ecspride.Exceptions4/onCreate[android.os.Bundle]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[9, 10]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [2]<0 HALT,SUPER,extra=[null, [9, 10]]>
+DalvikVM - [BB]: [3]<0 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+DalvikVM - [BB]: [4]<0 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [9, 1]]>
+DalvikVM - [BB]: [5]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: [6]<0 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [9, 1]]>
+DalvikVM - [BB]: [7]<0 MOV,RESULT,dst=r8,type=java.lang.Object>
+DalvikVM - [BB]: [8]<0 ARITHMETIC,CHECK-AND-CAST,dst=r8,type=android.telephony.TelephonyManager>
+DalvikVM - [BB]: [9]<0 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [8]]>
+DalvikVM - [BB]: [10]<0 MOV,RESULT,dst=r7,type=java.lang.Object>
+DalvikVM - [BB]: [11]<0 NEW,INSTANCE,dst=r1,type=java.lang.RuntimeException>
+DalvikVM - [BB]: [12]<0 INVOKE,DIRECT,extra=[java.lang.RuntimeException/<init>[java.lang.String], [1, 7]]>
+DalvikVM - [BB]: [13]<0 EXCEPTION,THROW,r0=r1,type=java.lang.Object>
+DalvikVM - [BB]: [14]<0 MOV,EXCETPION,dst=r6,type=java.lang.Object>
+DalvikVM - [BB]: [15]<0 INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]>
+DalvikVM - [BB]: [16]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [17]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="+49 1234">
+DalvikVM - [BB]: [18]<0 INVOKE,VIRTUAL,extra=[java.lang.Throwable/getMessage[], [6]]>
+DalvikVM - [BB]: [19]<0 MOV,RESULT,dst=r3,type=java.lang.Object>
+DalvikVM - [BB]: [20]<0 MOV,REG,dst=r4,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [21]<0 MOV,REG,dst=r5,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [22]<0 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]>
+DalvikVM - [BB]: [23]<0 RETURN,VOID>
+DalvikVM - [BB]: New Stack Frame: StackFrame de.ecspride.Exceptions4/onCreate[android.os.Bundle]
+DalvikVM - [BB]: Stack: [StackFrame de.ecspride.Exceptions4/onCreate[android.os.Bundle]]
+Interpreter - [MSG]: New chain obj
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@41b2fd97
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@41b2fd97
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@41b2fd97
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@41b2fd97
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@41b2fd97
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@41b2fd97
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@41b2fd97
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for java.lang.Object at fu.hao.trust.dvm.VMHeap@41b2fd97
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type java.lang.Object
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.lang.Object at fu.hao.trust.dvm.VMHeap@41b2fd97
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@41b2fd97
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.Context
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@41b2fd97
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@41b2fd97
+Activity - [BB]: New instance of android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@41b2fd97
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@41b2fd97
+Activity - [BB]: New Activity Created!

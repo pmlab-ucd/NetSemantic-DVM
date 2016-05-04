@@ -23,13 +23,16 @@ public class DVMClass {
 
 		MethodInfo clinit = type.getStaticInitializer();
 		if (clinit != null) {
+			
+			vm.resetCallCtx();
 			vm.newStackFrame(clinit);
-			vm.setCallContext(null);
 			// vm.getCurrStackFrame().thisObj = null;
 			// To force run the constructor.
+			vm.setPC(0);
 			for (int i = 0; i < clinit.insns.length; i++) {
 				vm.interpreter.exec(vm, clinit.insns[i]);
 			}
+			//vm.runMethod(clinit, null, false);
 		}
 		
 		superClass = vm.getClass(type.getSuperClass());

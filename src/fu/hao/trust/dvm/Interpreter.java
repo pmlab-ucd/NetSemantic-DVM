@@ -154,7 +154,7 @@ public class Interpreter {
 		public void func(DalvikVM vm, Instruction inst) {
 			int[] params = (int[]) inst.extra;
 
-			if (vm.getContext() == null) {
+			if (vm.getCallContext() == null) {
 				Log.warn(TAG, "NULL CallingCtx!");
 				MethodInfo currMethod = vm.getCurrStackFrame().method;
 				int startParam = 0;
@@ -180,12 +180,10 @@ public class Interpreter {
 							Class<?> clazz = Class.forName(paramClass.fullName);
 							vm.getReg(params[i]).setValue(clazz.newInstance(),
 									paramClass);
-						} catch (ClassNotFoundException e) {
-							vm.getReg(params[i]).setValue(
-									new DVMObject(vm, paramClass), paramClass);
-						} catch (InstantiationException e) {
-							vm.getReg(params[i]).setValue(null, paramClass);
+						} catch (InstantiationException | ClassNotFoundException e) {
 							e.printStackTrace();
+							vm.getReg(params[i]).setValue(
+									vm.newVMObject(paramClass), paramClass);
 						} catch (IllegalAccessException e) {
 							vm.getReg(params[i]).setValue(null, paramClass);
 							e.printStackTrace();
@@ -199,14 +197,14 @@ public class Interpreter {
 					i++;
 				}
 			} else {
-				if (params.length != vm.getContext().length) {
-					Log.err(TAG, "invalid ctx for invocation!");
+				if (params.length != vm.getCallContext().length) {
+					Log.err(TAG, "invalid ctx for invocation!" + params.length + ", " + vm.getCallContext().length);
 					return;
 				}
 				MethodInfo currMethod = vm.getCurrStackFrame().method;
 
 				int i = 0;
-				for (Register argReg : vm.getContext()) {
+				for (Register argReg : vm.getCallContext()) {
 					vm.getReg(params[i]).copy(argReg);
 					Log.debug(TAG,
 							"params: "
@@ -257,10 +255,9 @@ public class Interpreter {
 			} catch (ClassNotFoundException e) {
 				// Do not need to handle reflection type,
 				// since <init> invocation will replace the newObj
-				Object newObj = new DVMObject(vm, inst.type);
-				Log.debug(TAG, "begin new object of " + inst.type + "created.");
+				Object newObj = vm.newVMObject(inst.type);
 				vm.getReg(inst.rdst).setValue(newObj, inst.type);
-				Log.debug(TAG, "new object of " + inst.type + "created.");
+				Log.debug(TAG, "New object of " + inst.type + "created:" + vm.getReg(inst.rdst).getData());
 			}
 			jump(vm, inst, true);
 		}
@@ -388,27 +385,9 @@ public class Interpreter {
 					vm.getReturnReg().setValue(method.invoke(null),
 							mi.returnType);
 				} else {
-					Object[] params = new Object[args.length];
-					// start from 0 since no "this"
-					for (int i = 0; i < args.length; i++) {
-						if (vm.getReg(args[i]).getData() == null) {
-							continue;
-						}
-						if (mi.paramTypes[i].isPrimitive()) {
-							Object primitive = resolvePrimitive(
-									(PrimitiveInfo) vm.getReg(args[i])
-											.getData(), mi.paramTypes[i]);
-							params[i] = primitive;
-							Class<?> argClass = primClasses.get(primitive
-									.getClass());
-							argsClass[i] = argClass;
-						} else {
-							// TODO use classLoader to check exists or not
-							String argClass = mi.paramTypes[i].toString();
-							argsClass[i] = Class.forName(argClass);
-							params[i] = vm.getReg(args[i]).getData();
-						}
-					}
+					Object[] params = new Object[args.length];					
+					getParams(vm, mi, args, argsClass,
+							params, true);
 					method = clazz.getDeclaredMethod(mi.name, argsClass);
 					vm.getReturnReg().setValue(method.invoke(null, params),
 							mi.returnType);
@@ -1670,7 +1649,7 @@ public class Interpreter {
 
 				if (dvmObj.getFieldObj(fieldInfo) == null) {
 					if (fieldInfo.fieldName.equals("this$0")) {
-						dvmObj.setField(fieldInfo, vm.callbackOwner);
+						dvmObj.setField(fieldInfo, vm.getChainThisObj());
 					} else {
 						dvmObj.setField(fieldInfo,
 								new Unknown(fieldInfo.getFieldType()));
@@ -2024,7 +2003,7 @@ public class Interpreter {
 								+ vm.getReg(args[0]).getData().getClass());
 					} else {
 						boolean narg = getParams(vm, mi, args, argsClass,
-								params);
+								params, false);
 						if (normalArg) {
 							normalArg = narg;
 						}
@@ -2079,7 +2058,7 @@ public class Interpreter {
 								mi.returnType);
 					}
 				} else {
-					boolean narg = getParams(vm, mi, args, argsClass, params);
+					boolean narg = getParams(vm, mi, args, argsClass, params, false);
 					if (normalArg) {
 						normalArg = narg;
 					}
@@ -2119,7 +2098,7 @@ public class Interpreter {
 
 			if (vm.getReturnReg().isUsed()
 					&& vm.getReturnReg().getData() instanceof ShouldBeReplaced) {
-				vm.getReturnReg().setValue(new DVMObject(vm, mi.returnType),
+				vm.getReturnReg().setValue(vm.newVMObject(mi.returnType),
 						mi.returnType);
 			}
 			jump(vm, inst, true);
@@ -2184,34 +2163,35 @@ public class Interpreter {
 	 * @throws
 	 */
 	private boolean getParams(DalvikVM vm, MethodInfo mi, int[] args,
-			Class<?>[] argsClass, Object[] params)
+			Class<?>[] argsClass, Object[] params, boolean staticMethod)
 			throws ClassNotFoundException {
 		// Start from 1 to ignore "this"
-		for (int i = 1; i < args.length; i++) {
+		for (int i = staticMethod ? 0: 1; i < args.length; i++) {
+			int j = staticMethod ? i : i - 1;
 			Object data = vm.getReg(args[i]).isUsed() ? vm.getReg(args[i])
 					.getData() : null;
 			Log.bb(TAG, "arg" + i + "@reg" + args[i] + ": " + data);
-			if (mi.paramTypes[i - 1].isPrimitive()) {
-				Log.debug(TAG, "Expected para type: " + mi.paramTypes[i - 1]);
-				Object primitive = resolvePrimitive(data, mi.paramTypes[i - 1]);
+			if (mi.paramTypes[j].isPrimitive()) {
+				Log.debug(TAG, "Expected para type: " + mi.paramTypes[j]);
+				Object primitive = resolvePrimitive(data, mi.paramTypes[j]);
 				Class<?> argClass = primClasses.get(primitive.getClass());
-				params[i - 1] = primitive;
+				params[j] = primitive;
 				// Because of a bug in PATDroid.
-				if (mi.paramTypes[i - 1].equals(ClassInfo.primitiveBoolean)
+				if (mi.paramTypes[j].equals(ClassInfo.primitiveBoolean)
 						&& primitive instanceof Integer) {
 					if (primitive.equals(1)) {
-						params[i - 1] = true;
+						params[j] = true;
 					} else if (primitive.equals(0)) {
-						params[i - 1] = false;
+						params[j] = false;
 					}
 					argClass = boolean.class;
 				}
 
 				Log.debug(TAG, "Real para " + argClass);
-				argsClass[i - 1] = argClass;
+				argsClass[j] = argClass;
 			} else {
-				String argClass = mi.paramTypes[i - 1].toString();
-				argsClass[i - 1] = Class.forName(argClass);
+				String argClass = mi.paramTypes[j].toString();
+				argsClass[j] = Class.forName(argClass);
 				Object argData = vm.getReg(args[i]).getData();
 
 				if (argData == null) {
@@ -2219,26 +2199,26 @@ public class Interpreter {
 							TAG,
 							"Null in the " + i + "th arg, is "
 									+ vm.getReg(args[i]));
-					params[i - 1] = null;
-				} else if (matchType(argData.getClass(), argsClass[i - 1])) {
-					params[i - 1] = argData;
+					params[j] = null;
+				} else if (matchType(argData.getClass(), argsClass[j])) {
+					params[j] = argData;
 					// argData.getClass().getInterfaces()
 				} else {
 					// FIXME null
 					Log.warn(TAG, "Mismatch type! arg " + i
 							+ ", real para type: " + argData.getClass()
-							+ ", expected para type: " + argsClass[i - 1]);
+							+ ", expected para type: " + argsClass[j]);
 					if (argData instanceof SymbolicVar) {
 						SymbolicVar bidirVar = (SymbolicVar) argData;
-						params[i - 1] = bidirVar.getValue();
-						Log.debug(TAG, "Found symbolic var " + params[i - 1]);
+						params[j] = bidirVar.getValue();
+						Log.debug(TAG, "Found symbolic var " + params[j]);
 						// To correctly show the URL, depress return val through
 						// a list.
 						if (isNoInvoke2(mi)) {
 							return false;
 						}
 					} else if (argData instanceof MultiValueVar) {
-						params[i - 1] = null;
+						params[j] = null;
 						return false;
 					}
 				}
@@ -2299,47 +2279,67 @@ public class Interpreter {
 					&& thisObj.getType().getSuperClass().equals(mi.myClass)) {
 				mi = thisObj.getType().findMethodsHere(mi.name)[0];
 			}
+			
+			if (!thisObj.getType().isConvertibleTo(mi.myClass)) {
+				Log.warn(TAG, "NOT CONSISTENT TYPE!" + thisObj.getType() + " vs " + mi.myClass);
+			} else {
+				ClassInfo clazz = thisObj.getType();
+				mi = clazz.findMethod(mi);
+			}
 		}
 
 		if (args != null) {
 			vm.setCallContext(args);
 		}
+	
+
 
 		vm.newStackFrame(mi);
 	}
 
-	public void runMethod(DalvikVM vm, MethodInfo mi) {
+	public void runMethod(DalvikVM vm, MethodInfo mi, boolean force) {
 		// Create a new stack frame and push it to the stack.
 		StackFrame stackFrame = vm.newStackFrame(mi);
+		if (stackFrame == null) {
+			return;
+		}
 		if (mi.isStatic()) {
 			Log.bb(TAG, "Entry method is static!");
 			stackFrame.setThisObj(null);
 		} else {
 			if (vm.getChainThisObj() == null) {
 				Log.msg(TAG, "New chain obj");
-				stackFrame.setThisObj(new DVMObject(vm, mi.myClass));
+				stackFrame.setThisObj(vm.newVMObject(mi.myClass));
 				vm.setChainThisObj(stackFrame.getThisObj());
 			} else {
 				stackFrame.setThisObj(vm.getChainThisObj());
 			}
 		}
-
+		
 		if (!running) {
 			Log.msg(TAG, "RUN BEGIN " + mi);
 			run(vm);
 		}
+		
+		if (force) {
+			if (vm.getPC() < 0) {
+				vm.setPC(0);
+			}
+			for (int i = 0; i < mi.insns.length; i++) {
+				exec(vm, mi.insns[i]);
+			}
+		}
 	}
 
 	public void run(DalvikVM vm) {
-		Log.msg(TAG, "RUN BEGIN");
 		running = true;
-		String mname = vm.getCurrStackFrame().method.name;
-		if (vm.getPC() < 0) {
-			vm.setPC(0);
-		}
+		String mname = null;
+
+		// The main "thread"
 		while (vm.getCurrStackFrame() != null
 				&& vm.getCurrStackFrame().method != null
 				&& vm.getPC() < vm.getCurrStackFrame().method.insns.length) {
+			mname = vm.getCurrStackFrame().method.name;
 			if (vm.getPC() < 0) {
 				vm.setPC(0);
 			}
@@ -2487,7 +2487,7 @@ public class Interpreter {
 				if (inst.opcode != Instruction.OP_SP_ARGUMENTS
 						&& vm.getCurrStackFrame().getThisObj() != null
 						&& !vm.getCurrStackFrame().method.isStatic()
-						&& vm.getCurrStackFrame().getThisReg().getData() != vm
+						&& vm.getCurrStackFrame().getThisReg() != null && vm.getCurrStackFrame().getThisReg().getData() != vm
 								.getCurrStackFrame().getThisObj()) {
 					Log.err(TAG, "Inconsistent this obj!" + vm.getCurrStackFrame().getThisReg().getData() + ", " + vm
 							.getCurrStackFrame().getThisObj());

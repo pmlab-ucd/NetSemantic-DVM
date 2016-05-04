@@ -5,6 +5,11 @@ import fu.hao.trust.dvm.DVMObject;
 import fu.hao.trust.dvm.DalvikVM;
 
 public class View extends DVMObject {
+	int color;
+	
+	class OnClickListener {
+		
+	}
 
 	public View(DalvikVM vm, ClassInfo type) {
 		super(vm, type);
@@ -21,5 +26,13 @@ public class View extends DVMObject {
 	
 	public int getVisibility() {
 		return visibility;
+	}
+	
+	public void setBackgroundColor(int color) {
+		this.color = color;
+	}
+	
+	public void setOnClickListener(OnClickListener l) {
+		
 	}
 }

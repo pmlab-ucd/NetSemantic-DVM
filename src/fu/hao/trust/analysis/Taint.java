@@ -124,7 +124,7 @@ public class Taint extends Plugin {
 		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
 				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
 			int[] params = (int[]) inst.extra;
-			Register[] callingCtx = vm.getContext();
+			Register[] callingCtx = vm.getCallContext();
 			Map<String, Map<Object, Instruction>> outs = new HashMap<>();
 
 			for (String tag : ins.keySet()) {

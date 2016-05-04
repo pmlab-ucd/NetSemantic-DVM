@@ -35,10 +35,11 @@ public class DVMObject {
 		this.setDvmClass(dvmClass);
 		vm.setObj(type, this);
 		
-		ClassInfo superClass = type.getSuperClass();
+		/*ClassInfo superClass = type.getSuperClass();
+		
 		if (superClass != null && superClass.fullName.contains("Activity")) {
 			vm.callbackOwner = this;
-		}
+		}*/
 		/*
 		if (superClass != null) {
 			Log.debug(TAG, "Set super class " + superClass);

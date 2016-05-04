@@ -11,19 +11,19 @@ import fu.hao.trust.data.Results;
 import fu.hao.trust.dvm.Main;
 import fu.hao.trust.utils.Settings;
 
-public class MainTest2 {
+public class BenchCallbackTests {
 	String[] args = new String[4];
 	Object[] initArgs = new Object[2];
 
-	public MainTest2() {
+	public BenchCallbackTests() {
 		Settings.logLevel = 0;
 		args[3] = "Taint";
 		
-		initArgs[0] = "android.app.Activity";
+		initArgs[0] = "NULL";
 		initArgs[1] = "NULL";
 		Main.initMI(initArgs);
 	}
-
+	
 	@Test
 	public void testCallbacks_Button1() {
 		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Callbacks_Button1/app/";
