@@ -22,6 +22,9 @@ package fu.hao.trust.utils;
 import fu.hao.trust.dvm.DalvikVM;
 import patdroid.util.Log;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Settings {
     /**
      * Minimum log level to be printed
@@ -41,6 +44,8 @@ public class Settings {
 	public static String apkName;
 	public static String suspClass;
 	public static String suspMethod;
+	
+	private static Set<String> callBlackList;
 	
 	static DalvikVM vm;
 	
@@ -85,6 +90,27 @@ public class Settings {
 	
 	public static DalvikVM getVM() {
 		return vm;
+	}
+	
+	public static void addCallBlkListElem(String mname) {
+		if (callBlackList == null) {
+			callBlackList = new HashSet<>();
+		}
+		
+		callBlackList.add(mname);
+	}
+	
+	public static boolean callBlkListHas(String mname) {
+		if (callBlackList == null) {
+			return false;
+		}
+		for (String name : callBlackList) {
+			if (mname.contains(name)) {
+				return true;
+			}
+		}
+		
+		return false;
 	}
 
 

@@ -25,10 +25,6 @@ public class DVMObject {
 
 	public DVMObject(DalvikVM vm, ClassInfo type) {
 		this.vm = vm;
-		if (vm.getClass(type) == null) {
-			Log.bb(TAG, "New class representation of " + type);
-			vm.setClass(type, new DVMClass(vm, type));
-		}
 		Log.bb(TAG, "New instance of " + type);
 		DVMClass dvmClass = vm.getClass(type);
 		this.setType(type);

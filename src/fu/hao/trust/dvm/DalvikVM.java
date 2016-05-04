@@ -157,7 +157,8 @@ public class DalvikVM {
 				regs[i] = new Register(this, i);
 			}
 
-			if (method == null) {
+			if (method == null || method.insns == null) {
+				Log.warn(TAG, "EMPTY BODY!");
 				return;
 			}
 
@@ -536,7 +537,7 @@ public class DalvikVM {
 	 * @see java.lang.Object#getClass()
 	 */
 	public DVMClass getClass(ClassInfo type) {
-		if (type == null) {
+		if (type == null || type.toString().contains("java.lang")) {
 			return null;
 		}
 		if (heap.getClass(this, type) == null) {
@@ -670,7 +671,10 @@ public class DalvikVM {
 			pluginManager.setCurrRes(newStackFrame == null ? null
 					: newStackFrame.pluginRes);
 		}
-		stack.add(newStackFrame);
+		if (mi.insns != null) {
+			stack.add(newStackFrame);
+		}
+		
 		Log.bb(TAG, "Stack: " + stack);
 		return newStackFrame;
 	}
