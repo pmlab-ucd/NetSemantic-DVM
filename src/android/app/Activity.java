@@ -17,7 +17,7 @@ public class Activity extends Context {
 	
 	public Activity(DalvikVM vm, ClassInfo type) {
 		super(vm, type);
-		Log.bb(TAG, "New Activity Created!");
+		Log.bb(TAG, "New Activity Created with type " + type);
 	}
 
 	public void setContentView(int view) {

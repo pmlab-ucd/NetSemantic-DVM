@@ -131,6 +131,7 @@ public class DalvikVM {
 		// in theory, pc should not be here
 		// but it's easier to implement in our case
 		// since we know we do not need pc to cross procedure
+		// Point to the next instruction should be executed
 		int[] pc = new int[1];
 		Map<Plugin, Map<String, Map<Object, Instruction>>> pluginRes;
 		private DVMObject thisObj;
@@ -516,6 +517,9 @@ public class DalvikVM {
 	 * @Description: To help run chain methods.
 	 */
 	private DVMObject chainThisObj = null;
+	
+	// Store the tmp method info that should be pushed into the stack soon
+	private MethodInfo tmpMI;
 
 	public Register getReg(int i) {
 		return stack.getLast().regs[i];
@@ -623,8 +627,9 @@ public class DalvikVM {
 	}
 
 	public StackFrame newStackFrame(MethodInfo mi) {
+		String TAG = "newStackFrame";
 		StackFrame newStackFrame = new StackFrame(mi);
-		
+	/*	
 		if (mi.isConstructor()) {
 			for (Instruction inst : mi.insns) {
 				if (inst.opcode == Instruction.OP_INVOKE_OP) {
@@ -635,8 +640,17 @@ public class DalvikVM {
 							if (ins.opcode == Instruction.OP_INVOKE_OP) {
 								Object[] extra2 = (Object[]) ins.extra;
 								MethodInfo me = (MethodInfo) extra2[0];
-								if (me.name.equals(mi.name) || me.equals(mi)) {
-									inst.opcode = Instruction.OP_HALT;
+								if ((me.paramTypes.length == mi.paramTypes.length && me.name.equals(mi.name)) || me.equals(mi)) {
+									boolean detected = true;
+									for (int i = 0; i < me.paramTypes.length; i++) {
+										if (!me.paramTypes[i].equals(mi.paramTypes[i])) {
+											detected = false;
+										}
+									}
+									if (detected) {
+										inst.opcode = Instruction.OP_HALT;
+										Log.warn(TAG, "Found potentian infinity loop in the constructor!");
+									}
 								}
 							}
 						}
@@ -644,11 +658,11 @@ public class DalvikVM {
 				}
 			}
 		}
-		
+		*/
 		
 		if (getCurrStackFrame() != null) {
 			Log.bb(TAG, "New Stack Frame: " + newStackFrame + ", pc "
-					+ getCurrStackFrame().pc + " stored. ");
+					+ getPC() + " stored. ");
 		} else {
 			Log.bb(TAG, "New Stack Frame: " + newStackFrame);
 		}
@@ -718,9 +732,9 @@ public class DalvikVM {
 		this.setPluginManager(pluginManager);
 		for (int i = 0; i < methods.length; i++) {
 			if (params == null) {
-				runMethod(methods[i]);
+				runMethod(c, methods[i]);
 			} else {
-				runMethod(methods[i], params, false);
+				runMethod(c, methods[i], params, false);
 			}
 			reset();
 			Log.msg(TAG, "FINISHED!\n");
@@ -744,7 +758,7 @@ public class DalvikVM {
 			MethodInfo[] methods = c.findMethodsHere(chain[i].split(":")[1]);
 			Log.warn(TAG, "Run chain " + chain[i] + " at " + c);
 			// TODO Multiple methods have the same name.
-			runMethod(methods[0]);
+			runMethod(c, methods[0]);
 		}
 	}
 
@@ -760,7 +774,7 @@ public class DalvikVM {
 	 * @return void
 	 * @throws
 	 */
-	public void runMethod(MethodInfo method) {
+	public void runMethod(ClassInfo sitClass, MethodInfo method) {
 		Log.msg(TAG, "RUN Method " + method);
 
 		if (method.insns == null) {
@@ -768,14 +782,14 @@ public class DalvikVM {
 			return;
 		}
 
-		interpreter.runMethod(this, method, false);
+		interpreter.runMethod(sitClass, this, method, false);
 	}
 
-	public void runMethod(MethodInfo method, Object[] params, boolean force) {
+	public void runMethod(ClassInfo sitClass, MethodInfo method, Object[] params, boolean force) {
 		Log.msg(TAG, "Instrumented Method: " + method);
 		if (params == null) {
 			resetCallCtx();
-			runMethod(method);
+			runMethod(sitClass, method);
 			return;
 		}
 		if (method == null) {
@@ -797,10 +811,10 @@ public class DalvikVM {
 		// Put an Null stack frame to simulate the calling ctx.
 		Register reg = new Register(null, 0);
 		if (params[0] == null || params[0].equals("NULL")) {
-			params[0] = newVMObject(method.myClass);
+			params[0] = newVMObject(sitClass);
 		}
 		
-		reg.setValue(params[0], method.myClass);
+		reg.setValue(params[0], sitClass);
 		callingCtx = new Register[params.length];
 		callingCtx[0] = reg;
 		for (int i = 1; i < params.length; i++) {
@@ -836,7 +850,7 @@ public class DalvikVM {
 			args[i] = i;
 		}
 
-		interpreter.runMethod(this, method, force);
+		interpreter.runMethod(sitClass, this, method, force);
 	}
 
 	public int getPC() {
@@ -950,7 +964,7 @@ public class DalvikVM {
 
 				i++;
 			}
-			runMethod(constructor, callCtx, false);
+			runMethod(thisObjType, constructor, callCtx, false);
 			chainThisObj = (DVMObject) callCtx[0];
 			stack.clear();
 		} else {
@@ -966,11 +980,11 @@ public class DalvikVM {
 		String typeName = type.toString();
 		while (type.getSuperClass() != null) {
 			if (typeName.contains("Activity")) {
-				return new Activity(this, type);
+				return new Activity(this, oType);
 			} else if (typeName.contains("View")) {
-				return new View(this, type);
+				return new View(this, oType);
 			} else if (typeName.contains("AsyncTask")) {
-				return new AsyncTask(this, type);
+				return new AsyncTask(this, oType);
 			}
 			
 			type = type.getSuperClass();
@@ -978,6 +992,14 @@ public class DalvikVM {
 		}
 
 		return new DVMObject(this, oType);
+	}
+
+	public MethodInfo getTmpMI() {
+		return tmpMI;
+	}
+
+	public void setTmpMI(MethodInfo tmpMI) {
+		this.tmpMI = tmpMI;
 	}
 
 }

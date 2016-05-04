@@ -23,7 +23,8 @@ public class DVMClass {
 
 		MethodInfo clinit = type.getStaticInitializer();
 		if (clinit != null) {
-			
+			vm.setTmpMI(clinit);
+			/*
 			vm.resetCallCtx();
 			vm.newStackFrame(clinit);
 			// vm.getCurrStackFrame().thisObj = null;
@@ -31,7 +32,7 @@ public class DVMClass {
 			vm.setPC(0);
 			for (int i = 0; i < clinit.insns.length; i++) {
 				vm.interpreter.exec(vm, clinit.insns[i]);
-			}
+			}*/
 			//vm.runMethod(clinit, null, false);
 		}
 		

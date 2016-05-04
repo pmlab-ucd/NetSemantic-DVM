@@ -32,18 +32,18 @@ public class AsyncTask extends DVMObject {
 		Object[] params2 = new Object[2];
 		params2[0] = this;
 		params2[1] = vm.getReturnReg();
-		vm.runMethod(onPost, null, false);
+		vm.runMethod(type, onPost, null, false);
 		
 		// doIn
 		Object[] params3 = new Object[2];
 		params3[0] = this;
 		params3[1] = params;
-		vm.runMethod(doInBack, params3, false);
+		vm.runMethod(type, doInBack, params3, false);
 		
 		// onPre
 		Object[] params1 = new Object[1];
 		params1[0] = this;
-		vm.runMethod(onPre, params1, false);
+		vm.runMethod(type, onPre, params1, false);
 
 
 		return this;

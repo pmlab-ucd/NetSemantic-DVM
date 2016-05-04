@@ -128,7 +128,11 @@ public class Test {
 		args[3] = "Taint";
 		Settings.logLevel = 0;
 		
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Callbacks_Button2/app/";
+		Object[] initArgs = new Object[2];
+		initArgs[0] = "NULL";
+		initArgs[1] = "NULL";
+		
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Callbacks_Button1/app/";
 		Main.main(args);
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();

@@ -92,7 +92,7 @@ public class Interpreter {
 		public void func(DalvikVM vm, Instruction inst) {
 			Log.debug(getClass().toString(), "Return void");
 			vm.backCallCtx(null);
-			jump(vm, inst, true);
+			//jump(vm, inst, true);
 		}
 	}
 
@@ -120,7 +120,7 @@ public class Interpreter {
 			vm.getReturnReg().setValue(data, type);
 			Log.bb(TAG, "Return data: " + vm.getReturnReg().getData());
 			vm.backCallCtx(vm.getReg(inst.r0));
-			jump(vm, inst, true);
+			//jump(vm, inst, true);
 		}
 	}
 
@@ -2254,6 +2254,7 @@ public class Interpreter {
 	public void invocation(DalvikVM vm, MethodInfo mi, Instruction inst,
 			int[] args) {
 		vm.getReturnReg().reset();
+		jump(vm, inst, true);
 
 		if (noInvokeList.contains(mi.name)
 				|| noInvokeList.contains(mi.myClass.fullName)
@@ -2261,7 +2262,6 @@ public class Interpreter {
 			vm.getReturnReg().setValue(new Unknown(mi.returnType),
 					mi.returnType);
 			Log.warn(TAG, "Found noInvokeMethod " + mi);
-			jump(vm, inst, true);
 			return;
 		}
 
@@ -2270,34 +2270,34 @@ public class Interpreter {
 			if (vm.getReg(args[0]).getData() instanceof Unknown
 					|| vm.getReg(args[0]).getData() == null) {
 				Log.warn(TAG, "NULL \"THIS\" INSTANCE!");
-				jump(vm, inst, true);
 				return;
 			}
 
 			DVMObject thisObj = (DVMObject) vm.getReg(args[0]).getData();
+			/*
 			if (((int) inst.opcode_aux != 0x0C) && !mi.isConstructor()
 					&& thisObj.getType().getSuperClass().equals(mi.myClass)) {
 				mi = thisObj.getType().findMethodsHere(mi.name)[0];
-			}
+			}*/
 			
 			if (!thisObj.getType().isConvertibleTo(mi.myClass)) {
 				Log.warn(TAG, "NOT CONSISTENT TYPE!" + thisObj.getType() + " vs " + mi.myClass);
 			} else {
 				ClassInfo clazz = thisObj.getType();
-				mi = clazz.findMethod(mi);
+				if (!mi.isConstructor()) {
+					mi = clazz.findMethod(mi);
+				}
 			}
 		}
 
 		if (args != null) {
 			vm.setCallContext(args);
 		}
-	
-
 
 		vm.newStackFrame(mi);
 	}
 
-	public void runMethod(DalvikVM vm, MethodInfo mi, boolean force) {
+	public void runMethod(ClassInfo sitClass, DalvikVM vm, MethodInfo mi, boolean force) {
 		// Create a new stack frame and push it to the stack.
 		StackFrame stackFrame = vm.newStackFrame(mi);
 		if (stackFrame == null) {
@@ -2308,8 +2308,8 @@ public class Interpreter {
 			stackFrame.setThisObj(null);
 		} else {
 			if (vm.getChainThisObj() == null) {
-				Log.msg(TAG, "New chain obj");
-				stackFrame.setThisObj(vm.newVMObject(mi.myClass));
+				Log.msg(TAG, "New chain obj with type " + sitClass);
+				stackFrame.setThisObj(vm.newVMObject(sitClass));
 				vm.setChainThisObj(stackFrame.getThisObj());
 			} else {
 				stackFrame.setThisObj(vm.getChainThisObj());
@@ -2478,6 +2478,12 @@ public class Interpreter {
 				auxByteCodes.get((int) inst.opcode_aux).func(vm, inst);
 			} else {
 				Log.err(TAG, "Unsupported opcode " + inst);
+			}
+			
+			if (vm.getTmpMI() != null) {
+				vm.resetCallCtx();
+				vm.newStackFrame(vm.getTmpMI());
+				vm.setTmpMI(null);
 			}
 
 			if (!vm.getPluginManager().isEmpty()

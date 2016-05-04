@@ -858,7 +858,7 @@ public class Taint extends Plugin {
 					Log.bb(tag, "SPut at " + vm.getReg(inst.r0));
 					out.put(dvmClass.getStatField(fieldName),
 							in.get(vm.getReg(inst.r0)));
-				} else if (in.containsKey(vm.getReg(inst.r0).getData())) {
+				} else if (vm.getReg(inst.r0).isUsed() && in.containsKey(vm.getReg(inst.r0).getData())) {
 					out.put(dvmClass.getStatField(fieldName),
 							in.get(vm.getReg(inst.r0).getData()));
 				} else {

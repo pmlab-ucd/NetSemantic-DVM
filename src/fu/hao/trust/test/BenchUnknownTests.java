@@ -11,7 +11,7 @@ import fu.hao.trust.data.Results;
 import fu.hao.trust.dvm.Main;
 import fu.hao.trust.utils.Settings;
 
-public class TestUnknown {
+public class BenchUnknownTests {
 
 	@Test
 	public void testGeneralJava_VirtualDispatch1() {
