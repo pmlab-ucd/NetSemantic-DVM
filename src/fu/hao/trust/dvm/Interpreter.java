@@ -428,11 +428,11 @@ public class Interpreter {
 		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			if (inst.type.isConvertibleTo(vm.getReg(inst.rdst).getType())) {
-				vm.getReg(inst.r0).setValue(42, ClassInfo.primitiveInt);
+			if (vm.getReg(inst.r0).isUsed() && inst.type.isConvertibleTo(vm.getReg(inst.r0).getType())) {
+				vm.getReg(inst.rdst).setValue(42, ClassInfo.primitiveInt);
 				Log.debug(TAG, "same type when instanceof");
 			} else {
-				vm.getReg(inst.r0).setValue(0, ClassInfo.primitiveInt);
+				vm.getReg(inst.rdst).setValue(0, ClassInfo.primitiveInt);
 				Log.debug(TAG, "NOT same type when instanceof");
 			}
 
@@ -887,7 +887,7 @@ public class Interpreter {
 			jump(vm, inst, true);
 
 			if (array == null || !array.getClass().isArray()) {
-				Object[] objs = new Object[42];
+				Object[] objs = new Object[5];
 
 				for (int i = 0; i < objs.length; i++) {
 					objs[i] = new Unknown(type);
@@ -914,8 +914,22 @@ public class Interpreter {
 				if (vm.getReg(inst.r1).isUsed()
 						&& vm.getReg(inst.r1).getData() instanceof PrimitiveInfo) {
 					int index = ((PrimitiveInfo) vm.getReg(inst.r1).getData())
-							.intValue();
+							.intValue();								
 					type = inst.type;
+					
+					if (index >= Array.getLength(array)) {
+						Object[] newArray = new Object[2 * index];
+						for (int i = 0 ; i < Array.getLength(array); i++) {
+							newArray[i] = Array.get(array, i);
+						}
+						
+						for (int i = Array.getLength(array); i < newArray.length; i++) {
+							newArray[i] = new Unknown(inst.type);
+						}
+						vm.getReg(inst.r0).setValue(newArray, ClassInfo.primitiveVoid);
+						array = (Object[]) vm.getReg(inst.r0).getData();
+					}
+					
 					Object element = Array.get(array, index);
 					// if (element.getClass().isPrimitive()) {
 					Log.debug(TAG, "Elem: " + element + " at " + index + " of "
@@ -961,7 +975,7 @@ public class Interpreter {
 
 			if (!vm.getReg(inst.r0).isUsed()
 					|| !(vm.getReg(inst.r0).getData() instanceof Array)) {
-				Object[] objs = new Object[42];
+				Object[] objs = new Object[5];
 				for (int i = 0; i < objs.length; i++) {
 					objs[i] = new Unknown(inst.type);
 				}
@@ -976,6 +990,20 @@ public class Interpreter {
 				Log.warn(TAG, "inconsistent type " + inst);
 				return;
 			}
+			
+			if (index >= array.length) {
+				Object[] newArray = new Object[2 * index];
+				for (int i = 0 ; i < array.length; i++) {
+					newArray[i] = array[i];
+				}
+				
+				for (int i = array.length; i < newArray.length; i++) {
+					newArray[i] = new Unknown(inst.type);
+				}
+				vm.getReg(inst.r0).setValue(newArray, ClassInfo.primitiveVoid);
+				array = (Object[]) vm.getReg(inst.r0).getData();
+			}
+			
 			Log.debug(TAG, "data: " + rdst.getData() + " array: " + array);
 			array[index] = rdst.getData();
 		}
