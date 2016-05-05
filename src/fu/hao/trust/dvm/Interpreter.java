@@ -2172,13 +2172,7 @@ public class Interpreter {
 			}
 			vm.setReflectMethod(method);
 
-			if (vm.getReturnReg().isUsed()
-					&& vm.getReturnReg().getData() instanceof Unknown
-					&& mi.returnType.toString().contains("String")) {
-				((Unknown) vm.getReturnReg().getData())
-						.addConcreteVal("Unknown");
-			}
-
+			Register retReg = vm.getReturnReg();
 			if (vm.getReturnReg().isUsed()
 					&& vm.getReturnReg().getData() instanceof ShouldBeReplaced) {
 				vm.getReturnReg().setValue(vm.newVMObject(mi.returnType),
@@ -2194,6 +2188,13 @@ public class Interpreter {
 				}
 				vm.getReturnReg().setValue(retVal,
 						mi.returnType);
+			}
+			
+			if (retReg.isUsed() && retReg.getData() instanceof Unknown) {
+				Unknown unknown = (Unknown) retReg.getData();
+				if (unknown.getLastVal() == null && unknown.getType().toString().contains("String")) {
+					unknown.addConcreteVal("unknown");
+				}
 			}
 
 			jump(vm, inst, true);
@@ -2308,7 +2309,10 @@ public class Interpreter {
 				String argClass = mi.paramTypes[j].toString();
 				argsClass[j] = Class.forName(argClass);
 				Object argData = vm.getReg(args[i]).getData();
-
+				if (vm.getReg(args[i]).getType().toString().contains("lang.Object")) {
+					vm.getReg(args[i]).setValue(argData, mi.paramTypes[j]);
+				}
+				
 				if (argData == null) {
 					Log.warn(
 							TAG,
@@ -2325,7 +2329,13 @@ public class Interpreter {
 							+ ", expected para type: " + argsClass[j]);
 					if (argData instanceof SymbolicVar) {
 						SymbolicVar bidirVar = (SymbolicVar) argData;
-						params[j] = bidirVar.getValue();
+						if (bidirVar.getType() == null || bidirVar.getType().toString().contains("lang.Object")) {
+							bidirVar.setType(mi.paramTypes[j]);
+						}
+						if (bidirVar.getLastVal() == null && mi.paramTypes[j].toString().contains("String")) {
+							bidirVar.addConcreteVal("unknown");
+						}
+						params[j] = bidirVar.getLastVal();
 						Log.debug(TAG, "Found symbolic var with value: " + params[j]);
 						// To correctly show the URL, depress return val through
 						// a list.

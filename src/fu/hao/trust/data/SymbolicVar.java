@@ -1,5 +1,6 @@
 package fu.hao.trust.data;
 
+import patdroid.core.ClassInfo;
 import patdroid.dalvik.Instruction;
 import fu.hao.trust.dvm.DalvikVM;
 
@@ -15,5 +16,9 @@ public abstract class SymbolicVar extends MultiValueVar {
 	public abstract Object getValue();
 	
 	public abstract void setValue(Object value);
+	
+	public abstract void setType(ClassInfo type);
+	
+	public abstract ClassInfo getType();
 	
 }

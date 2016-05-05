@@ -48,6 +48,10 @@ public class Unknown extends SymbolicVar {
 		Log.bb(TAG, "Unknown created!");
 	}
 	
+	public void setType(ClassInfo type) {
+		this.type = type;
+	}
+	
 	public void addConstriant(DalvikVM vm, Instruction ifInst) {
 		// FIXME
 		if (lastArith == null) {

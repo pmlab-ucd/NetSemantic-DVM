@@ -14,14 +14,13 @@ import fu.hao.trust.dvm.DalvikVM;
 public class SensCtxVar extends SymbolicVar{
 	
 	private ClassInfo type;
-	private Object value;
 	private Instruction src;
 	
 	boolean on = false;
 	
 	public SensCtxVar(ClassInfo type, Object value, Instruction src) {
 		this.setType(type);
-		this.value = value;
+		addConcreteVal(value);
 		this.src = src;
 	}
 
@@ -33,12 +32,12 @@ public class SensCtxVar extends SymbolicVar{
 
 	@Override
 	public Object getValue() {
-		return value;
+		return getLastVal();
 	}
 	
 	@Override
 	public String toString() {
-		return "[SensCtxVar for " + value + "]";
+		return "[SensCtxVar for " + getValue() + "]";
 	}
 
 	public ClassInfo getType() {
@@ -59,7 +58,7 @@ public class SensCtxVar extends SymbolicVar{
 
 	@Override
 	public void setValue(Object value) {
-		this.value = value;
+		addConcreteVal(value);
 	}
 
 	public boolean isOn() {

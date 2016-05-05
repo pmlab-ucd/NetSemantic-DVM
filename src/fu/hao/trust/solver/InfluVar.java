@@ -15,7 +15,6 @@ import patdroid.dalvik.Instruction;
  * @date: Mar 10, 2016 7:20:04 PM
  */
 public class InfluVar extends SymbolicVar {
-	private Object value;
 	static Set<Class<?>> influList;
 	final String TAG = "InfluVar";
 	private ClassInfo type;
@@ -44,9 +43,9 @@ public class InfluVar extends SymbolicVar {
 	}
 	
 	public InfluVar(ClassInfo type, Object value, Instruction src) throws ClassNotFoundException {
-		this.value = value;
 		this.type = type; 
 		this.src = src;
+		addConcreteVal(value);
 	}
 	
 	@Override
@@ -57,12 +56,12 @@ public class InfluVar extends SymbolicVar {
 	
 	@Override
 	public String toString() {
-		return "[InfluVar for " + value + "]";
+		return "[InfluVar for " + getValue() + "]";
 	}
 
 	@Override
 	public Object getValue() {
-		return value;
+		return getLastVal();
 	}
 	
 	public ClassInfo getType() {
@@ -83,7 +82,7 @@ public class InfluVar extends SymbolicVar {
 
 	@Override
 	public void setValue(Object value) {
-		this.value = value;
+		addConcreteVal(value);
 	}
 
 	public boolean isOn() {
