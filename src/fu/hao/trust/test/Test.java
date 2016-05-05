@@ -17,7 +17,7 @@ public class Test {
 	public static void main(String[] margs) {
 		Test t = new Test();
 		//t.test00983aad12700be0a440296c6173b18a829e9369_a();
-		//t.testMain();
+		//t.testMain2();
 		//t.testMopub_onCreate();
 		//t.testMopub_loadAd();
 		t.testWo_();

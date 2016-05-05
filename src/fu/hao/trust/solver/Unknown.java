@@ -79,7 +79,7 @@ public class Unknown extends SymbolicVar {
 	}
 	
 	public String toString() {
-		return "[Unknown var, type: " + type + "]";
+		return "[Unknown var:" + getLastVal() +", type: " + type + "]";
 	}
 	
 	public void addLastArith(Instruction lastArith) {
@@ -108,8 +108,7 @@ public class Unknown extends SymbolicVar {
 
 	@Override
 	public Object getValue() {
-		// TODO Auto-generated method stub
-		return null;
+		return getLastVal();
 	}
 
 	@Override

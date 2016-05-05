@@ -13,6 +13,7 @@ import android.content.Intent;
 import fu.hao.trust.analysis.Plugin;
 import fu.hao.trust.dvm.DalvikVM.Register;
 import fu.hao.trust.dvm.DalvikVM.StackFrame;
+import fu.hao.trust.data.MNVar;
 import fu.hao.trust.data.MultiValueVar;
 import fu.hao.trust.data.Results;
 import fu.hao.trust.data.SymbolicVar;
@@ -2137,8 +2138,10 @@ public class Interpreter {
 								mi.returnType);
 					}
 				} else {
+					Log.bb(TAG, "Normal args? " + normalArg);
 					boolean narg = getParams(vm, mi, args, argsClass, params,
 							false);
+					Log.bb(TAG, "Nargs? " + narg);
 					if (normalArg) {
 						normalArg = narg;
 					}
@@ -2181,6 +2184,18 @@ public class Interpreter {
 				vm.getReturnReg().setValue(vm.newVMObject(mi.returnType),
 						mi.returnType);
 			}
+			
+			if (vm.getReturnReg().isUsed() && isInvokeButUnknownRet(mi)) {
+				Unknown retVal = new Unknown(mi.returnType);
+				if (vm.getReturnReg().getData() == null) {
+					retVal.addConcreteVal("unknown");
+				} else {
+					retVal.addConcreteVal(vm.getReturnReg().getData());
+				}
+				vm.getReturnReg().setValue(retVal,
+						mi.returnType);
+			}
+
 			jump(vm, inst, true);
 		} catch (java.lang.IllegalArgumentException e) {
 			e.printStackTrace();
@@ -2216,6 +2231,17 @@ public class Interpreter {
 
 	private boolean isNoInvoke2(MethodInfo mi) {
 		for (String mname : noInvokeList2) {
+			if (mi.toString().contains(mname)) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+	
+	
+	private boolean isInvokeButUnknownRet(MethodInfo mi) {
+		for (String mname : invokeButUnknownRet) {
 			if (mi.toString().contains(mname)) {
 				return true;
 			}
@@ -2300,13 +2326,13 @@ public class Interpreter {
 					if (argData instanceof SymbolicVar) {
 						SymbolicVar bidirVar = (SymbolicVar) argData;
 						params[j] = bidirVar.getValue();
-						Log.debug(TAG, "Found symbolic var " + params[j]);
+						Log.debug(TAG, "Found symbolic var with value: " + params[j]);
 						// To correctly show the URL, depress return val through
 						// a list.
 						if (isNoInvoke2(mi)) {
 							return false;
 						}
-					} else if (argData instanceof MultiValueVar) {
+					} else if (argData instanceof MNVar) {
 						params[j] = null;
 						return false;
 					}
@@ -2559,8 +2585,10 @@ public class Interpreter {
 		noInvokeList2.add("index");
 		noInvokeList2.add("substring");
 		noInvokeList2.add("trim");
-		// noInvokeList2.add("append");
-		// noInvokeList2.add("toString");
+		
+		invokeButUnknownRet = new HashSet<>();
+		invokeButUnknownRet.add("append");
+		invokeButUnknownRet.add("toString");
 	}
 
 	public void exec(DalvikVM vm, Instruction inst, ClassInfo sitClass) {
@@ -2699,5 +2727,7 @@ public class Interpreter {
 	Set<String> noInvokeList;
 	// Do not invoke when args contain MultiValueVar
 	Set<String> noInvokeList2;
+	
+	Set<String> invokeButUnknownRet;
 
 }
