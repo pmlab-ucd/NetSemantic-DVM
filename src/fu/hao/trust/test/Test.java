@@ -46,6 +46,7 @@ public class Test {
 		initArgs[0] = "NULL";*/
 		Settings.addCallBlkListElem("com.d.a.j/<init>"); // will lead to at least 369 calls..
 		Settings.addCallBlkListElem("com.d.a.b.a.bf/<init>");
+		Settings.addCallBlkListElem("com.d.a.d.a");
 		Main.initMI(initArgs);
 		Main.main(args);
 		assertEquals(true, Results.results.isEmpty());

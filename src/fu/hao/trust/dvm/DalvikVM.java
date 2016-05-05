@@ -13,6 +13,7 @@ import java.util.zip.ZipFile;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.view.View;
+import android.widget.BaseAdapter;
 import fu.hao.trust.analysis.Plugin;
 import fu.hao.trust.analysis.PluginManager;
 import fu.hao.trust.data.VMFullState;
@@ -1000,6 +1001,8 @@ public class DalvikVM {
 				return new View(this, oType);
 			} else if (typeName.contains("AsyncTask")) {
 				return new AsyncTask(this, oType);
+			} else if (typeName.contains("Adapter")) {
+				return new BaseAdapter(this, oType);
 			}
 			
 			type = type.getSuperClass();

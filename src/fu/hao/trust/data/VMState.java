@@ -67,7 +67,8 @@ public class VMState {
 		
 		for (DVMClass dvmClass : backClassFields.keySet()) {
 			String fieldInfo = (String) backClassFields.get(dvmClass)[0];
-			Object data = backObjFields.get(dvmClass)[1];
+			Log.bb(TAG, "Restore " + fieldInfo);
+			Object data = backClassFields.get(dvmClass)[1];
 			dvmClass.setStatField(fieldInfo, data);
 		}
 		
