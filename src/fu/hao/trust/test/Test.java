@@ -17,7 +17,7 @@ public class Test {
 	public static void main(String[] margs) {
 		Test t = new Test();
 		//t.test00983aad12700be0a440296c6173b18a829e9369_a();
-		//t.testMain2();
+		//t.testMain();
 		//t.testMopub_onCreate();
 		//t.testMopub_loadAd();
 		t.testWo_();
@@ -134,12 +134,14 @@ public class Test {
 		initArgs[0] = "NULL";
 		initArgs[1] = "NULL";
 		
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Callbacks_Button1/app/";
+		args[0] = "C:/Users/hao/workspace/GeneralJava_Loop1/app/app-debug.apk";
+		args[1] = "de.ecspride.LoopExample1";
+		args[2] = "onCreate";
 		Main.main(args);
-		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
+		System.out.println("REs: " + Results.results);
 		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
-				"359874043116909");
+				"[Unknown var:3_5_9_8_7_4_0_4_3_1_1_6_9_0_9_, type: java.lang.String]");
 		assertEquals(true, Results.results.contains(res));
 	}
 

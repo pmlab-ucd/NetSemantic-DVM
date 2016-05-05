@@ -1666,9 +1666,9 @@ public class Interpreter {
 	class OP_INSTANCE_GET_FIELD implements ByteCode {
 		/**
 		 * @Title: func
-		 * @Description: iget v0, v1, Test2.i6:I // field@0003 Reads field@0003
-		 *               into v0 (entry #3 in the field id table). The instance
-		 *               is referenced by v1.
+		 * @Description: iget r0, r1, Test2.i6:I // field@0003 Reads field@0003
+		 *               into r1 (entry #3 in the field id table). The instance
+		 *               is referenced by r0.
 		 * @param vm
 		 * @param inst
 		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,

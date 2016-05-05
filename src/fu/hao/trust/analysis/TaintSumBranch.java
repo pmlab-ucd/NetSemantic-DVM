@@ -62,7 +62,7 @@ public class TaintSumBranch extends Taint {
 					if (insns[i].opcode == Instruction.OP_RETURN) {
 						retPos = i;
 						break;
-					}
+					} 
 				}
 			}
 			
@@ -82,6 +82,22 @@ public class TaintSumBranch extends Taint {
 				
 				return false;
 			}
+		}
+		
+		private boolean isException(DalvikVM vm, Instruction inst) {
+			// Whether <then> contains exception
+			Instruction[] insns = vm.getCurrStackFrame().getMethod().insns;
+
+			// Scan to check whether the block contains "Return".
+			for (int i = vm.getPC(); i < (int) inst.extra; i++) {
+				if (insns[i].opcode == Instruction.OP_EXCEPTION_OP) {
+					return true;
+				} else if (insns[i].opcode == Instruction.OP_IF) {
+					return false;
+				}
+			}
+			
+			return false;
 		}
 		
 		
@@ -280,7 +296,11 @@ public class TaintSumBranch extends Taint {
 				// Handling bidirBranch
 				MethodInfo currtMethod = vm.getCurrStackFrame().getMethod();
 				Branch branch = null;
-				if (isLoop(vm, inst)) {
+				
+				if (isException(vm, inst)) {
+					vm.setPC((int) inst.extra);
+					return outs;
+				} else if (isLoop(vm, inst)) {
 					return outs;
 				} else if (isNewBiDir(vm, inst)) {
 					branch = bidirBranches.getLast();
