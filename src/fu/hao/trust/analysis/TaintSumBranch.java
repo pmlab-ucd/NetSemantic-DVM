@@ -139,10 +139,11 @@ public class TaintSumBranch extends Taint {
 				for (int i = vm.getPC(); i < (int) inst.extra; i++) {
 					if (insns[i].opcode == Instruction.OP_GOTO) {
 						int index = (int) insns[i].extra;
-						// the place where goto jumps shoule be greater than if but less than retPos when retPos < pc 
+						// the place where goto jumps should be greater than <if> but less than retPos when retPos < pc 
 						if (index <= vm.getNowPC() && (index > retPos || retPos > vm.getNowPC())) {
 							Log.msg(TAG, "Loop detected!");
-							res = true;						
+							res = true;		
+							break;
 						} else {
 							res = false;
 						}			

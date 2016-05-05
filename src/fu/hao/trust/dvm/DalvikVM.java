@@ -507,7 +507,7 @@ public class DalvikVM {
 	@Deprecated
 	Instruction lastBranch;
 
-	Interpreter interpreter;
+	Executor interpreter;
 
 	// which reg store the return value of callee called by this method
 	private Register retValReg;
@@ -600,7 +600,7 @@ public class DalvikVM {
 
 	public DalvikVM(String APK) {
 		heap = new VMHeap();
-		interpreter = Interpreter.v();
+		interpreter = Executor.v();
 		retValReg = new Register(null, -1);
 		stack = new LinkedList<>();
 		callingCtx = null;
@@ -620,7 +620,7 @@ public class DalvikVM {
 
 	public void reset() {
 		heap = new VMHeap();
-		interpreter = Interpreter.v();
+		interpreter = Executor.v();
 		stack = new LinkedList<>();
 		getPluginManager().reset();
 		retValReg.reset();
