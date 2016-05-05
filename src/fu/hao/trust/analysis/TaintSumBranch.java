@@ -91,6 +91,7 @@ public class TaintSumBranch extends Taint {
 			// Scan to check whether the block contains "Return".
 			for (int i = vm.getPC(); i < (int) inst.extra; i++) {
 				if (insns[i].opcode == Instruction.OP_EXCEPTION_OP) {
+					Log.debug(TAG, "Exception Detected!");
 					return true;
 				} else if (insns[i].opcode == Instruction.OP_IF) {
 					return false;
@@ -110,6 +111,34 @@ public class TaintSumBranch extends Taint {
 					return false;
 				} else if (insns[i].opcode == Instruction.OP_EXCEPTION_OP) {
 					return true;
+				}
+			}
+			
+			return false;
+		}
+		
+		private boolean specialException(DalvikVM vm, Instruction inst) {
+			// 判断<then>中有没有exception, 如果有, 则看<else>中是否有goto跳到<then>中, 有则直接运行else
+			int elseIndex = (int) inst.extra;
+			Instruction[] insns = vm.getCurrStackFrame().getMethod().insns;
+			boolean contExcep = false;
+			for (int i = vm.getNowPC(); i < elseIndex; i++) {
+				if (insns[i].opcode == Instruction.OP_EXCEPTION_OP) {
+					contExcep = true;
+					break;
+				}
+			}
+			
+			if (contExcep) {
+				for (int i = elseIndex; i < insns.length; i++) {
+					if (insns[i].opcode == Instruction.OP_GOTO) {
+						int gotoIndex = (int)insns[i].extra; 
+						if (gotoIndex > vm.getNowPC() && gotoIndex < elseIndex) {
+							Log.debug(TAG, "Special Exception Detected!");
+							return true;
+						}
+						break;
+					}
 				}
 			}
 			
@@ -298,7 +327,10 @@ public class TaintSumBranch extends Taint {
 				MethodInfo currtMethod = vm.getCurrStackFrame().getMethod();
 				Branch branch = null;
 				
-				if (isException(vm, inst)) {
+				if (specialException(vm, inst)) {
+					vm.setPC((int)inst.extra);
+					return outs;
+				} else if (isException(vm, inst)) {
 					vm.setPC((int) inst.extra);
 					return outs;
 				} else if (isLoop(vm, inst)) {

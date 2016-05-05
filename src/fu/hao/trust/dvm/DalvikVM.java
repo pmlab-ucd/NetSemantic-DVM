@@ -185,6 +185,14 @@ public class DalvikVM {
 					Map<Object, Instruction> cres = new HashMap<>();
 					for (Object obj : ores.keySet()) {
 						if (obj instanceof Register) {
+							if (callingCtx == null) {
+								continue;
+							}
+							for (int i = 0; i < callingCtx.length; i++) {
+								if (callingCtx[i] == obj) {
+									cres.put(obj, ores.get(obj));
+								}
+							}
 							continue;
 						}
 						cres.put(obj, ores.get(obj));
@@ -916,6 +924,9 @@ public class DalvikVM {
 	}
 
 	public void setReflectMethod(Method reflectMethod) {
+		if (reflectMethod != null) {
+			Log.bb(TAG, "Set reflective call: " + reflectMethod);
+		}
 		this.reflectMethod = reflectMethod;
 	}
 

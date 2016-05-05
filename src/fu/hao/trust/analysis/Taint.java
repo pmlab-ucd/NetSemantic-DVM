@@ -146,7 +146,8 @@ public class Taint extends Plugin {
 							out.put(callingCtx[i].getData(),
 									in.get(callingCtx[i]));
 							Log.bb(tag, "Add " + vm.getReg(params[i])
-									+ "as tainted due to " + callingCtx[i]);
+									+ " as tainted due to " + callingCtx[i]);
+							out.remove(callingCtx[i]);
 						} else if (callingCtx[i].isUsed() && in.containsKey(callingCtx[i].getData())) {
 							out.put(vm.getReg(params[i]),
 									in.get(callingCtx[i].getData()));
@@ -154,7 +155,7 @@ public class Taint extends Plugin {
 									in.get(callingCtx[i].getData()));
 							Log.bb(tag,
 									"Add " + vm.getReg(params[i])
-											+ "as tainted due to "
+											+ " as tainted due to "
 											+ callingCtx[i].getData());
 						}
 					}

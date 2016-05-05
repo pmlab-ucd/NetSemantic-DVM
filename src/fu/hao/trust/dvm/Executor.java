@@ -2207,6 +2207,7 @@ public class Executor {
 		} catch (java.lang.ClassNotFoundException
 				| java.lang.NoClassDefFoundError e) {
 			Log.debug(TAG, "Not a reflction invocation " + mi);
+			vm.setReflectMethod(null);
 			invocation(vm, mi, inst, args);
 		} catch (java.lang.InstantiationException e) {
 			Log.warn(TAG, "Init exception: " + e.getMessage());
