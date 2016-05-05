@@ -139,6 +139,7 @@ public class DalvikVM {
 		Register exceptReg; // Register to store exceptional obj.
 		private Register thisReg;
 		private Register[] callCtx;
+		private ClassInfo myClass;
 
 		public void setThisObj(DVMObject thisObj) {
 			this.thisObj = thisObj;
@@ -148,7 +149,7 @@ public class DalvikVM {
 			return thisObj;
 		}
 
-		StackFrame(MethodInfo method) {
+		StackFrame(ClassInfo myClass, MethodInfo method) {
 			this.method = method;
 			pc[0] = -1;
 			pluginRes = new HashMap<>();
@@ -199,6 +200,8 @@ public class DalvikVM {
 					callCtx[i] = callingCtx[i];
 				}
 			}
+			
+			this.myClass = myClass;
 		}
 
 		public Map<Plugin, Map<String, Map<Object, Instruction>>> getPluginRes() {
@@ -212,7 +215,7 @@ public class DalvikVM {
 
 		public StackFrame clone(Map<DVMObject, DVMObject> objMap,
 				Map<DVMClass, DVMClass> classMap) {
-			StackFrame frame = new StackFrame(method);
+			StackFrame frame = new StackFrame(myClass, method);
 			frame.thisObj = thisObj;
 			frame.pc[0] = pc[0];
 			frame.pluginRes = new HashMap<>(pluginRes);
@@ -338,6 +341,14 @@ public class DalvikVM {
 
 		public void setCallCtx(Register[] callCtx) {
 			this.callCtx = callCtx;
+		}
+
+		public ClassInfo getMyClass() {
+			return myClass;
+		}
+
+		public void setMyClass(ClassInfo myClass) {
+			this.myClass = myClass;
 		}
 
 	}
@@ -627,9 +638,9 @@ public class DalvikVM {
 		return stack.getLast();
 	}
 
-	public StackFrame newStackFrame(MethodInfo mi) {
+	public StackFrame newStackFrame(ClassInfo sitClass, MethodInfo mi) {
 		String TAG = "newStackFrame";
-		StackFrame newStackFrame = new StackFrame(mi);
+		StackFrame newStackFrame = new StackFrame(sitClass, mi);
 	/*	
 		if (mi.isConstructor()) {
 			for (Instruction inst : mi.insns) {
@@ -1004,6 +1015,10 @@ public class DalvikVM {
 
 	public void setTmpMI(MethodInfo tmpMI) {
 		this.tmpMI = tmpMI;
+	}
+	
+	public ClassInfo getCurrtClass() {
+		return getCurrStackFrame().getMyClass();
 	}
 
 }

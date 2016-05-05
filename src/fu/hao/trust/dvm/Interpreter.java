@@ -390,8 +390,12 @@ public class Interpreter {
 							mi.returnType);
 				} else {
 					Object[] params = new Object[args.length];
+
 					getParams(vm, mi, args, argsClass, params, true);
 					method = clazz.getDeclaredMethod(mi.name, argsClass);
+					for (Object param : params) {
+						Log.bb(TAG, "param: " + param);
+					}
 					vm.getReturnReg().setValue(method.invoke(null, params),
 							mi.returnType);
 				}
@@ -1739,6 +1743,7 @@ public class Interpreter {
 		public void func(DalvikVM vm, Instruction inst) {
 			// TODO Auto-generated method stub
 			jump(vm, inst, true);
+			// vm.backCallCtx(null);
 		}
 	}
 
@@ -1747,6 +1752,7 @@ public class Interpreter {
 		public void func(DalvikVM vm, Instruction inst) {
 			vm.getCurrStackFrame().exceptReg = vm.getReg(inst.r0);
 			jump(vm, inst, true);
+			// vm.backCallCtx(null);
 		}
 	}
 
@@ -2068,9 +2074,12 @@ public class Interpreter {
 					if (args.length == 1) {
 						vm.getReg(args[0]).setValue(clazz.newInstance(),
 								mi.returnType);
-						Log.debug(TAG, "Reflected init instance: "
-								+ vm.getReg(args[0]).getData() + ", "
-								+ vm.getReg(args[0]).getData().getClass());
+						Log.debug(TAG,
+								"Reflected init instance: "
+										+ vm.getReg(args[0]).getData()
+										+ ", "
+										+ vm.getReg(args[0]).getData()
+												.getClass());
 					} else {
 						boolean narg = getParams(vm, mi, args, argsClass,
 								params, false);
@@ -2188,9 +2197,18 @@ public class Interpreter {
 			e.printStackTrace();
 			vm.getReg(args[0]).setValue(new Unknown(mi.myClass), mi.myClass);
 			jump(vm, inst, true);
+		} catch (java.lang.IllegalAccessException e) {
+			e.printStackTrace();
+			Log.warn(TAG, "IllegalAccessException: " + e.getMessage());
+			jump(vm, inst, true);
 		} catch (Exception e) {
 			e.printStackTrace();
-			Log.warn(TAG, "Error in reflection: " + e.getMessage());
+			// FIXME
+			if (inst.toString().contains("java.util.Random/nextInt[int]")) {
+				Log.warn(TAG, "Wrong in nextInt");
+			} else {
+				Log.err(TAG, "Error in reflection: " + e.getMessage());
+			}
 			jump(vm, inst, true);
 		}
 
@@ -2292,6 +2310,8 @@ public class Interpreter {
 						params[j] = null;
 						return false;
 					}
+
+					//params[j] = argData;
 				}
 			}
 		}
@@ -2300,6 +2320,11 @@ public class Interpreter {
 	}
 
 	public boolean matchType(Class<?> real, Class<?> expected) {
+		if (ClassInfo.findClass(real.getName()) != null
+				&& ClassInfo.findClass(real.getName()).isConvertibleTo(
+						ClassInfo.findClass(expected.getName()))) {
+			return true;
+		}
 		if (expected.equals(real) || expected.equals(real.getSuperclass())) {
 			return true;
 		}
@@ -2330,11 +2355,15 @@ public class Interpreter {
 		if (noInvokeList.contains(mi.name)
 				|| noInvokeList.contains(mi.myClass.fullName)
 				|| mi.myClass.fullName.startsWith("android.support")
-						|| Settings.callBlkListHas(inst.toString())) {
+				|| Settings.callBlkListHas(inst.toString())) {
 			vm.getReturnReg().setValue(new Unknown(mi.returnType),
 					mi.returnType);
 			Log.warn(TAG, "Found noInvokeMethod " + mi);
 			return;
+		}
+
+		if (args != null) {
+			vm.setCallContext(args);
 		}
 
 		// Create a new stack frame and push it to the stack.
@@ -2361,19 +2390,19 @@ public class Interpreter {
 					mi = clazz.findMethod(mi);
 				}
 			}
+
+			vm.newStackFrame(vm.getReg(args[0]).isUsed() ? vm.getReg(args[0])
+					.getType() : mi.myClass, mi);
+		} else {
+			vm.newStackFrame(mi.myClass, mi);
 		}
 
-		if (args != null) {
-			vm.setCallContext(args);
-		}
-
-		vm.newStackFrame(mi);
 	}
 
 	public void runMethod(ClassInfo sitClass, DalvikVM vm, MethodInfo mi,
 			boolean force) {
 		// Create a new stack frame and push it to the stack.
-		StackFrame stackFrame = vm.newStackFrame(mi);
+		StackFrame stackFrame = vm.newStackFrame(sitClass, mi);
 		if (stackFrame == null) {
 			return;
 		}
@@ -2400,7 +2429,7 @@ public class Interpreter {
 				vm.setPC(0);
 			}
 			for (int i = 0; i < mi.insns.length; i++) {
-				exec(vm, mi.insns[i]);
+				exec(vm, mi.insns[i], sitClass);
 			}
 		}
 	}
@@ -2419,7 +2448,7 @@ public class Interpreter {
 			}
 			Instruction insns = vm.getCurrStackFrame().method.insns[vm.getPC()];
 			insns.setLoc(vm.getCurrStackFrame().method);
-			exec(vm, insns);
+			exec(vm, insns, vm.getCurrStackFrame().getMyClass());
 		}
 
 		running = false;
@@ -2533,7 +2562,7 @@ public class Interpreter {
 		// noInvokeList2.add("toString");
 	}
 
-	public void exec(DalvikVM vm, Instruction inst) {
+	public void exec(DalvikVM vm, Instruction inst, ClassInfo sitClass) {
 		Log.msg(TAG, "\n");
 		vm.setNowPC(vm.getPC());
 		inst.setIndex(vm.getNowPC());
@@ -2556,7 +2585,8 @@ public class Interpreter {
 
 			if (vm.getTmpMI() != null) {
 				vm.resetCallCtx();
-				vm.newStackFrame(vm.getTmpMI());
+				vm.setPC(vm.getNowPC());
+				vm.newStackFrame(vm.getTmpMI().myClass, vm.getTmpMI());
 				vm.setTmpMI(null);
 			}
 
@@ -2573,10 +2603,15 @@ public class Interpreter {
 					Log.warn(TAG, "Inconsistent this obj! "
 							+ vm.getCurrStackFrame().getThisReg().getData()
 							+ ", " + vm.getCurrStackFrame().getThisObj());
-					// If caused by the overwritten instance generated by reflection 
+					// If caused by the overwritten instance generated by
+					// reflection
 					if (!(vm.getCurrStackFrame().getThisReg().getData() instanceof DVMObject)) {
-						vm.getCurrStackFrame().getThisReg().setValue(vm.getCurrStackFrame().getThisObj(), 
-								vm.getCurrStackFrame().getThisReg().getType());
+						vm.getCurrStackFrame()
+								.getThisReg()
+								.setValue(
+										vm.getCurrStackFrame().getThisObj(),
+										vm.getCurrStackFrame().getThisReg()
+												.getType());
 					}
 				}
 

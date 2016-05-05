@@ -56,12 +56,13 @@ Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.
 Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@32e565d7
 Interpreter - [DEBUG]: args: instance number 1@android.os.Bundle
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_SP_ARGUMENTS -> jump set pc to 1
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> exec set pc to 0
 DalvikVM - [BB]: New method call: de.ecspride.ActivityLifecycle1/<clinit>[]
 DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[]>
 DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r0,type=java.lang.String,extra="http://www.google.de/search?q=">
 DalvikVM - [BB]: [2]<0 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(de.ecspride.ActivityLifecycle1, URL)>
 DalvikVM - [BB]: [3]<0 RETURN,VOID>
-newStackFrame - [BB]: New Stack Frame: StackFrame de.ecspride.ActivityLifecycle1/<clinit>[], pc 1 stored. 
+newStackFrame - [BB]: New Stack Frame: StackFrame de.ecspride.ActivityLifecycle1/<clinit>[], pc 0 stored. 
 newStackFrame - [BB]: Stack: [StackFrame de.ecspride.ActivityLifecycle1/onCreate[android.os.Bundle], StackFrame de.ecspride.ActivityLifecycle1/<clinit>[]]
 PluginManager - [MSG]: Taint Tainted Res: {}
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> run set pc to 0
@@ -97,6 +98,21 @@ Interpreter - [MSG]:
 Interpreter - [MSG]: <3 RETURN,VOID> at de.ecspride.ActivityLifecycle1/<clinit>[]
 class fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID - [DEBUG]: Return void
 DalvikVM - [BB]: Back to the last stack frame.StackFrame de.ecspride.ActivityLifecycle1/onCreate[android.os.Bundle]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[3, 4]> at de.ecspride.ActivityLifecycle1/onCreate[android.os.Bundle]
+Interpreter - [WARN]: NULL CallingCtx!
+DalvikVM - [BB]: ar3 <Activity:instance number 1@de.ecspride.ActivityLifecycle1, de.ecspride.ActivityLifecycle1>, <Activity:instance number 1@de.ecspride.ActivityLifecycle1, de.ecspride.ActivityLifecycle1>
+Interpreter - [DEBUG]: args: Activity:instance number 1@de.ecspride.ActivityLifecycle1
+Interpreter - [BB]: Start param from 1
+DVMObject - [BB]: New instance of android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@32e565d7
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@32e565d7
+DalvikVM - [BB]: ar4 <instance number 1@android.os.Bundle, android.os.Bundle>, <instance number 2@android.os.Bundle, android.os.Bundle>
+Interpreter - [DEBUG]: args: instance number 2@android.os.Bundle
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: Taint Tainted Res: {}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <1 HALT,SUPER,extra=[null, [3, 4]]> at de.ecspride.ActivityLifecycle1/onCreate[android.os.Bundle]
@@ -140,7 +156,7 @@ Interpreter - [MSG]: arg0 obj: Activity:instance number 1@de.ecspride.ActivityLi
 Interpreter - [DEBUG]: Reflction class: class android.content.Context
 Interpreter - [BB]: arg1@reg2: phone
 Interpreter - [DEBUG]: Caller obj: Activity:instance number 1@de.ecspride.ActivityLifecycle1, from class: class android.app.Activity
-Interpreter - [DEBUG]: Return data: android.telephony.TelephonyManager@3aa0eb51 ,class android.telephony.TelephonyManager
+Interpreter - [DEBUG]: Return data: android.telephony.TelephonyManager@743a1eb3 ,class android.telephony.TelephonyManager
 Interpreter - [MSG]: Reflction invocation public java.lang.Object android.content.Context.getSystemService(java.lang.String)
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 6
 Taint - [BB]: <android.content.Context: java.lang.Object getSystemService(java.lang.String)>
@@ -149,8 +165,8 @@ PluginManager - [MSG]: Taint Tainted Res: {}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <6 MOV,RESULT,dst=r1,type=java.lang.Object> at de.ecspride.ActivityLifecycle1/onCreate[android.os.Bundle]
-OP_MOV_RESULT - [BB]: Result data: android.telephony.TelephonyManager@3aa0eb51
-OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.TelephonyManager@3aa0eb51, type: java.lang.Object, to [reg 1@ActivityLifecycle1/onCreate]
+OP_MOV_RESULT - [BB]: Result data: android.telephony.TelephonyManager@743a1eb3
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.TelephonyManager@743a1eb3, type: java.lang.Object, to [reg 1@ActivityLifecycle1/onCreate]
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 7
 PluginManager - [MSG]: Taint Tainted Res: {}
 Interpreter - [MSG]: 
@@ -162,7 +178,7 @@ PluginManager - [MSG]: Taint Tainted Res: {}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]> at de.ecspride.ActivityLifecycle1/onCreate[android.os.Bundle]
-Interpreter - [MSG]: arg0 obj: android.telephony.TelephonyManager@3aa0eb51
+Interpreter - [MSG]: arg0 obj: android.telephony.TelephonyManager@743a1eb3
 Interpreter - [DEBUG]: Reflction class: class android.telephony.TelephonyManager
 Interpreter - [DEBUG]: Return data: 359874043116909 ,class java.lang.String
 Interpreter - [MSG]: Reflction invocation public java.lang.String android.telephony.TelephonyManager.getDeviceId()
@@ -178,7 +194,7 @@ OP_MOV_RESULT - [DEBUG]: Result data: 359874043116909, type: java.lang.String, t
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 10
 Taint - [BB]: <8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>
 Taint - [BB]: Add reg 0 due to ret reg.
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 0@ActivityLifecycle1/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
+PluginManager - [MSG]: Taint Tainted Res: {[reg 0@ActivityLifecycle1/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <10 STATIC,SGET,r0=r2,type=java.lang.Object,extra=(de.ecspride.ActivityLifecycle1, URL)> at de.ecspride.ActivityLifecycle1/onCreate[android.os.Bundle]
@@ -192,7 +208,7 @@ DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD -> jump set pc
 Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.ActivityLifecycle1 at fu.hao.trust.dvm.VMHeap@32e565d7
 Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type de.ecspride.ActivityLifecycle1
 Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.ActivityLifecycle1 at fu.hao.trust.dvm.VMHeap@32e565d7
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 0@ActivityLifecycle1/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
+PluginManager - [MSG]: Taint Tainted Res: {[reg 0@ActivityLifecycle1/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <11 INVOKE,VIRTUAL,extra=[java.lang.String/concat[java.lang.String], [2, 0]]> at de.ecspride.ActivityLifecycle1/onCreate[android.os.Bundle]
@@ -206,7 +222,7 @@ DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 12
 Taint - [BB]: <java.lang.String: java.lang.String concat(java.lang.String)>
 Taint - [DEBUG]: not a taint call: <java.lang.String: java.lang.String concat(java.lang.String)>
 Taint - [WARN]: Found a tainted return val!
-PluginManager - [MSG]: Taint Tainted Res: {http://www.google.de/search?q=359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 0@ActivityLifecycle1/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [Global RetReg]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
+PluginManager - [MSG]: Taint Tainted Res: {http://www.google.de/search?q=359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 0@ActivityLifecycle1/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [Global RetReg]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <12 MOV,RESULT,dst=r2,type=java.lang.Object> at de.ecspride.ActivityLifecycle1/onCreate[android.os.Bundle]
@@ -216,7 +232,7 @@ OP_MOV_RESULT - [DEBUG]: Result data: http://www.google.de/search?q=359874043116
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 13
 Taint - [BB]: <8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>
 Taint - [BB]: Add reg 2 due to ret reg.
-PluginManager - [MSG]: Taint Tainted Res: {http://www.google.de/search?q=359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 2@ActivityLifecycle1/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 0@ActivityLifecycle1/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
+PluginManager - [MSG]: Taint Tainted Res: {http://www.google.de/search?q=359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 0@ActivityLifecycle1/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 2@ActivityLifecycle1/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <13 STATIC,SPUT,r0=r2,type=java.lang.Object,extra=(de.ecspride.ActivityLifecycle1, URL)> at de.ecspride.ActivityLifecycle1/onCreate[android.os.Bundle]
@@ -230,7 +246,7 @@ Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: get
 Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type de.ecspride.ActivityLifecycle1
 Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.ActivityLifecycle1 at fu.hao.trust.dvm.VMHeap@32e565d7
 Taint - [BB]: SPut at [reg 2@ActivityLifecycle1/onCreate]
-PluginManager - [MSG]: Taint Tainted Res: {http://www.google.de/search?q=359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 2@ActivityLifecycle1/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 0@ActivityLifecycle1/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
+PluginManager - [MSG]: Taint Tainted Res: {http://www.google.de/search?q=359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 0@ActivityLifecycle1/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 2@ActivityLifecycle1/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <14 RETURN,VOID> at de.ecspride.ActivityLifecycle1/onCreate[android.os.Bundle]
@@ -306,26 +322,26 @@ newStackFrame - [BB]: New Stack Frame: StackFrame de.ecspride.MainActivity/onCre
 newStackFrame - [BB]: Stack: [StackFrame de.ecspride.MainActivity/onCreate[android.os.Bundle]]
 Interpreter - [MSG]: New chain obj with type de.ecspride.MainActivity
 Activity - [BB]: New instance of de.ecspride.MainActivity
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@4cbf811c
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@4cbf811c
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass de.ecspride.GeneralActivity at fu.hao.trust.dvm.VMHeap@4cbf811c
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for de.ecspride.GeneralActivity at fu.hao.trust.dvm.VMHeap@4cbf811c
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@4cbf811c
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@4cbf811c
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@4cbf811c
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@4cbf811c
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@4cbf811c
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@4cbf811c
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@3e1502ff
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@3e1502ff
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass de.ecspride.GeneralActivity at fu.hao.trust.dvm.VMHeap@3e1502ff
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for de.ecspride.GeneralActivity at fu.hao.trust.dvm.VMHeap@3e1502ff
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@3e1502ff
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@3e1502ff
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@3e1502ff
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@3e1502ff
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@3e1502ff
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@3e1502ff
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@4cbf811c
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@3e1502ff
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.Context
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@4cbf811c
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@3e1502ff
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.app.Activity
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@4cbf811c
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@3e1502ff
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type de.ecspride.GeneralActivity
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass de.ecspride.GeneralActivity at fu.hao.trust.dvm.VMHeap@4cbf811c
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass de.ecspride.GeneralActivity at fu.hao.trust.dvm.VMHeap@3e1502ff
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type de.ecspride.MainActivity
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@4cbf811c
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@3e1502ff
 Activity - [BB]: New Activity Created with type de.ecspride.MainActivity
 Interpreter - [MSG]: RUN BEGIN de.ecspride.MainActivity/onCreate[android.os.Bundle]
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> run set pc to 0
@@ -336,18 +352,19 @@ Interpreter - [WARN]: NULL CallingCtx!
 Interpreter - [DEBUG]: args: Activity:instance number 1@de.ecspride.MainActivity
 Interpreter - [BB]: Start param from 1
 DVMObject - [BB]: New instance of android.os.Bundle
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@4cbf811c
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.os.Bundle at fu.hao.trust.dvm.VMHeap@4cbf811c
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@3e1502ff
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.os.Bundle at fu.hao.trust.dvm.VMHeap@3e1502ff
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.os.Bundle
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@4cbf811c
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@3e1502ff
 Interpreter - [DEBUG]: args: instance number 1@android.os.Bundle
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_SP_ARGUMENTS -> jump set pc to 1
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> exec set pc to 0
 DalvikVM - [BB]: New method call: de.ecspride.GeneralActivity/<clinit>[]
 DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[]>
 DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
 DalvikVM - [BB]: [2]<0 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(de.ecspride.GeneralActivity, imei)>
 DalvikVM - [BB]: [3]<0 RETURN,VOID>
-newStackFrame - [BB]: New Stack Frame: StackFrame de.ecspride.GeneralActivity/<clinit>[], pc 1 stored. 
+newStackFrame - [BB]: New Stack Frame: StackFrame de.ecspride.GeneralActivity/<clinit>[], pc 0 stored. 
 newStackFrame - [BB]: Stack: [StackFrame de.ecspride.MainActivity/onCreate[android.os.Bundle], StackFrame de.ecspride.GeneralActivity/<clinit>[]]
 PluginManager - [MSG]: Taint Tainted Res: {}
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> run set pc to 0
@@ -368,22 +385,37 @@ PluginManager - [MSG]: Taint Tainted Res: {}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <2 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(de.ecspride.GeneralActivity, imei)> at de.ecspride.GeneralActivity/<clinit>[]
-Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.GeneralActivity at fu.hao.trust.dvm.VMHeap@4cbf811c
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.GeneralActivity at fu.hao.trust.dvm.VMHeap@3e1502ff
 Caller: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type de.ecspride.GeneralActivity
-Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.GeneralActivity at fu.hao.trust.dvm.VMHeap@4cbf811c
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.GeneralActivity at fu.hao.trust.dvm.VMHeap@3e1502ff
 class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [WARN]: Type inconsistent! void java.lang.String
 class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: expect sput imei from de.ecspride.GeneralActivity
-class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: real sput 0 from fu.hao.trust.dvm.DVMClass@5577d330
+class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: real sput 0 from fu.hao.trust.dvm.DVMClass@2c5ac6ce
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD -> jump set pc to 3
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.GeneralActivity at fu.hao.trust.dvm.VMHeap@4cbf811c
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.GeneralActivity at fu.hao.trust.dvm.VMHeap@3e1502ff
 Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type de.ecspride.GeneralActivity
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.GeneralActivity at fu.hao.trust.dvm.VMHeap@4cbf811c
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.GeneralActivity at fu.hao.trust.dvm.VMHeap@3e1502ff
 PluginManager - [MSG]: Taint Tainted Res: {}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <3 RETURN,VOID> at de.ecspride.GeneralActivity/<clinit>[]
 class fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID - [DEBUG]: Return void
 DalvikVM - [BB]: Back to the last stack frame.StackFrame de.ecspride.MainActivity/onCreate[android.os.Bundle]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[2, 3]> at de.ecspride.MainActivity/onCreate[android.os.Bundle]
+Interpreter - [WARN]: NULL CallingCtx!
+DalvikVM - [BB]: ar2 <Activity:instance number 1@de.ecspride.MainActivity, de.ecspride.MainActivity>, <Activity:instance number 1@de.ecspride.MainActivity, de.ecspride.MainActivity>
+Interpreter - [DEBUG]: args: Activity:instance number 1@de.ecspride.MainActivity
+Interpreter - [BB]: Start param from 1
+DVMObject - [BB]: New instance of android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@3e1502ff
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.os.Bundle
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@3e1502ff
+DalvikVM - [BB]: ar3 <instance number 1@android.os.Bundle, android.os.Bundle>, <instance number 2@android.os.Bundle, android.os.Bundle>
+Interpreter - [DEBUG]: args: instance number 2@android.os.Bundle
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: Taint Tainted Res: {}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <1 HALT,SUPER,extra=[null, [2, 3]]> at de.ecspride.MainActivity/onCreate[android.os.Bundle]
@@ -427,7 +459,7 @@ Interpreter - [MSG]: arg0 obj: Activity:instance number 1@de.ecspride.MainActivi
 Interpreter - [DEBUG]: Reflction class: class android.content.Context
 Interpreter - [BB]: arg1@reg1: phone
 Interpreter - [DEBUG]: Caller obj: Activity:instance number 1@de.ecspride.MainActivity, from class: class android.app.Activity
-Interpreter - [DEBUG]: Return data: android.telephony.TelephonyManager@2dca2026 ,class android.telephony.TelephonyManager
+Interpreter - [DEBUG]: Return data: android.telephony.TelephonyManager@154aa766 ,class android.telephony.TelephonyManager
 Interpreter - [MSG]: Reflction invocation public java.lang.Object android.content.Context.getSystemService(java.lang.String)
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 6
 Taint - [BB]: <android.content.Context: java.lang.Object getSystemService(java.lang.String)>
@@ -436,8 +468,8 @@ PluginManager - [MSG]: Taint Tainted Res: {}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <6 MOV,RESULT,dst=r0,type=java.lang.Object> at de.ecspride.MainActivity/onCreate[android.os.Bundle]
-OP_MOV_RESULT - [BB]: Result data: android.telephony.TelephonyManager@2dca2026
-OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.TelephonyManager@2dca2026, type: java.lang.Object, to [reg 0@MainActivity/onCreate]
+OP_MOV_RESULT - [BB]: Result data: android.telephony.TelephonyManager@154aa766
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.TelephonyManager@154aa766, type: java.lang.Object, to [reg 0@MainActivity/onCreate]
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 7
 PluginManager - [MSG]: Taint Tainted Res: {}
 Interpreter - [MSG]: 
@@ -449,7 +481,7 @@ PluginManager - [MSG]: Taint Tainted Res: {}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]> at de.ecspride.MainActivity/onCreate[android.os.Bundle]
-Interpreter - [MSG]: arg0 obj: android.telephony.TelephonyManager@2dca2026
+Interpreter - [MSG]: arg0 obj: android.telephony.TelephonyManager@154aa766
 Interpreter - [DEBUG]: Reflction class: class android.telephony.TelephonyManager
 Interpreter - [DEBUG]: Return data: 359874043116909 ,class java.lang.String
 Interpreter - [MSG]: Reflction invocation public java.lang.String android.telephony.TelephonyManager.getDeviceId()
@@ -466,21 +498,21 @@ OP_MOV_RESULT - [DEBUG]: Result data: 359874043116909, type: java.lang.String, t
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 10
 Taint - [BB]: <8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>
 Taint - [BB]: Add reg 1 due to ret reg.
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 1@MainActivity/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {[reg 1@MainActivity/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <10 STATIC,SPUT,r0=r1,type=java.lang.Object,extra=(de.ecspride.MainActivity, imei)> at de.ecspride.MainActivity/onCreate[android.os.Bundle]
-Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@4cbf811c
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@3e1502ff
 Caller: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type de.ecspride.MainActivity
-Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@4cbf811c
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@3e1502ff
 class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: expect sput imei from de.ecspride.MainActivity
-class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: real sput 359874043116909 from fu.hao.trust.dvm.DVMClass@7bb21521
+class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: real sput 359874043116909 from fu.hao.trust.dvm.DVMClass@2ec0f87e
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD -> jump set pc to 11
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@4cbf811c
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@3e1502ff
 Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type de.ecspride.MainActivity
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@4cbf811c
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@3e1502ff
 Taint - [BB]: SPut at [reg 1@MainActivity/onCreate]
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 1@MainActivity/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {[reg 1@MainActivity/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <11 RETURN,VOID> at de.ecspride.MainActivity/onCreate[android.os.Bundle]
@@ -541,8 +573,8 @@ PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,ext
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <4 MOV,RESULT,dst=r0,type=java.lang.Object> at de.ecspride.GeneralActivity/onResume[]
-OP_MOV_RESULT - [BB]: Result data: android.telephony.SmsManager@7efa302c
-OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.SmsManager@7efa302c, type: android.telephony.SmsManager, to [reg 0@GeneralActivity/onResume]
+OP_MOV_RESULT - [BB]: Result data: android.telephony.SmsManager@7f8e25c0
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.SmsManager@7f8e25c0, type: android.telephony.SmsManager, to [reg 0@GeneralActivity/onResume]
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 5
 PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Interpreter - [MSG]: 
@@ -555,15 +587,15 @@ PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,ext
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <6 STATIC,SGET,r0=r3,type=java.lang.Object,extra=(de.ecspride.GeneralActivity, imei)> at de.ecspride.GeneralActivity/onResume[]
-Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.GeneralActivity at fu.hao.trust.dvm.VMHeap@4cbf811c
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.GeneralActivity at fu.hao.trust.dvm.VMHeap@3e1502ff
 Caller: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type de.ecspride.GeneralActivity
-Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.GeneralActivity at fu.hao.trust.dvm.VMHeap@4cbf811c
-OP_STATIC_GET_FIELD - [DEBUG]: Sget 359874043116909, from fu.hao.trust.dvm.DVMClass@5577d330
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.GeneralActivity at fu.hao.trust.dvm.VMHeap@3e1502ff
+OP_STATIC_GET_FIELD - [DEBUG]: Sget 359874043116909, from fu.hao.trust.dvm.DVMClass@2c5ac6ce
 OP_STATIC_GET_FIELD - [DEBUG]: Expect sget imei, a java.lang.String from de.ecspride.GeneralActivity
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD -> jump set pc to 7
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.GeneralActivity at fu.hao.trust.dvm.VMHeap@4cbf811c
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.GeneralActivity at fu.hao.trust.dvm.VMHeap@3e1502ff
 Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type de.ecspride.GeneralActivity
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.GeneralActivity at fu.hao.trust.dvm.VMHeap@4cbf811c
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.GeneralActivity at fu.hao.trust.dvm.VMHeap@3e1502ff
 PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@GeneralActivity/onResume]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Interpreter - [MSG]: 
 
@@ -580,7 +612,7 @@ PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,ext
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <9 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]> at de.ecspride.GeneralActivity/onResume[]
-Interpreter - [MSG]: arg0 obj: android.telephony.SmsManager@7efa302c
+Interpreter - [MSG]: arg0 obj: android.telephony.SmsManager@7f8e25c0
 Interpreter - [DEBUG]: Reflction class: class android.telephony.SmsManager
 Interpreter - [BB]: arg1@reg1: +49 1234
 Interpreter - [BB]: arg2@reg2: 0
@@ -590,7 +622,7 @@ Interpreter - [BB]: arg4@reg4: 0
 Interpreter - [WARN]: Mismatch type! arg 4, real para type: class patdroid.core.PrimitiveInfo, expected para type: class android.app.PendingIntent
 Interpreter - [BB]: arg5@reg5: 0
 Interpreter - [WARN]: Mismatch type! arg 5, real para type: class patdroid.core.PrimitiveInfo, expected para type: class android.app.PendingIntent
-Interpreter - [DEBUG]: Caller obj: android.telephony.SmsManager@7efa302c, from class: class android.telephony.SmsManager
+Interpreter - [DEBUG]: Caller obj: android.telephony.SmsManager@7f8e25c0, from class: class android.telephony.SmsManager
 Interpreter - [MSG]: Reflction invocation public void android.telephony.SmsManager.sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 10
 Taint - [BB]: <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>
@@ -623,22 +655,22 @@ newStackFrame - [BB]: New Stack Frame: StackFrame de.ecspride.MainActivity/onSav
 newStackFrame - [BB]: Stack: [StackFrame de.ecspride.MainActivity/onSaveInstanceState[android.os.Bundle]]
 Interpreter - [MSG]: New chain obj with type de.ecspride.MainActivity
 Activity - [BB]: New instance of de.ecspride.MainActivity
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@79795976
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@79795976
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@79795976
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@79795976
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@79795976
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@79795976
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@79795976
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@79795976
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@44bc8807
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@44bc8807
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@44bc8807
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@44bc8807
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@44bc8807
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@44bc8807
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@44bc8807
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@44bc8807
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@79795976
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@44bc8807
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.Context
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@79795976
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@44bc8807
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.app.Activity
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@79795976
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@44bc8807
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type de.ecspride.MainActivity
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@79795976
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@44bc8807
 Activity - [BB]: New Activity Created with type de.ecspride.MainActivity
 Interpreter - [MSG]: RUN BEGIN de.ecspride.MainActivity/onSaveInstanceState[android.os.Bundle]
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> run set pc to 0
@@ -649,10 +681,10 @@ Interpreter - [WARN]: NULL CallingCtx!
 Interpreter - [DEBUG]: args: Activity:instance number 1@de.ecspride.MainActivity
 Interpreter - [BB]: Start param from 1
 DVMObject - [BB]: New instance of android.os.Bundle
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@79795976
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.os.Bundle at fu.hao.trust.dvm.VMHeap@79795976
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@44bc8807
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.os.Bundle at fu.hao.trust.dvm.VMHeap@44bc8807
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.os.Bundle
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@79795976
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@44bc8807
 Interpreter - [DEBUG]: args: instance number 1@android.os.Bundle
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_SP_ARGUMENTS -> jump set pc to 1
 PluginManager - [MSG]: Taint Tainted Res: {}
@@ -670,7 +702,7 @@ Interpreter - [MSG]: arg0 obj: Activity:instance number 1@de.ecspride.MainActivi
 Interpreter - [DEBUG]: Reflction class: class android.content.Context
 Interpreter - [BB]: arg1@reg1: phone
 Interpreter - [DEBUG]: Caller obj: Activity:instance number 1@de.ecspride.MainActivity, from class: class android.app.Activity
-Interpreter - [DEBUG]: Return data: android.telephony.TelephonyManager@523f0309 ,class android.telephony.TelephonyManager
+Interpreter - [DEBUG]: Return data: android.telephony.TelephonyManager@7fc84be9 ,class android.telephony.TelephonyManager
 Interpreter - [MSG]: Reflction invocation public java.lang.Object android.content.Context.getSystemService(java.lang.String)
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 3
 Taint - [BB]: <android.content.Context: java.lang.Object getSystemService(java.lang.String)>
@@ -679,8 +711,8 @@ PluginManager - [MSG]: Taint Tainted Res: {}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <3 MOV,RESULT,dst=r0,type=java.lang.Object> at de.ecspride.MainActivity/onSaveInstanceState[android.os.Bundle]
-OP_MOV_RESULT - [BB]: Result data: android.telephony.TelephonyManager@523f0309
-OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.TelephonyManager@523f0309, type: java.lang.Object, to [reg 0@MainActivity/onSaveInstanceState]
+OP_MOV_RESULT - [BB]: Result data: android.telephony.TelephonyManager@7fc84be9
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.TelephonyManager@7fc84be9, type: java.lang.Object, to [reg 0@MainActivity/onSaveInstanceState]
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 4
 PluginManager - [MSG]: Taint Tainted Res: {}
 Interpreter - [MSG]: 
@@ -692,7 +724,7 @@ PluginManager - [MSG]: Taint Tainted Res: {}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSubscriberId[], [0]]> at de.ecspride.MainActivity/onSaveInstanceState[android.os.Bundle]
-Interpreter - [MSG]: arg0 obj: android.telephony.TelephonyManager@523f0309
+Interpreter - [MSG]: arg0 obj: android.telephony.TelephonyManager@7fc84be9
 Interpreter - [DEBUG]: Reflction class: class android.telephony.TelephonyManager
 Interpreter - [DEBUG]: Return data: 460004753203051 ,class java.lang.String
 Interpreter - [MSG]: Reflction invocation public java.lang.String android.telephony.TelephonyManager.getSubscriberId()
@@ -751,9 +783,9 @@ Interpreter - [WARN]: NULL CallingCtx!
 Interpreter - [DEBUG]: args: Activity:instance number 1@de.ecspride.MainActivity
 Interpreter - [BB]: Start param from 1
 DVMObject - [BB]: New instance of android.os.Bundle
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@79795976
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@44bc8807
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.os.Bundle
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@79795976
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@44bc8807
 Interpreter - [DEBUG]: args: instance number 2@android.os.Bundle
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_SP_ARGUMENTS -> jump set pc to 1
 Taint - [BB]: Copy 460004753203051 as tainted.
@@ -777,8 +809,8 @@ PluginManager - [MSG]: Taint Tainted Res: {460004753203051=<5 INVOKE,VIRTUAL,ext
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <3 MOV,RESULT,dst=r0,type=java.lang.Object> at de.ecspride.MainActivity/onRestoreInstanceState[android.os.Bundle]
-OP_MOV_RESULT - [BB]: Result data: android.telephony.SmsManager@4682d51f
-OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.SmsManager@4682d51f, type: android.telephony.SmsManager, to [reg 0@MainActivity/onRestoreInstanceState]
+OP_MOV_RESULT - [BB]: Result data: android.telephony.SmsManager@5792bb80
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.SmsManager@5792bb80, type: android.telephony.SmsManager, to [reg 0@MainActivity/onRestoreInstanceState]
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 4
 PluginManager - [MSG]: Taint Tainted Res: {460004753203051=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSubscriberId[], [0]]>}
 Interpreter - [MSG]: 
@@ -812,7 +844,7 @@ PluginManager - [MSG]: Taint Tainted Res: {460004753203051=<5 INVOKE,VIRTUAL,ext
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <8 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]> at de.ecspride.MainActivity/onRestoreInstanceState[android.os.Bundle]
-Interpreter - [MSG]: arg0 obj: android.telephony.SmsManager@4682d51f
+Interpreter - [MSG]: arg0 obj: android.telephony.SmsManager@5792bb80
 Interpreter - [DEBUG]: Reflction class: class android.telephony.SmsManager
 Interpreter - [BB]: arg1@reg1: +49 1234
 Interpreter - [BB]: arg2@reg2: 0
@@ -822,7 +854,7 @@ Interpreter - [BB]: arg4@reg4: 0
 Interpreter - [WARN]: Mismatch type! arg 4, real para type: class patdroid.core.PrimitiveInfo, expected para type: class android.app.PendingIntent
 Interpreter - [BB]: arg5@reg5: 0
 Interpreter - [WARN]: Mismatch type! arg 5, real para type: class patdroid.core.PrimitiveInfo, expected para type: class android.app.PendingIntent
-Interpreter - [DEBUG]: Caller obj: android.telephony.SmsManager@4682d51f, from class: class android.telephony.SmsManager
+Interpreter - [DEBUG]: Caller obj: android.telephony.SmsManager@5792bb80, from class: class android.telephony.SmsManager
 Interpreter - [MSG]: Reflction invocation public void android.telephony.SmsManager.sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 9
 Taint - [BB]: <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>
@@ -856,22 +888,22 @@ newStackFrame - [BB]: New Stack Frame: StackFrame de.ecspride.MainActivity/onRes
 newStackFrame - [BB]: Stack: [StackFrame de.ecspride.MainActivity/onResume[]]
 Interpreter - [MSG]: New chain obj with type de.ecspride.MainActivity
 Activity - [BB]: New instance of de.ecspride.MainActivity
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@6f42ac7
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@6f42ac7
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@6f42ac7
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@6f42ac7
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@6f42ac7
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@6f42ac7
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@6f42ac7
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@6f42ac7
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@78bcf45
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@78bcf45
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@78bcf45
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@78bcf45
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@78bcf45
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@78bcf45
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@78bcf45
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@78bcf45
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@6f42ac7
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@78bcf45
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.Context
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@6f42ac7
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@78bcf45
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.app.Activity
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@6f42ac7
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@78bcf45
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type de.ecspride.MainActivity
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@6f42ac7
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@78bcf45
 Activity - [BB]: New Activity Created with type de.ecspride.MainActivity
 Interpreter - [MSG]: RUN BEGIN de.ecspride.MainActivity/onResume[]
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> run set pc to 0
@@ -882,12 +914,13 @@ Interpreter - [WARN]: NULL CallingCtx!
 Interpreter - [DEBUG]: args: Activity:instance number 1@de.ecspride.MainActivity
 Interpreter - [BB]: Start param from 1
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_SP_ARGUMENTS -> jump set pc to 1
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> exec set pc to 0
 DalvikVM - [BB]: New method call: de.ecspride.MainActivity/<clinit>[]
 DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[]>
 DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
 DalvikVM - [BB]: [2]<0 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(de.ecspride.MainActivity, imei)>
 DalvikVM - [BB]: [3]<0 RETURN,VOID>
-newStackFrame - [BB]: New Stack Frame: StackFrame de.ecspride.MainActivity/<clinit>[], pc 1 stored. 
+newStackFrame - [BB]: New Stack Frame: StackFrame de.ecspride.MainActivity/<clinit>[], pc 0 stored. 
 newStackFrame - [BB]: Stack: [StackFrame de.ecspride.MainActivity/onResume[], StackFrame de.ecspride.MainActivity/<clinit>[]]
 PluginManager - [MSG]: Taint Tainted Res: {}
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> run set pc to 0
@@ -908,22 +941,31 @@ PluginManager - [MSG]: Taint Tainted Res: {}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <2 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(de.ecspride.MainActivity, imei)> at de.ecspride.MainActivity/<clinit>[]
-Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@6f42ac7
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@78bcf45
 Caller: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type de.ecspride.MainActivity
-Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@6f42ac7
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@78bcf45
 class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [WARN]: Type inconsistent! void java.lang.String
 class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: expect sput imei from de.ecspride.MainActivity
-class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: real sput 0 from fu.hao.trust.dvm.DVMClass@10d1841b
+class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: real sput 0 from fu.hao.trust.dvm.DVMClass@64cbbd03
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD -> jump set pc to 3
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@6f42ac7
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@78bcf45
 Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type de.ecspride.MainActivity
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@6f42ac7
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@78bcf45
 PluginManager - [MSG]: Taint Tainted Res: {}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <3 RETURN,VOID> at de.ecspride.MainActivity/<clinit>[]
 class fu.hao.trust.dvm.Interpreter$OP_RETURN_VOID - [DEBUG]: Return void
 DalvikVM - [BB]: Back to the last stack frame.StackFrame de.ecspride.MainActivity/onResume[]
+Interpreter - [MSG]: 
+
+Interpreter - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[2]> at de.ecspride.MainActivity/onResume[]
+Interpreter - [WARN]: NULL CallingCtx!
+DalvikVM - [BB]: ar2 <Activity:instance number 1@de.ecspride.MainActivity, de.ecspride.MainActivity>, <Activity:instance number 1@de.ecspride.MainActivity, de.ecspride.MainActivity>
+Interpreter - [DEBUG]: args: Activity:instance number 1@de.ecspride.MainActivity
+Interpreter - [BB]: Start param from 1
+DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: Taint Tainted Res: {}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <1 HALT,SUPER,extra=[null, [2]]> at de.ecspride.MainActivity/onResume[]
@@ -945,7 +987,7 @@ Interpreter - [MSG]: arg0 obj: Activity:instance number 1@de.ecspride.MainActivi
 Interpreter - [DEBUG]: Reflction class: class android.content.Context
 Interpreter - [BB]: arg1@reg1: phone
 Interpreter - [DEBUG]: Caller obj: Activity:instance number 1@de.ecspride.MainActivity, from class: class android.app.Activity
-Interpreter - [DEBUG]: Return data: android.telephony.TelephonyManager@2b38113d ,class android.telephony.TelephonyManager
+Interpreter - [DEBUG]: Return data: android.telephony.TelephonyManager@7be643a7 ,class android.telephony.TelephonyManager
 Interpreter - [MSG]: Reflction invocation public java.lang.Object android.content.Context.getSystemService(java.lang.String)
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 4
 Taint - [BB]: <android.content.Context: java.lang.Object getSystemService(java.lang.String)>
@@ -954,8 +996,8 @@ PluginManager - [MSG]: Taint Tainted Res: {}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <4 MOV,RESULT,dst=r0,type=java.lang.Object> at de.ecspride.MainActivity/onResume[]
-OP_MOV_RESULT - [BB]: Result data: android.telephony.TelephonyManager@2b38113d
-OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.TelephonyManager@2b38113d, type: java.lang.Object, to [reg 0@MainActivity/onResume]
+OP_MOV_RESULT - [BB]: Result data: android.telephony.TelephonyManager@7be643a7
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.TelephonyManager@7be643a7, type: java.lang.Object, to [reg 0@MainActivity/onResume]
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 5
 PluginManager - [MSG]: Taint Tainted Res: {}
 Interpreter - [MSG]: 
@@ -967,7 +1009,7 @@ PluginManager - [MSG]: Taint Tainted Res: {}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]> at de.ecspride.MainActivity/onResume[]
-Interpreter - [MSG]: arg0 obj: android.telephony.TelephonyManager@2b38113d
+Interpreter - [MSG]: arg0 obj: android.telephony.TelephonyManager@7be643a7
 Interpreter - [DEBUG]: Reflction class: class android.telephony.TelephonyManager
 Interpreter - [DEBUG]: Return data: 359874043116909 ,class java.lang.String
 Interpreter - [MSG]: Reflction invocation public java.lang.String android.telephony.TelephonyManager.getDeviceId()
@@ -988,15 +1030,15 @@ PluginManager - [MSG]: Taint Tainted Res: {[reg 1@MainActivity/onResume]=<6 INVO
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <8 STATIC,SPUT,r0=r1,type=java.lang.Object,extra=(de.ecspride.MainActivity, imei)> at de.ecspride.MainActivity/onResume[]
-Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@6f42ac7
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@78bcf45
 Caller: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type de.ecspride.MainActivity
-Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@6f42ac7
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@78bcf45
 class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: expect sput imei from de.ecspride.MainActivity
-class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: real sput 359874043116909 from fu.hao.trust.dvm.DVMClass@10d1841b
+class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: real sput 359874043116909 from fu.hao.trust.dvm.DVMClass@64cbbd03
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD -> jump set pc to 9
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@6f42ac7
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@78bcf45
 Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type de.ecspride.MainActivity
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@6f42ac7
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@78bcf45
 Taint - [BB]: SPut at [reg 1@MainActivity/onResume]
 PluginManager - [MSG]: Taint Tainted Res: {[reg 1@MainActivity/onResume]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Interpreter - [MSG]: 
@@ -1059,8 +1101,8 @@ PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<6 INVOKE,VIRTUAL,ext
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <4 MOV,RESULT,dst=r0,type=java.lang.Object> at de.ecspride.MainActivity/onPause[]
-OP_MOV_RESULT - [BB]: Result data: android.telephony.SmsManager@6fec725d
-OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.SmsManager@6fec725d, type: android.telephony.SmsManager, to [reg 0@MainActivity/onPause]
+OP_MOV_RESULT - [BB]: Result data: android.telephony.SmsManager@5e6e357
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.SmsManager@5e6e357, type: android.telephony.SmsManager, to [reg 0@MainActivity/onPause]
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 5
 PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Interpreter - [MSG]: 
@@ -1073,32 +1115,32 @@ PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<6 INVOKE,VIRTUAL,ext
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <6 STATIC,SGET,r0=r3,type=java.lang.Object,extra=(de.ecspride.MainActivity, imei)> at de.ecspride.MainActivity/onPause[]
-Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@6f42ac7
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@78bcf45
 Caller: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type de.ecspride.MainActivity
-Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@6f42ac7
-OP_STATIC_GET_FIELD - [DEBUG]: Sget 359874043116909, from fu.hao.trust.dvm.DVMClass@10d1841b
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@78bcf45
+OP_STATIC_GET_FIELD - [DEBUG]: Sget 359874043116909, from fu.hao.trust.dvm.DVMClass@64cbbd03
 OP_STATIC_GET_FIELD - [DEBUG]: Expect sget imei, a java.lang.String from de.ecspride.MainActivity
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD -> jump set pc to 7
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@6f42ac7
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@78bcf45
 Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type de.ecspride.MainActivity
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@6f42ac7
-PluginManager - [MSG]: Taint Tainted Res: {[reg 3@MainActivity/onPause]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.MainActivity at fu.hao.trust.dvm.VMHeap@78bcf45
+PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@MainActivity/onPause]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <7 MOV,REG,dst=r4,r0=r2,type=java.lang.Object> at de.ecspride.MainActivity/onPause[]
 class fu.hao.trust.dvm.Interpreter$OP_MOVE_REG - [DEBUG]: mov 0 to 0
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOVE_REG -> jump set pc to 8
-PluginManager - [MSG]: Taint Tainted Res: {[reg 3@MainActivity/onPause]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@MainActivity/onPause]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <8 MOV,REG,dst=r5,r0=r2,type=java.lang.Object> at de.ecspride.MainActivity/onPause[]
 class fu.hao.trust.dvm.Interpreter$OP_MOVE_REG - [DEBUG]: mov 0 to 0
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOVE_REG -> jump set pc to 9
-PluginManager - [MSG]: Taint Tainted Res: {[reg 3@MainActivity/onPause]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@MainActivity/onPause]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <9 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]> at de.ecspride.MainActivity/onPause[]
-Interpreter - [MSG]: arg0 obj: android.telephony.SmsManager@6fec725d
+Interpreter - [MSG]: arg0 obj: android.telephony.SmsManager@5e6e357
 Interpreter - [DEBUG]: Reflction class: class android.telephony.SmsManager
 Interpreter - [BB]: arg1@reg1: +49 1234
 Interpreter - [BB]: arg2@reg2: 0
@@ -1108,13 +1150,13 @@ Interpreter - [BB]: arg4@reg4: 0
 Interpreter - [WARN]: Mismatch type! arg 4, real para type: class patdroid.core.PrimitiveInfo, expected para type: class android.app.PendingIntent
 Interpreter - [BB]: arg5@reg5: 0
 Interpreter - [WARN]: Mismatch type! arg 5, real para type: class patdroid.core.PrimitiveInfo, expected para type: class android.app.PendingIntent
-Interpreter - [DEBUG]: Caller obj: android.telephony.SmsManager@6fec725d, from class: class android.telephony.SmsManager
+Interpreter - [DEBUG]: Caller obj: android.telephony.SmsManager@5e6e357, from class: class android.telephony.SmsManager
 Interpreter - [MSG]: Reflction invocation public void android.telephony.SmsManager.sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 10
 Taint - [BB]: <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>
 Taint - [BB]: Found a sink invocation. <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>
 Taint - [WARN]: Found a taint sink <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)> leaking data [359874043116909] at reg 3!!!
-PluginManager - [MSG]: Taint Tainted Res: {[reg 3@MainActivity/onPause]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@MainActivity/onPause]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <10 RETURN,VOID> at de.ecspride.MainActivity/onPause[]
@@ -1142,14 +1184,14 @@ newStackFrame - [BB]: New Stack Frame: StackFrame de.ecspride.ApplicationLifecyl
 newStackFrame - [BB]: Stack: [StackFrame de.ecspride.ApplicationLifecyle1/onCreate[]]
 Interpreter - [MSG]: New chain obj with type de.ecspride.ApplicationLifecyle1
 DVMObject - [BB]: New instance of de.ecspride.ApplicationLifecyle1
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.ApplicationLifecyle1 at fu.hao.trust.dvm.VMHeap@7dbe5f6d
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for de.ecspride.ApplicationLifecyle1 at fu.hao.trust.dvm.VMHeap@7dbe5f6d
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Application at fu.hao.trust.dvm.VMHeap@7dbe5f6d
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Application at fu.hao.trust.dvm.VMHeap@7dbe5f6d
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.ApplicationLifecyle1 at fu.hao.trust.dvm.VMHeap@32457189
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for de.ecspride.ApplicationLifecyle1 at fu.hao.trust.dvm.VMHeap@32457189
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Application at fu.hao.trust.dvm.VMHeap@32457189
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Application at fu.hao.trust.dvm.VMHeap@32457189
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.app.Application
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Application at fu.hao.trust.dvm.VMHeap@7dbe5f6d
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Application at fu.hao.trust.dvm.VMHeap@32457189
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type de.ecspride.ApplicationLifecyle1
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.ApplicationLifecyle1 at fu.hao.trust.dvm.VMHeap@7dbe5f6d
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.ApplicationLifecyle1 at fu.hao.trust.dvm.VMHeap@32457189
 Interpreter - [MSG]: RUN BEGIN de.ecspride.ApplicationLifecyle1/onCreate[]
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> run set pc to 0
 Interpreter - [MSG]: 
@@ -1205,7 +1247,7 @@ Interpreter - [MSG]: Reflction invocation public java.lang.String android.teleph
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 7
 Taint - [BB]: <android.telephony.TelephonyManager: java.lang.String getDeviceId()>
 Taint - [WARN]: Found a tainted return value!
-PluginManager - [MSG]: Taint Tainted Res: {[Global RetReg]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Global RetReg]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <7 MOV,RESULT,dst=r1,type=java.lang.Object> at de.ecspride.ApplicationLifecyle1/onCreate[]
@@ -1215,19 +1257,19 @@ OP_MOV_RESULT - [DEBUG]: Result data: 359874043116909, type: java.lang.String, t
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 8
 Taint - [BB]: <6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>
 Taint - [BB]: Add reg 1 due to ret reg.
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 1@ApplicationLifecyle1/onCreate]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {[reg 1@ApplicationLifecyle1/onCreate]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <8 STATIC,SPUT,r0=r1,type=java.lang.Object,extra=(de.ecspride.ApplicationLifecyle1, imei)> at de.ecspride.ApplicationLifecyle1/onCreate[]
-Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle1 at fu.hao.trust.dvm.VMHeap@7dbe5f6d
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle1 at fu.hao.trust.dvm.VMHeap@32457189
 Caller: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type de.ecspride.ApplicationLifecyle1
-Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle1 at fu.hao.trust.dvm.VMHeap@7dbe5f6d
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle1 at fu.hao.trust.dvm.VMHeap@32457189
 class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: expect sput imei from de.ecspride.ApplicationLifecyle1
-class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: real sput 359874043116909 from fu.hao.trust.dvm.DVMClass@7171e245
+class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: real sput 359874043116909 from fu.hao.trust.dvm.DVMClass@67a29ee5
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD -> jump set pc to 9
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle1 at fu.hao.trust.dvm.VMHeap@7dbe5f6d
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle1 at fu.hao.trust.dvm.VMHeap@32457189
 Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type de.ecspride.ApplicationLifecyle1
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle1 at fu.hao.trust.dvm.VMHeap@7dbe5f6d
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle1 at fu.hao.trust.dvm.VMHeap@32457189
 Taint - [BB]: SPut at [reg 1@ApplicationLifecyle1/onCreate]
 PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 1@ApplicationLifecyle1/onCreate]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Interpreter - [MSG]: 
@@ -1290,8 +1332,8 @@ PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<6 INVOKE,VIRTUAL,ext
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <4 MOV,RESULT,dst=r0,type=java.lang.Object> at de.ecspride.MainActivity/onResume[]
-OP_MOV_RESULT - [BB]: Result data: android.telephony.SmsManager@6439ca7b
-OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.SmsManager@6439ca7b, type: android.telephony.SmsManager, to [reg 0@MainActivity/onResume]
+OP_MOV_RESULT - [BB]: Result data: android.telephony.SmsManager@55360888
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.SmsManager@55360888, type: android.telephony.SmsManager, to [reg 0@MainActivity/onResume]
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 5
 PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Interpreter - [MSG]: 
@@ -1304,32 +1346,32 @@ PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<6 INVOKE,VIRTUAL,ext
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <6 STATIC,SGET,r0=r3,type=java.lang.Object,extra=(de.ecspride.ApplicationLifecyle1, imei)> at de.ecspride.MainActivity/onResume[]
-Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle1 at fu.hao.trust.dvm.VMHeap@7dbe5f6d
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle1 at fu.hao.trust.dvm.VMHeap@32457189
 Caller: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type de.ecspride.ApplicationLifecyle1
-Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle1 at fu.hao.trust.dvm.VMHeap@7dbe5f6d
-OP_STATIC_GET_FIELD - [DEBUG]: Sget 359874043116909, from fu.hao.trust.dvm.DVMClass@7171e245
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle1 at fu.hao.trust.dvm.VMHeap@32457189
+OP_STATIC_GET_FIELD - [DEBUG]: Sget 359874043116909, from fu.hao.trust.dvm.DVMClass@67a29ee5
 OP_STATIC_GET_FIELD - [DEBUG]: Expect sget imei, a java.lang.String from de.ecspride.ApplicationLifecyle1
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD -> jump set pc to 7
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle1 at fu.hao.trust.dvm.VMHeap@7dbe5f6d
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle1 at fu.hao.trust.dvm.VMHeap@32457189
 Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type de.ecspride.ApplicationLifecyle1
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle1 at fu.hao.trust.dvm.VMHeap@7dbe5f6d
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@MainActivity/onResume]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle1 at fu.hao.trust.dvm.VMHeap@32457189
+PluginManager - [MSG]: Taint Tainted Res: {[reg 3@MainActivity/onResume]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <7 MOV,REG,dst=r4,r0=r2,type=java.lang.Object> at de.ecspride.MainActivity/onResume[]
 class fu.hao.trust.dvm.Interpreter$OP_MOVE_REG - [DEBUG]: mov 0 to 0
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOVE_REG -> jump set pc to 8
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@MainActivity/onResume]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {[reg 3@MainActivity/onResume]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <8 MOV,REG,dst=r5,r0=r2,type=java.lang.Object> at de.ecspride.MainActivity/onResume[]
 class fu.hao.trust.dvm.Interpreter$OP_MOVE_REG - [DEBUG]: mov 0 to 0
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOVE_REG -> jump set pc to 9
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@MainActivity/onResume]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {[reg 3@MainActivity/onResume]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <9 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]> at de.ecspride.MainActivity/onResume[]
-Interpreter - [MSG]: arg0 obj: android.telephony.SmsManager@6439ca7b
+Interpreter - [MSG]: arg0 obj: android.telephony.SmsManager@55360888
 Interpreter - [DEBUG]: Reflction class: class android.telephony.SmsManager
 Interpreter - [BB]: arg1@reg1: +49 1234
 Interpreter - [BB]: arg2@reg2: 0
@@ -1339,13 +1381,13 @@ Interpreter - [BB]: arg4@reg4: 0
 Interpreter - [WARN]: Mismatch type! arg 4, real para type: class patdroid.core.PrimitiveInfo, expected para type: class android.app.PendingIntent
 Interpreter - [BB]: arg5@reg5: 0
 Interpreter - [WARN]: Mismatch type! arg 5, real para type: class patdroid.core.PrimitiveInfo, expected para type: class android.app.PendingIntent
-Interpreter - [DEBUG]: Caller obj: android.telephony.SmsManager@6439ca7b, from class: class android.telephony.SmsManager
+Interpreter - [DEBUG]: Caller obj: android.telephony.SmsManager@55360888, from class: class android.telephony.SmsManager
 Interpreter - [MSG]: Reflction invocation public void android.telephony.SmsManager.sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 10
 Taint - [BB]: <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>
 Taint - [BB]: Found a sink invocation. <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>
 Taint - [WARN]: Found a taint sink <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)> leaking data [359874043116909] at reg 3!!!
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@MainActivity/onResume]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {[reg 3@MainActivity/onResume]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <10 RETURN,VOID> at de.ecspride.MainActivity/onResume[]
@@ -1373,14 +1415,14 @@ newStackFrame - [BB]: New Stack Frame: StackFrame de.ecspride.ApplicationLifecyl
 newStackFrame - [BB]: Stack: [StackFrame de.ecspride.ApplicationLifecyle2/onCreate[]]
 Interpreter - [MSG]: New chain obj with type de.ecspride.ApplicationLifecyle2
 DVMObject - [BB]: New instance of de.ecspride.ApplicationLifecyle2
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.ApplicationLifecyle2 at fu.hao.trust.dvm.VMHeap@663612cc
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for de.ecspride.ApplicationLifecyle2 at fu.hao.trust.dvm.VMHeap@663612cc
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Application at fu.hao.trust.dvm.VMHeap@663612cc
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Application at fu.hao.trust.dvm.VMHeap@663612cc
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.ApplicationLifecyle2 at fu.hao.trust.dvm.VMHeap@68efb2ab
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for de.ecspride.ApplicationLifecyle2 at fu.hao.trust.dvm.VMHeap@68efb2ab
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Application at fu.hao.trust.dvm.VMHeap@68efb2ab
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Application at fu.hao.trust.dvm.VMHeap@68efb2ab
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.app.Application
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Application at fu.hao.trust.dvm.VMHeap@663612cc
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Application at fu.hao.trust.dvm.VMHeap@68efb2ab
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type de.ecspride.ApplicationLifecyle2
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.ApplicationLifecyle2 at fu.hao.trust.dvm.VMHeap@663612cc
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.ApplicationLifecyle2 at fu.hao.trust.dvm.VMHeap@68efb2ab
 Interpreter - [MSG]: RUN BEGIN de.ecspride.ApplicationLifecyle2/onCreate[]
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> run set pc to 0
 Interpreter - [MSG]: 
@@ -1509,8 +1551,8 @@ PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<6 INVOKE,VIRTUAL,ext
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <3 MOV,RESULT,dst=r0,type=java.lang.Object> at de.ecspride.ApplicationLifecyle2/onLowMemory[]
-OP_MOV_RESULT - [BB]: Result data: android.telephony.SmsManager@66d7fd2e
-OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.SmsManager@66d7fd2e, type: android.telephony.SmsManager, to [reg 0@ApplicationLifecyle2/onLowMemory]
+OP_MOV_RESULT - [BB]: Result data: android.telephony.SmsManager@174f19bc
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.SmsManager@174f19bc, type: android.telephony.SmsManager, to [reg 0@ApplicationLifecyle2/onLowMemory]
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 4
 PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Interpreter - [MSG]: 
@@ -1528,23 +1570,23 @@ class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: fieldinfo de.ec
 class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: 359874043116909
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD -> jump set pc to 6
 Taint - [BB]: Add [reg 3@ApplicationLifecyle2/onLowMemory] as tainted due to field 359874043116909
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@ApplicationLifecyle2/onLowMemory]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {[reg 3@ApplicationLifecyle2/onLowMemory]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <6 MOV,REG,dst=r4,r0=r2,type=java.lang.Object> at de.ecspride.ApplicationLifecyle2/onLowMemory[]
 class fu.hao.trust.dvm.Interpreter$OP_MOVE_REG - [DEBUG]: mov 0 to 0
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOVE_REG -> jump set pc to 7
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@ApplicationLifecyle2/onLowMemory]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {[reg 3@ApplicationLifecyle2/onLowMemory]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <7 MOV,REG,dst=r5,r0=r2,type=java.lang.Object> at de.ecspride.ApplicationLifecyle2/onLowMemory[]
 class fu.hao.trust.dvm.Interpreter$OP_MOVE_REG - [DEBUG]: mov 0 to 0
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOVE_REG -> jump set pc to 8
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@ApplicationLifecyle2/onLowMemory]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {[reg 3@ApplicationLifecyle2/onLowMemory]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <8 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]> at de.ecspride.ApplicationLifecyle2/onLowMemory[]
-Interpreter - [MSG]: arg0 obj: android.telephony.SmsManager@66d7fd2e
+Interpreter - [MSG]: arg0 obj: android.telephony.SmsManager@174f19bc
 Interpreter - [DEBUG]: Reflction class: class android.telephony.SmsManager
 Interpreter - [BB]: arg1@reg1: +49 1234
 Interpreter - [BB]: arg2@reg2: 0
@@ -1554,13 +1596,13 @@ Interpreter - [BB]: arg4@reg4: 0
 Interpreter - [WARN]: Mismatch type! arg 4, real para type: class patdroid.core.PrimitiveInfo, expected para type: class android.app.PendingIntent
 Interpreter - [BB]: arg5@reg5: 0
 Interpreter - [WARN]: Mismatch type! arg 5, real para type: class patdroid.core.PrimitiveInfo, expected para type: class android.app.PendingIntent
-Interpreter - [DEBUG]: Caller obj: android.telephony.SmsManager@66d7fd2e, from class: class android.telephony.SmsManager
+Interpreter - [DEBUG]: Caller obj: android.telephony.SmsManager@174f19bc, from class: class android.telephony.SmsManager
 Interpreter - [MSG]: Reflction invocation public void android.telephony.SmsManager.sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 9
 Taint - [BB]: <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>
 Taint - [BB]: Found a sink invocation. <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>
 Taint - [WARN]: Found a taint sink <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)> leaking data [359874043116909] at reg 3!!!
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@ApplicationLifecyle2/onLowMemory]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {[reg 3@ApplicationLifecyle2/onLowMemory]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <9 RETURN,VOID> at de.ecspride.ApplicationLifecyle2/onLowMemory[]
@@ -1590,14 +1632,14 @@ newStackFrame - [BB]: New Stack Frame: StackFrame de.ecspride.ContentProvider/on
 newStackFrame - [BB]: Stack: [StackFrame de.ecspride.ContentProvider/onCreate[]]
 Interpreter - [MSG]: New chain obj with type de.ecspride.ContentProvider
 DVMObject - [BB]: New instance of de.ecspride.ContentProvider
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.ContentProvider at fu.hao.trust.dvm.VMHeap@6c0b60c5
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for de.ecspride.ContentProvider at fu.hao.trust.dvm.VMHeap@6c0b60c5
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContentProvider at fu.hao.trust.dvm.VMHeap@6c0b60c5
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.ContentProvider at fu.hao.trust.dvm.VMHeap@6c0b60c5
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.ContentProvider at fu.hao.trust.dvm.VMHeap@7ce28e77
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for de.ecspride.ContentProvider at fu.hao.trust.dvm.VMHeap@7ce28e77
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContentProvider at fu.hao.trust.dvm.VMHeap@7ce28e77
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.ContentProvider at fu.hao.trust.dvm.VMHeap@7ce28e77
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.ContentProvider
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContentProvider at fu.hao.trust.dvm.VMHeap@6c0b60c5
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContentProvider at fu.hao.trust.dvm.VMHeap@7ce28e77
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type de.ecspride.ContentProvider
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.ContentProvider at fu.hao.trust.dvm.VMHeap@6c0b60c5
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.ContentProvider at fu.hao.trust.dvm.VMHeap@7ce28e77
 Interpreter - [MSG]: RUN BEGIN de.ecspride.ContentProvider/onCreate[]
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> run set pc to 0
 Interpreter - [MSG]: 
@@ -1664,7 +1706,7 @@ Interpreter - [MSG]: Reflction invocation public java.lang.String android.teleph
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 8
 Taint - [BB]: <android.telephony.TelephonyManager: java.lang.String getDeviceId()>
 Taint - [WARN]: Found a tainted return value!
-PluginManager - [MSG]: Taint Tainted Res: {[Global RetReg]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Global RetReg]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <8 MOV,RESULT,dst=r1,type=java.lang.Object> at de.ecspride.ContentProvider/onCreate[]
@@ -1678,20 +1720,20 @@ PluginManager - [MSG]: Taint Tainted Res: {[reg 1@ContentProvider/onCreate]=<7 I
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <9 STATIC,SPUT,r0=r1,type=java.lang.Object,extra=(de.ecspride.ApplicationLifecyle3, imei)> at de.ecspride.ContentProvider/onCreate[]
-Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle3 at fu.hao.trust.dvm.VMHeap@6c0b60c5
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for de.ecspride.ApplicationLifecyle3 at fu.hao.trust.dvm.VMHeap@6c0b60c5
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Application at fu.hao.trust.dvm.VMHeap@6c0b60c5
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Application at fu.hao.trust.dvm.VMHeap@6c0b60c5
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle3 at fu.hao.trust.dvm.VMHeap@7ce28e77
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for de.ecspride.ApplicationLifecyle3 at fu.hao.trust.dvm.VMHeap@7ce28e77
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Application at fu.hao.trust.dvm.VMHeap@7ce28e77
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Application at fu.hao.trust.dvm.VMHeap@7ce28e77
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.app.Application
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Application at fu.hao.trust.dvm.VMHeap@6c0b60c5
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Application at fu.hao.trust.dvm.VMHeap@7ce28e77
 Caller: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type de.ecspride.ApplicationLifecyle3
-Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle3 at fu.hao.trust.dvm.VMHeap@6c0b60c5
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle3 at fu.hao.trust.dvm.VMHeap@7ce28e77
 class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: expect sput imei from de.ecspride.ApplicationLifecyle3
-class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: real sput 359874043116909 from fu.hao.trust.dvm.DVMClass@55cd7d00
+class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: real sput 359874043116909 from fu.hao.trust.dvm.DVMClass@7472e235
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD -> jump set pc to 10
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle3 at fu.hao.trust.dvm.VMHeap@6c0b60c5
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle3 at fu.hao.trust.dvm.VMHeap@7ce28e77
 Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type de.ecspride.ApplicationLifecyle3
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle3 at fu.hao.trust.dvm.VMHeap@6c0b60c5
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle3 at fu.hao.trust.dvm.VMHeap@7ce28e77
 Taint - [BB]: SPut at [reg 1@ContentProvider/onCreate]
 PluginManager - [MSG]: Taint Tainted Res: {[reg 1@ContentProvider/onCreate]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Interpreter - [MSG]: 
@@ -1794,7 +1836,7 @@ Interpreter - [MSG]: Reflction invocation public java.lang.String android.teleph
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 8
 Taint - [BB]: <android.telephony.TelephonyManager: java.lang.String getDeviceId()>
 Taint - [WARN]: Found a tainted return value!
-PluginManager - [MSG]: Taint Tainted Res: {[Global RetReg]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Global RetReg]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <8 MOV,RESULT,dst=r1,type=java.lang.Object> at de.ecspride.ContentProvider/onCreate[]
@@ -1804,19 +1846,19 @@ OP_MOV_RESULT - [DEBUG]: Result data: 359874043116909, type: java.lang.String, t
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 9
 Taint - [BB]: <7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>
 Taint - [BB]: Add reg 1 due to ret reg.
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 1@ContentProvider/onCreate]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {[reg 1@ContentProvider/onCreate]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <9 STATIC,SPUT,r0=r1,type=java.lang.Object,extra=(de.ecspride.ApplicationLifecyle3, imei)> at de.ecspride.ContentProvider/onCreate[]
-Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle3 at fu.hao.trust.dvm.VMHeap@6c0b60c5
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle3 at fu.hao.trust.dvm.VMHeap@7ce28e77
 Caller: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type de.ecspride.ApplicationLifecyle3
-Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle3 at fu.hao.trust.dvm.VMHeap@6c0b60c5
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle3 at fu.hao.trust.dvm.VMHeap@7ce28e77
 class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: expect sput imei from de.ecspride.ApplicationLifecyle3
-class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: real sput 359874043116909 from fu.hao.trust.dvm.DVMClass@55cd7d00
+class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: real sput 359874043116909 from fu.hao.trust.dvm.DVMClass@7472e235
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD -> jump set pc to 10
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle3 at fu.hao.trust.dvm.VMHeap@6c0b60c5
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle3 at fu.hao.trust.dvm.VMHeap@7ce28e77
 Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type de.ecspride.ApplicationLifecyle3
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle3 at fu.hao.trust.dvm.VMHeap@6c0b60c5
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle3 at fu.hao.trust.dvm.VMHeap@7ce28e77
 Taint - [BB]: SPut at [reg 1@ContentProvider/onCreate]
 PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 1@ContentProvider/onCreate]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Interpreter - [MSG]: 
@@ -1888,8 +1930,8 @@ PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<7 INVOKE,VIRTUAL,ext
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <4 MOV,RESULT,dst=r0,type=java.lang.Object> at de.ecspride.ApplicationLifecyle3/onCreate[]
-OP_MOV_RESULT - [BB]: Result data: android.telephony.SmsManager@53220775
-OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.SmsManager@53220775, type: android.telephony.SmsManager, to [reg 0@ApplicationLifecyle3/onCreate]
+OP_MOV_RESULT - [BB]: Result data: android.telephony.SmsManager@1cbc50a2
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.SmsManager@1cbc50a2, type: android.telephony.SmsManager, to [reg 0@ApplicationLifecyle3/onCreate]
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 5
 PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Interpreter - [MSG]: 
@@ -1902,16 +1944,16 @@ PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<7 INVOKE,VIRTUAL,ext
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <6 STATIC,SGET,r0=r3,type=java.lang.Object,extra=(de.ecspride.ApplicationLifecyle3, imei)> at de.ecspride.ApplicationLifecyle3/onCreate[]
-Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle3 at fu.hao.trust.dvm.VMHeap@6c0b60c5
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle3 at fu.hao.trust.dvm.VMHeap@7ce28e77
 Caller: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type de.ecspride.ApplicationLifecyle3
-Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle3 at fu.hao.trust.dvm.VMHeap@6c0b60c5
-OP_STATIC_GET_FIELD - [DEBUG]: Sget 359874043116909, from fu.hao.trust.dvm.DVMClass@55cd7d00
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle3 at fu.hao.trust.dvm.VMHeap@7ce28e77
+OP_STATIC_GET_FIELD - [DEBUG]: Sget 359874043116909, from fu.hao.trust.dvm.DVMClass@7472e235
 OP_STATIC_GET_FIELD - [DEBUG]: Expect sget imei, a java.lang.String from de.ecspride.ApplicationLifecyle3
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_STATIC_GET_FIELD -> jump set pc to 7
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle3 at fu.hao.trust.dvm.VMHeap@6c0b60c5
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle3 at fu.hao.trust.dvm.VMHeap@7ce28e77
 Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type de.ecspride.ApplicationLifecyle3
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle3 at fu.hao.trust.dvm.VMHeap@6c0b60c5
-PluginManager - [MSG]: Taint Tainted Res: {[reg 3@ApplicationLifecyle3/onCreate]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle3 at fu.hao.trust.dvm.VMHeap@7ce28e77
+PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@ApplicationLifecyle3/onCreate]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <7 MOV,REG,dst=r4,r0=r2,type=java.lang.Object> at de.ecspride.ApplicationLifecyle3/onCreate[]
@@ -1923,11 +1965,11 @@ Interpreter - [MSG]:
 Interpreter - [MSG]: <8 MOV,REG,dst=r5,r0=r2,type=java.lang.Object> at de.ecspride.ApplicationLifecyle3/onCreate[]
 class fu.hao.trust.dvm.Interpreter$OP_MOVE_REG - [DEBUG]: mov 0 to 0
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOVE_REG -> jump set pc to 9
-PluginManager - [MSG]: Taint Tainted Res: {[reg 3@ApplicationLifecyle3/onCreate]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@ApplicationLifecyle3/onCreate]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <9 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]> at de.ecspride.ApplicationLifecyle3/onCreate[]
-Interpreter - [MSG]: arg0 obj: android.telephony.SmsManager@53220775
+Interpreter - [MSG]: arg0 obj: android.telephony.SmsManager@1cbc50a2
 Interpreter - [DEBUG]: Reflction class: class android.telephony.SmsManager
 Interpreter - [BB]: arg1@reg1: +49 1234
 Interpreter - [BB]: arg2@reg2: 0
@@ -1937,7 +1979,7 @@ Interpreter - [BB]: arg4@reg4: 0
 Interpreter - [WARN]: Mismatch type! arg 4, real para type: class patdroid.core.PrimitiveInfo, expected para type: class android.app.PendingIntent
 Interpreter - [BB]: arg5@reg5: 0
 Interpreter - [WARN]: Mismatch type! arg 5, real para type: class patdroid.core.PrimitiveInfo, expected para type: class android.app.PendingIntent
-Interpreter - [DEBUG]: Caller obj: android.telephony.SmsManager@53220775, from class: class android.telephony.SmsManager
+Interpreter - [DEBUG]: Caller obj: android.telephony.SmsManager@1cbc50a2, from class: class android.telephony.SmsManager
 Interpreter - [MSG]: Reflction invocation public void android.telephony.SmsManager.sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 10
 Taint - [BB]: <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>
@@ -1971,14 +2013,14 @@ newStackFrame - [BB]: New Stack Frame: StackFrame de.ecspride.ContentProvider/on
 newStackFrame - [BB]: Stack: [StackFrame de.ecspride.ContentProvider/onCreate[]]
 Interpreter - [MSG]: New chain obj with type de.ecspride.ContentProvider
 DVMObject - [BB]: New instance of de.ecspride.ContentProvider
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.ContentProvider at fu.hao.trust.dvm.VMHeap@2a21ecee
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for de.ecspride.ContentProvider at fu.hao.trust.dvm.VMHeap@2a21ecee
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContentProvider at fu.hao.trust.dvm.VMHeap@2a21ecee
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.ContentProvider at fu.hao.trust.dvm.VMHeap@2a21ecee
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.ContentProvider at fu.hao.trust.dvm.VMHeap@b49b29d
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for de.ecspride.ContentProvider at fu.hao.trust.dvm.VMHeap@b49b29d
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContentProvider at fu.hao.trust.dvm.VMHeap@b49b29d
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.ContentProvider at fu.hao.trust.dvm.VMHeap@b49b29d
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.ContentProvider
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContentProvider at fu.hao.trust.dvm.VMHeap@2a21ecee
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContentProvider at fu.hao.trust.dvm.VMHeap@b49b29d
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type de.ecspride.ContentProvider
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.ContentProvider at fu.hao.trust.dvm.VMHeap@2a21ecee
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.ContentProvider at fu.hao.trust.dvm.VMHeap@b49b29d
 Interpreter - [MSG]: RUN BEGIN de.ecspride.ContentProvider/onCreate[]
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> run set pc to 0
 Interpreter - [MSG]: 
@@ -2060,20 +2102,20 @@ PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<7 INVOKE,VIRTUAL,ext
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <9 STATIC,SPUT,r0=r1,type=java.lang.Object,extra=(de.ecspride.ApplicationLifecyle3, imei)> at de.ecspride.ContentProvider/onCreate[]
-Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle3 at fu.hao.trust.dvm.VMHeap@2a21ecee
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for de.ecspride.ApplicationLifecyle3 at fu.hao.trust.dvm.VMHeap@2a21ecee
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Application at fu.hao.trust.dvm.VMHeap@2a21ecee
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Application at fu.hao.trust.dvm.VMHeap@2a21ecee
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle3 at fu.hao.trust.dvm.VMHeap@b49b29d
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for de.ecspride.ApplicationLifecyle3 at fu.hao.trust.dvm.VMHeap@b49b29d
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Application at fu.hao.trust.dvm.VMHeap@b49b29d
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Application at fu.hao.trust.dvm.VMHeap@b49b29d
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.app.Application
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Application at fu.hao.trust.dvm.VMHeap@2a21ecee
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Application at fu.hao.trust.dvm.VMHeap@b49b29d
 Caller: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type de.ecspride.ApplicationLifecyle3
-Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle3 at fu.hao.trust.dvm.VMHeap@2a21ecee
+Caller@4: func@fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle3 at fu.hao.trust.dvm.VMHeap@b49b29d
 class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: expect sput imei from de.ecspride.ApplicationLifecyle3
-class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: real sput 359874043116909 from fu.hao.trust.dvm.DVMClass@37e98b70
+class fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD - [DEBUG]: real sput 359874043116909 from fu.hao.trust.dvm.DVMClass@4cc6882c
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_STATIC_PUT_FIELD -> jump set pc to 10
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle3 at fu.hao.trust.dvm.VMHeap@2a21ecee
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle3 at fu.hao.trust.dvm.VMHeap@b49b29d
 Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type de.ecspride.ApplicationLifecyle3
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle3 at fu.hao.trust.dvm.VMHeap@2a21ecee
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.ApplicationLifecyle3 at fu.hao.trust.dvm.VMHeap@b49b29d
 Taint - [BB]: SPut at [reg 1@ContentProvider/onCreate]
 PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 1@ContentProvider/onCreate]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Interpreter - [MSG]: 
@@ -2120,14 +2162,14 @@ newStackFrame - [BB]: New Stack Frame: StackFrame de.ecspride.TestReceiver/onRec
 newStackFrame - [BB]: Stack: [StackFrame de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]]
 Interpreter - [MSG]: New chain obj with type de.ecspride.TestReceiver
 DVMObject - [BB]: New instance of de.ecspride.TestReceiver
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.TestReceiver at fu.hao.trust.dvm.VMHeap@28a79601
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for de.ecspride.TestReceiver at fu.hao.trust.dvm.VMHeap@28a79601
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.BroadcastReceiver at fu.hao.trust.dvm.VMHeap@28a79601
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.BroadcastReceiver at fu.hao.trust.dvm.VMHeap@28a79601
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.TestReceiver at fu.hao.trust.dvm.VMHeap@545c8a07
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for de.ecspride.TestReceiver at fu.hao.trust.dvm.VMHeap@545c8a07
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.BroadcastReceiver at fu.hao.trust.dvm.VMHeap@545c8a07
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.BroadcastReceiver at fu.hao.trust.dvm.VMHeap@545c8a07
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.BroadcastReceiver
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.BroadcastReceiver at fu.hao.trust.dvm.VMHeap@28a79601
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.BroadcastReceiver at fu.hao.trust.dvm.VMHeap@545c8a07
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type de.ecspride.TestReceiver
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.TestReceiver at fu.hao.trust.dvm.VMHeap@28a79601
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.TestReceiver at fu.hao.trust.dvm.VMHeap@545c8a07
 Interpreter - [MSG]: RUN BEGIN de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> run set pc to 0
 Interpreter - [MSG]: 
@@ -2137,20 +2179,20 @@ Interpreter - [WARN]: NULL CallingCtx!
 Interpreter - [DEBUG]: args: instance number 1@de.ecspride.TestReceiver
 Interpreter - [BB]: Start param from 1
 DVMObject - [BB]: New instance of android.content.Context
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@28a79601
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@28a79601
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@28a79601
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@28a79601
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@545c8a07
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@545c8a07
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@545c8a07
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@545c8a07
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@28a79601
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@545c8a07
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.content.Context
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@28a79601
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@545c8a07
 Interpreter - [DEBUG]: args: instance number 1@android.content.Context
 DVMObject - [BB]: New instance of android.content.Intent
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.content.Intent at fu.hao.trust.dvm.VMHeap@28a79601
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Intent at fu.hao.trust.dvm.VMHeap@28a79601
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.content.Intent at fu.hao.trust.dvm.VMHeap@545c8a07
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Intent at fu.hao.trust.dvm.VMHeap@545c8a07
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.content.Intent
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.content.Intent at fu.hao.trust.dvm.VMHeap@28a79601
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.content.Intent at fu.hao.trust.dvm.VMHeap@545c8a07
 Interpreter - [DEBUG]: args: instance number 1@android.content.Intent
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_SP_ARGUMENTS -> jump set pc to 1
 PluginManager - [MSG]: Taint Tainted Res: {}
@@ -2251,8 +2293,8 @@ PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<6 INVOKE,VIRTUAL,ext
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <12 MOV,RESULT,dst=r0,type=java.lang.Object> at de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
-OP_MOV_RESULT - [BB]: Result data: android.telephony.SmsManager@493efd49
-OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.SmsManager@493efd49, type: android.telephony.SmsManager, to [reg 0@TestReceiver/onReceive]
+OP_MOV_RESULT - [BB]: Result data: android.telephony.SmsManager@5cda6d78
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.SmsManager@5cda6d78, type: android.telephony.SmsManager, to [reg 0@TestReceiver/onReceive]
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 13
 PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 3@TestReceiver/onReceive]=<6 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
 Interpreter - [MSG]: 
@@ -2278,7 +2320,7 @@ PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<6 INVOKE,VIRTUAL,ext
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <16 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]> at de.ecspride.TestReceiver/onReceive[android.content.Context, android.content.Intent]
-Interpreter - [MSG]: arg0 obj: android.telephony.SmsManager@493efd49
+Interpreter - [MSG]: arg0 obj: android.telephony.SmsManager@5cda6d78
 Interpreter - [DEBUG]: Reflction class: class android.telephony.SmsManager
 Interpreter - [BB]: arg1@reg1: +49 1234
 Interpreter - [BB]: arg2@reg2: 0
@@ -2288,7 +2330,7 @@ Interpreter - [BB]: arg4@reg4: 0
 Interpreter - [WARN]: Mismatch type! arg 4, real para type: class patdroid.core.PrimitiveInfo, expected para type: class android.app.PendingIntent
 Interpreter - [BB]: arg5@reg5: 0
 Interpreter - [WARN]: Mismatch type! arg 5, real para type: class patdroid.core.PrimitiveInfo, expected para type: class android.app.PendingIntent
-Interpreter - [DEBUG]: Caller obj: android.telephony.SmsManager@493efd49, from class: class android.telephony.SmsManager
+Interpreter - [DEBUG]: Caller obj: android.telephony.SmsManager@5cda6d78, from class: class android.telephony.SmsManager
 Interpreter - [MSG]: Reflction invocation public void android.telephony.SmsManager.sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 17
 Taint - [BB]: <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>
@@ -2322,14 +2364,14 @@ newStackFrame - [BB]: New Stack Frame: StackFrame de.ecspride.MainService/onStar
 newStackFrame - [BB]: Stack: [StackFrame de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]]
 Interpreter - [MSG]: New chain obj with type de.ecspride.MainService
 DVMObject - [BB]: New instance of de.ecspride.MainService
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainService at fu.hao.trust.dvm.VMHeap@4e42a821
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for de.ecspride.MainService at fu.hao.trust.dvm.VMHeap@4e42a821
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Service at fu.hao.trust.dvm.VMHeap@4e42a821
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Service at fu.hao.trust.dvm.VMHeap@4e42a821
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainService at fu.hao.trust.dvm.VMHeap@159c329c
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for de.ecspride.MainService at fu.hao.trust.dvm.VMHeap@159c329c
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Service at fu.hao.trust.dvm.VMHeap@159c329c
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Service at fu.hao.trust.dvm.VMHeap@159c329c
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.app.Service
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Service at fu.hao.trust.dvm.VMHeap@4e42a821
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Service at fu.hao.trust.dvm.VMHeap@159c329c
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type de.ecspride.MainService
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainService at fu.hao.trust.dvm.VMHeap@4e42a821
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainService at fu.hao.trust.dvm.VMHeap@159c329c
 Interpreter - [MSG]: RUN BEGIN de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> run set pc to 0
 Interpreter - [MSG]: 
@@ -2339,10 +2381,10 @@ Interpreter - [WARN]: NULL CallingCtx!
 Interpreter - [DEBUG]: args: instance number 1@de.ecspride.MainService
 Interpreter - [BB]: Start param from 1
 DVMObject - [BB]: New instance of android.content.Intent
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.content.Intent at fu.hao.trust.dvm.VMHeap@4e42a821
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Intent at fu.hao.trust.dvm.VMHeap@4e42a821
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.content.Intent at fu.hao.trust.dvm.VMHeap@159c329c
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Intent at fu.hao.trust.dvm.VMHeap@159c329c
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.content.Intent
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.content.Intent at fu.hao.trust.dvm.VMHeap@4e42a821
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.content.Intent at fu.hao.trust.dvm.VMHeap@159c329c
 Interpreter - [DEBUG]: args: instance number 1@android.content.Intent
 Unknown - [BB]: Unknown created!
 Interpreter - [DEBUG]: args: [Unknown var, type: int]
@@ -2388,7 +2430,7 @@ Interpreter - [MSG]: Reflction invocation public java.lang.String android.teleph
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 6
 Taint - [BB]: <android.telephony.TelephonyManager: java.lang.String getSimSerialNumber()>
 Taint - [WARN]: Found a tainted return value!
-PluginManager - [MSG]: Taint Tainted Res: {[Global RetReg]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>, 89014103211501404960=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {89014103211501404960=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>, [Global RetReg]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <6 MOV,RESULT,dst=r1,type=java.lang.Object> at de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]
@@ -2398,7 +2440,7 @@ OP_MOV_RESULT - [DEBUG]: Result data: 89014103211501404960, type: java.lang.Stri
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 7
 Taint - [BB]: <5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>
 Taint - [BB]: Add reg 1 due to ret reg.
-PluginManager - [MSG]: Taint Tainted Res: {89014103211501404960=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>, [reg 1@MainService/onStartCommand]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {[reg 1@MainService/onStartCommand]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>, 89014103211501404960=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <7 INSTANCE,IPUT,r0=r2,r1=r1,type=java.lang.Object,extra=de.ecspride.MainService.secret> at de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]
@@ -2470,8 +2512,8 @@ PluginManager - [MSG]: Taint Tainted Res: {89014103211501404960=<5 INVOKE,VIRTUA
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <3 MOV,RESULT,dst=r0,type=java.lang.Object> at de.ecspride.MainService/onLowMemory[]
-OP_MOV_RESULT - [BB]: Result data: android.telephony.SmsManager@517e2f02
-OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.SmsManager@517e2f02, type: android.telephony.SmsManager, to [reg 0@MainService/onLowMemory]
+OP_MOV_RESULT - [BB]: Result data: android.telephony.SmsManager@6afff988
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.SmsManager@6afff988, type: android.telephony.SmsManager, to [reg 0@MainService/onLowMemory]
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOV_RESULT -> jump set pc to 4
 PluginManager - [MSG]: Taint Tainted Res: {89014103211501404960=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>}
 Interpreter - [MSG]: 
@@ -2489,23 +2531,23 @@ class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [BB]: fieldinfo de.ec
 class fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: 89014103211501404960
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_INSTANCE_GET_FIELD -> jump set pc to 6
 Taint - [BB]: Add [reg 3@MainService/onLowMemory] as tainted due to field 89014103211501404960
-PluginManager - [MSG]: Taint Tainted Res: {89014103211501404960=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>, [reg 3@MainService/onLowMemory]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {[reg 3@MainService/onLowMemory]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>, 89014103211501404960=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <6 MOV,REG,dst=r4,r0=r2,type=java.lang.Object> at de.ecspride.MainService/onLowMemory[]
 class fu.hao.trust.dvm.Interpreter$OP_MOVE_REG - [DEBUG]: mov 0 to 0
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOVE_REG -> jump set pc to 7
-PluginManager - [MSG]: Taint Tainted Res: {89014103211501404960=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>, [reg 3@MainService/onLowMemory]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {[reg 3@MainService/onLowMemory]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>, 89014103211501404960=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <7 MOV,REG,dst=r5,r0=r2,type=java.lang.Object> at de.ecspride.MainService/onLowMemory[]
 class fu.hao.trust.dvm.Interpreter$OP_MOVE_REG - [DEBUG]: mov 0 to 0
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter$OP_MOVE_REG -> jump set pc to 8
-PluginManager - [MSG]: Taint Tainted Res: {89014103211501404960=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>, [reg 3@MainService/onLowMemory]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {[reg 3@MainService/onLowMemory]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>, 89014103211501404960=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <8 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]> at de.ecspride.MainService/onLowMemory[]
-Interpreter - [MSG]: arg0 obj: android.telephony.SmsManager@517e2f02
+Interpreter - [MSG]: arg0 obj: android.telephony.SmsManager@6afff988
 Interpreter - [DEBUG]: Reflction class: class android.telephony.SmsManager
 Interpreter - [BB]: arg1@reg1: +49 1234
 Interpreter - [BB]: arg2@reg2: 0
@@ -2515,13 +2557,13 @@ Interpreter - [BB]: arg4@reg4: 0
 Interpreter - [WARN]: Mismatch type! arg 4, real para type: class patdroid.core.PrimitiveInfo, expected para type: class android.app.PendingIntent
 Interpreter - [BB]: arg5@reg5: 0
 Interpreter - [WARN]: Mismatch type! arg 5, real para type: class patdroid.core.PrimitiveInfo, expected para type: class android.app.PendingIntent
-Interpreter - [DEBUG]: Caller obj: android.telephony.SmsManager@517e2f02, from class: class android.telephony.SmsManager
+Interpreter - [DEBUG]: Caller obj: android.telephony.SmsManager@6afff988, from class: class android.telephony.SmsManager
 Interpreter - [MSG]: Reflction invocation public void android.telephony.SmsManager.sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)
 DalvikVM - [BB]: fu.hao.trust.dvm.Interpreter -> jump set pc to 9
 Taint - [BB]: <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>
 Taint - [BB]: Found a sink invocation. <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>
 Taint - [WARN]: Found a taint sink <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)> leaking data [89014103211501404960] at reg 3!!!
-PluginManager - [MSG]: Taint Tainted Res: {89014103211501404960=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>, [reg 3@MainService/onLowMemory]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {[reg 3@MainService/onLowMemory]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>, 89014103211501404960=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>}
 Interpreter - [MSG]: 
 
 Interpreter - [MSG]: <9 RETURN,VOID> at de.ecspride.MainService/onLowMemory[]
