@@ -2551,6 +2551,7 @@ public class Interpreter {
 		noInvokeList.add("java.io.BufferedReader");
 		noInvokeList.add("java.io.File");
 		noInvokeList.add("android.support");
+		noInvokeList.add("getStatusCode");
 
 		noInvokeList2 = new HashSet<>();
 		noInvokeList2.add("equals");

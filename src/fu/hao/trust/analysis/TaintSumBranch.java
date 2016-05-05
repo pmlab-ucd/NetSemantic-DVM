@@ -83,6 +83,22 @@ public class TaintSumBranch extends Taint {
 				return false;
 			}
 		}
+		
+		
+		private boolean containsException(DalvikVM vm, Instruction inst) {
+			// Exception always at the end of the method?
+			Instruction[] insns = vm.getCurrStackFrame().getMethod().insns;
+			int index = (int) inst.extra;
+			for (int i = index; i < insns.length; i++) {
+				if (insns[i].opcode == Instruction.OP_GOTO) {
+					return false;
+				} else if (insns[i].opcode == Instruction.OP_EXCEPTION_OP) {
+					return true;
+				}
+			}
+			
+			return false;
+		}
 
 		private boolean isLoop(DalvikVM vm, Instruction inst) {
 			Instruction[] insns = vm.getCurrStackFrame().getMethod().insns;
@@ -148,6 +164,9 @@ public class TaintSumBranch extends Taint {
 			// Scan to check whether the block contains "Return".
 			for (int i = vm.getPC(); i < (int) inst.extra; i++) {
 				if (insns[i].opcode == Instruction.OP_RETURN) {
+					if (containsException(vm, inst)) {
+						return false;
+					}
 					BiDirBranch branch = new BiDirBranch(inst, vm.getNowPC(),
 							currtMethod, vm);
 					branch.setSumPoint(insns[i]);
