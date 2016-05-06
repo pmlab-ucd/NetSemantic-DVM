@@ -942,7 +942,7 @@ public class Taint extends Plugin {
 					out.put(obj.getFieldObj(fieldInfo),
 							in.get(vm.getReg(inst.r1)));
 					Log.bb(tag, "Add " + obj.getFieldObj(fieldInfo)
-							+ "as tainted due to " + vm.getReg(inst.r0));
+							+ "as tainted due to " + vm.getReg(inst.r1));
 				} else if (in.containsKey(vm.getReg(inst.r1).getData())) {
 					out.put(obj.getFieldObj(fieldInfo),
 							in.get(vm.getReg(inst.r1).getData()));

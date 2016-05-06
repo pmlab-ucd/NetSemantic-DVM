@@ -649,6 +649,9 @@ public class DalvikVM {
 
 	public StackFrame newStackFrame(ClassInfo sitClass, MethodInfo mi) {
 		String TAG = "newStackFrame";
+		if (mi.insns == null) {
+			return null;
+		}
 		StackFrame newStackFrame = new StackFrame(sitClass, mi);
 	/*	
 		if (mi.isConstructor()) {
@@ -691,9 +694,7 @@ public class DalvikVM {
 			pluginManager.setCurrRes(newStackFrame == null ? null
 					: newStackFrame.pluginRes);
 		}
-		if (mi.insns != null) {
-			stack.add(newStackFrame);
-		}
+		stack.add(newStackFrame);
 		
 		Log.bb(TAG, "Stack: " + stack);
 		return newStackFrame;

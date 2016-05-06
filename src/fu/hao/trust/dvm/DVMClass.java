@@ -22,7 +22,7 @@ public class DVMClass {
 		vm.setClass(type, this);
 
 		MethodInfo clinit = type.getStaticInitializer();
-		if (clinit != null) {
+		if (clinit != null && clinit.insns != null) {
 			vm.setTmpMI(clinit);
 			/*
 			vm.resetCallCtx();

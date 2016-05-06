@@ -31,51 +31,57 @@ public class ContextAnalysis {
 	Set<String> targetList;
 	private PluginConfig config;
 
-	public void ctxInvoke(DalvikVM vm, Instruction inst, CorrelatedDataFact fact, Map<Instruction, TargetCall> targetCalls)  {
-			Object[] extra = (Object[]) inst.extra;
-			MethodInfo mi = (MethodInfo) extra[0];
-			Stack<Branch> interestedSimple = fact.getInterestedSimple();
-			Stack<BiDirBranch> interestedBiDir = fact.getInterestedBiDir();
-			
-			if (isTarget(mi.name)) {
-				if (!targetCalls.containsKey(inst)) {
-					TargetCall targetCall = new TargetCall(inst, vm);
-					targetCalls.put(inst, targetCall);
-					if (!interestedSimple.isEmpty()) {
-						for (Branch branch : interestedSimple) {
-							Log.msg(TAG, "Add depAPI " + branch.getElemSrcs());
-							targetCall.addDepAPIs(branch.getElemSrcs());
-						}
-					} else if (!interestedBiDir.isEmpty()) {
-						for (Branch branch : interestedBiDir) {
-							Log.msg(TAG, "Add depAPI " + branch.getElemSrcs());
-							targetCall.addDepAPIs(branch.getElemSrcs());
-						}
-					} else {
-						Log.bb(TAG, "Not API Recording");
-					}
-					Log.warn(TAG, "Found a target API call:" + targetCall);
-				} else {
-					TargetCall targetCall = targetCalls.get(inst);
-					targetCall.addParams(inst, vm);
-				}
-			} else if (vm.getReflectMethod() != null && config.getSources().contains(Taint.getSootSignature(mi))) {
-				vm.getReturnReg().setValue(new SensCtxVar(mi.returnType, vm.getReturnReg().getData(), inst), mi.returnType);
-				Log.bb(TAG, "Set SensCtxVar at RetReg.");
-			}
+	public void ctxInvoke(DalvikVM vm, Instruction inst,
+			CorrelatedDataFact fact, Map<Instruction, TargetCall> targetCalls) {
+		Object[] extra = (Object[]) inst.extra;
+		MethodInfo mi = (MethodInfo) extra[0];
+		Stack<Branch> interestedSimple = fact.getInterestedSimple();
+		Stack<BiDirBranch> interestedBiDir = fact.getInterestedBiDir();
 
-			if (vm.getReturnReg().isUsed())  
-				Log.bb(TAG, "Ret value " + vm.getReturnReg().getData()) ;
+		if (isTarget(mi.toString())) {
+			if (!targetCalls.containsKey(inst)) {
+				TargetCall targetCall = new TargetCall(inst, vm);
+				targetCalls.put(inst, targetCall);
+				if (!interestedSimple.isEmpty()) {
+					for (Branch branch : interestedSimple) {
+						Log.msg(TAG, "Add depAPI " + branch.getElemSrcs());
+						targetCall.addDepAPIs(branch.getElemSrcs());
+					}
+				} else if (!interestedBiDir.isEmpty()) {
+					for (Branch branch : interestedBiDir) {
+						Log.msg(TAG, "Add depAPI " + branch.getElemSrcs());
+						targetCall.addDepAPIs(branch.getElemSrcs());
+					}
+				} else {
+					Log.bb(TAG, "Not API Recording");
+				}
+				Log.warn(TAG, "Found a target API call:" + targetCall);
+			} else {
+				TargetCall targetCall = targetCalls.get(inst);
+				targetCall.addParams(inst, vm);
+			}
+		} else if (vm.getReflectMethod() != null
+				&& config.getSources().contains(Taint.getSootSignature(mi))) {
+			vm.getReturnReg().setValue(
+					new SensCtxVar(mi.returnType, vm.getReturnReg().getData(),
+							inst), mi.returnType);
+			Log.bb(TAG, "Set SensCtxVar at RetReg.");
+		}
+
+		if (vm.getReturnReg().isUsed())
+			Log.bb(TAG, "Ret value " + vm.getReturnReg().getData());
 	}
 
 	private boolean isTarget(String target) {
-		if (targetList.contains(target)) {
-			return true;
+		for (String call : targetList) {
+			if (target.contains(call)) {
+				return true;
+			}
 		}
 
 		return false;
 	}
-	
+
 	public PluginConfig getConfig() {
 		return config;
 	}
@@ -83,6 +89,7 @@ public class ContextAnalysis {
 	public ContextAnalysis() {
 		targetList = new HashSet<>();
 		targetList.add("openConnection");
+		targetList.add("HttpClient/execute");
 		config = new PluginConfig(TAG, Taint.getDefaultSources(), null);
 	}
 
