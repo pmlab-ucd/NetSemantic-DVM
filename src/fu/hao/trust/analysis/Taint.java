@@ -3,7 +3,9 @@ package fu.hao.trust.analysis;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -1122,10 +1124,25 @@ public class Taint extends Plugin {
 		}
 
 		for (Map<Object, Instruction> out : outs.values()) {
+			if (out.isEmpty()) {
+				continue;
+			}
+			
+			List<Object> dels = new ArrayList<>();
+			for (Object obj : out.keySet()) {
+				if (obj instanceof Integer || obj instanceof Boolean) {
+					dels.add(obj);
+				} 
+			}
+			
+			for (Object obj : dels) {
+				out.remove(obj);
+			}
+			
 			if (out.containsKey(null)) {
 				out.remove(null);
 			}
-
+			
 			for (Instruction instr : out.values()) {
 				if (instr == null) {
 					Log.err(tag, "Empty src found at " + inst);
