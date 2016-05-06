@@ -173,7 +173,7 @@ public class Executor {
 				Log.bb(TAG, "Start param from " + i);
 				for (ClassInfo paramClass : currMethod.paramTypes) {
 					if (paramClass.isPrimitive()) {
-						vm.getReg(params[i]).setValue(new Unknown(paramClass),
+						vm.getReg(params[i]).setValue(new Unknown(vm, paramClass),
 								paramClass);
 					} else if (paramClass.isArray()) {
 						// FIXME
@@ -472,7 +472,7 @@ public class Executor {
 			} else {
 				Log.warn(TAG, "Not an array");
 				vm.getReg(inst.rdst).setValue(
-						new Unknown(ClassInfo.primitiveInt),
+						new Unknown(vm, ClassInfo.primitiveInt),
 						ClassInfo.primitiveInt);
 			}
 		}
@@ -527,7 +527,7 @@ public class Executor {
 				Log.err(TAG, "Cannot identify res type!");
 			}
 			if (!vm.getReturnReg().isUsed()) {
-				vm.getReturnReg().setValue(new Unknown(inst.type), inst.type);
+				vm.getReturnReg().setValue(new Unknown(vm, inst.type), inst.type);
 			} else if (vm.getReturnReg().getData() instanceof SymbolicVar
 					&& vm.getReturnReg().getType().isPrimitive()) {
 				SymbolicVar var = (SymbolicVar) vm.getReturnReg().getData();
@@ -899,7 +899,7 @@ public class Executor {
 				Object[] objs = new Object[5];
 
 				for (int i = 0; i < objs.length; i++) {
-					objs[i] = new Unknown(type);
+					objs[i] = new Unknown(vm, type);
 				}
 				ClassInfo atype = ClassInfo.primitiveVoid;
 				if (vm.getReg(inst.r0).isUsed()
@@ -933,7 +933,7 @@ public class Executor {
 						}
 
 						for (int i = Array.getLength(array); i < newArray.length; i++) {
-							newArray[i] = new Unknown(inst.type);
+							newArray[i] = new Unknown(vm, inst.type);
 						}
 						vm.getReg(inst.r0).setValue(newArray,
 								ClassInfo.primitiveVoid);
@@ -955,7 +955,7 @@ public class Executor {
 						rdst.setValue(element, inst.type);// array[index];
 					}
 				} else {
-					rdst.setValue(new Unknown(type), inst.type);
+					rdst.setValue(new Unknown(vm, type), inst.type);
 				}
 			}
 
@@ -987,7 +987,7 @@ public class Executor {
 					|| !(vm.getReg(inst.r0).getData() instanceof Array)) {
 				Object[] objs = new Object[5];
 				for (int i = 0; i < objs.length; i++) {
-					objs[i] = new Unknown(inst.type);
+					objs[i] = new Unknown(vm, inst.type);
 				}
 				vm.getReg(inst.r0).setValue(objs, ClassInfo.primitiveVoid);
 			}
@@ -1008,7 +1008,7 @@ public class Executor {
 				}
 
 				for (int i = array.length; i < newArray.length; i++) {
-					newArray[i] = new Unknown(inst.type);
+					newArray[i] = new Unknown(vm, inst.type);
 				}
 				vm.getReg(inst.r0).setValue(newArray, ClassInfo.primitiveVoid);
 				array = (Object[]) vm.getReg(inst.r0).getData();
@@ -1690,7 +1690,7 @@ public class Executor {
 						dvmObj.setField(fieldInfo, vm.getChainThisObj());
 					} else {
 						dvmObj.setField(fieldInfo,
-								new Unknown(fieldInfo.getFieldType()));
+								new Unknown(vm, fieldInfo.getFieldType()));
 					}
 				}
 
@@ -1885,12 +1885,12 @@ public class Executor {
 			Log.debug(TAG, "r0 type " + (r0.isUsed() ? r0.getType() : null));
 			if (!r0.isUsed() || r0.getData() == null) {
 				Log.warn(TAG, "Null operator found!");
-				r0.setValue(new Unknown(r0.getType()), r0.getType());
+				r0.setValue(new Unknown(vm, r0.getType()), r0.getType());
 			}
 
 			if (inst.r1 != -1 && (!r1.isUsed() || r1.getData() == null)) {
 				Log.warn(TAG, "Null operator found!");
-				r1.setValue(new Unknown(r1.getType()), r1.getType());
+				r1.setValue(new Unknown(vm, r1.getType()), r1.getType());
 			}
 
 			if (r0.getData() instanceof SymbolicVar) {
@@ -1931,7 +1931,7 @@ public class Executor {
 				op = (Unknown) vm.getReg(inst.r1).getData();
 				op.addLastArith(inst);
 				ClassInfo type = vm.getReg(inst.r1).getType();
-				op = new Unknown(type);
+				op = new Unknown(vm, type);
 				op.addLastArith(inst);
 				vm.getReg(inst.r0).setValue(op, type);
 				Log.warn(TAG, "Unknown found! " + op);
@@ -1939,13 +1939,13 @@ public class Executor {
 					|| inst.r1 != -1 && !vm.getReg(inst.r1).isUsed()) {
 				ClassInfo type = vm.getReg(inst.r0).isUsed() ? vm.getReg(
 						inst.r0).getType() : vm.getReg(inst.r1).getType();
-				op = new Unknown(type);
+				op = new Unknown(vm, type);
 				op.addLastArith(inst);
 				vm.getReg(inst.r0).setValue(op, type);
 			} else if (inst.r0 != -1 && vm.getReg(inst.r0).getData() == null
 					|| inst.r1 != -1 && vm.getReg(inst.r1).getData() == null) {
 				ClassInfo type = vm.getReg(inst.r0).getType();
-				op = new Unknown(type);
+				op = new Unknown(vm, type);
 				op.addLastArith(inst);
 				vm.getReg(inst.r0).setValue(op, type);
 			} else {
@@ -2089,7 +2089,7 @@ public class Executor {
 						}
 						Object instance;
 						if (!normalArg) {
-							instance = new Unknown(mi.returnType);
+							instance = new Unknown(vm, mi.returnType);
 						} else {
 							instance = clazz.getConstructor(argsClass)
 									.newInstance(params);
@@ -2130,7 +2130,7 @@ public class Executor {
 					// When method is a memeber of noInvoke, do not really
 					// invoke it
 					if (!normalArg) {
-						vm.getReturnReg().setValue(new Unknown(mi.returnType),
+						vm.getReturnReg().setValue(new Unknown(vm, mi.returnType),
 								mi.returnType);
 						Log.warn(TAG, "Found noInvokeMethod " + method);
 					} else {
@@ -2155,7 +2155,7 @@ public class Executor {
 								method.invoke(thisInstance, params),
 								mi.returnType);
 					} else {
-						vm.getReturnReg().setValue(new Unknown(mi.returnType),
+						vm.getReturnReg().setValue(new Unknown(vm, mi.returnType),
 								mi.returnType);
 					}
 				}
@@ -2180,7 +2180,7 @@ public class Executor {
 			}
 			
 			if (vm.getReturnReg().isUsed() && isInvokeButUnknownRet(mi)) {
-				Unknown retVal = new Unknown(mi.returnType);
+				Unknown retVal = new Unknown(vm, mi.returnType);
 				if (vm.getReturnReg().getData() == null) {
 					retVal.addConcreteVal("unknown");
 				} else {
@@ -2213,7 +2213,7 @@ public class Executor {
 		} catch (java.lang.InstantiationException e) {
 			Log.warn(TAG, "Reflection error: " + e.getMessage());
 			e.printStackTrace();
-			vm.getReg(args[0]).setValue(new Unknown(mi.myClass), mi.myClass);
+			vm.getReg(args[0]).setValue(new Unknown(vm, mi.myClass), mi.myClass);
 			jump(vm, inst, true);
 		} catch (java.lang.IllegalAccessException e) {
 			e.printStackTrace();
@@ -2394,7 +2394,7 @@ public class Executor {
 				|| noInvokeList.contains(mi.myClass.fullName)
 				|| mi.myClass.fullName.startsWith("android.support")
 				|| Settings.callBlkListHas(inst.toString())) {
-			vm.getReturnReg().setValue(new Unknown(mi.returnType),
+			vm.getReturnReg().setValue(new Unknown(vm, mi.returnType),
 					mi.returnType);
 			Log.warn(TAG, "Found noInvokeMethod " + mi);
 			return;

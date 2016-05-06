@@ -39,12 +39,19 @@ public class Unknown extends SymbolicVar {
 		return type;
 	}
 	
-	public Unknown(ClassInfo type) {
+	public Unknown(DalvikVM vm, ClassInfo type) {
 		this.type = type;
+		if (type == null || type.isPrimitive() || type.toString().contains("lang.String")) {
 		store = new Store();
 		//if (type.equals(ClassInfo.primitiveInt)) {
 			var = new IntVar(store);
 		//}
+		
+		} else {
+			setValue(vm.newVMObject(type));
+		}
+		
+		
 		Log.bb(TAG, "Unknown created!");
 	}
 	

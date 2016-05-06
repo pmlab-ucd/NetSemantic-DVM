@@ -192,8 +192,8 @@ public class Branch {
 				Log.err(TAG, "Incorrect type!");
 				return null;
 			} else {
-				// FIXME Multiple types? use java.Object?
-				Unknown unknown = new Unknown(val1.getSecond());
+				// FIXME Multiple types? use java.lang.Object?
+				Unknown unknown = new Unknown(null, val1.getSecond());
 				return new Pair<Object, ClassInfo>(unknown, val1.getSecond());
 			}
 		}

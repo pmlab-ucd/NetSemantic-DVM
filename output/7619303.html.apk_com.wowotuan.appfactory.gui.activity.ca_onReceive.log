@@ -3,14 +3,14 @@ DalvikVM - [MSG]: Begin run onReceive at C:/Users/hao/workspace/DroidBenchProj/a
 DalvikVM - [MSG]: Instrumented Method: com.wowotuan.appfactory.gui.activity.ca/onReceive[android.content.Context, android.content.Intent]
 DalvikVM - [BB]: paramLen3, 2
 DVMObject - [BB]: New instance of com.wowotuan.appfactory.gui.activity.ca
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.gui.activity.ca at fu.hao.trust.dvm.VMHeap@5de3eba1
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for com.wowotuan.appfactory.gui.activity.ca at fu.hao.trust.dvm.VMHeap@5de3eba1
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.BroadcastReceiver at fu.hao.trust.dvm.VMHeap@5de3eba1
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.BroadcastReceiver at fu.hao.trust.dvm.VMHeap@5de3eba1
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.gui.activity.ca at fu.hao.trust.dvm.VMHeap@6f2297aa
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for com.wowotuan.appfactory.gui.activity.ca at fu.hao.trust.dvm.VMHeap@6f2297aa
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.BroadcastReceiver at fu.hao.trust.dvm.VMHeap@6f2297aa
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.BroadcastReceiver at fu.hao.trust.dvm.VMHeap@6f2297aa
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.BroadcastReceiver
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.BroadcastReceiver at fu.hao.trust.dvm.VMHeap@5de3eba1
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.BroadcastReceiver at fu.hao.trust.dvm.VMHeap@6f2297aa
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type com.wowotuan.appfactory.gui.activity.ca
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.gui.activity.ca at fu.hao.trust.dvm.VMHeap@5de3eba1
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.gui.activity.ca at fu.hao.trust.dvm.VMHeap@6f2297aa
 DalvikVM - [BB]: param: NULL
 DalvikVM - [BB]: param: [intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}]
 DalvikVM - [BB]: New method call: com.wowotuan.appfactory.gui.activity.ca/onReceive[android.content.Context, android.content.Intent]
@@ -77,9 +77,9 @@ newStackFrame - [BB]: New Stack Frame: StackFrame com.wowotuan.appfactory.gui.ac
 newStackFrame - [BB]: Stack: [StackFrame com.wowotuan.appfactory.gui.activity.ca/onReceive[android.content.Context, android.content.Intent]]
 Executor - [MSG]: New chain obj with type com.wowotuan.appfactory.gui.activity.ca
 DVMObject - [BB]: New instance of com.wowotuan.appfactory.gui.activity.ca
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.gui.activity.ca at fu.hao.trust.dvm.VMHeap@5de3eba1
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.gui.activity.ca at fu.hao.trust.dvm.VMHeap@6f2297aa
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type com.wowotuan.appfactory.gui.activity.ca
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.gui.activity.ca at fu.hao.trust.dvm.VMHeap@5de3eba1
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.gui.activity.ca at fu.hao.trust.dvm.VMHeap@6f2297aa
 Executor - [MSG]: RUN BEGIN com.wowotuan.appfactory.gui.activity.ca/onReceive[android.content.Context, android.content.Intent]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> run set pc to 0
 Executor - [MSG]: 
@@ -91,7 +91,7 @@ Executor - [DEBUG]: params: [intent:com.wowotuan.appfactory.broadcast.location, 
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
 FULL_OP_SP_ARGUMENTS - [BB]: targetcalls {}
 InfluenceAnalysis - [BB]: Add [reg 7@ca/onReceive] as tainted due to [intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}]
-PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {[reg 7@ca/onReceive]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {[intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [reg 7@ca/onReceive]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>}
 PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
 Executor - [MSG]: 
 
@@ -99,7 +99,7 @@ Executor - [MSG]: <1 MOV,CONST,dst=r4,type=void,extra=class patdroid.core.Primit
 Executor - [DEBUG]: Mov const begin <1 MOV,CONST,dst=r4,type=void,extra=class patdroid.core.PrimitiveInfo?1>
 Executor - [DEBUG]: data: 1 class patdroid.core.PrimitiveInfo
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 2
-PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {[reg 7@ca/onReceive]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {[intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [reg 7@ca/onReceive]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>}
 PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
 Executor - [MSG]: 
 
@@ -120,7 +120,7 @@ ContextAnalysis - [BB]: Ret value com.wowotuan.appfactory.broadcast.location
 InfluenceAnalysis - [BB]: Method public java.lang.String android.content.Intent.getAction()
 InfluenceAnalysis - [MSG]: Not API Recording
 FULL_OP_INVOKE - [BB]: Target calls {}
-PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {[Global RetReg]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [reg 7@ca/onReceive]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, com.wowotuan.appfactory.broadcast.location=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {[intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [Global RetReg]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [reg 7@ca/onReceive]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, com.wowotuan.appfactory.broadcast.location=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>}
 PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
 Executor - [MSG]: 
 
@@ -130,7 +130,7 @@ OP_MOV_RESULT - [DEBUG]: Result data: com.wowotuan.appfactory.broadcast.location
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 4
 InfluenceAnalysis - [BB]: <0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>
 InfluenceAnalysis - [BB]: Add reg 0 due to ret reg.
-PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {[reg 7@ca/onReceive]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [reg 0@ca/onReceive]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, com.wowotuan.appfactory.broadcast.location=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {[intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [reg 0@ca/onReceive]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [reg 7@ca/onReceive]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, com.wowotuan.appfactory.broadcast.location=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>}
 PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
 Executor - [MSG]: 
 
@@ -138,7 +138,7 @@ Executor - [MSG]: <4 MOV,CONST,dst=r1,type=java.lang.String,extra="com.wowotuan.
 Executor - [DEBUG]: Mov const begin <4 MOV,CONST,dst=r1,type=java.lang.String,extra="com.wowotuan.appfactory.broadcast.location">
 Executor - [DEBUG]: data: com.wowotuan.appfactory.broadcast.location class java.lang.String
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 5
-PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {[reg 7@ca/onReceive]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, com.wowotuan.appfactory.broadcast.location=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [reg 0@ca/onReceive]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {[intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [reg 0@ca/onReceive]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [reg 7@ca/onReceive]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, com.wowotuan.appfactory.broadcast.location=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>}
 PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
 Executor - [MSG]: 
 
@@ -163,3 +163,284 @@ ContextAnalysis - [BB]: Ret value true
 InfluenceAnalysis - [BB]: Method public boolean java.lang.String.equals(java.lang.Object)
 InfluenceAnalysis - [MSG]: Not API Recording
 FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {[intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [reg 0@ca/onReceive]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [Global RetReg]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [reg 7@ca/onReceive]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, com.wowotuan.appfactory.broadcast.location=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <6 MOV,RESULT,dst=r0,type=void> at com.wowotuan.appfactory.gui.activity.ca/onReceive[android.content.Context, android.content.Intent]
+DalvikVM - [BB]: ar-1 <true, boolean>, <true, boolean>
+DalvikVM - [BB]: ar0 <com.wowotuan.appfactory.broadcast.location, java.lang.String>, <true, boolean>
+OP_MOV_RESULT - [BB]: Result data: true
+OP_MOV_RESULT - [DEBUG]: Result data: true, type: boolean, to [reg 0@ca/onReceive]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 7
+InfluenceAnalysis - [BB]: <0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>
+InfluenceAnalysis - [BB]: Add reg 0 due to ret reg.
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {[intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [reg 0@ca/onReceive]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [reg 7@ca/onReceive]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, true=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, com.wowotuan.appfactory.broadcast.location=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <7 IF,EQZ,r0=r0,extra=index:42> at com.wowotuan.appfactory.gui.activity.ca/onReceive[android.content.Context, android.content.Intent]
+OP_CMP - [DEBUG]: r0 data true
+OP_CMP - [DEBUG]: r0 type boolean
+Executor - [DEBUG]: ops: true 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_IF_EQZ -> jump set pc to 8
+Executor - [DEBUG]: not equ: <7 IF,EQZ,r0=r0,extra=index:42>
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {[intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [reg 0@ca/onReceive]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [reg 7@ca/onReceive]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, true=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, com.wowotuan.appfactory.broadcast.location=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <8 MOV,CONST,dst=r0,type=java.lang.String,extra="location"> at com.wowotuan.appfactory.gui.activity.ca/onReceive[android.content.Context, android.content.Intent]
+Executor - [DEBUG]: Mov const begin <8 MOV,CONST,dst=r0,type=java.lang.String,extra="location">
+DalvikVM - [BB]: ar0 <true, boolean>, <location, java.lang.String>
+Executor - [DEBUG]: data: location class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 9
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {[intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [reg 7@ca/onReceive]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, true=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, com.wowotuan.appfactory.broadcast.location=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <9 INVOKE,VIRTUAL,extra=[android.content.Intent/getStringExtra[java.lang.String], [7, 0]]> at com.wowotuan.appfactory.gui.activity.ca/onReceive[android.content.Context, android.content.Intent]
+Executor - [MSG]: arg0 obj: [intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}]
+Executor - [DEBUG]: Reflction class: class android.content.Intent
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg0: location
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: [intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}], from class: class android.content.Intent
+Executor - [DEBUG]: Return data: 121.1, 131.1 ,class java.lang.String
+Executor - [MSG]: Reflction invocation public java.lang.String android.content.Intent.getStringExtra(java.lang.String)
+DalvikVM - [BB]: Set reflective call: public java.lang.String android.content.Intent.getStringExtra(java.lang.String)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 10
+FULL_OP_INVOKE - [BB]: targetcalls {}
+InfluenceAnalysis - [BB]: <android.content.Intent: java.lang.String getStringExtra(java.lang.String)>
+InfluenceAnalysis - [DEBUG]: not a taint call: <android.content.Intent: java.lang.String getStringExtra(java.lang.String)>
+InfluenceAnalysis - [WARN]: Found a tainted return val!
+ContextAnalysis - [BB]: <android.content.Intent: java.lang.String getStringExtra(java.lang.String)>
+ContextAnalysis - [DEBUG]: not a taint call: <android.content.Intent: java.lang.String getStringExtra(java.lang.String)>
+ContextAnalysis - [BB]: Ret value 121.1, 131.1
+InfluenceAnalysis - [BB]: Method public java.lang.String android.content.Intent.getStringExtra(java.lang.String)
+InfluenceAnalysis - [MSG]: Not API Recording
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {[intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [Global RetReg]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [reg 7@ca/onReceive]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, true=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, 121.1, 131.1=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, com.wowotuan.appfactory.broadcast.location=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <10 MOV,RESULT,dst=r0,type=java.lang.Object> at com.wowotuan.appfactory.gui.activity.ca/onReceive[android.content.Context, android.content.Intent]
+DalvikVM - [BB]: ar0 <location, java.lang.String>, <121.1, 131.1, java.lang.String>
+OP_MOV_RESULT - [BB]: Result data: 121.1, 131.1
+OP_MOV_RESULT - [DEBUG]: Result data: 121.1, 131.1, type: java.lang.String, to [reg 0@ca/onReceive]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 11
+InfluenceAnalysis - [BB]: <0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>
+InfluenceAnalysis - [BB]: Add reg 0 due to ret reg.
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {[intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [reg 0@ca/onReceive]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [reg 7@ca/onReceive]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, true=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, 121.1, 131.1=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, com.wowotuan.appfactory.broadcast.location=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <11 MOV,CONST,dst=r1,type=java.lang.String,extra=""> at com.wowotuan.appfactory.gui.activity.ca/onReceive[android.content.Context, android.content.Intent]
+Executor - [DEBUG]: Mov const begin <11 MOV,CONST,dst=r1,type=java.lang.String,extra="">
+DalvikVM - [BB]: ar1 <com.wowotuan.appfactory.broadcast.location, java.lang.String>, <, java.lang.String>
+Executor - [DEBUG]: data:  class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 12
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {[intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [reg 0@ca/onReceive]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [reg 7@ca/onReceive]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, true=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, 121.1, 131.1=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, com.wowotuan.appfactory.broadcast.location=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <12 INVOKE,VIRTUAL,extra=[java.lang.String/equals[java.lang.Object], [0, 1]]> at com.wowotuan.appfactory.gui.activity.ca/onReceive[android.content.Context, android.content.Intent]
+Executor - [MSG]: arg0 obj: 121.1, 131.1
+Executor - [DEBUG]: Reflction class: class java.lang.String
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg1: 
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: 121.1, 131.1, from class: class java.lang.String
+Executor - [DEBUG]: Return data: false ,class java.lang.Boolean
+Executor - [MSG]: Reflction invocation public boolean java.lang.String.equals(java.lang.Object)
+DalvikVM - [BB]: Set reflective call: public boolean java.lang.String.equals(java.lang.Object)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 13
+FULL_OP_INVOKE - [BB]: targetcalls {}
+InfluenceAnalysis - [BB]: <java.lang.String: boolean equals(java.lang.Object)>
+InfluenceAnalysis - [DEBUG]: not a taint call: <java.lang.String: boolean equals(java.lang.Object)>
+InfluenceAnalysis - [WARN]: Found a tainted return val!
+ContextAnalysis - [BB]: <java.lang.String: boolean equals(java.lang.Object)>
+ContextAnalysis - [DEBUG]: not a taint call: <java.lang.String: boolean equals(java.lang.Object)>
+ContextAnalysis - [BB]: Ret value false
+InfluenceAnalysis - [BB]: Method public boolean java.lang.String.equals(java.lang.Object)
+InfluenceAnalysis - [MSG]: Not API Recording
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {[intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [reg 0@ca/onReceive]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [Global RetReg]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [reg 7@ca/onReceive]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, true=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, 121.1, 131.1=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, com.wowotuan.appfactory.broadcast.location=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <13 MOV,RESULT,dst=r1,type=void> at com.wowotuan.appfactory.gui.activity.ca/onReceive[android.content.Context, android.content.Intent]
+DalvikVM - [BB]: ar-1 <false, boolean>, <false, boolean>
+DalvikVM - [BB]: ar1 <, java.lang.String>, <false, boolean>
+OP_MOV_RESULT - [BB]: Result data: false
+OP_MOV_RESULT - [DEBUG]: Result data: false, type: boolean, to [reg 1@ca/onReceive]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 14
+InfluenceAnalysis - [BB]: <0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>
+InfluenceAnalysis - [BB]: Add reg 1 due to ret reg.
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {[intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [reg 0@ca/onReceive]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [reg 7@ca/onReceive]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, true=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, 121.1, 131.1=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, com.wowotuan.appfactory.broadcast.location=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, false=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [reg 1@ca/onReceive]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <14 IF,NEZ,r0=r1,extra=index:43> at com.wowotuan.appfactory.gui.activity.ca/onReceive[android.content.Context, android.content.Intent]
+OP_CMP - [DEBUG]: r0 data false
+OP_CMP - [DEBUG]: r0 type boolean
+Executor - [DEBUG]: ops: false 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_IF_NEZ -> jump set pc to 15
+Executor - [DEBUG]: Equ: <14 IF,NEZ,r0=r1,extra=index:43>
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {[intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [reg 0@ca/onReceive]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [reg 7@ca/onReceive]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, true=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, 121.1, 131.1=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, com.wowotuan.appfactory.broadcast.location=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, false=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [reg 1@ca/onReceive]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <15 NEW,INSTANCE,dst=r1,type=com.wowotuan.appfactory.dto.RequestCityLocationDto> at com.wowotuan.appfactory.gui.activity.ca/onReceive[android.content.Context, android.content.Intent]
+OP_NEW_INSTANCE - [DEBUG]: [reg 1@ca/onReceive]
+DVMObject - [BB]: New instance of com.wowotuan.appfactory.dto.RequestCityLocationDto
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.dto.RequestCityLocationDto at fu.hao.trust.dvm.VMHeap@6f2297aa
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for com.wowotuan.appfactory.dto.RequestCityLocationDto at fu.hao.trust.dvm.VMHeap@6f2297aa
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type com.wowotuan.appfactory.dto.RequestCityLocationDto
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.dto.RequestCityLocationDto at fu.hao.trust.dvm.VMHeap@6f2297aa
+DalvikVM - [BB]: ar1 <false, boolean>, <instance number 1@com.wowotuan.appfactory.dto.RequestCityLocationDto, com.wowotuan.appfactory.dto.RequestCityLocationDto>
+OP_NEW_INSTANCE - [DEBUG]: New object of com.wowotuan.appfactory.dto.RequestCityLocationDtocreated:instance number 1@com.wowotuan.appfactory.dto.RequestCityLocationDto
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_NEW_INSTANCE -> jump set pc to 16
+InfluenceAnalysis - [BB]: Rdst [reg 1@ca/onReceive]
+InfluenceAnalysis - [BB]: Rm [reg 1@ca/onReceive]
+ContextAnalysis - [BB]: Rdst [reg 1@ca/onReceive]
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {[intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [reg 0@ca/onReceive]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [reg 7@ca/onReceive]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, true=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, 121.1, 131.1=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, com.wowotuan.appfactory.broadcast.location=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, false=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <16 INVOKE,DIRECT,extra=[com.wowotuan.appfactory.dto.RequestCityLocationDto/<init>[], [1]]> at com.wowotuan.appfactory.gui.activity.ca/onReceive[android.content.Context, android.content.Intent]
+Executor - [MSG]: arg0 obj: instance number 1@com.wowotuan.appfactory.dto.RequestCityLocationDto
+Executor - [WARN]: Reflection error: com.wowotuan.appfactory.dto.RequestCityLocationDto
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 17
+DalvikVM - [BB]: New method call: com.wowotuan.appfactory.dto.RequestCityLocationDto/<init>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[1]>
+DalvikVM - [BB]: [1]<0 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [1]]>
+DalvikVM - [BB]: [2]<0 MOV,CONST,dst=r0,type=java.lang.String,extra="GetCitysLocation">
+DalvikVM - [BB]: [3]<0 INSTANCE,IPUT,r0=r1,r1=r0,type=java.lang.Object,extra=com.wowotuan.appfactory.dto.RequestCityLocationDto.cmd>
+DalvikVM - [BB]: [4]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame com.wowotuan.appfactory.dto.RequestCityLocationDto/<init>[], pc 17 stored. 
+newStackFrame - [BB]: Stack: [StackFrame com.wowotuan.appfactory.gui.activity.ca/onReceive[android.content.Context, android.content.Intent], StackFrame com.wowotuan.appfactory.dto.RequestCityLocationDto/<init>[]]
+FULL_OP_INVOKE - [BB]: targetcalls {}
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {[intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, true=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, 121.1, 131.1=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, com.wowotuan.appfactory.broadcast.location=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, false=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> run set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[1]> at com.wowotuan.appfactory.dto.RequestCityLocationDto/<init>[]
+Executor - [DEBUG]: params: instance number 1@com.wowotuan.appfactory.dto.RequestCityLocationDto
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+FULL_OP_SP_ARGUMENTS - [BB]: targetcalls {}
+InfluenceAnalysis - [BB]: Copy [intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}] as tainted.
+InfluenceAnalysis - [BB]: Copy true as tainted.
+InfluenceAnalysis - [BB]: Copy 121.1, 131.1 as tainted.
+InfluenceAnalysis - [BB]: Copy com.wowotuan.appfactory.broadcast.location as tainted.
+InfluenceAnalysis - [BB]: Copy false as tainted.
+InfluenceAnalysis - [BB]: Copy [intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}] as tainted.
+InfluenceAnalysis - [BB]: Copy true as tainted.
+InfluenceAnalysis - [BB]: Copy 121.1, 131.1 as tainted.
+InfluenceAnalysis - [BB]: Copy com.wowotuan.appfactory.broadcast.location as tainted.
+InfluenceAnalysis - [BB]: Copy false as tainted.
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {[intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, true=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, 121.1, 131.1=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, com.wowotuan.appfactory.broadcast.location=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, false=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [1]]> at com.wowotuan.appfactory.dto.RequestCityLocationDto/<init>[]
+Executor - [MSG]: arg0 obj: instance number 1@com.wowotuan.appfactory.dto.RequestCityLocationDto
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 2
+FULL_OP_INVOKE - [BB]: targetcalls {}
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {[intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, true=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, 121.1, 131.1=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, com.wowotuan.appfactory.broadcast.location=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, false=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 MOV,CONST,dst=r0,type=java.lang.String,extra="GetCitysLocation"> at com.wowotuan.appfactory.dto.RequestCityLocationDto/<init>[]
+Executor - [DEBUG]: Mov const begin <2 MOV,CONST,dst=r0,type=java.lang.String,extra="GetCitysLocation">
+Executor - [DEBUG]: data: GetCitysLocation class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 3
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {[intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, true=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, 121.1, 131.1=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, com.wowotuan.appfactory.broadcast.location=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, false=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 INSTANCE,IPUT,r0=r1,r1=r0,type=java.lang.Object,extra=com.wowotuan.appfactory.dto.RequestCityLocationDto.cmd> at com.wowotuan.appfactory.dto.RequestCityLocationDto/<init>[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.wowotuan.appfactory.dto.RequestCityLocationDto.cmd
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.wowotuan.appfactory.dto.RequestCityLocationDto
+DVMObject - [DEBUG]: put field GetCitysLocation
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data GetCitysLocation to the field of instance number 1@com.wowotuan.appfactory.dto.RequestCityLocationDto
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 4
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {[intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, true=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, 121.1, 131.1=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, com.wowotuan.appfactory.broadcast.location=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, false=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <4 RETURN,VOID> at com.wowotuan.appfactory.dto.RequestCityLocationDto/<init>[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: Back to the last stack frame.StackFrame com.wowotuan.appfactory.gui.activity.ca/onReceive[android.content.Context, android.content.Intent]
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {[intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [reg 0@ca/onReceive]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [reg 7@ca/onReceive]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, true=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, 121.1, 131.1=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, com.wowotuan.appfactory.broadcast.location=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, false=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <17 INSTANCE,IGET,r0=r5,r1=r2,type=java.lang.Object,extra=com.wowotuan.appfactory.gui.activity.ca.a> at com.wowotuan.appfactory.gui.activity.ca/onReceive[android.content.Context, android.content.Intent]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: obj instance number 1@com.wowotuan.appfactory.gui.activity.ca
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: fieldinfo com.wowotuan.appfactory.gui.activity.ca.a
+Activity - [BB]: New instance of com.wowotuan.appfactory.gui.activity.CityChoiceActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.gui.activity.CityChoiceActivity at fu.hao.trust.dvm.VMHeap@6f2297aa
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for com.wowotuan.appfactory.gui.activity.CityChoiceActivity at fu.hao.trust.dvm.VMHeap@6f2297aa
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@6f2297aa
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@6f2297aa
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@6f2297aa
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@6f2297aa
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@6f2297aa
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@6f2297aa
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@6f2297aa
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.Context
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@6f2297aa
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@6f2297aa
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type com.wowotuan.appfactory.gui.activity.CityChoiceActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.wowotuan.appfactory.gui.activity.CityChoiceActivity at fu.hao.trust.dvm.VMHeap@6f2297aa
+Activity - [BB]: New Activity Created with type com.wowotuan.appfactory.gui.activity.CityChoiceActivity
+Unknown - [BB]: Unknown created!
+DVMObject - [DEBUG]: put field [Unknown var:null, type: com.wowotuan.appfactory.gui.activity.CityChoiceActivity]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: [Unknown var:null, type: com.wowotuan.appfactory.gui.activity.CityChoiceActivity]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD -> jump set pc to 18
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {[intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [reg 0@ca/onReceive]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, [reg 7@ca/onReceive]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, true=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, 121.1, 131.1=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, com.wowotuan.appfactory.broadcast.location=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, false=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <18 INVOKE,STATIC,extra=[com.wowotuan.appfactory.gui.activity.CityChoiceActivity/i[com.wowotuan.appfactory.gui.activity.CityChoiceActivity], [2]]> at com.wowotuan.appfactory.gui.activity.ca/onReceive[android.content.Context, android.content.Intent]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 19
+DalvikVM - [BB]: New method call: com.wowotuan.appfactory.gui.activity.CityChoiceActivity/i[com.wowotuan.appfactory.gui.activity.CityChoiceActivity]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[1]>
+DalvikVM - [BB]: [1]<0 INSTANCE,IGET,r0=r1,r1=r0,type=java.lang.Object,extra=com.wowotuan.appfactory.gui.activity.CityChoiceActivity.v>
+DalvikVM - [BB]: [2]<0 RETURN,VALUE,r0=r0,type=java.lang.Object>
+newStackFrame - [BB]: New Stack Frame: StackFrame com.wowotuan.appfactory.gui.activity.CityChoiceActivity/i[com.wowotuan.appfactory.gui.activity.CityChoiceActivity], pc 19 stored. 
+newStackFrame - [BB]: Stack: [StackFrame com.wowotuan.appfactory.gui.activity.ca/onReceive[android.content.Context, android.content.Intent], StackFrame com.wowotuan.appfactory.gui.activity.CityChoiceActivity/i[com.wowotuan.appfactory.gui.activity.CityChoiceActivity]]
+FULL_OP_INVOKE - [BB]: targetcalls {}
+FULL_OP_INVOKE - [BB]: Target calls {}
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {[intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, true=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, 121.1, 131.1=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, com.wowotuan.appfactory.broadcast.location=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, false=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> run set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[1]> at com.wowotuan.appfactory.gui.activity.CityChoiceActivity/i[com.wowotuan.appfactory.gui.activity.CityChoiceActivity]
+Executor - [DEBUG]: params: [Unknown var:null, type: com.wowotuan.appfactory.gui.activity.CityChoiceActivity]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+FULL_OP_SP_ARGUMENTS - [BB]: targetcalls {}
+InfluenceAnalysis - [BB]: Copy [intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}] as tainted.
+InfluenceAnalysis - [BB]: Copy true as tainted.
+InfluenceAnalysis - [BB]: Copy 121.1, 131.1 as tainted.
+InfluenceAnalysis - [BB]: Copy com.wowotuan.appfactory.broadcast.location as tainted.
+InfluenceAnalysis - [BB]: Copy false as tainted.
+InfluenceAnalysis - [BB]: Copy [intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}] as tainted.
+InfluenceAnalysis - [BB]: Copy true as tainted.
+InfluenceAnalysis - [BB]: Copy 121.1, 131.1 as tainted.
+InfluenceAnalysis - [BB]: Copy com.wowotuan.appfactory.broadcast.location as tainted.
+InfluenceAnalysis - [BB]: Copy false as tainted.
+PluginManager - [MSG]: InfluenceAnalysis Tainted Res: {[intent:com.wowotuan.appfactory.broadcast.location, {location=121.1, 131.1}]=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, true=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, 121.1, 131.1=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, com.wowotuan.appfactory.broadcast.location=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>, false=<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7]>}
+PluginManager - [MSG]: ContextAnalysis Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 INSTANCE,IGET,r0=r1,r1=r0,type=java.lang.Object,extra=com.wowotuan.appfactory.gui.activity.CityChoiceActivity.v> at com.wowotuan.appfactory.gui.activity.CityChoiceActivity/i[com.wowotuan.appfactory.gui.activity.CityChoiceActivity]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: obj [Unknown var:null, type: com.wowotuan.appfactory.gui.activity.CityChoiceActivity]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: fieldinfo com.wowotuan.appfactory.gui.activity.CityChoiceActivity.v
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [ERROR]: obj is not a DVMObject!
