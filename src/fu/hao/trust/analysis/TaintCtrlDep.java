@@ -151,8 +151,9 @@ public class TaintCtrlDep extends TaintSumBranch {
 	}
 
 	@Override
-	public void preprocessing(DalvikVM vm, Instruction inst) {
-		super.preprocessing(vm, inst);
+	public Map<String, Map<Object, Instruction>> preProcessing(DalvikVM vm,
+			Instruction inst, Map<String, Map<Object, Instruction>> ins) {
+		Map<String, Map<Object, Instruction>> outs = super.preProcessing(vm, inst, ins);
 		for (PluginConfig config : configs.values()) {
 			CorrelatedDataFact corrFact = config.getCorrFact();
 			Stack<Branch> interestedSimple = corrFact.getInterestedSimple();
@@ -174,6 +175,8 @@ public class TaintCtrlDep extends TaintSumBranch {
 		}
 
 		hasRestore = false;
+		
+		return outs;
 	}
 
 	public TaintCtrlDep() {

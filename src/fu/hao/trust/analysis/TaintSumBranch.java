@@ -456,7 +456,9 @@ public class TaintSumBranch extends Taint {
 	 * @see fu.hao.trust.analysis.Taint#preprocessing(fu.hao.trust.dvm.DalvikVM,
 	 *      patdroid.dalvik.Instruction)
 	 */
-	public void preprocessing(DalvikVM vm, Instruction inst) {
+	@Override
+	public Map<String, Map<Object, Instruction>> preProcessing(DalvikVM vm,
+			Instruction inst, Map<String, Map<Object, Instruction>> ins) {
 		if (!simpleBranches.isEmpty()
 				&& simpleBranches.peek().getSumPoint() == inst) {
 			Branch branch = simpleBranches.pop();
@@ -495,6 +497,8 @@ public class TaintSumBranch extends Taint {
 				vm.setPass(true);
 			}
 		}
+		
+		return super.preProcessing(vm, inst, ins);
 
 	}
 

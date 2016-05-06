@@ -70,7 +70,7 @@ public class PluginManager {
 	
 	public void preprossing(DalvikVM vm, Instruction inst) {
 		for (Plugin plugin : plugins) {
-			plugin.preprocessing(vm, inst);
+			plugin.preProcessing(vm, inst, plugin.getCurrtRes());
 		}
 	}
 

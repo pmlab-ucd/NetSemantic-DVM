@@ -69,6 +69,13 @@ public class DalvikVM {
 		public Object getData() {
 			return value.getFirst();
 		}
+		
+		public StackFrame getCallerFrame() {
+			if (stack.size() > 1) {
+				return stack.get(stack.size() - 2);
+			} 
+			return null;
+		}
 
 		public void setValue(Pair<Object, ClassInfo> value) {
 			setValue(value.getFirst(), value.getSecond());
@@ -148,6 +155,10 @@ public class DalvikVM {
 
 		public DVMObject getThisObj() {
 			return thisObj;
+		}
+		
+		public Register getReg(int index) {
+			return regs[index];
 		}
 
 		StackFrame(ClassInfo myClass, MethodInfo method) {
@@ -645,6 +656,14 @@ public class DalvikVM {
 			return null;
 		}
 		return stack.getLast();
+	}
+	
+	public StackFrame getCallerFrame() {
+		if (stack.size() > 1) {
+			return stack.get(stack.size() - 2);
+		}
+		
+		return null;
 	}
 
 	public StackFrame newStackFrame(ClassInfo sitClass, MethodInfo mi) {

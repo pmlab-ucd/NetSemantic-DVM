@@ -15,7 +15,7 @@ public abstract class Plugin {
 		currtRes = new HashMap<>();
 	}
 	
-	public abstract void preprocessing(DalvikVM vm, Instruction inst);
+	public abstract Map<String, Map<Object, Instruction>> preProcessing(DalvikVM vm, Instruction inst, Map<String,Map<Object, Instruction>> ins);
 
 	public Map<String, Map<Object, Instruction>> getCurrtRes() {
 		return currtRes;
