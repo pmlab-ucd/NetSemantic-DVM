@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
+import android.view.View;
 import fu.hao.trust.dvm.DalvikVM;
 import fu.hao.trust.utils.Log;
 import patdroid.core.MethodInfo;
@@ -27,6 +28,7 @@ public class TargetCall {
 	Collection<Instruction> depAPIs;
 	// The API calls influenced by this target call.
 	Set<Instruction> influAPIs;
+	private Set<View> fedViews;
 
 	public TargetCall(Instruction call, DalvikVM vm, Set<Instruction> depAPIs) {
 		this.calls = new LinkedList<>();
@@ -64,6 +66,7 @@ public class TargetCall {
 		mi = (MethodInfo) extra[0];
 		influAPIs = new HashSet<>();
 		depAPIs = new HashSet<>();
+		fedViews = new HashSet<>();
 	}
 
 	public void setDepAPIs(Collection<Instruction> depAPIs) {
@@ -84,7 +87,8 @@ public class TargetCall {
 		}
 		sb.replace(sb.length() - 1, sb.length(), "]");
 		return sb.toString() + "\n -- it deps on APIs: " + depAPIs
-				+ "\n influAPIs " + influAPIs;
+				+ "\n influAPIs " + influAPIs
+				+ "\n fedViews " + fedViews;
 	}
 
 	public Collection<Instruction> getDepAPIs() {
@@ -121,6 +125,19 @@ public class TargetCall {
 
 	public void addDepAPIs(LinkedList<Instruction> elemSrcs) {
 		depAPIs.addAll(elemSrcs);
+	}
+
+	public Set<View> getFedViews() {
+		return fedViews;
+	}
+
+	public void setFedViews(Set<View> fedViews) {
+		this.fedViews = fedViews;
+	}
+	
+	public void addFedView(View view) {
+		fedViews.add(view);
+		Log.msg(TAG, "Add fedView " + view);
 	}
 
 }

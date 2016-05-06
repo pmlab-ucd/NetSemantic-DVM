@@ -2201,28 +2201,29 @@ public class Executor {
 		} catch (java.lang.IllegalArgumentException e) {
 			e.printStackTrace();
 			jump(vm, inst, true);
+			Log.warn(TAG, "Reflection error: " + e.getMessage());
 		} catch (java.lang.NullPointerException e) {
 			e.printStackTrace();
-			Log.err(TAG, " null pointer ");
+			Log.err(TAG, "Reflection error: " + e.getMessage());
 		} catch (java.lang.ClassNotFoundException
 				| java.lang.NoClassDefFoundError e) {
-			Log.debug(TAG, "Not a reflction invocation " + mi);
+			Log.warn(TAG, "Reflection error: " + e.getMessage());
 			vm.setReflectMethod(null);
 			invocation(vm, mi, inst, args);
 		} catch (java.lang.InstantiationException e) {
-			Log.warn(TAG, "Init exception: " + e.getMessage());
+			Log.warn(TAG, "Reflection error: " + e.getMessage());
 			e.printStackTrace();
 			vm.getReg(args[0]).setValue(new Unknown(mi.myClass), mi.myClass);
 			jump(vm, inst, true);
 		} catch (java.lang.IllegalAccessException e) {
 			e.printStackTrace();
-			Log.warn(TAG, "IllegalAccessException: " + e.getMessage());
+			Log.warn(TAG, "Reflection error: " + e.getMessage());
 			jump(vm, inst, true);
 		} catch (Exception e) {
 			e.printStackTrace();
 			// FIXME
 			if (inst.toString().contains("java.util.Random/nextInt[int]")) {
-				Log.warn(TAG, "Wrong in nextInt");
+				Log.warn(TAG, "Reflection error: " + e.getMessage());
 			} else {
 				Log.err(TAG, "Error in reflection: " + e.getMessage());
 			}

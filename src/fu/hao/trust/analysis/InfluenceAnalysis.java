@@ -1,7 +1,9 @@
 package fu.hao.trust.analysis;
 
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.Stack;
 
 import patdroid.core.MethodInfo;
@@ -28,6 +30,7 @@ public class InfluenceAnalysis {
 	final String TAG = getClass().getSimpleName();
 
 	private PluginConfig config;
+	private Set<String> uiAPIs;
 
 	public void influInvoke(DalvikVM vm, Instruction inst,
 			CorrelatedDataFact fact, Map<Instruction, TargetCall> targetCalls) {
@@ -85,8 +88,19 @@ public class InfluenceAnalysis {
 			} else {
 				Log.msg(TAG, "Not API Recording");
 			}
+			
 		}
 
+	}
+	
+	public boolean isUIAPI(String str) {
+		for (String api : uiAPIs) {
+			if (str.contains(api)) {
+				return true;
+			}
+		}
+		
+		return false;
 	}
 
 	public InfluenceAnalysis() {
@@ -99,6 +113,8 @@ public class InfluenceAnalysis {
 		}
 
 		setConfig(new PluginConfig(TAG, parser.getSrcStrs(), null));
+		uiAPIs = new HashSet<>();
+		uiAPIs.add("setAdapter");
 	}
 
 	public PluginConfig getConfig() {
