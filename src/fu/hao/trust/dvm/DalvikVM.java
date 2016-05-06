@@ -765,7 +765,6 @@ public class DalvikVM {
 	public void runMethod(String apk, String className, String main,
 			PluginManager pluginManager, Object[] params) throws ZipException,
 			IOException {
-		Settings.apkName = Settings.apkName + "_" + className + "_" + main;
 		// get the class representation for the MainActivity class in the
 		// apk
 		ClassInfo c = ClassInfo.findClass(className);

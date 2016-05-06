@@ -20,7 +20,36 @@ public class Test {
 		//t.testMain2();
 		//t.testMopub_onCreate();
 		//t.testMopub_loadAd();
-		t.testWo_();
+		t.test7625099();
+	}
+	
+	public void test7625099() {
+		String[] args = new String[4];
+		args[3] = "Full";
+		Settings.logLevel = 0;
+
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/benign/wowotuan/com.wowotuan.appfactory.aiduoliqichemeirong/7625099.html.apk";
+
+		args[1] = "com.wowotuan.appfactory.gui.activity.CityChoiceActivity";
+		args[2] = "onCreate";
+		Object[] initArgs = new Object[2];
+		initArgs[0] = "NULL";
+		initArgs[1] = "NULL";
+
+		Settings.addCallBlkListElem("com.d.a.j/<init>"); // will lead to at
+															// least 369 calls..
+		Settings.addCallBlkListElem("com.d.a.b.a.bf/<init>");
+		Settings.addCallBlkListElem("com.d.a.d.a");
+		Settings.addCallBlkListElem("com.d.a");
+		Main.initMI(initArgs);
+		Main.main(args);
+		System.out.println("REs: " + Results.results);
+		System.out.println("REs: " + Results.targetCallRes);
+		assertEquals(false, Results.targetCallRes.isEmpty());
+		assertEquals(true, Results.targetCallRes.values().iterator().next()
+				.getInfluAPIs().toString().contains("show"));
+		assertEquals(false, Results.targetCallRes.values().iterator().next()
+				.getFedViews().isEmpty());
 	}
 	
 	public void testWo_() {
@@ -31,19 +60,15 @@ public class Test {
 		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/benign/wowotuan/com.wowotuan.appfactory.wangpintaisuniupai/7619303.html.apk";
 		//args[1] = "com.wowotuan.appfactory.gui.activity.bz";
 		//args[2] = "onItemClick";
-		args[1] = "com.wowotuan.appfactory.gui.activity.CityChoiceActivity";
-		args[2] = "onCreate";
-		Object[] initArgs = new Object[2];
-		initArgs[0] = "NULL";
-		initArgs[1] = "NULL";
+
 		//args[1] = "com.wowotuan.appfactory.gui.activity.ca";
 		//args[1] = "com.wowotuan.appfactory.e.g";
 		//args[2] = "onReceive";
-		/*Object[] initArgs = new Object[2];
+		Object[] initArgs = new Object[2];
 		Intent intent = new Intent("com.wowotuan.appfactory.broadcast.location");
 		intent.putExtra("location", "121.1, 131.1");
 		initArgs[1] = intent; 
-		initArgs[0] = "NULL";*/
+		initArgs[0] = "NULL";
 		Settings.addCallBlkListElem("com.d.a.j/<init>"); // will lead to at least 369 calls..
 		Settings.addCallBlkListElem("com.d.a.b.a.bf/<init>");
 		Settings.addCallBlkListElem("com.d.a.d.a");
