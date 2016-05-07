@@ -44,6 +44,8 @@ public class Settings {
 	public static String apkName;
 	public static String suspClass;
 	public static String suspMethod;
+	// Whether to exec onCreate() when init Activity
+	public static boolean execOnCreate = false;
 	
 	private static Set<String> callBlackList;
 	

@@ -918,28 +918,29 @@ public class Taint extends Plugin {
 		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
 				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
 			Map<String, Map<Object, Instruction>> outs = new HashMap<>();
-			for (String tag : ins.keySet()) {
-				Map<Object, Instruction> in = ins.get(tag);
-				Map<Object, Instruction> out = new HashMap<>(in);
-				if (!(vm.getReg(inst.r0).getData() instanceof DVMObject)) {
-					Log.warn(tag,
-							"Object not DVMObject, it is "
-									+ vm.getReg(inst.r0).getData());
-					return outs;
-				}
-				DVMObject obj = (DVMObject) vm.getReg(inst.r0).getData();
-				FieldInfo fieldInfo = (FieldInfo) inst.extra;
-				Object field = obj.getFieldObj(fieldInfo);
+			if (vm.getReg(inst.r0).isUsed()) {
+				for (String tag : ins.keySet()) {
+					Map<Object, Instruction> in = ins.get(tag);
+					Map<Object, Instruction> out = new HashMap<>(in);
+					if (!(vm.getReg(inst.r0).getData() instanceof DVMObject)) {
+						Log.warn(tag, "Object not DVMObject, it is "
+								+ vm.getReg(inst.r0).getData());
+						return outs;
+					}
+					DVMObject obj = (DVMObject) vm.getReg(inst.r0).getData();
+					FieldInfo fieldInfo = (FieldInfo) inst.extra;
+					Object field = obj.getFieldObj(fieldInfo);
 
-				if (in.containsKey(field)) {
-					out.put(vm.getReg(inst.r1), in.get(field));
-					Log.bb(tag, "Add " + vm.getReg(inst.r1)
-							+ " as tainted due to field " + field);
-				} else if (in.containsKey(vm.getReg(inst.r1))) {
-					// value register, has been assigned to new value
-					out.remove(vm.getReg(inst.r1));
+					if (in.containsKey(field)) {
+						out.put(vm.getReg(inst.r1), in.get(field));
+						Log.bb(tag, "Add " + vm.getReg(inst.r1)
+								+ " as tainted due to field " + field);
+					} else if (in.containsKey(vm.getReg(inst.r1))) {
+						// value register, has been assigned to new value
+						out.remove(vm.getReg(inst.r1));
+					}
+					outs.put(tag, out);
 				}
-				outs.put(tag, out);
 			}
 			return outs;
 		}
@@ -1127,22 +1128,22 @@ public class Taint extends Plugin {
 			if (out.isEmpty()) {
 				continue;
 			}
-			
+
 			List<Object> dels = new ArrayList<>();
 			for (Object obj : out.keySet()) {
 				if (obj instanceof Integer || obj instanceof Boolean) {
 					dels.add(obj);
-				} 
+				}
 			}
-			
+
 			for (Object obj : dels) {
 				out.remove(obj);
 			}
-			
+
 			if (out.containsKey(null)) {
 				out.remove(null);
 			}
-			
+
 			for (Instruction instr : out.values()) {
 				if (instr == null) {
 					Log.err(tag, "Empty src found at " + inst);

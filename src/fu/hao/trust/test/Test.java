@@ -20,15 +20,16 @@ public class Test {
 		//t.testMain2();
 		//t.testMopub_onCreate();
 		//t.testMopub_loadAd();
-		t.test7625099();
+		t.test7625393();
+		//t.testWo_();
 	}
 	
-	public void test7625099() {
+	public void test7625393() {
 		String[] args = new String[4];
 		args[3] = "Full";
 		Settings.logLevel = 0;
 
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/benign/wowotuan/com.wowotuan.appfactory.aiduoliqichemeirong/7625099.html.apk";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/benign/wowotuan/com.wowotuan.appfactory.beiermeiyingtongshishangguan/7625393.html.apk";
 
 		args[1] = "com.wowotuan.appfactory.gui.activity.CityChoiceActivity";
 		args[2] = "onCreate";
@@ -70,7 +71,10 @@ public class Test {
 		initArgs[1] = intent; 
 		initArgs[0] = "NULL";
 		Settings.addCallBlkListElem("com.d.a");
+		Settings.addCallBlkListElem("com.wowotuan.appfactory.gui.activity.CityChoiceActivity/d");
+		Settings.addCallBlkListElem("com.wowotuan.appfactory.gui.activity.CityChoiceActivity/b");
 		//Settings.addCallBlkListElem("com.wowotuan.appfactory.dto.RequestCityLocationDto");
+		Settings.execOnCreate = true;
 		Main.initMI(initArgs);
 		Main.main(args);
 		assertEquals(true, Results.results.isEmpty());

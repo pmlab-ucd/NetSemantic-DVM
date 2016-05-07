@@ -40,7 +40,7 @@ public class DalvikVM {
 		private int count = -1;
 		private StackFrame stackFrame;
 
-		Register(StackFrame stackFrame, int count) {
+		public Register(StackFrame stackFrame, int count) {
 			this.stackFrame = stackFrame;
 			this.count = count;
 		}
@@ -532,6 +532,7 @@ public class DalvikVM {
 	private Register retValReg;
 
 	private Register[] callingCtx;
+	private boolean cleanCallingCtx = true;
 
 	// The "this" instance of a component.
 	//DVMObject callbackOwner;
@@ -598,7 +599,7 @@ public class DalvikVM {
 		return callingCtx;
 	}
 
-	public void setCallContext(int[] is) {
+	public void setGlobalCallContext(int[] is) {
 		if (is == null) {
 			callingCtx = null;
 			return;
@@ -610,11 +611,16 @@ public class DalvikVM {
 	}
 	
 	public void resetCallCtx() {
-		callingCtx = null;
+		if (cleanCallingCtx) {
+			callingCtx = null;
+		} else {
+			cleanCallingCtx = true;
+		}
 	}
 	
-	public void setCallContext(Register[] regs) {
+	public void setGlobalCallContext(Register[] regs, boolean clean) {
 		callingCtx = regs;
+		cleanCallingCtx = clean;
 	}
 
 	public DalvikVM(String APK) {
@@ -1046,12 +1052,32 @@ public class DalvikVM {
 		return tmpMI;
 	}
 
+	/**
+	* @Title: setTmpMI
+	* @Author: Hao Fu
+	* @Description: Set the method that should be pushed into the stack soon
+	* @param @param tmpMI  
+	* @return void   
+	* @throws
+	*/
 	public void setTmpMI(MethodInfo tmpMI) {
 		this.tmpMI = tmpMI;
 	}
 	
 	public ClassInfo getCurrtClass() {
 		return getCurrStackFrame().getMyClass();
+	}
+	
+	public Register newTmpRegister() {
+		return new Register(null, -2);
+	}
+
+	public boolean isCleanCallingCtx() {
+		return cleanCallingCtx;
+	}
+
+	public void setCleanCallingCtx(boolean cleanCallingCtx) {
+		this.cleanCallingCtx = cleanCallingCtx;
 	}
 
 }

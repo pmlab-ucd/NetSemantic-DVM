@@ -155,6 +155,12 @@ public class Executor {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
 			int[] params = (int[]) inst.extra;
+			
+			
+			if (vm.getCallContext() == null && vm.getGlobalCallCtx() != null) {
+				vm.getCurrStackFrame().setCallCtx(vm.getGlobalCallCtx());
+				Log.bb(TAG, "Set callCtx!");
+			}
 
 			if (vm.getCallContext() == null) {
 				Log.warn(TAG, "NULL CallingCtx!");
@@ -2401,7 +2407,7 @@ public class Executor {
 		}
 
 		if (args != null) {
-			vm.setCallContext(args);
+			vm.setGlobalCallContext(args);
 		}
 
 		// Create a new stack frame and push it to the stack.

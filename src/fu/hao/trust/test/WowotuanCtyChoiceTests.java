@@ -108,7 +108,155 @@ public class WowotuanCtyChoiceTests {
 		assertEquals(false, Results.targetCallRes.values().iterator().next()
 				.getFedViews().isEmpty());
 	}
+
+	@Test
+	public void test7612784() {
+		String[] args = new String[4];
+		args[3] = "Full";
+		Settings.logLevel = 0;
+
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/benign/wowotuan/com.wowotuan.appfactory.aimisheying/7612784.html.apk";
+
+		args[1] = "com.wowotuan.appfactory.gui.activity.CityChoiceActivity";
+		args[2] = "onCreate";
+		Object[] initArgs = new Object[2];
+		initArgs[0] = "NULL";
+		initArgs[1] = "NULL";
+
+		Settings.addCallBlkListElem("com.d.a.j/<init>"); // will lead to at
+															// least 369 calls..
+		Settings.addCallBlkListElem("com.d.a.b.a.bf/<init>");
+		Settings.addCallBlkListElem("com.d.a.d.a");
+		Settings.addCallBlkListElem("com.d.a");
+		Main.initMI(initArgs);
+		Main.main(args);
+		System.out.println("REs: " + Results.results);
+		System.out.println("REs: " + Results.targetCallRes);
+		assertEquals(false, Results.targetCallRes.isEmpty());
+		assertEquals(true, Results.targetCallRes.values().iterator().next()
+				.getInfluAPIs().toString().contains("show"));
+		assertEquals(false, Results.targetCallRes.values().iterator().next()
+				.getFedViews().isEmpty());
+	}
 	
+	@Test
+	public void test7646108() {
+		String[] args = new String[4];
+		args[3] = "Full";
+		Settings.logLevel = 0;
+
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/benign/wowotuan/com.wowotuan.appfactory.chongqinglaguoyinhuoguo/7646108.html.apk";
+
+		args[1] = "com.wowotuan.appfactory.gui.activity.CityChoiceActivity";
+		args[2] = "onCreate";
+		Object[] initArgs = new Object[2];
+		initArgs[0] = "NULL";
+		initArgs[1] = "NULL";
+
+		Settings.addCallBlkListElem("com.d.a.j/<init>"); // will lead to at
+															// least 369 calls..
+		Settings.addCallBlkListElem("com.d.a.b.a.bf/<init>");
+		Settings.addCallBlkListElem("com.d.a.d.a");
+		Settings.addCallBlkListElem("com.d.a");
+		Main.initMI(initArgs);
+		Main.main(args);
+		System.out.println("REs: " + Results.results);
+		System.out.println("REs: " + Results.targetCallRes);
+		assertEquals(false, Results.targetCallRes.isEmpty());
+		assertEquals(true, Results.targetCallRes.values().iterator().next()
+				.getInfluAPIs().toString().contains("show"));
+		assertEquals(false, Results.targetCallRes.values().iterator().next()
+				.getFedViews().isEmpty());
+	}
 	
+	@Test
+	public void test7646321() {
+		String[] args = new String[4];
+		args[3] = "Full";
+		Settings.logLevel = 0;
+
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/benign/wowotuan/com.wowotuan.appfactory.chongqinglaguoyinhuoguo/7646321.html.apk";
+
+		args[1] = "com.wowotuan.appfactory.gui.activity.CityChoiceActivity";
+		args[2] = "onCreate";
+		Object[] initArgs = new Object[2];
+		initArgs[0] = "NULL";
+		initArgs[1] = "NULL";
+
+		Settings.addCallBlkListElem("com.d.a.j/<init>"); // will lead to at
+															// least 369 calls..
+		Settings.addCallBlkListElem("com.d.a.b.a.bf/<init>");
+		Settings.addCallBlkListElem("com.d.a.d.a");
+		Settings.addCallBlkListElem("com.d.a");
+		Main.initMI(initArgs);
+		Main.main(args);
+		System.out.println("REs: " + Results.results);
+		System.out.println("REs: " + Results.targetCallRes);
+		assertEquals(false, Results.targetCallRes.isEmpty());
+		assertEquals(true, Results.targetCallRes.values().iterator().next()
+				.getInfluAPIs().toString().contains("show"));
+		assertEquals(false, Results.targetCallRes.values().iterator().next()
+				.getFedViews().isEmpty());
+	}
+	
+	@Test
+	public void test7625343() {
+		String[] args = new String[4];
+		args[3] = "Full";
+		Settings.logLevel = 0;
+
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/benign/wowotuan/com.wowotuan.appfactory.beiermeiyingtongshishangguan/7625343.html.apk";
+
+		args[1] = "com.wowotuan.appfactory.gui.activity.CityChoiceActivity";
+		args[2] = "onCreate";
+		Object[] initArgs = new Object[2];
+		initArgs[0] = "NULL";
+		initArgs[1] = "NULL";
+
+		Settings.addCallBlkListElem("com.d.a.j/<init>"); // will lead to at
+															// least 369 calls..
+		Settings.addCallBlkListElem("com.d.a.b.a.bf/<init>");
+		Settings.addCallBlkListElem("com.d.a.d.a");
+		Settings.addCallBlkListElem("com.d.a");
+		Main.initMI(initArgs);
+		Main.main(args);
+		System.out.println("REs: " + Results.results);
+		System.out.println("REs: " + Results.targetCallRes);
+		assertEquals(false, Results.targetCallRes.isEmpty());
+		assertEquals(true, Results.targetCallRes.values().iterator().next()
+				.getInfluAPIs().toString().contains("show"));
+		assertEquals(false, Results.targetCallRes.values().iterator().next()
+				.getFedViews().isEmpty());
+	}	
+	
+	@Test
+	public void test7625393() {
+		String[] args = new String[4];
+		args[3] = "Full";
+		Settings.logLevel = 0;
+
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/benign/wowotuan/com.wowotuan.appfactory.beiermeiyingtongshishangguan/7625393.html.apk";
+
+		args[1] = "com.wowotuan.appfactory.gui.activity.CityChoiceActivity";
+		args[2] = "onCreate";
+		Object[] initArgs = new Object[2];
+		initArgs[0] = "NULL";
+		initArgs[1] = "NULL";
+
+		Settings.addCallBlkListElem("com.d.a.j/<init>"); // will lead to at
+															// least 369 calls..
+		Settings.addCallBlkListElem("com.d.a.b.a.bf/<init>");
+		Settings.addCallBlkListElem("com.d.a.d.a");
+		Settings.addCallBlkListElem("com.d.a");
+		Main.initMI(initArgs);
+		Main.main(args);
+		System.out.println("REs: " + Results.results);
+		System.out.println("REs: " + Results.targetCallRes);
+		assertEquals(false, Results.targetCallRes.isEmpty());
+		assertEquals(true, Results.targetCallRes.values().iterator().next()
+				.getInfluAPIs().toString().contains("show"));
+		assertEquals(false, Results.targetCallRes.values().iterator().next()
+				.getFedViews().isEmpty());
+	}
 
 }
