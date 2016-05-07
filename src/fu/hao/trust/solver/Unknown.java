@@ -48,11 +48,39 @@ public class Unknown extends SymbolicVar {
 		//}
 		
 		} else {
-			setValue(vm.newVMObject(type));
+			setValue(Unknown.genInstance(vm, type));
 		}
 		
 		
 		Log.bb(TAG, "Unknown created!");
+	}
+	
+	/**
+	* @Title: genInstance
+	* @Author: Hao Fu
+	* @Description: Return an instance, can be a reflectable, DVMObject or null
+	* @param @return  
+	* @return Object   
+	* @throws
+	*/
+	public static Object genInstance(DalvikVM vm, ClassInfo type) {
+		// This is one way.
+		// another way is to return null for any reflecable instance, let the invoker itself to init the instance
+		if (type.fullName.contains("lang.Object")) {
+			return null;
+		}
+		Object res;
+		try {
+			Class<?> clazz = Class.forName(type.fullName);
+			res = clazz.newInstance();
+		} catch (InstantiationException
+				| ClassNotFoundException e) {
+			res = vm.newVMObject(type);
+		} catch (IllegalAccessException e) {
+			res = null;
+		}
+		
+		return res;
 	}
 	
 	public void setType(ClassInfo type) {
@@ -124,8 +152,7 @@ public class Unknown extends SymbolicVar {
 
 	@Override
 	public void setValue(Object value) {
-		// TODO Auto-generated method stub
-		
+		 addConcreteVal(value);
 	}
 
 	public boolean isOn() {
