@@ -7,7 +7,6 @@ import android.view.View;
 public class TextView extends View {
 	public TextView(DalvikVM vm, ClassInfo type) {
 		super(vm, type);
-		// TODO Auto-generated constructor stub
 	}
 
 	CharSequence text;

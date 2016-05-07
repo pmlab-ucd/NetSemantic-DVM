@@ -157,7 +157,6 @@ public class Executor {
 		public void func(DalvikVM vm, Instruction inst) {
 			int[] params = (int[]) inst.extra;
 			
-			
 			if (vm.getCallContext() == null && vm.getGlobalCallCtx() != null) {
 				vm.getCurrStackFrame().setCallCtx(vm.getGlobalCallCtx());
 				Log.bb(TAG, "Set callCtx!");
@@ -2219,7 +2218,8 @@ public class Executor {
 			
 			if (retReg.isUsed() && retReg.getData() instanceof Unknown) {
 				Unknown unknown = (Unknown) retReg.getData();
-				if (unknown.getLastVal() == null && unknown.getType().toString().contains("String")) {
+				if (unknown.getLastVal() == null && (unknown.getType().toString().contains("lang.String")
+						|| unknown.getType().toString().contains("lang.CharSequence"))) {
 					unknown.addConcreteVal("unknown");
 				}
 			}
@@ -2361,7 +2361,8 @@ public class Executor {
 						if (bidirVar.getType() == null || bidirVar.getType().toString().contains("lang.Object")) {
 							bidirVar.setType(mi.paramTypes[j]);
 						}
-						if (bidirVar.getLastVal() == null && mi.paramTypes[j].toString().contains("String")) {
+						if (bidirVar.getLastVal() == null && (mi.paramTypes[j].toString().contains("lang.String")
+								|| mi.paramTypes[j].fullName.contains("lang.CharSequence"))) {
 							bidirVar.addConcreteVal("unknown");
 						}
 						params[j] = bidirVar.getLastVal();

@@ -11,8 +11,8 @@ import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 
 import android.app.Activity;
+import android.myclasses.GenInstance;
 import android.os.AsyncTask;
-import android.view.View;
 import android.widget.BaseAdapter;
 import fu.hao.trust.analysis.Plugin;
 import fu.hao.trust.analysis.PluginManager;
@@ -1070,7 +1070,7 @@ public class DalvikVM {
 			if (typeName.contains("Activity")) {
 				return new Activity(this, oType);
 			} else if (typeName.contains("View")) {
-				return new View(this, oType);
+				return GenInstance.getView(this, oType);
 			} else if (typeName.contains("AsyncTask")) {
 				return new AsyncTask(this, oType);
 			} else if (typeName.contains("Adapter")) {

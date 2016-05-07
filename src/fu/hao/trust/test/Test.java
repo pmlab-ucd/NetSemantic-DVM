@@ -16,14 +16,16 @@ public class Test {
 
 	public static void main(String[] margs) {
 		Test t = new Test();
-		//t.test00983aad12700be0a440296c6173b18a829e9369_a();
-		//t.testMain2();
-		//t.testMopub_onCreate();
-		//t.testMopub_loadAd();
-		//t.test7613973();
-		t.testWo_();
+		t.testMain();
+		// t.test00983aad12700be0a440296c6173b18a829e9369_a();
+		// t.testMain2();
+		// t.testMopub_onCreate();
+		// t.testMopub_loadAd();
+		// t.test7613973();
+		// t.testOnReceive_7619303();
+		// t.testWo_();
 	}
-	
+
 	public void test7613973() {
 		String[] args = new String[4];
 		args[3] = "Full";
@@ -52,46 +54,69 @@ public class Test {
 		assertEquals(false, Results.targetCallRes.values().iterator().next()
 				.getFedViews().isEmpty());
 	}
-		
+
 	public void testWo_() {
 		String[] args = new String[4];
 		args[3] = "Full";
 		Settings.logLevel = 0;
-		
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/benign/wowotuan/com.wowotuan.appfactory.wangpintaisuniupai/7619303.html.apk";
-		//args[1] = "com.wowotuan.appfactory.gui.activity.bz";
-		//args[2] = "onItemClick";
+
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/benign/wowotuan/com.wowotuan.appfactory.beiermeiyingtongshishangguan/7625393.html.apk";
+		// args[1] = "com.wowotuan.appfactory.gui.activity.bz";
+		// args[2] = "onItemClick";
 
 		args[1] = "com.wowotuan.appfactory.gui.activity.ca";
-		//args[1] = "com.wowotuan.appfactory.e.g";
+		// args[1] = "com.wowotuan.appfactory.e.g";
 		args[2] = "onReceive";
 		Object[] initArgs = new Object[2];
 		Intent intent = new Intent("com.wowotuan.appfactory.broadcast.location");
 		intent.putExtra("location", "121.1, 131.1");
-		initArgs[1] = intent; 
+		initArgs[1] = intent;
 		initArgs[0] = "NULL";
 		Settings.addCallBlkListElem("com.d.a");
 		Settings.addCallBlkListElem("com.wowotuan.appfactory.gui.activity.CityChoiceActivity/d");
 		Settings.addCallBlkListElem("com.wowotuan.appfactory.gui.activity.CityChoiceActivity/b");
-		//Settings.addCallBlkListElem("com.wowotuan.appfactory.dto.RequestCityLocationDto");
+		// Settings.addCallBlkListElem("com.wowotuan.appfactory.dto.RequestCityLocationDto");
 		Settings.execOnCreate = true;
 		Main.initMI(initArgs);
 		Main.main(args);
 		assertEquals(true, Results.results.isEmpty());
 	}
-	
+
+	public void testOnReceive_7619303() {
+		String[] args = new String[4];
+		args[3] = "Full";
+		Settings.logLevel = 0;
+
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/benign/wowotuan/com.wowotuan.appfactory.wangpintaisuniupai/7619303.html.apk";
+
+		args[1] = "com.wowotuan.appfactory.gui.activity.ca";
+		args[2] = "onReceive";
+		Object[] initArgs = new Object[2];
+		Intent intent = new Intent("com.wowotuan.appfactory.broadcast.location");
+		intent.putExtra("location", "121.1, 131.1");
+		initArgs[1] = intent;
+		initArgs[0] = "NULL";
+		Settings.addCallBlkListElem("com.d.a");
+		Settings.addCallBlkListElem("com.wowotuan.appfactory.gui.activity.CityChoiceActivity/d");
+		Settings.addCallBlkListElem("com.wowotuan.appfactory.gui.activity.CityChoiceActivity/b");
+		Settings.execOnCreate = true;
+		Main.initMI(initArgs);
+		Main.main(args);
+		assertEquals(true, Results.results.isEmpty());
+	}
+
 	public void testWo_1() {
 		String[] args = new String[4];
 		args[3] = "Full";
 		Settings.logLevel = 0;
-		
+
 		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/benign/wowotuan/com.wowotuan.appfactory.wangpintaisuniupai/7619303.html.apk";
-		//args[1] = "com.wowotuan.appfactory.gui.activity.bz";
-		//args[2] = "onItemClick";
-		//args[1] = "com.wowotuan.appfactory.gui.activity.CityChoiceActivity";
-		//args[2] = "k";
+		// args[1] = "com.wowotuan.appfactory.gui.activity.bz";
+		// args[2] = "onItemClick";
+		// args[1] = "com.wowotuan.appfactory.gui.activity.CityChoiceActivity";
+		// args[2] = "k";
 		args[1] = "com.wowotuan.appfactory.e.h";
-		//args[1] = "com.wowotuan.appfactory.e.g";
+		// args[1] = "com.wowotuan.appfactory.e.g";
 		args[2] = "a";
 		String[] argTypeNames = new String[1];
 		argTypeNames[0] = "com.wowotuan.appfactory.e.g";
@@ -101,37 +126,37 @@ public class Test {
 		Main.main(args);
 		assertEquals(true, Results.results.isEmpty());
 	}
-	
+
 	public void testMopub_loadAd() {
 		String[] args = new String[4];
 		args[3] = "Full";
 		Settings.logLevel = 0;
-		
+
 		args[0] = "C:/Users/hao/workspace/MultiThreading/app/app-release.apk";
 		args[1] = "com.mopub.mobileads.WebViewAdUrlGenerator";
 		args[2] = "generateUrlString";
 		Main.main(args);
 		assertEquals(true, Results.results.isEmpty());
 	}
-	
+
 	public void testMopub_onCreate() {
 		String[] args = new String[4];
 		args[3] = "Full";
 		Settings.logLevel = 0;
-		
+
 		args[0] = "C:/Users/hao/workspace/MultiThreading/app/app-release.apk";
 		args[1] = "fu.hao.multithreading.MainActivity";
 		args[2] = "onCreate";
-		
+
 		Object[] initArgs = new Object[2];
 		initArgs[0] = "android.app.Activity";
 		initArgs[1] = "NULL";
 		Main.initMI(initArgs);
-		
+
 		Main.main(args);
 		assertEquals(true, Results.results.isEmpty());
 	}
-	
+
 	public void test00983aad12700be0a440296c6173b18a829e9369_a() {
 		String[] args = new String[4];
 		Settings.logLevel = 0;
@@ -140,12 +165,13 @@ public class Test {
 		args[1] = "com.android.main.MainService";
 		args[2] = "a";
 		args[3] = "Full";
-		
+
 		Main.main(args);
 		boolean containsSms = false;
 		for (TargetCall targetCall : Results.targetCallRes.values()) {
 			Log.msg(TAG, "Result: " + targetCall);
-			if (targetCall.getInfluAPIs().toString().contains("SmsManager/sendTextMessage")) {
+			if (targetCall.getInfluAPIs().toString()
+					.contains("SmsManager/sendTextMessage")) {
 				containsSms = true;
 			}
 		}
@@ -153,25 +179,24 @@ public class Test {
 		assertEquals(false, Results.targetCallRes.isEmpty());
 		assertEquals(true, containsSms);
 	}
-	
+
 	public void testMain() {
 		String[] args = new String[4];
 		args[3] = "Taint";
 		Settings.logLevel = 0;
-		
+
 		Object[] initArgs = new Object[2];
 		initArgs[0] = "NULL";
 		initArgs[1] = "NULL";
-		
-		args[0] = "C:/Users/hao/workspace/GeneralJava_Loop1/app/app-debug.apk";
-		args[1] = "de.ecspride.LoopExample1";
+
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_StaticInitialization1/app/app-release.apk";
+		args[1] = "de.ecspride.MainActivity";
 		args[2] = "onCreate";
 		Main.main(args);
 		Map<String, String> res = new HashMap<>();
-		System.out.println("REs: " + Results.results);
 		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
-				"[Unknown var:3_5_9_8_7_4_0_4_3_1_1_6_9_0_9_, type: java.lang.String]");
-		assertEquals(true, Results.results.contains(res));
+				"359874043116909");
+		assertEquals(Results.results.contains(res), true);
 	}
 
 	public void testMain2() {
@@ -198,8 +223,6 @@ public class Test {
 						.contains(
 								"<40 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage"));
 	}
-	
-
 
 	class dd {
 		int a;
@@ -216,7 +239,7 @@ public class Test {
 		System.out.println(i.a);
 	}
 
-	void b (dd c) {
+	void b(dd c) {
 		c = new dd();
 		c.a = 3;
 	}

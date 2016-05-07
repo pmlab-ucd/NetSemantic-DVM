@@ -12,7 +12,6 @@ import fu.hao.trust.data.Results;
 import fu.hao.trust.dvm.Main;
 import fu.hao.trust.utils.Settings;
 
-
 public class BenchJavaTests {
 	String[] args = new String[4];
 	Object[] initArgs = new Object[2];
@@ -24,9 +23,6 @@ public class BenchJavaTests {
 		Settings.logLevel = 0;
 		args[3] = "Taint";
 		tm = new TelephonyManager();
-		initArgs[0] = "NULL";
-		initArgs[1] = "NULL";
-		Main.initMI(initArgs);
 	}
 	
 	//@Test
@@ -243,5 +239,5 @@ public class BenchJavaTests {
 				"359874043116909");
 		assertEquals(true, Results.results.contains(res));
 	}
-	
+
 }
