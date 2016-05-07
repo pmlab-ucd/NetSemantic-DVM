@@ -78,6 +78,10 @@ public class DalvikVM {
 		}
 
 		public void setValue(Pair<Object, ClassInfo> value) {
+			if (value == null) {
+				value = null;
+				return;
+			}
 			setValue(value.getFirst(), value.getSecond());
 		}
 
@@ -552,7 +556,9 @@ public class DalvikVM {
 	private DVMObject chainThisObj = null;
 	
 	// Store the tmp method info that should be pushed into the stack soon
-	private MethodInfo tmpMI;
+	LinkedList<StackFrame> tmpFrames;
+
+	private boolean repeatInst = false;	
 
 	public Register getReg(int i) {
 		return stack.getLast().regs[i];
@@ -671,13 +677,39 @@ public class DalvikVM {
 		
 		return null;
 	}
-
+	
+	public void addStackFrames(LinkedList<StackFrame> frames) {
+		stack.addAll(frames);
+	}
+	
 	public StackFrame newStackFrame(ClassInfo sitClass, MethodInfo mi) {
+		 return newStackFrame(sitClass, mi, null, true);
+	}
+	
+	public StackFrame newStackFrame(ClassInfo sitClass, MethodInfo mi, boolean nowAddToStack) {
+		return newStackFrame(sitClass, mi, null, nowAddToStack);
+	}
+
+	public StackFrame newStackFrame(ClassInfo sitClass, MethodInfo mi, Pair<Object, ClassInfo>[] callCtxObjs, boolean nowAddToStack) {
 		String TAG = "newStackFrame";
 		if (mi.insns == null) {
 			return null;
-		}
+		}	
+		
 		StackFrame newStackFrame = new StackFrame(sitClass, mi);
+		
+		if (callCtxObjs != null) {
+		
+		Register[] regs = new Register[callCtxObjs.length];
+		
+		for (int i = 0; i < regs.length; i++) {
+			regs[i] = newTmpRegister();
+			regs[i].setValue(callCtxObjs[i]);
+		}
+			newStackFrame.setCallCtx(regs);
+		}
+		
+		
 	/*	
 		if (mi.isConstructor()) {
 			for (Instruction inst : mi.insns) {
@@ -719,11 +751,15 @@ public class DalvikVM {
 			pluginManager.setCurrRes(newStackFrame == null ? null
 					: newStackFrame.pluginRes);
 		}
-		stack.add(newStackFrame);
+		if (nowAddToStack) {
+			stack.add(newStackFrame);
+		}
 		
 		Log.bb(TAG, "Stack: " + stack);
 		return newStackFrame;
 	}
+	
+	
 
 	/**
 	 * @Title: backCallCtx
@@ -1048,8 +1084,11 @@ public class DalvikVM {
 		return new DVMObject(this, oType);
 	}
 
-	public MethodInfo getTmpMI() {
-		return tmpMI;
+	
+	
+	public LinkedList<StackFrame> getTmpFrames() {
+		
+		return tmpFrames;
 	}
 
 	/**
@@ -1060,8 +1099,15 @@ public class DalvikVM {
 	* @return void   
 	* @throws
 	*/
-	public void setTmpMI(MethodInfo tmpMI) {
-		this.tmpMI = tmpMI;
+	public void setTmpFrames(LinkedList<StackFrame> tmpFrames, boolean repeat) {
+		this.setRepeatInst(repeat);
+		this.tmpFrames = tmpFrames; 
+	}
+	
+	public void setTmpFrames(StackFrame tmpFrame, boolean repeat) {
+		this.setRepeatInst(repeat);
+		tmpFrames = new LinkedList<>();
+		tmpFrames.add(tmpFrame);
 	}
 	
 	public ClassInfo getCurrtClass() {
@@ -1078,6 +1124,14 @@ public class DalvikVM {
 
 	public void setCleanCallingCtx(boolean cleanCallingCtx) {
 		this.cleanCallingCtx = cleanCallingCtx;
+	}
+
+	public void setRepeatInst(boolean repeatInst) {
+		this.repeatInst = repeatInst;
+	}
+	
+	public boolean getRepeatInst() {
+		return repeatInst;
 	}
 
 }

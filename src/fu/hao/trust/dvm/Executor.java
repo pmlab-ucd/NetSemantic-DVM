@@ -5,6 +5,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
 
@@ -215,6 +216,10 @@ public class Executor {
 
 				int i = 0;
 				for (Register argReg : vm.getCallContext()) {
+					if (argReg.isUsed() && argReg.getData() instanceof Register) {
+						Register dataReg = (Register) argReg.getData();
+						argReg = dataReg;
+					}
 					vm.getReg(params[i]).copy(argReg);
 					Log.debug(TAG,
 							"params: "
@@ -1685,6 +1690,14 @@ public class Executor {
 			final String TAG = getClass().toString();
 			FieldInfo fieldInfo = (FieldInfo) inst.extra;
 			Object obj = vm.getReg(inst.r0).getData();
+			if (obj instanceof Unknown){
+				Unknown unknown = (Unknown) obj;
+				if (unknown.getValue() instanceof DVMObject) {
+					obj = unknown.getValue();
+					vm.getReg(inst.r0).setValue(obj, vm.getReg(inst.r0).getType());
+				}
+			} 
+			
 			Log.bb(TAG, "obj " + obj);
 			Log.bb(TAG, "fieldinfo " + fieldInfo);
 			if (obj instanceof DVMObject) {
@@ -1729,6 +1742,14 @@ public class Executor {
 			FieldInfo fieldInfo = (FieldInfo) inst.extra;
 			Log.bb(TAG, "field " + fieldInfo);
 			Object obj = vm.getReg(inst.r0).getData();
+			if (obj instanceof Unknown){
+				Unknown unknown = (Unknown) obj;
+				if (unknown.getValue() instanceof DVMObject) {
+					obj = unknown.getValue();
+					vm.getReg(inst.r0).setValue(obj, vm.getReg(inst.r0).getType());
+				}
+			} 
+			
 			Log.bb(TAG, "Target obj " + obj);
 			if (obj instanceof DVMObject) {
 				DVMObject dvmObj = (DVMObject) obj;
@@ -2630,11 +2651,13 @@ public class Executor {
 				Log.err(TAG, "Unsupported opcode " + inst);
 			}
 
-			if (vm.getTmpMI() != null) {
+			if (vm.getTmpFrames() != null) {
 				vm.resetCallCtx();
-				vm.setPC(vm.getNowPC());
-				vm.newStackFrame(vm.getTmpMI().myClass, vm.getTmpMI());
-				vm.setTmpMI(null);
+				if (vm.getRepeatInst()) {
+					vm.setPC(vm.getNowPC());
+				}
+				vm.addStackFrames(vm.getTmpFrames());
+				vm.setTmpFrames(new LinkedList<StackFrame>(), false);
 			}
 
 			if (!vm.getPluginManager().isEmpty()

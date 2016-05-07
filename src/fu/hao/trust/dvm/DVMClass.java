@@ -22,8 +22,8 @@ public class DVMClass {
 		vm.setClass(type, this);
 
 		MethodInfo clinit = type.getStaticInitializer();
-		if (clinit != null && clinit.insns != null) {
-			vm.setTmpMI(clinit);
+		if (clinit != null && clinit.insns != null) {	
+			vm.setTmpFrames(vm.newStackFrame(type, clinit, false), true);
 			/*
 			vm.resetCallCtx();
 			vm.newStackFrame(clinit);

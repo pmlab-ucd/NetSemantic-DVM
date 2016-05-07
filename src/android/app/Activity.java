@@ -7,8 +7,9 @@ import android.content.Context;
 import android.view.View;
 import patdroid.core.ClassInfo;
 import fu.hao.trust.dvm.DalvikVM;
-import fu.hao.trust.dvm.DalvikVM.Register;
+import fu.hao.trust.dvm.DalvikVM.StackFrame;
 import fu.hao.trust.utils.Log;
+import fu.hao.trust.utils.Pair;
 import fu.hao.trust.utils.Settings;
 
 public class Activity extends Context {
@@ -20,13 +21,13 @@ public class Activity extends Context {
 		super(vm, type);
 		Log.bb(TAG, "New Activity Created with type " + type);
 		if (Settings.execOnCreate) {
-			Register[] regs = new Register[2];
-			regs[0] = vm.newTmpRegister();
-			regs[0].setValue(this, type);
-			regs[1] = vm.newTmpRegister();
-			vm.setGlobalCallContext(regs, false);
+			@SuppressWarnings("unchecked")
+			Pair<Object, ClassInfo>[] params = (Pair<Object, ClassInfo>[]) new Pair[2]; 
+			params[0] = new Pair<Object, ClassInfo>(this, type);
+			params[1] = null;
+			StackFrame frame = vm.newStackFrame(type, type.findMethods("onCreate")[0], params, false);
 			Log.bb(TAG, "ROOO " + (vm.getGlobalCallCtx() == null));
-			vm.setTmpMI(type.findMethods("onCreate")[0]);
+			vm.setTmpFrames(frame, true);
 		}
 	}
 

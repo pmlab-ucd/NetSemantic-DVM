@@ -30,22 +30,22 @@ newStackFrame - [BB]: New Stack Frame: StackFrame de.ecspride.Button2/clickOnBut
 newStackFrame - [BB]: Stack: [StackFrame de.ecspride.Button2/clickOnButton3[android.view.View]]
 Executor - [MSG]: New chain obj with type de.ecspride.Button2
 Activity - [BB]: New instance of de.ecspride.Button2
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.Button2 at fu.hao.trust.dvm.VMHeap@67aaecbe
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for de.ecspride.Button2 at fu.hao.trust.dvm.VMHeap@67aaecbe
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@67aaecbe
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@67aaecbe
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@67aaecbe
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@67aaecbe
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@67aaecbe
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@67aaecbe
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.Button2 at fu.hao.trust.dvm.VMHeap@53533bdf
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for de.ecspride.Button2 at fu.hao.trust.dvm.VMHeap@53533bdf
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@53533bdf
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@53533bdf
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@53533bdf
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@53533bdf
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@53533bdf
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@53533bdf
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@67aaecbe
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@53533bdf
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.Context
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@67aaecbe
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@53533bdf
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.app.Activity
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@67aaecbe
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@53533bdf
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type de.ecspride.Button2
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.Button2 at fu.hao.trust.dvm.VMHeap@67aaecbe
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.Button2 at fu.hao.trust.dvm.VMHeap@53533bdf
 Activity - [BB]: New Activity Created with type de.ecspride.Button2
 Executor - [MSG]: RUN BEGIN de.ecspride.Button2/clickOnButton3[android.view.View]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> run set pc to 0
@@ -56,13 +56,13 @@ Executor - [WARN]: NULL CallingCtx!
 Executor - [DEBUG]: args: Activity:instance number 1@de.ecspride.Button2
 Executor - [BB]: Start param from 1
 View - [BB]: New instance of android.view.View
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@67aaecbe
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.view.View at fu.hao.trust.dvm.VMHeap@67aaecbe
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@67aaecbe
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@53533bdf
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.view.View at fu.hao.trust.dvm.VMHeap@53533bdf
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@53533bdf
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@67aaecbe
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@53533bdf
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.view.View
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@67aaecbe
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@53533bdf
 Executor - [DEBUG]: args: instance number 1@android.view.View
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
 PluginManager - [MSG]: Taint Tainted Res: {}
@@ -82,7 +82,7 @@ Executor - [BB]: Normal args? true
 Executor - [BB]: arg1@reg1: phone
 Executor - [BB]: Nargs? true
 Executor - [DEBUG]: Caller obj: Activity:instance number 1@de.ecspride.Button2, from class: class android.app.Activity
-Executor - [DEBUG]: Return data: android.telephony.TelephonyManager@591686f7 ,class android.telephony.TelephonyManager
+Executor - [DEBUG]: Return data: android.telephony.TelephonyManager@42d72882 ,class android.telephony.TelephonyManager
 Executor - [MSG]: Reflction invocation public java.lang.Object android.content.Context.getSystemService(java.lang.String)
 DalvikVM - [BB]: Set reflective call: public java.lang.Object android.content.Context.getSystemService(java.lang.String)
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 3
@@ -92,8 +92,8 @@ PluginManager - [MSG]: Taint Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <3 MOV,RESULT,dst=r0,type=java.lang.Object> at de.ecspride.Button2/clickOnButton3[android.view.View]
-OP_MOV_RESULT - [BB]: Result data: android.telephony.TelephonyManager@591686f7
-OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.TelephonyManager@591686f7, type: java.lang.Object, to [reg 0@Button2/clickOnButton3]
+OP_MOV_RESULT - [BB]: Result data: android.telephony.TelephonyManager@42d72882
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.TelephonyManager@42d72882, type: java.lang.Object, to [reg 0@Button2/clickOnButton3]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 4
 PluginManager - [MSG]: Taint Tainted Res: {}
 Executor - [MSG]: 
@@ -105,7 +105,7 @@ PluginManager - [MSG]: Taint Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]> at de.ecspride.Button2/clickOnButton3[android.view.View]
-Executor - [MSG]: arg0 obj: android.telephony.TelephonyManager@591686f7
+Executor - [MSG]: arg0 obj: android.telephony.TelephonyManager@42d72882
 Executor - [DEBUG]: Reflction class: class android.telephony.TelephonyManager
 Executor - [DEBUG]: Return data: 359874043116909 ,class java.lang.String
 Executor - [MSG]: Reflction invocation public java.lang.String android.telephony.TelephonyManager.getDeviceId()
@@ -113,7 +113,7 @@ DalvikVM - [BB]: Set reflective call: public java.lang.String android.telephony.
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 6
 Taint - [BB]: <android.telephony.TelephonyManager: java.lang.String getDeviceId()>
 Taint - [WARN]: Found a tainted return value!
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Global RetReg]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {[Global RetReg]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <6 MOV,RESULT,dst=r1,type=java.lang.Object> at de.ecspride.Button2/clickOnButton3[android.view.View]
@@ -218,7 +218,7 @@ DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 16
 Taint - [BB]: <java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>
 Taint - [DEBUG]: not a taint call: <java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>
 Taint - [WARN]: Found a tainted return val!
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Global RetReg]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@Button2/clickOnButton3]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {[Global RetReg]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@Button2/clickOnButton3]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <16 MOV,RESULT,dst=r2,type=java.lang.Object> at de.ecspride.Button2/clickOnButton3[android.view.View]
@@ -228,7 +228,7 @@ OP_MOV_RESULT - [DEBUG]: Result data: [Unknown var:Button3: 359874043116909, typ
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 17
 Taint - [BB]: <5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>
 Taint - [BB]: Add reg 2 due to ret reg.
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@Button2/clickOnButton3]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 2@Button2/clickOnButton3]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {[reg 2@Button2/clickOnButton3]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@Button2/clickOnButton3]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <17 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/toString[], [2]]> at de.ecspride.Button2/clickOnButton3[android.view.View]
@@ -243,7 +243,7 @@ DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 18
 Taint - [BB]: <java.lang.StringBuilder: java.lang.String toString()>
 Taint - [DEBUG]: not a taint call: <java.lang.StringBuilder: java.lang.String toString()>
 Taint - [WARN]: Found a tainted return val!
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Global RetReg]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@Button2/clickOnButton3]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 2@Button2/clickOnButton3]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {[Global RetReg]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 2@Button2/clickOnButton3]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@Button2/clickOnButton3]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <18 MOV,RESULT,dst=r2,type=java.lang.Object> at de.ecspride.Button2/clickOnButton3[android.view.View]
@@ -253,7 +253,7 @@ OP_MOV_RESULT - [DEBUG]: Result data: [Unknown var:Button3: 359874043116909, typ
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 19
 Taint - [BB]: <5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>
 Taint - [BB]: Add reg 2 due to ret reg.
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@Button2/clickOnButton3]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 2@Button2/clickOnButton3]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {[reg 2@Button2/clickOnButton3]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@Button2/clickOnButton3]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <19 INVOKE,STATIC,extra=[android.util.Log/i[java.lang.String, java.lang.String], [1, 2]]> at de.ecspride.Button2/clickOnButton3[android.view.View]
@@ -270,7 +270,7 @@ DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INVOKE_STATIC -> jump set pc to 20
 Taint - [BB]: <android.util.Log: int i(java.lang.String,java.lang.String)>
 Taint - [DEBUG]: not a taint call: <android.util.Log: int i(java.lang.String,java.lang.String)>
 Taint - [WARN]: Found a tainted return val!
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Global RetReg]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@Button2/clickOnButton3]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 2@Button2/clickOnButton3]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {[Global RetReg]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 2@Button2/clickOnButton3]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@Button2/clickOnButton3]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <20 RETURN,VOID> at de.ecspride.Button2/clickOnButton3[android.view.View]
@@ -320,9 +320,9 @@ Executor - [WARN]: NULL CallingCtx!
 Executor - [DEBUG]: args: Activity:instance number 1@de.ecspride.Button2
 Executor - [BB]: Start param from 1
 View - [BB]: New instance of android.view.View
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@67aaecbe
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@53533bdf
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.view.View
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@67aaecbe
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@53533bdf
 Executor - [DEBUG]: args: instance number 2@android.view.View
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
 Taint - [BB]: Copy 359874043116909 as tainted.
@@ -349,8 +349,8 @@ PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<5 INVOKE,VIRTUAL,ext
 Executor - [MSG]: 
 
 Executor - [MSG]: <3 MOV,RESULT,dst=r0,type=java.lang.Object> at de.ecspride.Button2$1/onClick[android.view.View]
-OP_MOV_RESULT - [BB]: Result data: android.telephony.SmsManager@70fb111c
-OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.SmsManager@70fb111c, type: android.telephony.SmsManager, to [reg 0@Button2$1/onClick]
+OP_MOV_RESULT - [BB]: Result data: android.telephony.SmsManager@c876cb0
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.SmsManager@c876cb0, type: android.telephony.SmsManager, to [reg 0@Button2$1/onClick]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 4
 PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Executor - [MSG]: 
@@ -398,14 +398,14 @@ class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: fieldinfo de.ecspr
 class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: 359874043116909
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD -> jump set pc to 2
 Taint - [BB]: Add [reg 0@Button2/access$000] as tainted due to field 359874043116909
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 0@Button2/access$000]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 0@Button2/access$000]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <2 RETURN,VALUE,r0=r0,type=java.lang.Object> at de.ecspride.Button2/access$000[de.ecspride.Button2]
 Executor - [BB]: Return data: 359874043116909
 DalvikVM - [BB]: Back to the last stack frame.StackFrame de.ecspride.Button2$1/onClick[android.view.View]
 Taint - [BB]: Add [Global RetReg] as tainted due to [reg 0@Button2/access$000]
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Global RetReg]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {[Global RetReg]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <7 MOV,RESULT,dst=r3,type=java.lang.Object> at de.ecspride.Button2$1/onClick[android.view.View]
@@ -431,7 +431,7 @@ PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<5 INVOKE,VIRTUAL,ext
 Executor - [MSG]: 
 
 Executor - [MSG]: <10 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]> at de.ecspride.Button2$1/onClick[android.view.View]
-Executor - [MSG]: arg0 obj: android.telephony.SmsManager@70fb111c
+Executor - [MSG]: arg0 obj: android.telephony.SmsManager@c876cb0
 Executor - [DEBUG]: Reflction class: class android.telephony.SmsManager
 Executor - [BB]: Normal args? true
 Executor - [BB]: arg1@reg1: +49 1234
@@ -443,7 +443,7 @@ Executor - [WARN]: Mismatch type! arg 4, real para type: class patdroid.core.Pri
 Executor - [BB]: arg5@reg5: 0
 Executor - [WARN]: Mismatch type! arg 5, real para type: class patdroid.core.PrimitiveInfo, expected para type: class android.app.PendingIntent
 Executor - [BB]: Nargs? true
-Executor - [DEBUG]: Caller obj: android.telephony.SmsManager@70fb111c, from class: class android.telephony.SmsManager
+Executor - [DEBUG]: Caller obj: android.telephony.SmsManager@c876cb0, from class: class android.telephony.SmsManager
 Executor - [MSG]: Reflction invocation public void android.telephony.SmsManager.sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)
 DalvikVM - [BB]: Set reflective call: public void android.telephony.SmsManager.sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 11
@@ -546,14 +546,14 @@ class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: fieldinfo de.ecspr
 class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: 359874043116909
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD -> jump set pc to 2
 Taint - [BB]: Add [reg 0@Button2/access$000] as tainted due to field 359874043116909
-PluginManager - [MSG]: Taint Tainted Res: {[reg 0@Button2/access$000]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 0@Button2/access$000]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <2 RETURN,VALUE,r0=r0,type=java.lang.Object> at de.ecspride.Button2/access$000[de.ecspride.Button2]
 Executor - [BB]: Return data: 359874043116909
 DalvikVM - [BB]: Back to the last stack frame.StackFrame de.ecspride.Button2$1/onClick[android.view.View]
 Taint - [BB]: Add [Global RetReg] as tainted due to [reg 0@Button2/access$000]
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Global RetReg]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {[Global RetReg]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <19 MOV,RESULT,dst=r5,type=java.lang.Object> at de.ecspride.Button2$1/onClick[android.view.View]
@@ -563,7 +563,7 @@ OP_MOV_RESULT - [DEBUG]: Result data: 359874043116909, type: java.lang.String, t
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 20
 Taint - [BB]: <5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>
 Taint - [BB]: Add reg 5 due to ret reg.
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 5@Button2$1/onClick]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 5@Button2$1/onClick]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <20 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [4, 5]]> at de.ecspride.Button2$1/onClick[android.view.View]
@@ -582,7 +582,7 @@ DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 21
 Taint - [BB]: <java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>
 Taint - [DEBUG]: not a taint call: <java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>
 Taint - [WARN]: Found a tainted return val!
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Global RetReg]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 5@Button2$1/onClick]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:sendIMEI: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {[Unknown var:sendIMEI: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Global RetReg]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 5@Button2$1/onClick]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <21 MOV,RESULT,dst=r4,type=java.lang.Object> at de.ecspride.Button2$1/onClick[android.view.View]
@@ -592,7 +592,7 @@ OP_MOV_RESULT - [DEBUG]: Result data: [Unknown var:sendIMEI: 359874043116909, ty
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 22
 Taint - [BB]: <5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>
 Taint - [BB]: Add reg 4 due to ret reg.
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 4@Button2$1/onClick]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 5@Button2$1/onClick]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:sendIMEI: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {[Unknown var:sendIMEI: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 4@Button2$1/onClick]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 5@Button2$1/onClick]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <22 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/toString[], [4]]> at de.ecspride.Button2$1/onClick[android.view.View]
@@ -607,7 +607,7 @@ DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 23
 Taint - [BB]: <java.lang.StringBuilder: java.lang.String toString()>
 Taint - [DEBUG]: not a taint call: <java.lang.StringBuilder: java.lang.String toString()>
 Taint - [WARN]: Found a tainted return val!
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Global RetReg]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 4@Button2$1/onClick]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 5@Button2$1/onClick]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:sendIMEI: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:sendIMEI: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {[Unknown var:sendIMEI: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 4@Button2$1/onClick]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Global RetReg]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:sendIMEI: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 5@Button2$1/onClick]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <23 MOV,RESULT,dst=r4,type=java.lang.Object> at de.ecspride.Button2$1/onClick[android.view.View]
@@ -617,7 +617,7 @@ OP_MOV_RESULT - [DEBUG]: Result data: [Unknown var:sendIMEI: 359874043116909, ty
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 24
 Taint - [BB]: <5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>
 Taint - [BB]: Add reg 4 due to ret reg.
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 4@Button2$1/onClick]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 5@Button2$1/onClick]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:sendIMEI: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:sendIMEI: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {[Unknown var:sendIMEI: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 4@Button2$1/onClick]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:sendIMEI: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 5@Button2$1/onClick]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <24 INVOKE,STATIC,extra=[android.util.Log/i[java.lang.String, java.lang.String], [3, 4]]> at de.ecspride.Button2$1/onClick[android.view.View]
@@ -634,7 +634,7 @@ DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INVOKE_STATIC -> jump set pc to 25
 Taint - [BB]: <android.util.Log: int i(java.lang.String,java.lang.String)>
 Taint - [DEBUG]: not a taint call: <android.util.Log: int i(java.lang.String,java.lang.String)>
 Taint - [WARN]: Found a tainted return val!
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Global RetReg]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 4@Button2$1/onClick]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 5@Button2$1/onClick]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:sendIMEI: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:sendIMEI: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {[Unknown var:sendIMEI: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 4@Button2$1/onClick]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Global RetReg]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:sendIMEI: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 5@Button2$1/onClick]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <25 INSTANCE,IGET,r0=r6,r1=r3,type=java.lang.Object,extra=de.ecspride.Button2$1.this$0> at de.ecspride.Button2$1/onClick[android.view.View]
@@ -643,7 +643,7 @@ class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: fieldinfo de.ecspr
 DalvikVM - [BB]: ar3 <TAG, java.lang.String>, <Activity:instance number 1@de.ecspride.Button2, de.ecspride.Button2>
 class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: Activity:instance number 1@de.ecspride.Button2
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD -> jump set pc to 26
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Global RetReg]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 4@Button2$1/onClick]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 5@Button2$1/onClick]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:sendIMEI: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:sendIMEI: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {[Unknown var:sendIMEI: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 4@Button2$1/onClick]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Global RetReg]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:sendIMEI: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 5@Button2$1/onClick]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <26 INVOKE,STATIC,extra=[de.ecspride.Button2/access$002[de.ecspride.Button2, java.lang.String], [3, 2]]> at de.ecspride.Button2$1/onClick[android.view.View]
@@ -654,7 +654,7 @@ DalvikVM - [BB]: [1]<0 INSTANCE,IPUT,r0=r0,r1=r1,type=java.lang.Object,extra=de.
 DalvikVM - [BB]: [2]<0 RETURN,VALUE,r0=r1,type=java.lang.Object>
 newStackFrame - [BB]: New Stack Frame: StackFrame de.ecspride.Button2/access$002[de.ecspride.Button2, java.lang.String], pc 27 stored. 
 newStackFrame - [BB]: Stack: [StackFrame de.ecspride.Button2$1/onClick[android.view.View], StackFrame de.ecspride.Button2/access$002[de.ecspride.Button2, java.lang.String]]
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:sendIMEI: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:sendIMEI: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {[Unknown var:sendIMEI: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:sendIMEI: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> run set pc to 0
 Executor - [MSG]: 
 
@@ -662,12 +662,12 @@ Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[0, 1]> at de.ecspride.Button2/a
 Executor - [DEBUG]: params: Activity:instance number 1@de.ecspride.Button2
 Executor - [DEBUG]: params: 0
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+Taint - [BB]: Copy [Unknown var:sendIMEI: 359874043116909, type: java.lang.StringBuilder] as tainted.
 Taint - [BB]: Copy 359874043116909 as tainted.
+Taint - [BB]: Copy [Unknown var:sendIMEI: 359874043116909, type: java.lang.String] as tainted.
 Taint - [BB]: Copy [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder] as tainted.
 Taint - [BB]: Copy [Unknown var:Button3: 359874043116909, type: java.lang.String] as tainted.
-Taint - [BB]: Copy [Unknown var:sendIMEI: 359874043116909, type: java.lang.StringBuilder] as tainted.
-Taint - [BB]: Copy [Unknown var:sendIMEI: 359874043116909, type: java.lang.String] as tainted.
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:sendIMEI: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:sendIMEI: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {[Unknown var:sendIMEI: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:sendIMEI: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <1 INSTANCE,IPUT,r0=r0,r1=r1,type=java.lang.Object,extra=de.ecspride.Button2.imei> at de.ecspride.Button2/access$002[de.ecspride.Button2, java.lang.String]
@@ -676,13 +676,13 @@ class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj Activit
 Activity - [DEBUG]: put field 0
 class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data 0 to the field of Activity:instance number 1@de.ecspride.Button2
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 2
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:sendIMEI: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:sendIMEI: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {[Unknown var:sendIMEI: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:sendIMEI: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <2 RETURN,VALUE,r0=r1,type=java.lang.Object> at de.ecspride.Button2/access$002[de.ecspride.Button2, java.lang.String]
 Executor - [BB]: Return data: 0
 DalvikVM - [BB]: Back to the last stack frame.StackFrame de.ecspride.Button2$1/onClick[android.view.View]
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Global RetReg]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 4@Button2$1/onClick]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 5@Button2$1/onClick]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:sendIMEI: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:sendIMEI: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {[Unknown var:sendIMEI: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 4@Button2$1/onClick]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Global RetReg]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:sendIMEI: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.StringBuilder]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 5@Button2$1/onClick]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:Button3: 359874043116909, type: java.lang.String]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <27 RETURN,VOID> at de.ecspride.Button2$1/onClick[android.view.View]
@@ -712,22 +712,29 @@ newStackFrame - [BB]: New Stack Frame: StackFrame de.ecspride.Button1/onCreate[a
 newStackFrame - [BB]: Stack: [StackFrame de.ecspride.Button1/onCreate[android.os.Bundle]]
 Executor - [MSG]: New chain obj with type de.ecspride.Button1
 Activity - [BB]: New instance of de.ecspride.Button1
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@30b57ca1
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@30b57ca1
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@30b57ca1
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@30b57ca1
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@30b57ca1
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@30b57ca1
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@30b57ca1
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@30b57ca1
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@60e07ad7
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@60e07ad7
+DalvikVM - [BB]: New method call: de.ecspride.Button1/<clinit>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [2]<0 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(de.ecspride.Button1, imei)>
+DalvikVM - [BB]: [3]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame de.ecspride.Button1/<clinit>[], pc -1 stored. 
+newStackFrame - [BB]: Stack: [StackFrame de.ecspride.Button1/onCreate[android.os.Bundle]]
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@60e07ad7
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@60e07ad7
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@60e07ad7
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@60e07ad7
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@60e07ad7
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@60e07ad7
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@30b57ca1
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@60e07ad7
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.Context
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@30b57ca1
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@60e07ad7
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.app.Activity
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@30b57ca1
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@60e07ad7
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type de.ecspride.Button1
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@30b57ca1
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@60e07ad7
 Activity - [BB]: New Activity Created with type de.ecspride.Button1
 Executor - [MSG]: RUN BEGIN de.ecspride.Button1/onCreate[android.os.Bundle]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> run set pc to 0
@@ -738,20 +745,13 @@ Executor - [WARN]: NULL CallingCtx!
 Executor - [DEBUG]: args: Activity:instance number 1@de.ecspride.Button1
 Executor - [BB]: Start param from 1
 DVMObject - [BB]: New instance of android.os.Bundle
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@30b57ca1
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.os.Bundle at fu.hao.trust.dvm.VMHeap@30b57ca1
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@60e07ad7
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.os.Bundle at fu.hao.trust.dvm.VMHeap@60e07ad7
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.os.Bundle
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@30b57ca1
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@60e07ad7
 Executor - [DEBUG]: args: instance number 1@android.os.Bundle
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> exec set pc to 0
-DalvikVM - [BB]: New method call: de.ecspride.Button1/<clinit>[]
-DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[]>
-DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
-DalvikVM - [BB]: [2]<0 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(de.ecspride.Button1, imei)>
-DalvikVM - [BB]: [3]<0 RETURN,VOID>
-newStackFrame - [BB]: New Stack Frame: StackFrame de.ecspride.Button1/<clinit>[], pc 0 stored. 
-newStackFrame - [BB]: Stack: [StackFrame de.ecspride.Button1/onCreate[android.os.Bundle], StackFrame de.ecspride.Button1/<clinit>[]]
 PluginManager - [MSG]: Taint Tainted Res: {}
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> run set pc to 0
 Executor - [MSG]: 
@@ -771,16 +771,16 @@ PluginManager - [MSG]: Taint Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <2 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(de.ecspride.Button1, imei)> at de.ecspride.Button1/<clinit>[]
-Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@30b57ca1
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@60e07ad7
 Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type de.ecspride.Button1
-Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@30b57ca1
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@60e07ad7
 class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [WARN]: Type inconsistent! void java.lang.String
 class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: expect sput imei from de.ecspride.Button1
-class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: real sput 0 from fu.hao.trust.dvm.DVMClass@2dca2026
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: real sput 0 from fu.hao.trust.dvm.DVMClass@2707f992
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD -> jump set pc to 3
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@30b57ca1
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@60e07ad7
 Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type de.ecspride.Button1
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@30b57ca1
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@60e07ad7
 PluginManager - [MSG]: Taint Tainted Res: {}
 Executor - [MSG]: 
 
@@ -795,9 +795,9 @@ DalvikVM - [BB]: ar2 <Activity:instance number 1@de.ecspride.Button1, de.ecsprid
 Executor - [DEBUG]: args: Activity:instance number 1@de.ecspride.Button1
 Executor - [BB]: Start param from 1
 DVMObject - [BB]: New instance of android.os.Bundle
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@30b57ca1
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@60e07ad7
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.os.Bundle
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@30b57ca1
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.os.Bundle at fu.hao.trust.dvm.VMHeap@60e07ad7
 DalvikVM - [BB]: ar3 <instance number 1@android.os.Bundle, android.os.Bundle>, <instance number 2@android.os.Bundle, android.os.Bundle>
 Executor - [DEBUG]: args: instance number 2@android.os.Bundle
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
@@ -850,7 +850,7 @@ Executor - [BB]: Normal args? true
 Executor - [BB]: arg1@reg1: phone
 Executor - [BB]: Nargs? true
 Executor - [DEBUG]: Caller obj: Activity:instance number 1@de.ecspride.Button1, from class: class android.app.Activity
-Executor - [DEBUG]: Return data: android.telephony.TelephonyManager@7bb21521 ,class android.telephony.TelephonyManager
+Executor - [DEBUG]: Return data: android.telephony.TelephonyManager@61229c06 ,class android.telephony.TelephonyManager
 Executor - [MSG]: Reflction invocation public java.lang.Object android.content.Context.getSystemService(java.lang.String)
 DalvikVM - [BB]: Set reflective call: public java.lang.Object android.content.Context.getSystemService(java.lang.String)
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 6
@@ -860,8 +860,8 @@ PluginManager - [MSG]: Taint Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <6 MOV,RESULT,dst=r0,type=java.lang.Object> at de.ecspride.Button1/onCreate[android.os.Bundle]
-OP_MOV_RESULT - [BB]: Result data: android.telephony.TelephonyManager@7bb21521
-OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.TelephonyManager@7bb21521, type: java.lang.Object, to [reg 0@Button1/onCreate]
+OP_MOV_RESULT - [BB]: Result data: android.telephony.TelephonyManager@61229c06
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.TelephonyManager@61229c06, type: java.lang.Object, to [reg 0@Button1/onCreate]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 7
 PluginManager - [MSG]: Taint Tainted Res: {}
 Executor - [MSG]: 
@@ -873,7 +873,7 @@ PluginManager - [MSG]: Taint Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]> at de.ecspride.Button1/onCreate[android.os.Bundle]
-Executor - [MSG]: arg0 obj: android.telephony.TelephonyManager@7bb21521
+Executor - [MSG]: arg0 obj: android.telephony.TelephonyManager@61229c06
 Executor - [DEBUG]: Reflction class: class android.telephony.TelephonyManager
 Executor - [DEBUG]: Return data: 359874043116909 ,class java.lang.String
 Executor - [MSG]: Reflction invocation public java.lang.String android.telephony.TelephonyManager.getDeviceId()
@@ -881,7 +881,7 @@ DalvikVM - [BB]: Set reflective call: public java.lang.String android.telephony.
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 9
 Taint - [BB]: <android.telephony.TelephonyManager: java.lang.String getDeviceId()>
 Taint - [WARN]: Found a tainted return value!
-PluginManager - [MSG]: Taint Tainted Res: {[Global RetReg]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Global RetReg]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <9 MOV,RESULT,dst=r1,type=java.lang.Object> at de.ecspride.Button1/onCreate[android.os.Bundle]
@@ -895,15 +895,15 @@ PluginManager - [MSG]: Taint Tainted Res: {[reg 1@Button1/onCreate]=<8 INVOKE,VI
 Executor - [MSG]: 
 
 Executor - [MSG]: <10 STATIC,SPUT,r0=r1,type=java.lang.Object,extra=(de.ecspride.Button1, imei)> at de.ecspride.Button1/onCreate[android.os.Bundle]
-Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@30b57ca1
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@60e07ad7
 Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type de.ecspride.Button1
-Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@30b57ca1
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@60e07ad7
 class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: expect sput imei from de.ecspride.Button1
-class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: real sput 359874043116909 from fu.hao.trust.dvm.DVMClass@2dca2026
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: real sput 359874043116909 from fu.hao.trust.dvm.DVMClass@2707f992
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD -> jump set pc to 11
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@30b57ca1
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@60e07ad7
 Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type de.ecspride.Button1
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@30b57ca1
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@60e07ad7
 Taint - [BB]: SPut at [reg 1@Button1/onCreate]
 PluginManager - [MSG]: Taint Tainted Res: {[reg 1@Button1/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Executor - [MSG]: 
@@ -942,13 +942,13 @@ Executor - [WARN]: NULL CallingCtx!
 Executor - [DEBUG]: args: Activity:instance number 1@de.ecspride.Button1
 Executor - [BB]: Start param from 1
 View - [BB]: New instance of android.view.View
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@30b57ca1
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.view.View at fu.hao.trust.dvm.VMHeap@30b57ca1
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@30b57ca1
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@60e07ad7
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.view.View at fu.hao.trust.dvm.VMHeap@60e07ad7
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@60e07ad7
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@30b57ca1
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@60e07ad7
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.view.View
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@30b57ca1
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@60e07ad7
 Executor - [DEBUG]: args: instance number 1@android.view.View
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
 Taint - [BB]: Copy 359874043116909 as tainted.
@@ -963,23 +963,23 @@ PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,ext
 Executor - [MSG]: 
 
 Executor - [MSG]: <2 STATIC,SGET,r0=r1,type=java.lang.Object,extra=(de.ecspride.Button1, imei)> at de.ecspride.Button1/sendMessage[android.view.View]
-Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@30b57ca1
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@60e07ad7
 Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type de.ecspride.Button1
-Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@30b57ca1
-OP_STATIC_GET_FIELD - [DEBUG]: Sget 359874043116909, from fu.hao.trust.dvm.DVMClass@2dca2026
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@60e07ad7
+OP_STATIC_GET_FIELD - [DEBUG]: Sget 359874043116909, from fu.hao.trust.dvm.DVMClass@2707f992
 OP_STATIC_GET_FIELD - [DEBUG]: Expect sget imei, a java.lang.String from de.ecspride.Button1
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD -> jump set pc to 3
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@30b57ca1
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@60e07ad7
 Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type de.ecspride.Button1
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@30b57ca1
-PluginManager - [MSG]: Taint Tainted Res: {[reg 1@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@60e07ad7
+PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 1@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <3 MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?1> at de.ecspride.Button1/sendMessage[android.view.View]
 Executor - [DEBUG]: Mov const begin <3 MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?1>
 Executor - [DEBUG]: data: 1 class patdroid.core.PrimitiveInfo
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 4
-PluginManager - [MSG]: Taint Tainted Res: {[reg 1@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 1@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <4 INVOKE,STATIC,extra=[android.widget.Toast/makeText[android.content.Context, java.lang.CharSequence, int], [6, 1, 3]]> at de.ecspride.Button1/sendMessage[android.view.View]
@@ -998,21 +998,21 @@ DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INVOKE_STATIC -> jump set pc to 5
 Taint - [BB]: <android.widget.Toast: android.widget.Toast makeText(android.content.Context,java.lang.CharSequence,int)>
 Taint - [DEBUG]: not a taint call: <android.widget.Toast: android.widget.Toast makeText(android.content.Context,java.lang.CharSequence,int)>
 Taint - [WARN]: Found a tainted return val!
-PluginManager - [MSG]: Taint Tainted Res: {[reg 1@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Global RetReg]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, android.widget.Toast@25805bc=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Global RetReg]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 1@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, android.widget.Toast@46a3790d=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <5 MOV,RESULT,dst=r1,type=java.lang.Object> at de.ecspride.Button1/sendMessage[android.view.View]
-DalvikVM - [BB]: ar1 <359874043116909, java.lang.String>, <android.widget.Toast@25805bc, android.widget.Toast>
-OP_MOV_RESULT - [BB]: Result data: android.widget.Toast@25805bc
-OP_MOV_RESULT - [DEBUG]: Result data: android.widget.Toast@25805bc, type: android.widget.Toast, to [reg 1@Button1/sendMessage]
+DalvikVM - [BB]: ar1 <359874043116909, java.lang.String>, <android.widget.Toast@46a3790d, android.widget.Toast>
+OP_MOV_RESULT - [BB]: Result data: android.widget.Toast@46a3790d
+OP_MOV_RESULT - [DEBUG]: Result data: android.widget.Toast@46a3790d, type: android.widget.Toast, to [reg 1@Button1/sendMessage]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 6
 Taint - [BB]: <8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>
 Taint - [BB]: Add reg 1 due to ret reg.
-PluginManager - [MSG]: Taint Tainted Res: {[reg 1@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, android.widget.Toast@25805bc=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 1@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, android.widget.Toast@46a3790d=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <6 INVOKE,VIRTUAL,extra=[android.widget.Toast/show[], [1]]> at de.ecspride.Button1/sendMessage[android.view.View]
-Executor - [MSG]: arg0 obj: android.widget.Toast@25805bc
+Executor - [MSG]: arg0 obj: android.widget.Toast@46a3790d
 Executor - [DEBUG]: Reflction class: class android.widget.Toast
 Executor - [MSG]: Reflction invocation public void android.widget.Toast.show()
 DalvikVM - [BB]: Set reflective call: public void android.widget.Toast.show()
@@ -1020,7 +1020,7 @@ DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 7
 Taint - [BB]: <android.widget.Toast: void show()>
 Taint - [DEBUG]: not a taint call: <android.widget.Toast: void show()>
 Taint - [WARN]: Found a tainted return val!
-PluginManager - [MSG]: Taint Tainted Res: {[reg 1@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Global RetReg]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, android.widget.Toast@25805bc=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Global RetReg]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 1@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, android.widget.Toast@46a3790d=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <7 INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]> at de.ecspride.Button1/sendMessage[android.view.View]
@@ -1030,52 +1030,52 @@ DalvikVM - [BB]: Set reflective call: public static android.telephony.SmsManager
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INVOKE_STATIC -> jump set pc to 8
 Taint - [BB]: <android.telephony.SmsManager: android.telephony.SmsManager getDefault()>
 Taint - [DEBUG]: not a taint call: <android.telephony.SmsManager: android.telephony.SmsManager getDefault()>
-PluginManager - [MSG]: Taint Tainted Res: {[reg 1@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, android.widget.Toast@25805bc=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 1@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, android.widget.Toast@46a3790d=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <8 MOV,RESULT,dst=r0,type=java.lang.Object> at de.ecspride.Button1/sendMessage[android.view.View]
-OP_MOV_RESULT - [BB]: Result data: android.telephony.SmsManager@60e07ad7
-OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.SmsManager@60e07ad7, type: android.telephony.SmsManager, to [reg 0@Button1/sendMessage]
+OP_MOV_RESULT - [BB]: Result data: android.telephony.SmsManager@166068b6
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.SmsManager@166068b6, type: android.telephony.SmsManager, to [reg 0@Button1/sendMessage]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 9
-PluginManager - [MSG]: Taint Tainted Res: {[reg 1@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, android.widget.Toast@25805bc=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 1@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, android.widget.Toast@46a3790d=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <9 MOV,CONST,dst=r1,type=java.lang.String,extra="+49"> at de.ecspride.Button1/sendMessage[android.view.View]
 Executor - [DEBUG]: Mov const begin <9 MOV,CONST,dst=r1,type=java.lang.String,extra="+49">
-DalvikVM - [BB]: ar1 <android.widget.Toast@25805bc, android.widget.Toast>, <+49, java.lang.String>
+DalvikVM - [BB]: ar1 <android.widget.Toast@46a3790d, android.widget.Toast>, <+49, java.lang.String>
 Executor - [DEBUG]: data: +49 class java.lang.String
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 10
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, android.widget.Toast@25805bc=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, android.widget.Toast@46a3790d=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <10 STATIC,SGET,r0=r3,type=java.lang.Object,extra=(de.ecspride.Button1, imei)> at de.ecspride.Button1/sendMessage[android.view.View]
-Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@30b57ca1
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@60e07ad7
 Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type de.ecspride.Button1
-Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@30b57ca1
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@60e07ad7
 DalvikVM - [BB]: ar3 <1, void>, <359874043116909, java.lang.String>
-OP_STATIC_GET_FIELD - [DEBUG]: Sget 359874043116909, from fu.hao.trust.dvm.DVMClass@2dca2026
+OP_STATIC_GET_FIELD - [DEBUG]: Sget 359874043116909, from fu.hao.trust.dvm.DVMClass@2707f992
 OP_STATIC_GET_FIELD - [DEBUG]: Expect sget imei, a java.lang.String from de.ecspride.Button1
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD -> jump set pc to 11
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@30b57ca1
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@60e07ad7
 Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type de.ecspride.Button1
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@30b57ca1
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, android.widget.Toast@25805bc=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.Button1 at fu.hao.trust.dvm.VMHeap@60e07ad7
+PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, android.widget.Toast@46a3790d=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <11 MOV,REG,dst=r4,r0=r2,type=java.lang.Object> at de.ecspride.Button1/sendMessage[android.view.View]
 class fu.hao.trust.dvm.Executor$OP_MOVE_REG - [DEBUG]: mov 0 to 0
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOVE_REG -> jump set pc to 12
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, android.widget.Toast@25805bc=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, android.widget.Toast@46a3790d=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <12 MOV,REG,dst=r5,r0=r2,type=java.lang.Object> at de.ecspride.Button1/sendMessage[android.view.View]
 class fu.hao.trust.dvm.Executor$OP_MOVE_REG - [DEBUG]: mov 0 to 0
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOVE_REG -> jump set pc to 13
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, android.widget.Toast@25805bc=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, android.widget.Toast@46a3790d=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <13 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]> at de.ecspride.Button1/sendMessage[android.view.View]
-Executor - [MSG]: arg0 obj: android.telephony.SmsManager@60e07ad7
+Executor - [MSG]: arg0 obj: android.telephony.SmsManager@166068b6
 Executor - [DEBUG]: Reflction class: class android.telephony.SmsManager
 Executor - [BB]: Normal args? true
 Executor - [BB]: arg1@reg1: +49
@@ -1087,14 +1087,14 @@ Executor - [WARN]: Mismatch type! arg 4, real para type: class patdroid.core.Pri
 Executor - [BB]: arg5@reg5: 0
 Executor - [WARN]: Mismatch type! arg 5, real para type: class patdroid.core.PrimitiveInfo, expected para type: class android.app.PendingIntent
 Executor - [BB]: Nargs? true
-Executor - [DEBUG]: Caller obj: android.telephony.SmsManager@60e07ad7, from class: class android.telephony.SmsManager
+Executor - [DEBUG]: Caller obj: android.telephony.SmsManager@166068b6, from class: class android.telephony.SmsManager
 Executor - [MSG]: Reflction invocation public void android.telephony.SmsManager.sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)
 DalvikVM - [BB]: Set reflective call: public void android.telephony.SmsManager.sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 14
 Taint - [BB]: <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>
 Taint - [BB]: Found a sink invocation. <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>
 Taint - [WARN]: Found a taint sink <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)> leaking data [359874043116909] at reg 3!!!
-PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, android.widget.Toast@25805bc=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+PluginManager - [MSG]: Taint Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, android.widget.Toast@46a3790d=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <14 RETURN,VOID> at de.ecspride.Button1/sendMessage[android.view.View]

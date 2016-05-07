@@ -259,12 +259,12 @@ public class WowotuanCtyChoiceTests {
 				.getFedViews().isEmpty());
 	}
 	
-	public void test764631() {
+	public void test7613973() {
 		String[] args = new String[4];
 		args[3] = "Full";
 		Settings.logLevel = 0;
 
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/benign/wowotuan/com.wowotuan.appfactory.chongqinglaguoyinhuoguo/7646321.html.apk";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/benign/wowotuan/com.wowotuan.appfactory.dekeshishufudian/7613973.html.apk";
 
 		args[1] = "com.wowotuan.appfactory.gui.activity.CityChoiceActivity";
 		args[2] = "onCreate";

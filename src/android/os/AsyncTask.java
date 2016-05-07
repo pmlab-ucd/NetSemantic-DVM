@@ -1,10 +1,14 @@
 package android.os;
 
+import java.util.LinkedList;
+
 import patdroid.core.ClassInfo;
 import patdroid.core.MethodInfo;
 import patdroid.dalvik.Instruction;
 import fu.hao.trust.dvm.DVMObject;
 import fu.hao.trust.dvm.DalvikVM;
+import fu.hao.trust.dvm.DalvikVM.StackFrame;
+import fu.hao.trust.utils.Pair;
 
 public class AsyncTask extends DVMObject {
 	
@@ -19,6 +23,7 @@ public class AsyncTask extends DVMObject {
 		super(vm, type);
 	}
 
+	@SuppressWarnings("unchecked")
 	public final AsyncTask execute(Object[] params) {
 		Instruction inst = vm.getCurrtInst();
 		Object[] extra = (Object[]) inst.extra;
@@ -29,23 +34,31 @@ public class AsyncTask extends DVMObject {
 		doInBack = findDoInBack(myClass);
 		onPost = findOnPost(myClass);
 		
+		Pair<Object, ClassInfo>[] ctxObjs;
+		LinkedList<StackFrame> tmpFrames = new LinkedList<>();
+		
 		// Push them into the stack
 		// onPost
 		Object[] params2 = new Object[2];
 		params2[0] = this;
 		params2[1] = vm.getReturnReg();
-		vm.runMethod(type, onPost, params2, false);
+		
+		ctxObjs = (Pair<Object, ClassInfo>[]) new Pair[2]; 
+		ctxObjs[0] = new Pair<Object, ClassInfo>(this, type);
+		ctxObjs[1] = new Pair<Object, ClassInfo>(vm.getReturnReg(), doInBack.returnType);
+		tmpFrames.add(vm.newStackFrame(type, onPost, ctxObjs, false));
 		
 		// doIn
-		Object[] params3 = new Object[2];
-		params3[0] = this;
-		params3[1] = params;
-		vm.runMethod(type, doInBack, params3, false);
+		ctxObjs = (Pair<Object, ClassInfo>[]) new Pair[2]; ;
+		ctxObjs[0] = new Pair<Object, ClassInfo>(this, type);
+		ctxObjs[1] = new Pair<Object, ClassInfo>(params, doInBack.paramTypes[0]);
+		tmpFrames.add(vm.newStackFrame(type, doInBack, ctxObjs, false));
 		
 		// onPre
-		Object[] params1 = new Object[1];
-		params1[0] = this;
-		vm.runMethod(type, onPre, params1, false);
+		ctxObjs = (Pair<Object, ClassInfo>[]) new Pair[1]; 
+		ctxObjs[0] = new Pair<Object, ClassInfo>(this, type);
+		tmpFrames.add(vm.newStackFrame(type, onPre, ctxObjs, false));
+		vm.setTmpFrames(tmpFrames, false);
 
 		return this;
 	}

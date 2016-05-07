@@ -20,16 +20,16 @@ public class Test {
 		//t.testMain2();
 		//t.testMopub_onCreate();
 		//t.testMopub_loadAd();
-		t.test7646108();
-		//t.testWo_();
+		//t.test7613973();
+		t.testWo_();
 	}
 	
-	public void test7646108() {
+	public void test7613973() {
 		String[] args = new String[4];
 		args[3] = "Full";
 		Settings.logLevel = 0;
 
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/benign/wowotuan/com.wowotuan.appfactory.chongqinglaguoyinhuoguo/7646108.html.apk";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/benign/wowotuan/com.wowotuan.appfactory.dekeshishufudian/7613973.html.apk";
 
 		args[1] = "com.wowotuan.appfactory.gui.activity.CityChoiceActivity";
 		args[2] = "onCreate";
