@@ -2553,6 +2553,11 @@ public class Executor {
 			if (mis.length != 0) {
 				res.add(mis[0]);
 			}
+		} else if (mi.toString().contains("onLowMemory")) {
+			MethodInfo[] mis = sitClass.findMethods("onCreate");
+			if (mis.length != 0) {
+				res.add(mis[0]);
+			}
 		}
 
 		return res;

@@ -205,9 +205,10 @@ public class Test {
 		args[3] = "ATaint";
 		Settings.logLevel = 0;
 		
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Lifecycle_ApplicationLifecycle1/app/";
-		args[1] = "de.ecspride.MainActivity";
-		args[2] = "onResume";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Lifecycle_ApplicationLifecycle2/app/";
+		
+		args[1] = "de.ecspride.ApplicationLifecyle2";
+		args[2] = "onLowMemory";
 		Main.main(args);
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
