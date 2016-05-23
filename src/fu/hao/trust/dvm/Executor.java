@@ -1,5 +1,8 @@
 package fu.hao.trust.dvm;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -10,6 +13,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import com.opencsv.CSVReader;
 
 import android.ShouldBeReplaced;
 import android.content.Intent;
@@ -2499,31 +2504,64 @@ public class Executor {
 
 	}
 
-	public MethodInfo getPreCallback(ClassInfo sitClass, MethodInfo mi) {
+	/**
+	 * @throws FileNotFoundException
+	 * @Title: getPreCallback
+	 * @Author: Hao Fu
+	 * @Description: Check the callback should be exected before the target
+	 * @param sitClass
+	 * @param mi
+	 * @return MethodInfo
+	 * @throws
+	 */
+	public List<MethodInfo> getPreCallback(ClassInfo sitClass, MethodInfo mi) {
+		List<MethodInfo> res = new ArrayList<>();
+		// The callbacks inside the class extends Application
+		String csv = "./output/manifests/" + Settings.apkName + "_manifest.csv";
+		Log.debug(TAG, "Read manifest csv: " + csv);
+		try {
+			CSVReader reader = new CSVReader(new FileReader(csv));
+			for (String[] mains : reader.readAll()) {
+				if (mains[0] != null && !mains[0].equals("")) {
+					Log.bb(TAG, "mains[0] " + mains[0]);
+					ClassInfo appClass = ClassInfo.findClass(mains[0]);
+					Log.bb(TAG, "appClass: " + appClass);
+					if (appClass != null) {
+						MethodInfo[] appOnCreate = appClass.findMethods("onCreate");
+						Log.bb(TAG, "onCreates " + appOnCreate.length);
+						if (appOnCreate.length != 0) {
+							res.add(appOnCreate[0]);
+						}
+					}
+				}
+			}
+			reader.close();
+		} catch (IOException e) {
+			Log.warn(TAG, e.getMessage());
+		}
+
+		// The callbacks inside the class
 		if (mi.toString().contains("onRestoreInstanceState")) {
-			return sitClass.findMethods("onSaveInstanceState")[0];
+			res.add(sitClass.findMethods("onSaveInstanceState")[0]);
 		} else if (mi.toString().contains("onResume")) {
 			MethodInfo[] mis = sitClass.findMethods("onPause");
 			if (mis.length != 0) {
-				return mis[0];
+				res.add(mis[0]);
 			}
 		} else if (mi.toString().contains("onPause")) {
 			MethodInfo[] mis = sitClass.findMethods("onResume");
 			if (mis.length != 0) {
-				return mis[0];
+				res.add(mis[0]);
 			}
 		}
 
-		return null;
+		return res;
 	}
 
 	public void runMethod(ClassInfo sitClass, DalvikVM vm, MethodInfo method,
 			boolean force) {
 		List<MethodInfo> runs = new ArrayList<>();
-		MethodInfo preCallback = getPreCallback(sitClass, method);
-		if (preCallback != null) {
-			runs.add(preCallback);
-		}
+		runs.addAll(getPreCallback(sitClass, method));
 		runs.add(method);
 
 		for (MethodInfo mi : runs) {
