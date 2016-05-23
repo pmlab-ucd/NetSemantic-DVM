@@ -357,8 +357,8 @@ public class Taint extends Plugin {
 							Log.debug(tag, "Not a taint call: " + sootSignature);
 						}
 
-						if (vm.getReturnReg().getData() != null
-								|| vm.getReturnReg().getType() != null) {
+						if (vm.getReturnReg().isUsed() && (vm.getReturnReg().getData() != null
+								|| vm.getReturnReg().getType() != null)) {
 							for (int i = 0; i < args.length; i++) {
 								if (in.containsKey(vm.getReg(args[i]))) {
 									Log.warn(tag, "Found a tainted return val!");

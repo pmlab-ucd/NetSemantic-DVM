@@ -3,9 +3,11 @@ package fu.hao.trust.dvm;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -156,7 +158,7 @@ public class Executor {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
 			int[] params = (int[]) inst.getExtra();
-			
+
 			if (vm.getCallContext() == null && vm.getGlobalCallCtx() != null) {
 				vm.getCurrStackFrame().setCallCtx(vm.getGlobalCallCtx());
 				Log.bb(TAG, "Set callCtx!");
@@ -179,8 +181,8 @@ public class Executor {
 				Log.bb(TAG, "Start param from " + i);
 				for (ClassInfo paramClass : currMethod.paramTypes) {
 					if (paramClass.isPrimitive()) {
-						vm.getReg(params[i]).setValue(new Unknown(vm, paramClass),
-								paramClass);
+						vm.getReg(params[i]).setValue(
+								new Unknown(vm, paramClass), paramClass);
 					} else if (paramClass.isArray()) {
 						// FIXME
 					} else {
@@ -537,7 +539,8 @@ public class Executor {
 				Log.err(TAG, "Cannot identify res type!");
 			}
 			if (!vm.getReturnReg().isUsed()) {
-				vm.getReturnReg().setValue(new Unknown(vm, inst.type), inst.type);
+				vm.getReturnReg().setValue(new Unknown(vm, inst.type),
+						inst.type);
 			} else if (vm.getReturnReg().getData() instanceof SymbolicVar
 					&& vm.getReturnReg().getType().isPrimitive()) {
 				SymbolicVar var = (SymbolicVar) vm.getReturnReg().getData();
@@ -1605,7 +1608,8 @@ public class Executor {
 		public void func(DalvikVM vm, Instruction inst) {
 			final String TAG = getClass().getSimpleName();
 			@SuppressWarnings("unchecked")
-			Pair<ClassInfo, String> pair = (Pair<ClassInfo, String>) inst.getExtra();
+			Pair<ClassInfo, String> pair = (Pair<ClassInfo, String>) inst
+					.getExtra();
 
 			try {
 				Class<?> clazz = Class.forName(pair.first.toString());
@@ -1652,7 +1656,8 @@ public class Executor {
 			final String TAG = getClass().toString();
 			// owner and field.getName
 			@SuppressWarnings("unchecked")
-			Pair<ClassInfo, String> pair = (Pair<ClassInfo, String>) inst.getExtra();
+			Pair<ClassInfo, String> pair = (Pair<ClassInfo, String>) inst
+					.getExtra();
 			ClassInfo owner = pair.first;
 			String fieldName = pair.second;
 
@@ -1690,14 +1695,15 @@ public class Executor {
 			final String TAG = getClass().toString();
 			FieldInfo fieldInfo = (FieldInfo) inst.getExtra();
 			Object obj = vm.getReg(inst.r0).getData();
-			if (obj instanceof Unknown){
+			if (obj instanceof Unknown) {
 				Unknown unknown = (Unknown) obj;
 				if (unknown.getValue() instanceof DVMObject) {
 					obj = unknown.getValue();
-					vm.getReg(inst.r0).setValue(obj, vm.getReg(inst.r0).getType());
+					vm.getReg(inst.r0).setValue(obj,
+							vm.getReg(inst.r0).getType());
 				}
-			} 
-			
+			}
+
 			Log.bb(TAG, "obj " + obj);
 			Log.bb(TAG, "fieldinfo " + fieldInfo);
 			if (obj instanceof DVMObject) {
@@ -1742,14 +1748,15 @@ public class Executor {
 			FieldInfo fieldInfo = (FieldInfo) inst.getExtra();
 			Log.bb(TAG, "field " + fieldInfo);
 			Object obj = vm.getReg(inst.r0).getData();
-			if (obj instanceof Unknown){
+			if (obj instanceof Unknown) {
 				Unknown unknown = (Unknown) obj;
 				if (unknown.getValue() instanceof DVMObject) {
 					obj = unknown.getValue();
-					vm.getReg(inst.r0).setValue(obj, vm.getReg(inst.r0).getType());
+					vm.getReg(inst.r0).setValue(obj,
+							vm.getReg(inst.r0).getType());
 				}
-			} 
-			
+			}
+
 			Log.bb(TAG, "Target obj " + obj);
 			if (obj instanceof DVMObject) {
 				DVMObject dvmObj = (DVMObject) obj;
@@ -1828,7 +1835,8 @@ public class Executor {
 
 			// seems <int, int> is enough
 			@SuppressWarnings("unchecked")
-			Map<Integer, Integer> switchTable = (Map<Integer, Integer>) inst.getExtra();
+			Map<Integer, Integer> switchTable = (Map<Integer, Integer>) inst
+					.getExtra();
 			Object data = vm.getReg(inst.r0);
 
 			for (int key : switchTable.keySet()) {
@@ -2094,7 +2102,7 @@ public class Executor {
 					|| Settings.callBlkListHas(inst.toString())) {
 				normalArg = false;
 			}
-			
+
 			if (inst.toString().contains("android.content.Context/start")) {
 				Results.intent = (Intent) vm.getReg(args[1]).getData();
 			}
@@ -2163,8 +2171,8 @@ public class Executor {
 					// When method is a memeber of noInvoke, do not really
 					// invoke it
 					if (!normalArg) {
-						vm.getReturnReg().setValue(new Unknown(vm, mi.returnType),
-								mi.returnType);
+						vm.getReturnReg().setValue(
+								new Unknown(vm, mi.returnType), mi.returnType);
 						Log.warn(TAG, "Found noInvokeMethod " + method);
 					} else {
 						vm.getReturnReg().setValue(method.invoke(thisInstance),
@@ -2188,8 +2196,8 @@ public class Executor {
 								method.invoke(thisInstance, params),
 								mi.returnType);
 					} else {
-						vm.getReturnReg().setValue(new Unknown(vm, mi.returnType),
-								mi.returnType);
+						vm.getReturnReg().setValue(
+								new Unknown(vm, mi.returnType), mi.returnType);
 					}
 				}
 				if (vm.getReturnReg().getData() != null) {
@@ -2211,7 +2219,7 @@ public class Executor {
 				vm.getReturnReg().setValue(vm.newVMObject(mi.returnType),
 						mi.returnType);
 			}
-			
+
 			if (vm.getReturnReg().isUsed() && isInvokeButUnknownRet(mi)) {
 				Unknown retVal = new Unknown(vm, mi.returnType);
 				if (vm.getReturnReg().getData() == null) {
@@ -2219,14 +2227,15 @@ public class Executor {
 				} else {
 					retVal.addConcreteVal(vm.getReturnReg().getData());
 				}
-				vm.getReturnReg().setValue(retVal,
-						mi.returnType);
+				vm.getReturnReg().setValue(retVal, mi.returnType);
 			}
-			
+
 			if (retReg.isUsed() && retReg.getData() instanceof Unknown) {
 				Unknown unknown = (Unknown) retReg.getData();
-				if (unknown.getLastVal() == null && (unknown.getType().toString().contains("lang.String")
-						|| unknown.getType().toString().contains("lang.CharSequence"))) {
+				if (unknown.getLastVal() == null
+						&& (unknown.getType().toString()
+								.contains("lang.String") || unknown.getType()
+								.toString().contains("lang.CharSequence"))) {
 					unknown.addConcreteVal("unknown");
 				}
 			}
@@ -2247,7 +2256,8 @@ public class Executor {
 		} catch (java.lang.InstantiationException e) {
 			Log.warn(TAG, "Reflection error: " + e.getMessage());
 			e.printStackTrace();
-			vm.getReg(args[0]).setValue(new Unknown(vm, mi.myClass), mi.myClass);
+			vm.getReg(args[0])
+					.setValue(new Unknown(vm, mi.myClass), mi.myClass);
 			jump(vm, inst, true);
 		} catch (java.lang.IllegalAccessException e) {
 			e.printStackTrace();
@@ -2265,7 +2275,7 @@ public class Executor {
 		}
 
 	}
-	
+
 	public void checkIntent(DalvikVM vm, Instruction inst) {
 		Object[] extra = (Object[]) inst.getExtra();
 		int[] args = (int[]) extra[1];
@@ -2286,8 +2296,7 @@ public class Executor {
 
 		return false;
 	}
-	
-	
+
 	private boolean isInvokeButUnknownRet(MethodInfo mi) {
 		for (String mname : invokeButUnknownRet) {
 			if (mi.toString().contains(mname)) {
@@ -2350,16 +2359,18 @@ public class Executor {
 					argClass = boolean.class;
 				}
 
-				Log.debug(TAG, "Real para " + argClass + ", value: " + params[j]);
+				Log.debug(TAG, "Real para " + argClass + ", value: "
+						+ params[j]);
 				argsClass[j] = argClass;
 			} else {
 				String argClass = mi.paramTypes[j].toString();
 				argsClass[j] = Class.forName(argClass);
 				Object argData = vm.getReg(args[i]).getData();
-				if (vm.getReg(args[i]).getType().toString().contains("lang.Object")) {
+				if (vm.getReg(args[i]).getType().toString()
+						.contains("lang.Object")) {
 					vm.getReg(args[i]).setValue(argData, mi.paramTypes[j]);
 				}
-				
+
 				if (argData == null) {
 					Log.warn(
 							TAG,
@@ -2376,15 +2387,20 @@ public class Executor {
 							+ ", expected para type: " + argsClass[j]);
 					if (argData instanceof SymbolicVar) {
 						SymbolicVar bidirVar = (SymbolicVar) argData;
-						if (bidirVar.getType() == null || bidirVar.getType().toString().contains("lang.Object")) {
+						if (bidirVar.getType() == null
+								|| bidirVar.getType().toString()
+										.contains("lang.Object")) {
 							bidirVar.setType(mi.paramTypes[j]);
 						}
-						if (bidirVar.getLastVal() == null && (mi.paramTypes[j].toString().contains("lang.String")
-								|| mi.paramTypes[j].fullName.contains("lang.CharSequence"))) {
+						if (bidirVar.getLastVal() == null
+								&& (mi.paramTypes[j].toString().contains(
+										"lang.String") || mi.paramTypes[j].fullName
+										.contains("lang.CharSequence"))) {
 							bidirVar.addConcreteVal("unknown");
 						}
 						params[j] = bidirVar.getLastVal();
-						Log.debug(TAG, "Found symbolic var with value: " + params[j]);
+						Log.debug(TAG, "Found symbolic var with value: "
+								+ params[j]);
 						// To correctly show the URL, depress return val through
 						// a list.
 						if (isNoInvoke2(mi)) {
@@ -2395,7 +2411,7 @@ public class Executor {
 						return false;
 					}
 
-					//params[j] = argData;
+					// params[j] = argData;
 				}
 			}
 		}
@@ -2483,37 +2499,64 @@ public class Executor {
 
 	}
 
-	public void runMethod(ClassInfo sitClass, DalvikVM vm, MethodInfo mi,
+	public MethodInfo getPreCallback(ClassInfo sitClass, MethodInfo mi) {
+		if (mi.toString().contains("onRestoreInstanceState")) {
+			return sitClass.findMethods("onSaveInstanceState")[0];
+		} else if (mi.toString().contains("onResume")) {
+			MethodInfo[] mis = sitClass.findMethods("onPause");
+			if (mis.length != 0) {
+				return mis[0];
+			}
+		} else if (mi.toString().contains("onPause")) {
+			MethodInfo[] mis = sitClass.findMethods("onResume");
+			if (mis.length != 0) {
+				return mis[0];
+			}
+		}
+
+		return null;
+	}
+
+	public void runMethod(ClassInfo sitClass, DalvikVM vm, MethodInfo method,
 			boolean force) {
-		// Create a new stack frame and push it to the stack.
-		StackFrame stackFrame = vm.newStackFrame(sitClass, mi);
-		if (stackFrame == null) {
-			return;
+		List<MethodInfo> runs = new ArrayList<>();
+		MethodInfo preCallback = getPreCallback(sitClass, method);
+		if (preCallback != null) {
+			runs.add(preCallback);
 		}
-		if (mi.isStatic()) {
-			Log.bb(TAG, "Entry method is static!");
-			stackFrame.setThisObj(null);
-		} else {
-			if (vm.getChainThisObj() == null) {
-				Log.msg(TAG, "New chain obj with type " + sitClass);
-				stackFrame.setThisObj(vm.newVMObject(sitClass));
-				vm.setChainThisObj(stackFrame.getThisObj());
+		runs.add(method);
+
+		for (MethodInfo mi : runs) {
+			// Create a new stack frame and push it to the stack.
+			StackFrame stackFrame = vm.newStackFrame(sitClass, mi);
+			if (stackFrame == null) {
+				return;
+			}
+			if (mi.isStatic()) {
+				Log.bb(TAG, "Entry method is static!");
+				stackFrame.setThisObj(null);
 			} else {
-				stackFrame.setThisObj(vm.getChainThisObj());
+				if (vm.getChainThisObj() == null) {
+					Log.msg(TAG, "New chain obj with type " + sitClass);
+					stackFrame.setThisObj(vm.newVMObject(sitClass));
+					vm.setChainThisObj(stackFrame.getThisObj());
+				} else {
+					stackFrame.setThisObj(vm.getChainThisObj());
+				}
 			}
-		}
 
-		if (!running) {
-			Log.msg(TAG, "RUN BEGIN " + mi);
-			run(vm);
-		}
-
-		if (force) {
-			if (vm.getPC() < 0) {
-				vm.setPC(0);
+			if (!running) {
+				Log.msg(TAG, "RUN BEGIN " + mi);
+				run(vm);
 			}
-			for (int i = 0; i < mi.insns.length; i++) {
-				exec(vm, mi.insns[i], sitClass);
+
+			if (force) {
+				if (vm.getPC() < 0) {
+					vm.setPC(0);
+				}
+				for (int i = 0; i < mi.insns.length; i++) {
+					exec(vm, mi.insns[i], sitClass);
+				}
 			}
 		}
 	}
@@ -2645,7 +2688,7 @@ public class Executor {
 		noInvokeList2.add("index");
 		noInvokeList2.add("substring");
 		noInvokeList2.add("trim");
-		
+
 		invokeButUnknownRet = new HashSet<>();
 		invokeButUnknownRet.add("append");
 		invokeButUnknownRet.add("toString");
@@ -2796,7 +2839,7 @@ public class Executor {
 	Set<String> noInvokeList;
 	// Do not invoke when args contain MultiValueVar
 	Set<String> noInvokeList2;
-	
+
 	Set<String> invokeButUnknownRet;
 
 }

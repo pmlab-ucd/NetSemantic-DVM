@@ -55,6 +55,8 @@ public class BenchLifecycleTests {
 	@Test
 	public void testLifecycle_ActivityLifecycle3() {
 		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Lifecycle_ActivityLifecycle3/app/";
+		args[1] = "de.ecspride.MainActivity";
+		args[2] = "onRestoreInstanceState";
 		Main.main(args);
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
@@ -66,6 +68,8 @@ public class BenchLifecycleTests {
 	@Test
 	public void testLifecycle_ActivityLifecycle4() {
 		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Lifecycle_ActivityLifecycle4/app/";
+		args[1] = "de.ecspride.MainActivity";
+		args[2] = "onPause";
 		Main.main(args);
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();

@@ -833,6 +833,7 @@ public class DalvikVM {
 				Log.err(TAG, "Cannot find the method " + main + " at " + c);
 			}
 			
+			// Instrument inherited non-override call-backs
 			MethodInfo onCreate = c.findMethodsHere("onCreate")[0];
 			if (onCreate != null) {
 				Instruction[] insts = new Instruction[onCreate.insns.length + 1];
