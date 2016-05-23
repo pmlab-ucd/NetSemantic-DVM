@@ -26,7 +26,7 @@ public class AsyncTask extends DVMObject {
 	@SuppressWarnings("unchecked")
 	public final AsyncTask execute(Object[] params) {
 		Instruction inst = vm.getCurrtInst();
-		Object[] extra = (Object[]) inst.extra;
+		Object[] extra = (Object[]) inst.getExtra();
 		int[] args = (int[]) extra[1];
 		myClass = vm.getReg(args[0]).getType();
 		

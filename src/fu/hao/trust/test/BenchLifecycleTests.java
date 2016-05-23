@@ -23,14 +23,13 @@ public class BenchLifecycleTests {
 		Settings.logLevel = 0;
 		args[3] = "Taint";
 		tm = new TelephonyManager();
-		initArgs[0] = "NULL";
-		initArgs[1] = "NULL";
-		Main.initMI(initArgs);
 	}
 	
 	@Test
 	public void testLifecycle_ActivityLifecycle2() {
 		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Lifecycle_ActivityLifecycle2/app/";
+		args[1] = "de.ecspride.MainActivity";
+		args[2] = "onResume";
 		Main.main(args);
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
@@ -42,10 +41,13 @@ public class BenchLifecycleTests {
 	@Test
 	public void testLifecycle_ActivityLifecycle1() {
 		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Lifecycle_ActivityLifecycle1/app/";
+		args[1] = "de.ecspride.ActivityLifecycle1";
+		args[2] = "onStart";
 		Main.main(args);
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
-		res.put("<java.net.URL: java.net.URLConnection openConnection()>",
+		//res.put("<java.net.URL: java.net.URLConnection openConnection()>",
+		res.put("<java.net.URL: void <init>(java.lang.String)>",
 				"http://www.google.de/search?q=359874043116909");
 		assertEquals(true, Results.results.contains(res));
 	}

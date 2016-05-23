@@ -83,7 +83,7 @@ public class Executor {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
 			Log.debug(TAG, "Mov const begin " + inst);
-			vm.getReg(inst.rdst).setValue(inst.extra, inst.type);
+			vm.getReg(inst.rdst).setValue(inst.getExtra(), inst.type);
 			Log.debug(TAG, "data: " + vm.getReg(inst.rdst).getData() + " "
 					+ vm.getReg(inst.rdst).getData().getClass());
 			jump(vm, inst, true);
@@ -155,7 +155,7 @@ public class Executor {
 		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			int[] params = (int[]) inst.extra;
+			int[] params = (int[]) inst.getExtra();
 			
 			if (vm.getCallContext() == null && vm.getGlobalCallCtx() != null) {
 				vm.getCurrStackFrame().setCallCtx(vm.getGlobalCallCtx());
@@ -379,7 +379,7 @@ public class Executor {
 	class OP_INVOKE_STATIC implements ByteCode {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			Object[] extra = (Object[]) inst.extra;
+			Object[] extra = (Object[]) inst.getExtra();
 			MethodInfo mi = (MethodInfo) extra[0];
 			// The register index referred by args
 			int[] args = (int[]) extra[1];
@@ -599,6 +599,7 @@ public class Executor {
 					.getData();
 			vm.getReg(inst.rdst).setValue(primitive.castTo(inst.type),
 					inst.type);
+			Log.bb(TAG, "primitive " + primitive);
 		}
 	}
 
@@ -902,7 +903,7 @@ public class Executor {
 		public void func(DalvikVM vm, Instruction inst) {
 			Object array = vm.getReg(inst.r0).isUsed() ? vm.getReg(inst.r0)
 					.getData() : null;
-			ClassInfo type = (ClassInfo) inst.extra;
+			ClassInfo type = (ClassInfo) inst.getExtra();
 			jump(vm, inst, true);
 
 			if (array == null || !array.getClass().isArray()) {
@@ -1050,7 +1051,7 @@ public class Executor {
 			if (inst.r1 != -1) {
 				op1 = (PrimitiveInfo) vm.getReg(inst.r1).getData();
 			} else {
-				op1 = (PrimitiveInfo) inst.extra;
+				op1 = (PrimitiveInfo) inst.getExtra();
 			}
 
 			if (op0 == null || op1 == null) {
@@ -1087,7 +1088,7 @@ public class Executor {
 			if (inst.r1 != -1) {
 				op1 = (PrimitiveInfo) vm.getReg(inst.r1).getData();
 			} else {
-				op1 = (PrimitiveInfo) inst.extra;
+				op1 = (PrimitiveInfo) inst.getExtra();
 			}
 
 			Register rdst = vm.getReg(inst.rdst);
@@ -1120,7 +1121,7 @@ public class Executor {
 			if (inst.r1 != -1) {
 				op1 = (PrimitiveInfo) vm.getReg(inst.r1).getData();
 			} else {
-				op1 = (PrimitiveInfo) inst.extra;
+				op1 = (PrimitiveInfo) inst.getExtra();
 			}
 			Register rdst = vm.getReg(inst.rdst);
 
@@ -1161,7 +1162,7 @@ public class Executor {
 			if (inst.r1 != -1) {
 				op1 = (PrimitiveInfo) vm.getReg(inst.r1).getData();
 			} else {
-				op1 = (PrimitiveInfo) inst.extra;
+				op1 = (PrimitiveInfo) inst.getExtra();
 			}
 			Register rdst = vm.getReg(inst.rdst);
 			ClassInfo type;
@@ -1193,7 +1194,7 @@ public class Executor {
 			if (inst.r1 != -1) {
 				op1 = (PrimitiveInfo) vm.getReg(inst.r1).getData();
 			} else {
-				op1 = (PrimitiveInfo) inst.extra;
+				op1 = (PrimitiveInfo) inst.getExtra();
 			}
 			Register rdst = vm.getReg(inst.rdst);
 			ClassInfo type;
@@ -1226,7 +1227,7 @@ public class Executor {
 			if (inst.r1 != -1) {
 				op1 = (PrimitiveInfo) vm.getReg(inst.r1).getData();
 			} else {
-				op1 = (PrimitiveInfo) inst.extra;
+				op1 = (PrimitiveInfo) inst.getExtra();
 			}
 			Register rdst = vm.getReg(inst.rdst);
 			ClassInfo type;
@@ -1297,7 +1298,7 @@ public class Executor {
 			if (inst.r1 != -1) {
 				op1 = (PrimitiveInfo) vm.getReg(inst.r1).getData();
 			} else {
-				op1 = (PrimitiveInfo) inst.extra;
+				op1 = (PrimitiveInfo) inst.getExtra();
 			}
 			Register rdst = vm.getReg(inst.rdst);
 			ClassInfo type;
@@ -1321,7 +1322,7 @@ public class Executor {
 			if (inst.r1 != -1) {
 				op1 = (PrimitiveInfo) vm.getReg(inst.r1).getData();
 			} else {
-				op1 = (PrimitiveInfo) inst.extra;
+				op1 = (PrimitiveInfo) inst.getExtra();
 			}
 			Register rdst = vm.getReg(inst.rdst);
 			ClassInfo type;
@@ -1354,7 +1355,7 @@ public class Executor {
 			if (inst.r1 != -1) {
 				op1 = (PrimitiveInfo) vm.getReg(inst.r1).getData();
 			} else {
-				op1 = (PrimitiveInfo) inst.extra;
+				op1 = (PrimitiveInfo) inst.getExtra();
 			}
 			Register rdst = vm.getReg(inst.rdst);
 			ClassInfo type;
@@ -1392,7 +1393,7 @@ public class Executor {
 			if (inst.r1 != -1) {
 				op1 = (PrimitiveInfo) vm.getReg(inst.r1).getData();
 			} else {
-				op1 = (PrimitiveInfo) inst.extra;
+				op1 = (PrimitiveInfo) inst.getExtra();
 			}
 			Register rdst = vm.getReg(inst.rdst);
 			ClassInfo type;
@@ -1430,7 +1431,7 @@ public class Executor {
 			if (inst.r1 != -1) {
 				op1 = (PrimitiveInfo) vm.getReg(inst.r1).getData();
 			} else {
-				op1 = (PrimitiveInfo) inst.extra;
+				op1 = (PrimitiveInfo) inst.getExtra();
 			}
 			Register rdst = vm.getReg(inst.rdst);
 			ClassInfo type;
@@ -1604,7 +1605,7 @@ public class Executor {
 		public void func(DalvikVM vm, Instruction inst) {
 			final String TAG = getClass().getSimpleName();
 			@SuppressWarnings("unchecked")
-			Pair<ClassInfo, String> pair = (Pair<ClassInfo, String>) inst.extra;
+			Pair<ClassInfo, String> pair = (Pair<ClassInfo, String>) inst.getExtra();
 
 			try {
 				Class<?> clazz = Class.forName(pair.first.toString());
@@ -1651,7 +1652,7 @@ public class Executor {
 			final String TAG = getClass().toString();
 			// owner and field.getName
 			@SuppressWarnings("unchecked")
-			Pair<ClassInfo, String> pair = (Pair<ClassInfo, String>) inst.extra;
+			Pair<ClassInfo, String> pair = (Pair<ClassInfo, String>) inst.getExtra();
 			ClassInfo owner = pair.first;
 			String fieldName = pair.second;
 
@@ -1687,7 +1688,7 @@ public class Executor {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
 			final String TAG = getClass().toString();
-			FieldInfo fieldInfo = (FieldInfo) inst.extra;
+			FieldInfo fieldInfo = (FieldInfo) inst.getExtra();
 			Object obj = vm.getReg(inst.r0).getData();
 			if (obj instanceof Unknown){
 				Unknown unknown = (Unknown) obj;
@@ -1738,7 +1739,7 @@ public class Executor {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
 			final String TAG = getClass().toString();
-			FieldInfo fieldInfo = (FieldInfo) inst.extra;
+			FieldInfo fieldInfo = (FieldInfo) inst.getExtra();
 			Log.bb(TAG, "field " + fieldInfo);
 			Object obj = vm.getReg(inst.r0).getData();
 			if (obj instanceof Unknown){
@@ -1820,14 +1821,14 @@ public class Executor {
 		public void func(DalvikVM vm, Instruction inst) {
 			// extra: Map<Integer, Integer> resolveSwitchTable
 			// map.put(key, destIndex);
-			if (inst.extra == null) {
+			if (inst.getExtra() == null) {
 				Log.err(TAG, "invalid switch " + inst);
 				return;
 			}
 
 			// seems <int, int> is enough
 			@SuppressWarnings("unchecked")
-			Map<Integer, Integer> switchTable = (Map<Integer, Integer>) inst.extra;
+			Map<Integer, Integer> switchTable = (Map<Integer, Integer>) inst.getExtra();
 			Object data = vm.getReg(inst.r0);
 
 			for (int key : switchTable.keySet()) {
@@ -2043,10 +2044,10 @@ public class Executor {
 				vm.setPC(vm.getPC() + 1);
 			}
 		} else {
-			if (inst.extra == null) {
+			if (inst.getExtra() == null) {
 				Log.err(TAG, "unresolve dest address in goto: " + inst);
 			}
-			vm.setPC((int) inst.extra);
+			vm.setPC((int) inst.getExtra());
 		}
 	}
 
@@ -2062,7 +2063,7 @@ public class Executor {
 	public void invocation(DalvikVM vm, Instruction inst) {
 		vm.getReturnReg().reset();
 
-		Object[] extra = (Object[]) inst.extra;
+		Object[] extra = (Object[]) inst.getExtra();
 		MethodInfo mi = (MethodInfo) extra[0];
 		// The register index referred by args
 		int[] args = (int[]) extra[1];
@@ -2070,6 +2071,7 @@ public class Executor {
 		Object thisInstance = null;
 		Method method = null;
 		retrieveIntent(vm, mi, args);
+		checkIntent(vm, inst);
 		try {
 			// If applicable, directly use reflection to run the method,
 			// the method is inside java.lang
@@ -2088,8 +2090,13 @@ public class Executor {
 			boolean normalArg = true;
 
 			if (noInvokeList.contains(mi.name)
-					|| noInvokeList.contains(mi.myClass.fullName)) {
+					|| noInvokeList.contains(mi.myClass.fullName)
+					|| Settings.callBlkListHas(inst.toString())) {
 				normalArg = false;
+			}
+			
+			if (inst.toString().contains("android.content.Context/start")) {
+				Results.intent = (Intent) vm.getReg(args[1]).getData();
 			}
 
 			// If args contains a symbolic var, directly set the return val as a
@@ -2258,6 +2265,17 @@ public class Executor {
 		}
 
 	}
+	
+	public void checkIntent(DalvikVM vm, Instruction inst) {
+		Object[] extra = (Object[]) inst.getExtra();
+		int[] args = (int[]) extra[1];
+		if (inst.toString().contains("android.content.Context/start")) {
+			Results.intent = (Intent) vm.getReg(args[1]).getData();
+			vm.setGlobalIntent((Intent) vm.getReg(args[1]).getData());
+		} else {
+			vm.setGlobalIntent(null);
+		}
+	}
 
 	private boolean isNoInvoke2(MethodInfo mi) {
 		for (String mname : noInvokeList2) {
@@ -2332,7 +2350,7 @@ public class Executor {
 					argClass = boolean.class;
 				}
 
-				Log.debug(TAG, "Real para " + argClass);
+				Log.debug(TAG, "Real para " + argClass + ", value: " + params[j]);
 				argsClass[j] = argClass;
 			} else {
 				String argClass = mi.paramTypes[j].toString();
@@ -2609,15 +2627,17 @@ public class Executor {
 		auxByteCodes.put(0x39, new OP_EXCEPTION_THROW());
 
 		noInvokeList = new HashSet<>();
-		noInvokeList.add("connect");
+		noInvokeList.add("Connection/connect");
 		noInvokeList.add("getResponseCode");
 		noInvokeList.add("getInputStream");
 		noInvokeList.add("java.io.FileInputStream");
 		noInvokeList.add("java.io.InputStreamReader");
 		noInvokeList.add("java.io.BufferedReader");
 		noInvokeList.add("java.io.File");
+		noInvokeList.add("java.io.OutputStream");
 		noInvokeList.add("android.support");
 		noInvokeList.add("getStatusCode");
+		noInvokeList.add("java.io.ByteArrayOutputStream");
 
 		noInvokeList2 = new HashSet<>();
 		noInvokeList2.add("equals");
@@ -2701,6 +2721,11 @@ public class Executor {
 								for (Object obj : cres.keySet()) {
 									if (!(obj instanceof Register)
 											|| obj == vm.getReturnReg()) {
+										if (nres == null) {
+											Map<Object, Instruction> res = new HashMap<>();
+											callerRes.put(tag, res);
+											nres = callerRes.get(tag);
+										}
 										nres.put(obj, cres.get(obj));
 									}
 								}
@@ -2742,6 +2767,8 @@ public class Executor {
 		PrimitiveInfo op1 = null;
 		if (op instanceof PrimitiveInfo) {
 			op1 = (PrimitiveInfo) op;
+		} else if (op != null) {
+			op1 = PrimitiveInfo.fromObject(op);
 		}
 		if (type.equals(ClassInfo.primitiveChar) || op1 != null && op1.isChar()) {
 			return new Character(op1 == null ? 0 : op1.charValue());

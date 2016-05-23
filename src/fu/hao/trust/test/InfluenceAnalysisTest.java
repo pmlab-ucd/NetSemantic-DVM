@@ -16,9 +16,6 @@ public class InfluenceAnalysisTest {
 	@Before
 	public void prepare() {
 		args[3] = "Full";
-		Object[] initArgs = new Object[1];
-		initArgs[0] = "NULL";
-		Main.initMI(initArgs);
 	}
 
 	@Test

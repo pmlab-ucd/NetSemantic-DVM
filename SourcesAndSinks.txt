@@ -6,6 +6,8 @@
 <org.apache.http.client.methods: void HttpGet(java.lang.String,java.lang.String)> -> _SINK_
 <org.apache.http.client.methods: void <init>(java.lang.String,java.lang.String)> -> _SINK_
 <uiDroid.fakeNetwork: java.lang.String invokeHTTPGet(java.lang.String)> -> _SINK_
+<java.net.URLConnection: void connect()> -> _SINK_
+<java.net.URL: void <init>(java.lang.String)> -> _SINK_
 %<org.apache.http.client.HttpClient: org.apache.http.HttpResponse execute(org.apache.http.client.methods.HttpUriRequest)> -> _SOURCE_
 <android.widget.Toast: makeText(android.content.Context, java.lang.CharSequence, int)> -> _SINK_
 <android.widget.Toast: makeText(android.content.Context, java.lang.String, int)> -> _SINK_

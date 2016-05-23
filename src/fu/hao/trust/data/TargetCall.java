@@ -33,7 +33,7 @@ public class TargetCall {
 	public TargetCall(Instruction call, DalvikVM vm, Set<Instruction> depAPIs) {
 		this.calls = new LinkedList<>();
 		calls.add(call);
-		Object[] extra = (Object[]) call.extra;
+		Object[] extra = (Object[]) call.getExtra();
 		int[] args = (int[]) extra[1];
 		paramList = new LinkedList<>();
 		Object[] params = new Object[args.length];
@@ -52,7 +52,7 @@ public class TargetCall {
 	public TargetCall(Instruction call, DalvikVM vm) {
 		this.calls = new LinkedList<>();
 		calls.add(call);
-		Object[] extra = (Object[]) call.extra;
+		Object[] extra = (Object[]) call.getExtra();
 		int[] args = (int[]) extra[1];
 		paramList = new LinkedList<>();
 		Object[] params = new Object[args.length];
@@ -101,7 +101,7 @@ public class TargetCall {
 
 	public void addParams(Instruction call, DalvikVM vm) {
 		calls.add(call);
-		Object[] extra = (Object[]) call.extra;
+		Object[] extra = (Object[]) call.getExtra();
 		int[] args = (int[]) extra[1];
 		Object[] params = new Object[args.length];
 		StringBuilder sb = new StringBuilder(mi + "-- its Param: [");

@@ -1,0 +1,42 @@
+DalvikVM - [MSG]: Begin run onResume at C:\Users\hao\workspace\DroidBenchProj\Lifecycle_ActivityLifecycle2\app\ActivityLifecycle2.apk
+DalvikVM - [MSG]: RUN Method de.ecspride.GeneralActivity/onResume[]
+DalvikVM - [BB]: New method call: de.ecspride.GeneralActivity/onResume[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[6]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [2]<0 HALT,SUPER,extra=[null, [6]]>
+DalvikVM - [BB]: [3]<0 INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]>
+DalvikVM - [BB]: [4]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [5]<4 MOV,CONST,dst=r1,type=java.lang.String,extra="+49 1234">
+DalvikVM - [BB]: [6]<0 STATIC,SGET,r0=r3,type=java.lang.Object,extra=(de.ecspride.GeneralActivity, imei)>
+DalvikVM - [BB]: [7]<0 MOV,REG,dst=r4,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [8]<0 MOV,REG,dst=r5,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [9]<0 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]>
+DalvikVM - [BB]: [10]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame de.ecspride.GeneralActivity/onResume[]
+newStackFrame - [BB]: Stack: [StackFrame de.ecspride.GeneralActivity/onResume[]]
+Executor - [MSG]: New chain obj with type de.ecspride.GeneralActivity
+Activity - [BB]: New instance of de.ecspride.GeneralActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.GeneralActivity at fu.hao.trust.dvm.VMHeap@8d59f1
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for de.ecspride.GeneralActivity at fu.hao.trust.dvm.VMHeap@8d59f1
+DalvikVM - [BB]: New method call: de.ecspride.GeneralActivity/<clinit>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [2]<0 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(de.ecspride.GeneralActivity, imei)>
+DalvikVM - [BB]: [3]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame de.ecspride.GeneralActivity/<clinit>[], pc -1 stored. 
+newStackFrame - [BB]: Stack: [StackFrame de.ecspride.GeneralActivity/onResume[]]
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@8d59f1
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@8d59f1
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@8d59f1
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@8d59f1
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@8d59f1
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@8d59f1
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@8d59f1
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.Context
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@8d59f1
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@8d59f1
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type de.ecspride.GeneralActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.GeneralActivity at fu.hao.trust.dvm.VMHeap@8d59f1
+Activity - [BB]: New Activity Created with type de.ecspride.GeneralActivity

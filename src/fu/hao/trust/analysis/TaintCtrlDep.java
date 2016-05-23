@@ -110,7 +110,7 @@ public class TaintCtrlDep extends TaintSumBranch {
 					for (Instruction elemSrc : interestedSimple.peek()
 							.getElemSrcs()) {
 						Log.warn(TAG, elemSrc);
-						Object[] extra = (Object[]) elemSrc.extra;
+						Object[] extra = (Object[]) elemSrc.getExtra();
 						MethodInfo mi = (MethodInfo) extra[0];
 						PluginConfig config = configs.get(tag);
 
@@ -132,7 +132,7 @@ public class TaintCtrlDep extends TaintSumBranch {
 					for (Instruction elemSrc : interestedBiDir.peek()
 							.getElemSrcs()) {
 						Log.warn(TAG, elemSrc);
-						Object[] extra = (Object[]) elemSrc.extra;
+						Object[] extra = (Object[]) elemSrc.getExtra();
 						MethodInfo mi = (MethodInfo) extra[0];
 						PluginConfig config = configs.get(tag);
 

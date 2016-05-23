@@ -42,7 +42,7 @@ public class Branch {
 		insts.add(inst);
 		this.method = method;
 		this.index = index;
-		sumPoint = method.insns[((int) inst.extra)];
+		sumPoint = method.insns[((int) inst.getExtra())];
 		conflicts = new HashMap<>();
 		elemSrcs = new LinkedList<>();
 	}

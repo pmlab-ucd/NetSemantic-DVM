@@ -67,14 +67,14 @@ public class TaintSumBranch extends Taint {
 			}
 			
 			// Scan to check whether the block contains "Return".
-			int index = (int) inst.extra;
-			if (retPos > vm.getNowPC() && retPos < (int) inst.extra ) {
+			int index = (int) inst.getExtra();
+			if (retPos > vm.getNowPC() && retPos < (int) inst.getExtra() ) {
 				return true;
 			} else {
 				for (int i = vm.getNowPC() + 1; i < index; i++) {
 					if (insns[i].opcode == Instruction.OP_GOTO) {
 						// retPos is in the front and the blk contains goto to get there.
-						if ((int)insns[i].extra <= retPos && retPos < vm.getNowPC()) {
+						if ((int)insns[i].getExtra() <= retPos && retPos < vm.getNowPC()) {
 							return true;
 						}
 					}
@@ -89,7 +89,7 @@ public class TaintSumBranch extends Taint {
 			Instruction[] insns = vm.getCurrStackFrame().getMethod().insns;
 
 			// Scan to check whether the block contains "Return".
-			for (int i = vm.getPC(); i < (int) inst.extra; i++) {
+			for (int i = vm.getPC(); i < (int) inst.getExtra(); i++) {
 				if (insns[i].opcode == Instruction.OP_EXCEPTION_OP) {
 					Log.debug(TAG, "Exception Detected!");
 					return true;
@@ -105,7 +105,7 @@ public class TaintSumBranch extends Taint {
 		private boolean containsException(DalvikVM vm, Instruction inst) {
 			// Exception always at the end of the method?
 			Instruction[] insns = vm.getCurrStackFrame().getMethod().insns;
-			int index = (int) inst.extra;
+			int index = (int) inst.getExtra();
 			for (int i = index; i < insns.length; i++) {
 				if (insns[i].opcode == Instruction.OP_GOTO) {
 					return false;
@@ -119,7 +119,7 @@ public class TaintSumBranch extends Taint {
 		
 		private boolean specialException(DalvikVM vm, Instruction inst) {
 			// 判断<then>中有没有exception, 如果有, 则看<else>中是否有goto跳到<then>中, 有则直接运行else
-			int elseIndex = (int) inst.extra;
+			int elseIndex = (int) inst.getExtra();
 			Instruction[] insns = vm.getCurrStackFrame().getMethod().insns;
 			boolean contExcep = false;
 			for (int i = vm.getNowPC(); i < elseIndex; i++) {
@@ -132,7 +132,7 @@ public class TaintSumBranch extends Taint {
 			if (contExcep) {
 				for (int i = elseIndex; i < insns.length; i++) {
 					if (insns[i].opcode == Instruction.OP_GOTO) {
-						int gotoIndex = (int)insns[i].extra; 
+						int gotoIndex = (int)insns[i].getExtra(); 
 						if (gotoIndex > vm.getNowPC() && gotoIndex < elseIndex) {
 							Log.debug(TAG, "Special Exception Detected!");
 							return true;
@@ -153,10 +153,10 @@ public class TaintSumBranch extends Taint {
 			Log.bb(TAG, "ret: " + retPos);
 			if (contRet) {
 				Log.bb(TAG, "cao ");
-				for (int j = (int) inst.extra; j < insns.length; j++) {
+				for (int j = (int) inst.getExtra(); j < insns.length; j++) {
 					if (insns[j].opcode == Instruction.OP_GOTO) {
 						Log.bb(TAG, "rii");
-						if ((int) insns[j].extra <= vm.getNowPC()) {
+						if ((int) insns[j].getExtra() <= vm.getNowPC()) {
 							Log.msg(TAG, "Loop detected c!");
 							res = true;
 						} 
@@ -165,9 +165,9 @@ public class TaintSumBranch extends Taint {
 					}
 				}
 			} else {
-				for (int i = vm.getPC(); i < (int) inst.extra; i++) {
+				for (int i = vm.getPC(); i < (int) inst.getExtra(); i++) {
 					if (insns[i].opcode == Instruction.OP_GOTO) {
-						int index = (int) insns[i].extra;
+						int index = (int) insns[i].getExtra();
 						// the place where goto jumps should be greater than <if> but less than retPos when retPos < pc 
 						if (index <= vm.getNowPC() && (index > retPos || retPos > vm.getNowPC())) {
 							Log.msg(TAG, "Loop detected!");
@@ -189,13 +189,13 @@ public class TaintSumBranch extends Taint {
 
 				if (!loopIfs.contains(inst)) {
 					if (contRet) {
-						vm.setPC((int) inst.extra);
+						vm.setPC((int) inst.getExtra());
 					}
 					loopIfs.add(inst);
 				} else {
 					loopIfs.remove(inst);
 					if (!contRet) {
-						vm.setPC((int) inst.extra);
+						vm.setPC((int) inst.getExtra());
 					}
 				}
 			}
@@ -208,7 +208,7 @@ public class TaintSumBranch extends Taint {
 			MethodInfo currtMethod = vm.getCurrStackFrame().getMethod();
 
 			// Scan to check whether the block contains "Return".
-			for (int i = vm.getPC(); i < (int) inst.extra; i++) {
+			for (int i = vm.getPC(); i < (int) inst.getExtra(); i++) {
 				if (insns[i].opcode == Instruction.OP_RETURN) {
 					if (containsException(vm, inst)) {
 						return false;
@@ -220,12 +220,12 @@ public class TaintSumBranch extends Taint {
 					bidirBranches.add(branch);
 					// The fist <goto index> after jumping to another block is
 					// the start point of Mrest<
-					for (int j = (int) inst.extra; j < insns.length; j++) {
+					for (int j = (int) inst.getExtra(); j < insns.length; j++) {
 						if (insns[j].opcode == Instruction.OP_GOTO
-								&& (int) insns[j].extra <= i) {
+								&& (int) insns[j].getExtra() <= i) {
 							Log.bb(TAG, "Set rest begin "
-									+ insns[(int) insns[j].extra]);
-							branch.setRestBegin(insns[(int) insns[j].extra]);
+									+ insns[(int) insns[j].getExtra()]);
+							branch.setRestBegin(insns[(int) insns[j].getExtra()]);
 						}
 					}
 
@@ -256,14 +256,14 @@ public class TaintSumBranch extends Taint {
 			}
 
 			if (currtMethod == method) {
-				if ((int) inst.extra < vm.getPC()) {
+				if ((int) inst.getExtra() < vm.getPC()) {
 					return true;
 				}
 
-				for (int i = vm.getPC(); i < (int) inst.extra; i++) {
+				for (int i = vm.getPC(); i < (int) inst.getExtra(); i++) {
 					// Whether is a <cond> of current bidirBranch
 					if (insns[i].opcode == Instruction.OP_GOTO
-							&& (int) insns[i].extra < vm.getPC()) {
+							&& (int) insns[i].getExtra() < vm.getPC()) {
 						return true;
 					}
 				}
@@ -288,7 +288,7 @@ public class TaintSumBranch extends Taint {
 			// In case of multiple conditions (not multiple blocks).
 			Branch branch = simpleBranches.peek();
 			for (Instruction cond : branch.getInstructions()) {
-				if (((int) cond.extra) == ((int) inst.extra)) {
+				if (((int) cond.getExtra()) == ((int) inst.getExtra())) {
 					branch.addInst(inst);
 					Log.bb(TAG, "Add cond inst "
 							+ branch.getInstructions().getLast() + "@" + branch);
@@ -328,10 +328,10 @@ public class TaintSumBranch extends Taint {
 				Branch branch = null;
 				
 				if (specialException(vm, inst)) {
-					vm.setPC((int)inst.extra);
+					vm.setPC((int)inst.getExtra());
 					return outs;
 				} else if (isException(vm, inst)) {
-					vm.setPC((int) inst.extra);
+					vm.setPC((int) inst.getExtra());
 					return outs;
 				} else if (isLoop(vm, inst)) {
 					return outs;
@@ -354,19 +354,19 @@ public class TaintSumBranch extends Taint {
 						Log.warn(TAG, "New Simple Branch " + branch);
 					}
 					// Whether is the last blk
-					if (currtMethod.insns[((int) inst.extra) - 1].opcode == Instruction.OP_IF) {
-						branch.addInst(currtMethod.insns[((int) inst.extra) - 1]);
+					if (currtMethod.insns[((int) inst.getExtra()) - 1].opcode == Instruction.OP_IF) {
+						branch.addInst(currtMethod.insns[((int) inst.getExtra()) - 1]);
 						Log.bb(TAG, "Add cond inst "
 								+ branch.getInstructions().getLast() + "@"
 								+ branch);
 					} else {
-						branch.setSumPoint(currtMethod.insns[((int) inst.extra)]);
-						Log.bb(TAG, "Set sum point " + inst.extra + " "
+						branch.setSumPoint(currtMethod.insns[((int) inst.getExtra())]);
+						Log.bb(TAG, "Set sum point " + inst.getExtra() + " "
 								+ branch.getSumPoint());
 					}
 				}
 
-				Log.msg(TAG, "ATAINT_OP_IF: " + " " + inst + " " + inst.extra);
+				Log.msg(TAG, "ATAINT_OP_IF: " + " " + inst + " " + inst.getExtra());
 				Log.bb(TAG, "Add " + inst + " to met of " + branch);
 				branch.addMet(inst);
 			}
@@ -396,7 +396,7 @@ public class TaintSumBranch extends Taint {
 					ins);
 
 			DVMObject obj = (DVMObject) vm.getReg(inst.r0).getData();
-			FieldInfo fieldInfo = (FieldInfo) inst.extra;
+			FieldInfo fieldInfo = (FieldInfo) inst.getExtra();
 			if (vm.getAssigned() != null) {
 				for (BiDirBranch branch : bidirBranches) {
 					if (!branch.getState().isSaved(obj, fieldInfo)) {

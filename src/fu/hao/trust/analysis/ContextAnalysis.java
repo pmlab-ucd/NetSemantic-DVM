@@ -33,7 +33,7 @@ public class ContextAnalysis {
 
 	public void ctxInvoke(DalvikVM vm, Instruction inst,
 			CorrelatedDataFact fact, Map<Instruction, TargetCall> targetCalls) {
-		Object[] extra = (Object[]) inst.extra;
+		Object[] extra = (Object[]) inst.getExtra();
 		MethodInfo mi = (MethodInfo) extra[0];
 		Stack<Branch> interestedSimple = fact.getInterestedSimple();
 		Stack<BiDirBranch> interestedBiDir = fact.getInterestedBiDir();

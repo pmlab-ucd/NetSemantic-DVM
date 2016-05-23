@@ -99,7 +99,7 @@ public class Unknown extends SymbolicVar {
 		if (lastArith.r1 != -1) {
 			op1 = (PrimitiveInfo) vm.getReg(lastArith.r1).getData();
 		} else {
-			op1 = (PrimitiveInfo) lastArith.extra;
+			op1 = (PrimitiveInfo) lastArith.getExtra();
 		}
 
 		IntVar op1Var = new IntVar(store, op1.intValue(), op1.intValue());

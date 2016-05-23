@@ -53,8 +53,8 @@ public class Log {
 	static String fileName;
 
 	static {
-		if (Settings.apkName != null) {
-			fileName = "output/" + Settings.apkName + "_" + Settings.suspClass + "_" + Settings.suspMethod + ".log";
+		if (Settings.logTag != null) {
+			fileName = "output/" + Settings.apkName + "_" + Settings.entryClass + "_" + Settings.entryMethod + ".log";
 			File file = new File(fileName);
 			if (file.exists()) {
 				file.delete();
@@ -65,7 +65,7 @@ public class Log {
 	private static boolean writeLog(String TAG, int theLevel, String title,
 			String msg) throws IOException {
 		if (fileName == null) {
-			fileName = "output/" + Settings.apkName + "_" + Settings.suspClass + "_" + Settings.suspMethod + ".log";
+			fileName = "output/" + Settings.apkName + "_" + Settings.entryClass + "_" + Settings.entryMethod + ".log";
 			File file = new File(fileName);
 			if (file.exists()) {
 				file.delete();

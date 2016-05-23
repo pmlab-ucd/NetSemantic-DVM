@@ -22,7 +22,9 @@ package fu.hao.trust.utils;
 import fu.hao.trust.dvm.DalvikVM;
 import patdroid.util.Log;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class Settings {
@@ -42,21 +44,33 @@ public class Settings {
 	public static String apkPath;
 	public static String platformDir;
 	public static String apkName;
-	public static String suspClass;
-	public static String suspMethod;
+	//public static String suspClass;
+	//public static String suspMethod;
 	// Whether to exec onCreate() when init Activity
-	public static boolean execOnCreate = false;
+	public static boolean execOnCreate = true;
+	private static Map<String, String> intentTargets;
 	
 	private static Set<String> callBlackList;
 	
 	static DalvikVM vm;
 	
+	public static boolean fullLifeExec = false;
+	
+	public static String entryMethod;
+	public static String entryClass;
+	
+	public static String logTag;
+	
 	public static void reset() {
 		apkPath = null;
 		platformDir = null;
 		apkName = null;
-		suspClass = null;
-		suspMethod = null;
+		entryClass = null;
+		entryMethod = null;
+		intentTargets = null;
+		callBlackList = null;
+		fullLifeExec = false;
+		entryMethod = null;
 	}
 	
 	public static String getRuntimeCaller() {
@@ -113,6 +127,19 @@ public class Settings {
 		}
 		
 		return false;
+	}
+	
+	
+	public static void addIntentTarget(String action, String intentTarget) {
+		if (intentTargets == null) {
+			intentTargets = new HashMap<>();
+		}
+		
+		intentTargets.put(action, intentTarget);
+	}
+	
+	public static String getIntentTarget(String action) {
+		return intentTargets == null ? null : intentTargets.get(action);
 	}
 
 

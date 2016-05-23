@@ -11,6 +11,7 @@ import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.myclasses.GenInstance;
 import android.os.AsyncTask;
 import android.widget.BaseAdapter;
@@ -69,11 +70,11 @@ public class DalvikVM {
 		public Object getData() {
 			return value.getFirst();
 		}
-		
+
 		public StackFrame getCallerFrame() {
 			if (stack.size() > 1) {
 				return stack.get(stack.size() - 2);
-			} 
+			}
 			return null;
 		}
 
@@ -153,6 +154,8 @@ public class DalvikVM {
 		private Register[] callCtx;
 		private ClassInfo myClass;
 
+		private Intent intent;
+
 		public void setThisObj(DVMObject thisObj) {
 			this.thisObj = thisObj;
 		}
@@ -160,7 +163,7 @@ public class DalvikVM {
 		public DVMObject getThisObj() {
 			return thisObj;
 		}
-		
+
 		public Register getReg(int index) {
 			return regs[index];
 		}
@@ -217,14 +220,14 @@ public class DalvikVM {
 
 				pluginRes.put(plugin, clonedRes);
 			}
-			
+
 			if (callingCtx != null) {
 				callCtx = new Register[callingCtx.length];
 				for (int i = 0; i < callingCtx.length; i++) {
 					callCtx[i] = callingCtx[i];
 				}
 			}
-			
+
 			this.myClass = myClass;
 		}
 
@@ -373,6 +376,14 @@ public class DalvikVM {
 
 		public void setMyClass(ClassInfo myClass) {
 			this.myClass = myClass;
+		}
+
+		public Intent getIntent() {
+			return intent;
+		}
+
+		public void setIntent(Intent intent) {
+			this.intent = intent;
 		}
 
 	}
@@ -539,7 +550,7 @@ public class DalvikVM {
 	private boolean cleanCallingCtx = true;
 
 	// The "this" instance of a component.
-	//DVMObject callbackOwner;
+	// DVMObject callbackOwner;
 
 	private PluginManager pluginManager;
 
@@ -554,11 +565,21 @@ public class DalvikVM {
 	 * @Description: To help run chain methods.
 	 */
 	private DVMObject chainThisObj = null;
-	
+
 	// Store the tmp method info that should be pushed into the stack soon
 	LinkedList<StackFrame> tmpFrames;
 
-	private boolean repeatInst = false;	
+	private boolean repeatInst = false;
+
+	private Intent globalIntent;
+
+	public void setGlobalIntent(Intent intent) {
+		globalIntent = intent;
+	}
+
+	public Intent getGlobalIntent() {
+		return globalIntent;
+	}
 
 	public Register getReg(int i) {
 		return stack.getLast().regs[i];
@@ -600,7 +621,7 @@ public class DalvikVM {
 	public Register[] getCallContext() {
 		return getCurrStackFrame().getCallCtx();
 	}
-	
+
 	public Register[] getGlobalCallCtx() {
 		return callingCtx;
 	}
@@ -615,7 +636,7 @@ public class DalvikVM {
 			callingCtx[i] = getReg(is[i]);
 		}
 	}
-	
+
 	public void resetCallCtx() {
 		if (cleanCallingCtx) {
 			callingCtx = null;
@@ -623,7 +644,7 @@ public class DalvikVM {
 			cleanCallingCtx = true;
 		}
 	}
-	
+
 	public void setGlobalCallContext(Register[] regs, boolean clean) {
 		callingCtx = regs;
 		cleanCallingCtx = clean;
@@ -669,81 +690,66 @@ public class DalvikVM {
 		}
 		return stack.getLast();
 	}
-	
+
 	public StackFrame getCallerFrame() {
 		if (stack.size() > 1) {
 			return stack.get(stack.size() - 2);
 		}
-		
+
 		return null;
 	}
-	
+
 	public void addStackFrames(LinkedList<StackFrame> frames) {
 		stack.addAll(frames);
 	}
-	
+
 	public StackFrame newStackFrame(ClassInfo sitClass, MethodInfo mi) {
-		 return newStackFrame(sitClass, mi, null, true);
+		return newStackFrame(sitClass, mi, null, true);
 	}
-	
-	public StackFrame newStackFrame(ClassInfo sitClass, MethodInfo mi, boolean nowAddToStack) {
+
+	public StackFrame newStackFrame(ClassInfo sitClass, MethodInfo mi,
+			boolean nowAddToStack) {
 		return newStackFrame(sitClass, mi, null, nowAddToStack);
 	}
 
-	public StackFrame newStackFrame(ClassInfo sitClass, MethodInfo mi, Pair<Object, ClassInfo>[] callCtxObjs, boolean nowAddToStack) {
+	public StackFrame newStackFrame(ClassInfo sitClass, MethodInfo mi,
+			Pair<Object, ClassInfo>[] callCtxObjs, boolean nowAddToStack) {
 		String TAG = "newStackFrame";
 		if (mi.insns == null) {
 			return null;
-		}	
-		
-		StackFrame newStackFrame = new StackFrame(sitClass, mi);
-		
-		if (callCtxObjs != null) {
-		
-		Register[] regs = new Register[callCtxObjs.length];
-		
-		for (int i = 0; i < regs.length; i++) {
-			regs[i] = newTmpRegister();
-			regs[i].setValue(callCtxObjs[i]);
 		}
+
+		StackFrame newStackFrame = new StackFrame(sitClass, mi);
+
+		if (callCtxObjs != null) {
+
+			Register[] regs = new Register[callCtxObjs.length];
+
+			for (int i = 0; i < regs.length; i++) {
+				regs[i] = newTmpRegister();
+				regs[i].setValue(callCtxObjs[i]);
+			}
 			newStackFrame.setCallCtx(regs);
 		}
-		
-		
-	/*	
-		if (mi.isConstructor()) {
-			for (Instruction inst : mi.insns) {
-				if (inst.opcode == Instruction.OP_INVOKE_OP) {
-					Object[] extra = (Object[]) inst.extra;
-					MethodInfo mee = (MethodInfo) extra[0];
-					if (mee.isConstructor() && mee.insns != null) {
-						for (Instruction ins : mee.insns) {
-							if (ins.opcode == Instruction.OP_INVOKE_OP) {
-								Object[] extra2 = (Object[]) ins.extra;
-								MethodInfo me = (MethodInfo) extra2[0];
-								if ((me.paramTypes.length == mi.paramTypes.length && me.name.equals(mi.name)) || me.equals(mi)) {
-									boolean detected = true;
-									for (int i = 0; i < me.paramTypes.length; i++) {
-										if (!me.paramTypes[i].equals(mi.paramTypes[i])) {
-											detected = false;
-										}
-									}
-									if (detected) {
-										inst.opcode = Instruction.OP_HALT;
-										Log.warn(TAG, "Found potentian infinity loop in the constructor!");
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-		*/
-		
+
+		/*
+		 * if (mi.isConstructor()) { for (Instruction inst : mi.insns) { if
+		 * (inst.opcode == Instruction.OP_INVOKE_OP) { Object[] extra =
+		 * (Object[]) inst.extra; MethodInfo mee = (MethodInfo) extra[0]; if
+		 * (mee.isConstructor() && mee.insns != null) { for (Instruction ins :
+		 * mee.insns) { if (ins.opcode == Instruction.OP_INVOKE_OP) { Object[]
+		 * extra2 = (Object[]) ins.extra; MethodInfo me = (MethodInfo)
+		 * extra2[0]; if ((me.paramTypes.length == mi.paramTypes.length &&
+		 * me.name.equals(mi.name)) || me.equals(mi)) { boolean detected = true;
+		 * for (int i = 0; i < me.paramTypes.length; i++) { if
+		 * (!me.paramTypes[i].equals(mi.paramTypes[i])) { detected = false; } }
+		 * if (detected) { inst.opcode = Instruction.OP_HALT; Log.warn(TAG,
+		 * "Found potentian infinity loop in the constructor!"); } } } } } } } }
+		 */
+
 		if (getCurrStackFrame() != null) {
-			Log.bb(TAG, "New Stack Frame: " + newStackFrame + ", pc "
-					+ getPC() + " stored. ");
+			Log.bb(TAG, "New Stack Frame: " + newStackFrame + ", pc " + getPC()
+					+ " stored. ");
 		} else {
 			Log.bb(TAG, "New Stack Frame: " + newStackFrame);
 		}
@@ -754,12 +760,10 @@ public class DalvikVM {
 		if (nowAddToStack) {
 			stack.add(newStackFrame);
 		}
-		
+
 		Log.bb(TAG, "Stack: " + stack);
 		return newStackFrame;
 	}
-	
-	
 
 	/**
 	 * @Title: backCallCtx
@@ -788,7 +792,6 @@ public class DalvikVM {
 		// load all classes, methods, fields and instructions from an apk
 		// we are using smali as the underlying engine
 		new SmaliClassDetailLoader(apkFile, true).loadAll();
-		Settings.apkName = file.getName();
 	}
 
 	/**
@@ -815,6 +818,49 @@ public class DalvikVM {
 		MethodInfo[] methods = c.findMethodsHere(main);
 		Log.msg(TAG, "Begin run " + main + " at " + apk);
 		this.setPluginManager(pluginManager);
+
+		if (methods.length == 0) {	
+			MethodInfo[] targets = null; 
+			ClassInfo clazz = c;
+			while (clazz.getSuperClass() != null) {
+				clazz = clazz.getSuperClass();
+				targets = clazz.findMethodsHere(main);
+				if (targets.length != 0) {
+					break;
+				}
+			}
+			if (targets == null || targets.length == 0) {
+				Log.err(TAG, "Cannot find the method " + main + " at " + c);
+			}
+			
+			MethodInfo onCreate = c.findMethodsHere("onCreate")[0];
+			if (onCreate != null) {
+				Instruction[] insts = new Instruction[onCreate.insns.length + 1];
+				for (int i = 0; i < onCreate.insns.length; i++) {
+					Instruction inst = onCreate.insns[i];
+					if (inst.opcode == Instruction.OP_RETURN) {
+						Instruction instrumented = new Instruction();
+						instrumented.opcode = Instruction.OP_INVOKE_OP;
+						instrumented.opcode_aux = Instruction.OP_INVOKE_DIRECT;
+						int[] args = new int[1];
+						int[] oargs = (int[]) onCreate.insns[0].getExtra();
+						args[0] = oargs[0];
+						instrumented.setExtra(new Object[] {targets[0], args});
+						insts[i] = instrumented;
+						insts[i + 1] = inst;
+					} else {
+						insts[i] = inst;
+					}
+				}
+				
+				onCreate.insns = insts;
+				methods = new MethodInfo[1];
+				methods[0] = onCreate;
+			}
+			
+
+		}
+
 		for (int i = 0; i < methods.length; i++) {
 			if (params == null) {
 				runMethod(c, methods[i]);
@@ -835,10 +881,10 @@ public class DalvikVM {
 		this.setPluginManager(pluginManager);
 
 		for (int i = 1; i < chain.length; i++) {
-			Settings.suspClass = chain[i].split(":")[0];
-			Settings.apkName = Settings.apkName + "_" + Settings.suspClass
+			Settings.entryClass = chain[i].split(":")[0];
+			Settings.logTag = Settings.apkName + "_" + Settings.entryClass
 					+ "_" + chain[i];
-			ClassInfo c = ClassInfo.findClass(Settings.suspClass);
+			ClassInfo c = ClassInfo.findClass(Settings.entryClass);
 			Log.bb(TAG, "class " + c);
 			MethodInfo[] methods = c.findMethodsHere(chain[i].split(":")[1]);
 			Log.warn(TAG, "Run chain " + chain[i] + " at " + c);
@@ -870,7 +916,8 @@ public class DalvikVM {
 		interpreter.runMethod(sitClass, this, method, false);
 	}
 
-	public void runMethod(ClassInfo sitClass, MethodInfo method, Object[] params, boolean force) {
+	public void runMethod(ClassInfo sitClass, MethodInfo method,
+			Object[] params, boolean force) {
 		Log.msg(TAG, "Instrumented Method: " + method);
 		if (params == null) {
 			resetCallCtx();
@@ -888,17 +935,18 @@ public class DalvikVM {
 			for (int i = 0; i < oldParams.length; i++) {
 				params[i + 1] = oldParams[i];
 			}
-			
+
 		}
-		
-		Log.bb(TAG, "paramLen" + params.length + ", " + method.paramTypes.length);
+
+		Log.bb(TAG, "paramLen" + params.length + ", "
+				+ method.paramTypes.length);
 
 		// Put an Null stack frame to simulate the calling ctx.
 		Register reg = new Register(null, 0);
 		if (params[0] == null || params[0].equals("NULL")) {
 			params[0] = newVMObject(sitClass);
 		}
-		
+
 		reg.setValue(params[0], sitClass);
 		callingCtx = new Register[params.length];
 		callingCtx[0] = reg;
@@ -923,8 +971,7 @@ public class DalvikVM {
 					e.printStackTrace();
 				}
 			}
-			
-			
+
 			reg = new Register(null, i);
 			reg.setValue(params[i], method.paramTypes[i - 1]);
 			callingCtx[i] = reg;
@@ -1067,16 +1114,18 @@ public class DalvikVM {
 		ClassInfo oType = type;
 		String typeName = type.toString();
 		while (type.getSuperClass() != null) {
-			if (typeName.contains("Activity")) {
-				return new Activity(this, oType);
-			} else if (typeName.contains("View")) {
-				return GenInstance.getView(this, oType);
-			} else if (typeName.contains("AsyncTask")) {
-				return new AsyncTask(this, oType);
-			} else if (typeName.contains("Adapter")) {
-				return new BaseAdapter(this, oType);
+			if (!typeName.contains("$")) {
+				if (typeName.contains("Activity")) {
+					return new Activity(this, oType);
+				} else if (typeName.contains("View")) {
+					return GenInstance.getView(this, oType);
+				} else if (typeName.contains("AsyncTask")) {
+					return new AsyncTask(this, oType);
+				} else if (typeName.contains("Adapter")) {
+					return new BaseAdapter(this, oType);
+				}
 			}
-			
+
 			type = type.getSuperClass();
 			typeName = type.toString();
 		}
@@ -1084,36 +1133,50 @@ public class DalvikVM {
 		return new DVMObject(this, oType);
 	}
 
-	
-	
 	public LinkedList<StackFrame> getTmpFrames() {
-		
+
 		return tmpFrames;
 	}
 
 	/**
-	* @Title: setTmpMI
-	* @Author: Hao Fu
-	* @Description: Set the method that should be pushed into the stack soon
-	* @param @param tmpMI  
-	* @return void   
-	* @throws
-	*/
+	 * @Title: setTmpMI
+	 * @Author: Hao Fu
+	 * @Description: Set the method that should be pushed into the stack soon
+	 * @param @param tmpMI
+	 * @return void
+	 * @throws
+	 */
 	public void setTmpFrames(LinkedList<StackFrame> tmpFrames, boolean repeat) {
 		this.setRepeatInst(repeat);
-		this.tmpFrames = tmpFrames; 
+		this.tmpFrames = tmpFrames;
 	}
-	
+
 	public void setTmpFrames(StackFrame tmpFrame, boolean repeat) {
 		this.setRepeatInst(repeat);
 		tmpFrames = new LinkedList<>();
 		tmpFrames.add(tmpFrame);
 	}
 	
+	public void addTmpFrameFront(StackFrame tmpFrame, boolean repeat) {
+		this.setRepeatInst(repeat);
+		if (tmpFrames == null) {
+			tmpFrames = new LinkedList<>();
+		}
+		tmpFrames.addFirst(tmpFrame);
+	}
+	
+	public void addTmpFrameBack(StackFrame tmpFrame, boolean repeat) {
+		this.setRepeatInst(repeat);
+		if (tmpFrames == null) {
+			tmpFrames = new LinkedList<>();
+		}
+		tmpFrames.add(tmpFrame);
+	}
+
 	public ClassInfo getCurrtClass() {
 		return getCurrStackFrame().getMyClass();
 	}
-	
+
 	public Register newTmpRegister() {
 		return new Register(null, -2);
 	}
@@ -1129,7 +1192,7 @@ public class DalvikVM {
 	public void setRepeatInst(boolean repeatInst) {
 		this.repeatInst = repeatInst;
 	}
-	
+
 	public boolean getRepeatInst() {
 		return repeatInst;
 	}

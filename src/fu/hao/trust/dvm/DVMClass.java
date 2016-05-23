@@ -3,6 +3,7 @@ package fu.hao.trust.dvm;
 import java.util.HashMap;
 import java.util.Map;
 
+import fu.hao.trust.utils.Pair;
 import patdroid.core.ClassInfo;
 import patdroid.core.MethodInfo;
 
@@ -16,6 +17,7 @@ public class DVMClass {
 
 	// private Map<MethodInfo, DVMethod> methods = new HashMap<>();
 
+	@SuppressWarnings("unchecked")
 	DVMClass(DalvikVM vm, ClassInfo type) {
 		this.vm = vm;
 		this.setType(type);
@@ -23,7 +25,9 @@ public class DVMClass {
 
 		MethodInfo clinit = type.getStaticInitializer();
 		if (clinit != null && clinit.insns != null) {	
-			vm.setTmpFrames(vm.newStackFrame(type, clinit, false), true);
+			@SuppressWarnings("rawtypes")
+			Pair[] callCtxObjs = new Pair[0];
+			vm.setTmpFrames(vm.newStackFrame(type, clinit, callCtxObjs, false), true);
 			/*
 			vm.resetCallCtx();
 			vm.newStackFrame(clinit);

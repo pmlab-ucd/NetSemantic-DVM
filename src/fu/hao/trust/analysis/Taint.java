@@ -128,7 +128,7 @@ public class Taint extends Plugin {
 		@Override
 		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
 				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
-			int[] params = (int[]) inst.extra;
+			int[] params = (int[]) inst.getExtra();
 			Register[] callingCtx = vm.getCallContext();
 			Map<String, Map<Object, Instruction>> outs = new HashMap<>();
 
@@ -249,7 +249,7 @@ public class Taint extends Plugin {
 
 		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
 				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
-			Object[] extra = (Object[]) inst.extra;
+			Object[] extra = (Object[]) inst.getExtra();
 			MethodInfo mi = (MethodInfo) extra[0];
 			// The register index referred by args
 			int[] args = (int[]) extra[1];
@@ -314,7 +314,7 @@ public class Taint extends Plugin {
 		@Override
 		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
 				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
-			Object[] extra = (Object[]) inst.extra;
+			Object[] extra = (Object[]) inst.getExtra();
 			MethodInfo mi = (MethodInfo) extra[0];
 			// The register index referred by args
 			int[] args = (int[]) extra[1];
@@ -328,14 +328,14 @@ public class Taint extends Plugin {
 				Set<String> sinks = configs.get(tag).getSinks();
 
 				// Must be a reflection call;
-				if (vm.getReflectMethod() != null) {
+				if (vm.getReflectMethod() != null || mi.isConstructor()) {
 					String sootSignature = Taint.getSootSignature(mi);
 					Log.bb(tag, sootSignature);
 					if (sinks != null && sinks.contains(sootSignature)) {
 						Log.bb(tag, "Found a sink invocation. " + sootSignature);
 						for (int i = 0; i < args.length; i++) {
 							if (in.containsKey(vm.getReg(args[i]))
-									|| in.containsKey(vm.getReg(args[i])
+									|| vm.getReg(args[i]).isUsed() && in.containsKey(vm.getReg(args[i])
 											.getData())) {
 								Log.warn(tag, "Found a taint sink "
 										+ sootSignature + " leaking data ["
@@ -354,7 +354,7 @@ public class Taint extends Plugin {
 							out.put(vm.getReturnReg(), inst);
 							out.put(vm.getReturnReg().getData(), inst);
 						} else {
-							Log.debug(tag, "not a taint call: " + sootSignature);
+							Log.debug(tag, "Not a taint call: " + sootSignature);
 						}
 
 						if (vm.getReturnReg().getData() != null
@@ -389,7 +389,6 @@ public class Taint extends Plugin {
 				outs.put(tag, out);
 			}
 			return outs;
-
 		}
 	}
 
@@ -824,7 +823,7 @@ public class Taint extends Plugin {
 			Map<String, Map<Object, Instruction>> outs = new HashMap<>();
 
 			@SuppressWarnings("unchecked")
-			Pair<ClassInfo, String> pair = (Pair<ClassInfo, String>) inst.extra;
+			Pair<ClassInfo, String> pair = (Pair<ClassInfo, String>) inst.getExtra();
 
 			for (String tag : ins.keySet()) {
 				Map<Object, Instruction> in = ins.get(tag);
@@ -880,7 +879,7 @@ public class Taint extends Plugin {
 				Map<Object, Instruction> in = ins.get(tag);
 				Map<Object, Instruction> out = new HashMap<>(in);
 				@SuppressWarnings("unchecked")
-				Pair<ClassInfo, String> pair = (Pair<ClassInfo, String>) inst.extra;
+				Pair<ClassInfo, String> pair = (Pair<ClassInfo, String>) inst.getExtra();
 				ClassInfo owner = pair.first;
 				String fieldName = pair.second;
 				DVMClass dvmClass = vm.getClass(owner);
@@ -928,7 +927,7 @@ public class Taint extends Plugin {
 						return outs;
 					}
 					DVMObject obj = (DVMObject) vm.getReg(inst.r0).getData();
-					FieldInfo fieldInfo = (FieldInfo) inst.extra;
+					FieldInfo fieldInfo = (FieldInfo) inst.getExtra();
 					Object field = obj.getFieldObj(fieldInfo);
 
 					if (in.containsKey(field)) {
@@ -967,7 +966,7 @@ public class Taint extends Plugin {
 				Map<Object, Instruction> in = ins.get(tag);
 				Map<Object, Instruction> out = new HashMap<>(in);
 				DVMObject obj = (DVMObject) vm.getReg(inst.r0).getData();
-				FieldInfo fieldInfo = (FieldInfo) inst.extra;
+				FieldInfo fieldInfo = (FieldInfo) inst.getExtra();
 
 				if (in.containsKey(vm.getReg(inst.r1))) {
 					out.put(obj.getFieldObj(fieldInfo),

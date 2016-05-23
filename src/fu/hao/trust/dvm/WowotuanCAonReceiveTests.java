@@ -39,8 +39,7 @@ public class WowotuanCAonReceiveTests {
 		Settings.addCallBlkListElem("com.wowotuan.appfactory.gui.activity.CityChoiceActivity/d");
 		Settings.addCallBlkListElem("com.wowotuan.appfactory.gui.activity.CityChoiceActivity/b");
 		Settings.execOnCreate = true;
-		Main.initMI(initArgs);
-		Main.main(args);
+		Main.main(args, initArgs, null, null);
 		assertEquals(true, Results.results.isEmpty());
 	}
 	
@@ -63,8 +62,7 @@ public class WowotuanCAonReceiveTests {
 		Settings.addCallBlkListElem("com.d.a.b.a.bf/<init>");
 		Settings.addCallBlkListElem("com.d.a.d.a");
 		Settings.addCallBlkListElem("com.d.a");
-		Main.initMI(initArgs);
-		Main.main(args);
+		Main.main(args, initArgs, null, null);
 		System.out.println("REs: " + Results.results);
 		System.out.println("REs: " + Results.targetCallRes);
 		assertEquals(false, Results.targetCallRes.isEmpty());

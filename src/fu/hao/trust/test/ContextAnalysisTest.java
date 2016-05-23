@@ -16,10 +16,6 @@ public class ContextAnalysisTest {
 	@Before
 	public void prepare() {
 		args[3] = "Full";
-		Object[] initArgs = new Object[1];
-		initArgs[0] = "NULL";
-		//initArgs[1] = "NULL";
-		Main.initMI(initArgs);
 	}
 
 	@Test

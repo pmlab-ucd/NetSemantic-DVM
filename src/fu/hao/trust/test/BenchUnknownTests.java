@@ -23,11 +23,6 @@ public class BenchUnknownTests {
 			args[3] = "ATaint";
 			//args[2] = "clickButton";
 			
-			Object[] initArgs = new Object[2];
-			initArgs[0] = "android.app.Activity";
-			initArgs[1] = "NULL";
-			Main.initMI(initArgs);
-			
 			Main.main(args);
 			System.out.println("REs: " + Results.results);
 			Map<String, String> res = new HashMap<>();

@@ -14,8 +14,6 @@ import fu.hao.trust.utils.Settings;
 
 public class BenchJavaTests {
 	String[] args = new String[4];
-	Object[] initArgs = new Object[2];
-
 	
 	TelephonyManager tm;
 
@@ -25,20 +23,9 @@ public class BenchJavaTests {
 		tm = new TelephonyManager();
 	}
 	
-	//@Test
-	public void test() {
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/app-debug.apk";
-		args[1] = "de.ecspride.LoopExample1";
-		Main.main(args);
-		Map<String, String> res = new HashMap<>();
-		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
-				"[Unknown var:3_5_9_8_7_4_0_4_3_1_1_6_9_0_9_, type: java.lang.String]");
-		assertEquals(Results.results.contains(res), true);
-	}
-
 	@Test
 	public void testGeneralJava_Loop1() {
-		args[0] = "C:/Users/hao/workspace/GeneralJava_Loop1/app/app-debug.apk";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_Loop1/app/app-debug.apk";
 		args[1] = "de.ecspride.LoopExample1";
 		args[2] = "onCreate";
 		Main.main(args);
@@ -50,7 +37,7 @@ public class BenchJavaTests {
 
 	@Test
 	public void testGeneralJava_Loop2() {
-		args[0] = "C:/Users/hao/workspace/GeneralJava_Loop2/app/app-debug.apk";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_Loop2/app/app-debug.apk";
 		args[1] = "de.ecspride.LoopExample2";
 		args[2] = "onCreate";
 		Main.main(args);
@@ -190,6 +177,8 @@ public class BenchJavaTests {
 	@Test
 	public void testGeneralJava_Exceptions1() {
 		args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_Exceptions1/app/";
+		args[1] = "de.ecspride.Exceptions1";
+		args[2] = "onCreate";
 		Main.main(args);
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
@@ -201,6 +190,8 @@ public class BenchJavaTests {
 	//@Test
 	public void testGeneralJava_Exceptions2() {
 		args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_Exceptions2/app/";
+		args[1] = "de.ecspride.Exceptions2";
+		args[2] = "onCreate";
 		Main.main(args);
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
@@ -219,6 +210,8 @@ public class BenchJavaTests {
 	@Test
 	public void testGeneralJava_Exceptions4() {
 		args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_Exceptions4/app/";
+		args[1] = "de.ecspride.Exceptions4";
+		args[2] = "onCreate";
 		Main.main(args);
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();

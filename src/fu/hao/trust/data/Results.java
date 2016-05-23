@@ -14,9 +14,11 @@ public class Results {
 	public static Set<Object> results = new HashSet<>();
 	public static Map<Instruction, TargetCall> targetCallRes;// = new HashMap<>();
 	public static List<Intent> intents;
+	public static Intent intent;
 	
 	public static void reset() {
 		results = new HashSet<>();
+		intent = null;
 	}
 	
 	public static void addIntent(Intent intent) {

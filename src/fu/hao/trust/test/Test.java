@@ -16,14 +16,49 @@ public class Test {
 
 	public static void main(String[] margs) {
 		Test t = new Test();
-		t.testMain();
+		// t.testAnve();
 		// t.test00983aad12700be0a440296c6173b18a829e9369_a();
-		// t.testMain2();
+		t.testMain();
 		// t.testMopub_onCreate();
 		// t.testMopub_loadAd();
 		// t.test7613973();
 		// t.testOnReceive_7619303();
 		// t.testWo_();
+	}
+	
+	public void testAnve() {
+		String[] args = new String[4];
+		args[3] = "Full";
+		Settings.logLevel = 0;
+
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/bad/malware/AnserverBot/002f537027830303e2205dd0a6106cb1b79fa704/002f537027830303e2205dd0a6106cb1b79fa704.apk";
+
+		args[1] = "com.sec.android.providers.drm.Onion";
+		args[2] = "d";
+		Main.main(args);
+	}
+	
+	public void test91() {
+		String[] args = new String[4];
+		args[3] = "Full";
+		Settings.logLevel = 0;
+
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/bad/ad/appx.91/f13f8cd47549fd94252ac1422fd305a2.apk";
+
+		args[1] = "com.mao.view.MainActivity";
+		args[2] = "onCreate";
+		Settings.addCallBlkListElem("com.baidu.appx.g.i"); // log 
+		Settings.addCallBlkListElem("com.baidu.appx.a.b"); // json
+		Settings.addCallBlkListElem("com.baidu.appx.ui.b"); // json
+
+		Main.main(args);
+		System.out.println("REs: " + Results.results);
+		System.out.println("REs: " + Results.targetCallRes);
+		assertEquals(false, Results.targetCallRes.isEmpty());
+		assertEquals(true, Results.targetCallRes.values().iterator().next()
+				.getInfluAPIs().toString().contains("show"));
+		assertEquals(false, Results.targetCallRes.values().iterator().next()
+				.getFedViews().isEmpty());
 	}
 
 	public void test7613973() {
@@ -35,16 +70,12 @@ public class Test {
 
 		args[1] = "com.wowotuan.appfactory.gui.activity.CityChoiceActivity";
 		args[2] = "onCreate";
-		Object[] initArgs = new Object[2];
-		initArgs[0] = "NULL";
-		initArgs[1] = "NULL";
 
 		Settings.addCallBlkListElem("com.d.a.j/<init>"); // will lead to at
 															// least 369 calls..
 		Settings.addCallBlkListElem("com.d.a.b.a.bf/<init>");
 		Settings.addCallBlkListElem("com.d.a.d.a");
 		Settings.addCallBlkListElem("com.d.a");
-		Main.initMI(initArgs);
 		Main.main(args);
 		System.out.println("REs: " + Results.results);
 		System.out.println("REs: " + Results.targetCallRes);
@@ -77,8 +108,7 @@ public class Test {
 		Settings.addCallBlkListElem("com.wowotuan.appfactory.gui.activity.CityChoiceActivity/b");
 		// Settings.addCallBlkListElem("com.wowotuan.appfactory.dto.RequestCityLocationDto");
 		Settings.execOnCreate = true;
-		Main.initMI(initArgs);
-		Main.main(args);
+		Main.main(args, initArgs);
 		assertEquals(true, Results.results.isEmpty());
 	}
 
@@ -100,8 +130,7 @@ public class Test {
 		Settings.addCallBlkListElem("com.wowotuan.appfactory.gui.activity.CityChoiceActivity/d");
 		Settings.addCallBlkListElem("com.wowotuan.appfactory.gui.activity.CityChoiceActivity/b");
 		Settings.execOnCreate = true;
-		Main.initMI(initArgs);
-		Main.main(args);
+		Main.main(args, initArgs);
 		assertEquals(true, Results.results.isEmpty());
 	}
 
@@ -118,11 +147,7 @@ public class Test {
 		args[1] = "com.wowotuan.appfactory.e.h";
 		// args[1] = "com.wowotuan.appfactory.e.g";
 		args[2] = "a";
-		String[] argTypeNames = new String[1];
-		argTypeNames[0] = "com.wowotuan.appfactory.e.g";
-		Object[] initArgs = new Object[1];
-		initArgs[0] = "NULL";
-		Main.initThisObj(argTypeNames, initArgs);
+
 		Main.main(args);
 		assertEquals(true, Results.results.isEmpty());
 	}
@@ -147,11 +172,6 @@ public class Test {
 		args[0] = "C:/Users/hao/workspace/MultiThreading/app/app-release.apk";
 		args[1] = "fu.hao.multithreading.MainActivity";
 		args[2] = "onCreate";
-
-		Object[] initArgs = new Object[2];
-		initArgs[0] = "android.app.Activity";
-		initArgs[1] = "NULL";
-		Main.initMI(initArgs);
 
 		Main.main(args);
 		assertEquals(true, Results.results.isEmpty());
@@ -182,21 +202,19 @@ public class Test {
 
 	public void testMain() {
 		String[] args = new String[4];
-		args[3] = "Taint";
+		args[3] = "ATaint";
 		Settings.logLevel = 0;
-
-		Object[] initArgs = new Object[2];
-		initArgs[0] = "NULL";
-		initArgs[1] = "NULL";
-
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_StaticInitialization1/app/app-release.apk";
+		
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Lifecycle_ActivityLifecycle2/app/";
 		args[1] = "de.ecspride.MainActivity";
-		args[2] = "onCreate";
+		args[2] = "onResume";
 		Main.main(args);
+		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
-		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
-				"359874043116909");
-		assertEquals(Results.results.contains(res), true);
+		//res.put("<java.net.URL: java.net.URLConnection openConnection()>",
+		res.put("<java.net.URL: void <init>(java.lang.String)>",
+				"http://www.google.de/search?q=359874043116909");
+		assertEquals(true, Results.results.contains(res));
 	}
 
 	public void testMain2() {

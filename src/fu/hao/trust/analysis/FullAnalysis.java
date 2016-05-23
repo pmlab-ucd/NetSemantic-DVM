@@ -36,7 +36,7 @@ public class FullAnalysis extends TaintCtrlDep {
 			influAnalysis.influInvoke(vm, inst, targetCalls);
 			Log.bb(TAG, "Target calls " + Results.targetCallRes);
 
-			Object[] extra = (Object[]) inst.extra;
+			Object[] extra = (Object[]) inst.getExtra();
 			MethodInfo mi = (MethodInfo) extra[0];
 			if (influAnalysis.isUIAPI(mi.toString())) {
 				Log.bb(TAG, "Potential fedView");
@@ -81,7 +81,7 @@ public class FullAnalysis extends TaintCtrlDep {
 			Map<String, Map<Object, Instruction>> outs = super.flow(vm, inst,
 					ins);
 
-			int[] params = (int[]) inst.extra;
+			int[] params = (int[]) inst.getExtra();
 			Register[] callingCtx = vm.getCallContext();
 
 			String tag = influAnalysis.TAG;
