@@ -2521,7 +2521,23 @@ public class Executor {
 		Log.debug(TAG, "Read manifest csv: " + csv);
 		try {
 			CSVReader reader = new CSVReader(new FileReader(csv));
-			for (String[] mains : reader.readAll()) {
+			List<String[]> infos = reader.readAll();
+					
+			if (infos.size() > 1 && infos.get(1) != null) {
+				for (String provider : infos.get(1)) {
+					ClassInfo providerClass = ClassInfo.findClass(provider);
+					if (providerClass != null) {
+						MethodInfo[] providerOnCreate = providerClass.findMethods("onCreate");
+						Log.bb(TAG, "onCreates " + providerOnCreate.length);
+						if (providerOnCreate.length != 0) {
+							res.add(providerOnCreate[0]);
+						}
+					}
+				}
+			}
+			
+			if (infos.get(0) != null) {
+				String[] mains = infos.get(0);
 				if (mains[0] != null && !mains[0].equals("")) {
 					Log.bb(TAG, "mains[0] " + mains[0]);
 					ClassInfo appClass = ClassInfo.findClass(mains[0]);

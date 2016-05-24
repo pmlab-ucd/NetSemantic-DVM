@@ -107,6 +107,8 @@ public class BenchLifecycleTests {
 	@Test
 	public void testLifecycle_ApplicationLifecycle3() {
 		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Lifecycle_ApplicationLifecycle3/app/";
+		args[1] = "de.ecspride.ApplicationLifecyle3";
+		args[2] = "onCreate";
 		Main.main(args);
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
