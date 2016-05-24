@@ -270,7 +270,7 @@ public class Executor {
 				Class.forName(inst.type.toString());
 				// vm.getReg(inst.rdst).setValue("Well, I will be born soon..",
 				// inst.type);
-				vm.getReg(inst.rdst).reset();
+				vm.getReg(inst.rdst).setValue(null, inst.type);;
 				// vm.getAssigned()[0] = -1; // not consider assigned here
 				Log.bb(TAG, "Reflecable instance.");
 			} catch (ClassNotFoundException e) {
@@ -2146,6 +2146,18 @@ public class Executor {
 								+ vm.getReg(args[0]).getData() + " "
 								+ vm.getReg(args[0]).getData().getClass());
 					}
+				} else {
+					if (vm.getReg(args[0]).isUsed()) {
+						clazz = Class.forName(vm.getReg(args[0]).getType().toString());
+						vm.getReg(args[0]).setValue(clazz.newInstance(),
+								mi.returnType);
+						Log.debug(TAG,
+								"Reflected init instance: "
+										+ vm.getReg(args[0]).getData()
+										+ ", "
+										+ vm.getReg(args[0]).getData()
+												.getClass());
+					}
 				}
 			} else {
 				Log.debug(TAG, "Reflction class: " + clazz);
@@ -2516,6 +2528,16 @@ public class Executor {
 	 */
 	public List<MethodInfo> getPreCallback(ClassInfo sitClass, MethodInfo mi) {
 		List<MethodInfo> res = new ArrayList<>();
+		// For nested class
+		ClassInfo outerClass = sitClass.getOuterClass();
+		if (outerClass != null) {
+			MethodInfo[] outerOnCreate = outerClass.findMethods("onCreate");
+			Log.bb(TAG, "onCreates " + outerOnCreate.length);
+			if (outerOnCreate.length != 0) {
+				res.add(outerOnCreate[0]);
+			}
+		}
+		
 		// The callbacks inside the class extends Application
 		String csv = "./output/manifests/" + Settings.apkName + "_manifest.csv";
 		Log.debug(TAG, "Read manifest csv: " + csv);
@@ -2574,6 +2596,11 @@ public class Executor {
 			if (mis.length != 0) {
 				res.add(mis[0]);
 			}
+			
+			mis = sitClass.findMethods("onStartCommand");
+			if (mis.length != 0) {
+				res.add(mis[0]);
+			}
 		}
 
 		return res;
@@ -2587,7 +2614,7 @@ public class Executor {
 
 		for (MethodInfo mi : runs) {
 			// Create a new stack frame and push it to the stack.
-			StackFrame stackFrame = vm.newStackFrame(sitClass, mi);
+			StackFrame stackFrame = vm.newStackFrame(mi.myClass, mi);
 			if (stackFrame == null) {
 				return;
 			}
@@ -2596,8 +2623,8 @@ public class Executor {
 				stackFrame.setThisObj(null);
 			} else {
 				if (vm.getChainThisObj() == null) {
-					Log.msg(TAG, "New chain obj with type " + sitClass);
-					stackFrame.setThisObj(vm.newVMObject(sitClass));
+					Log.msg(TAG, "New chain obj with type " + mi.myClass);
+					stackFrame.setThisObj(vm.newVMObject(mi.myClass));
 					vm.setChainThisObj(stackFrame.getThisObj());
 				} else {
 					stackFrame.setThisObj(vm.getChainThisObj());
@@ -2614,7 +2641,7 @@ public class Executor {
 					vm.setPC(0);
 				}
 				for (int i = 0; i < mi.insns.length; i++) {
-					exec(vm, mi.insns[i], sitClass);
+					exec(vm, mi.insns[i], mi.myClass);
 				}
 			}
 		}

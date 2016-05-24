@@ -3,7 +3,7 @@ package android.app;
 import java.util.HashMap;
 import java.util.Map;
 
-import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.Intent;
 import android.view.View;
 import patdroid.core.ClassInfo;
@@ -13,7 +13,7 @@ import fu.hao.trust.utils.Log;
 import fu.hao.trust.utils.Pair;
 import fu.hao.trust.utils.Settings;
 
-public class Activity extends Context {
+public class Activity extends ContextWrapper {
 
 	Map<Integer, View> views;
 	final String TAG = getClass().getSimpleName();

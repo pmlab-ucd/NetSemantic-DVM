@@ -5,12 +5,14 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.myclasses.GenInstance;
 import android.os.AsyncTask;
@@ -515,7 +517,7 @@ public class DalvikVM {
 		getPluginManager().setCurrRes(getCurrStackFrame().pluginRes);
 		// pluginManager.setMethod(state.getPluginMethod());
 
-		interpreter.jump(this, focusBranch.getInstructions().iterator().next(),
+		executor.jump(this, focusBranch.getInstructions().iterator().next(),
 				false);
 		// getCurrStackFrame().pc[0]--;
 		getCurrStackFrame().printLocals();
@@ -541,7 +543,7 @@ public class DalvikVM {
 	@Deprecated
 	Instruction lastBranch;
 
-	Executor interpreter;
+	Executor executor;
 
 	// which reg store the return value of callee called by this method
 	private Register retValReg;
@@ -652,7 +654,7 @@ public class DalvikVM {
 
 	public DalvikVM(String APK) {
 		heap = new VMHeap();
-		interpreter = Executor.v();
+		executor = Executor.v();
 		retValReg = new Register(null, -1);
 		stack = new LinkedList<>();
 		callingCtx = null;
@@ -672,7 +674,7 @@ public class DalvikVM {
 
 	public void reset() {
 		heap = new VMHeap();
-		interpreter = Executor.v();
+		executor = Executor.v();
 		stack = new LinkedList<>();
 		getPluginManager().reset();
 		retValReg.reset();
@@ -895,7 +897,7 @@ public class DalvikVM {
 	}
 
 	public void jump(Instruction inst, boolean then) {
-		interpreter.jump(this, inst, then);
+		executor.jump(this, inst, then);
 	}
 
 	/**
@@ -914,7 +916,7 @@ public class DalvikVM {
 			return;
 		}
 
-		interpreter.runMethod(sitClass, this, method, false);
+		executor.runMethod(sitClass, this, method, false);
 	}
 
 	public void runMethod(ClassInfo sitClass, MethodInfo method,
@@ -983,7 +985,7 @@ public class DalvikVM {
 			args[i] = i;
 		}
 
-		interpreter.runMethod(sitClass, this, method, force);
+		executor.runMethod(sitClass, this, method, force);
 	}
 
 	public int getPC() {
@@ -1021,11 +1023,11 @@ public class DalvikVM {
 	}
 
 	public boolean isPass() {
-		return interpreter.pass;
+		return executor.pass;
 	}
 
 	public void setPass(boolean pass) {
-		this.interpreter.pass = pass;
+		this.executor.pass = pass;
 	}
 
 	public Method getReflectMethod() {
@@ -1116,7 +1118,7 @@ public class DalvikVM {
 		String typeName = type.toString();
 		while (type.getSuperClass() != null) {
 			if (!typeName.contains("$")) {
-				if (typeName.contains("Activity")) {
+				if (typeName.contains("android.app.Activity")) {
 					return new Activity(this, oType);
 				} else if (typeName.contains("View")) {
 					return GenInstance.getView(this, oType);
@@ -1124,6 +1126,8 @@ public class DalvikVM {
 					return new AsyncTask(this, oType);
 				} else if (typeName.contains("Adapter")) {
 					return new BaseAdapter(this, oType);
+				} else if (typeName.contains("BroadcastReceiver")) {
+					return new BroadcastReceiver(this, oType);
 				}
 			}
 
@@ -1135,7 +1139,6 @@ public class DalvikVM {
 	}
 
 	public LinkedList<StackFrame> getTmpFrames() {
-
 		return tmpFrames;
 	}
 
@@ -1172,6 +1175,16 @@ public class DalvikVM {
 			tmpFrames = new LinkedList<>();
 		}
 		tmpFrames.add(tmpFrame);
+	}
+	
+	public void setTmpFrames(List<MethodInfo> mis, boolean repeat) {
+		this.setRepeatInst(repeat);
+		if (tmpFrames == null) {
+			tmpFrames = new LinkedList<>();
+		}
+		for (MethodInfo mi : mis) {
+			tmpFrames.add(newStackFrame(mi.myClass, mi, false));
+		}
 	}
 
 	public ClassInfo getCurrtClass() {

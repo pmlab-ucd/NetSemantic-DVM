@@ -48,6 +48,11 @@ public class Context extends DVMObject {
 		ClassInfo type = ClassInfo.findClass(Settings.getIntentTarget(action));
 		new Activity(vm, type);
 	}
+	
+    public Context getApplicationContext() {
+       return this; 
+    }
+	
 	/*
 
 	public ComponentName startService(Intent service) {
