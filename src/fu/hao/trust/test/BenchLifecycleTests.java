@@ -120,6 +120,8 @@ public class BenchLifecycleTests {
 	@Test
 	public void testLifecycle_BroadcastReceiverLifecycle1() {
 		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Lifecycle_BroadcastReceiverLifecycle1/app/";
+		args[1] = "de.ecspride.TestReceiver";
+		args[2] = "onReceive";
 		Main.main(args);
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
