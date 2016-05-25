@@ -18,6 +18,7 @@ public class Activity extends ContextWrapper {
 	Map<Integer, View> views;
 	final String TAG = getClass().getSimpleName();
 	Intent intent;
+	FragmentManager fragmentManager;
 	
 	public Activity(DalvikVM vm, ClassInfo type, Intent intent) {
 		super(vm, type);
@@ -52,7 +53,6 @@ public class Activity extends ContextWrapper {
 		}
 	}
 	
-
 	public void setContentView(int view) {
 
 	}
@@ -78,5 +78,13 @@ public class Activity extends ContextWrapper {
 	public String toString() {
 		return "Activity:" + super.toString();
 	}
+	
+    public FragmentManager getFragmentManager() {
+        if (fragmentManager == null) {
+        	fragmentManager = new FragmentManager();
+        }
+        
+        return fragmentManager;
+    }
 	
 }

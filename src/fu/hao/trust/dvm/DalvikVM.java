@@ -12,6 +12,7 @@ import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
@@ -593,6 +594,7 @@ public class DalvikVM {
 	}
 	
 	private ServicePool servicePool;
+	private Activity currtActivity;
 
 	/**
 	 * @Title: getClass
@@ -1133,6 +1135,8 @@ public class DalvikVM {
 					return new BroadcastReceiver(this, oType);
 				} else if (typeName.contains("android.app.Service")) {
 					return new Service(this, oType);
+				} else if (typeName.contains("android.app.Fragment")) {
+					return new Fragment(this, oType);
 				}
 			}
 
@@ -1167,6 +1171,9 @@ public class DalvikVM {
 	}
 	
 	public void addTmpFrameFront(StackFrame tmpFrame, boolean repeat) {
+		if (tmpFrame == null) {
+			return;
+		}
 		this.setRepeatInst(repeat);
 		if (tmpFrames == null) {
 			tmpFrames = new LinkedList<>();
@@ -1175,6 +1182,9 @@ public class DalvikVM {
 	}
 	
 	public void addTmpFrameBack(StackFrame tmpFrame, boolean repeat) {
+		if (tmpFrame == null) {
+			return;
+		}
 		this.setRepeatInst(repeat);
 		if (tmpFrames == null) {
 			tmpFrames = new LinkedList<>();
@@ -1225,6 +1235,14 @@ public class DalvikVM {
 
 	public void setServicePool(ServicePool servicePool) {
 		this.servicePool = servicePool;
+	}
+
+	public Activity getCurrtActivity() {
+		return currtActivity;
+	}
+
+	public void setCurrtActivity(Activity currtActivity) {
+		this.currtActivity = currtActivity;
 	}
 
 }

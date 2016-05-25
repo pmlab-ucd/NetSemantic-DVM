@@ -36,7 +36,7 @@ public class Context extends DVMObject {
 			return new TelephonyManager();
 		} else if (name.equals("window")) {
 			return new WindowManager();
-		}
+		} 
 
 		return null;
 	}

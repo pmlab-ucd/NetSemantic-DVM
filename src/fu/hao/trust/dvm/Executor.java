@@ -17,6 +17,7 @@ import java.util.Set;
 import com.opencsv.CSVReader;
 
 import android.ShouldBeReplaced;
+import android.app.Activity;
 import android.content.Intent;
 import fu.hao.trust.analysis.Plugin;
 import fu.hao.trust.dvm.DalvikVM.Register;
@@ -2794,6 +2795,13 @@ public class Executor {
 		vm.getAssigned()[0] = -1;
 		vm.setReflectMethod(null);
 		if (!vm.getPluginManager().isEmpty() && vm.getCurrStackFrame() != null) {
+			
+			//if (sitClass.isConvertibleTo(ClassInfo.findClass("android.app.Activity"))) {
+			DVMObject thisObj = vm.getCurrStackFrame().getThisObj(); 
+			if (thisObj != null && thisObj instanceof Activity) {
+				vm.setCurrtActivity((Activity) thisObj);
+			}
+				
 			vm.getPluginManager().preprossing(vm, inst);
 		}
 
