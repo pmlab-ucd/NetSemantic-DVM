@@ -25,7 +25,7 @@ public class FragmentTransaction  {
 	
 	public int commit() {
 		for (Fragment fragment : fragments.values()) {
-			fragment.onStart();
+			fragment.myOnStart();
 		}
 		return 1;
 	}

@@ -57,7 +57,7 @@ public class Fragment extends DVMObject {
 		return frame;
 	}
 
-	public void onStart() {
+	public void myOnStart() {
 		vm.addTmpFrameBack(onCreateView(), false);
 		vm.addTmpFrameBack(onActivityCreated(), false);
 
