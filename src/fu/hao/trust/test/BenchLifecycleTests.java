@@ -144,6 +144,19 @@ public class BenchLifecycleTests {
 	}
 	
 	@Test
+	public void testLifecycle_ServiceLifecycle2() {
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/ServiceLifecycle2/app/";
+		args[1] = "edu.mit.service_lifecycle.MainActivity";
+		args[2] = "onCreate";
+		Main.main(args);
+		assertEquals(false, Results.results.isEmpty());
+		Map<String, String> res = new HashMap<>();
+		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
+				tm.getDeviceId());
+		assertEquals(true, Results.results.contains(res));
+	}
+	
+	@Test
 	public void testLifecycle_BroadcastReceiverLifecycle2() {
 		args[0] = "C:/Users/hao/workspace/DroidBenchProj/BroadcastReceiverLifecycle2/app/";
 		args[1] = "de.ecspride.MainActivity$MyReceiver";

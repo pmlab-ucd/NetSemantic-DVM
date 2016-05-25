@@ -19,9 +19,19 @@ public class Activity extends ContextWrapper {
 	final String TAG = getClass().getSimpleName();
 	Intent intent;
 	
+	public Activity(DalvikVM vm, ClassInfo type, Intent intent) {
+		super(vm, type);
+		init(vm, type, intent);
+	}
+	
 	public Activity(DalvikVM vm, ClassInfo type) {
 		super(vm, type);
+		init(vm, type, null);
+	}
+	
+	public void init(DalvikVM vm, ClassInfo type, Intent intent) {
 		Log.bb(TAG, "New Activity Created with type " + type);
+		this.intent = intent;
 		if (Settings.execOnCreate) {
 			if (vm.getCurrStackFrame() != null && type.findMethods("onCreate")[0].equals(vm.getCurrStackFrame().getMethod())) {
 				return;
@@ -31,8 +41,7 @@ public class Activity extends ContextWrapper {
 			params[0] = new Pair<Object, ClassInfo>(this, type);
 			params[1] = null;
 			StackFrame frame = vm.newStackFrame(type, type.findMethods("onCreate")[0], params, false);
-			frame.setIntent(vm.getGlobalIntent());
-			intent = vm.getGlobalIntent();
+			frame.setIntent(intent);
 			Log.bb(TAG, "Intent " + intent);
 			Log.bb(TAG, "ROOO " + (vm.getGlobalCallCtx() == null));
 			if (vm.getCurrtInst().toString().contains("startActivity")) {
@@ -42,6 +51,7 @@ public class Activity extends ContextWrapper {
 			}
 		}
 	}
+	
 
 	public void setContentView(int view) {
 

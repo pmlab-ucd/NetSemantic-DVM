@@ -205,10 +205,10 @@ public class Test {
 		args[3] = "ATaint";
 		Settings.logLevel = 0;
 		
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/BroadcastReceiverLifecycle2/app/";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/ServiceLifecycle2/app/";
 		
-		args[1] = "de.ecspride.MainActivity$MyReceiver";
-		args[2] = "onReceive";
+		args[1] = "edu.mit.service_lifecycle.MainActivity";
+		args[2] = "onCreate";
 		Main.main(args);
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();

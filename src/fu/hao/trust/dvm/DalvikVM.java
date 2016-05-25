@@ -12,6 +12,7 @@ import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 
 import android.app.Activity;
+import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.myclasses.GenInstance;
@@ -590,6 +591,8 @@ public class DalvikVM {
 	public Object[] getAssigned() {
 		return assigned;
 	}
+	
+	private ServicePool servicePool;
 
 	/**
 	 * @Title: getClass
@@ -1128,6 +1131,8 @@ public class DalvikVM {
 					return new BaseAdapter(this, oType);
 				} else if (typeName.contains("BroadcastReceiver")) {
 					return new BroadcastReceiver(this, oType);
+				} else if (typeName.contains("android.app.Service")) {
+					return new Service(this, oType);
 				}
 			}
 
@@ -1209,6 +1214,17 @@ public class DalvikVM {
 
 	public boolean getRepeatInst() {
 		return repeatInst;
+	}
+
+	public ServicePool getServicePool() {
+		if (servicePool == null) {
+			servicePool = new ServicePool();
+		}
+		return servicePool;
+	}
+
+	public void setServicePool(ServicePool servicePool) {
+		this.servicePool = servicePool;
 	}
 
 }

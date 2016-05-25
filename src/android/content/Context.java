@@ -1,13 +1,11 @@
 package android.content;
 
-import android.app.Activity;
 import android.content.res.Resources;
 import android.telephony.TelephonyManager;
 import android.view.WindowManager;
 import patdroid.core.ClassInfo;
 import fu.hao.trust.dvm.DVMObject;
 import fu.hao.trust.dvm.DalvikVM;
-import fu.hao.trust.utils.Settings;
 
 public class Context extends DVMObject {
 
@@ -43,12 +41,6 @@ public class Context extends DVMObject {
 		return null;
 	}
 
-	public void startActivity(Intent intent) {
-		String action = intent.getAction();
-		ClassInfo type = ClassInfo.findClass(Settings.getIntentTarget(action));
-		new Activity(vm, type);
-	}
-	
     public Context getApplicationContext() {
        return this; 
     }

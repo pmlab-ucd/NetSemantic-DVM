@@ -2115,6 +2115,7 @@ public class Executor {
 			// If args contains a symbolic var, directly set the return val as a
 			// symbolic var.
 			if (mi.isConstructor()) {
+				Log.bb(TAG, mi + " is a constructor!");
 				// use DvmObject to replace java.lang.Object
 				if (!mi.myClass.toString().equals("java.lang.Object")) {
 					// clazz = Class.forName(mi.myClass.toString());
@@ -2296,7 +2297,8 @@ public class Executor {
 	public void checkIntent(DalvikVM vm, Instruction inst) {
 		Object[] extra = (Object[]) inst.getExtra();
 		int[] args = (int[]) extra[1];
-		if (inst.toString().contains("android.content.Context/start")) {
+		if (inst.toString().contains("android.content.Context/start")
+				|| inst.toString().contains("android.content.ContextWrapper/start")) {
 			Results.intent = (Intent) vm.getReg(args[1]).getData();
 			vm.setGlobalIntent((Intent) vm.getReg(args[1]).getData());
 		} else {
@@ -2426,6 +2428,9 @@ public class Executor {
 					} else if (argData instanceof MNVar) {
 						params[j] = null;
 						return false;
+					} else if (argData instanceof ClassInfo) {
+						argsClass[j] = ClassInfo.class;
+						params[j] = argData;
 					}
 
 					// params[j] = argData;
