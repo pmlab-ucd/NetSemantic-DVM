@@ -54,12 +54,12 @@ public class ResolveIntent {
 		}
 
 		for (String apkfile : apkFiles) {
-			Settings.apkPath = apkfile;
+			Settings.setApkPath(apkfile);
 			Log.msg(TAG, apkfile);
-			File apk = new File(Settings.apkPath);
-			Settings.apkName = apk.getName();
-			String csv = "C:/Users/hao/workspace/NetSemantic-Static/sootOutput/"
-					+ Settings.apkName + "_resp_startActServ.csv";
+			File apk = new File(Settings.getApkPath());
+			Settings.setApkName(apk.getName());
+			String csv = Settings.getStaticOutDir()
+					+ Settings.getApkName() + "_startActServ.csv";
 			CSVReader reader = new CSVReader(new FileReader(csv));
 			PluginManager pluginManager = new PluginManager();
 			Set<String[]> intents = new HashSet<>();
@@ -71,8 +71,8 @@ public class ResolveIntent {
 				intent[3] = "";
 				for (int i = 1; i < items.length; i++) {
 					Results.reset();
-					Settings.entryClass = items[i].split(": ")[0];
-					Settings.entryMethod = items[i].split(": ")[1];
+					Settings.setEntryClass(items[i].split(": ")[0]);
+					Settings.setEntryMethod(items[i].split(": ")[1]);
 					Main main = new Main();
 					main.runMethod(pluginManager);
 					if (Results.intent != null) {
@@ -93,7 +93,7 @@ public class ResolveIntent {
 	}
 
 	public static void writeCSV(Set<String[]> intents) throws IOException {
-		String csv = "./output/intents/" + Settings.apkName + "_intents.csv";
+		String csv = Settings.getOutdir() + Settings.getApkName() + "_intents.csv";
 		File csvFile = new File(csv);
 		Log.msg(TAG, csv);
 		if (!csvFile.exists()) {

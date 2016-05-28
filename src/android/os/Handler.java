@@ -26,7 +26,7 @@ public class Handler {
 			Pair[] params = new Pair[1];
 			params[0] = new Pair(runner, runner.getType());
 			StackFrame frame = vm.newStackFrame(runner.getType(), run, params, false);
-			vm.setTmpFrames(frame, false);
+			vm.runInstrumentedMethods(frame);
 		return true;		 
 	 }
 

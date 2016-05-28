@@ -205,10 +205,10 @@ public class Test {
 		args[3] = "ATaint";
 		Settings.logLevel = 0;
 		
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FragmentLifecycle1/app/";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FragmentLifecycle2/app/";
 		
-		args[1] = "de.ecspride.MainActivity";
-		args[2] = "onCreate";
+		// args[1] = "de.ecspride.MainActivity";
+		//args[2] = "onCreate";
 		Main.main(args);
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();

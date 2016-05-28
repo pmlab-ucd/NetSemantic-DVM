@@ -46,12 +46,7 @@ public class Service extends ContextWrapper {
 							onCreates[0], params, false);
 					frame.setIntent(intent);
 					Log.bb(TAG, "Intent " + intent);
-					Log.bb(TAG, "ROOO " + (vm.getGlobalCallCtx() == null));
-					if (vm.getCurrtInst().toString().contains("startService")) {
-						vm.addTmpFrameFront(frame, false);
-					} else {
-						vm.addTmpFrameFront(frame, true);
-					}
+					vm.runInstrumentedMethods(frame);
 				}
 			}
 		}

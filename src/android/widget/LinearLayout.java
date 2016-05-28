@@ -6,7 +6,7 @@ import android.view.View;
 
 public class LinearLayout extends View {
 
-	public LinearLayout(DalvikVM vm, ClassInfo type) {
-		super(vm, type);
+	public LinearLayout(DalvikVM vm, ClassInfo type, int mid) {
+		super(vm, type, mid);
 	}
 }

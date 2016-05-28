@@ -5,8 +5,8 @@ import fu.hao.trust.dvm.DalvikVM;
 import android.view.View;
 
 public class TextView extends View {
-	public TextView(DalvikVM vm, ClassInfo type) {
-		super(vm, type);
+	public TextView(DalvikVM vm, ClassInfo type, int mid) {
+		super(vm, type, mid);
 	}
 
 	CharSequence text;

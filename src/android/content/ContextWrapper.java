@@ -43,7 +43,7 @@ public class ContextWrapper extends Context {
 		params[1] = new Pair<Object, ClassInfo>(this, type);
 		params[2] = new Pair<Object, ClassInfo>(intent,
 				ClassInfo.findClass(intent.getClass().getName()));
-		LinkedList<StackFrame> frames = new LinkedList<>();
+		LinkedList<StackFrame> tmpFrames = new LinkedList<>();
 		for (IntentFilter filter : filters.keySet()) {
 			if (filter.matchAction(action)) {
 				BroadcastReceiver receiver = filters.get(filter);
@@ -53,12 +53,12 @@ public class ContextWrapper extends Context {
 					MethodInfo mi = onReceives[0];
 					params[0] = new Pair<Object, ClassInfo>(receiver,
 							receiver.getType());
-					frames.add(vm.newStackFrame(mi.myClass, mi, params, false));
+					tmpFrames.add(vm.newStackFrame(mi.myClass, mi, params, false));
 				}
 			}
 		}
 
-		vm.setTmpFrames(frames, false);
+		vm.runInstrumentedMethods(tmpFrames);
 	}
 
 	public ComponentName startService(Intent intent) {
@@ -83,10 +83,9 @@ public class ContextWrapper extends Context {
 		params[3] = new Pair<Object, ClassInfo>(new PrimitiveInfo(0),
 				ClassInfo.primitiveInt);
 		StackFrame frame = vm
-				.newStackFrame(type, onStartCmds[0], params, false);
+				.newStackFrame(type, onStartCmds[0], params);
 		frame.setIntent(intent);
 		Log.bb(TAG, "Intent " + intent);
-		vm.addTmpFrameBack(frame, false);
 
 		return null;
 	}

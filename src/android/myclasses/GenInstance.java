@@ -1,5 +1,7 @@
 package android.myclasses;
 
+import android.app.Fragment;
+import android.app.ListFragment;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -7,6 +9,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import fu.hao.trust.dvm.DVMObject;
 import fu.hao.trust.dvm.DalvikVM;
+import fu.hao.trust.utils.Log;
 import patdroid.core.ClassInfo;
 
 /**
@@ -16,31 +19,47 @@ import patdroid.core.ClassInfo;
  * @date: May 7, 2016 10:26:38 AM
  */
 public class GenInstance {
+
+	private final static String TAG = GenInstance.class.getSimpleName();
 	
 	public static DVMObject getInstance(DalvikVM vm, ClassInfo type) {
-		// TODO
 		return null;
 	}
 	
-	public static View getView(DalvikVM vm, ClassInfo type) {
+	public static View getView(DalvikVM vm, ClassInfo type, int id) {
+		Log.bb(TAG, "Gen view instance with " + type + ", id " + id);
 		ClassInfo oType = type;
-		String typeName = type.toString();
-		while (type.getSuperClass() != null) {
+		while (type != null) {
+			String typeName = type.toString();
 			if (typeName.contains("TextView")) {
-				return new TextView(vm, oType);
+				return new TextView(vm, oType, id);
 			} else if (typeName.contains("ListView")) {
-				return new ListView(vm, oType);
+				return new ListView(vm, oType, id);
 			} else if (typeName.contains("ImageView")) {
-				return new ImageView(vm, oType);
+				return new ImageView(vm, oType, id);
 			} else if (typeName.contains("ImageButton")) {
-				return new ImageButton(vm, oType);
+				return new ImageButton(vm, oType, id);
 			}
 			
 			type = type.getSuperClass();
-			typeName = type.toString();
 		}
 		
-		return new View(vm, type);
+		return new View(vm, oType, id);
+	}
+	
+	public static Fragment getFragment(DalvikVM vm, ClassInfo type) {
+		ClassInfo oType = type;
+		Log.bb(TAG, "Gen fragment instance with " + type);
+		while (type != null) {
+			String typeName = type.toString();
+			 if (typeName.contains("ListFragment")) {
+				 return new ListFragment(vm, oType);
+			 }
+			 
+			 type = type.getSuperClass();
+		}
+		
+		return new Fragment(vm, oType);
 	}
 	
 

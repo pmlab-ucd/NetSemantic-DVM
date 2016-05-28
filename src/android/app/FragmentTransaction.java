@@ -3,11 +3,13 @@ package android.app;
 import java.util.HashMap;
 import java.util.Map;
 
+import fu.hao.trust.utils.Log;
 import fu.hao.trust.utils.Settings;
 
 public class FragmentTransaction  {
 	
 	Map<Integer, Fragment> fragments;
+	final String TAG = getClass().getSimpleName();
 	
 	public FragmentTransaction beginTransaction() {
 		return this;
@@ -19,6 +21,7 @@ public class FragmentTransaction  {
 		}
 		
 		fragments.put(var1, fragment);
+		Log.bb(TAG, Settings.getVM().getCurrtActivity());
 		fragment.myOnAttach(Settings.getVM().getCurrtActivity());
 		return this;
 	}

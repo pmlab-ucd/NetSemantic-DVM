@@ -8,7 +8,6 @@ import fu.hao.trust.dvm.DalvikVM.Register;
 import fu.hao.trust.dvm.DalvikVM;
 import fu.hao.trust.solver.BiDirBranch;
 import fu.hao.trust.utils.Log;
-import fu.hao.trust.utils.Pair;
 
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -20,6 +19,7 @@ import patdroid.core.ClassInfo;
 import patdroid.core.FieldInfo;
 import patdroid.core.MethodInfo;
 import patdroid.dalvik.Instruction;
+import patdroid.util.Pair;
 
 /**
  * @ClassName: TaintAdv

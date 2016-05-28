@@ -3,9 +3,12 @@ package fu.hao.trust.dvm;
 import java.util.HashMap;
 import java.util.Map;
 
+import fu.hao.trust.dvm.DalvikVM.StackFrame;
 import fu.hao.trust.utils.Log;
+import fu.hao.trust.utils.Pair;
 import patdroid.core.ClassInfo;
 import patdroid.core.FieldInfo;
+import patdroid.core.MethodInfo;
 
 /**
  * @ClassName: DVMObject
@@ -27,7 +30,7 @@ public class DVMObject {
 		this.vm = vm;
 		Log.bb(TAG, "New instance of " + type);
 		DVMClass dvmClass = vm.getClass(type);
-		this.setType(type);
+		this.type = type;
 		this.setDvmClass(dvmClass);
 		vm.setObj(type, this);
 		
@@ -75,6 +78,18 @@ public class DVMObject {
 		this.setType(type);
 		this.setDvmClass(dvmClass);
 		heap.setObj(this);
+	}
+	
+	public void callDefaultConstructor() {
+		MethodInfo constructor = type.getDefaultConstructor();
+		Log.bb(TAG, "Try to call default constructor of " + type);
+		if (constructor != null) {
+			@SuppressWarnings("unchecked")
+			Pair<Object, ClassInfo>[] params = (Pair<Object, ClassInfo>[]) new Pair[1];
+			params[0] = new Pair<Object, ClassInfo>(this, type);
+			StackFrame frame = vm.newStackFrame(type, constructor, params, false);
+			vm.runInstrumentedMethods(frame);
+		}
 	}
 
 	public ClassInfo getType() {

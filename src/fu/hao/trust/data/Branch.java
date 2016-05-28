@@ -5,7 +5,6 @@ import fu.hao.trust.dvm.DalvikVM;
 import fu.hao.trust.dvm.DalvikVM.Register;
 import fu.hao.trust.solver.Unknown;
 import fu.hao.trust.utils.Log;
-import fu.hao.trust.utils.Pair;
 import fu.hao.trust.utils.Settings;
 
 import java.util.HashMap;
@@ -18,6 +17,7 @@ import patdroid.core.ClassInfo;
 import patdroid.core.MethodInfo;
 import patdroid.core.PrimitiveInfo;
 import patdroid.dalvik.Instruction;
+import patdroid.util.Pair;
 
 public class Branch {
 	protected LinkedList<Instruction> insts;

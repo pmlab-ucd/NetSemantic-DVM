@@ -12,7 +12,6 @@ import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
@@ -24,7 +23,6 @@ import fu.hao.trust.analysis.PluginManager;
 import fu.hao.trust.data.VMFullState;
 import fu.hao.trust.solver.BiDirBranch;
 import fu.hao.trust.utils.Log;
-import fu.hao.trust.utils.Pair;
 import fu.hao.trust.utils.Settings;
 import patdroid.core.ClassInfo;
 import patdroid.core.FieldInfo;
@@ -32,6 +30,7 @@ import patdroid.core.MethodInfo;
 import patdroid.core.ReflectionClassDetailLoader;
 import patdroid.dalvik.Instruction;
 import patdroid.smali.SmaliClassDetailLoader;
+import patdroid.util.Pair;
 
 public class DalvikVM {
 	private final String TAG = getClass().getSimpleName();
@@ -571,8 +570,10 @@ public class DalvikVM {
 	private DVMObject chainThisObj = null;
 
 	// Store the tmp method info that should be pushed into the stack soon
+	@Deprecated
 	LinkedList<StackFrame> tmpFrames;
 
+	@Deprecated
 	private boolean repeatInst = false;
 
 	private Intent globalIntent;
@@ -695,6 +696,7 @@ public class DalvikVM {
 		if (stack.isEmpty()) {
 			return null;
 		}
+		stack.remove(null);
 		return stack.getLast();
 	}
 
@@ -707,6 +709,11 @@ public class DalvikVM {
 	}
 
 	public void addStackFrames(LinkedList<StackFrame> frames) {
+		if (frames == null) {
+			return;
+		}
+		frames.remove(null);
+		Log.bb(TAG, "Add frames " + frames);
 		stack.addAll(frames);
 	}
 
@@ -717,6 +724,11 @@ public class DalvikVM {
 	public StackFrame newStackFrame(ClassInfo sitClass, MethodInfo mi,
 			boolean nowAddToStack) {
 		return newStackFrame(sitClass, mi, null, nowAddToStack);
+	}
+	
+	public StackFrame newStackFrame(ClassInfo sitClass, MethodInfo mi,
+			Pair<Object, ClassInfo>[] callCtxObjs) {
+		return newStackFrame(sitClass, mi, callCtxObjs, true);
 	}
 
 	public StackFrame newStackFrame(ClassInfo sitClass, MethodInfo mi,
@@ -765,6 +777,7 @@ public class DalvikVM {
 					: newStackFrame.pluginRes);
 		}
 		if (nowAddToStack) {
+			Log.bb(TAG, "Add frame " + newStackFrame);
 			stack.add(newStackFrame);
 		}
 
@@ -783,6 +796,7 @@ public class DalvikVM {
 	public void backCallCtx(Register retReg) {
 		stack.removeLast();
 		callingCtx = null;
+		Log.bb(TAG, "stack " + stack);
 		Log.bb(TAG, "Back to the last stack frame." + getCurrStackFrame());
 	}
 
@@ -799,6 +813,7 @@ public class DalvikVM {
 		// load all classes, methods, fields and instructions from an apk
 		// we are using smali as the underlying engine
 		new SmaliClassDetailLoader(apkFile, true).loadAll();
+		Activity.xmlViewDefs();
 	}
 
 	/**
@@ -865,8 +880,6 @@ public class DalvikVM {
 				methods = new MethodInfo[1];
 				methods[0] = onCreate;
 			}
-			
-
 		}
 
 		for (int i = 0; i < methods.length; i++) {
@@ -889,16 +902,38 @@ public class DalvikVM {
 		this.setPluginManager(pluginManager);
 
 		for (int i = 1; i < chain.length; i++) {
-			Settings.entryClass = chain[i].split(":")[0];
-			Settings.logTag = Settings.apkName + "_" + Settings.entryClass
+			Settings.setEntryClass(chain[i].split(":")[0]);
+			Settings.logTag = Settings.getApkName() + "_" + Settings.getEntryClass()
 					+ "_" + chain[i];
-			ClassInfo c = ClassInfo.findClass(Settings.entryClass);
+			ClassInfo c = ClassInfo.findClass(Settings.getEntryClass());
 			Log.bb(TAG, "class " + c);
 			MethodInfo[] methods = c.findMethodsHere(chain[i].split(":")[1]);
 			Log.warn(TAG, "Run chain " + chain[i] + " at " + c);
 			// TODO Multiple methods have the same name.
 			runMethod(c, methods[0]);
 		}
+	}
+	
+	public void runInstrumentedMethods(StackFrame instrumentedFrame) {
+		LinkedList<StackFrame> tmpFrames = new LinkedList<>();
+		tmpFrames.add(instrumentedFrame);
+		runInstrumentedMethods(tmpFrames);
+	}
+	
+	public void runInstrumentedMethods(LinkedList<StackFrame> instrumentedFrames) {
+		Log.msg(TAG, "Begin run instrumented methods!");
+		if (instrumentedFrames != null && instrumentedFrames.size() > 0) {
+			instrumentedFrames.remove(null);
+			StackFrame stopSign = getCurrStackFrame();
+			Log.msg(TAG, getCurrtInst());
+			//Object backObj = getReturnReg().getData();
+			//ClassInfo backType = getReturnReg().getType();
+			resetCallCtx();
+			addStackFrames(instrumentedFrames);
+			executor.runInstrumentedMethods(this, stopSign);
+			//getReturnReg().setValue(backObj, backType);
+		}
+		Log.msg(TAG, "Finish running instrumented methods! Back to " + getCurrStackFrame());
 	}
 
 	public void jump(Instruction inst, boolean then) {
@@ -1120,13 +1155,13 @@ public class DalvikVM {
 
 	public DVMObject newVMObject(ClassInfo type) {
 		ClassInfo oType = type;
-		String typeName = type.toString();
-		while (type.getSuperClass() != null) {
+		while (type != null) {
+			String typeName = type.toString();
 			if (!typeName.contains("$")) {
 				if (typeName.contains("android.app.Activity")) {
 					return new Activity(this, oType);
 				} else if (typeName.contains("View")) {
-					return GenInstance.getView(this, oType);
+					return GenInstance.getView(this, oType, -1);
 				} else if (typeName.contains("AsyncTask")) {
 					return new AsyncTask(this, oType);
 				} else if (typeName.contains("Adapter")) {
@@ -1135,18 +1170,20 @@ public class DalvikVM {
 					return new BroadcastReceiver(this, oType);
 				} else if (typeName.contains("android.app.Service")) {
 					return new Service(this, oType);
-				} else if (typeName.contains("android.app.Fragment")) {
-					return new Fragment(this, oType);
+				} else if (typeName.contains("android.app") && typeName.endsWith("Fragment")) {
+					return GenInstance.getFragment(this, oType);
 				}
 			}
 
 			type = type.getSuperClass();
-			typeName = type.toString();
+			
+			Log.bb(TAG, "Superclass: " + typeName);
 		}
 
 		return new DVMObject(this, oType);
 	}
 
+	@Deprecated
 	public LinkedList<StackFrame> getTmpFrames() {
 		return tmpFrames;
 	}
@@ -1159,41 +1196,32 @@ public class DalvikVM {
 	 * @return void
 	 * @throws
 	 */
-	public void setTmpFrames(LinkedList<StackFrame> tmpFrames, boolean repeat) {
-		this.setRepeatInst(repeat);
-		this.tmpFrames = tmpFrames;
-	}
-
-	public void setTmpFrames(StackFrame tmpFrame, boolean repeat) {
-		this.setRepeatInst(repeat);
-		tmpFrames = new LinkedList<>();
-		tmpFrames.add(tmpFrame);
-	}
-	
-	public void addTmpFrameFront(StackFrame tmpFrame, boolean repeat) {
+	@Deprecated
+	public void addTmpFrameLastRun(StackFrame tmpFrame) {
 		if (tmpFrame == null) {
 			return;
 		}
-		this.setRepeatInst(repeat);
+
 		if (tmpFrames == null) {
 			tmpFrames = new LinkedList<>();
 		}
 		tmpFrames.addFirst(tmpFrame);
 	}
 	
-	public void addTmpFrameBack(StackFrame tmpFrame, boolean repeat) {
+	@Deprecated
+	public void addTmpFrameFirstRun(StackFrame tmpFrame) {
 		if (tmpFrame == null) {
 			return;
 		}
-		this.setRepeatInst(repeat);
+
 		if (tmpFrames == null) {
 			tmpFrames = new LinkedList<>();
 		}
 		tmpFrames.add(tmpFrame);
 	}
 	
-	public void setTmpFrames(List<MethodInfo> mis, boolean repeat) {
-		this.setRepeatInst(repeat);
+	@Deprecated
+	public void setTmpFrames(List<MethodInfo> mis) {
 		if (tmpFrames == null) {
 			tmpFrames = new LinkedList<>();
 		}
@@ -1218,10 +1246,12 @@ public class DalvikVM {
 		this.cleanCallingCtx = cleanCallingCtx;
 	}
 
+	@Deprecated
 	public void setRepeatInst(boolean repeatInst) {
 		this.repeatInst = repeatInst;
 	}
 
+	@Deprecated
 	public boolean getRepeatInst() {
 		return repeatInst;
 	}

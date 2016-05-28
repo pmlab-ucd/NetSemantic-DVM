@@ -58,7 +58,7 @@ public class AsyncTask extends DVMObject {
 		ctxObjs = (Pair<Object, ClassInfo>[]) new Pair[1]; 
 		ctxObjs[0] = new Pair<Object, ClassInfo>(this, type);
 		tmpFrames.add(vm.newStackFrame(type, onPre, ctxObjs, false));
-		vm.setTmpFrames(tmpFrames, false);
+		vm.runInstrumentedMethods(tmpFrames);
 
 		return this;
 	}

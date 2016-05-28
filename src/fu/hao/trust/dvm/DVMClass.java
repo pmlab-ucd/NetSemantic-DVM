@@ -27,7 +27,7 @@ public class DVMClass {
 		if (clinit != null && clinit.insns != null) {	
 			@SuppressWarnings("rawtypes")
 			Pair[] callCtxObjs = new Pair[0];
-			vm.setTmpFrames(vm.newStackFrame(type, clinit, callCtxObjs, false), true);
+			vm.runInstrumentedMethods(vm.newStackFrame(type, clinit, callCtxObjs, false));
 			/*
 			vm.resetCallCtx();
 			vm.newStackFrame(clinit);

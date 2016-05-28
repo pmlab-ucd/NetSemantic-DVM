@@ -8,9 +8,11 @@ public class ListView extends View {
 	
 	View headerView;
 	ListAdapter adapter;
+	
+	private int choiceMode;
 
-	public ListView(DalvikVM vm, ClassInfo type) {
-		super(vm, type);
+	public ListView(DalvikVM vm, ClassInfo type, int mid) {
+		super(vm, type, mid);
 	}
 	
 	public void addHeaderView(View v) { 
@@ -21,5 +23,11 @@ public class ListView extends View {
 		this.adapter = adapter;
 	}
 	
-
+    public void setChoiceMode(int choiceMode) {
+       this.choiceMode = choiceMode; 
+    }
+	
+    public int getChoiceMode() {
+       return choiceMode; 
+    }
 }

@@ -9,7 +9,6 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -191,6 +190,9 @@ public class Executor {
 								new Unknown(vm, paramClass), paramClass);
 					} else if (paramClass.isArray()) {
 						// FIXME
+					} else if (paramClass.fullName
+							.contains("android.os.Bundle")) {
+						vm.getReg(params[i]).setValue(null, paramClass);
 					} else {
 						try {
 							Class<?> clazz = Class.forName(paramClass.fullName);
@@ -271,7 +273,7 @@ public class Executor {
 				Class.forName(inst.type.toString());
 				// vm.getReg(inst.rdst).setValue("Well, I will be born soon..",
 				// inst.type);
-				vm.getReg(inst.rdst).setValue(null, inst.type);;
+				vm.getReg(inst.rdst).setValue(null, inst.type);
 				// vm.getAssigned()[0] = -1; // not consider assigned here
 				Log.bb(TAG, "Reflecable instance.");
 			} catch (ClassNotFoundException e) {
@@ -524,6 +526,15 @@ public class Executor {
 							+ ", " + vm.getReg(inst.rdst).getType());
 				}
 			}
+			
+			/*
+			// FIXME A trick to init the fragment/view instance
+			if (vm.getReg(inst.rdst).getData() instanceof DVMObject && 
+					vm.getReg(inst.rdst).getType().toString().startsWith("android")) {
+				DVMObject obj = (DVMObject) vm.getReg(inst.rdst).getData();
+				obj.setType(inst.type);
+				Log.bb(TAG, "Set TYPE " + inst.type);
+			}*/
 		}
 	}
 
@@ -592,8 +603,7 @@ public class Executor {
 		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-
-			if (vm.getReg(inst.r0).getData() == null) {
+			if (!vm.getReg(inst.r0).isUsed() || vm.getReg(inst.r0).getData() == null) {
 				Log.warn(TAG, "ERROR: Null!");
 				return;
 			}
@@ -609,6 +619,13 @@ public class Executor {
 			vm.getReg(inst.rdst).setValue(primitive.castTo(inst.type),
 					inst.type);
 			Log.bb(TAG, "primitive " + primitive);
+			/*
+			// FIXME A trick to init the fragment/view instance
+			if (vm.getReg(inst.r0).getData() instanceof DVMObject && vm.getReg(inst.r0).getType().toString().startsWith("android")) {
+				DVMObject obj = (DVMObject) vm.getReg(inst.r0).getData();
+				obj.setType(inst.type);
+				Log.bb(TAG, "Set TYPE " + inst.type);
+			}*/
 		}
 	}
 
@@ -786,7 +803,7 @@ public class Executor {
 	class OP_IF_EQZ implements ByteCode {
 		/**
 		 * @Title: func
-		 * @Description: (𨃨 JavaDoc)
+		 * @Description:
 		 * @param vm
 		 * @param inst
 		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
@@ -931,11 +948,12 @@ public class Executor {
 				array = objs;
 			}
 
-			Log.bb(TAG, array);
+			Log.bb(TAG, "Array: " + array);
 
 			if (array.getClass().isArray()) {
 				// dest reg
 				Register rdst = vm.getReg(inst.rdst);
+				Log.bb(TAG, "Length: " + Array.getLength(array));
 				// array reg
 				// Object[] array = (Object[]) vm.getReg(inst.r0).getData();
 				// index reg
@@ -945,7 +963,7 @@ public class Executor {
 					int index = ((PrimitiveInfo) vm.getReg(inst.r1).getData())
 							.intValue();
 					type = inst.type;
-
+					Log.bb(TAG, "Index: " + index);
 					if (index >= Array.getLength(array)) {
 						Object[] newArray = new Object[2 * index];
 						for (int i = 0; i < Array.getLength(array); i++) {
@@ -975,6 +993,7 @@ public class Executor {
 						rdst.setValue(element, inst.type);// array[index];
 					}
 				} else {
+					Log.warn(TAG, "Unknown index!");
 					rdst.setValue(new Unknown(vm, type), inst.type);
 				}
 			}
@@ -1004,7 +1023,9 @@ public class Executor {
 			}
 
 			if (!vm.getReg(inst.r0).isUsed()
-					|| !(vm.getReg(inst.r0).getData() instanceof Array)) {
+					|| !(vm.getReg(inst.r0).getData().getClass().isArray())) {
+				Log.warn(TAG, "Not an legal array "
+						+ vm.getReg(inst.r0).getData());
 				Object[] objs = new Object[5];
 				for (int i = 0; i < objs.length; i++) {
 					objs[i] = new Unknown(vm, inst.type);
@@ -1021,6 +1042,7 @@ public class Executor {
 				return;
 			}
 
+			Log.bb(TAG, "index: " + index + ", length: " + array.length);
 			if (index >= array.length) {
 				Object[] newArray = new Object[2 * index];
 				for (int i = 0; i < array.length; i++) {
@@ -1618,16 +1640,17 @@ public class Executor {
 					.getExtra();
 
 			try {
-				Class<?> clazz = Class.forName(pair.first.toString());
-				Field field = clazz.getDeclaredField(pair.second.toString());
+				Class<?> clazz = Class.forName(pair.getFirst().toString());
+				Field field = clazz.getDeclaredField(pair.getSecond()
+						.toString());
 				// TODO only support static field now
 				ClassInfo type = ClassInfo.findOrCreateClass(vm.getReg(inst.r0)
 						.getData().getClass());
 				vm.getReg(inst.r0).setValue(field.get(clazz), type);
 				Log.debug(TAG, "Refleciton " + vm.getReg(inst.r0).getData());
 			} catch (Exception e) {
-				ClassInfo owner = pair.first;
-				String fieldName = pair.second;
+				ClassInfo owner = pair.getFirst();
+				String fieldName = pair.getSecond();
 				// FieldInfo statFieldInfo = new FieldInfo(pair.first,
 				// pair.second);
 				// Log.debug(TAG, "sget " + statFieldInfo.getFieldType());
@@ -1664,8 +1687,8 @@ public class Executor {
 			@SuppressWarnings("unchecked")
 			Pair<ClassInfo, String> pair = (Pair<ClassInfo, String>) inst
 					.getExtra();
-			ClassInfo owner = pair.first;
-			String fieldName = pair.second;
+			ClassInfo owner = pair.getFirst();
+			String fieldName = pair.getSecond();
 
 			ClassInfo fieldType = owner.getStaticFieldType(fieldName);
 			DVMClass dvmClass = vm.getClass(owner);
@@ -1924,12 +1947,13 @@ public class Executor {
 			SymbolicVar u0 = null, u1 = null;
 			Log.debug(TAG, "r0 data " + (r0.isUsed() ? r0.getData() : null));
 			Log.debug(TAG, "r0 type " + (r0.isUsed() ? r0.getType() : null));
-			if (!r0.isUsed() || r0.getData() == null) {
+			// If not explicitly assigned but leveraged here
+			if (!r0.isUsed()) {// || r0.getData() == null) {
 				Log.warn(TAG, "Null operator found!");
 				r0.setValue(new Unknown(vm, r0.getType()), r0.getType());
 			}
 
-			if (inst.r1 != -1 && (!r1.isUsed() || r1.getData() == null)) {
+			if (inst.r1 != -1 && (!r1.isUsed())) {// || r1.getData() == null)) {
 				Log.warn(TAG, "Null operator found!");
 				r1.setValue(new Unknown(vm, r1.getType()), r1.getType());
 			}
@@ -2150,7 +2174,8 @@ public class Executor {
 					}
 				} else {
 					if (vm.getReg(args[0]).isUsed()) {
-						clazz = Class.forName(vm.getReg(args[0]).getType().toString());
+						clazz = Class.forName(vm.getReg(args[0]).getType()
+								.toString());
 						vm.getReg(args[0]).setValue(clazz.newInstance(),
 								mi.returnType);
 						Log.debug(TAG,
@@ -2299,7 +2324,8 @@ public class Executor {
 		Object[] extra = (Object[]) inst.getExtra();
 		int[] args = (int[]) extra[1];
 		if (inst.toString().contains("android.content.Context/start")
-				|| inst.toString().contains("android.content.ContextWrapper/start")) {
+				|| inst.toString().contains(
+						"android.content.ContextWrapper/start")) {
 			Results.intent = (Intent) vm.getReg(args[1]).getData();
 			vm.setGlobalIntent((Intent) vm.getReg(args[1]).getData());
 		} else {
@@ -2543,19 +2569,20 @@ public class Executor {
 				res.add(outerOnCreate[0]);
 			}
 		}
-		
+
 		// The callbacks inside the class extends Application
-		String csv = "./output/manifests/" + Settings.apkName + "_manifest.csv";
+		String csv = Settings.getOutdir() + Settings.getApkName() + "_manifest.csv";
 		Log.debug(TAG, "Read manifest csv: " + csv);
 		try {
 			CSVReader reader = new CSVReader(new FileReader(csv));
 			List<String[]> infos = reader.readAll();
-					
+
 			if (infos.size() > 1 && infos.get(1) != null) {
 				for (String provider : infos.get(1)) {
 					ClassInfo providerClass = ClassInfo.findClass(provider);
 					if (providerClass != null) {
-						MethodInfo[] providerOnCreate = providerClass.findMethods("onCreate");
+						MethodInfo[] providerOnCreate = providerClass
+								.findMethods("onCreate");
 						Log.bb(TAG, "onCreates " + providerOnCreate.length);
 						if (providerOnCreate.length != 0) {
 							res.add(providerOnCreate[0]);
@@ -2563,7 +2590,7 @@ public class Executor {
 					}
 				}
 			}
-			
+
 			if (infos.get(0) != null) {
 				String[] mains = infos.get(0);
 				if (mains[0] != null && !mains[0].equals("")) {
@@ -2571,7 +2598,8 @@ public class Executor {
 					ClassInfo appClass = ClassInfo.findClass(mains[0]);
 					Log.bb(TAG, "appClass: " + appClass);
 					if (appClass != null) {
-						MethodInfo[] appOnCreate = appClass.findMethods("onCreate");
+						MethodInfo[] appOnCreate = appClass
+								.findMethods("onCreate");
 						Log.bb(TAG, "onCreates " + appOnCreate.length);
 						if (appOnCreate.length != 0) {
 							res.add(appOnCreate[0]);
@@ -2602,7 +2630,7 @@ public class Executor {
 			if (mis.length != 0) {
 				res.add(mis[0]);
 			}
-			
+
 			mis = sitClass.findMethods("onStartCommand");
 			if (mis.length != 0) {
 				res.add(mis[0]);
@@ -2653,8 +2681,21 @@ public class Executor {
 		}
 	}
 
-	public void run(DalvikVM vm) {
-		running = true;
+	public void runInstrumentedMethods(DalvikVM vm, StackFrame stopSign) {
+		while (vm.getCurrStackFrame() != null
+				&& vm.getCurrStackFrame().method != null
+				&& vm.getCurrStackFrame() != stopSign
+				&& vm.getPC() < vm.getCurrStackFrame().method.insns.length) {
+			if (vm.getPC() < 0) {
+				vm.setPC(0);
+			}
+			Instruction insns = vm.getCurrStackFrame().method.insns[vm.getPC()];
+			insns.setLoc(vm.getCurrStackFrame().method);
+			exec(vm, insns, vm.getCurrStackFrame().getMyClass());
+		}
+	}
+	
+	public String execute(DalvikVM vm) {
 		String mname = null;
 
 		// The main "thread"
@@ -2668,6 +2709,50 @@ public class Executor {
 			Instruction insns = vm.getCurrStackFrame().method.insns[vm.getPC()];
 			insns.setLoc(vm.getCurrStackFrame().method);
 			exec(vm, insns, vm.getCurrStackFrame().getMyClass());
+		}
+		
+		return mname;
+	}
+
+	public void run(DalvikVM vm) {
+		running = true;
+
+		String mname = execute(vm);
+		while (Settings.getEventChain().size() > 0) {
+			Pair<String, String> event = Settings.getEventChain().remove(0);
+			Activity activity = vm.getCurrtActivity();
+			if (activity == null) {
+				Log.err(TAG, "Inconsistent event: no currt activity!");
+			}
+
+			// ClassInfo callbackClass = ClassInfo.findClass(event.getFirst());
+			for (DVMObject obj : activity.getAllUIs()) {
+				if (obj.getType().toString().contains(event.getFirst())) {
+					MethodInfo[] mis = obj.getType().findMethods(
+							event.getSecond());
+					if (mis != null && mis.length > 0) {
+						MethodInfo mi = obj.getType().findMethods(
+								event.getSecond())[0];
+						@SuppressWarnings("unchecked")
+						Pair<Object, ClassInfo>[] params = (Pair<Object, ClassInfo>[]) new Pair[mi.paramTypes.length + 1];
+						params[0] = new Pair<Object, ClassInfo>(obj, obj.type);
+						
+						for (int i = 0; i < mi.paramTypes.length; i++) {
+							if (mi.paramTypes[i].equals(ClassInfo.primitiveInt)) {
+								params[i + 1] = new Pair<Object, ClassInfo>(new PrimitiveInfo(0), ClassInfo.primitiveInt);
+							}
+						}
+						
+						vm.newStackFrame(obj.getType(), mi, params, true);
+						break;
+					} else {
+						Log.err(TAG,
+								"Inconsistent event: cannot find the method "
+										+ event.getSecond());
+					}
+				}
+			}
+			mname = execute(vm);
 		}
 
 		running = false;
@@ -2795,13 +2880,14 @@ public class Executor {
 		vm.getAssigned()[0] = -1;
 		vm.setReflectMethod(null);
 		if (!vm.getPluginManager().isEmpty() && vm.getCurrStackFrame() != null) {
-			
-			//if (sitClass.isConvertibleTo(ClassInfo.findClass("android.app.Activity"))) {
-			DVMObject thisObj = vm.getCurrStackFrame().getThisObj(); 
+			// if
+			// (sitClass.isConvertibleTo(ClassInfo.findClass("android.app.Activity")))
+			// {
+			DVMObject thisObj = vm.getCurrStackFrame().getThisObj();
 			if (thisObj != null && thisObj instanceof Activity) {
 				vm.setCurrtActivity((Activity) thisObj);
 			}
-				
+
 			vm.getPluginManager().preprossing(vm, inst);
 		}
 
@@ -2812,15 +2898,6 @@ public class Executor {
 				auxByteCodes.get((int) inst.opcode_aux).func(vm, inst);
 			} else {
 				Log.err(TAG, "Unsupported opcode " + inst);
-			}
-
-			if (vm.getTmpFrames() != null) {
-				vm.resetCallCtx();
-				if (vm.getRepeatInst()) {
-					vm.setPC(vm.getNowPC());
-				}
-				vm.addStackFrames(vm.getTmpFrames());
-				vm.setTmpFrames(new LinkedList<StackFrame>(), false);
 			}
 
 			if (!vm.getPluginManager().isEmpty()
@@ -2940,5 +3017,4 @@ public class Executor {
 	Set<String> noInvokeList2;
 
 	Set<String> invokeButUnknownRet;
-
 }

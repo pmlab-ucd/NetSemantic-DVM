@@ -9,8 +9,8 @@ public class ViewGroup extends View {
 
 	}
 
-	public ViewGroup(DalvikVM vm, ClassInfo type) {
-		super(vm, type);
+	public ViewGroup(DalvikVM vm, ClassInfo type, int mid) {
+		super(vm, type, mid);
 		// TODO Auto-generated constructor stub
 	}
 

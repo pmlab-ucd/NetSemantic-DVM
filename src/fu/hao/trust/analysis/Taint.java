@@ -45,7 +45,6 @@ public class Taint extends Plugin {
 			setDefaultSources(parser.getSrcStrs());
 			setDefaultSinks(parser.getSinkStrs());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

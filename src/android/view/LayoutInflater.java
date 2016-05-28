@@ -19,7 +19,7 @@ public class LayoutInflater extends DVMObject {
 	}
 
 	public View inflate(int resource, ViewGroup root) {
-		return new View(vm, type);
+		return new View(vm, type, -1);
 	}
 
 }

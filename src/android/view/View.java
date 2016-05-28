@@ -11,9 +11,9 @@ public class View extends DVMObject {
 		
 	}
 
-	public View(DalvikVM vm, ClassInfo type) {
+	public View(DalvikVM vm, ClassInfo type, int mid) {
 		super(vm, type);
-		// TODO Auto-generated constructor stub
+		this.mID = mid;
 	}
 
 	public int mID;
@@ -33,6 +33,10 @@ public class View extends DVMObject {
 	}
 	
 	public void setOnClickListener(OnClickListener l) {
+		
+	}
+	
+	public void setType() {
 		
 	}
 }

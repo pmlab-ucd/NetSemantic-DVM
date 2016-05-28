@@ -51,25 +51,23 @@ public class Log {
 	public static Writer out = stdout;
 	public static Writer err = stderr;
 	static String fileName;
-
-	static {
-		if (Settings.logTag != null) {
-			fileName = "output/" + Settings.apkName + "_" + Settings.entryClass + "_" + Settings.entryMethod + ".log";
-			File file = new File(fileName);
-			if (file.exists()) {
-				file.delete();
-			}
+	
+	public static void updateFileName() {
+		File file = new File(Settings.getOutdir());
+		if (!file.exists() || !file.isDirectory()) {
+			file.mkdir();
+		}
+		fileName = Settings.getOutdir() + File.separator + Settings.getApkName() + "_" + Settings.getEntryClass() + "_" + Settings.getEntryMethod() + ".log";
+		file = new File(fileName);
+		if (file.exists()) {
+			file.delete();
 		}
 	}
 
 	private static boolean writeLog(String TAG, int theLevel, String title,
 			String msg) throws IOException {
 		if (fileName == null) {
-			fileName = "output/" + Settings.apkName + "_" + Settings.entryClass + "_" + Settings.entryMethod + ".log";
-			File file = new File(fileName);
-			if (file.exists()) {
-				file.delete();
-			}
+			updateFileName();
 		}
 		
 		if (theLevel >= Settings.logLevel) {

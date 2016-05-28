@@ -22,8 +22,11 @@ package fu.hao.trust.utils;
 import fu.hao.trust.dvm.DalvikVM;
 import patdroid.util.Log;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -41,9 +44,9 @@ public class Settings {
      */
     public static int apiLevel = 15;
     
-	public static String apkPath;
+	private static String apkPath;
 	public static String platformDir;
-	public static String apkName;
+	private static String apkName;
 	//public static String suspClass;
 	//public static String suspMethod;
 	// Whether to exec onCreate() when init Activity
@@ -56,21 +59,23 @@ public class Settings {
 	
 	public static boolean fullLifeExec = false;
 	
-	public static String entryMethod;
-	public static String entryClass;
+	private static String entryMethod;
+	private static String entryClass;
 	
 	public static String logTag;
 	
+	private static List<Pair<String, String>> eventChain; 
+	
 	public static void reset() {
-		apkPath = null;
+		setApkPath(null);
 		platformDir = null;
 		apkName = null;
-		entryClass = null;
-		entryMethod = null;
+		setEntryClass(null);
+		setEntryMethod(null);
 		intentTargets = null;
 		callBlackList = null;
 		fullLifeExec = false;
-		entryMethod = null;
+		setEntryMethod(null);
 	}
 	
 	public static String getRuntimeCaller() {
@@ -142,5 +147,73 @@ public class Settings {
 		return intentTargets == null ? null : intentTargets.get(action);
 	}
 
+	public static List<Pair<String, String>> getEventChain() {
+		if (eventChain == null) {
+			eventChain = new LinkedList<>();
+		}
+		return eventChain;
+	}
+
+	public static void setEventChain(List<Pair<String, String>> eventChain) {
+		Settings.eventChain = eventChain;
+	}
+
+	public static String getOutdir() {
+		String outdir = "output/" + Settings.apkName;
+		File dir = new File(outdir);
+		if (!dir.exists()) {
+			if (dir.mkdir()) {
+				System.out.println("Directory is created!");
+			} else {
+				System.out.println("Failed to create directory!");
+			}
+		}
+		return outdir + File.separator;
+	}
+	
+	public static String getStaticOutDir() {
+		String outdir = "C:/Users/hao/workspace/NetSemantic-Static/sootOutput/" + Settings.apkName;
+		File dir = new File(outdir);
+		if (!dir.exists()) {
+			if (dir.mkdir()) {
+				System.out.println("Directory is created!");
+			} else {
+				System.out.println("Failed to create directory!");
+			}
+		}
+		return outdir + File.separator;
+	}
+
+	public static String getEntryClass() {
+		return entryClass;
+	}
+
+	public static void setEntryClass(String entryClass) {
+		Settings.entryClass = entryClass;
+	}
+
+	public static String getEntryMethod() {
+		return entryMethod;
+	}
+
+	public static void setEntryMethod(String entryMethod) {
+		Settings.entryMethod = entryMethod;
+	}
+
+	public static String getApkName() {
+		return apkName;
+	}
+
+	public static void setApkName(String apkName) {
+		Settings.apkName = apkName;
+	}
+
+	public static String getApkPath() {
+		return apkPath;
+	}
+
+	public static void setApkPath(String apkPath) {
+		Settings.apkPath = apkPath;
+	}
 
 }

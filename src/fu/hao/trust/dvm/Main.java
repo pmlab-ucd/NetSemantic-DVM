@@ -17,6 +17,7 @@ import fu.hao.trust.analysis.Taint;
 import fu.hao.trust.analysis.TaintSumBranch;
 import fu.hao.trust.data.Results;
 import fu.hao.trust.utils.Log;
+import fu.hao.trust.utils.Pair;
 import fu.hao.trust.utils.Settings;
 
 /**
@@ -82,9 +83,9 @@ public class Main {
 			for (final String apk : apkFiles) {
 				long beforeRun = System.nanoTime();
 				Settings.reset();
-				Settings.apkPath = apk;
+				Settings.setApkPath(apk);
 				File file = new File(apk);
-				Settings.apkName = file.getName();
+				Settings.setApkName(file.getName());
 				Main main = new Main();
 				// Settings.logLevel = 0;
 				PluginManager pluginManager = new PluginManager();
@@ -101,14 +102,50 @@ public class Main {
 				}
 
 				if (args[2] != null && !"".equals(args[2])) {
-					Settings.entryClass = args[1];
-					Settings.entryMethod = args[2];
+					Settings.setEntryClass(args[1]);
+					Settings.setEntryMethod(args[2]);
 					getResolvedIntents();
 					main.runMethod(pluginManager);
-					Log.msg(TAG, "Analysis has run for "
-							+ (System.nanoTime() - beforeRun) / 1E9
-							+ " seconds\n");
+				} else {
+					// Run callbacks
+					String csv = Settings.getStaticOutDir() 
+							+ Settings.getApkName() + "_resp_EventChains.csv";
+					System.out.println(TAG + csv);
+					file = new File(csv);
+					if (file.exists()) {
+						CSVReader reader = new CSVReader(new FileReader(csv));
+						for (String[] chains : reader.readAll()) {
+							List<Pair<String, String>> eventChain = Settings
+									.getEventChain();
+							for (String sootMethod : chains) {
+								sootMethod = sootMethod.replace("<", "");
+								sootMethod = sootMethod.replace(">", "");
+								String[] splited = sootMethod.split(": ");
+								String sootClass = splited[0];
+								sootMethod = splited[1];
+								Pair<String, String> event = new Pair<>(
+										sootClass, sootMethod);
+								eventChain.add(event);
+							}
+
+							if (eventChain.size() > 0) {
+								Pair<String, String> entryEvent = eventChain
+										.remove(0);
+								Settings.setEntryClass(entryEvent.getFirst());
+								Settings.setEntryMethod(entryEvent.getSecond());
+								getResolvedIntents();
+								Log.debug(TAG, "entryEvent: " + entryEvent);
+								main.runMethod(pluginManager);
+							}
+							eventChain.clear();
+						}
+
+						reader.close();
+					}
 				}
+
+				Log.msg(TAG, "Analysis has run for "
+						+ (System.nanoTime() - beforeRun) / 1E9 + " seconds\n");
 			}
 
 			/*
@@ -159,15 +196,15 @@ public class Main {
 	public void runMethod(PluginManager pluginManager) {
 		// DalvikVM vm = DalvikVM.v();
 		// Results.reset();
-		DalvikVM vm = new DalvikVM(Settings.apkPath);
+		DalvikVM vm = new DalvikVM(Settings.getApkPath());
 
 		if (initArgs != null || initArgTypes != null) {
-			vm.initThisObj(Settings.entryClass, initArgTypes, initArgs);
+			vm.initThisObj(Settings.getEntryClass(), initArgTypes, initArgs);
 		}
 
 		try {
-			vm.runMethod(Settings.apkPath, Settings.entryClass,
-					Settings.entryMethod, pluginManager, miParams);
+			vm.runMethod(Settings.getApkPath(), Settings.getEntryClass(),
+					Settings.getEntryMethod(), pluginManager, miParams);
 		} catch (ZipException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -178,9 +215,9 @@ public class Main {
 	public void runMethods(String[] items, PluginManager pluginManager) {
 		// DalvikVM vm = DalvikVM.v();
 		// Results.reset();
-		DalvikVM vm = new DalvikVM(Settings.apkPath);
+		DalvikVM vm = new DalvikVM(Settings.getApkPath());
 		try {
-			vm.runMethods(Settings.apkPath, items, pluginManager);
+			vm.runMethods(Settings.getApkPath(), items, pluginManager);
 		} catch (ZipException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -190,7 +227,7 @@ public class Main {
 
 	public static void getResolvedIntents() {
 		try {
-			String csv = "./output/intents/" + Settings.apkName + "_target.csv";
+			String csv = Settings.getOutdir() + Settings.getApkName() + "_intent_target.csv";
 			File file = new File(csv);
 			if (file.exists()) {
 				CSVReader reader = new CSVReader(new FileReader(csv));
