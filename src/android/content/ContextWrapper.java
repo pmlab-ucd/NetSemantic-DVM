@@ -83,9 +83,10 @@ public class ContextWrapper extends Context {
 		params[3] = new Pair<Object, ClassInfo>(new PrimitiveInfo(0),
 				ClassInfo.primitiveInt);
 		StackFrame frame = vm
-				.newStackFrame(type, onStartCmds[0], params);
+				.newStackFrame(type, onStartCmds[0], params, false);
 		frame.setIntent(intent);
 		Log.bb(TAG, "Intent " + intent);
+		vm.runInstrumentedMethods(frame);
 
 		return null;
 	}

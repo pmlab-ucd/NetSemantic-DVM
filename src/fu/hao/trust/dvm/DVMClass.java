@@ -51,11 +51,11 @@ public class DVMClass {
 		this.type = type;
 	}
 
-	public void setStatField(String fieldName, Object obj) {
-		staticFields.put(fieldName, obj);
-		// FIXME Check "protected".
+	public void setStatField(String fieldName, Object value) {
+		staticFields.put(fieldName, value);
+		// FIXME Check "protected" and the fields in the ancestors
 		if (superClass != null && superClass.getStatField(fieldName) != null) {
-			superClass.setStatField(fieldName, obj);
+			superClass.setStatField(fieldName, value);
 		}
 	}
 

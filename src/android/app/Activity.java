@@ -130,7 +130,7 @@ public class Activity extends ContextWrapper {
     }
 
 	public Collection<Fragment> getFragments() {
-		return fragmentManager.getFragments();
+		return getFragmentManager().getFragments();
 	}
 
 	

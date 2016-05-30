@@ -126,7 +126,7 @@ public class BenchLifecycleTests {
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
 		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
-				"359874043116909");
+				tm.getDeviceId());
 		assertEquals(true, Results.results.contains(res));
 	}
 	
@@ -145,7 +145,9 @@ public class BenchLifecycleTests {
 	
 	@Test
 	public void testLifecycle_ServiceLifecycle2() {
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FragmentLifecycle2/app/";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/ServiceLifecycle2/app/";
+		args[1] = "edu.mit.service_lifecycle.MainActivity";
+		args[2] = "onCreate";
 		Main.main(args);
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
@@ -172,6 +174,35 @@ public class BenchLifecycleTests {
 		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FragmentLifecycle1/app/";
 		args[1] = "de.ecspride.MainActivity";
 		args[2] = "onCreate";
+		Main.main(args);
+		assertEquals(false, Results.results.isEmpty());
+		Map<String, String> res = new HashMap<>();
+		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
+				tm.getDeviceId());
+		assertEquals(true, Results.results.contains(res));
+	}
+	
+	@Test
+	public void testLifecycle_FragmentLifecycle2() {
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FragmentLifecycle2/app/";
+		
+		args[1] = "sinkEventChains";
+		Main.main(args);
+		assertEquals(false, Results.results.isEmpty());
+		Map<String, String> res = new HashMap<>();
+		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
+				tm.getDeviceId());
+		assertEquals(true, Results.results.contains(res));
+	}
+	
+	@Test
+	public void testLifecycle_EventOrdering1() {
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/EventOrdering1/app/";
+		
+		//args[1] = "srcEventChains";
+		Main.main(args);
+		
+		args[1] = "sinkEventChains";
 		Main.main(args);
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();

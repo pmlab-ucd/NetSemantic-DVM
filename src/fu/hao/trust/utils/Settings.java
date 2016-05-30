@@ -20,15 +20,23 @@
 package fu.hao.trust.utils;
 
 import fu.hao.trust.dvm.DalvikVM;
+import patdroid.core.ClassInfo;
+import patdroid.dalvik.Instruction;
 import patdroid.util.Log;
 
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import com.opencsv.CSVReader;
+
+import patdroid.util.Pair;
 
 public class Settings {
     /**
@@ -65,6 +73,11 @@ public class Settings {
 	public static String logTag;
 	
 	private static List<Pair<String, String>> eventChain; 
+	
+	private static boolean recordTaintedFields;
+	private static boolean initTaintedFields;
+	// <Owner, <Field, <value, srcApi>>>
+	private static Map<String, Map<String, Pair<Object, Instruction>>> srcTaintedFields;
 	
 	public static void reset() {
 		setApkPath(null);
@@ -214,6 +227,57 @@ public class Settings {
 
 	public static void setApkPath(String apkPath) {
 		Settings.apkPath = apkPath;
+	}
+
+	public static boolean isRecordTaintedFields() {
+		return recordTaintedFields;
+	}
+
+	public static void setRecordTaintedFields(boolean recordTaintedFields) {
+		Settings.recordTaintedFields = recordTaintedFields;
+	}
+
+	public static boolean isInitTaintedFields() {
+		return initTaintedFields;
+	}
+
+	public static void setInitTaintedFields(boolean initTaintedFields) {
+		Settings.initTaintedFields = initTaintedFields;
+	}
+	
+	public static void initTaintedFields() {
+		srcTaintedFields = new HashMap<>();
+		if (Settings.isInitTaintedFields()) {
+			String csv = Settings.getOutdir()
+					+ Settings.getApkName() + "_srcTaintedFields.csv";
+			try {
+				CSVReader reader = new CSVReader(new FileReader(csv));
+				for (String[] fieldStrings : reader.readAll()) {
+					String[] fieldInfo = fieldStrings[0].split(": ");
+					String owner = fieldInfo[0];
+					if (srcTaintedFields.get(owner) == null) {
+						Map<String, Pair<Object, Instruction>> fieldInfos = new HashMap<>(); 
+						srcTaintedFields.put(owner, fieldInfos);
+					}
+					String value = fieldStrings[1];
+					String instString = fieldStrings[2].replace("]>", "");
+					
+					Instruction inst = new Instruction();
+					inst.opcode = Instruction.OP_INVOKE_OP;
+					inst.opcode_aux = Instruction.OP_INVOKE_VIRTUAL;
+					inst.setExtra(instString.split("extra=\\[")[1]);
+					Pair<Object, Instruction> infos = new Pair<Object, Instruction>(value, inst);
+					srcTaintedFields.get(owner).put(fieldInfo[1], infos);
+				}
+				reader.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public static Map<String, Pair<Object, Instruction>> getTaintedFields(ClassInfo type) {
+		return srcTaintedFields.get(type.fullName);
 	}
 
 }

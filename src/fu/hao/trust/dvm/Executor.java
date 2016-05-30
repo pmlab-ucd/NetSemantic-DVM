@@ -526,15 +526,14 @@ public class Executor {
 							+ ", " + vm.getReg(inst.rdst).getType());
 				}
 			}
-			
+
 			/*
-			// FIXME A trick to init the fragment/view instance
-			if (vm.getReg(inst.rdst).getData() instanceof DVMObject && 
-					vm.getReg(inst.rdst).getType().toString().startsWith("android")) {
-				DVMObject obj = (DVMObject) vm.getReg(inst.rdst).getData();
-				obj.setType(inst.type);
-				Log.bb(TAG, "Set TYPE " + inst.type);
-			}*/
+			 * // FIXME A trick to init the fragment/view instance if
+			 * (vm.getReg(inst.rdst).getData() instanceof DVMObject &&
+			 * vm.getReg(inst.rdst).getType().toString().startsWith("android"))
+			 * { DVMObject obj = (DVMObject) vm.getReg(inst.rdst).getData();
+			 * obj.setType(inst.type); Log.bb(TAG, "Set TYPE " + inst.type); }
+			 */
 		}
 	}
 
@@ -603,7 +602,8 @@ public class Executor {
 		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			if (!vm.getReg(inst.r0).isUsed() || vm.getReg(inst.r0).getData() == null) {
+			if (!vm.getReg(inst.r0).isUsed()
+					|| vm.getReg(inst.r0).getData() == null) {
 				Log.warn(TAG, "ERROR: Null!");
 				return;
 			}
@@ -620,12 +620,12 @@ public class Executor {
 					inst.type);
 			Log.bb(TAG, "primitive " + primitive);
 			/*
-			// FIXME A trick to init the fragment/view instance
-			if (vm.getReg(inst.r0).getData() instanceof DVMObject && vm.getReg(inst.r0).getType().toString().startsWith("android")) {
-				DVMObject obj = (DVMObject) vm.getReg(inst.r0).getData();
-				obj.setType(inst.type);
-				Log.bb(TAG, "Set TYPE " + inst.type);
-			}*/
+			 * // FIXME A trick to init the fragment/view instance if
+			 * (vm.getReg(inst.r0).getData() instanceof DVMObject &&
+			 * vm.getReg(inst.r0).getType().toString().startsWith("android")) {
+			 * DVMObject obj = (DVMObject) vm.getReg(inst.r0).getData();
+			 * obj.setType(inst.type); Log.bb(TAG, "Set TYPE " + inst.type); }
+			 */
 		}
 	}
 
@@ -2571,7 +2571,8 @@ public class Executor {
 		}
 
 		// The callbacks inside the class extends Application
-		String csv = Settings.getOutdir() + Settings.getApkName() + "_manifest.csv";
+		String csv = Settings.getOutdir() + Settings.getApkName()
+				+ "_manifest.csv";
 		Log.debug(TAG, "Read manifest csv: " + csv);
 		try {
 			CSVReader reader = new CSVReader(new FileReader(csv));
@@ -2640,8 +2641,7 @@ public class Executor {
 		return res;
 	}
 
-	public void runMethod(ClassInfo sitClass, DalvikVM vm, MethodInfo method,
-			boolean force) {
+	public void runMethod(ClassInfo sitClass, DalvikVM vm, MethodInfo method) {
 		List<MethodInfo> runs = new ArrayList<>();
 		runs.addAll(getPreCallback(sitClass, method));
 		runs.add(method);
@@ -2669,15 +2669,6 @@ public class Executor {
 				Log.msg(TAG, "RUN BEGIN " + mi);
 				run(vm);
 			}
-
-			if (force) {
-				if (vm.getPC() < 0) {
-					vm.setPC(0);
-				}
-				for (int i = 0; i < mi.insns.length; i++) {
-					exec(vm, mi.insns[i], mi.myClass);
-				}
-			}
 		}
 	}
 
@@ -2694,7 +2685,7 @@ public class Executor {
 			exec(vm, insns, vm.getCurrStackFrame().getMyClass());
 		}
 	}
-	
+
 	public String execute(DalvikVM vm) {
 		String mname = null;
 
@@ -2710,7 +2701,7 @@ public class Executor {
 			insns.setLoc(vm.getCurrStackFrame().method);
 			exec(vm, insns, vm.getCurrStackFrame().getMyClass());
 		}
-		
+
 		return mname;
 	}
 
@@ -2718,45 +2709,81 @@ public class Executor {
 		running = true;
 
 		String mname = execute(vm);
+		// Evecute from event chains.
 		while (Settings.getEventChain().size() > 0) {
 			Pair<String, String> event = Settings.getEventChain().remove(0);
 			Activity activity = vm.getCurrtActivity();
+			String eventClass = event.getFirst();
+			String eventMethod = event.getSecond();	
 			if (activity == null) {
 				Log.err(TAG, "Inconsistent event: no currt activity!");
-			}
-
-			// ClassInfo callbackClass = ClassInfo.findClass(event.getFirst());
-			for (DVMObject obj : activity.getAllUIs()) {
-				if (obj.getType().toString().contains(event.getFirst())) {
-					MethodInfo[] mis = obj.getType().findMethods(
-							event.getSecond());
-					if (mis != null && mis.length > 0) {
-						MethodInfo mi = obj.getType().findMethods(
-								event.getSecond())[0];
-						@SuppressWarnings("unchecked")
-						Pair<Object, ClassInfo>[] params = (Pair<Object, ClassInfo>[]) new Pair[mi.paramTypes.length + 1];
-						params[0] = new Pair<Object, ClassInfo>(obj, obj.type);
-						
-						for (int i = 0; i < mi.paramTypes.length; i++) {
-							if (mi.paramTypes[i].equals(ClassInfo.primitiveInt)) {
-								params[i + 1] = new Pair<Object, ClassInfo>(new PrimitiveInfo(0), ClassInfo.primitiveInt);
+			} else {				
+				if (activity.type.fullName.equals(eventClass)) {
+					addEventFrame(vm, activity, eventMethod);
+				} else {
+					for (DVMObject obj : activity.getAllUIs()) {
+						if (obj.getType().toString().contains(eventClass)) {
+							if (addEventFrame(vm, obj, eventMethod)) {
+								break;
 							}
 						}
-						
-						vm.newStackFrame(obj.getType(), mi, params, true);
-						break;
-					} else {
-						Log.err(TAG,
-								"Inconsistent event: cannot find the method "
-										+ event.getSecond());
 					}
 				}
+				mname = execute(vm);
 			}
-			mname = execute(vm);
 		}
 
 		running = false;
 		Log.msg(TAG, "RUN DONE! The last one is " + mname);
+	}
+
+	private boolean addEventFrame(DalvikVM vm, DVMObject obj, String eventMethod) {
+		MethodInfo[] mis = obj.getType().findMethods(eventMethod);
+		if (mis != null && mis.length > 0) {
+			MethodInfo mi = obj.getType().findMethods(eventMethod)[0];
+			@SuppressWarnings("unchecked")
+			Pair<Object, ClassInfo>[] params = (Pair<Object, ClassInfo>[]) new Pair[mi.paramTypes.length + 1];
+			params[0] = new Pair<Object, ClassInfo>(obj, obj.type);
+
+			for (int i = 0; i < mi.paramTypes.length; i++) {
+				if (mi.paramTypes[i].equals(ClassInfo.primitiveInt)) {
+					params[i + 1] = new Pair<Object, ClassInfo>(
+							new PrimitiveInfo(0), ClassInfo.primitiveInt);
+				}
+			}
+
+			StackFrame frame = vm.newStackFrame(obj.getType(), mi, params, true);
+			
+			// Init tainted fields		
+			if (Settings.isInitTaintedFields()) {
+				Map<String, Pair<Object, Instruction>> taintedFields = Settings.getTaintedFields(obj.getType());
+				ClassInfo type = obj.getType();
+				if (taintedFields != null) {
+					for (String fieldName : taintedFields.keySet()) {
+						Pair<Object, Instruction> infos = taintedFields.get(fieldName);
+						Object value = infos.getFirst();
+						if (type.getStaticFieldType(fieldName) != null) {
+							vm.getClass(type).setStatField(fieldName, value);
+						} else {
+							obj.setField(fieldName, value);
+						}
+						// TODO
+						for (Plugin plugin : frame.getPluginRes().keySet()) {
+							for (String tag : plugin.getCurrtRes().keySet()) {
+								if (tag.contains("Taint") || tag.contains("Ctx")) {
+									plugin.getCurrtRes().get(tag).put(value, infos.getSecond());
+								}
+							}
+						}
+					}
+				}
+			}
+			return true;
+		} else {
+			Log.err(TAG, "Inconsistent event: cannot find the method "
+					+ eventMethod);
+			return false;
+		}
 	}
 
 	static Map<Integer, ByteCode> byteCodes = new HashMap<>();

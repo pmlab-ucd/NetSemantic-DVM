@@ -3,13 +3,18 @@ package fu.hao.trust.dvm;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.ZipException;
 
+import patdroid.dalvik.Instruction;
+import patdroid.util.Pair;
+
 import com.opencsv.CSVReader;
+import com.opencsv.CSVWriter;
 
 import fu.hao.trust.analysis.FullAnalysis;
 import fu.hao.trust.analysis.PluginManager;
@@ -17,7 +22,6 @@ import fu.hao.trust.analysis.Taint;
 import fu.hao.trust.analysis.TaintSumBranch;
 import fu.hao.trust.data.Results;
 import fu.hao.trust.utils.Log;
-import fu.hao.trust.utils.Pair;
 import fu.hao.trust.utils.Settings;
 
 /**
@@ -49,6 +53,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		Results.reset();
+		Settings.reset();
 		try {
 			List<String> apkFiles = new ArrayList<>();
 			File apkFile = new File(args[0]);
@@ -101,15 +106,16 @@ public class Main {
 					}
 				}
 
-				if (args[2] != null && !"".equals(args[2])) {
-					Settings.setEntryClass(args[1]);
-					Settings.setEntryMethod(args[2]);
-					getResolvedIntents();
-					main.runMethod(pluginManager);
-				} else {
+				if (args[1] != null && args[1].endsWith("EventChains")){
 					// Run callbacks
 					String csv = Settings.getStaticOutDir() 
-							+ Settings.getApkName() + "_resp_EventChains.csv";
+							+ Settings.getApkName() + "_" + args[1] + ".csv";
+					if (args[1].contains("src")) {
+						Settings.setRecordTaintedFields(true);
+					} else if (args[1].contains("sink")) {
+						Settings.setInitTaintedFields(true);
+						Settings.initTaintedFields();
+					}
 					System.out.println(TAG + csv);
 					file = new File(csv);
 					if (file.exists()) {
@@ -118,8 +124,8 @@ public class Main {
 							List<Pair<String, String>> eventChain = Settings
 									.getEventChain();
 							for (String sootMethod : chains) {
-								sootMethod = sootMethod.replace("<", "");
-								sootMethod = sootMethod.replace(">", "");
+								//sootMethod = sootMethod.replace("<", "");
+								//sootMethod = sootMethod.replace(">", "");
 								String[] splited = sootMethod.split(": ");
 								String sootClass = splited[0];
 								sootMethod = splited[1];
@@ -134,54 +140,55 @@ public class Main {
 								Settings.setEntryClass(entryEvent.getFirst());
 								Settings.setEntryMethod(entryEvent.getSecond());
 								getResolvedIntents();
-								Log.debug(TAG, "entryEvent: " + entryEvent);
+								Log.debug(TAG, "Entry event: " + entryEvent);
 								main.runMethod(pluginManager);
 							}
 							eventChain.clear();
+							if (Settings.isRecordTaintedFields()) {
+								writeTaintedFields();
+							}
 						}
 
 						reader.close();
 					}
-				}
+				} else if (args[2] != null && !"".equals(args[2])) {
+					Settings.setEntryClass(args[1]);
+					Settings.setEntryMethod(args[2]);
+					getResolvedIntents();
+					main.runMethod(pluginManager);
+				} 
 
 				Log.msg(TAG, "Analysis has run for "
 						+ (System.nanoTime() - beforeRun) / 1E9 + " seconds\n");
 			}
-
-			/*
-			 * for (final String fileName : apkFiles) { beforeRun =
-			 * System.nanoTime(); Results.reset(); Settings.apkName = fileName;
-			 * Log.debug(TAG, fileName); Settings.apkPath = args[0] + fileName;
-			 * 
-			 * // Run callbacks String csv =
-			 * "C:/Users/hao/workspace/TRUST/sootOutput/" + Settings.apkName +
-			 * "_dummy.csv"; Log.debug(TAG, csv); CSVReader reader = new
-			 * CSVReader(new FileReader(csv));
-			 * 
-			 * for (String[] items : reader.readAll()) { main.runMethods(items,
-			 * pluginManager); }
-			 * 
-			 * reader.close();
-			 * 
-			 * // Run suspicious function. csv =
-			 * "C:/Users/hao/workspace/TRUST/sootOutput/" + Settings.apkName +
-			 * ".csv"; File file = new File(csv); if (!file.exists()) { return;
-			 * }
-			 * 
-			 * reader = new CSVReader(new FileReader(csv)); Log.debug(TAG, csv);
-			 * for (String[] items : reader.readAll()) { Settings.suspClass =
-			 * items[0]; Settings.suspMethod = items[1]; Log.debug(TAG,
-			 * items[0]); main.runMethod(pluginManager); }
-			 * 
-			 * reader.close(); Log.msg(TAG, "Analysis has run for " +
-			 * (System.nanoTime() - beforeRun) / 1E9 + " seconds\n");
-			 * 
-			 * }
-			 */
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	private static void writeTaintedFields() throws IOException {
+		String csv = Settings.getOutdir() + Settings.getApkName() + "_SrcTaintedFields.csv";
+		File csvFile = new File(csv);
+		Log.msg(TAG, csv);
+		if (!csvFile.exists()) {
+			csvFile.createNewFile();
+		}
+		
+		CSVWriter writer = new CSVWriter(new FileWriter(csv, true));
+		List<String[]> results = new ArrayList<>();
+		for (String fieldInfo : Results.getTaintedFields().keySet()) {
+			List<String> result = new ArrayList<>();
+			result.add(fieldInfo);
+			Pair<Object, Instruction> infos = Results.getTaintedFields().get(fieldInfo);
+			result.add(infos.getFirst().toString());
+			result.add(infos.getSecond().toString());
+			String[] resultArray = (String[]) result.toArray(new String[result
+			                                        					.size()]);
+			results.add(resultArray);
+		}
+		
+		writer.writeAll(results);
+		writer.close();
 	}
 
 	private static void initThisObj(String[] argTypeNames, Object[] args) {

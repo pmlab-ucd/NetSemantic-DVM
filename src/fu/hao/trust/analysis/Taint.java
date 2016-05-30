@@ -24,6 +24,7 @@ import fu.hao.trust.dvm.DVMObject;
 import fu.hao.trust.dvm.DalvikVM;
 import fu.hao.trust.dvm.DalvikVM.Register;
 import fu.hao.trust.utils.Log;
+import fu.hao.trust.utils.Settings;
 import fu.hao.trust.utils.SrcSinkParser;
 
 public class Taint extends Plugin {
@@ -334,7 +335,8 @@ public class Taint extends Plugin {
 						Log.bb(tag, "Found a sink invocation. " + sootSignature);
 						for (int i = 0; i < args.length; i++) {
 							if (in.containsKey(vm.getReg(args[i]))
-									|| vm.getReg(args[i]).isUsed() && in.containsKey(vm.getReg(args[i])
+									|| vm.getReg(args[i]).isUsed()
+									&& in.containsKey(vm.getReg(args[i])
 											.getData())) {
 								Log.warn(tag, "Found a taint sink "
 										+ sootSignature + " leaking data ["
@@ -356,8 +358,9 @@ public class Taint extends Plugin {
 							Log.debug(tag, "Not a taint call: " + sootSignature);
 						}
 
-						if (vm.getReturnReg().isUsed() && (vm.getReturnReg().getData() != null
-								|| vm.getReturnReg().getType() != null)) {
+						if (vm.getReturnReg().isUsed()
+								&& (vm.getReturnReg().getData() != null || vm
+										.getReturnReg().getType() != null)) {
 							for (int i = 0; i < args.length; i++) {
 								if (in.containsKey(vm.getReg(args[i]))) {
 									Log.warn(tag, "Found a tainted return val!");
@@ -822,7 +825,8 @@ public class Taint extends Plugin {
 			Map<String, Map<Object, Instruction>> outs = new HashMap<>();
 
 			@SuppressWarnings("unchecked")
-			Pair<ClassInfo, String> pair = (Pair<ClassInfo, String>) inst.getExtra();
+			Pair<ClassInfo, String> pair = (Pair<ClassInfo, String>) inst
+					.getExtra();
 
 			for (String tag : ins.keySet()) {
 				Map<Object, Instruction> in = ins.get(tag);
@@ -878,21 +882,40 @@ public class Taint extends Plugin {
 				Map<Object, Instruction> in = ins.get(tag);
 				Map<Object, Instruction> out = new HashMap<>(in);
 				@SuppressWarnings("unchecked")
-				Pair<ClassInfo, String> pair = (Pair<ClassInfo, String>) inst.getExtra();
+				Pair<ClassInfo, String> pair = (Pair<ClassInfo, String>) inst
+						.getExtra();
 				ClassInfo owner = pair.first;
 				String fieldName = pair.second;
+				String fieldInfo = owner.fullName + ": " + fieldName;
 				DVMClass dvmClass = vm.getClass(owner);
 				if (in.containsKey(vm.getReg(inst.r0))) {
 					Log.bb(tag, "SPut at " + vm.getReg(inst.r0));
 					out.put(dvmClass.getStatField(fieldName),
 							in.get(vm.getReg(inst.r0)));
+					if (Settings.isRecordTaintedFields()) {
+						Results.addTaintedField(
+								fieldInfo,
+								new Pair<>(dvmClass.getStatField(fieldName), in
+										.get(vm.getReg(inst.r0))));
+					}
 				} else if (vm.getReg(inst.r0).isUsed()
 						&& in.containsKey(vm.getReg(inst.r0).getData())) {
 					out.put(dvmClass.getStatField(fieldName),
 							in.get(vm.getReg(inst.r0).getData()));
+					if (Settings.isRecordTaintedFields()) {
+						Results.addTaintedField(
+								fieldInfo,
+								new Pair<>(dvmClass.getStatField(fieldName), in
+										.get(vm.getReg(inst.r0).getData())));
+					}
 				} else {
 					if (in.containsKey(dvmClass.getStatField(fieldName))) {
 						out.remove(dvmClass.getStatField(fieldName));
+					}
+					if (Settings.isRecordTaintedFields()
+							&& Results.getTaintedFields()
+									.containsKey(fieldInfo)) {
+						Results.getTaintedFields().remove(fieldInfo);
 					}
 				}
 				outs.put(tag, out);
@@ -966,22 +989,35 @@ public class Taint extends Plugin {
 				Map<Object, Instruction> out = new HashMap<>(in);
 				DVMObject obj = (DVMObject) vm.getReg(inst.r0).getData();
 				FieldInfo fieldInfo = (FieldInfo) inst.getExtra();
-
+				String fieldString = fieldInfo.owner + ": " + fieldInfo.fieldName;
 				if (in.containsKey(vm.getReg(inst.r1))) {
 					out.put(obj.getFieldObj(fieldInfo),
 							in.get(vm.getReg(inst.r1)));
 					Log.bb(tag, "Add " + obj.getFieldObj(fieldInfo)
 							+ "as tainted due to " + vm.getReg(inst.r1));
+					if (Settings.isRecordTaintedFields()) {
+						Results.addTaintedField(
+								fieldString,
+								new Pair<>(obj.getFieldObj(fieldInfo), in.get(vm.getReg(inst.r1))));
+					}
 				} else if (in.containsKey(vm.getReg(inst.r1).getData())) {
 					out.put(obj.getFieldObj(fieldInfo),
 							in.get(vm.getReg(inst.r1).getData()));
 					Log.bb(tag, "Add " + obj.getFieldObj(fieldInfo)
 							+ "as tainted due to r1 data "
 							+ vm.getReg(inst.r1).getData());
+					if (Settings.isRecordTaintedFields()) {
+						Results.addTaintedField(
+								fieldString,
+								new Pair<>(obj.getFieldObj(fieldInfo), in.get(vm.getReg(inst.r1).getData())));
+					}
 				} else {
 					if (obj != null
 							&& in.containsKey(obj.getFieldObj(fieldInfo))) {
 						out.remove(obj.getFieldObj(fieldInfo));
+						if (Settings.isRecordTaintedFields() && Results.getTaintedFields().containsKey(fieldString)) {
+							Results.getTaintedFields().remove(fieldString);
+						}
 					}
 				}
 				outs.put(tag, out);

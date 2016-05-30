@@ -9,6 +9,7 @@ import fu.hao.trust.utils.Pair;
 import patdroid.core.ClassInfo;
 import patdroid.core.FieldInfo;
 import patdroid.core.MethodInfo;
+import patdroid.dalvik.Instruction;
 
 /**
  * @ClassName: DVMObject
@@ -33,40 +34,35 @@ public class DVMObject {
 		this.type = type;
 		this.setDvmClass(dvmClass);
 		vm.setObj(type, this);
-		
-		/*ClassInfo superClass = type.getSuperClass();
-		
-		if (superClass != null && superClass.fullName.contains("Activity")) {
-			vm.callbackOwner = this;
-		}*/
+
 		/*
-		if (superClass != null) {
-			Log.debug(TAG, "Set super class " + superClass);
-			Class<?> superClazz;
-			try {
-				superClazz = Class.forName(superClass.toString());
-				setSuperObj(superClazz.newInstance());
-			} catch (Exception e) {
-				setSuperObj(new DVMObject(vm, superClass));
-			}
-		}*/
-		
+		 * ClassInfo superClass = type.getSuperClass();
+		 * 
+		 * if (superClass != null && superClass.fullName.contains("Activity")) {
+		 * vm.callbackOwner = this; }
+		 */
 		/*
-		MethodInfo oinit = type.getDefaultConstructor();
-		type.findMethods("init");
-		if (oinit != null) {
-			Log.bb(TAG, "Not empty constructor");
-			StackFrame constructor = vm.newStackFrame(oinit);
-			constructor.setThisObj(this);
-			vm.setCallContext(null);
-			// vm.getCurrStackFrame().thisObj = null;
-			// To force run the constructor.
-			for (int i = 0; i < oinit.insns.length; i++) {
-				vm.interpreter.exec(vm, oinit.insns[i]);
+		 * if (superClass != null) { Log.debug(TAG, "Set super class " +
+		 * superClass); Class<?> superClazz; try { superClazz =
+		 * Class.forName(superClass.toString());
+		 * setSuperObj(superClazz.newInstance()); } catch (Exception e) {
+		 * setSuperObj(new DVMObject(vm, superClass)); } }
+		 */
+
+		// If the instance is implicitly initialized. 
+		if (vm.getCurrtInst().opcode != Instruction.OP_NEW_INSTANCE) {
+			MethodInfo oinit = type.getDefaultConstructor();
+			if (oinit != null) {
+				Log.bb(TAG, "Not empty constructor");
+				@SuppressWarnings("unchecked")
+				Pair<Object, ClassInfo>[] params = (Pair<Object, ClassInfo>[]) new Pair[1];
+				params[0] = new Pair<Object, ClassInfo>(this, type);
+				StackFrame frame = vm.newStackFrame(type, oinit, params, false);
+				vm.runInstrumentedMethods(frame);
 			}
-		} */
+		}
 	}
-	
+
 	public DVMObject(DalvikVM vm, ClassInfo type, VMHeap heap) {
 		this.vm = vm;
 		if (vm.getClass(type) == null) {
@@ -79,7 +75,7 @@ public class DVMObject {
 		this.setDvmClass(dvmClass);
 		heap.setObj(this);
 	}
-	
+
 	public void callDefaultConstructor() {
 		MethodInfo constructor = type.getDefaultConstructor();
 		Log.bb(TAG, "Try to call default constructor of " + type);
@@ -87,7 +83,8 @@ public class DVMObject {
 			@SuppressWarnings("unchecked")
 			Pair<Object, ClassInfo>[] params = (Pair<Object, ClassInfo>[]) new Pair[1];
 			params[0] = new Pair<Object, ClassInfo>(this, type);
-			StackFrame frame = vm.newStackFrame(type, constructor, params, false);
+			StackFrame frame = vm.newStackFrame(type, constructor, params,
+					false);
 			vm.runInstrumentedMethods(frame);
 		}
 	}
@@ -120,12 +117,23 @@ public class DVMObject {
 			return fields.get(fieldInfo);
 		}
 	}
+	
+	public void setField(String fieldName, Object value) {
+		for(FieldInfo field : fields.keySet()) {
+			if (field.fieldName.equals(fieldName)) {
+				fields.put(field, value);
+				return;
+			}
+		}
+		
+		fields.put(new FieldInfo(type, fieldName), value);
+	}
 
 	public void setField(FieldInfo fieldInfo, Object obj) {
 		if (obj == null) {
 			Log.warn(TAG, "null field put!");
 		}
-		
+
 		Log.debug(TAG, "put field " + obj);
 		fields.put(fieldInfo, obj);
 	}
@@ -145,7 +153,7 @@ public class DVMObject {
 	public void setSuperObj(Object superObj) {
 		this.superObj = superObj;
 	}
-	
+
 	@Override
 	public DVMObject clone() {
 		DVMObject newObj = new DVMObject(vm, type);
@@ -154,11 +162,11 @@ public class DVMObject {
 		newObj.setDvmClass(dvmClass);
 		return newObj;
 	}
-	
+
 	public void setIndex(int index) {
 		this.index = index;
 	}
-	
+
 	public DVMObject clone(VMHeap heap) {
 		DVMObject newObj = new DVMObject(vm, type, heap);
 		newObj.setFields(fields);
@@ -167,11 +175,11 @@ public class DVMObject {
 		newObj.setIndex(index);
 		return newObj;
 	}
-	
+
 	public void setTag(int i) {
 		index = i;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "instance number " + index + "@" + type;

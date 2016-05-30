@@ -956,7 +956,7 @@ public class DalvikVM {
 			return;
 		}
 
-		executor.runMethod(sitClass, this, method, false);
+		executor.runMethod(sitClass, this, method);
 	}
 
 	public void runMethod(ClassInfo sitClass, MethodInfo method,
@@ -1025,7 +1025,7 @@ public class DalvikVM {
 			args[i] = i;
 		}
 
-		executor.runMethod(sitClass, this, method, force);
+		executor.runMethod(sitClass, this, method);
 	}
 
 	public int getPC() {
