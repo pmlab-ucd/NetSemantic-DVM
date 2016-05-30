@@ -205,9 +205,11 @@ public class Test {
 		args[3] = "ATaint";
 		Settings.logLevel = 0;
 		
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/ServiceLifecycle2/app/";
-		args[1] = "edu.mit.service_lifecycle.MainActivity";
-		args[2] = "onCreate";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/AsynchronousEventOrdering1/app/";
+		args[1] = "srcEventChains";
+		Main.main(args);
+		
+		args[1] = "sinkEventChains";
 		Main.main(args);
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
