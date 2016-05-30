@@ -1,0 +1,794 @@
+main - [DEBUG]: Entry event: (edu.mit.event_context_shared_pref_listener.MainActivity, onCreate)
+DalvikVM - [MSG]: Begin run onCreate at C:\Users\hao\workspace\DroidBenchProj\SharedPreferenceChanged1\app\SharedPreferenceChanged1.apk
+DalvikVM - [MSG]: RUN Method edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Read manifest csv: output/SharedPreferenceChanged1.apk\SharedPreferenceChanged1.apk_manifest.csv
+Executor - [WARN]: output\SharedPreferenceChanged1.apk\SharedPreferenceChanged1.apk_manifest.csv (The system cannot find the file specified)
+DalvikVM - [BB]: New method call: edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[6, 7]>
+DalvikVM - [BB]: [1]<0 HALT,SUPER,extra=[null, [6, 7]]>
+DalvikVM - [BB]: [2]<1 MOV,CONST,dst=r4,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+DalvikVM - [BB]: [3]<0 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [6, 4]]>
+DalvikVM - [BB]: [4]<3 MOV,CONST,dst=r4,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: [5]<0 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [6, 4]]>
+DalvikVM - [BB]: [6]<0 MOV,RESULT,dst=r2,type=java.lang.Object>
+DalvikVM - [BB]: [7]<0 ARITHMETIC,CHECK-AND-CAST,dst=r2,type=android.telephony.TelephonyManager>
+DalvikVM - [BB]: [8]<0 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>
+DalvikVM - [BB]: [9]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [10]<9 MOV,CONST,dst=r4,type=java.lang.String,extra="settings">
+DalvikVM - [BB]: [11]<10 MOV,CONST,dst=r5,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [12]<0 INVOKE,VIRTUAL,extra=[android.content.ContextWrapper/getSharedPreferences[java.lang.String, int], [6, 4, 5]]>
+DalvikVM - [BB]: [13]<0 MOV,RESULT,dst=r3,type=java.lang.Object>
+DalvikVM - [BB]: [14]<0 INVOKE,INTERFACE,extra=[android.content.SharedPreferences/registerOnSharedPreferenceChangeListener[android.content.SharedPreferences$OnSharedPreferenceChangeListener], [3, 6]]>
+DalvikVM - [BB]: [15]<0 INVOKE,INTERFACE,extra=[android.content.SharedPreferences/edit[], [3]]>
+DalvikVM - [BB]: [16]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [17]<16 MOV,CONST,dst=r4,type=java.lang.String,extra="imei">
+DalvikVM - [BB]: [18]<0 INVOKE,INTERFACE,extra=[android.content.SharedPreferences$Editor/putString[java.lang.String, java.lang.String], [0, 4, 1]]>
+DalvikVM - [BB]: [19]<0 INVOKE,INTERFACE,extra=[android.content.SharedPreferences$Editor/apply[], [0]]>
+DalvikVM - [BB]: [20]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+newStackFrame - [BB]: Add frame StackFrame edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+newStackFrame - [BB]: Stack: [StackFrame edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]]
+Executor - [MSG]: New chain obj with type edu.mit.event_context_shared_pref_listener.MainActivity
+DalvikVM - [BB]: Superclass: edu.mit.event_context_shared_pref_listener.MainActivity
+Activity - [BB]: New instance of edu.mit.event_context_shared_pref_listener.MainActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass edu.mit.event_context_shared_pref_listener.MainActivity at fu.hao.trust.dvm.VMHeap@1cb07669
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for edu.mit.event_context_shared_pref_listener.MainActivity at fu.hao.trust.dvm.VMHeap@1cb07669
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@1cb07669
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@1cb07669
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@1cb07669
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@1cb07669
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@1cb07669
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@1cb07669
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@1cb07669
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@1cb07669
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@1cb07669
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.Context
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@1cb07669
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.ContextWrapper
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@1cb07669
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@1cb07669
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type edu.mit.event_context_shared_pref_listener.MainActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass edu.mit.event_context_shared_pref_listener.MainActivity at fu.hao.trust.dvm.VMHeap@1cb07669
+Activity - [BB]: Not empty constructor
+DalvikVM - [BB]: New method call: edu.mit.event_context_shared_pref_listener.MainActivity/<init>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[0]>
+DalvikVM - [BB]: [1]<0 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]>
+DalvikVM - [BB]: [2]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.event_context_shared_pref_listener.MainActivity/<init>[], pc -1 stored. 
+newStackFrame - [BB]: Stack: [StackFrame edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]]
+DalvikVM - [MSG]: Begin run instrumented methods!
+DalvikVM - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[6, 7]>
+DalvikVM - [BB]: Add frames [StackFrame edu.mit.event_context_shared_pref_listener.MainActivity/<init>[]]
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[0]> at edu.mit.event_context_shared_pref_listener.MainActivity/<init>[]
+Executor - [DEBUG]: params: Activity:instance number 1@edu.mit.event_context_shared_pref_listener.MainActivity
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]> at edu.mit.event_context_shared_pref_listener.MainActivity/<init>[]
+Executor - [MSG]: arg0 obj: Activity:instance number 1@edu.mit.event_context_shared_pref_listener.MainActivity
+Executor - [BB]: java.lang.Object/<init>[] is a constructor!
+Executor - [WARN]: Reflection error: edu.mit.event_context_shared_pref_listener.MainActivity
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 2
+TaintSumBranch - [BB]: <java.lang.Object: void <init>()>
+TaintSumBranch - [DEBUG]: Not a taint call: <java.lang.Object: void <init>()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 RETURN,VOID> at edu.mit.event_context_shared_pref_listener.MainActivity/<init>[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+Activity - [BB]: New Activity Created with type edu.mit.event_context_shared_pref_listener.MainActivity
+Executor - [MSG]: RUN BEGIN edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> execute set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[6, 7]> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+Executor - [WARN]: NULL CallingCtx!
+Executor - [DEBUG]: args: Activity:instance number 1@edu.mit.event_context_shared_pref_listener.MainActivity
+Executor - [BB]: Start param from 1
+Executor - [DEBUG]: args: null
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 HALT,SUPER,extra=[null, [6, 7]]> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_HALT -> jump set pc to 2
+Executor - [MSG]: Cannot resolve the invocation
+TaintSumBranch - [BB]: Not a taint op <1 HALT,SUPER,extra=[null, [6, 7]]>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 MOV,CONST,dst=r4,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Mov const begin <2 MOV,CONST,dst=r4,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+Executor - [DEBUG]: data: 2130903040 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 3
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [6, 4]]> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: Activity:instance number 1@edu.mit.event_context_shared_pref_listener.MainActivity
+Executor - [DEBUG]: Reflction class: class android.app.Activity
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg4: 2130903040
+Executor - [DEBUG]: Expected para type: int
+Executor - [DEBUG]: Real para int, value: 2130903040
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: Activity:instance number 1@edu.mit.event_context_shared_pref_listener.MainActivity, from class: class android.app.Activity
+Executor - [MSG]: Reflction invocation public void android.app.Activity.setContentView(int)
+DalvikVM - [BB]: Set reflective call: public void android.app.Activity.setContentView(int)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 4
+TaintSumBranch - [BB]: <android.app.Activity: void setContentView(int)>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.app.Activity: void setContentView(int)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <4 MOV,CONST,dst=r4,type=java.lang.String,extra="phone"> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Mov const begin <4 MOV,CONST,dst=r4,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: ar4 (2130903040, void), (phone, java.lang.String)
+Executor - [DEBUG]: data: phone class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 5
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <5 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [6, 4]]> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: Activity:instance number 1@edu.mit.event_context_shared_pref_listener.MainActivity
+Executor - [DEBUG]: Reflction class: class android.content.Context
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg4: phone
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: Activity:instance number 1@edu.mit.event_context_shared_pref_listener.MainActivity, from class: class android.app.Activity
+Executor - [DEBUG]: Return data: android.telephony.TelephonyManager@16c2bd13 ,class android.telephony.TelephonyManager
+Executor - [MSG]: Reflction invocation public java.lang.Object android.content.Context.getSystemService(java.lang.String)
+DalvikVM - [BB]: Set reflective call: public java.lang.Object android.content.Context.getSystemService(java.lang.String)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 6
+TaintSumBranch - [BB]: <android.content.Context: java.lang.Object getSystemService(java.lang.String)>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.content.Context: java.lang.Object getSystemService(java.lang.String)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <6 MOV,RESULT,dst=r2,type=java.lang.Object> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+OP_MOV_RESULT - [BB]: Result data: android.telephony.TelephonyManager@16c2bd13
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.TelephonyManager@16c2bd13, type: java.lang.Object, to [reg 2@MainActivity/onCreate]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 7
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <7 ARITHMETIC,CHECK-AND-CAST,dst=r2,type=android.telephony.TelephonyManager> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARITHETIC -> jump set pc to 8
+TaintSumBranch - [BB]: Not a taint op <7 ARITHMETIC,CHECK-AND-CAST,dst=r2,type=android.telephony.TelephonyManager>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: android.telephony.TelephonyManager@16c2bd13
+Executor - [DEBUG]: Reflction class: class android.telephony.TelephonyManager
+Executor - [DEBUG]: Return data: 359874043116909 ,class java.lang.String
+Executor - [MSG]: Reflction invocation public java.lang.String android.telephony.TelephonyManager.getDeviceId()
+DalvikVM - [BB]: Set reflective call: public java.lang.String android.telephony.TelephonyManager.getDeviceId()
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 9
+TaintSumBranch - [BB]: <android.telephony.TelephonyManager: java.lang.String getDeviceId()>
+TaintSumBranch - [WARN]: Found a tainted return value!
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [Global RetReg]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <9 MOV,RESULT,dst=r1,type=java.lang.Object> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+OP_MOV_RESULT - [BB]: Result data: 359874043116909
+OP_MOV_RESULT - [DEBUG]: Result data: 359874043116909, type: java.lang.String, to [reg 1@MainActivity/onCreate]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 10
+TaintSumBranch - [BB]: <8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>
+TaintSumBranch - [BB]: Add reg 1 due to ret reg.
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 1@MainActivity/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <10 MOV,CONST,dst=r4,type=java.lang.String,extra="settings"> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Mov const begin <10 MOV,CONST,dst=r4,type=java.lang.String,extra="settings">
+DalvikVM - [BB]: ar4 (phone, java.lang.String), (settings, java.lang.String)
+Executor - [DEBUG]: data: settings class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 11
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 1@MainActivity/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <11 MOV,CONST,dst=r5,type=void,extra=class patdroid.core.PrimitiveInfo?0> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Mov const begin <11 MOV,CONST,dst=r5,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+Executor - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 12
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 1@MainActivity/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <12 INVOKE,VIRTUAL,extra=[android.content.ContextWrapper/getSharedPreferences[java.lang.String, int], [6, 4, 5]]> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: Activity:instance number 1@edu.mit.event_context_shared_pref_listener.MainActivity
+Executor - [DEBUG]: Reflction class: class android.content.ContextWrapper
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg4: settings
+Executor - [BB]: arg2@reg5: 0
+Executor - [DEBUG]: Expected para type: int
+Executor - [DEBUG]: Real para int, value: 0
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: Activity:instance number 1@edu.mit.event_context_shared_pref_listener.MainActivity, from class: class android.app.Activity
+Executor - [DEBUG]: Return data: android.content.SharedPreferences@5da12fe6 ,class android.content.SharedPreferences
+Executor - [MSG]: Reflction invocation public android.content.SharedPreferences android.content.ContextWrapper.getSharedPreferences(java.lang.String,int)
+DalvikVM - [BB]: Set reflective call: public android.content.SharedPreferences android.content.ContextWrapper.getSharedPreferences(java.lang.String,int)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 13
+TaintSumBranch - [BB]: <android.content.ContextWrapper: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.content.ContextWrapper: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 1@MainActivity/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <13 MOV,RESULT,dst=r3,type=java.lang.Object> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+OP_MOV_RESULT - [BB]: Result data: android.content.SharedPreferences@5da12fe6
+OP_MOV_RESULT - [DEBUG]: Result data: android.content.SharedPreferences@5da12fe6, type: android.content.SharedPreferences, to [reg 3@MainActivity/onCreate]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 14
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 1@MainActivity/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <14 INVOKE,INTERFACE,extra=[android.content.SharedPreferences/registerOnSharedPreferenceChangeListener[android.content.SharedPreferences$OnSharedPreferenceChangeListener], [3, 6]]> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: android.content.SharedPreferences@5da12fe6
+Executor - [DEBUG]: Reflction class: class android.content.SharedPreferences
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg6: Activity:instance number 1@edu.mit.event_context_shared_pref_listener.MainActivity
+Executor - [WARN]: Mismatch type! arg 1, real para type: class android.app.Activity, expected para type: interface android.content.SharedPreferences$OnSharedPreferenceChangeListener
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: android.content.SharedPreferences@5da12fe6, from class: class android.content.SharedPreferences
+Executor - [MSG]: Reflction invocation public void android.content.SharedPreferences.registerOnSharedPreferenceChangeListener(android.content.SharedPreferences$OnSharedPreferenceChangeListener)
+DalvikVM - [BB]: Set reflective call: public void android.content.SharedPreferences.registerOnSharedPreferenceChangeListener(android.content.SharedPreferences$OnSharedPreferenceChangeListener)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 15
+TaintSumBranch - [BB]: <android.content.SharedPreferences: void registerOnSharedPreferenceChangeListener(android.content.SharedPreferences$OnSharedPreferenceChangeListener)>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.content.SharedPreferences: void registerOnSharedPreferenceChangeListener(android.content.SharedPreferences$OnSharedPreferenceChangeListener)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 1@MainActivity/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <15 INVOKE,INTERFACE,extra=[android.content.SharedPreferences/edit[], [3]]> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: android.content.SharedPreferences@5da12fe6
+Executor - [DEBUG]: Reflction class: class android.content.SharedPreferences
+Executor - [DEBUG]: Return data: android.content.SharedPreferences$Editor@4bfe1934 ,class android.content.SharedPreferences$Editor
+Executor - [MSG]: Reflction invocation public android.content.SharedPreferences$Editor android.content.SharedPreferences.edit()
+DalvikVM - [BB]: Set reflective call: public android.content.SharedPreferences$Editor android.content.SharedPreferences.edit()
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 16
+TaintSumBranch - [BB]: <android.content.SharedPreferences: android.content.SharedPreferences$Editor edit()>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.content.SharedPreferences: android.content.SharedPreferences$Editor edit()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 1@MainActivity/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <16 MOV,RESULT,dst=r0,type=java.lang.Object> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+OP_MOV_RESULT - [BB]: Result data: android.content.SharedPreferences$Editor@4bfe1934
+OP_MOV_RESULT - [DEBUG]: Result data: android.content.SharedPreferences$Editor@4bfe1934, type: android.content.SharedPreferences$Editor, to [reg 0@MainActivity/onCreate]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 17
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 1@MainActivity/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <17 MOV,CONST,dst=r4,type=java.lang.String,extra="imei"> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Mov const begin <17 MOV,CONST,dst=r4,type=java.lang.String,extra="imei">
+DalvikVM - [BB]: ar4 (settings, java.lang.String), (imei, java.lang.String)
+Executor - [DEBUG]: data: imei class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 18
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 1@MainActivity/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <18 INVOKE,INTERFACE,extra=[android.content.SharedPreferences$Editor/putString[java.lang.String, java.lang.String], [0, 4, 1]]> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: android.content.SharedPreferences$Editor@4bfe1934
+Executor - [DEBUG]: Reflction class: class android.content.SharedPreferences$Editor
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg4: imei
+Executor - [BB]: arg2@reg1: 359874043116909
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: android.content.SharedPreferences$Editor@4bfe1934, from class: class android.content.SharedPreferences$Editor
+Executor - [DEBUG]: Return data: android.content.SharedPreferences$Editor@4bfe1934 ,class android.content.SharedPreferences$Editor
+Executor - [MSG]: Reflction invocation public android.content.SharedPreferences$Editor android.content.SharedPreferences$Editor.putString(java.lang.String,java.lang.String)
+DalvikVM - [BB]: Set reflective call: public android.content.SharedPreferences$Editor android.content.SharedPreferences$Editor.putString(java.lang.String,java.lang.String)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 19
+TaintSumBranch - [BB]: <android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putString(java.lang.String,java.lang.String)>
+TaintSumBranch - [BB]: Found a sink invocation. <android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putString(java.lang.String,java.lang.String)>
+TaintSumBranch - [WARN]: Found a taint sink <android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putString(java.lang.String,java.lang.String)> leaking data [359874043116909] at reg 1!!!
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 1@MainActivity/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <19 INVOKE,INTERFACE,extra=[android.content.SharedPreferences$Editor/apply[], [0]]> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: android.content.SharedPreferences$Editor@4bfe1934
+Executor - [DEBUG]: Reflction class: class android.content.SharedPreferences$Editor
+Executor - [MSG]: Reflction invocation public void android.content.SharedPreferences$Editor.apply()
+DalvikVM - [BB]: Set reflective call: public void android.content.SharedPreferences$Editor.apply()
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 20
+TaintSumBranch - [BB]: <android.content.SharedPreferences$Editor: void apply()>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.content.SharedPreferences$Editor: void apply()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 1@MainActivity/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <20 RETURN,VOID> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack []
+DalvikVM - [BB]: Back to the last stack frame.null
+Executor - [MSG]: RUN DONE! The last one is onCreate
+DalvikVM - [MSG]: FINISHED!
+
+main - [MSG]: output/SharedPreferenceChanged1.apk\SharedPreferenceChanged1.apk_SrcTaintedFields.csv
+main - [MSG]: Analysis has run for 1.184553746 seconds
+
+main - [DEBUG]: Entry event: (edu.mit.event_context_shared_pref_listener.MainActivity, onCreate)
+DalvikVM - [MSG]: Begin run onCreate at C:\Users\hao\workspace\DroidBenchProj\SharedPreferenceChanged1\app\SharedPreferenceChanged1.apk
+DalvikVM - [MSG]: RUN Method edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Read manifest csv: output/SharedPreferenceChanged1.apk\SharedPreferenceChanged1.apk_manifest.csv
+Executor - [WARN]: output\SharedPreferenceChanged1.apk\SharedPreferenceChanged1.apk_manifest.csv (The system cannot find the file specified)
+DalvikVM - [BB]: New method call: edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[6, 7]>
+DalvikVM - [BB]: [1]<0 HALT,SUPER,extra=[null, [6, 7]]>
+DalvikVM - [BB]: [2]<1 MOV,CONST,dst=r4,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+DalvikVM - [BB]: [3]<0 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [6, 4]]>
+DalvikVM - [BB]: [4]<3 MOV,CONST,dst=r4,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: [5]<0 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [6, 4]]>
+DalvikVM - [BB]: [6]<0 MOV,RESULT,dst=r2,type=java.lang.Object>
+DalvikVM - [BB]: [7]<0 ARITHMETIC,CHECK-AND-CAST,dst=r2,type=android.telephony.TelephonyManager>
+DalvikVM - [BB]: [8]<0 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>
+DalvikVM - [BB]: [9]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [10]<9 MOV,CONST,dst=r4,type=java.lang.String,extra="settings">
+DalvikVM - [BB]: [11]<10 MOV,CONST,dst=r5,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [12]<0 INVOKE,VIRTUAL,extra=[android.content.ContextWrapper/getSharedPreferences[java.lang.String, int], [6, 4, 5]]>
+DalvikVM - [BB]: [13]<0 MOV,RESULT,dst=r3,type=java.lang.Object>
+DalvikVM - [BB]: [14]<0 INVOKE,INTERFACE,extra=[android.content.SharedPreferences/registerOnSharedPreferenceChangeListener[android.content.SharedPreferences$OnSharedPreferenceChangeListener], [3, 6]]>
+DalvikVM - [BB]: [15]<0 INVOKE,INTERFACE,extra=[android.content.SharedPreferences/edit[], [3]]>
+DalvikVM - [BB]: [16]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [17]<16 MOV,CONST,dst=r4,type=java.lang.String,extra="imei">
+DalvikVM - [BB]: [18]<0 INVOKE,INTERFACE,extra=[android.content.SharedPreferences$Editor/putString[java.lang.String, java.lang.String], [0, 4, 1]]>
+DalvikVM - [BB]: [19]<0 INVOKE,INTERFACE,extra=[android.content.SharedPreferences$Editor/apply[], [0]]>
+DalvikVM - [BB]: [20]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+newStackFrame - [BB]: Add frame StackFrame edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+newStackFrame - [BB]: Stack: [StackFrame edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]]
+Executor - [MSG]: New chain obj with type edu.mit.event_context_shared_pref_listener.MainActivity
+DalvikVM - [BB]: Superclass: edu.mit.event_context_shared_pref_listener.MainActivity
+Activity - [BB]: New instance of edu.mit.event_context_shared_pref_listener.MainActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass edu.mit.event_context_shared_pref_listener.MainActivity at fu.hao.trust.dvm.VMHeap@2b136abc
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for edu.mit.event_context_shared_pref_listener.MainActivity at fu.hao.trust.dvm.VMHeap@2b136abc
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@2b136abc
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@2b136abc
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@2b136abc
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@2b136abc
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@2b136abc
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@2b136abc
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@2b136abc
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@2b136abc
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@2b136abc
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.Context
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@2b136abc
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.ContextWrapper
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@2b136abc
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@2b136abc
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type edu.mit.event_context_shared_pref_listener.MainActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass edu.mit.event_context_shared_pref_listener.MainActivity at fu.hao.trust.dvm.VMHeap@2b136abc
+Activity - [BB]: Not empty constructor
+DalvikVM - [BB]: New method call: edu.mit.event_context_shared_pref_listener.MainActivity/<init>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[0]>
+DalvikVM - [BB]: [1]<0 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]>
+DalvikVM - [BB]: [2]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.event_context_shared_pref_listener.MainActivity/<init>[], pc -1 stored. 
+newStackFrame - [BB]: Stack: [StackFrame edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]]
+DalvikVM - [MSG]: Begin run instrumented methods!
+DalvikVM - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[6, 7]>
+DalvikVM - [BB]: Add frames [StackFrame edu.mit.event_context_shared_pref_listener.MainActivity/<init>[]]
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[0]> at edu.mit.event_context_shared_pref_listener.MainActivity/<init>[]
+Executor - [DEBUG]: params: Activity:instance number 1@edu.mit.event_context_shared_pref_listener.MainActivity
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]> at edu.mit.event_context_shared_pref_listener.MainActivity/<init>[]
+Executor - [MSG]: arg0 obj: Activity:instance number 1@edu.mit.event_context_shared_pref_listener.MainActivity
+Executor - [BB]: java.lang.Object/<init>[] is a constructor!
+Executor - [WARN]: Reflection error: edu.mit.event_context_shared_pref_listener.MainActivity
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 2
+TaintSumBranch - [BB]: <java.lang.Object: void <init>()>
+TaintSumBranch - [DEBUG]: Not a taint call: <java.lang.Object: void <init>()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 RETURN,VOID> at edu.mit.event_context_shared_pref_listener.MainActivity/<init>[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+Activity - [BB]: New Activity Created with type edu.mit.event_context_shared_pref_listener.MainActivity
+Executor - [MSG]: RUN BEGIN edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> execute set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[6, 7]> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+Executor - [WARN]: NULL CallingCtx!
+Executor - [DEBUG]: args: Activity:instance number 1@edu.mit.event_context_shared_pref_listener.MainActivity
+Executor - [BB]: Start param from 1
+Executor - [DEBUG]: args: null
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 HALT,SUPER,extra=[null, [6, 7]]> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_HALT -> jump set pc to 2
+Executor - [MSG]: Cannot resolve the invocation
+TaintSumBranch - [BB]: Not a taint op <1 HALT,SUPER,extra=[null, [6, 7]]>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 MOV,CONST,dst=r4,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Mov const begin <2 MOV,CONST,dst=r4,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+Executor - [DEBUG]: data: 2130903040 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 3
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [6, 4]]> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: Activity:instance number 1@edu.mit.event_context_shared_pref_listener.MainActivity
+Executor - [DEBUG]: Reflction class: class android.app.Activity
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg4: 2130903040
+Executor - [DEBUG]: Expected para type: int
+Executor - [DEBUG]: Real para int, value: 2130903040
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: Activity:instance number 1@edu.mit.event_context_shared_pref_listener.MainActivity, from class: class android.app.Activity
+Executor - [MSG]: Reflction invocation public void android.app.Activity.setContentView(int)
+DalvikVM - [BB]: Set reflective call: public void android.app.Activity.setContentView(int)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 4
+TaintSumBranch - [BB]: <android.app.Activity: void setContentView(int)>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.app.Activity: void setContentView(int)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <4 MOV,CONST,dst=r4,type=java.lang.String,extra="phone"> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Mov const begin <4 MOV,CONST,dst=r4,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: ar4 (2130903040, void), (phone, java.lang.String)
+Executor - [DEBUG]: data: phone class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 5
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <5 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [6, 4]]> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: Activity:instance number 1@edu.mit.event_context_shared_pref_listener.MainActivity
+Executor - [DEBUG]: Reflction class: class android.content.Context
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg4: phone
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: Activity:instance number 1@edu.mit.event_context_shared_pref_listener.MainActivity, from class: class android.app.Activity
+Executor - [DEBUG]: Return data: android.telephony.TelephonyManager@7c1c2956 ,class android.telephony.TelephonyManager
+Executor - [MSG]: Reflction invocation public java.lang.Object android.content.Context.getSystemService(java.lang.String)
+DalvikVM - [BB]: Set reflective call: public java.lang.Object android.content.Context.getSystemService(java.lang.String)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 6
+TaintSumBranch - [BB]: <android.content.Context: java.lang.Object getSystemService(java.lang.String)>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.content.Context: java.lang.Object getSystemService(java.lang.String)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <6 MOV,RESULT,dst=r2,type=java.lang.Object> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+OP_MOV_RESULT - [BB]: Result data: android.telephony.TelephonyManager@7c1c2956
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.TelephonyManager@7c1c2956, type: java.lang.Object, to [reg 2@MainActivity/onCreate]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 7
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <7 ARITHMETIC,CHECK-AND-CAST,dst=r2,type=android.telephony.TelephonyManager> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARITHETIC -> jump set pc to 8
+TaintSumBranch - [BB]: Not a taint op <7 ARITHMETIC,CHECK-AND-CAST,dst=r2,type=android.telephony.TelephonyManager>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: android.telephony.TelephonyManager@7c1c2956
+Executor - [DEBUG]: Reflction class: class android.telephony.TelephonyManager
+Executor - [DEBUG]: Return data: 359874043116909 ,class java.lang.String
+Executor - [MSG]: Reflction invocation public java.lang.String android.telephony.TelephonyManager.getDeviceId()
+DalvikVM - [BB]: Set reflective call: public java.lang.String android.telephony.TelephonyManager.getDeviceId()
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 9
+TaintSumBranch - [BB]: <android.telephony.TelephonyManager: java.lang.String getDeviceId()>
+TaintSumBranch - [WARN]: Found a tainted return value!
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Global RetReg]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <9 MOV,RESULT,dst=r1,type=java.lang.Object> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+OP_MOV_RESULT - [BB]: Result data: 359874043116909
+OP_MOV_RESULT - [DEBUG]: Result data: 359874043116909, type: java.lang.String, to [reg 1@MainActivity/onCreate]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 10
+TaintSumBranch - [BB]: <8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>
+TaintSumBranch - [BB]: Add reg 1 due to ret reg.
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 1@MainActivity/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <10 MOV,CONST,dst=r4,type=java.lang.String,extra="settings"> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Mov const begin <10 MOV,CONST,dst=r4,type=java.lang.String,extra="settings">
+DalvikVM - [BB]: ar4 (phone, java.lang.String), (settings, java.lang.String)
+Executor - [DEBUG]: data: settings class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 11
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 1@MainActivity/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <11 MOV,CONST,dst=r5,type=void,extra=class patdroid.core.PrimitiveInfo?0> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Mov const begin <11 MOV,CONST,dst=r5,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+Executor - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 12
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 1@MainActivity/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <12 INVOKE,VIRTUAL,extra=[android.content.ContextWrapper/getSharedPreferences[java.lang.String, int], [6, 4, 5]]> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: Activity:instance number 1@edu.mit.event_context_shared_pref_listener.MainActivity
+Executor - [DEBUG]: Reflction class: class android.content.ContextWrapper
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg4: settings
+Executor - [BB]: arg2@reg5: 0
+Executor - [DEBUG]: Expected para type: int
+Executor - [DEBUG]: Real para int, value: 0
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: Activity:instance number 1@edu.mit.event_context_shared_pref_listener.MainActivity, from class: class android.app.Activity
+Executor - [DEBUG]: Return data: android.content.SharedPreferences@2b6ea258 ,class android.content.SharedPreferences
+Executor - [MSG]: Reflction invocation public android.content.SharedPreferences android.content.ContextWrapper.getSharedPreferences(java.lang.String,int)
+DalvikVM - [BB]: Set reflective call: public android.content.SharedPreferences android.content.ContextWrapper.getSharedPreferences(java.lang.String,int)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 13
+TaintSumBranch - [BB]: <android.content.ContextWrapper: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.content.ContextWrapper: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 1@MainActivity/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <13 MOV,RESULT,dst=r3,type=java.lang.Object> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+OP_MOV_RESULT - [BB]: Result data: android.content.SharedPreferences@2b6ea258
+OP_MOV_RESULT - [DEBUG]: Result data: android.content.SharedPreferences@2b6ea258, type: android.content.SharedPreferences, to [reg 3@MainActivity/onCreate]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 14
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 1@MainActivity/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <14 INVOKE,INTERFACE,extra=[android.content.SharedPreferences/registerOnSharedPreferenceChangeListener[android.content.SharedPreferences$OnSharedPreferenceChangeListener], [3, 6]]> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: android.content.SharedPreferences@2b6ea258
+Executor - [DEBUG]: Reflction class: class android.content.SharedPreferences
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg6: Activity:instance number 1@edu.mit.event_context_shared_pref_listener.MainActivity
+Executor - [WARN]: Mismatch type! arg 1, real para type: class android.app.Activity, expected para type: interface android.content.SharedPreferences$OnSharedPreferenceChangeListener
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: android.content.SharedPreferences@2b6ea258, from class: class android.content.SharedPreferences
+Executor - [MSG]: Reflction invocation public void android.content.SharedPreferences.registerOnSharedPreferenceChangeListener(android.content.SharedPreferences$OnSharedPreferenceChangeListener)
+DalvikVM - [BB]: Set reflective call: public void android.content.SharedPreferences.registerOnSharedPreferenceChangeListener(android.content.SharedPreferences$OnSharedPreferenceChangeListener)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 15
+TaintSumBranch - [BB]: <android.content.SharedPreferences: void registerOnSharedPreferenceChangeListener(android.content.SharedPreferences$OnSharedPreferenceChangeListener)>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.content.SharedPreferences: void registerOnSharedPreferenceChangeListener(android.content.SharedPreferences$OnSharedPreferenceChangeListener)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 1@MainActivity/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <15 INVOKE,INTERFACE,extra=[android.content.SharedPreferences/edit[], [3]]> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: android.content.SharedPreferences@2b6ea258
+Executor - [DEBUG]: Reflction class: class android.content.SharedPreferences
+Executor - [DEBUG]: Return data: android.content.SharedPreferences$Editor@5394092c ,class android.content.SharedPreferences$Editor
+Executor - [MSG]: Reflction invocation public android.content.SharedPreferences$Editor android.content.SharedPreferences.edit()
+DalvikVM - [BB]: Set reflective call: public android.content.SharedPreferences$Editor android.content.SharedPreferences.edit()
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 16
+TaintSumBranch - [BB]: <android.content.SharedPreferences: android.content.SharedPreferences$Editor edit()>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.content.SharedPreferences: android.content.SharedPreferences$Editor edit()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 1@MainActivity/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <16 MOV,RESULT,dst=r0,type=java.lang.Object> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+OP_MOV_RESULT - [BB]: Result data: android.content.SharedPreferences$Editor@5394092c
+OP_MOV_RESULT - [DEBUG]: Result data: android.content.SharedPreferences$Editor@5394092c, type: android.content.SharedPreferences$Editor, to [reg 0@MainActivity/onCreate]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 17
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 1@MainActivity/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <17 MOV,CONST,dst=r4,type=java.lang.String,extra="imei"> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Mov const begin <17 MOV,CONST,dst=r4,type=java.lang.String,extra="imei">
+DalvikVM - [BB]: ar4 (settings, java.lang.String), (imei, java.lang.String)
+Executor - [DEBUG]: data: imei class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 18
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 1@MainActivity/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <18 INVOKE,INTERFACE,extra=[android.content.SharedPreferences$Editor/putString[java.lang.String, java.lang.String], [0, 4, 1]]> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: android.content.SharedPreferences$Editor@5394092c
+Executor - [DEBUG]: Reflction class: class android.content.SharedPreferences$Editor
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg4: imei
+Executor - [BB]: arg2@reg1: 359874043116909
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: android.content.SharedPreferences$Editor@5394092c, from class: class android.content.SharedPreferences$Editor
+Executor - [DEBUG]: Return data: android.content.SharedPreferences$Editor@5394092c ,class android.content.SharedPreferences$Editor
+Executor - [MSG]: Reflction invocation public android.content.SharedPreferences$Editor android.content.SharedPreferences$Editor.putString(java.lang.String,java.lang.String)
+DalvikVM - [BB]: Set reflective call: public android.content.SharedPreferences$Editor android.content.SharedPreferences$Editor.putString(java.lang.String,java.lang.String)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 19
+TaintSumBranch - [BB]: <android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putString(java.lang.String,java.lang.String)>
+TaintSumBranch - [BB]: Found a sink invocation. <android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putString(java.lang.String,java.lang.String)>
+TaintSumBranch - [WARN]: Found a taint sink <android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putString(java.lang.String,java.lang.String)> leaking data [359874043116909] at reg 1!!!
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 1@MainActivity/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <19 INVOKE,INTERFACE,extra=[android.content.SharedPreferences$Editor/apply[], [0]]> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: android.content.SharedPreferences$Editor@5394092c
+Executor - [DEBUG]: Reflction class: class android.content.SharedPreferences$Editor
+SharedPreferences - [BB]: tmpKey: imei
+DalvikVM - [BB]: New method call: edu.mit.event_context_shared_pref_listener.MainActivity/onSharedPreferenceChanged[android.content.SharedPreferences, java.lang.String]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[6, 7, 8]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [2]<1 MOV,CONST,dst=r1,type=java.lang.String,extra="">
+DalvikVM - [BB]: [3]<0 INVOKE,INTERFACE,extra=[android.content.SharedPreferences/getString[java.lang.String, java.lang.String], [7, 8, 1]]>
+DalvikVM - [BB]: [4]<0 MOV,RESULT,dst=r3,type=java.lang.Object>
+DalvikVM - [BB]: [5]<0 INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]>
+DalvikVM - [BB]: [6]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [7]<6 MOV,CONST,dst=r1,type=java.lang.String,extra="+49">
+DalvikVM - [BB]: [8]<0 MOV,REG,dst=r4,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [9]<0 MOV,REG,dst=r5,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [10]<0 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]>
+DalvikVM - [BB]: [11]<10 MOV,CONST,dst=r1,type=java.lang.String,extra="DroidBench">
+DalvikVM - [BB]: [12]<0 INVOKE,STATIC,extra=[android.util.Log/i[java.lang.String, java.lang.String], [1, 3]]>
+DalvikVM - [BB]: [13]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.event_context_shared_pref_listener.MainActivity/onSharedPreferenceChanged[android.content.SharedPreferences, java.lang.String], pc 19 stored. 
+newStackFrame - [BB]: Add frame StackFrame edu.mit.event_context_shared_pref_listener.MainActivity/onSharedPreferenceChanged[android.content.SharedPreferences, java.lang.String]
+newStackFrame - [BB]: Stack: [StackFrame edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle], StackFrame edu.mit.event_context_shared_pref_listener.MainActivity/onSharedPreferenceChanged[android.content.SharedPreferences, java.lang.String]]
+Executor - [MSG]: Reflction invocation public void android.content.SharedPreferences$Editor.apply()
+DalvikVM - [BB]: Set reflective call: public void android.content.SharedPreferences$Editor.apply()
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 0
+TaintSumBranch - [BB]: <android.content.SharedPreferences$Editor: void apply()>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.content.SharedPreferences$Editor: void apply()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[6, 7, 8]> at edu.mit.event_context_shared_pref_listener.MainActivity/onSharedPreferenceChanged[android.content.SharedPreferences, java.lang.String]
+Executor - [DEBUG]: params: Activity:instance number 1@edu.mit.event_context_shared_pref_listener.MainActivity
+Executor - [DEBUG]: params: android.content.SharedPreferences@2b6ea258
+Executor - [DEBUG]: params: imei
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+TaintSumBranch - [BB]: Copy 359874043116909 as tainted.
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0> at edu.mit.event_context_shared_pref_listener.MainActivity/onSharedPreferenceChanged[android.content.SharedPreferences, java.lang.String]
+Executor - [DEBUG]: Mov const begin <1 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+Executor - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 2
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 MOV,CONST,dst=r1,type=java.lang.String,extra=""> at edu.mit.event_context_shared_pref_listener.MainActivity/onSharedPreferenceChanged[android.content.SharedPreferences, java.lang.String]
+Executor - [DEBUG]: Mov const begin <2 MOV,CONST,dst=r1,type=java.lang.String,extra="">
+Executor - [DEBUG]: data:  class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 3
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 INVOKE,INTERFACE,extra=[android.content.SharedPreferences/getString[java.lang.String, java.lang.String], [7, 8, 1]]> at edu.mit.event_context_shared_pref_listener.MainActivity/onSharedPreferenceChanged[android.content.SharedPreferences, java.lang.String]
+Executor - [MSG]: arg0 obj: android.content.SharedPreferences@2b6ea258
+Executor - [DEBUG]: Reflction class: class android.content.SharedPreferences
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg8: imei
+Executor - [BB]: arg2@reg1: 
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: android.content.SharedPreferences@2b6ea258, from class: class android.content.SharedPreferences
+Executor - [DEBUG]: Return data: 359874043116909 ,class java.lang.String
+Executor - [MSG]: Reflction invocation public java.lang.String android.content.SharedPreferences.getString(java.lang.String,java.lang.String)
+DalvikVM - [BB]: Set reflective call: public java.lang.String android.content.SharedPreferences.getString(java.lang.String,java.lang.String)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 4
+TaintSumBranch - [BB]: <android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <4 MOV,RESULT,dst=r3,type=java.lang.Object> at edu.mit.event_context_shared_pref_listener.MainActivity/onSharedPreferenceChanged[android.content.SharedPreferences, java.lang.String]
+OP_MOV_RESULT - [BB]: Result data: 359874043116909
+OP_MOV_RESULT - [DEBUG]: Result data: 359874043116909, type: java.lang.String, to [reg 3@MainActivity/onSharedPreferenceChanged]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 5
+TaintSumBranch - [BB]: Add reg 3 due to ret data.
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 3@MainActivity/onSharedPreferenceChanged]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <5 INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]> at edu.mit.event_context_shared_pref_listener.MainActivity/onSharedPreferenceChanged[android.content.SharedPreferences, java.lang.String]
+Executor - [DEBUG]: Reflction class android.telephony.SmsManager
+Executor - [MSG]: reflction invocation public static android.telephony.SmsManager android.telephony.SmsManager.getDefault()
+DalvikVM - [BB]: Set reflective call: public static android.telephony.SmsManager android.telephony.SmsManager.getDefault()
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INVOKE_STATIC -> jump set pc to 6
+TaintSumBranch - [BB]: <android.telephony.SmsManager: android.telephony.SmsManager getDefault()>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.telephony.SmsManager: android.telephony.SmsManager getDefault()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 3@MainActivity/onSharedPreferenceChanged]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <6 MOV,RESULT,dst=r0,type=java.lang.Object> at edu.mit.event_context_shared_pref_listener.MainActivity/onSharedPreferenceChanged[android.content.SharedPreferences, java.lang.String]
+OP_MOV_RESULT - [BB]: Result data: android.telephony.SmsManager@46ffed1d
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.SmsManager@46ffed1d, type: android.telephony.SmsManager, to [reg 0@MainActivity/onSharedPreferenceChanged]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 7
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 3@MainActivity/onSharedPreferenceChanged]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <7 MOV,CONST,dst=r1,type=java.lang.String,extra="+49"> at edu.mit.event_context_shared_pref_listener.MainActivity/onSharedPreferenceChanged[android.content.SharedPreferences, java.lang.String]
+Executor - [DEBUG]: Mov const begin <7 MOV,CONST,dst=r1,type=java.lang.String,extra="+49">
+DalvikVM - [BB]: ar1 (, java.lang.String), (+49, java.lang.String)
+Executor - [DEBUG]: data: +49 class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 8
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 3@MainActivity/onSharedPreferenceChanged]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <8 MOV,REG,dst=r4,r0=r2,type=java.lang.Object> at edu.mit.event_context_shared_pref_listener.MainActivity/onSharedPreferenceChanged[android.content.SharedPreferences, java.lang.String]
+class fu.hao.trust.dvm.Executor$OP_MOVE_REG - [DEBUG]: mov 0 to 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOVE_REG -> jump set pc to 9
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 3@MainActivity/onSharedPreferenceChanged]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <9 MOV,REG,dst=r5,r0=r2,type=java.lang.Object> at edu.mit.event_context_shared_pref_listener.MainActivity/onSharedPreferenceChanged[android.content.SharedPreferences, java.lang.String]
+class fu.hao.trust.dvm.Executor$OP_MOVE_REG - [DEBUG]: mov 0 to 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOVE_REG -> jump set pc to 10
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 3@MainActivity/onSharedPreferenceChanged]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <10 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]> at edu.mit.event_context_shared_pref_listener.MainActivity/onSharedPreferenceChanged[android.content.SharedPreferences, java.lang.String]
+Executor - [MSG]: arg0 obj: android.telephony.SmsManager@46ffed1d
+Executor - [DEBUG]: Reflction class: class android.telephony.SmsManager
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg1: +49
+Executor - [BB]: arg2@reg2: 0
+Executor - [WARN]: Mismatch type! arg 2, real para type: class patdroid.core.PrimitiveInfo, expected para type: class java.lang.String
+Executor - [BB]: arg3@reg3: 359874043116909
+Executor - [BB]: arg4@reg4: 0
+Executor - [WARN]: Mismatch type! arg 4, real para type: class patdroid.core.PrimitiveInfo, expected para type: class android.app.PendingIntent
+Executor - [BB]: arg5@reg5: 0
+Executor - [WARN]: Mismatch type! arg 5, real para type: class patdroid.core.PrimitiveInfo, expected para type: class android.app.PendingIntent
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: android.telephony.SmsManager@46ffed1d, from class: class android.telephony.SmsManager
+Executor - [MSG]: Reflction invocation public void android.telephony.SmsManager.sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)
+DalvikVM - [BB]: Set reflective call: public void android.telephony.SmsManager.sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 11
+TaintSumBranch - [BB]: <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>
+TaintSumBranch - [BB]: Found a sink invocation. <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>
+TaintSumBranch - [WARN]: Found a taint sink <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)> leaking data [359874043116909] at reg 3!!!
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 3@MainActivity/onSharedPreferenceChanged]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <11 MOV,CONST,dst=r1,type=java.lang.String,extra="DroidBench"> at edu.mit.event_context_shared_pref_listener.MainActivity/onSharedPreferenceChanged[android.content.SharedPreferences, java.lang.String]
+Executor - [DEBUG]: Mov const begin <11 MOV,CONST,dst=r1,type=java.lang.String,extra="DroidBench">
+DalvikVM - [BB]: ar1 (+49, java.lang.String), (DroidBench, java.lang.String)
+Executor - [DEBUG]: data: DroidBench class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 12
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 3@MainActivity/onSharedPreferenceChanged]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <12 INVOKE,STATIC,extra=[android.util.Log/i[java.lang.String, java.lang.String], [1, 3]]> at edu.mit.event_context_shared_pref_listener.MainActivity/onSharedPreferenceChanged[android.content.SharedPreferences, java.lang.String]
+Executor - [DEBUG]: Reflction class android.util.Log
+Executor - [BB]: arg0@reg1: DroidBench
+Executor - [BB]: arg1@reg3: 359874043116909
+Executor - [BB]: param: DroidBench
+Executor - [BB]: param: 359874043116909
+Executor - [MSG]: reflction invocation public static int android.util.Log.i(java.lang.String,java.lang.String)
+DalvikVM - [BB]: Set reflective call: public static int android.util.Log.i(java.lang.String,java.lang.String)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INVOKE_STATIC -> jump set pc to 13
+TaintSumBranch - [BB]: <android.util.Log: int i(java.lang.String,java.lang.String)>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.util.Log: int i(java.lang.String,java.lang.String)>
+TaintSumBranch - [WARN]: Found a tainted return val!
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Global RetReg]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 3@MainActivity/onSharedPreferenceChanged]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <13 RETURN,VOID> at edu.mit.event_context_shared_pref_listener.MainActivity/onSharedPreferenceChanged[android.content.SharedPreferences, java.lang.String]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Global RetReg]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 1@MainActivity/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <19 INVOKE,INTERFACE,extra=[android.content.SharedPreferences$Editor/apply[], [0]]> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: android.content.SharedPreferences$Editor@5394092c
+Executor - [DEBUG]: Reflction class: class android.content.SharedPreferences$Editor
+Executor - [MSG]: Reflction invocation public void android.content.SharedPreferences$Editor.apply()
+DalvikVM - [BB]: Set reflective call: public void android.content.SharedPreferences$Editor.apply()
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 20
+TaintSumBranch - [BB]: <android.content.SharedPreferences$Editor: void apply()>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.content.SharedPreferences$Editor: void apply()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 1@MainActivity/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <20 RETURN,VOID> at edu.mit.event_context_shared_pref_listener.MainActivity/onCreate[android.os.Bundle]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack []
+DalvikVM - [BB]: Back to the last stack frame.null
+Executor - [MSG]: RUN DONE! The last one is onCreate
+DalvikVM - [MSG]: FINISHED!
+
+main - [MSG]: output/SharedPreferenceChanged1.apk\SharedPreferenceChanged1.apk_SrcTaintedFields.csv
+main - [MSG]: Analysis has run for 0.558936915 seconds
+

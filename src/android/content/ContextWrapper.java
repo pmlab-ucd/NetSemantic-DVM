@@ -19,6 +19,7 @@ public class ContextWrapper extends Context {
 
 	Map<IntentFilter, BroadcastReceiver> filters = new HashMap<>();
 	final String TAG = getClass().getName();
+	Map<String, SharedPreferences> preferences = new HashMap<>(); 
 
 	public ContextWrapper(DalvikVM vm, ClassInfo type) {
 		super(vm, type);
@@ -110,5 +111,12 @@ public class ContextWrapper extends Context {
 
 		return type;
 	}
+	
+	public SharedPreferences getSharedPreferences(String name, int mode) {
+		if (!preferences.containsKey(name)) {
+			preferences.put(name, new SharedPreferences());
+		}
+		return preferences.get(name);
+    }
 
 }

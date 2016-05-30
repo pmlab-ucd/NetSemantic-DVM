@@ -2719,11 +2719,11 @@ public class Executor {
 				Log.err(TAG, "Inconsistent event: no currt activity!");
 			} else {				
 				if (activity.type.fullName.equals(eventClass)) {
-					addEventFrame(vm, activity, eventMethod);
+					vm.addEventFrame(activity, eventMethod);
 				} else {
 					for (DVMObject obj : activity.getAllUIs()) {
 						if (obj.getType().toString().contains(eventClass)) {
-							if (addEventFrame(vm, obj, eventMethod)) {
+							if (vm.addEventFrame(obj, eventMethod)) {
 								break;
 							}
 						}
@@ -2735,55 +2735,6 @@ public class Executor {
 
 		running = false;
 		Log.msg(TAG, "RUN DONE! The last one is " + mname);
-	}
-
-	private boolean addEventFrame(DalvikVM vm, DVMObject obj, String eventMethod) {
-		MethodInfo[] mis = obj.getType().findMethods(eventMethod);
-		if (mis != null && mis.length > 0) {
-			MethodInfo mi = obj.getType().findMethods(eventMethod)[0];
-			@SuppressWarnings("unchecked")
-			Pair<Object, ClassInfo>[] params = (Pair<Object, ClassInfo>[]) new Pair[mi.paramTypes.length + 1];
-			params[0] = new Pair<Object, ClassInfo>(obj, obj.type);
-
-			for (int i = 0; i < mi.paramTypes.length; i++) {
-				if (mi.paramTypes[i].equals(ClassInfo.primitiveInt)) {
-					params[i + 1] = new Pair<Object, ClassInfo>(
-							new PrimitiveInfo(0), ClassInfo.primitiveInt);
-				}
-			}
-
-			StackFrame frame = vm.newStackFrame(obj.getType(), mi, params, true);
-			
-			// Init tainted fields		
-			if (Settings.isInitTaintedFields()) {
-				Map<String, Pair<Object, Instruction>> taintedFields = Settings.getTaintedFields(obj.getType());
-				ClassInfo type = obj.getType();
-				if (taintedFields != null) {
-					for (String fieldName : taintedFields.keySet()) {
-						Pair<Object, Instruction> infos = taintedFields.get(fieldName);
-						Object value = infos.getFirst();
-						if (type.getStaticFieldType(fieldName) != null) {
-							vm.getClass(type).setStatField(fieldName, value);
-						} else {
-							obj.setField(fieldName, value);
-						}
-						// TODO
-						for (Plugin plugin : frame.getPluginRes().keySet()) {
-							for (String tag : plugin.getCurrtRes().keySet()) {
-								if (tag.contains("Taint") || tag.contains("Ctx")) {
-									plugin.getCurrtRes().get(tag).put(value, infos.getSecond());
-								}
-							}
-						}
-					}
-				}
-			}
-			return true;
-		} else {
-			Log.err(TAG, "Inconsistent event: cannot find the method "
-					+ eventMethod);
-			return false;
-		}
 	}
 
 	static Map<Integer, ByteCode> byteCodes = new HashMap<>();

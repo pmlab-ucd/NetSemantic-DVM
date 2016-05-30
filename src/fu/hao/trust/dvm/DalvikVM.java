@@ -27,6 +27,7 @@ import fu.hao.trust.utils.Settings;
 import patdroid.core.ClassInfo;
 import patdroid.core.FieldInfo;
 import patdroid.core.MethodInfo;
+import patdroid.core.PrimitiveInfo;
 import patdroid.core.ReflectionClassDetailLoader;
 import patdroid.dalvik.Instruction;
 import patdroid.smali.SmaliClassDetailLoader;
@@ -593,7 +594,7 @@ public class DalvikVM {
 	public Object[] getAssigned() {
 		return assigned;
 	}
-	
+
 	private ServicePool servicePool;
 	private Activity currtActivity;
 
@@ -725,7 +726,7 @@ public class DalvikVM {
 			boolean nowAddToStack) {
 		return newStackFrame(sitClass, mi, null, nowAddToStack);
 	}
-	
+
 	public StackFrame newStackFrame(ClassInfo sitClass, MethodInfo mi,
 			Pair<Object, ClassInfo>[] callCtxObjs) {
 		return newStackFrame(sitClass, mi, callCtxObjs, true);
@@ -841,8 +842,8 @@ public class DalvikVM {
 		Log.msg(TAG, "Begin run " + main + " at " + apk);
 		this.setPluginManager(pluginManager);
 
-		if (methods.length == 0) {	
-			MethodInfo[] targets = null; 
+		if (methods.length == 0) {
+			MethodInfo[] targets = null;
 			ClassInfo clazz = c;
 			while (clazz.getSuperClass() != null) {
 				clazz = clazz.getSuperClass();
@@ -854,7 +855,7 @@ public class DalvikVM {
 			if (targets == null || targets.length == 0) {
 				Log.err(TAG, "Cannot find the method " + main + " at " + c);
 			}
-			
+
 			// Instrument inherited non-override call-backs
 			MethodInfo onCreate = c.findMethodsHere("onCreate")[0];
 			if (onCreate != null) {
@@ -868,14 +869,15 @@ public class DalvikVM {
 						int[] args = new int[1];
 						int[] oargs = (int[]) onCreate.insns[0].getExtra();
 						args[0] = oargs[0];
-						instrumented.setExtra(new Object[] {targets[0], args});
+						instrumented
+								.setExtra(new Object[] { targets[0], args });
 						insts[i] = instrumented;
 						insts[i + 1] = inst;
 					} else {
 						insts[i] = inst;
 					}
 				}
-				
+
 				onCreate.insns = insts;
 				methods = new MethodInfo[1];
 				methods[0] = onCreate;
@@ -903,8 +905,8 @@ public class DalvikVM {
 
 		for (int i = 1; i < chain.length; i++) {
 			Settings.setEntryClass(chain[i].split(":")[0]);
-			Settings.logTag = Settings.getApkName() + "_" + Settings.getEntryClass()
-					+ "_" + chain[i];
+			Settings.logTag = Settings.getApkName() + "_"
+					+ Settings.getEntryClass() + "_" + chain[i];
 			ClassInfo c = ClassInfo.findClass(Settings.getEntryClass());
 			Log.bb(TAG, "class " + c);
 			MethodInfo[] methods = c.findMethodsHere(chain[i].split(":")[1]);
@@ -913,27 +915,28 @@ public class DalvikVM {
 			runMethod(c, methods[0]);
 		}
 	}
-	
+
 	public void runInstrumentedMethods(StackFrame instrumentedFrame) {
 		LinkedList<StackFrame> tmpFrames = new LinkedList<>();
 		tmpFrames.add(instrumentedFrame);
 		runInstrumentedMethods(tmpFrames);
 	}
-	
+
 	public void runInstrumentedMethods(LinkedList<StackFrame> instrumentedFrames) {
 		Log.msg(TAG, "Begin run instrumented methods!");
 		if (instrumentedFrames != null && instrumentedFrames.size() > 0) {
 			instrumentedFrames.remove(null);
 			StackFrame stopSign = getCurrStackFrame();
 			Log.msg(TAG, getCurrtInst());
-			//Object backObj = getReturnReg().getData();
-			//ClassInfo backType = getReturnReg().getType();
+			// Object backObj = getReturnReg().getData();
+			// ClassInfo backType = getReturnReg().getType();
 			resetCallCtx();
 			addStackFrames(instrumentedFrames);
 			executor.runInstrumentedMethods(this, stopSign);
-			//getReturnReg().setValue(backObj, backType);
+			// getReturnReg().setValue(backObj, backType);
 		}
-		Log.msg(TAG, "Finish running instrumented methods! Back to " + getCurrStackFrame());
+		Log.msg(TAG, "Finish running instrumented methods! Back to "
+				+ getCurrStackFrame());
 	}
 
 	public void jump(Instruction inst, boolean then) {
@@ -1026,6 +1029,66 @@ public class DalvikVM {
 		}
 
 		executor.runMethod(sitClass, this, method);
+	}
+
+	public boolean addEventFrame(DVMObject obj, String eventMethod) {
+		return addEventFrame(obj, null, eventMethod);
+	}
+
+	@SuppressWarnings("unchecked")
+	public boolean addEventFrame(DVMObject obj,
+			Pair<Object, ClassInfo>[] params, String eventMethod) {
+		MethodInfo[] mis = obj.getType().findMethods(eventMethod);
+		if (mis != null && mis.length > 0) {
+			MethodInfo mi = obj.getType().findMethods(eventMethod)[0];
+			if (params == null) {
+				params = (Pair<Object, ClassInfo>[]) new Pair[mi.paramTypes.length + 1];
+				params[0] = new Pair<Object, ClassInfo>(obj, obj.type);
+
+				for (int i = 0; i < mi.paramTypes.length; i++) {
+					if (mi.paramTypes[i].equals(ClassInfo.primitiveInt)) {
+						params[i + 1] = new Pair<Object, ClassInfo>(
+								new PrimitiveInfo(0), ClassInfo.primitiveInt);
+					}
+				}
+			}
+
+			StackFrame frame = newStackFrame(obj.getType(), mi, params, true);
+
+			// Init tainted fields
+			if (Settings.isInitTaintedFields()) {
+				Map<String, Pair<Object, Instruction>> taintedFields = Settings
+						.getTaintedFields(obj.getType());
+				ClassInfo type = obj.getType();
+				if (taintedFields != null) {
+					for (String fieldName : taintedFields.keySet()) {
+						Pair<Object, Instruction> infos = taintedFields
+								.get(fieldName);
+						Object value = infos.getFirst();
+						if (type.getStaticFieldType(fieldName) != null) {
+							getClass(type).setStatField(fieldName, value);
+						} else {
+							obj.setField(fieldName, value);
+						}
+						// TODO
+						for (Plugin plugin : frame.getPluginRes().keySet()) {
+							for (String tag : plugin.getCurrtRes().keySet()) {
+								if (tag.contains("Taint")
+										|| tag.contains("Ctx")) {
+									plugin.getCurrtRes().get(tag)
+											.put(value, infos.getSecond());
+								}
+							}
+						}
+					}
+				}
+			}
+			return true;
+		} else {
+			Log.err(TAG, "Inconsistent event: cannot find the method "
+					+ eventMethod);
+			return false;
+		}
 	}
 
 	public int getPC() {
@@ -1170,13 +1233,14 @@ public class DalvikVM {
 					return new BroadcastReceiver(this, oType);
 				} else if (typeName.contains("android.app.Service")) {
 					return new Service(this, oType);
-				} else if (typeName.contains("android.app") && typeName.endsWith("Fragment")) {
+				} else if (typeName.contains("android.app")
+						&& typeName.endsWith("Fragment")) {
 					return GenInstance.getFragment(this, oType);
 				}
 			}
 
 			type = type.getSuperClass();
-			
+
 			Log.bb(TAG, "Superclass: " + typeName);
 		}
 
@@ -1207,7 +1271,7 @@ public class DalvikVM {
 		}
 		tmpFrames.addFirst(tmpFrame);
 	}
-	
+
 	@Deprecated
 	public void addTmpFrameFirstRun(StackFrame tmpFrame) {
 		if (tmpFrame == null) {
@@ -1219,7 +1283,7 @@ public class DalvikVM {
 		}
 		tmpFrames.add(tmpFrame);
 	}
-	
+
 	@Deprecated
 	public void setTmpFrames(List<MethodInfo> mis) {
 		if (tmpFrames == null) {
