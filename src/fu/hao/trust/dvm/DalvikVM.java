@@ -735,7 +735,7 @@ public class DalvikVM {
 	public StackFrame newStackFrame(ClassInfo sitClass, MethodInfo mi,
 			Pair<Object, ClassInfo>[] callCtxObjs, boolean nowAddToStack) {
 		String TAG = "newStackFrame";
-		if (mi.insns == null) {
+		if (mi == null || mi.insns == null) {
 			return null;
 		}
 

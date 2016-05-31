@@ -11,14 +11,14 @@ import fu.hao.trust.dvm.DalvikVM.StackFrame;
 import fu.hao.trust.utils.Pair;
 
 public class AsyncTask extends DVMObject {
-	
-	final String TAG = getClass().getSimpleName(); 
-	
+
+	final String TAG = getClass().getSimpleName();
+
 	ClassInfo myClass;
 	MethodInfo doInBack;
 	MethodInfo onPre;
 	MethodInfo onPost;
-	
+
 	public AsyncTask(DalvikVM vm, ClassInfo type) {
 		super(vm, type);
 	}
@@ -29,35 +29,44 @@ public class AsyncTask extends DVMObject {
 		Object[] extra = (Object[]) inst.getExtra();
 		int[] args = (int[]) extra[1];
 		myClass = vm.getReg(args[0]).getType();
-		
+
 		onPre = findOnPre(myClass);
 		doInBack = findDoInBack(myClass);
 		onPost = findOnPost(myClass);
-		
+
 		Pair<Object, ClassInfo>[] ctxObjs;
 		LinkedList<StackFrame> tmpFrames = new LinkedList<>();
-		
+
 		// Push them into the stack
 		// onPost
-		Object[] params2 = new Object[2];
-		params2[0] = this;
-		params2[1] = vm.getReturnReg();
-		
-		ctxObjs = (Pair<Object, ClassInfo>[]) new Pair[2]; 
-		ctxObjs[0] = new Pair<Object, ClassInfo>(this, type);
-		ctxObjs[1] = new Pair<Object, ClassInfo>(vm.getReturnReg(), doInBack.returnType);
-		tmpFrames.add(vm.newStackFrame(type, onPost, ctxObjs, false));
-		
+		if (onPost != null) {
+			Object[] params2 = new Object[2];
+			params2[0] = this;
+			params2[1] = vm.getReturnReg();
+
+			ctxObjs = (Pair<Object, ClassInfo>[]) new Pair[2];
+			ctxObjs[0] = new Pair<Object, ClassInfo>(this, type);
+			ctxObjs[1] = new Pair<Object, ClassInfo>(vm.getReturnReg(),
+					doInBack.returnType);
+			tmpFrames.add(vm.newStackFrame(type, onPost, ctxObjs, false));
+		}
+
 		// doIn
-		ctxObjs = (Pair<Object, ClassInfo>[]) new Pair[2]; ;
-		ctxObjs[0] = new Pair<Object, ClassInfo>(this, type);
-		ctxObjs[1] = new Pair<Object, ClassInfo>(params, doInBack.paramTypes[0]);
-		tmpFrames.add(vm.newStackFrame(type, doInBack, ctxObjs, false));
-		
+		if (doInBack != null) {
+			ctxObjs = (Pair<Object, ClassInfo>[]) new Pair[2];
+			ctxObjs[0] = new Pair<Object, ClassInfo>(this, type);
+			ctxObjs[1] = new Pair<Object, ClassInfo>(params,
+					doInBack.paramTypes[0]);
+			tmpFrames.add(vm.newStackFrame(type, doInBack, ctxObjs, false));
+		}
+
 		// onPre
-		ctxObjs = (Pair<Object, ClassInfo>[]) new Pair[1]; 
-		ctxObjs[0] = new Pair<Object, ClassInfo>(this, type);
-		tmpFrames.add(vm.newStackFrame(type, onPre, ctxObjs, false));
+		if (onPre != null) {
+			ctxObjs = (Pair<Object, ClassInfo>[]) new Pair[1];
+			ctxObjs[0] = new Pair<Object, ClassInfo>(this, type);
+			tmpFrames.add(vm.newStackFrame(type, onPre, ctxObjs, false));
+		}
+		
 		vm.runInstrumentedMethods(tmpFrames);
 
 		return this;
@@ -87,7 +96,6 @@ public class AsyncTask extends DVMObject {
 		return null;
 	}
 
-
 	private MethodInfo findOnPost(ClassInfo clazz) {
 		for (MethodInfo mi : clazz.getAllMethods()) {
 			if (mi.toString().contains("onPost")) {
@@ -103,7 +111,7 @@ public class AsyncTask extends DVMObject {
 	}
 
 	public void onPostExecute(Object result) {
-		
+
 	}
 
 	protected void onProgressUpdate(Object... values) {
