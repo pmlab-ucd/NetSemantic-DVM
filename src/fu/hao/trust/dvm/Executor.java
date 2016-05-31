@@ -399,7 +399,7 @@ public class Executor {
 				// If applicable, directly use reflection to run the method,
 				// the method is inside java.lang
 				Class<?> clazz = Class.forName(mi.myClass.toString());
-				// When the class should not be replaced by my class 
+				// When the class should not be replaced by my class
 				clazz = getReplacedInvoke(clazz);
 				Log.debug(TAG, "Reflction " + clazz);
 				@SuppressWarnings("rawtypes")
@@ -2138,16 +2138,18 @@ public class Executor {
 			if (inst.toString().contains("android.content.Context/start")) {
 				Results.intent = (Intent) vm.getReg(args[1]).getData();
 			}
-			
-			// When the class should not be replaced by my class 
+
+			// When the class should not be replaced by my class
 			clazz = getReplacedInvoke(clazz);
 
 			// If args contains a symbolic var, directly set the return val as a
 			// symbolic var.
 			if (mi.isConstructor()) {
 				Log.bb(TAG, mi + " is a constructor!");
+				String clazzName = mi.myClass.fullName;
 				// use DvmObject to replace java.lang.Object
-				if (!mi.myClass.toString().equals("java.lang.Object")) {
+				if (!clazzName.equals("java.lang.Object")
+						&& !clazzName.equals("java.lang.Thread")) {
 					// clazz = Class.forName(mi.myClass.toString());
 					if (args.length == 1) {
 						vm.getReg(args[0]).setValue(clazz.newInstance(),
@@ -2324,14 +2326,15 @@ public class Executor {
 		}
 
 	}
-	
-	private Class<?> getReplacedInvoke(Class<?> clazz) throws ClassNotFoundException {
+
+	private Class<?> getReplacedInvoke(Class<?> clazz)
+			throws ClassNotFoundException {
 		String clazzName = clazz.getName();
 		if (replacedInvokeList.containsKey(clazzName)) {
-			
+
 			return Class.forName(replacedInvokeList.get(clazzName));
 		}
-	
+
 		return clazz;
 	}
 
@@ -2473,7 +2476,8 @@ public class Executor {
 					} else if (argData instanceof ClassInfo) {
 						argsClass[j] = ClassInfo.class;
 						params[j] = argData;
-					} else if (mi.paramTypes[j].fullName.equals("java.lang.Runnable")) {
+					} else if (mi.paramTypes[j].fullName
+							.equals("java.lang.Runnable")) {
 						argsClass[j] = DVMObject.class;
 						params[j] = argData;
 					}
@@ -2732,10 +2736,10 @@ public class Executor {
 			Pair<String, String> event = Settings.getEventChain().remove(0);
 			Activity activity = vm.getCurrtActivity();
 			String eventClass = event.getFirst();
-			String eventMethod = event.getSecond();	
+			String eventMethod = event.getSecond();
 			if (activity == null) {
 				Log.err(TAG, "Inconsistent event: no currt activity!");
-			} else {				
+			} else {
 				if (activity.type.fullName.equals(eventClass)) {
 					vm.addEventFrame(activity, eventMethod);
 				} else {
@@ -2865,10 +2869,13 @@ public class Executor {
 		invokeButUnknownRet = new HashSet<>();
 		invokeButUnknownRet.add("append");
 		invokeButUnknownRet.add("toString");
-		
+
 		replacedInvokeList = new HashMap<String, String>();
-		replacedInvokeList.put("java.util.concurrent.Executor", "android.myclasses.Executor");
-		replacedInvokeList.put("java.util.concurrent.Executors", "android.myclasses.Executors");
+		replacedInvokeList.put("java.util.concurrent.Executor",
+				"android.myclasses.Executor");
+		replacedInvokeList.put("java.util.concurrent.Executors",
+				"android.myclasses.Executors");
+		replacedInvokeList.put("java.lang.Thread", "android.myclasses.Thread");
 	}
 
 	public void exec(DalvikVM vm, Instruction inst, ClassInfo sitClass) {
@@ -3017,7 +3024,7 @@ public class Executor {
 	Set<String> noInvokeList2;
 
 	Set<String> invokeButUnknownRet;
-	
+
 	// Replace the method to my method
 	// e.g. java.util.concurrent.Executor/execute to
 	// android.myclasses.Executor/execute

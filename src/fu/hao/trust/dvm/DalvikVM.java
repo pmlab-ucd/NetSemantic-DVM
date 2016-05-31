@@ -1236,6 +1236,8 @@ public class DalvikVM {
 				} else if (typeName.contains("android.app")
 						&& typeName.endsWith("Fragment")) {
 					return GenInstance.getFragment(this, oType);
+				} else if (typeName.equals("java.lang.Thread")) {
+					return new android.myclasses.Thread(this, oType);
 				}
 			}
 
