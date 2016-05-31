@@ -25,7 +25,7 @@ public class BenchJavaTests {
 	
 	@Test
 	public void testGeneralJava_Loop1() {
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_Loop1/app/app-debug.apk";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_Loop1/app/";
 		args[1] = "de.ecspride.LoopExample1";
 		args[2] = "onCreate";
 		Main.main(args);
@@ -37,7 +37,7 @@ public class BenchJavaTests {
 
 	@Test
 	public void testGeneralJava_Loop2() {
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_Loop2/app/app-debug.apk";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_Loop2/app/";
 		args[1] = "de.ecspride.LoopExample2";
 		args[2] = "onCreate";
 		Main.main(args);
@@ -49,7 +49,7 @@ public class BenchJavaTests {
 	
 	@Test
 	public void testGeneralJava_SourceCodeSpecific1() {
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_SourceCodeSpecific1/app/app-debug.apk";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_SourceCodeSpecific1/app/";
 		args[1] = "de.ecspride.MainActivity";
 		args[2] = "onCreate";
 		Main.main(args);
@@ -61,7 +61,7 @@ public class BenchJavaTests {
 
 	@Test
 	public void testGeneralJava_StaticInitialization1() {
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_StaticInitialization1/app/app-release.apk";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_StaticInitialization1/app/";
 		args[1] = "de.ecspride.MainActivity";
 		args[2] = "onCreate";
 		Main.main(args);
@@ -73,7 +73,7 @@ public class BenchJavaTests {
 	
 	@Test
 	public void testGeneralJava_StaticInitialization2() {
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_StaticInitialization2/app/app-release.apk";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_StaticInitialization2/app/";
 		args[1] = "de.ecspride.MainActivity";
 		args[2] = "onCreate";
 		Main.main(args);
@@ -85,7 +85,7 @@ public class BenchJavaTests {
 	
 	@Test
 	public void testGeneralJava_UnreachableCode() {
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_UnreachableCode/app/app-release.apk";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_UnreachableCode/app/";
 		args[1] = "de.ecspride.UnreachableCode";
 		args[2] = "onCreate";
 		Main.main(args);
@@ -107,7 +107,7 @@ public class BenchJavaTests {
 	
 	@Test
 	public void testFieldAndObjectSensitivity_FieldSensitivity1() {
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FieldAndObjectSensitivity_FieldSensitivity1/app/app-release.apk";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FieldAndObjectSensitivity_FieldSensitivity1/app/";
 		args[1] = "de.ecspride.FieldSensitivity1";
 		args[2] = "onCreate";
 		Main.main(args);
@@ -116,7 +116,7 @@ public class BenchJavaTests {
 	
 	@Test
 	public void testFieldAndObjectSensitivity_FieldSensitivity2() {
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FieldAndObjectSensitivity_FieldSensitivity2/app/app-release.apk";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FieldAndObjectSensitivity_FieldSensitivity2/app/";
 		args[1] = "de.ecspride.FieldSensitivity2";
 		args[2] = "onCreate";
 		Main.main(args);
@@ -125,7 +125,7 @@ public class BenchJavaTests {
 	
 	@Test
 	public void testFieldAndObjectSensitivity_FieldSensitivity3() {
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FieldAndObjectSensitivity_FieldSensitivity3/app/app-release.apk";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FieldAndObjectSensitivity_FieldSensitivity3/app/";
 		args[1] = "de.ecspride.FieldSensitivity3";
 		args[2] = "onCreate";
 		Main.main(args);
@@ -137,7 +137,7 @@ public class BenchJavaTests {
 	
 	@Test
 	public void testFieldAndObjectSensitivity_FieldSensitivity4() {
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FieldAndObjectSensitivity_FieldSensitivity4/app/app-release.apk";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FieldAndObjectSensitivity_FieldSensitivity4/app/";
 		args[1] = "de.ecspride.FieldSensitivity4";
 		args[2] = "onCreate";
 		Main.main(args);
@@ -146,7 +146,7 @@ public class BenchJavaTests {
 	
 	@Test
 	public void testFieldAndObjectSensitivity_InheritedObjects1() {
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FieldAndObjectSensitivity_InheritedObjects1/app/app-release.apk";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FieldAndObjectSensitivity_InheritedObjects1/app/";
 		args[1] = "de.ecspride.InheritedObjects1";
 		args[2] = "onCreate";
 		Main.main(args);
@@ -158,7 +158,7 @@ public class BenchJavaTests {
 	
 	@Test
 	public void testFieldAndObjectSensitivity_ObjectSensitivity1() {
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FieldAndObjectSensitivity_ObjectSensitivity1/app/app-release.apk";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FieldAndObjectSensitivity_ObjectSensitivity1/app/";
 		args[1] = "de.ecspride.ObjectSensitivity1";
 		args[2] = "onCreate";
 		Main.main(args);
@@ -167,7 +167,7 @@ public class BenchJavaTests {
 	
 	@Test
 	public void testFieldAndObjectSensitivity_ObjectSensitivity2() {
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FieldAndObjectSensitivity_ObjectSensitivity2/app/app-release.apk";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FieldAndObjectSensitivity_ObjectSensitivity2/app/";
 		args[1] = "de.ecspride.OverwiteValue";
 		args[2] = "onCreate";
 		Main.main(args);

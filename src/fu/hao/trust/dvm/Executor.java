@@ -399,6 +399,8 @@ public class Executor {
 				// If applicable, directly use reflection to run the method,
 				// the method is inside java.lang
 				Class<?> clazz = Class.forName(mi.myClass.toString());
+				// When the class should not be replaced by my class 
+				clazz = getReplacedInvoke(clazz);
 				Log.debug(TAG, "Reflction " + clazz);
 				@SuppressWarnings("rawtypes")
 				Class[] argsClass = new Class[mi.paramTypes.length];
@@ -2136,6 +2138,9 @@ public class Executor {
 			if (inst.toString().contains("android.content.Context/start")) {
 				Results.intent = (Intent) vm.getReg(args[1]).getData();
 			}
+			
+			// When the class should not be replaced by my class 
+			clazz = getReplacedInvoke(clazz);
 
 			// If args contains a symbolic var, directly set the return val as a
 			// symbolic var.
@@ -2319,6 +2324,16 @@ public class Executor {
 		}
 
 	}
+	
+	private Class<?> getReplacedInvoke(Class<?> clazz) throws ClassNotFoundException {
+		String clazzName = clazz.getName();
+		if (replacedInvokeList.containsKey(clazzName)) {
+			
+			return Class.forName(replacedInvokeList.get(clazzName));
+		}
+	
+		return clazz;
+	}
 
 	public void checkIntent(DalvikVM vm, Instruction inst) {
 		Object[] extra = (Object[]) inst.getExtra();
@@ -2457,6 +2472,9 @@ public class Executor {
 						return false;
 					} else if (argData instanceof ClassInfo) {
 						argsClass[j] = ClassInfo.class;
+						params[j] = argData;
+					} else if (mi.paramTypes[j].fullName.equals("java.lang.Runnable")) {
+						argsClass[j] = DVMObject.class;
 						params[j] = argData;
 					}
 
@@ -2847,6 +2865,10 @@ public class Executor {
 		invokeButUnknownRet = new HashSet<>();
 		invokeButUnknownRet.add("append");
 		invokeButUnknownRet.add("toString");
+		
+		replacedInvokeList = new HashMap<String, String>();
+		replacedInvokeList.put("java.util.concurrent.Executor", "android.myclasses.Executor");
+		replacedInvokeList.put("java.util.concurrent.Executors", "android.myclasses.Executors");
 	}
 
 	public void exec(DalvikVM vm, Instruction inst, ClassInfo sitClass) {
@@ -2995,4 +3017,9 @@ public class Executor {
 	Set<String> noInvokeList2;
 
 	Set<String> invokeButUnknownRet;
+	
+	// Replace the method to my method
+	// e.g. java.util.concurrent.Executor/execute to
+	// android.myclasses.Executor/execute
+	Map<String, String> replacedInvokeList;
 }
