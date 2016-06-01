@@ -50,7 +50,15 @@ public class DVMObject {
 		 */
 
 		// If the instance is implicitly initialized. 
-		if (vm.getCurrtInst().opcode != Instruction.OP_NEW_INSTANCE) {
+		Instruction inst = vm.getCurrtInst();
+		if (inst.opcode != Instruction.OP_NEW_INSTANCE) {
+			if (inst.opcode == Instruction.OP_INVOKE_OP) {
+				Object[] extra = (Object[]) inst.getExtra();
+				MethodInfo mi = (MethodInfo) extra[0];
+				if (mi.name.contains("init")) {
+					return;
+				}
+			}
 			MethodInfo oinit = type.getDefaultConstructor();
 			if (oinit != null) {
 				Log.bb(TAG, "Not empty constructor");

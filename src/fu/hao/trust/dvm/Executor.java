@@ -2148,18 +2148,16 @@ public class Executor {
 				Log.bb(TAG, mi + " is a constructor!");
 				String clazzName = mi.myClass.fullName;
 				// use DvmObject to replace java.lang.Object
-				if (!clazzName.equals("java.lang.Object")
-						&& !clazzName.equals("java.lang.Thread")) {
+				if (!clazzName.equals("java.lang.Object")) {
 					// clazz = Class.forName(mi.myClass.toString());
 					if (args.length == 1) {
-						vm.getReg(args[0]).setValue(clazz.newInstance(),
-								mi.returnType);
-						Log.debug(TAG,
-								"Reflected init instance: "
-										+ vm.getReg(args[0]).getData()
-										+ ", "
-										+ vm.getReg(args[0]).getData()
-												.getClass());
+						if (!clazzName.equals("java.lang.Thread")) {
+							vm.getReg(args[0]).setValue(clazz.newInstance(),
+									mi.returnType);
+							Log.debug(TAG, "Reflected init instance: "
+									+ vm.getReg(args[0]).getData() + ", "
+									+ vm.getReg(args[0]).getData().getClass());
+						}
 					} else {
 						boolean narg = getParams(vm, mi, args, argsClass,
 								params, false);
@@ -2331,7 +2329,7 @@ public class Executor {
 			throws ClassNotFoundException {
 		String clazzName = clazz.getName();
 		if (replacedInvokeList.containsKey(clazzName)) {
-
+			Log.msg(TAG, "Replace the clazz.");
 			return Class.forName(replacedInvokeList.get(clazzName));
 		}
 
@@ -2478,7 +2476,7 @@ public class Executor {
 						params[j] = argData;
 					} else if (mi.paramTypes[j].fullName
 							.equals("java.lang.Runnable")) {
-						argsClass[j] = DVMObject.class;
+						argsClass[j] = android.myclasses.Runnable.class;
 						params[j] = argData;
 					}
 

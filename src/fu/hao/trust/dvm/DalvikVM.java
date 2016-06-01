@@ -1218,7 +1218,7 @@ public class DalvikVM {
 
 	public DVMObject newVMObject(ClassInfo type) {
 		ClassInfo oType = type;
-		while (type != null) {
+		while (type != null) {	
 			String typeName = type.toString();
 			if (!typeName.contains("$")) {
 				if (typeName.contains("android.app.Activity")) {
@@ -1242,8 +1242,12 @@ public class DalvikVM {
 			}
 
 			type = type.getSuperClass();
-
+			
 			Log.bb(TAG, "Superclass: " + typeName);
+		}
+		
+		if (oType.isConvertibleTo(ClassInfo.findClass("java.lang.Runnable"))) {
+			return new android.myclasses.Runnable(this, oType);
 		}
 
 		return new DVMObject(this, oType);
