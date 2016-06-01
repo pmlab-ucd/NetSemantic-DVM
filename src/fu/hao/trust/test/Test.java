@@ -26,6 +26,24 @@ public class Test {
 		// t.testWo_();
 	}
 	
+	public void testMain() {
+		String[] args = new String[4];
+		args[3] = "ATaint";
+		Settings.logLevel = 0;
+		
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Button2/app/";
+		args[1] = "srcEventChains";
+		Main.main(args);
+		
+		args[1] = "sinkEventChains";
+		Main.main(args);
+		assertEquals(false, Results.results.isEmpty());
+		Map<String, String> res = new HashMap<>();
+		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
+				"359874043116909");
+		assertEquals(true, Results.results.contains(res));
+	}
+	
 	public void testAnve() {
 		String[] args = new String[4];
 		args[3] = "Full";
@@ -198,24 +216,6 @@ public class Test {
 
 		assertEquals(false, Results.targetCallRes.isEmpty());
 		assertEquals(true, containsSms);
-	}
-
-	public void testMain() {
-		String[] args = new String[4];
-		args[3] = "ATaint";
-		Settings.logLevel = 0;
-		
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/JavaThread1/app/";
-		args[1] = "srcEventChains";
-		Main.main(args);
-		
-		args[1] = "sinkEventChains";
-		Main.main(args);
-		assertEquals(false, Results.results.isEmpty());
-		Map<String, String> res = new HashMap<>();
-		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
-				"359874043116909");
-		assertEquals(true, Results.results.contains(res));
 	}
 
 	public void testMain2() {
