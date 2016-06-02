@@ -1,0 +1,679 @@
+main - [DEBUG]: Entry event: (de.ecspride.Button4, onCreate)
+DalvikVM - [MSG]: Begin run onCreate at C:\Users\hao\workspace\DroidBenchProj\Button4\app\Button4.apk
+DalvikVM - [MSG]: RUN Method de.ecspride.Button4/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Read manifest csv: output/Button4.apk\Button4.apk_manifest.csv
+Executor - [WARN]: output\Button4.apk\Button4.apk_manifest.csv (The system cannot find the file specified)
+DalvikVM - [BB]: New method call: de.ecspride.Button4/onCreate[android.os.Bundle]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[2, 3]>
+DalvikVM - [BB]: [1]<0 HALT,SUPER,extra=[null, [2, 3]]>
+DalvikVM - [BB]: [2]<1 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+DalvikVM - [BB]: [3]<0 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [2, 1]]>
+DalvikVM - [BB]: [4]<3 MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: [5]<0 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [2, 1]]>
+DalvikVM - [BB]: [6]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [7]<0 ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.telephony.TelephonyManager>
+DalvikVM - [BB]: [8]<0 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>
+DalvikVM - [BB]: [9]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [10]<0 STATIC,SPUT,r0=r1,type=java.lang.Object,extra=(de.ecspride.Button4, imei)>
+DalvikVM - [BB]: [11]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame de.ecspride.Button4/onCreate[android.os.Bundle]
+newStackFrame - [BB]: Add frame StackFrame de.ecspride.Button4/onCreate[android.os.Bundle]
+newStackFrame - [BB]: Stack: [StackFrame de.ecspride.Button4/onCreate[android.os.Bundle]]
+Executor - [MSG]: New chain obj with type de.ecspride.Button4
+DalvikVM - [BB]: Superclass: de.ecspride.Button4
+Activity - [BB]: New instance of de.ecspride.Button4
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.Button4 at fu.hao.trust.dvm.VMHeap@fc506f7
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for de.ecspride.Button4 at fu.hao.trust.dvm.VMHeap@fc506f7
+DalvikVM - [BB]: New method call: de.ecspride.Button4/<clinit>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [2]<0 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(de.ecspride.Button4, imei)>
+DalvikVM - [BB]: [3]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame de.ecspride.Button4/<clinit>[], pc -1 stored. 
+newStackFrame - [BB]: Stack: [StackFrame de.ecspride.Button4/onCreate[android.os.Bundle]]
+DalvikVM - [MSG]: Begin run instrumented methods!
+DalvikVM - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[2, 3]>
+DalvikVM - [BB]: Add frames [StackFrame de.ecspride.Button4/<clinit>[]]
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[]> at de.ecspride.Button4/<clinit>[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0> at de.ecspride.Button4/<clinit>[]
+Executor - [DEBUG]: Mov const begin <1 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+Executor - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 2
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(de.ecspride.Button4, imei)> at de.ecspride.Button4/<clinit>[]
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button4 at fu.hao.trust.dvm.VMHeap@fc506f7
+Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type de.ecspride.Button4
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button4 at fu.hao.trust.dvm.VMHeap@fc506f7
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [WARN]: Type inconsistent! void java.lang.String
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: expect sput imei from de.ecspride.Button4
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: real sput 0 from fu.hao.trust.dvm.DVMClass@285855bd
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD -> jump set pc to 3
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button4 at fu.hao.trust.dvm.VMHeap@fc506f7
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type de.ecspride.Button4
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button4 at fu.hao.trust.dvm.VMHeap@fc506f7
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 RETURN,VOID> at de.ecspride.Button4/<clinit>[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame de.ecspride.Button4/onCreate[android.os.Bundle]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame de.ecspride.Button4/onCreate[android.os.Bundle]
+DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame de.ecspride.Button4/onCreate[android.os.Bundle]
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@fc506f7
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@fc506f7
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@fc506f7
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@fc506f7
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@fc506f7
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@fc506f7
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@fc506f7
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@fc506f7
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@fc506f7
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.Context
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@fc506f7
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.ContextWrapper
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@fc506f7
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@fc506f7
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type de.ecspride.Button4
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.Button4 at fu.hao.trust.dvm.VMHeap@fc506f7
+Activity - [BB]: Not empty constructor
+DalvikVM - [BB]: New method call: de.ecspride.Button4/<init>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[0]>
+DalvikVM - [BB]: [1]<0 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]>
+DalvikVM - [BB]: [2]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame de.ecspride.Button4/<init>[], pc -1 stored. 
+newStackFrame - [BB]: Stack: [StackFrame de.ecspride.Button4/onCreate[android.os.Bundle]]
+DalvikVM - [MSG]: Begin run instrumented methods!
+DalvikVM - [MSG]: <0 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [2, 1]]>
+DalvikVM - [BB]: Add frames [StackFrame de.ecspride.Button4/<init>[]]
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[0]> at de.ecspride.Button4/<init>[]
+Executor - [DEBUG]: params: Activity:instance number 1@de.ecspride.Button4
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]> at de.ecspride.Button4/<init>[]
+Executor - [MSG]: arg0 obj: Activity:instance number 1@de.ecspride.Button4
+Executor - [BB]: java.lang.Object/<init>[] is a constructor!
+Executor - [WARN]: Reflection error: de.ecspride.Button4
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 2
+TaintSumBranch - [BB]: <java.lang.Object: void <init>()>
+TaintSumBranch - [DEBUG]: Not a taint call: <java.lang.Object: void <init>()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 RETURN,VOID> at de.ecspride.Button4/<init>[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame de.ecspride.Button4/onCreate[android.os.Bundle]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame de.ecspride.Button4/onCreate[android.os.Bundle]
+DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame de.ecspride.Button4/onCreate[android.os.Bundle]
+Activity - [BB]: New Activity Created with type de.ecspride.Button4
+Executor - [MSG]: RUN BEGIN de.ecspride.Button4/onCreate[android.os.Bundle]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> execute set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[2, 3]> at de.ecspride.Button4/onCreate[android.os.Bundle]
+Executor - [WARN]: NULL CallingCtx!
+Executor - [DEBUG]: args: Activity:instance number 1@de.ecspride.Button4
+Executor - [BB]: Start param from 1
+Executor - [DEBUG]: args: null
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 HALT,SUPER,extra=[null, [2, 3]]> at de.ecspride.Button4/onCreate[android.os.Bundle]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_HALT -> jump set pc to 2
+Executor - [MSG]: Cannot resolve the invocation
+TaintSumBranch - [BB]: Not a taint op <1 HALT,SUPER,extra=[null, [2, 3]]>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040> at de.ecspride.Button4/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Mov const begin <2 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+Executor - [DEBUG]: data: 2130903040 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 3
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [2, 1]]> at de.ecspride.Button4/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: Activity:instance number 1@de.ecspride.Button4
+Executor - [DEBUG]: Reflction class: class android.app.Activity
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg1: 2130903040
+Executor - [DEBUG]: Expected para type: int
+Executor - [DEBUG]: Real para int, value: 2130903040
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: Activity:instance number 1@de.ecspride.Button4, from class: class android.app.Activity
+Executor - [MSG]: Reflction invocation public void android.app.Activity.setContentView(int)
+DalvikVM - [BB]: Set reflective call: public void android.app.Activity.setContentView(int)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 4
+TaintSumBranch - [BB]: <android.app.Activity: void setContentView(int)>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.app.Activity: void setContentView(int)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <4 MOV,CONST,dst=r1,type=java.lang.String,extra="phone"> at de.ecspride.Button4/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Mov const begin <4 MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: ar1 (2130903040, void), (phone, java.lang.String)
+Executor - [DEBUG]: data: phone class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 5
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <5 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [2, 1]]> at de.ecspride.Button4/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: Activity:instance number 1@de.ecspride.Button4
+Executor - [DEBUG]: Reflction class: class android.content.Context
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg1: phone
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: Activity:instance number 1@de.ecspride.Button4, from class: class android.app.Activity
+Executor - [DEBUG]: Return data: android.telephony.TelephonyManager@1328fa3c ,class android.telephony.TelephonyManager
+Executor - [MSG]: Reflction invocation public java.lang.Object android.content.Context.getSystemService(java.lang.String)
+DalvikVM - [BB]: Set reflective call: public java.lang.Object android.content.Context.getSystemService(java.lang.String)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 6
+TaintSumBranch - [BB]: <android.content.Context: java.lang.Object getSystemService(java.lang.String)>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.content.Context: java.lang.Object getSystemService(java.lang.String)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <6 MOV,RESULT,dst=r0,type=java.lang.Object> at de.ecspride.Button4/onCreate[android.os.Bundle]
+OP_MOV_RESULT - [BB]: Result data: android.telephony.TelephonyManager@1328fa3c
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.TelephonyManager@1328fa3c, type: java.lang.Object, to [reg 0@Button4/onCreate]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 7
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <7 ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.telephony.TelephonyManager> at de.ecspride.Button4/onCreate[android.os.Bundle]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARITHETIC -> jump set pc to 8
+TaintSumBranch - [BB]: Not a taint op <7 ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.telephony.TelephonyManager>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]> at de.ecspride.Button4/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: android.telephony.TelephonyManager@1328fa3c
+Executor - [DEBUG]: Reflction class: class android.telephony.TelephonyManager
+Executor - [DEBUG]: Return data: 359874043116909 ,class java.lang.String
+Executor - [MSG]: Reflction invocation public java.lang.String android.telephony.TelephonyManager.getDeviceId()
+DalvikVM - [BB]: Set reflective call: public java.lang.String android.telephony.TelephonyManager.getDeviceId()
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 9
+TaintSumBranch - [BB]: <android.telephony.TelephonyManager: java.lang.String getDeviceId()>
+TaintSumBranch - [WARN]: Found a tainted return value!
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Global RetReg]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <9 MOV,RESULT,dst=r1,type=java.lang.Object> at de.ecspride.Button4/onCreate[android.os.Bundle]
+DalvikVM - [BB]: ar1 (phone, java.lang.String), (359874043116909, java.lang.String)
+OP_MOV_RESULT - [BB]: Result data: 359874043116909
+OP_MOV_RESULT - [DEBUG]: Result data: 359874043116909, type: java.lang.String, to [reg 1@Button4/onCreate]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 10
+TaintSumBranch - [BB]: <8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>
+TaintSumBranch - [BB]: Add reg 1 due to ret reg.
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 1@Button4/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <10 STATIC,SPUT,r0=r1,type=java.lang.Object,extra=(de.ecspride.Button4, imei)> at de.ecspride.Button4/onCreate[android.os.Bundle]
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button4 at fu.hao.trust.dvm.VMHeap@fc506f7
+Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type de.ecspride.Button4
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button4 at fu.hao.trust.dvm.VMHeap@fc506f7
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: expect sput imei from de.ecspride.Button4
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: real sput 359874043116909 from fu.hao.trust.dvm.DVMClass@285855bd
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD -> jump set pc to 11
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button4 at fu.hao.trust.dvm.VMHeap@fc506f7
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type de.ecspride.Button4
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button4 at fu.hao.trust.dvm.VMHeap@fc506f7
+TaintSumBranch - [BB]: SPut at [reg 1@Button4/onCreate]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 1@Button4/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <11 RETURN,VOID> at de.ecspride.Button4/onCreate[android.os.Bundle]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack []
+DalvikVM - [BB]: Back to the last stack frame.null
+Executor - [MSG]: RUN DONE! The last one is onCreate
+DalvikVM - [MSG]: FINISHED!
+
+main - [MSG]: output/Button4.apk\Button4.apk_SrcTaintedFields.csv
+main - [MSG]: Analysis has run for 2.150845702 seconds
+
+main - [DEBUG]: Entry event: (de.ecspride.Button4, onCreate)
+DalvikVM - [MSG]: Begin run onCreate at C:\Users\hao\workspace\DroidBenchProj\Button4\app\Button4.apk
+DalvikVM - [MSG]: RUN Method de.ecspride.Button4/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Read manifest csv: output/Button4.apk\Button4.apk_manifest.csv
+Executor - [WARN]: output\Button4.apk\Button4.apk_manifest.csv (The system cannot find the file specified)
+DalvikVM - [BB]: New method call: de.ecspride.Button4/onCreate[android.os.Bundle]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[2, 3]>
+DalvikVM - [BB]: [1]<0 HALT,SUPER,extra=[null, [2, 3]]>
+DalvikVM - [BB]: [2]<1 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+DalvikVM - [BB]: [3]<0 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [2, 1]]>
+DalvikVM - [BB]: [4]<3 MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: [5]<0 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [2, 1]]>
+DalvikVM - [BB]: [6]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [7]<0 ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.telephony.TelephonyManager>
+DalvikVM - [BB]: [8]<0 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>
+DalvikVM - [BB]: [9]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [10]<0 STATIC,SPUT,r0=r1,type=java.lang.Object,extra=(de.ecspride.Button4, imei)>
+DalvikVM - [BB]: [11]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame de.ecspride.Button4/onCreate[android.os.Bundle]
+newStackFrame - [BB]: Add frame StackFrame de.ecspride.Button4/onCreate[android.os.Bundle]
+newStackFrame - [BB]: Stack: [StackFrame de.ecspride.Button4/onCreate[android.os.Bundle]]
+Executor - [MSG]: New chain obj with type de.ecspride.Button4
+DalvikVM - [BB]: Superclass: de.ecspride.Button4
+Activity - [BB]: New instance of de.ecspride.Button4
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.Button4 at fu.hao.trust.dvm.VMHeap@6e7c6928
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for de.ecspride.Button4 at fu.hao.trust.dvm.VMHeap@6e7c6928
+DalvikVM - [BB]: New method call: de.ecspride.Button4/<clinit>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [2]<0 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(de.ecspride.Button4, imei)>
+DalvikVM - [BB]: [3]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame de.ecspride.Button4/<clinit>[], pc -1 stored. 
+newStackFrame - [BB]: Stack: [StackFrame de.ecspride.Button4/onCreate[android.os.Bundle]]
+DalvikVM - [MSG]: Begin run instrumented methods!
+DalvikVM - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[2, 3]>
+DalvikVM - [BB]: Add frames [StackFrame de.ecspride.Button4/<clinit>[]]
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[]> at de.ecspride.Button4/<clinit>[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0> at de.ecspride.Button4/<clinit>[]
+Executor - [DEBUG]: Mov const begin <1 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+Executor - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 2
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(de.ecspride.Button4, imei)> at de.ecspride.Button4/<clinit>[]
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button4 at fu.hao.trust.dvm.VMHeap@6e7c6928
+Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type de.ecspride.Button4
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button4 at fu.hao.trust.dvm.VMHeap@6e7c6928
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [WARN]: Type inconsistent! void java.lang.String
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: expect sput imei from de.ecspride.Button4
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: real sput 0 from fu.hao.trust.dvm.DVMClass@29dbf9c3
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD -> jump set pc to 3
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button4 at fu.hao.trust.dvm.VMHeap@6e7c6928
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type de.ecspride.Button4
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button4 at fu.hao.trust.dvm.VMHeap@6e7c6928
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 RETURN,VOID> at de.ecspride.Button4/<clinit>[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame de.ecspride.Button4/onCreate[android.os.Bundle]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame de.ecspride.Button4/onCreate[android.os.Bundle]
+DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame de.ecspride.Button4/onCreate[android.os.Bundle]
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@6e7c6928
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@6e7c6928
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@6e7c6928
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@6e7c6928
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@6e7c6928
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@6e7c6928
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@6e7c6928
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@6e7c6928
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@6e7c6928
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.Context
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@6e7c6928
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.ContextWrapper
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@6e7c6928
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@6e7c6928
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type de.ecspride.Button4
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.Button4 at fu.hao.trust.dvm.VMHeap@6e7c6928
+Activity - [BB]: Not empty constructor
+DalvikVM - [BB]: New method call: de.ecspride.Button4/<init>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[0]>
+DalvikVM - [BB]: [1]<0 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]>
+DalvikVM - [BB]: [2]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame de.ecspride.Button4/<init>[], pc -1 stored. 
+newStackFrame - [BB]: Stack: [StackFrame de.ecspride.Button4/onCreate[android.os.Bundle]]
+DalvikVM - [MSG]: Begin run instrumented methods!
+DalvikVM - [MSG]: <0 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [2, 1]]>
+DalvikVM - [BB]: Add frames [StackFrame de.ecspride.Button4/<init>[]]
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[0]> at de.ecspride.Button4/<init>[]
+Executor - [DEBUG]: params: Activity:instance number 1@de.ecspride.Button4
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]> at de.ecspride.Button4/<init>[]
+Executor - [MSG]: arg0 obj: Activity:instance number 1@de.ecspride.Button4
+Executor - [BB]: java.lang.Object/<init>[] is a constructor!
+Executor - [WARN]: Reflection error: de.ecspride.Button4
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 2
+TaintSumBranch - [BB]: <java.lang.Object: void <init>()>
+TaintSumBranch - [DEBUG]: Not a taint call: <java.lang.Object: void <init>()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 RETURN,VOID> at de.ecspride.Button4/<init>[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame de.ecspride.Button4/onCreate[android.os.Bundle]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame de.ecspride.Button4/onCreate[android.os.Bundle]
+DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame de.ecspride.Button4/onCreate[android.os.Bundle]
+Activity - [BB]: New Activity Created with type de.ecspride.Button4
+Executor - [MSG]: RUN BEGIN de.ecspride.Button4/onCreate[android.os.Bundle]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> execute set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[2, 3]> at de.ecspride.Button4/onCreate[android.os.Bundle]
+Executor - [WARN]: NULL CallingCtx!
+Executor - [DEBUG]: args: Activity:instance number 1@de.ecspride.Button4
+Executor - [BB]: Start param from 1
+Executor - [DEBUG]: args: null
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 HALT,SUPER,extra=[null, [2, 3]]> at de.ecspride.Button4/onCreate[android.os.Bundle]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_HALT -> jump set pc to 2
+Executor - [MSG]: Cannot resolve the invocation
+TaintSumBranch - [BB]: Not a taint op <1 HALT,SUPER,extra=[null, [2, 3]]>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040> at de.ecspride.Button4/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Mov const begin <2 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+Executor - [DEBUG]: data: 2130903040 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 3
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [2, 1]]> at de.ecspride.Button4/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: Activity:instance number 1@de.ecspride.Button4
+Executor - [DEBUG]: Reflction class: class android.app.Activity
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg1: 2130903040
+Executor - [DEBUG]: Expected para type: int
+Executor - [DEBUG]: Real para int, value: 2130903040
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: Activity:instance number 1@de.ecspride.Button4, from class: class android.app.Activity
+Executor - [MSG]: Reflction invocation public void android.app.Activity.setContentView(int)
+DalvikVM - [BB]: Set reflective call: public void android.app.Activity.setContentView(int)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 4
+TaintSumBranch - [BB]: <android.app.Activity: void setContentView(int)>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.app.Activity: void setContentView(int)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <4 MOV,CONST,dst=r1,type=java.lang.String,extra="phone"> at de.ecspride.Button4/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Mov const begin <4 MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: ar1 (2130903040, void), (phone, java.lang.String)
+Executor - [DEBUG]: data: phone class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 5
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <5 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [2, 1]]> at de.ecspride.Button4/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: Activity:instance number 1@de.ecspride.Button4
+Executor - [DEBUG]: Reflction class: class android.content.Context
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg1: phone
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: Activity:instance number 1@de.ecspride.Button4, from class: class android.app.Activity
+Executor - [DEBUG]: Return data: android.telephony.TelephonyManager@114bc6a3 ,class android.telephony.TelephonyManager
+Executor - [MSG]: Reflction invocation public java.lang.Object android.content.Context.getSystemService(java.lang.String)
+DalvikVM - [BB]: Set reflective call: public java.lang.Object android.content.Context.getSystemService(java.lang.String)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 6
+TaintSumBranch - [BB]: <android.content.Context: java.lang.Object getSystemService(java.lang.String)>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.content.Context: java.lang.Object getSystemService(java.lang.String)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <6 MOV,RESULT,dst=r0,type=java.lang.Object> at de.ecspride.Button4/onCreate[android.os.Bundle]
+OP_MOV_RESULT - [BB]: Result data: android.telephony.TelephonyManager@114bc6a3
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.TelephonyManager@114bc6a3, type: java.lang.Object, to [reg 0@Button4/onCreate]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 7
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <7 ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.telephony.TelephonyManager> at de.ecspride.Button4/onCreate[android.os.Bundle]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARITHETIC -> jump set pc to 8
+TaintSumBranch - [BB]: Not a taint op <7 ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.telephony.TelephonyManager>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]> at de.ecspride.Button4/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: android.telephony.TelephonyManager@114bc6a3
+Executor - [DEBUG]: Reflction class: class android.telephony.TelephonyManager
+Executor - [DEBUG]: Return data: 359874043116909 ,class java.lang.String
+Executor - [MSG]: Reflction invocation public java.lang.String android.telephony.TelephonyManager.getDeviceId()
+DalvikVM - [BB]: Set reflective call: public java.lang.String android.telephony.TelephonyManager.getDeviceId()
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 9
+TaintSumBranch - [BB]: <android.telephony.TelephonyManager: java.lang.String getDeviceId()>
+TaintSumBranch - [WARN]: Found a tainted return value!
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Global RetReg]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <9 MOV,RESULT,dst=r1,type=java.lang.Object> at de.ecspride.Button4/onCreate[android.os.Bundle]
+DalvikVM - [BB]: ar1 (phone, java.lang.String), (359874043116909, java.lang.String)
+OP_MOV_RESULT - [BB]: Result data: 359874043116909
+OP_MOV_RESULT - [DEBUG]: Result data: 359874043116909, type: java.lang.String, to [reg 1@Button4/onCreate]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 10
+TaintSumBranch - [BB]: <8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>
+TaintSumBranch - [BB]: Add reg 1 due to ret reg.
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 1@Button4/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <10 STATIC,SPUT,r0=r1,type=java.lang.Object,extra=(de.ecspride.Button4, imei)> at de.ecspride.Button4/onCreate[android.os.Bundle]
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button4 at fu.hao.trust.dvm.VMHeap@6e7c6928
+Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type de.ecspride.Button4
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button4 at fu.hao.trust.dvm.VMHeap@6e7c6928
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: expect sput imei from de.ecspride.Button4
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: real sput 359874043116909 from fu.hao.trust.dvm.DVMClass@29dbf9c3
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD -> jump set pc to 11
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button4 at fu.hao.trust.dvm.VMHeap@6e7c6928
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type de.ecspride.Button4
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass de.ecspride.Button4 at fu.hao.trust.dvm.VMHeap@6e7c6928
+TaintSumBranch - [BB]: SPut at [reg 1@Button4/onCreate]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 1@Button4/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <11 RETURN,VOID> at de.ecspride.Button4/onCreate[android.os.Bundle]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack []
+DalvikVM - [BB]: Back to the last stack frame.null
+DalvikVM - [BB]: New method call: de.ecspride.Button4/sendMessage[android.view.View]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[6, 7]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [2]<0 STATIC,SGET,r0=r1,type=java.lang.Object,extra=(de.ecspride.Button4, imei)>
+DalvikVM - [BB]: [3]<2 MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?1>
+DalvikVM - [BB]: [4]<0 INVOKE,STATIC,extra=[android.widget.Toast/makeText[android.content.Context, java.lang.CharSequence, int], [6, 1, 3]]>
+DalvikVM - [BB]: [5]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [6]<0 INVOKE,VIRTUAL,extra=[android.widget.Toast/show[], [1]]>
+DalvikVM - [BB]: [7]<0 INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]>
+DalvikVM - [BB]: [8]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [9]<8 MOV,CONST,dst=r1,type=java.lang.String,extra="+49">
+DalvikVM - [BB]: [10]<0 STATIC,SGET,r0=r3,type=java.lang.Object,extra=(de.ecspride.Button4, imei)>
+DalvikVM - [BB]: [11]<0 MOV,REG,dst=r4,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [12]<0 MOV,REG,dst=r5,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [13]<0 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]>
+DalvikVM - [BB]: [14]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame de.ecspride.Button4/sendMessage[android.view.View]
+newStackFrame - [BB]: Add frame StackFrame de.ecspride.Button4/sendMessage[android.view.View]
+newStackFrame - [BB]: Stack: [StackFrame de.ecspride.Button4/sendMessage[android.view.View]]
+Caller@4: addEventFrame@fu.hao.trust.dvm.DalvikVM - [BB]: getClass de.ecspride.Button4 at fu.hao.trust.dvm.VMHeap@6e7c6928
+Caller: addEventFrame@fu.hao.trust.dvm.DalvikVM - [BB]: Get DVMClass for type de.ecspride.Button4
+Caller@4: addEventFrame@fu.hao.trust.dvm.DalvikVM - [BB]: getClass de.ecspride.Button4 at fu.hao.trust.dvm.VMHeap@6e7c6928
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> execute set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[6, 7]> at de.ecspride.Button4/sendMessage[android.view.View]
+Executor - [DEBUG]: params: Activity:instance number 1@de.ecspride.Button4
+Executor - [DEBUG]: params: Empty!
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+TaintSumBranch - [BB]: Copy 359874043116909 as tainted.
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<0 INVOKE,VIRTUAL,extra="android.telephony.TelephonyManager/getDeviceId[], [0]">}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0> at de.ecspride.Button4/sendMessage[android.view.View]
+Executor - [DEBUG]: Mov const begin <1 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+Executor - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 2
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<0 INVOKE,VIRTUAL,extra="android.telephony.TelephonyManager/getDeviceId[], [0]">}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 STATIC,SGET,r0=r1,type=java.lang.Object,extra=(de.ecspride.Button4, imei)> at de.ecspride.Button4/sendMessage[android.view.View]
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.Button4 at fu.hao.trust.dvm.VMHeap@6e7c6928
+Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type de.ecspride.Button4
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.Button4 at fu.hao.trust.dvm.VMHeap@6e7c6928
+OP_STATIC_GET_FIELD - [DEBUG]: Sget 359874043116909, from fu.hao.trust.dvm.DVMClass@29dbf9c3
+OP_STATIC_GET_FIELD - [DEBUG]: Expect sget imei, a java.lang.String from de.ecspride.Button4
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD -> jump set pc to 3
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.Button4 at fu.hao.trust.dvm.VMHeap@6e7c6928
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type de.ecspride.Button4
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.Button4 at fu.hao.trust.dvm.VMHeap@6e7c6928
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 1@Button4/sendMessage]=<0 INVOKE,VIRTUAL,extra="android.telephony.TelephonyManager/getDeviceId[], [0]">, 359874043116909=<0 INVOKE,VIRTUAL,extra="android.telephony.TelephonyManager/getDeviceId[], [0]">}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?1> at de.ecspride.Button4/sendMessage[android.view.View]
+Executor - [DEBUG]: Mov const begin <3 MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?1>
+Executor - [DEBUG]: data: 1 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 4
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 1@Button4/sendMessage]=<0 INVOKE,VIRTUAL,extra="android.telephony.TelephonyManager/getDeviceId[], [0]">, 359874043116909=<0 INVOKE,VIRTUAL,extra="android.telephony.TelephonyManager/getDeviceId[], [0]">}
+Executor - [MSG]: 
+
+Executor - [MSG]: <4 INVOKE,STATIC,extra=[android.widget.Toast/makeText[android.content.Context, java.lang.CharSequence, int], [6, 1, 3]]> at de.ecspride.Button4/sendMessage[android.view.View]
+Executor - [DEBUG]: Reflction class android.widget.Toast
+Executor - [BB]: arg0@reg6: Activity:instance number 1@de.ecspride.Button4
+Executor - [BB]: arg1@reg1: 359874043116909
+Executor - [BB]: arg2@reg3: 1
+Executor - [DEBUG]: Expected para type: int
+Executor - [DEBUG]: Real para int, value: 1
+Executor - [BB]: param: Activity:instance number 1@de.ecspride.Button4
+Executor - [BB]: param: 359874043116909
+Executor - [BB]: param: 1
+Executor - [MSG]: reflction invocation public static android.widget.Toast android.widget.Toast.makeText(android.content.Context,java.lang.CharSequence,int)
+DalvikVM - [BB]: Set reflective call: public static android.widget.Toast android.widget.Toast.makeText(android.content.Context,java.lang.CharSequence,int)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INVOKE_STATIC -> jump set pc to 5
+TaintSumBranch - [BB]: <android.widget.Toast: android.widget.Toast makeText(android.content.Context,java.lang.CharSequence,int)>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.widget.Toast: android.widget.Toast makeText(android.content.Context,java.lang.CharSequence,int)>
+TaintSumBranch - [WARN]: Found a tainted return val!
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 1@Button4/sendMessage]=<0 INVOKE,VIRTUAL,extra="android.telephony.TelephonyManager/getDeviceId[], [0]">, 359874043116909=<0 INVOKE,VIRTUAL,extra="android.telephony.TelephonyManager/getDeviceId[], [0]">, [Global RetReg]=<0 INVOKE,VIRTUAL,extra="android.telephony.TelephonyManager/getDeviceId[], [0]">, android.widget.Toast@7e4c974d=<0 INVOKE,VIRTUAL,extra="android.telephony.TelephonyManager/getDeviceId[], [0]">}
+Executor - [MSG]: 
+
+Executor - [MSG]: <5 MOV,RESULT,dst=r1,type=java.lang.Object> at de.ecspride.Button4/sendMessage[android.view.View]
+DalvikVM - [BB]: ar1 (359874043116909, java.lang.String), (android.widget.Toast@7e4c974d, android.widget.Toast)
+OP_MOV_RESULT - [BB]: Result data: android.widget.Toast@7e4c974d
+OP_MOV_RESULT - [DEBUG]: Result data: android.widget.Toast@7e4c974d, type: android.widget.Toast, to [reg 1@Button4/sendMessage]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 6
+TaintSumBranch - [BB]: <0 INVOKE,VIRTUAL,extra="android.telephony.TelephonyManager/getDeviceId[], [0]">
+TaintSumBranch - [BB]: Add reg 1 due to ret reg.
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 1@Button4/sendMessage]=<0 INVOKE,VIRTUAL,extra="android.telephony.TelephonyManager/getDeviceId[], [0]">, 359874043116909=<0 INVOKE,VIRTUAL,extra="android.telephony.TelephonyManager/getDeviceId[], [0]">, android.widget.Toast@7e4c974d=<0 INVOKE,VIRTUAL,extra="android.telephony.TelephonyManager/getDeviceId[], [0]">}
+Executor - [MSG]: 
+
+Executor - [MSG]: <6 INVOKE,VIRTUAL,extra=[android.widget.Toast/show[], [1]]> at de.ecspride.Button4/sendMessage[android.view.View]
+Executor - [MSG]: arg0 obj: android.widget.Toast@7e4c974d
+Executor - [DEBUG]: Reflction class: class android.widget.Toast
+Executor - [MSG]: Reflction invocation public void android.widget.Toast.show()
+DalvikVM - [BB]: Set reflective call: public void android.widget.Toast.show()
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 7
+TaintSumBranch - [BB]: <android.widget.Toast: void show()>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.widget.Toast: void show()>
+TaintSumBranch - [WARN]: Found a tainted return val!
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 1@Button4/sendMessage]=<0 INVOKE,VIRTUAL,extra="android.telephony.TelephonyManager/getDeviceId[], [0]">, 359874043116909=<0 INVOKE,VIRTUAL,extra="android.telephony.TelephonyManager/getDeviceId[], [0]">, [Global RetReg]=<0 INVOKE,VIRTUAL,extra="android.telephony.TelephonyManager/getDeviceId[], [0]">, android.widget.Toast@7e4c974d=<0 INVOKE,VIRTUAL,extra="android.telephony.TelephonyManager/getDeviceId[], [0]">}
+Executor - [MSG]: 
+
+Executor - [MSG]: <7 INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]> at de.ecspride.Button4/sendMessage[android.view.View]
+Executor - [DEBUG]: Reflction class android.telephony.SmsManager
+Executor - [MSG]: reflction invocation public static android.telephony.SmsManager android.telephony.SmsManager.getDefault()
+DalvikVM - [BB]: Set reflective call: public static android.telephony.SmsManager android.telephony.SmsManager.getDefault()
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INVOKE_STATIC -> jump set pc to 8
+TaintSumBranch - [BB]: <android.telephony.SmsManager: android.telephony.SmsManager getDefault()>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.telephony.SmsManager: android.telephony.SmsManager getDefault()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 1@Button4/sendMessage]=<0 INVOKE,VIRTUAL,extra="android.telephony.TelephonyManager/getDeviceId[], [0]">, 359874043116909=<0 INVOKE,VIRTUAL,extra="android.telephony.TelephonyManager/getDeviceId[], [0]">, android.widget.Toast@7e4c974d=<0 INVOKE,VIRTUAL,extra="android.telephony.TelephonyManager/getDeviceId[], [0]">}
+Executor - [MSG]: 
+
+Executor - [MSG]: <8 MOV,RESULT,dst=r0,type=java.lang.Object> at de.ecspride.Button4/sendMessage[android.view.View]
+OP_MOV_RESULT - [BB]: Result data: android.telephony.SmsManager@56618102
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.SmsManager@56618102, type: android.telephony.SmsManager, to [reg 0@Button4/sendMessage]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 9
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 1@Button4/sendMessage]=<0 INVOKE,VIRTUAL,extra="android.telephony.TelephonyManager/getDeviceId[], [0]">, 359874043116909=<0 INVOKE,VIRTUAL,extra="android.telephony.TelephonyManager/getDeviceId[], [0]">, android.widget.Toast@7e4c974d=<0 INVOKE,VIRTUAL,extra="android.telephony.TelephonyManager/getDeviceId[], [0]">}
+Executor - [MSG]: 
+
+Executor - [MSG]: <9 MOV,CONST,dst=r1,type=java.lang.String,extra="+49"> at de.ecspride.Button4/sendMessage[android.view.View]
+Executor - [DEBUG]: Mov const begin <9 MOV,CONST,dst=r1,type=java.lang.String,extra="+49">
+DalvikVM - [BB]: ar1 (android.widget.Toast@7e4c974d, android.widget.Toast), (+49, java.lang.String)
+Executor - [DEBUG]: data: +49 class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 10
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<0 INVOKE,VIRTUAL,extra="android.telephony.TelephonyManager/getDeviceId[], [0]">, android.widget.Toast@7e4c974d=<0 INVOKE,VIRTUAL,extra="android.telephony.TelephonyManager/getDeviceId[], [0]">}
+Executor - [MSG]: 
+
+Executor - [MSG]: <10 STATIC,SGET,r0=r3,type=java.lang.Object,extra=(de.ecspride.Button4, imei)> at de.ecspride.Button4/sendMessage[android.view.View]
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.Button4 at fu.hao.trust.dvm.VMHeap@6e7c6928
+Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type de.ecspride.Button4
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.Button4 at fu.hao.trust.dvm.VMHeap@6e7c6928
+DalvikVM - [BB]: ar3 (1, void), (359874043116909, java.lang.String)
+OP_STATIC_GET_FIELD - [DEBUG]: Sget 359874043116909, from fu.hao.trust.dvm.DVMClass@29dbf9c3
+OP_STATIC_GET_FIELD - [DEBUG]: Expect sget imei, a java.lang.String from de.ecspride.Button4
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD -> jump set pc to 11
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.Button4 at fu.hao.trust.dvm.VMHeap@6e7c6928
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type de.ecspride.Button4
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass de.ecspride.Button4 at fu.hao.trust.dvm.VMHeap@6e7c6928
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<0 INVOKE,VIRTUAL,extra="android.telephony.TelephonyManager/getDeviceId[], [0]">, [reg 3@Button4/sendMessage]=<0 INVOKE,VIRTUAL,extra="android.telephony.TelephonyManager/getDeviceId[], [0]">, android.widget.Toast@7e4c974d=<0 INVOKE,VIRTUAL,extra="android.telephony.TelephonyManager/getDeviceId[], [0]">}
+Executor - [MSG]: 
+
+Executor - [MSG]: <11 MOV,REG,dst=r4,r0=r2,type=java.lang.Object> at de.ecspride.Button4/sendMessage[android.view.View]
+class fu.hao.trust.dvm.Executor$OP_MOVE_REG - [DEBUG]: mov 0 to 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOVE_REG -> jump set pc to 12
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<0 INVOKE,VIRTUAL,extra="android.telephony.TelephonyManager/getDeviceId[], [0]">, android.widget.Toast@7e4c974d=<0 INVOKE,VIRTUAL,extra="android.telephony.TelephonyManager/getDeviceId[], [0]">, [reg 3@Button4/sendMessage]=<0 INVOKE,VIRTUAL,extra="android.telephony.TelephonyManager/getDeviceId[], [0]">}
+Executor - [MSG]: 
+
+Executor - [MSG]: <12 MOV,REG,dst=r5,r0=r2,type=java.lang.Object> at de.ecspride.Button4/sendMessage[android.view.View]
+class fu.hao.trust.dvm.Executor$OP_MOVE_REG - [DEBUG]: mov 0 to 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOVE_REG -> jump set pc to 13
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<0 INVOKE,VIRTUAL,extra="android.telephony.TelephonyManager/getDeviceId[], [0]">, [reg 3@Button4/sendMessage]=<0 INVOKE,VIRTUAL,extra="android.telephony.TelephonyManager/getDeviceId[], [0]">, android.widget.Toast@7e4c974d=<0 INVOKE,VIRTUAL,extra="android.telephony.TelephonyManager/getDeviceId[], [0]">}
+Executor - [MSG]: 
+
+Executor - [MSG]: <13 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]> at de.ecspride.Button4/sendMessage[android.view.View]
+Executor - [MSG]: arg0 obj: android.telephony.SmsManager@56618102
+Executor - [DEBUG]: Reflction class: class android.telephony.SmsManager
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg1: +49
+Executor - [BB]: arg2@reg2: 0
+Executor - [WARN]: Mismatch type! arg 2, real para type: class patdroid.core.PrimitiveInfo, expected para type: class java.lang.String
+Executor - [BB]: arg3@reg3: 359874043116909
+Executor - [BB]: arg4@reg4: 0
+Executor - [WARN]: Mismatch type! arg 4, real para type: class patdroid.core.PrimitiveInfo, expected para type: class android.app.PendingIntent
+Executor - [BB]: arg5@reg5: 0
+Executor - [WARN]: Mismatch type! arg 5, real para type: class patdroid.core.PrimitiveInfo, expected para type: class android.app.PendingIntent
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: android.telephony.SmsManager@56618102, from class: class android.telephony.SmsManager
+Executor - [MSG]: Reflction invocation public void android.telephony.SmsManager.sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)
+DalvikVM - [BB]: Set reflective call: public void android.telephony.SmsManager.sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 14
+TaintSumBranch - [BB]: <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>
+TaintSumBranch - [BB]: Found a sink invocation. <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>
+TaintSumBranch - [WARN]: Found a taint sink <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)> leaking data [359874043116909] at reg 3!!!
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<0 INVOKE,VIRTUAL,extra="android.telephony.TelephonyManager/getDeviceId[], [0]">, [reg 3@Button4/sendMessage]=<0 INVOKE,VIRTUAL,extra="android.telephony.TelephonyManager/getDeviceId[], [0]">, android.widget.Toast@7e4c974d=<0 INVOKE,VIRTUAL,extra="android.telephony.TelephonyManager/getDeviceId[], [0]">}
+Executor - [MSG]: 
+
+Executor - [MSG]: <14 RETURN,VOID> at de.ecspride.Button4/sendMessage[android.view.View]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack []
+DalvikVM - [BB]: Back to the last stack frame.null
+Executor - [MSG]: RUN DONE! The last one is sendMessage
+DalvikVM - [MSG]: FINISHED!
+
+main - [MSG]: output/Button4.apk\Button4.apk_SrcTaintedFields.csv
+main - [MSG]: Analysis has run for 1.275724013 seconds
+

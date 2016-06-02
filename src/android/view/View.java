@@ -6,6 +6,7 @@ import fu.hao.trust.dvm.DalvikVM;
 
 public class View extends DVMObject {
 	int color;
+	String hint = "";
 	
 	class OnClickListener {
 		
@@ -39,4 +40,12 @@ public class View extends DVMObject {
 	public void setType() {
 		
 	}
+	
+    public final void setHint(CharSequence hint) {
+       this.hint = hint.toString(); 
+    }
+    
+    public CharSequence getHint() {
+       return hint;
+    }
 }

@@ -21,7 +21,11 @@ public class BenchCallbackTests {
 	
 	@Test
 	public void testCallbacks_Button1() {
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Callbacks_Button1/app/";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Button1/app/";
+		args[1] = "srcEventChains";
+		Main.main(args);
+		
+		args[1] = "sinkEventChains";
 		Main.main(args);
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
@@ -31,8 +35,38 @@ public class BenchCallbackTests {
 	}
 	
 	@Test
-	public void atestCallbacks_Button2() {
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Callbacks_Button2/app/";
+	public void testCallbacks_Button2() {
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Button2/app/";
+		args[1] = "srcEventChains";
+		Main.main(args);
+		
+		args[1] = "sinkEventChains";
+		Main.main(args);
+		assertEquals(false, Results.results.isEmpty());
+		Map<String, String> res = new HashMap<>();
+		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
+				"359874043116909");
+		assertEquals(true, Results.results.contains(res));
+	}
+	
+	@Test
+	public void testCallbacks_Button3() {
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Button3/app/";
+		args[1] = "srcEventChains";
+		Main.main(args);
+		
+		args[1] = "sinkEventChains";
+		Main.main(args);
+		assertEquals(true, Results.results.isEmpty());
+	}
+	
+	@Test
+	public void testCallbacks_Button4() {
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Button4/app/";
+		args[1] = "srcEventChains";
+		Main.main(args);
+		
+		args[1] = "sinkEventChains";
 		Main.main(args);
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();

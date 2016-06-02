@@ -1057,6 +1057,7 @@ public class DalvikVM {
 
 			// Init tainted fields
 			if (Settings.isInitTaintedFields()) {
+				// FIXME can be other types
 				Map<String, Pair<Object, Instruction>> taintedFields = Settings
 						.getTaintedFields(obj.getType());
 				ClassInfo type = obj.getType();
