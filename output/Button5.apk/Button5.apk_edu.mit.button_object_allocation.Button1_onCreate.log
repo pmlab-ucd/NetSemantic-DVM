@@ -1,0 +1,1759 @@
+main - [MSG]: Src Chain: []
+main - [DEBUG]: Src Entry event: (edu.mit.button_object_allocation.Button1, onCreate)
+DalvikVM - [MSG]: Begin run onCreate at C:\Users\hao\workspace\DroidBenchProj\Button5\app\Button5.apk
+DalvikVM - [MSG]: RUN Method edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Read manifest csv: output/Button5.apk\Button5.apk_manifest.csv
+Executor - [WARN]: output\Button5.apk\Button5.apk_manifest.csv (The system cannot find the file specified)
+DalvikVM - [BB]: New method call: edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[2, 3]>
+DalvikVM - [BB]: [1]<0 HALT,SUPER,extra=[null, [2, 3]]>
+DalvikVM - [BB]: [2]<1 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+DalvikVM - [BB]: [3]<0 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [2, 1]]>
+DalvikVM - [BB]: [4]<3 MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: [5]<0 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [2, 1]]>
+DalvikVM - [BB]: [6]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [7]<0 ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.telephony.TelephonyManager>
+DalvikVM - [BB]: [8]<0 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>
+DalvikVM - [BB]: [9]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [10]<0 STATIC,SPUT,r0=r1,type=java.lang.Object,extra=(edu.mit.button_object_allocation.Button1, imei)>
+DalvikVM - [BB]: [11]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+newStackFrame - [BB]: Add frame StackFrame edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+newStackFrame - [BB]: Stack: [StackFrame edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]]
+Executor - [MSG]: New chain obj with type edu.mit.button_object_allocation.Button1
+DalvikVM - [BB]: Superclass: edu.mit.button_object_allocation.Button1
+Activity - [BB]: New instance of edu.mit.button_object_allocation.Button1
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@2f9a13d9
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@2f9a13d9
+DalvikVM - [BB]: New method call: edu.mit.button_object_allocation.Button1/<clinit>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [2]<0 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(edu.mit.button_object_allocation.Button1, imei)>
+DalvikVM - [BB]: [3]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.button_object_allocation.Button1/<clinit>[], pc -1 stored. 
+newStackFrame - [BB]: Stack: [StackFrame edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]]
+DalvikVM - [MSG]: Begin run instrumented methods!
+DalvikVM - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[2, 3]>
+DalvikVM - [BB]: Add frames [StackFrame edu.mit.button_object_allocation.Button1/<clinit>[]]
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[]> at edu.mit.button_object_allocation.Button1/<clinit>[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0> at edu.mit.button_object_allocation.Button1/<clinit>[]
+Executor - [DEBUG]: Mov const begin <1 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+Executor - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 2
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(edu.mit.button_object_allocation.Button1, imei)> at edu.mit.button_object_allocation.Button1/<clinit>[]
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@2f9a13d9
+Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type edu.mit.button_object_allocation.Button1
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@2f9a13d9
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [WARN]: Type inconsistent! void java.lang.String
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: expect sput imei from edu.mit.button_object_allocation.Button1
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: real sput 0 from fu.hao.trust.dvm.DVMClass@7c2999bb
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD -> jump set pc to 3
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@2f9a13d9
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type edu.mit.button_object_allocation.Button1
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@2f9a13d9
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 RETURN,VOID> at edu.mit.button_object_allocation.Button1/<clinit>[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@2f9a13d9
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@2f9a13d9
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@2f9a13d9
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@2f9a13d9
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@2f9a13d9
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@2f9a13d9
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@2f9a13d9
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@2f9a13d9
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@2f9a13d9
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.Context
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@2f9a13d9
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.ContextWrapper
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@2f9a13d9
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@2f9a13d9
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type edu.mit.button_object_allocation.Button1
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@2f9a13d9
+Activity - [BB]: Not empty constructor
+DalvikVM - [BB]: New method call: edu.mit.button_object_allocation.Button1/<init>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[0]>
+DalvikVM - [BB]: [1]<0 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]>
+DalvikVM - [BB]: [2]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.button_object_allocation.Button1/<init>[], pc -1 stored. 
+newStackFrame - [BB]: Stack: [StackFrame edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]]
+DalvikVM - [MSG]: Begin run instrumented methods!
+DalvikVM - [MSG]: <0 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [2, 1]]>
+DalvikVM - [BB]: Add frames [StackFrame edu.mit.button_object_allocation.Button1/<init>[]]
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[0]> at edu.mit.button_object_allocation.Button1/<init>[]
+Executor - [DEBUG]: params: Activity:instance number 1@edu.mit.button_object_allocation.Button1
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]> at edu.mit.button_object_allocation.Button1/<init>[]
+Executor - [MSG]: arg0 obj: Activity:instance number 1@edu.mit.button_object_allocation.Button1
+Executor - [BB]: java.lang.Object/<init>[] is a constructor!
+Executor - [WARN]: Reflection error: edu.mit.button_object_allocation.Button1
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 2
+TaintSumBranch - [BB]: <java.lang.Object: void <init>()>
+TaintSumBranch - [DEBUG]: Not a taint call: <java.lang.Object: void <init>()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 RETURN,VOID> at edu.mit.button_object_allocation.Button1/<init>[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+Activity - [BB]: New Activity Created with type edu.mit.button_object_allocation.Button1
+Executor - [MSG]: RUN BEGIN edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> execute set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[2, 3]> at edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+Executor - [WARN]: NULL CallingCtx!
+Executor - [DEBUG]: args: Activity:instance number 1@edu.mit.button_object_allocation.Button1
+Executor - [BB]: Start param from 1
+Executor - [DEBUG]: args: null
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 HALT,SUPER,extra=[null, [2, 3]]> at edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_HALT -> jump set pc to 2
+Executor - [MSG]: Cannot resolve the invocation
+TaintSumBranch - [BB]: Not a taint op <1 HALT,SUPER,extra=[null, [2, 3]]>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040> at edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Mov const begin <2 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+Executor - [DEBUG]: data: 2130903040 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 3
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [2, 1]]> at edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: Activity:instance number 1@edu.mit.button_object_allocation.Button1
+Executor - [DEBUG]: Reflction class: class android.app.Activity
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg1: 2130903040
+Executor - [DEBUG]: Expected para type: int
+Executor - [DEBUG]: Real para int, value: 2130903040
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: Activity:instance number 1@edu.mit.button_object_allocation.Button1, from class: class android.app.Activity
+Executor - [MSG]: Reflction invocation public void android.app.Activity.setContentView(int)
+DalvikVM - [BB]: Set reflective call: public void android.app.Activity.setContentView(int)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 4
+TaintSumBranch - [BB]: <android.app.Activity: void setContentView(int)>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.app.Activity: void setContentView(int)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <4 MOV,CONST,dst=r1,type=java.lang.String,extra="phone"> at edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Mov const begin <4 MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: ar1 (2130903040, void), (phone, java.lang.String)
+Executor - [DEBUG]: data: phone class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 5
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <5 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [2, 1]]> at edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: Activity:instance number 1@edu.mit.button_object_allocation.Button1
+Executor - [DEBUG]: Reflction class: class android.content.Context
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg1: phone
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: Activity:instance number 1@edu.mit.button_object_allocation.Button1, from class: class android.app.Activity
+Executor - [DEBUG]: Return data: android.telephony.TelephonyManager@4f9b8989 ,class android.telephony.TelephonyManager
+Executor - [MSG]: Reflction invocation public java.lang.Object android.content.Context.getSystemService(java.lang.String)
+DalvikVM - [BB]: Set reflective call: public java.lang.Object android.content.Context.getSystemService(java.lang.String)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 6
+TaintSumBranch - [BB]: <android.content.Context: java.lang.Object getSystemService(java.lang.String)>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.content.Context: java.lang.Object getSystemService(java.lang.String)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <6 MOV,RESULT,dst=r0,type=java.lang.Object> at edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+OP_MOV_RESULT - [BB]: Result data: android.telephony.TelephonyManager@4f9b8989
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.TelephonyManager@4f9b8989, type: java.lang.Object, to [reg 0@Button1/onCreate]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 7
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <7 ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.telephony.TelephonyManager> at edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARITHETIC -> jump set pc to 8
+TaintSumBranch - [BB]: Not a taint op <7 ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.telephony.TelephonyManager>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]> at edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: android.telephony.TelephonyManager@4f9b8989
+Executor - [DEBUG]: Reflction class: class android.telephony.TelephonyManager
+Executor - [DEBUG]: Return data: 359874043116909 ,class java.lang.String
+Executor - [MSG]: Reflction invocation public java.lang.String android.telephony.TelephonyManager.getDeviceId()
+DalvikVM - [BB]: Set reflective call: public java.lang.String android.telephony.TelephonyManager.getDeviceId()
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 9
+TaintSumBranch - [BB]: <android.telephony.TelephonyManager: java.lang.String getDeviceId()>
+TaintSumBranch - [WARN]: Found a tainted return value!
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Global RetReg]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <9 MOV,RESULT,dst=r1,type=java.lang.Object> at edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+DalvikVM - [BB]: ar1 (phone, java.lang.String), (359874043116909, java.lang.String)
+OP_MOV_RESULT - [BB]: Result data: 359874043116909
+OP_MOV_RESULT - [DEBUG]: Result data: 359874043116909, type: java.lang.String, to [reg 1@Button1/onCreate]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 10
+TaintSumBranch - [BB]: <8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>
+TaintSumBranch - [BB]: Add reg 1 due to ret reg.
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 1@Button1/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <10 STATIC,SPUT,r0=r1,type=java.lang.Object,extra=(edu.mit.button_object_allocation.Button1, imei)> at edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@2f9a13d9
+Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type edu.mit.button_object_allocation.Button1
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@2f9a13d9
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: expect sput imei from edu.mit.button_object_allocation.Button1
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: real sput 359874043116909 from fu.hao.trust.dvm.DVMClass@7c2999bb
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD -> jump set pc to 11
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@2f9a13d9
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type edu.mit.button_object_allocation.Button1
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@2f9a13d9
+TaintSumBranch - [BB]: SPut at [reg 1@Button1/onCreate]
+Results - [MSG]: Set new tainted heap loc true
+Results - [MSG]: New recorded tainted field: edu.mit.button_object_allocation.Button1/imei
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 1@Button1/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <11 RETURN,VOID> at edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack []
+DalvikVM - [BB]: Back to the last stack frame.null
+Executor - [MSG]: RUN DONE! The last one is onCreate
+Executor - [MSG]: newChain: [(edu.mit.button_object_allocation.Button1, onCreate)]
+Executor - [MSG]: Add chain [(edu.mit.button_object_allocation.Button1, onCreate), (lastStop, lastStop), (edu.mit.button_object_allocation.Button1, sendMessage)]
+DalvikVM - [MSG]: FINISHED!
+
+main - [MSG]: output/Button5.apk\Button5.apk_SrcTaintedFields.csv
+main - [MSG]: hhas false
+main - [DEBUG]: Generated Entry event: [(edu.mit.button_object_allocation.Button1, onCreate), (lastStop, lastStop), (edu.mit.button_object_allocation.Button1, sendMessage)]
+DalvikVM - [MSG]: Begin run onCreate at C:\Users\hao\workspace\DroidBenchProj\Button5\app\Button5.apk
+DalvikVM - [MSG]: RUN Method edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Read manifest csv: output/Button5.apk\Button5.apk_manifest.csv
+Executor - [WARN]: output\Button5.apk\Button5.apk_manifest.csv (The system cannot find the file specified)
+DalvikVM - [BB]: New method call: edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[2, 3]>
+DalvikVM - [BB]: [1]<0 HALT,SUPER,extra=[null, [2, 3]]>
+DalvikVM - [BB]: [2]<1 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+DalvikVM - [BB]: [3]<0 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [2, 1]]>
+DalvikVM - [BB]: [4]<3 MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: [5]<0 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [2, 1]]>
+DalvikVM - [BB]: [6]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [7]<0 ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.telephony.TelephonyManager>
+DalvikVM - [BB]: [8]<0 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>
+DalvikVM - [BB]: [9]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [10]<0 STATIC,SPUT,r0=r1,type=java.lang.Object,extra=(edu.mit.button_object_allocation.Button1, imei)>
+DalvikVM - [BB]: [11]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+newStackFrame - [BB]: Add frame StackFrame edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+newStackFrame - [BB]: Stack: [StackFrame edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]]
+Executor - [MSG]: New chain obj with type edu.mit.button_object_allocation.Button1
+DalvikVM - [BB]: Superclass: edu.mit.button_object_allocation.Button1
+Activity - [BB]: New instance of edu.mit.button_object_allocation.Button1
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@6611d7b8
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@6611d7b8
+DalvikVM - [BB]: New method call: edu.mit.button_object_allocation.Button1/<clinit>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [2]<0 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(edu.mit.button_object_allocation.Button1, imei)>
+DalvikVM - [BB]: [3]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.button_object_allocation.Button1/<clinit>[], pc -1 stored. 
+newStackFrame - [BB]: Stack: [StackFrame edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]]
+DalvikVM - [MSG]: Begin run instrumented methods!
+DalvikVM - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[2, 3]>
+DalvikVM - [BB]: Add frames [StackFrame edu.mit.button_object_allocation.Button1/<clinit>[]]
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[]> at edu.mit.button_object_allocation.Button1/<clinit>[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0> at edu.mit.button_object_allocation.Button1/<clinit>[]
+Executor - [DEBUG]: Mov const begin <1 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+Executor - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 2
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(edu.mit.button_object_allocation.Button1, imei)> at edu.mit.button_object_allocation.Button1/<clinit>[]
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@6611d7b8
+Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type edu.mit.button_object_allocation.Button1
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@6611d7b8
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [WARN]: Type inconsistent! void java.lang.String
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: expect sput imei from edu.mit.button_object_allocation.Button1
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: real sput 0 from fu.hao.trust.dvm.DVMClass@1d69a562
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD -> jump set pc to 3
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@6611d7b8
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type edu.mit.button_object_allocation.Button1
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@6611d7b8
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 RETURN,VOID> at edu.mit.button_object_allocation.Button1/<clinit>[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@6611d7b8
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@6611d7b8
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@6611d7b8
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@6611d7b8
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@6611d7b8
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@6611d7b8
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@6611d7b8
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@6611d7b8
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@6611d7b8
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.Context
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@6611d7b8
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.ContextWrapper
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@6611d7b8
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@6611d7b8
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type edu.mit.button_object_allocation.Button1
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@6611d7b8
+Activity - [BB]: Not empty constructor
+DalvikVM - [BB]: New method call: edu.mit.button_object_allocation.Button1/<init>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[0]>
+DalvikVM - [BB]: [1]<0 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]>
+DalvikVM - [BB]: [2]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.button_object_allocation.Button1/<init>[], pc -1 stored. 
+newStackFrame - [BB]: Stack: [StackFrame edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]]
+DalvikVM - [MSG]: Begin run instrumented methods!
+DalvikVM - [MSG]: <0 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [2, 1]]>
+DalvikVM - [BB]: Add frames [StackFrame edu.mit.button_object_allocation.Button1/<init>[]]
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[0]> at edu.mit.button_object_allocation.Button1/<init>[]
+Executor - [DEBUG]: params: Activity:instance number 1@edu.mit.button_object_allocation.Button1
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]> at edu.mit.button_object_allocation.Button1/<init>[]
+Executor - [MSG]: arg0 obj: Activity:instance number 1@edu.mit.button_object_allocation.Button1
+Executor - [BB]: java.lang.Object/<init>[] is a constructor!
+Executor - [WARN]: Reflection error: edu.mit.button_object_allocation.Button1
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 2
+TaintSumBranch - [BB]: <java.lang.Object: void <init>()>
+TaintSumBranch - [DEBUG]: Not a taint call: <java.lang.Object: void <init>()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 RETURN,VOID> at edu.mit.button_object_allocation.Button1/<init>[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+Activity - [BB]: New Activity Created with type edu.mit.button_object_allocation.Button1
+Executor - [MSG]: RUN BEGIN edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> execute set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[2, 3]> at edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+Executor - [WARN]: NULL CallingCtx!
+Executor - [DEBUG]: args: Activity:instance number 1@edu.mit.button_object_allocation.Button1
+Executor - [BB]: Start param from 1
+Executor - [DEBUG]: args: null
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 HALT,SUPER,extra=[null, [2, 3]]> at edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_HALT -> jump set pc to 2
+Executor - [MSG]: Cannot resolve the invocation
+TaintSumBranch - [BB]: Not a taint op <1 HALT,SUPER,extra=[null, [2, 3]]>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040> at edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Mov const begin <2 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+Executor - [DEBUG]: data: 2130903040 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 3
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [2, 1]]> at edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: Activity:instance number 1@edu.mit.button_object_allocation.Button1
+Executor - [DEBUG]: Reflction class: class android.app.Activity
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg1: 2130903040
+Executor - [DEBUG]: Expected para type: int
+Executor - [DEBUG]: Real para int, value: 2130903040
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: Activity:instance number 1@edu.mit.button_object_allocation.Button1, from class: class android.app.Activity
+Executor - [MSG]: Reflction invocation public void android.app.Activity.setContentView(int)
+DalvikVM - [BB]: Set reflective call: public void android.app.Activity.setContentView(int)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 4
+TaintSumBranch - [BB]: <android.app.Activity: void setContentView(int)>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.app.Activity: void setContentView(int)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <4 MOV,CONST,dst=r1,type=java.lang.String,extra="phone"> at edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Mov const begin <4 MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: ar1 (2130903040, void), (phone, java.lang.String)
+Executor - [DEBUG]: data: phone class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 5
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <5 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [2, 1]]> at edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: Activity:instance number 1@edu.mit.button_object_allocation.Button1
+Executor - [DEBUG]: Reflction class: class android.content.Context
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg1: phone
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: Activity:instance number 1@edu.mit.button_object_allocation.Button1, from class: class android.app.Activity
+Executor - [DEBUG]: Return data: android.telephony.TelephonyManager@78f278dd ,class android.telephony.TelephonyManager
+Executor - [MSG]: Reflction invocation public java.lang.Object android.content.Context.getSystemService(java.lang.String)
+DalvikVM - [BB]: Set reflective call: public java.lang.Object android.content.Context.getSystemService(java.lang.String)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 6
+TaintSumBranch - [BB]: <android.content.Context: java.lang.Object getSystemService(java.lang.String)>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.content.Context: java.lang.Object getSystemService(java.lang.String)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <6 MOV,RESULT,dst=r0,type=java.lang.Object> at edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+OP_MOV_RESULT - [BB]: Result data: android.telephony.TelephonyManager@78f278dd
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.TelephonyManager@78f278dd, type: java.lang.Object, to [reg 0@Button1/onCreate]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 7
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <7 ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.telephony.TelephonyManager> at edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARITHETIC -> jump set pc to 8
+TaintSumBranch - [BB]: Not a taint op <7 ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.telephony.TelephonyManager>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]> at edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: android.telephony.TelephonyManager@78f278dd
+Executor - [DEBUG]: Reflction class: class android.telephony.TelephonyManager
+Executor - [DEBUG]: Return data: 359874043116909 ,class java.lang.String
+Executor - [MSG]: Reflction invocation public java.lang.String android.telephony.TelephonyManager.getDeviceId()
+DalvikVM - [BB]: Set reflective call: public java.lang.String android.telephony.TelephonyManager.getDeviceId()
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 9
+TaintSumBranch - [BB]: <android.telephony.TelephonyManager: java.lang.String getDeviceId()>
+TaintSumBranch - [WARN]: Found a tainted return value!
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Global RetReg]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <9 MOV,RESULT,dst=r1,type=java.lang.Object> at edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+DalvikVM - [BB]: ar1 (phone, java.lang.String), (359874043116909, java.lang.String)
+OP_MOV_RESULT - [BB]: Result data: 359874043116909
+OP_MOV_RESULT - [DEBUG]: Result data: 359874043116909, type: java.lang.String, to [reg 1@Button1/onCreate]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 10
+TaintSumBranch - [BB]: <8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>
+TaintSumBranch - [BB]: Add reg 1 due to ret reg.
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 1@Button1/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <10 STATIC,SPUT,r0=r1,type=java.lang.Object,extra=(edu.mit.button_object_allocation.Button1, imei)> at edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@6611d7b8
+Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type edu.mit.button_object_allocation.Button1
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@6611d7b8
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: expect sput imei from edu.mit.button_object_allocation.Button1
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: real sput 359874043116909 from fu.hao.trust.dvm.DVMClass@1d69a562
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD -> jump set pc to 11
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@6611d7b8
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type edu.mit.button_object_allocation.Button1
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@6611d7b8
+TaintSumBranch - [BB]: SPut at [reg 1@Button1/onCreate]
+Results - [MSG]: New recorded tainted field: edu.mit.button_object_allocation.Button1/imei
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 1@Button1/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <11 RETURN,VOID> at edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack []
+DalvikVM - [BB]: Back to the last stack frame.null
+Executor - [MSG]: eventMethod: lastStop
+Executor - [MSG]: eventMethod: sendMessage
+View - [BB]: New instance of android.view.View
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@6611d7b8
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.view.View at fu.hao.trust.dvm.VMHeap@6611d7b8
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@6611d7b8
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@6611d7b8
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.view.View
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@6611d7b8
+DalvikVM - [BB]: New method call: edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[6, 7]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [2]<1 MOV,CONST,dst=r3,type=java.lang.String,extra="DroidBench">
+DalvikVM - [BB]: [3]<0 MOV,REG,dst=r1,r0=r7,type=java.lang.Object>
+DalvikVM - [BB]: [4]<0 ARITHMETIC,CHECK-AND-CAST,dst=r1,type=android.widget.Button>
+DalvikVM - [BB]: [5]<0 INVOKE,VIRTUAL,extra=[android.view.View/getHint[], [1]]>
+DalvikVM - [BB]: [6]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [7]<0 INVOKE,INTERFACE,extra=[java.lang.CharSequence/toString[], [1]]>
+DalvikVM - [BB]: [8]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [9]<0 INVOKE,STATIC,extra=[android.util.Log/i[java.lang.String, java.lang.String], [3, 1]]>
+DalvikVM - [BB]: [10]<0 INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]>
+DalvikVM - [BB]: [11]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [12]<11 MOV,CONST,dst=r1,type=java.lang.String,extra="+49">
+DalvikVM - [BB]: [13]<0 MOV,REG,dst=r3,r0=r7,type=java.lang.Object>
+DalvikVM - [BB]: [14]<0 ARITHMETIC,CHECK-AND-CAST,dst=r3,type=android.widget.Button>
+DalvikVM - [BB]: [15]<0 INVOKE,VIRTUAL,extra=[android.view.View/getHint[], [3]]>
+DalvikVM - [BB]: [16]<0 MOV,RESULT,dst=r3,type=java.lang.Object>
+DalvikVM - [BB]: [17]<0 INVOKE,INTERFACE,extra=[java.lang.CharSequence/toString[], [3]]>
+DalvikVM - [BB]: [18]<0 MOV,RESULT,dst=r3,type=java.lang.Object>
+DalvikVM - [BB]: [19]<0 MOV,REG,dst=r4,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [20]<0 MOV,REG,dst=r5,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [21]<0 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]>
+DalvikVM - [BB]: [22]<0 ARITHMETIC,CHECK-AND-CAST,dst=r7,type=android.widget.Button>
+DalvikVM - [BB]: [23]<0 STATIC,SGET,r0=r1,type=java.lang.Object,extra=(edu.mit.button_object_allocation.Button1, imei)>
+DalvikVM - [BB]: [24]<0 INVOKE,VIRTUAL,extra=[android.view.View/setHint[java.lang.CharSequence], [7, 1]]>
+DalvikVM - [BB]: [25]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+newStackFrame - [BB]: Add frame StackFrame edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+newStackFrame - [BB]: Stack: [StackFrame edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> execute set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[6, 7]> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Executor - [DEBUG]: params: Activity:instance number 1@edu.mit.button_object_allocation.Button1
+Executor - [DEBUG]: params: instance number 1@android.view.View
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+TaintSumBranch - [BB]: Copy 359874043116909 as tainted.
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Executor - [DEBUG]: Mov const begin <1 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+Executor - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 2
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 MOV,CONST,dst=r3,type=java.lang.String,extra="DroidBench"> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Executor - [DEBUG]: Mov const begin <2 MOV,CONST,dst=r3,type=java.lang.String,extra="DroidBench">
+Executor - [DEBUG]: data: DroidBench class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 3
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 MOV,REG,dst=r1,r0=r7,type=java.lang.Object> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+class fu.hao.trust.dvm.Executor$OP_MOVE_REG - [DEBUG]: mov instance number 1@android.view.View to instance number 1@android.view.View
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOVE_REG -> jump set pc to 4
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <4 ARITHMETIC,CHECK-AND-CAST,dst=r1,type=android.widget.Button> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARITHETIC -> jump set pc to 5
+TaintSumBranch - [BB]: Not a taint op <4 ARITHMETIC,CHECK-AND-CAST,dst=r1,type=android.widget.Button>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <5 INVOKE,VIRTUAL,extra=[android.view.View/getHint[], [1]]> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Executor - [MSG]: arg0 obj: instance number 1@android.view.View
+Executor - [DEBUG]: Reflction class: class android.view.View
+Executor - [DEBUG]: Return data:  ,class java.lang.String
+Executor - [MSG]: Reflction invocation public java.lang.CharSequence android.view.View.getHint()
+DalvikVM - [BB]: Set reflective call: public java.lang.CharSequence android.view.View.getHint()
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 6
+TaintSumBranch - [BB]: <android.view.View: java.lang.CharSequence getHint()>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.view.View: java.lang.CharSequence getHint()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <6 MOV,RESULT,dst=r1,type=java.lang.Object> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+DalvikVM - [BB]: ar1 (instance number 1@android.view.View, android.view.View), (, java.lang.CharSequence)
+OP_MOV_RESULT - [BB]: Result data: 
+OP_MOV_RESULT - [DEBUG]: Result data: , type: java.lang.CharSequence, to [reg 1@Button1/sendMessage]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 7
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <7 INVOKE,INTERFACE,extra=[java.lang.CharSequence/toString[], [1]]> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Executor - [MSG]: arg0 obj: 
+Executor - [DEBUG]: Reflction class: interface java.lang.CharSequence
+Executor - [DEBUG]: Return data:  ,class java.lang.String
+Executor - [MSG]: Reflction invocation public abstract java.lang.String java.lang.CharSequence.toString()
+DalvikVM - [BB]: Set reflective call: public abstract java.lang.String java.lang.CharSequence.toString()
+Unknown - [BB]: Unknown created!
+DalvikVM - [BB]: ar-1 (, java.lang.String), ([Unknown var:, type: java.lang.String], java.lang.String)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 8
+TaintSumBranch - [BB]: <java.lang.CharSequence: java.lang.String toString()>
+TaintSumBranch - [DEBUG]: Not a taint call: <java.lang.CharSequence: java.lang.String toString()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <8 MOV,RESULT,dst=r1,type=java.lang.Object> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+DalvikVM - [BB]: ar1 (, java.lang.CharSequence), ([Unknown var:, type: java.lang.String], java.lang.String)
+OP_MOV_RESULT - [BB]: Result data: [Unknown var:, type: java.lang.String]
+OP_MOV_RESULT - [DEBUG]: Result data: [Unknown var:, type: java.lang.String], type: java.lang.String, to [reg 1@Button1/sendMessage]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 9
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <9 INVOKE,STATIC,extra=[android.util.Log/i[java.lang.String, java.lang.String], [3, 1]]> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Executor - [DEBUG]: Reflction class android.util.Log
+Executor - [BB]: arg0@reg3: DroidBench
+Executor - [BB]: arg1@reg1: [Unknown var:, type: java.lang.String]
+Executor - [WARN]: Mismatch type! arg 1, real para type: class fu.hao.trust.solver.Unknown, expected para type: class java.lang.String
+Executor - [DEBUG]: Found symbolic var with value: 
+Executor - [BB]: param: DroidBench
+Executor - [BB]: param: 
+Executor - [MSG]: reflction invocation public static int android.util.Log.i(java.lang.String,java.lang.String)
+DalvikVM - [BB]: Set reflective call: public static int android.util.Log.i(java.lang.String,java.lang.String)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INVOKE_STATIC -> jump set pc to 10
+TaintSumBranch - [BB]: <android.util.Log: int i(java.lang.String,java.lang.String)>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.util.Log: int i(java.lang.String,java.lang.String)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <10 INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Executor - [DEBUG]: Reflction class android.telephony.SmsManager
+Executor - [MSG]: reflction invocation public static android.telephony.SmsManager android.telephony.SmsManager.getDefault()
+DalvikVM - [BB]: Set reflective call: public static android.telephony.SmsManager android.telephony.SmsManager.getDefault()
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INVOKE_STATIC -> jump set pc to 11
+TaintSumBranch - [BB]: <android.telephony.SmsManager: android.telephony.SmsManager getDefault()>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.telephony.SmsManager: android.telephony.SmsManager getDefault()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <11 MOV,RESULT,dst=r0,type=java.lang.Object> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+OP_MOV_RESULT - [BB]: Result data: android.telephony.SmsManager@5d9a3160
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.SmsManager@5d9a3160, type: android.telephony.SmsManager, to [reg 0@Button1/sendMessage]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 12
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <12 MOV,CONST,dst=r1,type=java.lang.String,extra="+49"> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Executor - [DEBUG]: Mov const begin <12 MOV,CONST,dst=r1,type=java.lang.String,extra="+49">
+DalvikVM - [BB]: ar1 ([Unknown var:, type: java.lang.String], java.lang.String), (+49, java.lang.String)
+Executor - [DEBUG]: data: +49 class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 13
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <13 MOV,REG,dst=r3,r0=r7,type=java.lang.Object> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+DalvikVM - [BB]: ar3 (DroidBench, java.lang.String), (instance number 1@android.view.View, android.view.View)
+class fu.hao.trust.dvm.Executor$OP_MOVE_REG - [DEBUG]: mov instance number 1@android.view.View to instance number 1@android.view.View
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOVE_REG -> jump set pc to 14
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <14 ARITHMETIC,CHECK-AND-CAST,dst=r3,type=android.widget.Button> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARITHETIC -> jump set pc to 15
+TaintSumBranch - [BB]: Not a taint op <14 ARITHMETIC,CHECK-AND-CAST,dst=r3,type=android.widget.Button>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <15 INVOKE,VIRTUAL,extra=[android.view.View/getHint[], [3]]> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Executor - [MSG]: arg0 obj: instance number 1@android.view.View
+Executor - [DEBUG]: Reflction class: class android.view.View
+Executor - [DEBUG]: Return data:  ,class java.lang.String
+Executor - [MSG]: Reflction invocation public java.lang.CharSequence android.view.View.getHint()
+DalvikVM - [BB]: Set reflective call: public java.lang.CharSequence android.view.View.getHint()
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 16
+TaintSumBranch - [BB]: <android.view.View: java.lang.CharSequence getHint()>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.view.View: java.lang.CharSequence getHint()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <16 MOV,RESULT,dst=r3,type=java.lang.Object> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+DalvikVM - [BB]: ar3 (instance number 1@android.view.View, android.view.View), (, java.lang.CharSequence)
+OP_MOV_RESULT - [BB]: Result data: 
+OP_MOV_RESULT - [DEBUG]: Result data: , type: java.lang.CharSequence, to [reg 3@Button1/sendMessage]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 17
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <17 INVOKE,INTERFACE,extra=[java.lang.CharSequence/toString[], [3]]> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Executor - [MSG]: arg0 obj: 
+Executor - [DEBUG]: Reflction class: interface java.lang.CharSequence
+Executor - [DEBUG]: Return data:  ,class java.lang.String
+Executor - [MSG]: Reflction invocation public abstract java.lang.String java.lang.CharSequence.toString()
+DalvikVM - [BB]: Set reflective call: public abstract java.lang.String java.lang.CharSequence.toString()
+Unknown - [BB]: Unknown created!
+DalvikVM - [BB]: ar-1 (, java.lang.String), ([Unknown var:, type: java.lang.String], java.lang.String)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 18
+TaintSumBranch - [BB]: <java.lang.CharSequence: java.lang.String toString()>
+TaintSumBranch - [DEBUG]: Not a taint call: <java.lang.CharSequence: java.lang.String toString()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <18 MOV,RESULT,dst=r3,type=java.lang.Object> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+DalvikVM - [BB]: ar3 (, java.lang.CharSequence), ([Unknown var:, type: java.lang.String], java.lang.String)
+OP_MOV_RESULT - [BB]: Result data: [Unknown var:, type: java.lang.String]
+OP_MOV_RESULT - [DEBUG]: Result data: [Unknown var:, type: java.lang.String], type: java.lang.String, to [reg 3@Button1/sendMessage]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 19
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <19 MOV,REG,dst=r4,r0=r2,type=java.lang.Object> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+class fu.hao.trust.dvm.Executor$OP_MOVE_REG - [DEBUG]: mov 0 to 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOVE_REG -> jump set pc to 20
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <20 MOV,REG,dst=r5,r0=r2,type=java.lang.Object> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+class fu.hao.trust.dvm.Executor$OP_MOVE_REG - [DEBUG]: mov 0 to 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOVE_REG -> jump set pc to 21
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <21 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Executor - [MSG]: arg0 obj: android.telephony.SmsManager@5d9a3160
+Executor - [DEBUG]: Reflction class: class android.telephony.SmsManager
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg1: +49
+Executor - [BB]: arg2@reg2: 0
+Executor - [WARN]: Mismatch type! arg 2, real para type: class patdroid.core.PrimitiveInfo, expected para type: class java.lang.String
+Executor - [BB]: arg3@reg3: [Unknown var:, type: java.lang.String]
+Executor - [WARN]: Mismatch type! arg 3, real para type: class fu.hao.trust.solver.Unknown, expected para type: class java.lang.String
+Executor - [DEBUG]: Found symbolic var with value: 
+Executor - [BB]: arg4@reg4: 0
+Executor - [WARN]: Mismatch type! arg 4, real para type: class patdroid.core.PrimitiveInfo, expected para type: class android.app.PendingIntent
+Executor - [BB]: arg5@reg5: 0
+Executor - [WARN]: Mismatch type! arg 5, real para type: class patdroid.core.PrimitiveInfo, expected para type: class android.app.PendingIntent
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: android.telephony.SmsManager@5d9a3160, from class: class android.telephony.SmsManager
+Executor - [MSG]: Reflction invocation public void android.telephony.SmsManager.sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)
+DalvikVM - [BB]: Set reflective call: public void android.telephony.SmsManager.sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 22
+TaintSumBranch - [BB]: <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>
+TaintSumBranch - [BB]: Found a sink invocation. <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <22 ARITHMETIC,CHECK-AND-CAST,dst=r7,type=android.widget.Button> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARITHETIC -> jump set pc to 23
+TaintSumBranch - [BB]: Not a taint op <22 ARITHMETIC,CHECK-AND-CAST,dst=r7,type=android.widget.Button>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <23 STATIC,SGET,r0=r1,type=java.lang.Object,extra=(edu.mit.button_object_allocation.Button1, imei)> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@6611d7b8
+Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type edu.mit.button_object_allocation.Button1
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@6611d7b8
+DalvikVM - [BB]: ar1 (+49, java.lang.String), (359874043116909, java.lang.String)
+OP_STATIC_GET_FIELD - [DEBUG]: Sget 359874043116909, from fu.hao.trust.dvm.DVMClass@1d69a562
+OP_STATIC_GET_FIELD - [DEBUG]: Expect sget imei, a java.lang.String from edu.mit.button_object_allocation.Button1
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD -> jump set pc to 24
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@6611d7b8
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type edu.mit.button_object_allocation.Button1
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@6611d7b8
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 1@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <24 INVOKE,VIRTUAL,extra=[android.view.View/setHint[java.lang.CharSequence], [7, 1]]> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Executor - [MSG]: arg0 obj: instance number 1@android.view.View
+Executor - [DEBUG]: Reflction class: class android.view.View
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg1: 359874043116909
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: instance number 1@android.view.View, from class: class android.view.View
+DalvikVM - [BB]: New method call: android.view.View/setHint[java.lang.String]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[1, 2]>
+DalvikVM - [BB]: [1]<0 INSTANCE,IPUT,r0=r1,r1=r2,type=java.lang.Object,extra=android.view.View.hint>
+DalvikVM - [BB]: [2]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame android.view.View/setHint[java.lang.String], pc 24 stored. 
+newStackFrame - [BB]: Stack: [StackFrame edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]]
+DalvikVM - [MSG]: Begin run instrumented methods!
+DalvikVM - [MSG]: <24 INVOKE,VIRTUAL,extra=[android.view.View/setHint[java.lang.CharSequence], [7, 1]]>
+DalvikVM - [BB]: Add frames [StackFrame android.view.View/setHint[java.lang.String]]
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[1, 2]> at android.view.View/setHint[java.lang.String]
+Executor - [DEBUG]: params: instance number 1@android.view.View
+Executor - [DEBUG]: params: 359874043116909
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+TaintSumBranch - [BB]: Copy 359874043116909 as tainted.
+TaintSumBranch - [BB]: Add [reg 2@View/setHint] as tainted due to 359874043116909
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 2@View/setHint]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 INSTANCE,IPUT,r0=r1,r1=r2,type=java.lang.Object,extra=android.view.View.hint> at android.view.View/setHint[java.lang.String]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field android.view.View.hint
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@android.view.View
+View - [DEBUG]: put field 359874043116909
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data 359874043116909 to the field of instance number 1@android.view.View
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 2
+TaintSumBranch - [BB]: Add 359874043116909as tainted due to [reg 2@View/setHint]
+TaintSumBranch - [MSG]: has false
+TaintSumBranch - [MSG]: Tfields: {edu.mit.button_object_allocation.Button1/imei=(359874043116909, <8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>)}
+TaintSumBranch - [WARN]: Not equ edu.mit.button_object_allocation.Button1/imei, edu.mit.button_object_allocation.Button1/instance number 1@android.view.View/hint
+Results - [MSG]: Set new tainted heap loc true
+TaintSumBranch - [MSG]: New tainted heap loc: edu.mit.button_object_allocation.Button1/instance number 1@android.view.View/hint
+Results - [MSG]: New recorded tainted field: edu.mit.button_object_allocation.Button1/instance number 1@android.view.View/hint
+TaintSumBranch - [MSG]: has true
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 2@View/setHint]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 RETURN,VOID> at android.view.View/setHint[java.lang.String]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 1@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Executor - [MSG]: Reflction invocation public final void android.view.View.setHint(java.lang.CharSequence)
+DalvikVM - [BB]: Set reflective call: public final void android.view.View.setHint(java.lang.CharSequence)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 25
+TaintSumBranch - [BB]: <android.view.View: void setHint(java.lang.CharSequence)>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.view.View: void setHint(java.lang.CharSequence)>
+TaintSumBranch - [WARN]: Found a tainted return val!
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Global RetReg]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 1@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <25 RETURN,VOID> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack []
+DalvikVM - [BB]: Back to the last stack frame.null
+Executor - [MSG]: RUN DONE! The last one is sendMessage
+Executor - [MSG]: newChain: [(edu.mit.button_object_allocation.Button1, onCreate), (edu.mit.button_object_allocation.Button1, sendMessage)]
+Executor - [MSG]: Add chain [(edu.mit.button_object_allocation.Button1, onCreate), (edu.mit.button_object_allocation.Button1, sendMessage), (lastStop, lastStop), (edu.mit.button_object_allocation.Button1, sendMessage)]
+DalvikVM - [MSG]: FINISHED!
+
+main - [MSG]: output/Button5.apk\Button5.apk_SrcTaintedFields.csv
+main - [MSG]: hhas false
+main - [DEBUG]: Generated Entry event: [(edu.mit.button_object_allocation.Button1, onCreate), (edu.mit.button_object_allocation.Button1, sendMessage), (lastStop, lastStop), (edu.mit.button_object_allocation.Button1, sendMessage)]
+DalvikVM - [MSG]: Begin run onCreate at C:\Users\hao\workspace\DroidBenchProj\Button5\app\Button5.apk
+DalvikVM - [MSG]: RUN Method edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Read manifest csv: output/Button5.apk\Button5.apk_manifest.csv
+Executor - [WARN]: output\Button5.apk\Button5.apk_manifest.csv (The system cannot find the file specified)
+DalvikVM - [BB]: New method call: edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[2, 3]>
+DalvikVM - [BB]: [1]<0 HALT,SUPER,extra=[null, [2, 3]]>
+DalvikVM - [BB]: [2]<1 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+DalvikVM - [BB]: [3]<0 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [2, 1]]>
+DalvikVM - [BB]: [4]<3 MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: [5]<0 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [2, 1]]>
+DalvikVM - [BB]: [6]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [7]<0 ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.telephony.TelephonyManager>
+DalvikVM - [BB]: [8]<0 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>
+DalvikVM - [BB]: [9]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [10]<0 STATIC,SPUT,r0=r1,type=java.lang.Object,extra=(edu.mit.button_object_allocation.Button1, imei)>
+DalvikVM - [BB]: [11]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+newStackFrame - [BB]: Add frame StackFrame edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+newStackFrame - [BB]: Stack: [StackFrame edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]]
+Executor - [MSG]: New chain obj with type edu.mit.button_object_allocation.Button1
+DalvikVM - [BB]: Superclass: edu.mit.button_object_allocation.Button1
+Activity - [BB]: New instance of edu.mit.button_object_allocation.Button1
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@42264dde
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@42264dde
+DalvikVM - [BB]: New method call: edu.mit.button_object_allocation.Button1/<clinit>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [2]<0 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(edu.mit.button_object_allocation.Button1, imei)>
+DalvikVM - [BB]: [3]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.button_object_allocation.Button1/<clinit>[], pc -1 stored. 
+newStackFrame - [BB]: Stack: [StackFrame edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]]
+DalvikVM - [MSG]: Begin run instrumented methods!
+DalvikVM - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[2, 3]>
+DalvikVM - [BB]: Add frames [StackFrame edu.mit.button_object_allocation.Button1/<clinit>[]]
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[]> at edu.mit.button_object_allocation.Button1/<clinit>[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0> at edu.mit.button_object_allocation.Button1/<clinit>[]
+Executor - [DEBUG]: Mov const begin <1 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+Executor - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 2
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(edu.mit.button_object_allocation.Button1, imei)> at edu.mit.button_object_allocation.Button1/<clinit>[]
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@42264dde
+Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type edu.mit.button_object_allocation.Button1
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@42264dde
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [WARN]: Type inconsistent! void java.lang.String
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: expect sput imei from edu.mit.button_object_allocation.Button1
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: real sput 0 from fu.hao.trust.dvm.DVMClass@60c24bbf
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD -> jump set pc to 3
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@42264dde
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type edu.mit.button_object_allocation.Button1
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@42264dde
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 RETURN,VOID> at edu.mit.button_object_allocation.Button1/<clinit>[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@42264dde
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@42264dde
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@42264dde
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@42264dde
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@42264dde
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@42264dde
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@42264dde
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@42264dde
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@42264dde
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.Context
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@42264dde
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.ContextWrapper
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@42264dde
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@42264dde
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type edu.mit.button_object_allocation.Button1
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@42264dde
+Activity - [BB]: Not empty constructor
+DalvikVM - [BB]: New method call: edu.mit.button_object_allocation.Button1/<init>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[0]>
+DalvikVM - [BB]: [1]<0 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]>
+DalvikVM - [BB]: [2]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.button_object_allocation.Button1/<init>[], pc -1 stored. 
+newStackFrame - [BB]: Stack: [StackFrame edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]]
+DalvikVM - [MSG]: Begin run instrumented methods!
+DalvikVM - [MSG]: <0 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [2, 1]]>
+DalvikVM - [BB]: Add frames [StackFrame edu.mit.button_object_allocation.Button1/<init>[]]
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[0]> at edu.mit.button_object_allocation.Button1/<init>[]
+Executor - [DEBUG]: params: Activity:instance number 1@edu.mit.button_object_allocation.Button1
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]> at edu.mit.button_object_allocation.Button1/<init>[]
+Executor - [MSG]: arg0 obj: Activity:instance number 1@edu.mit.button_object_allocation.Button1
+Executor - [BB]: java.lang.Object/<init>[] is a constructor!
+Executor - [WARN]: Reflection error: edu.mit.button_object_allocation.Button1
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 2
+TaintSumBranch - [BB]: <java.lang.Object: void <init>()>
+TaintSumBranch - [DEBUG]: Not a taint call: <java.lang.Object: void <init>()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 RETURN,VOID> at edu.mit.button_object_allocation.Button1/<init>[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+Activity - [BB]: New Activity Created with type edu.mit.button_object_allocation.Button1
+Executor - [MSG]: RUN BEGIN edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> execute set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[2, 3]> at edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+Executor - [WARN]: NULL CallingCtx!
+Executor - [DEBUG]: args: Activity:instance number 1@edu.mit.button_object_allocation.Button1
+Executor - [BB]: Start param from 1
+Executor - [DEBUG]: args: null
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 HALT,SUPER,extra=[null, [2, 3]]> at edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_HALT -> jump set pc to 2
+Executor - [MSG]: Cannot resolve the invocation
+TaintSumBranch - [BB]: Not a taint op <1 HALT,SUPER,extra=[null, [2, 3]]>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040> at edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Mov const begin <2 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+Executor - [DEBUG]: data: 2130903040 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 3
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [2, 1]]> at edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: Activity:instance number 1@edu.mit.button_object_allocation.Button1
+Executor - [DEBUG]: Reflction class: class android.app.Activity
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg1: 2130903040
+Executor - [DEBUG]: Expected para type: int
+Executor - [DEBUG]: Real para int, value: 2130903040
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: Activity:instance number 1@edu.mit.button_object_allocation.Button1, from class: class android.app.Activity
+Executor - [MSG]: Reflction invocation public void android.app.Activity.setContentView(int)
+DalvikVM - [BB]: Set reflective call: public void android.app.Activity.setContentView(int)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 4
+TaintSumBranch - [BB]: <android.app.Activity: void setContentView(int)>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.app.Activity: void setContentView(int)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <4 MOV,CONST,dst=r1,type=java.lang.String,extra="phone"> at edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Mov const begin <4 MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: ar1 (2130903040, void), (phone, java.lang.String)
+Executor - [DEBUG]: data: phone class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 5
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <5 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [2, 1]]> at edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: Activity:instance number 1@edu.mit.button_object_allocation.Button1
+Executor - [DEBUG]: Reflction class: class android.content.Context
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg1: phone
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: Activity:instance number 1@edu.mit.button_object_allocation.Button1, from class: class android.app.Activity
+Executor - [DEBUG]: Return data: android.telephony.TelephonyManager@7bd94799 ,class android.telephony.TelephonyManager
+Executor - [MSG]: Reflction invocation public java.lang.Object android.content.Context.getSystemService(java.lang.String)
+DalvikVM - [BB]: Set reflective call: public java.lang.Object android.content.Context.getSystemService(java.lang.String)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 6
+TaintSumBranch - [BB]: <android.content.Context: java.lang.Object getSystemService(java.lang.String)>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.content.Context: java.lang.Object getSystemService(java.lang.String)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <6 MOV,RESULT,dst=r0,type=java.lang.Object> at edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+OP_MOV_RESULT - [BB]: Result data: android.telephony.TelephonyManager@7bd94799
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.TelephonyManager@7bd94799, type: java.lang.Object, to [reg 0@Button1/onCreate]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 7
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <7 ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.telephony.TelephonyManager> at edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARITHETIC -> jump set pc to 8
+TaintSumBranch - [BB]: Not a taint op <7 ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.telephony.TelephonyManager>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]> at edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: android.telephony.TelephonyManager@7bd94799
+Executor - [DEBUG]: Reflction class: class android.telephony.TelephonyManager
+Executor - [DEBUG]: Return data: 359874043116909 ,class java.lang.String
+Executor - [MSG]: Reflction invocation public java.lang.String android.telephony.TelephonyManager.getDeviceId()
+DalvikVM - [BB]: Set reflective call: public java.lang.String android.telephony.TelephonyManager.getDeviceId()
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 9
+TaintSumBranch - [BB]: <android.telephony.TelephonyManager: java.lang.String getDeviceId()>
+TaintSumBranch - [WARN]: Found a tainted return value!
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Global RetReg]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <9 MOV,RESULT,dst=r1,type=java.lang.Object> at edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+DalvikVM - [BB]: ar1 (phone, java.lang.String), (359874043116909, java.lang.String)
+OP_MOV_RESULT - [BB]: Result data: 359874043116909
+OP_MOV_RESULT - [DEBUG]: Result data: 359874043116909, type: java.lang.String, to [reg 1@Button1/onCreate]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 10
+TaintSumBranch - [BB]: <8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>
+TaintSumBranch - [BB]: Add reg 1 due to ret reg.
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 1@Button1/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <10 STATIC,SPUT,r0=r1,type=java.lang.Object,extra=(edu.mit.button_object_allocation.Button1, imei)> at edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@42264dde
+Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type edu.mit.button_object_allocation.Button1
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@42264dde
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: expect sput imei from edu.mit.button_object_allocation.Button1
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: real sput 359874043116909 from fu.hao.trust.dvm.DVMClass@60c24bbf
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD -> jump set pc to 11
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@42264dde
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type edu.mit.button_object_allocation.Button1
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@42264dde
+TaintSumBranch - [BB]: SPut at [reg 1@Button1/onCreate]
+Results - [MSG]: New recorded tainted field: edu.mit.button_object_allocation.Button1/imei
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 1@Button1/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <11 RETURN,VOID> at edu.mit.button_object_allocation.Button1/onCreate[android.os.Bundle]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack []
+DalvikVM - [BB]: Back to the last stack frame.null
+Executor - [MSG]: eventMethod: sendMessage
+View - [BB]: New instance of android.view.View
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@42264dde
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.view.View at fu.hao.trust.dvm.VMHeap@42264dde
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@42264dde
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@42264dde
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.view.View
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@42264dde
+DalvikVM - [BB]: New method call: edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[6, 7]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [2]<1 MOV,CONST,dst=r3,type=java.lang.String,extra="DroidBench">
+DalvikVM - [BB]: [3]<0 MOV,REG,dst=r1,r0=r7,type=java.lang.Object>
+DalvikVM - [BB]: [4]<0 ARITHMETIC,CHECK-AND-CAST,dst=r1,type=android.widget.Button>
+DalvikVM - [BB]: [5]<0 INVOKE,VIRTUAL,extra=[android.view.View/getHint[], [1]]>
+DalvikVM - [BB]: [6]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [7]<0 INVOKE,INTERFACE,extra=[java.lang.CharSequence/toString[], [1]]>
+DalvikVM - [BB]: [8]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [9]<0 INVOKE,STATIC,extra=[android.util.Log/i[java.lang.String, java.lang.String], [3, 1]]>
+DalvikVM - [BB]: [10]<0 INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]>
+DalvikVM - [BB]: [11]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [12]<11 MOV,CONST,dst=r1,type=java.lang.String,extra="+49">
+DalvikVM - [BB]: [13]<0 MOV,REG,dst=r3,r0=r7,type=java.lang.Object>
+DalvikVM - [BB]: [14]<0 ARITHMETIC,CHECK-AND-CAST,dst=r3,type=android.widget.Button>
+DalvikVM - [BB]: [15]<0 INVOKE,VIRTUAL,extra=[android.view.View/getHint[], [3]]>
+DalvikVM - [BB]: [16]<0 MOV,RESULT,dst=r3,type=java.lang.Object>
+DalvikVM - [BB]: [17]<0 INVOKE,INTERFACE,extra=[java.lang.CharSequence/toString[], [3]]>
+DalvikVM - [BB]: [18]<0 MOV,RESULT,dst=r3,type=java.lang.Object>
+DalvikVM - [BB]: [19]<0 MOV,REG,dst=r4,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [20]<0 MOV,REG,dst=r5,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [21]<0 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]>
+DalvikVM - [BB]: [22]<0 ARITHMETIC,CHECK-AND-CAST,dst=r7,type=android.widget.Button>
+DalvikVM - [BB]: [23]<0 STATIC,SGET,r0=r1,type=java.lang.Object,extra=(edu.mit.button_object_allocation.Button1, imei)>
+DalvikVM - [BB]: [24]<0 INVOKE,VIRTUAL,extra=[android.view.View/setHint[java.lang.CharSequence], [7, 1]]>
+DalvikVM - [BB]: [25]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+newStackFrame - [BB]: Add frame StackFrame edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+newStackFrame - [BB]: Stack: [StackFrame edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> execute set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[6, 7]> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Executor - [DEBUG]: params: Activity:instance number 1@edu.mit.button_object_allocation.Button1
+Executor - [DEBUG]: params: instance number 1@android.view.View
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+TaintSumBranch - [BB]: Copy 359874043116909 as tainted.
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Executor - [DEBUG]: Mov const begin <1 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+Executor - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 2
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 MOV,CONST,dst=r3,type=java.lang.String,extra="DroidBench"> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Executor - [DEBUG]: Mov const begin <2 MOV,CONST,dst=r3,type=java.lang.String,extra="DroidBench">
+Executor - [DEBUG]: data: DroidBench class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 3
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 MOV,REG,dst=r1,r0=r7,type=java.lang.Object> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+class fu.hao.trust.dvm.Executor$OP_MOVE_REG - [DEBUG]: mov instance number 1@android.view.View to instance number 1@android.view.View
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOVE_REG -> jump set pc to 4
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <4 ARITHMETIC,CHECK-AND-CAST,dst=r1,type=android.widget.Button> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARITHETIC -> jump set pc to 5
+TaintSumBranch - [BB]: Not a taint op <4 ARITHMETIC,CHECK-AND-CAST,dst=r1,type=android.widget.Button>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <5 INVOKE,VIRTUAL,extra=[android.view.View/getHint[], [1]]> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Executor - [MSG]: arg0 obj: instance number 1@android.view.View
+Executor - [DEBUG]: Reflction class: class android.view.View
+Executor - [DEBUG]: Return data:  ,class java.lang.String
+Executor - [MSG]: Reflction invocation public java.lang.CharSequence android.view.View.getHint()
+DalvikVM - [BB]: Set reflective call: public java.lang.CharSequence android.view.View.getHint()
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 6
+TaintSumBranch - [BB]: <android.view.View: java.lang.CharSequence getHint()>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.view.View: java.lang.CharSequence getHint()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <6 MOV,RESULT,dst=r1,type=java.lang.Object> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+DalvikVM - [BB]: ar1 (instance number 1@android.view.View, android.view.View), (, java.lang.CharSequence)
+OP_MOV_RESULT - [BB]: Result data: 
+OP_MOV_RESULT - [DEBUG]: Result data: , type: java.lang.CharSequence, to [reg 1@Button1/sendMessage]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 7
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <7 INVOKE,INTERFACE,extra=[java.lang.CharSequence/toString[], [1]]> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Executor - [MSG]: arg0 obj: 
+Executor - [DEBUG]: Reflction class: interface java.lang.CharSequence
+Executor - [DEBUG]: Return data:  ,class java.lang.String
+Executor - [MSG]: Reflction invocation public abstract java.lang.String java.lang.CharSequence.toString()
+DalvikVM - [BB]: Set reflective call: public abstract java.lang.String java.lang.CharSequence.toString()
+Unknown - [BB]: Unknown created!
+DalvikVM - [BB]: ar-1 (, java.lang.String), ([Unknown var:, type: java.lang.String], java.lang.String)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 8
+TaintSumBranch - [BB]: <java.lang.CharSequence: java.lang.String toString()>
+TaintSumBranch - [DEBUG]: Not a taint call: <java.lang.CharSequence: java.lang.String toString()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <8 MOV,RESULT,dst=r1,type=java.lang.Object> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+DalvikVM - [BB]: ar1 (, java.lang.CharSequence), ([Unknown var:, type: java.lang.String], java.lang.String)
+OP_MOV_RESULT - [BB]: Result data: [Unknown var:, type: java.lang.String]
+OP_MOV_RESULT - [DEBUG]: Result data: [Unknown var:, type: java.lang.String], type: java.lang.String, to [reg 1@Button1/sendMessage]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 9
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <9 INVOKE,STATIC,extra=[android.util.Log/i[java.lang.String, java.lang.String], [3, 1]]> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Executor - [DEBUG]: Reflction class android.util.Log
+Executor - [BB]: arg0@reg3: DroidBench
+Executor - [BB]: arg1@reg1: [Unknown var:, type: java.lang.String]
+Executor - [WARN]: Mismatch type! arg 1, real para type: class fu.hao.trust.solver.Unknown, expected para type: class java.lang.String
+Executor - [DEBUG]: Found symbolic var with value: 
+Executor - [BB]: param: DroidBench
+Executor - [BB]: param: 
+Executor - [MSG]: reflction invocation public static int android.util.Log.i(java.lang.String,java.lang.String)
+DalvikVM - [BB]: Set reflective call: public static int android.util.Log.i(java.lang.String,java.lang.String)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INVOKE_STATIC -> jump set pc to 10
+TaintSumBranch - [BB]: <android.util.Log: int i(java.lang.String,java.lang.String)>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.util.Log: int i(java.lang.String,java.lang.String)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <10 INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Executor - [DEBUG]: Reflction class android.telephony.SmsManager
+Executor - [MSG]: reflction invocation public static android.telephony.SmsManager android.telephony.SmsManager.getDefault()
+DalvikVM - [BB]: Set reflective call: public static android.telephony.SmsManager android.telephony.SmsManager.getDefault()
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INVOKE_STATIC -> jump set pc to 11
+TaintSumBranch - [BB]: <android.telephony.SmsManager: android.telephony.SmsManager getDefault()>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.telephony.SmsManager: android.telephony.SmsManager getDefault()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <11 MOV,RESULT,dst=r0,type=java.lang.Object> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+OP_MOV_RESULT - [BB]: Result data: android.telephony.SmsManager@53635ac1
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.SmsManager@53635ac1, type: android.telephony.SmsManager, to [reg 0@Button1/sendMessage]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 12
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <12 MOV,CONST,dst=r1,type=java.lang.String,extra="+49"> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Executor - [DEBUG]: Mov const begin <12 MOV,CONST,dst=r1,type=java.lang.String,extra="+49">
+DalvikVM - [BB]: ar1 ([Unknown var:, type: java.lang.String], java.lang.String), (+49, java.lang.String)
+Executor - [DEBUG]: data: +49 class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 13
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <13 MOV,REG,dst=r3,r0=r7,type=java.lang.Object> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+DalvikVM - [BB]: ar3 (DroidBench, java.lang.String), (instance number 1@android.view.View, android.view.View)
+class fu.hao.trust.dvm.Executor$OP_MOVE_REG - [DEBUG]: mov instance number 1@android.view.View to instance number 1@android.view.View
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOVE_REG -> jump set pc to 14
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <14 ARITHMETIC,CHECK-AND-CAST,dst=r3,type=android.widget.Button> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARITHETIC -> jump set pc to 15
+TaintSumBranch - [BB]: Not a taint op <14 ARITHMETIC,CHECK-AND-CAST,dst=r3,type=android.widget.Button>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <15 INVOKE,VIRTUAL,extra=[android.view.View/getHint[], [3]]> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Executor - [MSG]: arg0 obj: instance number 1@android.view.View
+Executor - [DEBUG]: Reflction class: class android.view.View
+Executor - [DEBUG]: Return data:  ,class java.lang.String
+Executor - [MSG]: Reflction invocation public java.lang.CharSequence android.view.View.getHint()
+DalvikVM - [BB]: Set reflective call: public java.lang.CharSequence android.view.View.getHint()
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 16
+TaintSumBranch - [BB]: <android.view.View: java.lang.CharSequence getHint()>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.view.View: java.lang.CharSequence getHint()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <16 MOV,RESULT,dst=r3,type=java.lang.Object> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+DalvikVM - [BB]: ar3 (instance number 1@android.view.View, android.view.View), (, java.lang.CharSequence)
+OP_MOV_RESULT - [BB]: Result data: 
+OP_MOV_RESULT - [DEBUG]: Result data: , type: java.lang.CharSequence, to [reg 3@Button1/sendMessage]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 17
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <17 INVOKE,INTERFACE,extra=[java.lang.CharSequence/toString[], [3]]> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Executor - [MSG]: arg0 obj: 
+Executor - [DEBUG]: Reflction class: interface java.lang.CharSequence
+Executor - [DEBUG]: Return data:  ,class java.lang.String
+Executor - [MSG]: Reflction invocation public abstract java.lang.String java.lang.CharSequence.toString()
+DalvikVM - [BB]: Set reflective call: public abstract java.lang.String java.lang.CharSequence.toString()
+Unknown - [BB]: Unknown created!
+DalvikVM - [BB]: ar-1 (, java.lang.String), ([Unknown var:, type: java.lang.String], java.lang.String)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 18
+TaintSumBranch - [BB]: <java.lang.CharSequence: java.lang.String toString()>
+TaintSumBranch - [DEBUG]: Not a taint call: <java.lang.CharSequence: java.lang.String toString()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <18 MOV,RESULT,dst=r3,type=java.lang.Object> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+DalvikVM - [BB]: ar3 (, java.lang.CharSequence), ([Unknown var:, type: java.lang.String], java.lang.String)
+OP_MOV_RESULT - [BB]: Result data: [Unknown var:, type: java.lang.String]
+OP_MOV_RESULT - [DEBUG]: Result data: [Unknown var:, type: java.lang.String], type: java.lang.String, to [reg 3@Button1/sendMessage]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 19
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <19 MOV,REG,dst=r4,r0=r2,type=java.lang.Object> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+class fu.hao.trust.dvm.Executor$OP_MOVE_REG - [DEBUG]: mov 0 to 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOVE_REG -> jump set pc to 20
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <20 MOV,REG,dst=r5,r0=r2,type=java.lang.Object> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+class fu.hao.trust.dvm.Executor$OP_MOVE_REG - [DEBUG]: mov 0 to 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOVE_REG -> jump set pc to 21
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <21 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Executor - [MSG]: arg0 obj: android.telephony.SmsManager@53635ac1
+Executor - [DEBUG]: Reflction class: class android.telephony.SmsManager
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg1: +49
+Executor - [BB]: arg2@reg2: 0
+Executor - [WARN]: Mismatch type! arg 2, real para type: class patdroid.core.PrimitiveInfo, expected para type: class java.lang.String
+Executor - [BB]: arg3@reg3: [Unknown var:, type: java.lang.String]
+Executor - [WARN]: Mismatch type! arg 3, real para type: class fu.hao.trust.solver.Unknown, expected para type: class java.lang.String
+Executor - [DEBUG]: Found symbolic var with value: 
+Executor - [BB]: arg4@reg4: 0
+Executor - [WARN]: Mismatch type! arg 4, real para type: class patdroid.core.PrimitiveInfo, expected para type: class android.app.PendingIntent
+Executor - [BB]: arg5@reg5: 0
+Executor - [WARN]: Mismatch type! arg 5, real para type: class patdroid.core.PrimitiveInfo, expected para type: class android.app.PendingIntent
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: android.telephony.SmsManager@53635ac1, from class: class android.telephony.SmsManager
+Executor - [MSG]: Reflction invocation public void android.telephony.SmsManager.sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)
+DalvikVM - [BB]: Set reflective call: public void android.telephony.SmsManager.sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 22
+TaintSumBranch - [BB]: <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>
+TaintSumBranch - [BB]: Found a sink invocation. <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <22 ARITHMETIC,CHECK-AND-CAST,dst=r7,type=android.widget.Button> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARITHETIC -> jump set pc to 23
+TaintSumBranch - [BB]: Not a taint op <22 ARITHMETIC,CHECK-AND-CAST,dst=r7,type=android.widget.Button>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <23 STATIC,SGET,r0=r1,type=java.lang.Object,extra=(edu.mit.button_object_allocation.Button1, imei)> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@42264dde
+Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type edu.mit.button_object_allocation.Button1
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@42264dde
+DalvikVM - [BB]: ar1 (+49, java.lang.String), (359874043116909, java.lang.String)
+OP_STATIC_GET_FIELD - [DEBUG]: Sget 359874043116909, from fu.hao.trust.dvm.DVMClass@60c24bbf
+OP_STATIC_GET_FIELD - [DEBUG]: Expect sget imei, a java.lang.String from edu.mit.button_object_allocation.Button1
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD -> jump set pc to 24
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@42264dde
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type edu.mit.button_object_allocation.Button1
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@42264dde
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 1@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <24 INVOKE,VIRTUAL,extra=[android.view.View/setHint[java.lang.CharSequence], [7, 1]]> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Executor - [MSG]: arg0 obj: instance number 1@android.view.View
+Executor - [DEBUG]: Reflction class: class android.view.View
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg1: 359874043116909
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: instance number 1@android.view.View, from class: class android.view.View
+DalvikVM - [BB]: New method call: android.view.View/setHint[java.lang.String]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[1, 2]>
+DalvikVM - [BB]: [1]<0 INSTANCE,IPUT,r0=r1,r1=r2,type=java.lang.Object,extra=android.view.View.hint>
+DalvikVM - [BB]: [2]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame android.view.View/setHint[java.lang.String], pc 24 stored. 
+newStackFrame - [BB]: Stack: [StackFrame edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]]
+DalvikVM - [MSG]: Begin run instrumented methods!
+DalvikVM - [MSG]: <24 INVOKE,VIRTUAL,extra=[android.view.View/setHint[java.lang.CharSequence], [7, 1]]>
+DalvikVM - [BB]: Add frames [StackFrame android.view.View/setHint[java.lang.String]]
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[1, 2]> at android.view.View/setHint[java.lang.String]
+Executor - [DEBUG]: params: instance number 1@android.view.View
+Executor - [DEBUG]: params: 359874043116909
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+TaintSumBranch - [BB]: Copy 359874043116909 as tainted.
+TaintSumBranch - [BB]: Add [reg 2@View/setHint] as tainted due to 359874043116909
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 2@View/setHint]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 INSTANCE,IPUT,r0=r1,r1=r2,type=java.lang.Object,extra=android.view.View.hint> at android.view.View/setHint[java.lang.String]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field android.view.View.hint
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@android.view.View
+View - [DEBUG]: put field 359874043116909
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data 359874043116909 to the field of instance number 1@android.view.View
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 2
+TaintSumBranch - [BB]: Add 359874043116909as tainted due to [reg 2@View/setHint]
+TaintSumBranch - [MSG]: has false
+TaintSumBranch - [MSG]: Tfields: {edu.mit.button_object_allocation.Button1/imei=(359874043116909, <8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>)}
+Results - [MSG]: New recorded tainted field: edu.mit.button_object_allocation.Button1/instance number 1@android.view.View/hint
+TaintSumBranch - [MSG]: has false
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 2@View/setHint]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 RETURN,VOID> at android.view.View/setHint[java.lang.String]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 1@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Executor - [MSG]: Reflction invocation public final void android.view.View.setHint(java.lang.CharSequence)
+DalvikVM - [BB]: Set reflective call: public final void android.view.View.setHint(java.lang.CharSequence)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 25
+TaintSumBranch - [BB]: <android.view.View: void setHint(java.lang.CharSequence)>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.view.View: void setHint(java.lang.CharSequence)>
+TaintSumBranch - [WARN]: Found a tainted return val!
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 1@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Global RetReg]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <25 RETURN,VOID> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack []
+DalvikVM - [BB]: Back to the last stack frame.null
+Executor - [MSG]: eventMethod: lastStop
+Executor - [MSG]: eventMethod: sendMessage
+DalvikVM - [BB]: New method call: edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[6, 7]>
+DalvikVM - [BB]: [1]<1 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [2]<2 MOV,CONST,dst=r3,type=java.lang.String,extra="DroidBench">
+DalvikVM - [BB]: [3]<3 MOV,REG,dst=r1,r0=r7,type=java.lang.Object>
+DalvikVM - [BB]: [4]<4 ARITHMETIC,CHECK-AND-CAST,dst=r1,type=android.widget.Button>
+DalvikVM - [BB]: [5]<5 INVOKE,VIRTUAL,extra=[android.view.View/getHint[], [1]]>
+DalvikVM - [BB]: [6]<6 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [7]<7 INVOKE,INTERFACE,extra=[java.lang.CharSequence/toString[], [1]]>
+DalvikVM - [BB]: [8]<8 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [9]<9 INVOKE,STATIC,extra=[android.util.Log/i[java.lang.String, java.lang.String], [3, 1]]>
+DalvikVM - [BB]: [10]<10 INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]>
+DalvikVM - [BB]: [11]<11 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [12]<12 MOV,CONST,dst=r1,type=java.lang.String,extra="+49">
+DalvikVM - [BB]: [13]<13 MOV,REG,dst=r3,r0=r7,type=java.lang.Object>
+DalvikVM - [BB]: [14]<14 ARITHMETIC,CHECK-AND-CAST,dst=r3,type=android.widget.Button>
+DalvikVM - [BB]: [15]<15 INVOKE,VIRTUAL,extra=[android.view.View/getHint[], [3]]>
+DalvikVM - [BB]: [16]<16 MOV,RESULT,dst=r3,type=java.lang.Object>
+DalvikVM - [BB]: [17]<17 INVOKE,INTERFACE,extra=[java.lang.CharSequence/toString[], [3]]>
+DalvikVM - [BB]: [18]<18 MOV,RESULT,dst=r3,type=java.lang.Object>
+DalvikVM - [BB]: [19]<19 MOV,REG,dst=r4,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [20]<20 MOV,REG,dst=r5,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [21]<21 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]>
+DalvikVM - [BB]: [22]<22 ARITHMETIC,CHECK-AND-CAST,dst=r7,type=android.widget.Button>
+DalvikVM - [BB]: [23]<23 STATIC,SGET,r0=r1,type=java.lang.Object,extra=(edu.mit.button_object_allocation.Button1, imei)>
+DalvikVM - [BB]: [24]<24 INVOKE,VIRTUAL,extra=[android.view.View/setHint[java.lang.CharSequence], [7, 1]]>
+DalvikVM - [BB]: [25]<25 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+newStackFrame - [BB]: Add frame StackFrame edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+newStackFrame - [BB]: Stack: [StackFrame edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> execute set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[6, 7]> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Executor - [DEBUG]: params: Activity:instance number 1@edu.mit.button_object_allocation.Button1
+Executor - [DEBUG]: params: instance number 1@android.view.View
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+TaintSumBranch - [BB]: Copy 359874043116909 as tainted.
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Executor - [DEBUG]: Mov const begin <1 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+Executor - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 2
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 MOV,CONST,dst=r3,type=java.lang.String,extra="DroidBench"> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Executor - [DEBUG]: Mov const begin <2 MOV,CONST,dst=r3,type=java.lang.String,extra="DroidBench">
+Executor - [DEBUG]: data: DroidBench class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 3
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 MOV,REG,dst=r1,r0=r7,type=java.lang.Object> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+class fu.hao.trust.dvm.Executor$OP_MOVE_REG - [DEBUG]: mov instance number 1@android.view.View to instance number 1@android.view.View
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOVE_REG -> jump set pc to 4
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <4 ARITHMETIC,CHECK-AND-CAST,dst=r1,type=android.widget.Button> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARITHETIC -> jump set pc to 5
+TaintSumBranch - [BB]: Not a taint op <4 ARITHMETIC,CHECK-AND-CAST,dst=r1,type=android.widget.Button>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <5 INVOKE,VIRTUAL,extra=[android.view.View/getHint[], [1]]> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Executor - [MSG]: arg0 obj: instance number 1@android.view.View
+Executor - [DEBUG]: Reflction class: class android.view.View
+Executor - [DEBUG]: Return data: 359874043116909 ,class java.lang.String
+Executor - [MSG]: Reflction invocation public java.lang.CharSequence android.view.View.getHint()
+DalvikVM - [BB]: Set reflective call: public java.lang.CharSequence android.view.View.getHint()
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 6
+TaintSumBranch - [BB]: <android.view.View: java.lang.CharSequence getHint()>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.view.View: java.lang.CharSequence getHint()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <6 MOV,RESULT,dst=r1,type=java.lang.Object> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+DalvikVM - [BB]: ar1 (instance number 1@android.view.View, android.view.View), (359874043116909, java.lang.CharSequence)
+OP_MOV_RESULT - [BB]: Result data: 359874043116909
+OP_MOV_RESULT - [DEBUG]: Result data: 359874043116909, type: java.lang.CharSequence, to [reg 1@Button1/sendMessage]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 7
+TaintSumBranch - [BB]: Add reg 1 due to ret data.
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 1@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <7 INVOKE,INTERFACE,extra=[java.lang.CharSequence/toString[], [1]]> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Executor - [MSG]: arg0 obj: 359874043116909
+Executor - [DEBUG]: Reflction class: interface java.lang.CharSequence
+Executor - [DEBUG]: Return data: 359874043116909 ,class java.lang.String
+Executor - [MSG]: Reflction invocation public abstract java.lang.String java.lang.CharSequence.toString()
+DalvikVM - [BB]: Set reflective call: public abstract java.lang.String java.lang.CharSequence.toString()
+Unknown - [BB]: Unknown created!
+DalvikVM - [BB]: ar-1 (359874043116909, java.lang.String), ([Unknown var:359874043116909, type: java.lang.String], java.lang.String)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 8
+TaintSumBranch - [BB]: <java.lang.CharSequence: java.lang.String toString()>
+TaintSumBranch - [DEBUG]: Not a taint call: <java.lang.CharSequence: java.lang.String toString()>
+TaintSumBranch - [WARN]: Found a tainted return val!
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Unknown var:359874043116909, type: java.lang.String]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Global RetReg]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 1@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <8 MOV,RESULT,dst=r1,type=java.lang.Object> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+DalvikVM - [BB]: ar1 (359874043116909, java.lang.CharSequence), ([Unknown var:359874043116909, type: java.lang.String], java.lang.String)
+OP_MOV_RESULT - [BB]: Result data: [Unknown var:359874043116909, type: java.lang.String]
+OP_MOV_RESULT - [DEBUG]: Result data: [Unknown var:359874043116909, type: java.lang.String], type: java.lang.String, to [reg 1@Button1/sendMessage]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 9
+TaintSumBranch - [BB]: <8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>
+TaintSumBranch - [BB]: Add reg 1 due to ret reg.
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Unknown var:359874043116909, type: java.lang.String]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 1@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <9 INVOKE,STATIC,extra=[android.util.Log/i[java.lang.String, java.lang.String], [3, 1]]> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Executor - [DEBUG]: Reflction class android.util.Log
+Executor - [BB]: arg0@reg3: DroidBench
+Executor - [BB]: arg1@reg1: [Unknown var:359874043116909, type: java.lang.String]
+Executor - [WARN]: Mismatch type! arg 1, real para type: class fu.hao.trust.solver.Unknown, expected para type: class java.lang.String
+Executor - [DEBUG]: Found symbolic var with value: 359874043116909
+Executor - [BB]: param: DroidBench
+Executor - [BB]: param: 359874043116909
+Executor - [MSG]: reflction invocation public static int android.util.Log.i(java.lang.String,java.lang.String)
+DalvikVM - [BB]: Set reflective call: public static int android.util.Log.i(java.lang.String,java.lang.String)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INVOKE_STATIC -> jump set pc to 10
+TaintSumBranch - [BB]: <android.util.Log: int i(java.lang.String,java.lang.String)>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.util.Log: int i(java.lang.String,java.lang.String)>
+TaintSumBranch - [WARN]: Found a tainted return val!
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Global RetReg]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:359874043116909, type: java.lang.String]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 1@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <10 INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Executor - [DEBUG]: Reflction class android.telephony.SmsManager
+Executor - [MSG]: reflction invocation public static android.telephony.SmsManager android.telephony.SmsManager.getDefault()
+DalvikVM - [BB]: Set reflective call: public static android.telephony.SmsManager android.telephony.SmsManager.getDefault()
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INVOKE_STATIC -> jump set pc to 11
+TaintSumBranch - [BB]: <android.telephony.SmsManager: android.telephony.SmsManager getDefault()>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.telephony.SmsManager: android.telephony.SmsManager getDefault()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Unknown var:359874043116909, type: java.lang.String]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 1@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <11 MOV,RESULT,dst=r0,type=java.lang.Object> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+OP_MOV_RESULT - [BB]: Result data: android.telephony.SmsManager@54c6552a
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.SmsManager@54c6552a, type: android.telephony.SmsManager, to [reg 0@Button1/sendMessage]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 12
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Unknown var:359874043116909, type: java.lang.String]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 1@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <12 MOV,CONST,dst=r1,type=java.lang.String,extra="+49"> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Executor - [DEBUG]: Mov const begin <12 MOV,CONST,dst=r1,type=java.lang.String,extra="+49">
+DalvikVM - [BB]: ar1 ([Unknown var:359874043116909, type: java.lang.String], java.lang.String), (+49, java.lang.String)
+Executor - [DEBUG]: data: +49 class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 13
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Unknown var:359874043116909, type: java.lang.String]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <13 MOV,REG,dst=r3,r0=r7,type=java.lang.Object> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+DalvikVM - [BB]: ar3 (DroidBench, java.lang.String), (instance number 1@android.view.View, android.view.View)
+class fu.hao.trust.dvm.Executor$OP_MOVE_REG - [DEBUG]: mov instance number 1@android.view.View to instance number 1@android.view.View
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOVE_REG -> jump set pc to 14
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Unknown var:359874043116909, type: java.lang.String]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <14 ARITHMETIC,CHECK-AND-CAST,dst=r3,type=android.widget.Button> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARITHETIC -> jump set pc to 15
+TaintSumBranch - [BB]: Not a taint op <14 ARITHMETIC,CHECK-AND-CAST,dst=r3,type=android.widget.Button>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Unknown var:359874043116909, type: java.lang.String]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <15 INVOKE,VIRTUAL,extra=[android.view.View/getHint[], [3]]> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Executor - [MSG]: arg0 obj: instance number 1@android.view.View
+Executor - [DEBUG]: Reflction class: class android.view.View
+Executor - [DEBUG]: Return data: 359874043116909 ,class java.lang.String
+Executor - [MSG]: Reflction invocation public java.lang.CharSequence android.view.View.getHint()
+DalvikVM - [BB]: Set reflective call: public java.lang.CharSequence android.view.View.getHint()
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 16
+TaintSumBranch - [BB]: <android.view.View: java.lang.CharSequence getHint()>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.view.View: java.lang.CharSequence getHint()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Unknown var:359874043116909, type: java.lang.String]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <16 MOV,RESULT,dst=r3,type=java.lang.Object> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+DalvikVM - [BB]: ar3 (instance number 1@android.view.View, android.view.View), (359874043116909, java.lang.CharSequence)
+OP_MOV_RESULT - [BB]: Result data: 359874043116909
+OP_MOV_RESULT - [DEBUG]: Result data: 359874043116909, type: java.lang.CharSequence, to [reg 3@Button1/sendMessage]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 17
+TaintSumBranch - [BB]: Add reg 3 due to ret data.
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Unknown var:359874043116909, type: java.lang.String]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <17 INVOKE,INTERFACE,extra=[java.lang.CharSequence/toString[], [3]]> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Executor - [MSG]: arg0 obj: 359874043116909
+Executor - [DEBUG]: Reflction class: interface java.lang.CharSequence
+Executor - [DEBUG]: Return data: 359874043116909 ,class java.lang.String
+Executor - [MSG]: Reflction invocation public abstract java.lang.String java.lang.CharSequence.toString()
+DalvikVM - [BB]: Set reflective call: public abstract java.lang.String java.lang.CharSequence.toString()
+Unknown - [BB]: Unknown created!
+DalvikVM - [BB]: ar-1 (359874043116909, java.lang.String), ([Unknown var:359874043116909, type: java.lang.String], java.lang.String)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 18
+TaintSumBranch - [BB]: <java.lang.CharSequence: java.lang.String toString()>
+TaintSumBranch - [DEBUG]: Not a taint call: <java.lang.CharSequence: java.lang.String toString()>
+TaintSumBranch - [WARN]: Found a tainted return val!
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Global RetReg]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:359874043116909, type: java.lang.String]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:359874043116909, type: java.lang.String]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <18 MOV,RESULT,dst=r3,type=java.lang.Object> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+DalvikVM - [BB]: ar3 (359874043116909, java.lang.CharSequence), ([Unknown var:359874043116909, type: java.lang.String], java.lang.String)
+OP_MOV_RESULT - [BB]: Result data: [Unknown var:359874043116909, type: java.lang.String]
+OP_MOV_RESULT - [DEBUG]: Result data: [Unknown var:359874043116909, type: java.lang.String], type: java.lang.String, to [reg 3@Button1/sendMessage]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 19
+TaintSumBranch - [BB]: <8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>
+TaintSumBranch - [BB]: Add reg 3 due to ret reg.
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Unknown var:359874043116909, type: java.lang.String]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:359874043116909, type: java.lang.String]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <19 MOV,REG,dst=r4,r0=r2,type=java.lang.Object> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+class fu.hao.trust.dvm.Executor$OP_MOVE_REG - [DEBUG]: mov 0 to 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOVE_REG -> jump set pc to 20
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Unknown var:359874043116909, type: java.lang.String]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:359874043116909, type: java.lang.String]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <20 MOV,REG,dst=r5,r0=r2,type=java.lang.Object> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+class fu.hao.trust.dvm.Executor$OP_MOVE_REG - [DEBUG]: mov 0 to 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOVE_REG -> jump set pc to 21
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Unknown var:359874043116909, type: java.lang.String]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:359874043116909, type: java.lang.String]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <21 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Executor - [MSG]: arg0 obj: android.telephony.SmsManager@54c6552a
+Executor - [DEBUG]: Reflction class: class android.telephony.SmsManager
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg1: +49
+Executor - [BB]: arg2@reg2: 0
+Executor - [WARN]: Mismatch type! arg 2, real para type: class patdroid.core.PrimitiveInfo, expected para type: class java.lang.String
+Executor - [BB]: arg3@reg3: [Unknown var:359874043116909, type: java.lang.String]
+Executor - [WARN]: Mismatch type! arg 3, real para type: class fu.hao.trust.solver.Unknown, expected para type: class java.lang.String
+Executor - [DEBUG]: Found symbolic var with value: 359874043116909
+Executor - [BB]: arg4@reg4: 0
+Executor - [WARN]: Mismatch type! arg 4, real para type: class patdroid.core.PrimitiveInfo, expected para type: class android.app.PendingIntent
+Executor - [BB]: arg5@reg5: 0
+Executor - [WARN]: Mismatch type! arg 5, real para type: class patdroid.core.PrimitiveInfo, expected para type: class android.app.PendingIntent
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: android.telephony.SmsManager@54c6552a, from class: class android.telephony.SmsManager
+Executor - [MSG]: Reflction invocation public void android.telephony.SmsManager.sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)
+DalvikVM - [BB]: Set reflective call: public void android.telephony.SmsManager.sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 22
+TaintSumBranch - [BB]: <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>
+TaintSumBranch - [BB]: Found a sink invocation. <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>
+TaintSumBranch - [WARN]: Found a taint sink <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)> leaking data [[Unknown var:359874043116909, type: java.lang.String]] at reg 3!!!
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Unknown var:359874043116909, type: java.lang.String]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:359874043116909, type: java.lang.String]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <22 ARITHMETIC,CHECK-AND-CAST,dst=r7,type=android.widget.Button> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARITHETIC -> jump set pc to 23
+TaintSumBranch - [BB]: Not a taint op <22 ARITHMETIC,CHECK-AND-CAST,dst=r7,type=android.widget.Button>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Unknown var:359874043116909, type: java.lang.String]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:359874043116909, type: java.lang.String]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <23 STATIC,SGET,r0=r1,type=java.lang.Object,extra=(edu.mit.button_object_allocation.Button1, imei)> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@42264dde
+Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type edu.mit.button_object_allocation.Button1
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@42264dde
+DalvikVM - [BB]: ar1 (+49, java.lang.String), (359874043116909, java.lang.String)
+OP_STATIC_GET_FIELD - [DEBUG]: Sget 359874043116909, from fu.hao.trust.dvm.DVMClass@60c24bbf
+OP_STATIC_GET_FIELD - [DEBUG]: Expect sget imei, a java.lang.String from edu.mit.button_object_allocation.Button1
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD -> jump set pc to 24
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@42264dde
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type edu.mit.button_object_allocation.Button1
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass edu.mit.button_object_allocation.Button1 at fu.hao.trust.dvm.VMHeap@42264dde
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Unknown var:359874043116909, type: java.lang.String]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 1@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:359874043116909, type: java.lang.String]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <24 INVOKE,VIRTUAL,extra=[android.view.View/setHint[java.lang.CharSequence], [7, 1]]> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Executor - [MSG]: arg0 obj: instance number 1@android.view.View
+Executor - [DEBUG]: Reflction class: class android.view.View
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg1: 359874043116909
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: instance number 1@android.view.View, from class: class android.view.View
+DalvikVM - [BB]: New method call: android.view.View/setHint[java.lang.String]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[1, 2]>
+DalvikVM - [BB]: [1]<0 INSTANCE,IPUT,r0=r1,r1=r2,type=java.lang.Object,extra=android.view.View.hint>
+DalvikVM - [BB]: [2]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame android.view.View/setHint[java.lang.String], pc 24 stored. 
+newStackFrame - [BB]: Stack: [StackFrame edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]]
+DalvikVM - [MSG]: Begin run instrumented methods!
+DalvikVM - [MSG]: <24 INVOKE,VIRTUAL,extra=[android.view.View/setHint[java.lang.CharSequence], [7, 1]]>
+DalvikVM - [BB]: Add frames [StackFrame android.view.View/setHint[java.lang.String]]
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[1, 2]> at android.view.View/setHint[java.lang.String]
+Executor - [DEBUG]: params: instance number 1@android.view.View
+Executor - [DEBUG]: params: 359874043116909
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+TaintSumBranch - [BB]: Copy [Unknown var:359874043116909, type: java.lang.String] as tainted.
+TaintSumBranch - [BB]: Copy 359874043116909 as tainted.
+TaintSumBranch - [BB]: Copy [Unknown var:359874043116909, type: java.lang.String] as tainted.
+TaintSumBranch - [BB]: Add [reg 2@View/setHint] as tainted due to 359874043116909
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Unknown var:359874043116909, type: java.lang.String]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 2@View/setHint]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:359874043116909, type: java.lang.String]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 INSTANCE,IPUT,r0=r1,r1=r2,type=java.lang.Object,extra=android.view.View.hint> at android.view.View/setHint[java.lang.String]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field android.view.View.hint
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@android.view.View
+View - [DEBUG]: put field 359874043116909
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data 359874043116909 to the field of instance number 1@android.view.View
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 2
+TaintSumBranch - [BB]: Add 359874043116909as tainted due to [reg 2@View/setHint]
+TaintSumBranch - [MSG]: has false
+TaintSumBranch - [MSG]: Tfields: {edu.mit.button_object_allocation.Button1/instance number 1@android.view.View/hint=(359874043116909, <8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>), edu.mit.button_object_allocation.Button1/imei=(359874043116909, <8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>)}
+Results - [MSG]: New recorded tainted field: edu.mit.button_object_allocation.Button1/instance number 1@android.view.View/hint
+TaintSumBranch - [MSG]: has false
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Unknown var:359874043116909, type: java.lang.String]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 2@View/setHint]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:359874043116909, type: java.lang.String]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 RETURN,VOID> at android.view.View/setHint[java.lang.String]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Unknown var:359874043116909, type: java.lang.String]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 1@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:359874043116909, type: java.lang.String]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+Executor - [MSG]: Reflction invocation public final void android.view.View.setHint(java.lang.CharSequence)
+DalvikVM - [BB]: Set reflective call: public final void android.view.View.setHint(java.lang.CharSequence)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 25
+TaintSumBranch - [BB]: <android.view.View: void setHint(java.lang.CharSequence)>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.view.View: void setHint(java.lang.CharSequence)>
+TaintSumBranch - [WARN]: Found a tainted return val!
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Global RetReg]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:359874043116909, type: java.lang.String]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 1@Button1/sendMessage]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Unknown var:359874043116909, type: java.lang.String]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <25 RETURN,VOID> at edu.mit.button_object_allocation.Button1/sendMessage[android.view.View]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack []
+DalvikVM - [BB]: Back to the last stack frame.null
+Executor - [MSG]: RUN DONE! The last one is sendMessage
+DalvikVM - [MSG]: FINISHED!
+
+main - [MSG]: output/Button5.apk\Button5.apk_SrcTaintedFields.csv
+main - [MSG]: Analysis has run for 4.863707344 seconds
+

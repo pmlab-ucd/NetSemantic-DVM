@@ -3,6 +3,7 @@ package android.myclasses;
 import android.app.Fragment;
 import android.app.ListFragment;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -39,6 +40,8 @@ public class GenInstance {
 				return new ImageView(vm, oType, id);
 			} else if (typeName.contains("ImageButton")) {
 				return new ImageButton(vm, oType, id);
+			} else if (typeName.startsWith("Button")) {
+				return new Button(vm, oType, id);
 			}
 			
 			type = type.getSuperClass();

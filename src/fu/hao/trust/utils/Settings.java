@@ -32,6 +32,7 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Queue;
 import java.util.Set;
 
 import com.opencsv.CSVReader;
@@ -73,11 +74,24 @@ public class Settings {
 	public static String logTag;
 	
 	private static List<Pair<String, String>> eventChain; 
+	private static List<Pair<String, String>> oriEventChain;
 	
 	private static boolean recordTaintedFields;
 	private static boolean initTaintedFields;
 	// <Owner, <Field, <value, srcApi>>>
 	private static Map<String, Map<String, Pair<Object, Instruction>>> srcTaintedFields;
+	
+	private static Queue<List<Pair<String, String>>> eventChains;
+	private static Queue<List<Pair<String, String>>> srcChains;
+	private static Queue<List<Pair<String, String>>> sinkChains;
+	
+	private static boolean checkNewTaintedHeapLoc;
+	
+	static {
+		eventChains = new LinkedList<>();
+		srcChains = new LinkedList<>();
+		sinkChains = new LinkedList<>();
+	}
 	
 	public static void reset() {
 		setApkPath(null);
@@ -114,7 +128,6 @@ public class Settings {
 			caller = stackTraceElements[3];
 			return "Caller: " + caller.getMethodName() + "@" + caller.getClassName(); 
 		}
-		
 		
 	}
 	
@@ -169,6 +182,7 @@ public class Settings {
 
 	public static void setEventChain(List<Pair<String, String>> eventChain) {
 		Settings.eventChain = eventChain;
+		oriEventChain = new LinkedList<>(eventChain);
 	}
 
 	public static String getOutdir() {
@@ -278,6 +292,46 @@ public class Settings {
 	
 	public static Map<String, Pair<Object, Instruction>> getTaintedFields(ClassInfo type) {
 		return srcTaintedFields.get(type.fullName);
+	}
+
+	public static Queue<List<Pair<String, String>>> getEventChains() {
+		return eventChains;
+	}
+
+	public static void setEventChains(Queue<List<Pair<String, String>>> eventChains) {
+		Settings.eventChains = eventChains;
+	}
+
+	public static Queue<List<Pair<String, String>>> getSinkChains() {
+		return sinkChains;
+	}
+
+	public static void setSinkChains(Queue<List<Pair<String, String>>> sinkChains) {
+		Settings.sinkChains = sinkChains;
+	}
+
+	public static Queue<List<Pair<String, String>>> getSrcChains() {
+		return srcChains;
+	}
+
+	public static void setSrcChains(Queue<List<Pair<String, String>>> srcChains) {
+		Settings.srcChains = srcChains;
+	}
+
+	public static List<Pair<String, String>> getOriEventChain() {
+		return oriEventChain;
+	}
+
+	public static void setOriEventChain(List<Pair<String, String>> oriEventChain) {
+		Settings.oriEventChain = oriEventChain;
+	}
+
+	public static boolean isCheckNewTaintedHeapLoc() {
+		return checkNewTaintedHeapLoc;
+	}
+
+	public static void setCheckNewTaintedHeapLoc(boolean checkNewTaintedHeapLoc) {
+		Settings.checkNewTaintedHeapLoc = checkNewTaintedHeapLoc;
 	}
 
 }

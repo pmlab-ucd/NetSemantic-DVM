@@ -7,7 +7,9 @@ import java.util.Set;
 
 import android.app.Activity;
 import patdroid.core.ClassInfo;
+import patdroid.core.MethodInfo;
 import patdroid.util.Pair;
+import fu.hao.trust.dvm.DalvikVM.StackFrame;
 import fu.hao.trust.utils.Log;
 import fu.hao.trust.utils.Settings;
 
@@ -97,12 +99,12 @@ public class SharedPreferences {
 	}
 
 	public class Editor {
-		private  SharedPreferences preference;
-		
+		private SharedPreferences preference;
+
 		Editor(SharedPreferences preference) {
 			this.preference = preference;
 		}
-		
+
 		public SharedPreferences.Editor putString(String var1, String var2) {
 			tmpData.put(var1, var2);
 			return this;
@@ -152,30 +154,23 @@ public class SharedPreferences {
 				Activity activity = Settings.getVM().getCurrtActivity();
 				ClassInfo activityClass = Settings.getVM().getCurrtActivity()
 						.getType();
-				if (Settings.getEventChain() != null
-						&& Settings.getEventChain().size() > 0) {
-					Pair<String, String> nextEvent = Settings.getEventChain()
-							.get(0);
-					String clazzName = nextEvent.getFirst();
-					String methodName = nextEvent.getSecond();
-					if (methodName.contains("onSharedPreferenceChanged")
-							&& clazzName.contains(activityClass.fullName)) {
-						// FIXME should not be only called once
-						Settings.getEventChain().remove(0);
-						@SuppressWarnings("unchecked")
-						Pair<Object, ClassInfo>[] args = (Pair<Object, ClassInfo>[]) new Pair[3];
-						args[0] = new Pair<Object, ClassInfo>(activity,
-								activityClass);
-						args[1] = new Pair<Object, ClassInfo>(
-								preference,
-								ClassInfo
-										.findClass("android.content.SharedPreferences"));
-						for (String key : tmpData.keySet()) {
-							args[2] = new Pair<Object, ClassInfo>(key,
-									ClassInfo.findClass("java.lang.String"));
-							Settings.getVM().addEventFrame(activity, args,
-									methodName);
-						}
+				MethodInfo[] sharedPreferences = activityClass
+						.findMethods("onSharedPreferenceChanged");
+				if (sharedPreferences.length > 0) {
+					@SuppressWarnings("unchecked")
+					Pair<Object, ClassInfo>[] args = (Pair<Object, ClassInfo>[]) new Pair[3];
+					args[0] = new Pair<Object, ClassInfo>(activity,
+							activityClass);
+					args[1] = new Pair<Object, ClassInfo>(
+							preference,
+							ClassInfo
+									.findClass("android.content.SharedPreferences"));
+					for (String key : tmpData.keySet()) {
+						args[2] = new Pair<Object, ClassInfo>(key,
+								ClassInfo.findClass("java.lang.String"));
+						StackFrame frame = Settings.getVM().newStackFrame(
+								activityClass, sharedPreferences[0], args, false);
+						Settings.getVM().runInstrumentedMethods(frame);
 					}
 				}
 			}
@@ -191,29 +186,24 @@ public class SharedPreferences {
 				Activity activity = Settings.getVM().getCurrtActivity();
 				ClassInfo activityClass = Settings.getVM().getCurrtActivity()
 						.getType();
-				if (Settings.getEventChain() != null
-						&& Settings.getEventChain().size() > 0) {
-					Pair<String, String> nextEvent = Settings.getEventChain()
-							.get(0);
-					String clazzName = nextEvent.getFirst();
-					String methodName = nextEvent.getSecond();
-					if (methodName.contains("onSharedPreferenceChanged")
-							&& clazzName.contains(activityClass.fullName)) {
-						// FIXME should not be only called once
-						Settings.getEventChain().remove(0);
-						@SuppressWarnings("unchecked")
-						Pair<Object, ClassInfo>[] args = (Pair<Object, ClassInfo>[]) new Pair[3];
-						args[0] = new Pair<Object, ClassInfo>(activity,
-								activityClass);
-						args[1] = new Pair<Object, ClassInfo>(
-								preference,	ClassInfo.findClass("android.content.SharedPreferences"));
-						for (String key : tmpData.keySet()) {
-							Log.bb(TAG, "tmpKey: " + key);
-							args[2] = new Pair<Object, ClassInfo>(key,
-									ClassInfo.findClass("java.lang.String"));
-							Settings.getVM().addEventFrame(activity, args,
-									methodName);
-						}
+				Log.bb(TAG, "Try to identify onSharedPreferenceChanged.");
+				MethodInfo[] sharedPreferences = activityClass
+						.findMethods("onSharedPreferenceChanged");
+				if (sharedPreferences.length > 0) {
+					@SuppressWarnings("unchecked")
+					Pair<Object, ClassInfo>[] args = (Pair<Object, ClassInfo>[]) new Pair[3];
+					args[0] = new Pair<Object, ClassInfo>(activity,
+							activityClass);
+					args[1] = new Pair<Object, ClassInfo>(
+							preference,
+							ClassInfo
+									.findClass("android.content.SharedPreferences"));
+					for (String key : tmpData.keySet()) {
+						args[2] = new Pair<Object, ClassInfo>(key,
+								ClassInfo.findClass("java.lang.String"));
+						StackFrame frame = Settings.getVM().newStackFrame(
+								activityClass, sharedPreferences[0], args, false);
+						Settings.getVM().runInstrumentedMethods(frame);
 					}
 				}
 			}

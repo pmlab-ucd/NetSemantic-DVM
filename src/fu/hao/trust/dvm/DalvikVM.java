@@ -17,6 +17,7 @@ import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.myclasses.GenInstance;
 import android.os.AsyncTask;
+import android.view.View;
 import android.widget.BaseAdapter;
 import fu.hao.trust.analysis.Plugin;
 import fu.hao.trust.analysis.PluginManager;
@@ -1044,11 +1045,17 @@ public class DalvikVM {
 			if (params == null) {
 				params = (Pair<Object, ClassInfo>[]) new Pair[mi.paramTypes.length + 1];
 				params[0] = new Pair<Object, ClassInfo>(obj, obj.type);
-
+				ClassInfo viewType = ClassInfo.findClass("android.view.View");
 				for (int i = 0; i < mi.paramTypes.length; i++) {
 					if (mi.paramTypes[i].equals(ClassInfo.primitiveInt)) {
 						params[i + 1] = new Pair<Object, ClassInfo>(
 								new PrimitiveInfo(0), ClassInfo.primitiveInt);
+					} else if (mi.paramTypes[i].isConvertibleTo(viewType)) {
+						if (getCurrtActivity().getTmpView() == null) {
+							getCurrtActivity().setTmpView(new View(this, viewType, -1));
+						}
+						params[i + 1] = new Pair<Object, ClassInfo>(
+								getCurrtActivity().getTmpView(), viewType);
 					}
 				}
 			}

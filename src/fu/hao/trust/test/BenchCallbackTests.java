@@ -25,8 +25,6 @@ public class BenchCallbackTests {
 		args[1] = "srcEventChains";
 		Main.main(args);
 		
-		args[1] = "sinkEventChains";
-		Main.main(args);
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
 		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
@@ -40,8 +38,6 @@ public class BenchCallbackTests {
 		args[1] = "srcEventChains";
 		Main.main(args);
 		
-		args[1] = "sinkEventChains";
-		Main.main(args);
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
 		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
@@ -55,8 +51,6 @@ public class BenchCallbackTests {
 		args[1] = "srcEventChains";
 		Main.main(args);
 		
-		args[1] = "sinkEventChains";
-		Main.main(args);
 		assertEquals(true, Results.results.isEmpty());
 	}
 	
@@ -66,12 +60,24 @@ public class BenchCallbackTests {
 		args[1] = "srcEventChains";
 		Main.main(args);
 		
-		args[1] = "sinkEventChains";
-		Main.main(args);
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
 		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
 				"359874043116909");
 		assertEquals(true, Results.results.contains(res));
 	}
+	
+	@Test
+	public void testCallbacks_Button5() {
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Button5/app/";
+		args[1] = "srcEventChains";
+		Main.main(args);
+		
+		assertEquals(false, Results.results.isEmpty());
+		Map<String, String> res = new HashMap<>();
+		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
+				"[Unknown var:359874043116909, type: java.lang.String]");
+		assertEquals(true, Results.results.contains(res));
+	}
+	
 }

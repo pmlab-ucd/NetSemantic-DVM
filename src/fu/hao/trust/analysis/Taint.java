@@ -886,13 +886,22 @@ public class Taint extends Plugin {
 						.getExtra();
 				ClassInfo owner = pair.first;
 				String fieldName = pair.second;
-				String fieldInfo = owner.fullName + ": " + fieldName;
+				// TODO
+				String fieldInfo = owner.fullName + "/" + fieldName;
 				DVMClass dvmClass = vm.getClass(owner);
 				if (in.containsKey(vm.getReg(inst.r0))) {
 					Log.bb(tag, "SPut at " + vm.getReg(inst.r0));
 					out.put(dvmClass.getStatField(fieldName),
 							in.get(vm.getReg(inst.r0)));
 					if (Settings.isRecordTaintedFields()) {
+
+						if (Settings.isCheckNewTaintedHeapLoc()) {
+							if (!Results.getTaintedFields().containsKey(
+									fieldInfo)) {
+								Results.setHasNewTaintedHeapLoc(true);
+							}
+						}
+
 						Results.addTaintedField(
 								fieldInfo,
 								new Pair<>(dvmClass.getStatField(fieldName), in
@@ -903,6 +912,12 @@ public class Taint extends Plugin {
 					out.put(dvmClass.getStatField(fieldName),
 							in.get(vm.getReg(inst.r0).getData()));
 					if (Settings.isRecordTaintedFields()) {
+						if (Settings.isCheckNewTaintedHeapLoc()) {
+							if (!Results.getTaintedFields().containsKey(
+									fieldInfo)) {
+								Results.setHasNewTaintedHeapLoc(true);
+							}
+						}
 						Results.addTaintedField(
 								fieldInfo,
 								new Pair<>(dvmClass.getStatField(fieldName), in
@@ -989,16 +1004,57 @@ public class Taint extends Plugin {
 				Map<Object, Instruction> out = new HashMap<>(in);
 				DVMObject obj = (DVMObject) vm.getReg(inst.r0).getData();
 				FieldInfo fieldInfo = (FieldInfo) inst.getExtra();
-				String fieldString = fieldInfo.owner + ": " + fieldInfo.fieldName;
+				// TODO
+				String fieldString;
+				if (obj.getType().isConvertibleTo(
+						ClassInfo.findClass("android.app.Activity"))) {
+					fieldString = fieldInfo.owner + "/" + fieldInfo.fieldName;
+				} else {
+					// FIXME should be the absolute path to the field, such as
+					// "Activity1/button1/imei".
+					if (vm.getCurrtActivity() != null) {
+						fieldString = vm.getCurrtActivity().getType() + "/" + obj
+							+ "/" + fieldInfo.fieldName;
+					} else {
+						fieldString = obj + "/" + fieldInfo.fieldName;
+					}
+				}
+
 				if (in.containsKey(vm.getReg(inst.r1))) {
 					out.put(obj.getFieldObj(fieldInfo),
 							in.get(vm.getReg(inst.r1)));
 					Log.bb(tag, "Add " + obj.getFieldObj(fieldInfo)
 							+ "as tainted due to " + vm.getReg(inst.r1));
+					Log.msg(tag, "has " + Results.isHasNewTaintedHeapLoc());
 					if (Settings.isRecordTaintedFields()) {
+						Log.msg(tag, "Tfields: " + Results.getTaintedFields());
+						if (Settings.isCheckNewTaintedHeapLoc()) {
+							// if
+							// (!Results.getTaintedFields().containsKey(fieldString))
+							// {
+							boolean found = false;
+							for (String str : Results.getTaintedFields()
+									.keySet()) {
+								if (str.equals(fieldString)) {
+									found = true;
+									break;
+
+								} else {
+									Log.warn(tag, "Not equ " + str + ", " + fieldString);
+								}
+							}
+							if (!found) {
+								Results.setHasNewTaintedHeapLoc(true);
+								Log.msg(tag, "New tainted heap loc: "
+										+ fieldString);
+							}
+							// }
+						}
 						Results.addTaintedField(
 								fieldString,
-								new Pair<>(obj.getFieldObj(fieldInfo), in.get(vm.getReg(inst.r1))));
+								new Pair<>(obj.getFieldObj(fieldInfo), in
+										.get(vm.getReg(inst.r1))));
+						Log.msg(tag, "has " + Results.isHasNewTaintedHeapLoc());
 					}
 				} else if (in.containsKey(vm.getReg(inst.r1).getData())) {
 					out.put(obj.getFieldObj(fieldInfo),
@@ -1007,15 +1063,27 @@ public class Taint extends Plugin {
 							+ "as tainted due to r1 data "
 							+ vm.getReg(inst.r1).getData());
 					if (Settings.isRecordTaintedFields()) {
+						Log.msg(tag, "Tfields: " + Results.getTaintedFields());
+						if (Settings.isCheckNewTaintedHeapLoc()) {
+							if (!Results.getTaintedFields().containsKey(
+									fieldString)) {
+								Results.setHasNewTaintedHeapLoc(true);
+								Log.msg(tag, "New tainted heap loc: "
+										+ fieldString);
+							}
+						}
 						Results.addTaintedField(
 								fieldString,
-								new Pair<>(obj.getFieldObj(fieldInfo), in.get(vm.getReg(inst.r1).getData())));
+								new Pair<>(obj.getFieldObj(fieldInfo), in
+										.get(vm.getReg(inst.r1).getData())));
 					}
 				} else {
 					if (obj != null
 							&& in.containsKey(obj.getFieldObj(fieldInfo))) {
 						out.remove(obj.getFieldObj(fieldInfo));
-						if (Settings.isRecordTaintedFields() && Results.getTaintedFields().containsKey(fieldString)) {
+						if (Settings.isRecordTaintedFields()
+								&& Results.getTaintedFields().containsKey(
+										fieldString)) {
 							Results.getTaintedFields().remove(fieldString);
 						}
 					}

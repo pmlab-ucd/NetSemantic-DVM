@@ -51,7 +51,7 @@ public class DVMObject {
 
 		// If the instance is implicitly initialized. 
 		Instruction inst = vm.getCurrtInst();
-		if (inst.opcode != Instruction.OP_NEW_INSTANCE) {
+		if (inst != null && inst.opcode != Instruction.OP_NEW_INSTANCE) {
 			if (inst.opcode == Instruction.OP_INVOKE_OP) {
 				Object[] extra = (Object[]) inst.getExtra();
 				MethodInfo mi = (MethodInfo) extra[0];

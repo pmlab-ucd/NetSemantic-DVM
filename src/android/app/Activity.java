@@ -30,6 +30,7 @@ public class Activity extends ContextWrapper {
 	Intent intent;
 	FragmentManager fragmentManager;
 	private static Map<Integer, ClassInfo> widgetPool;
+	private View tmpView;
 	
 	public Activity(DalvikVM vm, ClassInfo type, Intent intent) {
 		super(vm, type);
@@ -143,6 +144,14 @@ public class Activity extends ContextWrapper {
 	
 	public static Map<Integer, ClassInfo> getWidgetPool() {
 		return widgetPool;
+	}
+
+	public View getTmpView() {
+		return tmpView;
+	}
+
+	public void setTmpView(View tmpView) {
+		this.tmpView = tmpView;
 	}
 	
 }

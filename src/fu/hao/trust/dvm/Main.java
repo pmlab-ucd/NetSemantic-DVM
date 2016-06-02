@@ -7,7 +7,9 @@ import java.io.FileWriter;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.zip.ZipException;
 
 import patdroid.dalvik.Instruction;
@@ -106,9 +108,9 @@ public class Main {
 					}
 				}
 
-				if (args[1] != null && args[1].endsWith("EventChains")){
+				if (args[1] != null && args[1].endsWith("EventChains")) {
 					// Run callbacks
-					String csv = Settings.getStaticOutDir() 
+					String csv = Settings.getStaticOutDir()
 							+ Settings.getApkName() + "_" + args[1] + ".csv";
 					if (args[1].contains("src")) {
 						Settings.setRecordTaintedFields(true);
@@ -120,12 +122,12 @@ public class Main {
 					file = new File(csv);
 					if (file.exists()) {
 						CSVReader reader = new CSVReader(new FileReader(csv));
-						for (String[] chains : reader.readAll()) {
-							List<Pair<String, String>> eventChain = Settings
-									.getEventChain();
-							for (String sootMethod : chains) {
-								//sootMethod = sootMethod.replace("<", "");
-								//sootMethod = sootMethod.replace(">", "");
+						Queue<List<Pair<String, String>>> eventChains = Settings.getSrcChains();
+						for (String[] chain : reader.readAll()) {
+							List<Pair<String, String>> eventChain = new LinkedList<>();
+							for (String sootMethod : chain) {
+								// sootMethod = sootMethod.replace("<", "");
+								// sootMethod = sootMethod.replace(">", "");
 								String[] splited = sootMethod.split(": ");
 								String sootClass = splited[0];
 								sootMethod = splited[1];
@@ -133,14 +135,46 @@ public class Main {
 										sootClass, sootMethod);
 								eventChain.add(event);
 							}
-
+							eventChains.add(eventChain);
+						}
+						reader.close();
+						
+						csv = Settings.getStaticOutDir()
+								+ Settings.getApkName() + "_sinkEventChains.csv";
+						
+						reader = new CSVReader(new FileReader(csv));
+						eventChains = Settings.getSinkChains();
+						for (String[] chain : reader.readAll()) {
+							List<Pair<String, String>> eventChain = new LinkedList<>();
+							for (String sootMethod : chain) {
+								// sootMethod = sootMethod.replace("<", "");
+								// sootMethod = sootMethod.replace(">", "");
+								String[] splited = sootMethod.split(": ");
+								String sootClass = splited[0];
+								sootMethod = splited[1];
+								Pair<String, String> event = new Pair<>(
+										sootClass, sootMethod);
+								eventChain.add(event);
+							}
+							eventChains.add(eventChain);
+						}
+						reader.close();
+						
+						eventChains = Settings.getSrcChains();
+						while (!eventChains.isEmpty()) {
+							Settings.setCheckNewTaintedHeapLoc(true);
+							Results.reset();
+							List<Pair<String, String>> eventChain = eventChains
+									.poll();
+							Settings.setEventChain(eventChain);
 							if (eventChain.size() > 0) {
 								Pair<String, String> entryEvent = eventChain
 										.remove(0);
 								Settings.setEntryClass(entryEvent.getFirst());
 								Settings.setEntryMethod(entryEvent.getSecond());
 								getResolvedIntents();
-								Log.debug(TAG, "Entry event: " + entryEvent);
+								Log.msg(TAG, "Src Chain: " + eventChain);
+								Log.debug(TAG, "Src Entry event: " + entryEvent);
 								main.runMethod(pluginManager);
 							}
 							eventChain.clear();
@@ -148,15 +182,38 @@ public class Main {
 								writeTaintedFields();
 							}
 						}
-
-						reader.close();
+						
+						eventChains = Settings.getEventChains();
+						while (!eventChains.isEmpty()) {
+							Settings.setCheckNewTaintedHeapLoc(false);
+							Results.reset();
+							Log.msg(TAG, "hhas " + Results.isHasNewTaintedHeapLoc());
+							List<Pair<String, String>> eventChain = eventChains
+									.poll();
+							Settings.setEventChain(eventChain);
+							Log.debug(TAG, "Generated Entry event: " + eventChain);
+							if (eventChain.size() > 0) {
+								Pair<String, String> entryEvent = eventChain
+										.remove(0);
+								Settings.setEntryClass(entryEvent.getFirst());
+								Settings.setEntryMethod(entryEvent.getSecond());
+								getResolvedIntents();
+								
+								main.runMethod(pluginManager);
+							}
+							eventChain.clear();
+							if (Settings.isRecordTaintedFields()) {
+								writeTaintedFields();
+							}
+						}
+						
 					}
 				} else if (args[2] != null && !"".equals(args[2])) {
 					Settings.setEntryClass(args[1]);
 					Settings.setEntryMethod(args[2]);
 					getResolvedIntents();
 					main.runMethod(pluginManager);
-				} 
+				}
 
 				Log.msg(TAG, "Analysis has run for "
 						+ (System.nanoTime() - beforeRun) / 1E9 + " seconds\n");
@@ -165,28 +222,30 @@ public class Main {
 			e.printStackTrace();
 		}
 	}
-	
+
 	private static void writeTaintedFields() throws IOException {
-		String csv = Settings.getOutdir() + Settings.getApkName() + "_SrcTaintedFields.csv";
+		String csv = Settings.getOutdir() + Settings.getApkName()
+				+ "_SrcTaintedFields.csv";
 		File csvFile = new File(csv);
 		Log.msg(TAG, csv);
 		if (!csvFile.exists()) {
 			csvFile.createNewFile();
 		}
-		
+
 		CSVWriter writer = new CSVWriter(new FileWriter(csv, true));
 		List<String[]> results = new ArrayList<>();
 		for (String fieldInfo : Results.getTaintedFields().keySet()) {
 			List<String> result = new ArrayList<>();
 			result.add(fieldInfo);
-			Pair<Object, Instruction> infos = Results.getTaintedFields().get(fieldInfo);
+			Pair<Object, Instruction> infos = Results.getTaintedFields().get(
+					fieldInfo);
 			result.add(infos.getFirst().toString());
 			result.add(infos.getSecond().toString());
 			String[] resultArray = (String[]) result.toArray(new String[result
-			                                        					.size()]);
+					.size()]);
 			results.add(resultArray);
 		}
-		
+
 		writer.writeAll(results);
 		writer.close();
 	}
@@ -234,7 +293,8 @@ public class Main {
 
 	public static void getResolvedIntents() {
 		try {
-			String csv = Settings.getOutdir() + Settings.getApkName() + "_intent_target.csv";
+			String csv = Settings.getOutdir() + Settings.getApkName()
+					+ "_intent_target.csv";
 			File file = new File(csv);
 			if (file.exists()) {
 				CSVReader reader = new CSVReader(new FileReader(csv));

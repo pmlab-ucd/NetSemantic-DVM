@@ -9,6 +9,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -1735,8 +1736,8 @@ public class Executor {
 				}
 			}
 
-			Log.bb(TAG, "obj " + obj);
-			Log.bb(TAG, "fieldinfo " + fieldInfo);
+			Log.bb(TAG, "Obj " + obj);
+			Log.bb(TAG, "Fieldinfo " + fieldInfo);
 			if (obj instanceof DVMObject) {
 				DVMObject dvmObj = (DVMObject) obj;
 				ClassInfo type = fieldInfo.getFieldType();
@@ -1755,7 +1756,7 @@ public class Executor {
 
 				Log.debug(TAG, "Get data: " + vm.getReg(inst.r1).getData());
 			} else {
-				Log.err(TAG, "obj is not a DVMObject!");
+				Log.err(TAG, "Obj is not a DVMObject!");
 			}
 
 			jump(vm, inst, true);
@@ -2725,6 +2726,61 @@ public class Executor {
 		return mname;
 	}
 
+	/**
+	* @Title: genChains
+	* @Author: Hao Fu
+	* @Description: Generate chains
+	* @param vm  
+	* @return void   
+	* @throws
+	*/
+	private void genChains(DalvikVM vm) {
+		if (!Results.isHasNewTaintedHeapLoc()) {
+			return;
+		}
+		Activity activity = vm.getCurrtActivity();
+		if (activity != null) {
+			for (List<Pair<String, String>> sinkChain : Settings
+					.getSinkChains()) {
+				boolean add = false;			
+				List<Pair<String, String>> newChain = new LinkedList<>(
+						Settings.getOriEventChain());
+				for (int i = 0; i < newChain.size(); i++) {
+					if (newChain.get(i).getFirst().equals("lastStop")) {
+						newChain.remove(i);
+						break;
+					}
+				}
+				Log.msg(TAG, "newChain: " + newChain);
+				Pair<String, String> stopSign = new Pair<String, String>("lastStop", "lastStop");
+				newChain.add(stopSign);
+				for (Pair<String, String> methodInfo : sinkChain) {
+					String className = methodInfo.getFirst();
+					String methodName = methodInfo.getSecond();
+					if (add) {
+						newChain.add(methodInfo);
+					} else {					
+						if (className.equals(activity.getType().fullName)) {
+							if (methodName.equals("onCreate")) {
+								continue;
+							} else {
+								add = true;
+								newChain.add(methodInfo);
+							}
+						}
+					}
+				}
+
+				if (add) {
+					Settings.getEventChains().add(newChain);
+					Log.msg(TAG, "Add chain " + newChain);
+				}
+			}
+		}
+		
+		Results.getTaintedFields().clear();
+	}
+
 	public void run(DalvikVM vm) {
 		running = true;
 
@@ -2735,8 +2791,16 @@ public class Executor {
 			Activity activity = vm.getCurrtActivity();
 			String eventClass = event.getFirst();
 			String eventMethod = event.getSecond();
+
+			Log.msg(TAG, "eventMethod: " + eventMethod);
+			
+			if (eventClass.equals("lastStop")) {
+				Settings.setCheckNewTaintedHeapLoc(true);
+				continue;
+			}
+			
 			if (activity == null) {
-				Log.err(TAG, "Inconsistent event: no currt activity!");
+				Log.err(TAG, "Inconsistent  no currt activity!");
 			} else {
 				if (activity.type.fullName.equals(eventClass)) {
 					vm.addEventFrame(activity, eventMethod);
@@ -2755,6 +2819,7 @@ public class Executor {
 
 		running = false;
 		Log.msg(TAG, "RUN DONE! The last one is " + mname);
+		genChains(vm);
 	}
 
 	static Map<Integer, ByteCode> byteCodes = new HashMap<>();

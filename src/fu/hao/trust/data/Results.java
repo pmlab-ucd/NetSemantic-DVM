@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import fu.hao.trust.utils.Log;
 import android.content.Intent;
 import patdroid.dalvik.Instruction;
 import patdroid.util.Pair;
@@ -19,11 +20,15 @@ public class Results {
 	public static Intent intent;
 	// (class: fieldname), value, srcApis
 	private static Map<String, Pair<Object, Instruction>> taintedFields;
+	private static boolean hasNewTaintedHeapLoc;
+	
+	private static String TAG = Results.class.getSimpleName();
 	
 	public static void reset() {
 		results = new HashSet<>();
 		intent = null;
 		taintedFields = null;
+		hasNewTaintedHeapLoc = false;
 	}
 	
 	public static void addIntent(Intent intent) {
@@ -46,10 +51,21 @@ public class Results {
 			return;
 		}
 		
+		Log.msg(TAG, "New recorded tainted field: " + fieldInfo);
+		
 		getTaintedFields().put(fieldInfo, infos);
 	}
 
 	public static void setTainedFields(Map<String, Pair<Object, Instruction>> taintedFields) {
 		Results.taintedFields = taintedFields;
+	}
+
+	public static boolean isHasNewTaintedHeapLoc() {
+		return hasNewTaintedHeapLoc;
+	}
+
+	public static void setHasNewTaintedHeapLoc(boolean hasNewTaintedHeapLoc) {
+		Log.msg(TAG, "Set new tainted heap loc true");
+		Results.hasNewTaintedHeapLoc = hasNewTaintedHeapLoc;
 	}
 }
