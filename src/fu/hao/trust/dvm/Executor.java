@@ -314,6 +314,18 @@ public class Executor {
 					|| vm.getReg(inst.r0).getData() instanceof Unknown) {
 				count = 42;
 				Log.warn(TAG, "Incorrect size!");
+			} else if (vm.getReg(inst.r0).getData() instanceof PrimitiveInfo) {
+				PrimitiveInfo value = (PrimitiveInfo) vm.getReg(inst.r0).getData();
+				if (value.isInteger()) {
+					count = value.intValue();
+				} else if (value.isFloat()) {
+					count = (int) value.floatValue();
+				} else if (value.isDouble()) {
+					count = (int) value.doubleValue();
+				} else {
+					Log.err(TAG, "Cannot identify the type of " + value);
+					count = 42;
+				}
 			} else {
 				count = Integer.parseInt(vm.getReg(inst.r0).getData()
 						.toString());

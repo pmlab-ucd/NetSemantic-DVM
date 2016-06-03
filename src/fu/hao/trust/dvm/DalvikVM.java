@@ -15,6 +15,7 @@ import android.app.Activity;
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
+import android.location.LocationListener;
 import android.myclasses.GenInstance;
 import android.os.AsyncTask;
 import android.view.View;
@@ -1226,8 +1227,13 @@ public class DalvikVM {
 
 	public DVMObject newVMObject(ClassInfo type) {
 		ClassInfo oType = type;
+		
 		while (type != null) {	
+			if (type.isConvertibleTo(ClassInfo.findClass("android.location.LocationListener"))) {
+				return new LocationListener(this, oType);
+			}
 			String typeName = type.toString();
+			
 			if (!typeName.contains("$")) {
 				if (typeName.contains("android.app.Activity")) {
 					return new Activity(this, oType);
