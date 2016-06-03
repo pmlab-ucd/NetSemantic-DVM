@@ -185,7 +185,7 @@ public class BenchLifecycleTests {
 	@Test
 	public void testLifecycle_FragmentLifecycle2() {
 		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FragmentLifecycle2/app/";
-		
+		// FIXME FlowDroid doesn't support to analyze fragment
 		args[1] = "sinkEventChains";
 		Main.main(args);
 		assertEquals(false, Results.results.isEmpty());

@@ -31,8 +31,8 @@ public class Test {
 		args[3] = "ATaint";
 		Settings.logLevel = 0;
 		
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FragmentLifecycle2/app/";
-		args[1] = "sinkEventChains";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/LocationLeak2/app/";
+		args[1] = "srcEventChains";
 		Main.main(args);
 		
 		assertEquals(false, Results.results.isEmpty());

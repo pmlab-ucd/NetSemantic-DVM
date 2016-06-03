@@ -580,9 +580,11 @@ public class Executor {
 				if (vm.getReturnReg().isUsed()
 						&& vm.getReturnReg().getType() != null
 						&& vm.getReturnReg().getType().isPrimitive()) {
+					Object obj = vm.getReturnReg()
+							.getData();
+					PrimitiveInfo info = PrimitiveInfo.fromObject(obj);
 					vm.getReturnReg().setValue(
-							PrimitiveInfo.fromObject(vm.getReturnReg()
-									.getData()), vm.getReturnReg().getType());
+							info, vm.getReturnReg().getType());
 				}
 			}
 
@@ -2249,7 +2251,7 @@ public class Executor {
 						normalArg = narg;
 					}
 					method = clazz.getDeclaredMethod(mi.name, argsClass);
-					// handle return val
+					// Handle return val
 					if (normalArg) {
 						Log.debug(TAG, "Caller obj: " + thisInstance
 								+ ", from class: "
@@ -3042,6 +3044,7 @@ public class Executor {
 				}
 
 				vm.getPluginManager().printResults();
+				//vm.getCurrStackFrame().printRegs();
 			}
 		} else {
 			pass = false;
@@ -3071,22 +3074,17 @@ public class Executor {
 		} else if (op != null) {
 			op1 = PrimitiveInfo.fromObject(op);
 		}
-		if (type.equals(ClassInfo.primitiveChar) || op1 != null && op1.isChar()) {
+		if (type.equals(ClassInfo.primitiveChar)) {
 			return new Character(op1 == null ? 0 : op1.charValue());
-		} else if (type.equals(ClassInfo.primitiveBoolean) || op1 != null
-				&& op1.isBoolean()) {
+		} else if (type.equals(ClassInfo.primitiveBoolean)) {
 			return new Boolean(op1 == null ? false : op1.booleanValue());
-		} else if (type.equals(ClassInfo.primitiveInt) || op1 != null
-				&& op1.isInteger()) {
+		} else if (type.equals(ClassInfo.primitiveInt)) {
 			return new Integer(op1 == null ? 0 : op1.intValue());
-		} else if (type.equals(ClassInfo.primitiveLong) || op1 != null
-				&& op1.isLong()) {
+		} else if (type.equals(ClassInfo.primitiveLong)) {
 			return new Long(op1 == null ? 0 : op1.longValue());
-		} else if (type.equals(ClassInfo.primitiveFloat) || op1 != null
-				&& op1.isFloat()) {
+		} else if (type.equals(ClassInfo.primitiveFloat)) {
 			return new Float(op1 == null ? 0 : op1.floatValue());
-		} else if (type.equals(ClassInfo.primitiveDouble) || op1 != null
-				&& op1.isDouble()) {
+		} else if (type.equals(ClassInfo.primitiveDouble)) {
 			return new Double(op1 == null ? 0 : op1.doubleValue());
 		}
 

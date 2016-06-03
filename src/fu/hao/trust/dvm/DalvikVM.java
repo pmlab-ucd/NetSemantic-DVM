@@ -15,7 +15,7 @@ import android.app.Activity;
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
-import android.location.LocationListener;
+import android.location.MyLocationListener;
 import android.myclasses.GenInstance;
 import android.os.AsyncTask;
 import android.view.View;
@@ -96,6 +96,7 @@ public class DalvikVM {
 			if (value == null) {
 				assigned[0] = -1;
 				this.value = new Pair<>(data, type);
+				Log.warn(TAG, "ar " + count + ", " + value);
 			} else {
 				assigned[0] = this;
 				Pair<Object, ClassInfo> oldVal = new Pair<>(value.getFirst(),
@@ -103,7 +104,7 @@ public class DalvikVM {
 				getAssigned()[1] = oldVal;
 				Pair<Object, ClassInfo> newVal = new Pair<>(data, type);
 				getAssigned()[2] = newVal;
-				Log.bb(TAG, "ar" + count + " " + oldVal + ", " + newVal);
+				Log.warn(TAG, "ar " + count + " " + oldVal + ", " + newVal);
 			}
 
 			value.setFirst(data);
@@ -328,15 +329,6 @@ public class DalvikVM {
 			return "StackFrame " + method;
 		}
 
-		public void printLocals() {
-			for (int i = 0; i < 65536; i++) {
-				if (regs[i].getData() != null) {
-					Log.bb(TAG, "StackFrame " + method + ", reg " + i + ": "
-							+ regs[i].getData());
-				}
-			}
-		}
-
 		public Register[] getRegs() {
 			return regs;
 		}
@@ -392,6 +384,17 @@ public class DalvikVM {
 			this.intent = intent;
 		}
 
+		public void printRegs() {
+			if (retValReg.isUsed()) {
+				Log.bb(TAG, retValReg + ", " + retValReg.getData());
+			}
+			for (int i = 0; i < regs.length; i++) {
+				if (regs[i].isUsed()) {
+					Log.bb(TAG, regs[i] + ", " + regs[i].getData());
+				}
+			}
+		}
+		
 	}
 
 	public LinkedList<StackFrame> cloneStack(Map<DVMObject, DVMObject> objMap,
@@ -411,7 +414,6 @@ public class DalvikVM {
 		Log.warn(
 				TAG,
 				"++++++++++++++++++++++++++++++++++++++Store state! +++++++++++++++++++++++++++++++++++++++++++");
-		getCurrStackFrame().printLocals();
 		VMHeap backHeap = new VMHeap();
 
 		Map<DVMClass, DVMClass> classMap = new HashMap<>();
@@ -524,7 +526,6 @@ public class DalvikVM {
 		executor.jump(this, focusBranch.getInstructions().iterator().next(),
 				false);
 		// getCurrStackFrame().pc[0]--;
-		getCurrStackFrame().printLocals();
 
 		lastBranch = focusBranch.getInstructions().iterator().next();
 
@@ -1229,8 +1230,11 @@ public class DalvikVM {
 		ClassInfo oType = type;
 		
 		while (type != null) {	
+			if (type.isConvertibleTo(ClassInfo.findClass("android.app.Activity"))) {
+				return new Activity(this, oType);
+			}
 			if (type.isConvertibleTo(ClassInfo.findClass("android.location.LocationListener"))) {
-				return new LocationListener(this, oType);
+				return new MyLocationListener(this, oType);
 			}
 			String typeName = type.toString();
 			

@@ -13,6 +13,7 @@ import com.opencsv.CSVReader;
 
 import android.content.ContextWrapper;
 import android.content.Intent;
+import android.location.LocationListener;
 import android.myclasses.GenInstance;
 import android.view.View;
 import patdroid.core.ClassInfo;
@@ -23,7 +24,7 @@ import fu.hao.trust.utils.Log;
 import fu.hao.trust.utils.Pair;
 import fu.hao.trust.utils.Settings;
 
-public class Activity extends ContextWrapper {
+public class Activity extends ContextWrapper implements LocationListener {
 
 	Map<Integer, View> views;
 	final String TAG = getClass().getSimpleName();
