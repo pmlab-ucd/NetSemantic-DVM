@@ -118,4 +118,35 @@ public class BenchCallbackTests {
 				"[Unknown var:Location: Longitude: -121.759603, Latitude: 38.53203, type: java.lang.String]");
 		assertEquals(true, Results.results.contains(res));
 	}
+	
+	@Test
+	public void testCallbacks_MethodOverride1() {
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/MethodOverride1/app/";
+		args[1] = "srcEventChains";
+		Main.main(args);
+		
+		assertEquals(false, Results.results.isEmpty());
+		Map<String, String> res = new HashMap<>();
+		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
+				"359874043116909");
+		assertEquals(true, Results.results.contains(res));
+	}
+	
+	@Test
+	public void testCallbacks_MultiHandlers1() {
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/MultiHandlers1/app/";
+		args[1] = "srcEventChains";
+		Main.main(args);
+		
+		assertEquals(true, Results.results.isEmpty());
+	}
+	
+	@Test
+	public void testCallbacks_Ordering1() {
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Ordering1/app/";
+		args[1] = "srcEventChains";
+		Main.main(args);
+		
+		assertEquals(true, Results.results.isEmpty());
+	}
 }

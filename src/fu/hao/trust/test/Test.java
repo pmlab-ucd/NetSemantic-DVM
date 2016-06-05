@@ -31,7 +31,7 @@ public class Test {
 		args[3] = "ATaint";
 		Settings.logLevel = 0;
 		
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Button5/app/";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Ordering1/app/";
 		args[1] = "srcEventChains";
 		Main.main(args);
 		
