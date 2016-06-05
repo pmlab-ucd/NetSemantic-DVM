@@ -453,7 +453,16 @@ public class Executor {
 	class OP_INVOKE_INTERFACE implements ByteCode {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			invocation(vm, inst);
+			vm.setReflectMethod(null);
+			Object[] extra = (Object[]) inst.getExtra();
+			MethodInfo mi = (MethodInfo) extra[0];
+			// The register index referred by args
+			int[] args = (int[]) extra[1];
+			if (mi.insns != null && mi.insns.length > 0) {
+				invocation(vm, mi, inst, args);
+			} else {
+				invocation(vm, inst);
+			}
 		}
 	}
 
