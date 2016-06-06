@@ -15,22 +15,32 @@ import patdroid.util.Pair;
 
 public class Results {
 	public static Set<Object> results = new HashSet<>();
-	public static Map<Instruction, TargetCall> targetCallRes;// = new HashMap<>();
+	public static Map<Instruction, TargetCall> targetCallRes;// = new
+																// HashMap<>();
 	public static List<Intent> intents;
 	public static Intent intent;
 	// (class: fieldname), value, srcApis
-	private static Map<String, Pair<Object, Instruction>> taintedFields;
+	private static Map<String, Pair<Object, Instruction>> sTaintedFields; // static
+	private static Map<String, Pair<Object, Instruction>> iTaintedFields; // instance
+	// APIs, e.g. setHint() and getHint()
+	private static Map<String, Pair<Object, Instruction>> aTaintedFields; 
 	private static boolean hasNewTaintedHeapLoc;
-	
+
 	private static String TAG = Results.class.getSimpleName();
 	
+	static {
+		sTaintedFields = new HashMap<>();
+		iTaintedFields = new HashMap<>();
+		aTaintedFields = new HashMap<>();
+	}
+
 	public static void reset() {
 		results = new HashSet<>();
 		intent = null;
-		taintedFields = null;
+		sTaintedFields = new HashMap<>();
 		hasNewTaintedHeapLoc = false;
 	}
-	
+
 	public static void addIntent(Intent intent) {
 		if (intents == null) {
 			intents = new ArrayList<>();
@@ -38,26 +48,26 @@ public class Results {
 		intents.add(intent);
 	}
 
-	public static Map<String, Pair<Object, Instruction>> getTaintedFields() {
-		if (taintedFields == null) {
-			taintedFields = new HashMap<>();
-		}
-		return taintedFields;
+	public static Map<String, Pair<Object, Instruction>> getSTaintedFields() {
+		return sTaintedFields;
 	}
-	
-	public static void addTaintedField(String fieldInfo, Pair<Object, Instruction> infos) {
+
+	public static void addTaintedField(String fieldInfo,
+			Pair<Object, Instruction> infos,
+			Map<String, Pair<Object, Instruction>> taintedFields) {
 		// Only support String field now.
 		if (!(infos.getFirst() instanceof String)) {
 			return;
 		}
-		
+
 		Log.msg(TAG, "New recorded tainted field: " + fieldInfo);
-		
-		getTaintedFields().put(fieldInfo, infos);
+
+		taintedFields.put(fieldInfo, infos);
 	}
 
-	public static void setTainedFields(Map<String, Pair<Object, Instruction>> taintedFields) {
-		Results.taintedFields = taintedFields;
+	public static void setSTainedFields(
+			Map<String, Pair<Object, Instruction>> taintedFields) {
+		Results.sTaintedFields = taintedFields;
 	}
 
 	public static boolean isHasNewTaintedHeapLoc() {
@@ -67,5 +77,23 @@ public class Results {
 	public static void setHasNewTaintedHeapLoc(boolean hasNewTaintedHeapLoc) {
 		Log.msg(TAG, "Set new tainted heap loc true");
 		Results.hasNewTaintedHeapLoc = hasNewTaintedHeapLoc;
+	}
+
+	public static Map<String, Pair<Object, Instruction>> getITaintedFields() {
+		return iTaintedFields;
+	}
+
+	public static void setITaintedFields(
+			Map<String, Pair<Object, Instruction>> iTaintedFields) {
+		Results.iTaintedFields = iTaintedFields;
+	}
+
+	public static Map<String, Pair<Object, Instruction>> getATaintedFields() {
+		return aTaintedFields;
+	}
+
+	public static void setATaintedFields(
+			Map<String, Pair<Object, Instruction>> aTaintedFields) {
+		Results.aTaintedFields = aTaintedFields;
 	}
 }

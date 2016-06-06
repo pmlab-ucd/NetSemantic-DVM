@@ -1,4 +1,4 @@
-package fu.hao.trust.test;
+package fu.hao.netsemantic.test.droidbench;
 
 import static org.junit.Assert.assertEquals;
 

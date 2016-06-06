@@ -600,6 +600,8 @@ public class DalvikVM {
 
 	private ServicePool servicePool;
 	private Activity currtActivity;
+	
+	private LinkedList<Activity> activityStack;
 
 	/**
 	 * @Title: getClass
@@ -668,6 +670,7 @@ public class DalvikVM {
 		retValReg = new Register(null, -1);
 		stack = new LinkedList<>();
 		callingCtx = null;
+		activityStack = new LinkedList<>();
 
 		try {
 			loadAPK(APK);
@@ -680,6 +683,11 @@ public class DalvikVM {
 		}
 
 		Settings.setVM(this);
+	}
+	
+	// TODO
+	public Activity getActivity(String activityName) {
+		return null;
 	}
 
 	public void reset() {
@@ -813,7 +821,6 @@ public class DalvikVM {
 		File file = new File(apk);
 
 		apkFile = new ZipFile(file);
-
 		// load all classes, methods, fields and instructions from an apk
 		// we are using smali as the underlying engine
 		new SmaliClassDetailLoader(apkFile, true).loadAll();
@@ -1037,13 +1044,34 @@ public class DalvikVM {
 	public boolean addEventFrame(DVMObject obj, String eventMethod) {
 		return addEventFrame(obj, null, eventMethod);
 	}
+	
+	@SuppressWarnings("unchecked")
+	public boolean addEventFrame(String eventClass, String eventMethod, Pair<Object, ClassInfo>[] params) {
+		ClassInfo clazz = ClassInfo.findClass(eventClass);
+		MethodInfo[] mis = clazz.findMethods(eventMethod);
+		
+		if (mis != null && mis.length > 0) {
+			MethodInfo mi = mis[0];
+			if (params == null) {
+				params = (Pair<Object, ClassInfo>[]) new Pair[mi.paramTypes.length + 1];
+				params[0] = new Pair<Object, ClassInfo>(newVMObject(clazz), clazz);
+			}
+			StackFrame frame = newStackFrame(clazz, mi, params, true);
+			runInstrumentedMethods(frame);
+			return true;
+		} else {
+			Log.err(TAG, "Inconsistent event: cannot find the method "
+					+ eventMethod);
+			return false;
+		}
+	}
 
 	@SuppressWarnings("unchecked")
 	public boolean addEventFrame(DVMObject obj,
 			Pair<Object, ClassInfo>[] params, String eventMethod) {
 		MethodInfo[] mis = obj.getType().findMethods(eventMethod);
 		if (mis != null && mis.length > 0) {
-			MethodInfo mi = obj.getType().findMethods(eventMethod)[0];
+			MethodInfo mi = mis[0];
 			if (params == null) {
 				params = (Pair<Object, ClassInfo>[]) new Pair[mi.paramTypes.length + 1];
 				params[0] = new Pair<Object, ClassInfo>(obj, obj.type);
@@ -1361,6 +1389,14 @@ public class DalvikVM {
 
 	public void setCurrtActivity(Activity currtActivity) {
 		this.currtActivity = currtActivity;
+	}
+
+	public LinkedList<Activity> getActivityStack() {
+		return activityStack;
+	}
+
+	public void setActivityStack(LinkedList<Activity> activityStack) {
+		this.activityStack = activityStack;
 	}
 
 }

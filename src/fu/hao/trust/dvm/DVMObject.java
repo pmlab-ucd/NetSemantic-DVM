@@ -26,6 +26,9 @@ public class DVMObject {
 	protected Object superObj = null;
 	protected DalvikVM vm;
 	protected int index;
+	// FIXME could be multiple urls due to summarization. 
+	// /Activity|Service|Application/(field of Activity...)/.../owner class name/field name
+	protected String memUrl = ""; 
 
 	public DVMObject(DalvikVM vm, ClassInfo type) {
 		this.vm = vm;
@@ -191,6 +194,14 @@ public class DVMObject {
 	@Override
 	public String toString() {
 		return "instance number " + index + "@" + type;
+	}
+
+	public String getMemUrl() {
+		return memUrl;
+	}
+
+	public void setMemUrl(String memUrl) {
+		this.memUrl = memUrl;
 	}
 
 }

@@ -27,7 +27,7 @@ import fu.hao.trust.utils.Settings;
 public class Activity extends ContextWrapper implements LocationListener {
 
 	Map<Integer, View> views;
-	final String TAG = getClass().getSimpleName();
+	private final static String TAG = Activity.class.getSimpleName();
 	Intent intent;
 	FragmentManager fragmentManager;
 	private static Map<Integer, ClassInfo> widgetPool;
@@ -47,6 +47,7 @@ public class Activity extends ContextWrapper implements LocationListener {
 		Log.bb(TAG, "New Activity Created with type " + type);
 		this.intent = intent;
 		views = new HashMap<>();
+		memUrl = memUrl + "/" + type.fullName;
 		if (Settings.execOnCreate) {
 			if (vm.getCurrStackFrame() != null && type.findMethods("onCreate")[0].equals(vm.getCurrStackFrame().getMethod())) {
 				return;
@@ -109,6 +110,7 @@ public class Activity extends ContextWrapper implements LocationListener {
 					System.out.println(id_view[1]);
 					System.out.println(clazz);
 					widgetPool.put(nid, clazz);
+					Log.msg(TAG, "Find xml view with id " + nid);
 				}
 
 				reader.close();
@@ -153,6 +155,10 @@ public class Activity extends ContextWrapper implements LocationListener {
 
 	public void setTmpView(View tmpView) {
 		this.tmpView = tmpView;
+	}
+	
+	public static void setWidgetPool(Map<Integer, ClassInfo> widgetPool) {
+		Activity.widgetPool = widgetPool; 
 	}
 	
 }

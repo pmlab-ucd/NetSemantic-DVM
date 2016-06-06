@@ -1,4 +1,4 @@
-package fu.hao.trust.test;
+package fu.hao.netsemantic.test.droidbench;
 
 import static org.junit.Assert.*;
 
@@ -22,11 +22,24 @@ public class BenchICCTests {
 	@Before
 	public void prepare() {
 		Settings.logLevel = 0;
-		args[3] = "Taint";
+		args[3] = "ATaint";
 		tm = new TelephonyManager();
 	}
-
+	
 	@Test
+	public void testActivityCommunication1() {	
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/ActivityCommunication1/app/";
+		args[1] = "srcEventChains";
+		Main.main(args);
+		
+		assertEquals(false, Results.results.isEmpty());
+		Map<String, String> res = new HashMap<>();
+		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
+				tm.getDeviceId());
+		assertEquals(true, Results.results.contains(res));
+	}
+
+	//@Test
 	public void testActivityCommunication2() {
 		args[0] = "C:/Users/hao/workspace/DroidBenchProj/ActivityCommunication2/app/";
 		Settings.addCallBlkListElem("android.content.Context/startActivity");

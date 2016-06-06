@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -1817,10 +1818,18 @@ public class Executor {
 				DVMObject dvmObj = (DVMObject) obj;
 				vm.getAssigned()[0] = dvmObj;
 				vm.getAssigned()[1] = fieldInfo;
-				vm.getAssigned()[2] = vm.getReg(inst.r1).getData();
-				dvmObj.setField(fieldInfo, vm.getReg(inst.r1).getData());
+				Object data = vm.getReg(inst.r1).getData();
+				vm.getAssigned()[2] = data;
+				
+				dvmObj.setField(fieldInfo, data);
 				Log.msg(TAG, "Put data " + dvmObj.getFieldObj(fieldInfo)
 						+ " to the field of " + dvmObj);
+				
+				if (data instanceof DVMObject) {
+					DVMObject fieldData = (DVMObject) data;
+					fieldData.setMemUrl(dvmObj.getMemUrl() + "/"  + fieldInfo.fieldName);
+				}
+				
 			} else {
 				Log.err(TAG, "obj is not a DVMObject!");
 			}
@@ -2750,14 +2759,14 @@ public class Executor {
 	}
 
 	/**
-	* @Title: genChains
+	* @Title: genChainsFromDefaultSinks
 	* @Author: Hao Fu
-	* @Description: Generate chains
+	* @Description: Generate chains by identifying potential sinks could be connected. 
 	* @param vm  
 	* @return void   
 	* @throws
 	*/
-	private void genChains(DalvikVM vm) {
+	public void genChainsFromDefaultSinks(DalvikVM vm) {
 		if (!Results.isHasNewTaintedHeapLoc()) {
 			return;
 		}
@@ -2790,6 +2799,12 @@ public class Executor {
 								add = true;
 								newChain.add(methodInfo);
 							}
+						} else {
+							if (methodName.equals("onCreate")
+									|| methodName.startsWith("onStart")) {
+								add = true;
+								newChain.add(methodInfo);
+							}
 						}
 					}
 				}
@@ -2801,7 +2816,66 @@ public class Executor {
 			}
 		}
 		
-		Results.getTaintedFields().clear();
+		Results.getSTaintedFields().clear();
+		Results.getITaintedFields().clear();
+		Results.getATaintedFields().clear();
+	}
+	
+	/**
+	* @Title: genChainsByMemUrl
+	* @Author: Hao Fu
+	* @Description: TODO
+	* @param   
+	* @return void   
+	* @throws
+	*/
+	private void genChainsByMemUrl(DalvikVM vm) {
+		if (!Results.isHasNewTaintedHeapLoc()) {
+			return;
+		}
+		Activity activity = vm.getCurrtActivity();
+		if (activity != null) {
+			for (MethodInfo mi : activity.getType().getAllMethods()) {
+				for (List<Pair<String, String>> chain : Settings.getEventChains()) {
+					for (Pair<String, String> event : chain) {
+						if (event.getFirst().equals(mi.myClass.fullName) && event.getSecond().equals(mi.name)) {
+							continue;
+						}
+					}
+				}
+				// FIXME Should be a callback
+				if (mi.name.startsWith("on") && !mi.name.equals("onCreate")
+						|| mi.modifiers == Modifier.PUBLIC) {
+					for (Instruction inst : mi.insns) {
+						if (inst.opcode_aux == Instruction.OP_INSTANCE_GET_FIELD) {
+							FieldInfo fieldInfo = (FieldInfo) inst.getExtra();
+							for (String fieldString : Results.getITaintedFields().keySet()) {
+								if (fieldString.contains(fieldInfo.fieldName)) {
+									List<Pair<String, String>> newChain = new LinkedList<>(
+											Settings.getOriEventChain());
+									for (int i = 0; i < newChain.size(); i++) {
+										if (newChain.get(i).getFirst().equals("lastStop")) {
+											newChain.remove(i);
+											break;
+										}
+									}
+									Pair<String, String> stopSign = new Pair<String, String>("lastStop", "lastStop");
+									newChain.add(stopSign);
+									Pair<String, String> methodInfo = new Pair<>(mi.myClass.fullName, mi.name);
+									newChain.add(methodInfo);
+									Settings.getEventChains().add(newChain);
+									Log.msg(TAG, "Add chain " + newChain);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		Results.getSTaintedFields().clear();
+		Results.getITaintedFields().clear();
+		Results.getATaintedFields().clear();
 	}
 
 	public void run(DalvikVM vm) {
@@ -2828,12 +2902,16 @@ public class Executor {
 				if (activity.type.fullName.equals(eventClass)) {
 					vm.addEventFrame(activity, eventMethod);
 				} else {
+					if (eventMethod.startsWith("onCreate")) {
+						vm.addEventFrame(eventClass, eventMethod, null);
+					} else {
 					for (DVMObject obj : activity.getAllUIs()) {
 						if (obj.getType().toString().contains(eventClass)) {
 							if (vm.addEventFrame(obj, eventMethod)) {
 								break;
 							}
 						}
+					}
 					}
 				}
 				mname = execute(vm);
@@ -2842,7 +2920,8 @@ public class Executor {
 
 		running = false;
 		Log.msg(TAG, "RUN DONE! The last one is " + mname);
-		genChains(vm);
+		genChainsFromDefaultSinks(vm);
+		genChainsByMemUrl(vm);
 	}
 
 	static Map<Integer, ByteCode> byteCodes = new HashMap<>();

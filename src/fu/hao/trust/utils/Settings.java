@@ -81,6 +81,7 @@ public class Settings {
 	// <Owner, <Field, <value, srcApi>>>
 	private static Map<String, Map<String, Pair<Object, Instruction>>> srcTaintedFields;
 	
+	// <Class Name, Method Name>
 	private static Queue<List<Pair<String, String>>> eventChains;
 	private static Queue<List<Pair<String, String>>> srcChains;
 	private static Queue<List<Pair<String, String>>> sinkChains;
@@ -103,6 +104,9 @@ public class Settings {
 		callBlackList = null;
 		fullLifeExec = false;
 		setEntryMethod(null);
+		eventChains.clear();
+		srcChains.clear();
+		sinkChains.clear();
 	}
 	
 	public static String getRuntimeCaller() {
@@ -259,6 +263,7 @@ public class Settings {
 		Settings.initTaintedFields = initTaintedFields;
 	}
 	
+	@Deprecated
 	public static void initTaintedFields() {
 		srcTaintedFields = new HashMap<>();
 		if (Settings.isInitTaintedFields()) {

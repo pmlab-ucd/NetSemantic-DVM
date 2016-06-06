@@ -331,6 +331,34 @@ public class Taint extends Plugin {
 				if (vm.getReflectMethod() != null || mi.isConstructor()) {
 					String sootSignature = Taint.getSootSignature(mi);
 					Log.bb(tag, sootSignature);
+					
+					for (int i = 0; i < args.length; i++) {
+						if (in.containsKey(vm.getReg(args[i]))) {
+							if (vm.getReturnReg().isUsed()) {
+							Log.warn(tag, "Found a tainted return val!");
+							out.put(vm.getReturnReg(),
+									in.get(vm.getReg(args[i])));
+							out.put(vm.getReturnReg().getData(),
+									in.get(vm.getReg(args[i])));
+							Pair<Object, Instruction> value = new Pair<>(vm.getReg(args[i]).getData(), in.get(vm.getReg(args[i])));
+							Results.addTaintedField(mi.name, value, Results.getATaintedFields());
+							}
+							break;
+						} else if (vm.getReg(args[i]).isUsed()
+								&& in.containsKey(vm.getReg(args[i])
+										.getData())) {
+							if (vm.getReturnReg().isUsed()) {
+							Log.warn(tag, "Found a tainted return val!");
+							out.put(vm.getReturnReg(), in.get(vm
+									.getReg(args[i]).getData()));
+							out.put(vm.getReturnReg().getData(), in
+									.get(vm.getReg(args[i]).getData()));
+							Results.addTaintedField(mi.name, new Pair<>(vm.getReg(args[i]).getData(), in.get(vm.getReg(args[i]))), Results.getATaintedFields());
+							}
+							break;
+						}
+					}
+					
 					if (sinks != null && sinks.contains(sootSignature)) {
 						Log.bb(tag, "Found a sink invocation. " + sootSignature);
 						for (int i = 0; i < args.length; i++) {
@@ -338,7 +366,7 @@ public class Taint extends Plugin {
 									|| vm.getReg(args[i]).isUsed()
 									&& in.containsKey(vm.getReg(args[i])
 											.getData())) {
-								Log.warn(tag, "Found a taint sink "
+								Log.warn(tag, "Found a tainted sink "
 										+ sootSignature + " leaking data ["
 										+ vm.getReg(args[i]).getData()
 										+ "] at reg " + args[i] + "!!!");
@@ -887,16 +915,15 @@ public class Taint extends Plugin {
 				ClassInfo owner = pair.first;
 				String fieldName = pair.second;
 				// TODO
-				String fieldInfo = owner.fullName + "/" + fieldName;
+				String fieldInfo = "/" + owner.fullName + "/" + fieldName;
 				DVMClass dvmClass = vm.getClass(owner);
 				if (in.containsKey(vm.getReg(inst.r0))) {
 					Log.bb(tag, "SPut at " + vm.getReg(inst.r0));
 					out.put(dvmClass.getStatField(fieldName),
 							in.get(vm.getReg(inst.r0)));
 					if (Settings.isRecordTaintedFields()) {
-
 						if (Settings.isCheckNewTaintedHeapLoc()) {
-							if (!Results.getTaintedFields().containsKey(
+							if (!Results.getSTaintedFields().containsKey(
 									fieldInfo)) {
 								Results.setHasNewTaintedHeapLoc(true);
 							}
@@ -905,7 +932,8 @@ public class Taint extends Plugin {
 						Results.addTaintedField(
 								fieldInfo,
 								new Pair<>(dvmClass.getStatField(fieldName), in
-										.get(vm.getReg(inst.r0))));
+										.get(vm.getReg(inst.r0))),
+										Results.getSTaintedFields());
 					}
 				} else if (vm.getReg(inst.r0).isUsed()
 						&& in.containsKey(vm.getReg(inst.r0).getData())) {
@@ -913,7 +941,7 @@ public class Taint extends Plugin {
 							in.get(vm.getReg(inst.r0).getData()));
 					if (Settings.isRecordTaintedFields()) {
 						if (Settings.isCheckNewTaintedHeapLoc()) {
-							if (!Results.getTaintedFields().containsKey(
+							if (!Results.getSTaintedFields().containsKey(
 									fieldInfo)) {
 								Results.setHasNewTaintedHeapLoc(true);
 							}
@@ -921,16 +949,17 @@ public class Taint extends Plugin {
 						Results.addTaintedField(
 								fieldInfo,
 								new Pair<>(dvmClass.getStatField(fieldName), in
-										.get(vm.getReg(inst.r0).getData())));
+										.get(vm.getReg(inst.r0).getData())),
+										Results.getSTaintedFields());
 					}
 				} else {
 					if (in.containsKey(dvmClass.getStatField(fieldName))) {
 						out.remove(dvmClass.getStatField(fieldName));
 					}
 					if (Settings.isRecordTaintedFields()
-							&& Results.getTaintedFields()
+							&& Results.getSTaintedFields()
 									.containsKey(fieldInfo)) {
-						Results.getTaintedFields().remove(fieldInfo);
+						Results.getSTaintedFields().remove(fieldInfo);
 					}
 				}
 				outs.put(tag, out);
@@ -1013,7 +1042,7 @@ public class Taint extends Plugin {
 					// FIXME should be the absolute path to the field, such as
 					// "Activity1/button1/imei".
 					if (vm.getCurrtActivity() != null) {
-						fieldString = vm.getCurrtActivity().getType() + "/" + obj
+						fieldString = "/" + vm.getCurrtActivity().getType() + "/" + obj
 							+ "/" + fieldInfo.fieldName;
 					} else {
 						fieldString = obj + "/" + fieldInfo.fieldName;
@@ -1027,13 +1056,13 @@ public class Taint extends Plugin {
 							+ "as tainted due to " + vm.getReg(inst.r1));
 					Log.msg(tag, "has " + Results.isHasNewTaintedHeapLoc());
 					if (Settings.isRecordTaintedFields()) {
-						Log.msg(tag, "Tfields: " + Results.getTaintedFields());
+						Log.msg(tag, "Tfields: " + Results.getITaintedFields());
 						if (Settings.isCheckNewTaintedHeapLoc()) {
 							// if
 							// (!Results.getTaintedFields().containsKey(fieldString))
 							// {
 							boolean found = false;
-							for (String str : Results.getTaintedFields()
+							for (String str : Results.getITaintedFields()
 									.keySet()) {
 								if (str.equals(fieldString)) {
 									found = true;
@@ -1053,7 +1082,8 @@ public class Taint extends Plugin {
 						Results.addTaintedField(
 								fieldString,
 								new Pair<>(obj.getFieldObj(fieldInfo), in
-										.get(vm.getReg(inst.r1))));
+										.get(vm.getReg(inst.r1))),
+										Results.getITaintedFields());
 						Log.msg(tag, "has " + Results.isHasNewTaintedHeapLoc());
 					}
 				} else if (in.containsKey(vm.getReg(inst.r1).getData())) {
@@ -1063,9 +1093,9 @@ public class Taint extends Plugin {
 							+ "as tainted due to r1 data "
 							+ vm.getReg(inst.r1).getData());
 					if (Settings.isRecordTaintedFields()) {
-						Log.msg(tag, "Tfields: " + Results.getTaintedFields());
+						Log.msg(tag, "Tfields: " + Results.getITaintedFields());
 						if (Settings.isCheckNewTaintedHeapLoc()) {
-							if (!Results.getTaintedFields().containsKey(
+							if (!Results.getITaintedFields().containsKey(
 									fieldString)) {
 								Results.setHasNewTaintedHeapLoc(true);
 								Log.msg(tag, "New tainted heap loc: "
@@ -1075,16 +1105,17 @@ public class Taint extends Plugin {
 						Results.addTaintedField(
 								fieldString,
 								new Pair<>(obj.getFieldObj(fieldInfo), in
-										.get(vm.getReg(inst.r1).getData())));
+										.get(vm.getReg(inst.r1).getData())),
+										Results.getITaintedFields());
 					}
 				} else {
 					if (obj != null
 							&& in.containsKey(obj.getFieldObj(fieldInfo))) {
 						out.remove(obj.getFieldObj(fieldInfo));
 						if (Settings.isRecordTaintedFields()
-								&& Results.getTaintedFields().containsKey(
+								&& Results.getITaintedFields().containsKey(
 										fieldString)) {
-							Results.getTaintedFields().remove(fieldString);
+							Results.getITaintedFields().remove(fieldString);
 						}
 					}
 				}

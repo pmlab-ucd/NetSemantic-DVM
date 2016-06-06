@@ -1,4 +1,4 @@
-package fu.hao.trust.test;
+package fu.hao.netsemantic.test.droidbench;
 
 import static org.junit.Assert.*;
 
@@ -32,8 +32,6 @@ public class BenchThreadingTests {
 		args[1] = "srcEventChains";
 		Main.main(args);
 		
-		args[1] = "sinkEventChains";
-		Main.main(args);
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
 		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
@@ -48,8 +46,6 @@ public class BenchThreadingTests {
 		args[1] = "srcEventChains";
 		Main.main(args);
 		
-		args[1] = "sinkEventChains";
-		Main.main(args);
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
 		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
@@ -64,8 +60,6 @@ public class BenchThreadingTests {
 		args[1] = "srcEventChains";
 		Main.main(args);
 		
-		args[1] = "sinkEventChains";
-		Main.main(args);
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
 		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
@@ -80,8 +74,6 @@ public class BenchThreadingTests {
 		args[1] = "srcEventChains";
 		Main.main(args);
 		
-		args[1] = "sinkEventChains";
-		Main.main(args);
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
 		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",

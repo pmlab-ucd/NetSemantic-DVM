@@ -115,8 +115,8 @@ public class Main {
 					if (args[1].contains("src")) {
 						Settings.setRecordTaintedFields(true);
 					} else if (args[1].contains("sink")) {
-						Settings.setInitTaintedFields(true);
-						Settings.initTaintedFields();
+						//Settings.setInitTaintedFields(true);
+						//Settings.initTaintedFields();
 					}
 					System.out.println(TAG + csv);
 					file = new File(csv);
@@ -178,9 +178,9 @@ public class Main {
 								main.runMethod(pluginManager);
 							}
 							eventChain.clear();
-							if (Settings.isRecordTaintedFields()) {
-								writeTaintedFields();
-							}
+							//if (Settings.isRecordTaintedFields()) {
+								//writeTaintedFields();
+							//}
 						}
 						
 						eventChains = Settings.getEventChains();
@@ -223,6 +223,7 @@ public class Main {
 		}
 	}
 
+	@Deprecated
 	private static void writeTaintedFields() throws IOException {
 		String csv = Settings.getOutdir() + Settings.getApkName()
 				+ "_SrcTaintedFields.csv";
@@ -234,10 +235,34 @@ public class Main {
 
 		CSVWriter writer = new CSVWriter(new FileWriter(csv, true));
 		List<String[]> results = new ArrayList<>();
-		for (String fieldInfo : Results.getTaintedFields().keySet()) {
+		for (String fieldInfo : Results.getSTaintedFields().keySet()) {
 			List<String> result = new ArrayList<>();
 			result.add(fieldInfo);
-			Pair<Object, Instruction> infos = Results.getTaintedFields().get(
+			Pair<Object, Instruction> infos = Results.getSTaintedFields().get(
+					fieldInfo);
+			result.add(infos.getFirst().toString());
+			result.add(infos.getSecond().toString());
+			String[] resultArray = (String[]) result.toArray(new String[result
+					.size()]);
+			results.add(resultArray);
+		}
+		
+		for (String fieldInfo : Results.getITaintedFields().keySet()) {
+			List<String> result = new ArrayList<>();
+			result.add(fieldInfo);
+			Pair<Object, Instruction> infos = Results.getITaintedFields().get(
+					fieldInfo);
+			result.add(infos.getFirst().toString());
+			result.add(infos.getSecond().toString());
+			String[] resultArray = (String[]) result.toArray(new String[result
+					.size()]);
+			results.add(resultArray);
+		}
+		
+		for (String fieldInfo : Results.getATaintedFields().keySet()) {
+			List<String> result = new ArrayList<>();
+			result.add(fieldInfo);
+			Pair<Object, Instruction> infos = Results.getATaintedFields().get(
 					fieldInfo);
 			result.add(infos.getFirst().toString());
 			result.add(infos.getSecond().toString());

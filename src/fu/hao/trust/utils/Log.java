@@ -135,8 +135,13 @@ public class Log {
 	}
 
 	public static void msg(String TAG, Object s) {
+		
 		try {
-			log(TAG, MODE_MSG, "MSG", s.toString());
+			if (s == null) {
+				log(TAG, MODE_MSG, "MSG", "");
+			} else {
+				log(TAG, MODE_MSG, "MSG", s.toString());
+			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
