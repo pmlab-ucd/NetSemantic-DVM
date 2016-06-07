@@ -192,11 +192,13 @@ public class Intent {
     
     public Intent(Context packageContext, Class<?> cls) {
     	setTargetClass(ClassInfo.findClass(cls.getName()));
+    	values = new HashMap<>();
     }
     
     public Intent(Context packageContext, ClassInfo cls) {
     	setTargetClass(cls);
     	Log.bb(TAG, "New intent with target cls " + cls);
+    	values = new HashMap<>();
     }
 
 	public Intent putExtra(String name, String value) {

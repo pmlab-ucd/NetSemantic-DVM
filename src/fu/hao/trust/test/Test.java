@@ -9,6 +9,7 @@ import android.content.Intent;
 import fu.hao.trust.data.Results;
 import fu.hao.trust.data.TargetCall;
 import fu.hao.trust.dvm.Main;
+import fu.hao.trust.dvm.ResolveIntent;
 import fu.hao.trust.utils.Log;
 import fu.hao.trust.utils.Settings;
 
@@ -31,7 +32,11 @@ public class Test {
 		args[3] = "ATaint";
 		Settings.logLevel = 0;
 		
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/ActivityCommunication3/app/";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/ActivityCommunication8/app/";
+		Settings.addCallBlkListElem("android.content.ContextWrapper/startActivity");
+		ResolveIntent.main(args);
+		
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/ActivityCommunication8/app/";
 		args[1] = "srcEventChains";
 		Main.main(args);
 		Map<String, String> res = new HashMap<>();

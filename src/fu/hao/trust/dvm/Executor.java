@@ -2228,6 +2228,11 @@ public class Executor {
 				Log.debug(TAG, "Reflction class: " + clazz);
 				thisInstance = vm.getReg(args[0]).isUsed() ? vm.getReg(args[0])
 						.getData() : null;
+						
+				if (mi.name.equals("getClass")) {
+					mi = ClassInfo.findClass("fu.hao.trust.dvm.DVMObject").findMethods("getClazz")[0];
+					Log.msg(TAG, "Replaced method " + mi);
+				}
 				if (thisInstance instanceof MultiValueVar) {
 					// FIXME Herustic, should really handle loop
 					if (isNoInvoke2(mi)) {
@@ -3042,6 +3047,7 @@ public class Executor {
 				"android.myclasses.Executors");
 		replacedInvokeList.put("java.lang.Thread", "android.myclasses.Thread");
 		replacedInvokeList.put("java.lang.Class", "patdroid.core.ClassInfo");
+		replacedInvokeList.put("java.lang.Object", "fu.hao.trust.dvm.DVMObject");
 	}
 
 	public void exec(DalvikVM vm, Instruction inst, ClassInfo sitClass) {

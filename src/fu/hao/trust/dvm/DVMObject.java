@@ -203,5 +203,9 @@ public class DVMObject {
 	public void setMemUrl(String memUrl) {
 		this.memUrl = memUrl;
 	}
+	
+	public ClassInfo getClazz() {
+		return type;
+	}
 
 }
