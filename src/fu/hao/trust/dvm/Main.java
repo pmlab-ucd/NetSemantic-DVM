@@ -325,6 +325,7 @@ public class Main {
 				CSVReader reader = new CSVReader(new FileReader(csv));
 				for (String[] intent : reader.readAll()) {
 					Settings.addIntentTarget(intent[0], intent[1]);
+					Log.msg(TAG, "Retrieve intent target: " + intent[0] + ", " + intent[1]);
 				}
 
 				reader.close();

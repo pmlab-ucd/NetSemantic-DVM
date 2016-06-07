@@ -1,7 +1,5 @@
 package fu.hao.trust.test;
 
-import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -32,7 +30,7 @@ public class ResolveIntentTest {
 	@Test
 	public void testMain() {
 		args[0] = "C:/Users/hao/workspace/DroidBenchProj/ActivityCommunication2/app/";
-		Settings.addCallBlkListElem("android.content.Context/startActivity");
+		Settings.addCallBlkListElem("android.content.ContextWrapper/startActivity");
 		ResolveIntent.main(args);
 	}
 

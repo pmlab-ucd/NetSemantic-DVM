@@ -233,5 +233,14 @@ public class Intent {
 	public void setTargetClass(ClassInfo targetClass) {
 		this.targetClass = targetClass;
 	}
+	
+    public Intent setComponent(ComponentName component) {
+       targetClass = ClassInfo.findClass(component.getClassName());
+       if (targetClass == null) {
+    	   Log.err(TAG, "Cannot identify the targetClass!" + component);
+       }
+       
+       return this;
+    }
 
 }

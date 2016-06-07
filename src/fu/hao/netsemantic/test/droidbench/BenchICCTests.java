@@ -39,16 +39,27 @@ public class BenchICCTests {
 		assertEquals(true, Results.results.contains(res));
 	}
 
-	//@Test
+	@Test
 	public void testActivityCommunication2() {
 		args[0] = "C:/Users/hao/workspace/DroidBenchProj/ActivityCommunication2/app/";
-		Settings.addCallBlkListElem("android.content.Context/startActivity");
+		Settings.addCallBlkListElem("android.content.ContextWrapper/startActivity");
 		ResolveIntent.main(args);
+	
+		// Call parse_xmls.py to get the intent targets
 		
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/ActivityCommunication2/app/ActivityCommunication2.apk";
-		args[1] = "edu.mit.icc_action_string_operations.OutFlowActivity";
-		args[2] = "onCreate";
-		Settings.reset();
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/ActivityCommunication2/app/";
+		args[1] = "srcEventChains";
+		Main.main(args);
+		Map<String, String> res = new HashMap<>();
+		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
+				"359874043116909");
+		assertEquals(true, Results.results.contains(res));
+	}
+	
+	@Test
+	public void testActivityCommunication3() {
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/ActivityCommunication3/app/";
+		args[1] = "srcEventChains";
 		Main.main(args);
 		Map<String, String> res = new HashMap<>();
 		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",

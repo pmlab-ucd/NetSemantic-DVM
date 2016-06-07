@@ -118,5 +118,9 @@ public class ContextWrapper extends Context {
 		}
 		return preferences.get(name);
     }
-
+	
+    public String getPackageName() {
+        return Settings.getApkName();
+    }
+	
 }

@@ -1,0 +1,280 @@
+ResolveIntent - [MSG]: C:\Users\hao\workspace\DroidBenchProj\ActivityCommunication3\app\ActivityCommunication3.apk
+DalvikVM - [MSG]: Begin run onCreate at C:\Users\hao\workspace\DroidBenchProj\ActivityCommunication3\app\ActivityCommunication3.apk
+DalvikVM - [MSG]: RUN Method edu.mit.icc_componentname_class_constant.OutFlowActivity/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Read manifest csv: output/ActivityCommunication3.apk\ActivityCommunication3.apk_manifest.csv
+Executor - [WARN]: output\ActivityCommunication3.apk\ActivityCommunication3.apk_manifest.csv (The system cannot find the file specified)
+DalvikVM - [BB]: New method call: edu.mit.icc_componentname_class_constant.OutFlowActivity/onCreate[android.os.Bundle]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[6, 7]>
+DalvikVM - [BB]: [1]<0 HALT,SUPER,extra=[null, [6, 7]]>
+DalvikVM - [BB]: [2]<1 MOV,CONST,dst=r4,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+DalvikVM - [BB]: [3]<0 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [6, 4]]>
+DalvikVM - [BB]: [4]<3 MOV,CONST,dst=r4,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: [5]<0 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [6, 4]]>
+DalvikVM - [BB]: [6]<0 MOV,RESULT,dst=r3,type=java.lang.Object>
+DalvikVM - [BB]: [7]<0 ARITHMETIC,CHECK-AND-CAST,dst=r3,type=android.telephony.TelephonyManager>
+DalvikVM - [BB]: [8]<0 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [3]]>
+DalvikVM - [BB]: [9]<0 MOV,RESULT,dst=r2,type=java.lang.Object>
+DalvikVM - [BB]: [10]<0 NEW,INSTANCE,dst=r0,type=android.content.ComponentName>
+DalvikVM - [BB]: [11]<0 HALT,VIRTUAL,extra=[null, [6]]>
+DalvikVM - [BB]: [12]<0 MOV,RESULT,dst=r4,type=java.lang.Object>
+DalvikVM - [BB]: [13]<12 MOV,CONST,dst=r5,type=java.lang.Class,extra=class patdroid.core.ClassInfo?edu.mit.icc_componentname_class_constant.InFlowActivity>
+DalvikVM - [BB]: [14]<0 INVOKE,VIRTUAL,extra=[java.lang.Class/getName[], [5]]>
+DalvikVM - [BB]: [15]<0 MOV,RESULT,dst=r5,type=java.lang.Object>
+DalvikVM - [BB]: [16]<0 HALT,DIRECT,extra=[null, [0, 4, 5]]>
+DalvikVM - [BB]: [17]<0 NEW,INSTANCE,dst=r4,type=android.content.Intent>
+DalvikVM - [BB]: [18]<0 INVOKE,DIRECT,extra=[android.content.Intent/<init>[], [4]]>
+DalvikVM - [BB]: [19]<0 HALT,VIRTUAL,extra=[null, [4, 0]]>
+DalvikVM - [BB]: [20]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [21]<20 MOV,CONST,dst=r4,type=java.lang.String,extra="DroidBench">
+DalvikVM - [BB]: [22]<0 INVOKE,VIRTUAL,extra=[android.content.Intent/putExtra[java.lang.String, java.lang.String], [1, 4, 2]]>
+DalvikVM - [BB]: [23]<0 INVOKE,VIRTUAL,extra=[android.content.ContextWrapper/startActivity[android.content.Intent], [6, 1]]>
+DalvikVM - [BB]: [24]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.icc_componentname_class_constant.OutFlowActivity/onCreate[android.os.Bundle]
+newStackFrame - [BB]: Add frame StackFrame edu.mit.icc_componentname_class_constant.OutFlowActivity/onCreate[android.os.Bundle]
+newStackFrame - [BB]: Stack: [StackFrame edu.mit.icc_componentname_class_constant.OutFlowActivity/onCreate[android.os.Bundle]]
+Executor - [MSG]: New chain obj with type edu.mit.icc_componentname_class_constant.OutFlowActivity
+Activity - [BB]: New instance of edu.mit.icc_componentname_class_constant.OutFlowActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass edu.mit.icc_componentname_class_constant.OutFlowActivity at fu.hao.trust.dvm.VMHeap@7844f218
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for edu.mit.icc_componentname_class_constant.OutFlowActivity at fu.hao.trust.dvm.VMHeap@7844f218
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@7844f218
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@7844f218
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@7844f218
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@7844f218
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@7844f218
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@7844f218
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@7844f218
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@7844f218
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@7844f218
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.Context
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@7844f218
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.ContextWrapper
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@7844f218
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@7844f218
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type edu.mit.icc_componentname_class_constant.OutFlowActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass edu.mit.icc_componentname_class_constant.OutFlowActivity at fu.hao.trust.dvm.VMHeap@7844f218
+Activity - [BB]: Not empty constructor
+DalvikVM - [BB]: New method call: edu.mit.icc_componentname_class_constant.OutFlowActivity/<init>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[0]>
+DalvikVM - [BB]: [1]<0 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]>
+DalvikVM - [BB]: [2]<0 RETURN,VOID>
+DalvikVM - [WARN]: ar -2, (Activity:instance number 1@edu.mit.icc_componentname_class_constant.OutFlowActivity, edu.mit.icc_componentname_class_constant.OutFlowActivity)
+newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.icc_componentname_class_constant.OutFlowActivity/<init>[], pc -1 stored. 
+newStackFrame - [BB]: Stack: [StackFrame edu.mit.icc_componentname_class_constant.OutFlowActivity/onCreate[android.os.Bundle]]
+DalvikVM - [MSG]: Begin run instrumented methods!
+DalvikVM - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[6, 7]>
+DalvikVM - [BB]: Add frames [StackFrame edu.mit.icc_componentname_class_constant.OutFlowActivity/<init>[]]
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[0]> at edu.mit.icc_componentname_class_constant.OutFlowActivity/<init>[]
+DalvikVM - [WARN]: ar 0, (Activity:instance number 1@edu.mit.icc_componentname_class_constant.OutFlowActivity, edu.mit.icc_componentname_class_constant.OutFlowActivity)
+Executor - [DEBUG]: params: Activity:instance number 1@edu.mit.icc_componentname_class_constant.OutFlowActivity
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]> at edu.mit.icc_componentname_class_constant.OutFlowActivity/<init>[]
+Executor - [MSG]: arg0 obj: Activity:instance number 1@edu.mit.icc_componentname_class_constant.OutFlowActivity
+Executor - [BB]: java.lang.Object/<init>[] is a constructor!
+Executor - [WARN]: Reflection error: edu.mit.icc_componentname_class_constant.OutFlowActivity
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 2
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 RETURN,VOID> at edu.mit.icc_componentname_class_constant.OutFlowActivity/<init>[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame edu.mit.icc_componentname_class_constant.OutFlowActivity/onCreate[android.os.Bundle]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame edu.mit.icc_componentname_class_constant.OutFlowActivity/onCreate[android.os.Bundle]
+DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame edu.mit.icc_componentname_class_constant.OutFlowActivity/onCreate[android.os.Bundle]
+Activity - [BB]: New Activity Created with type edu.mit.icc_componentname_class_constant.OutFlowActivity
+Executor - [MSG]: RUN BEGIN edu.mit.icc_componentname_class_constant.OutFlowActivity/onCreate[android.os.Bundle]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> execute set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[6, 7]> at edu.mit.icc_componentname_class_constant.OutFlowActivity/onCreate[android.os.Bundle]
+Executor - [WARN]: NULL CallingCtx!
+DalvikVM - [WARN]: ar 6, (Activity:instance number 1@edu.mit.icc_componentname_class_constant.OutFlowActivity, edu.mit.icc_componentname_class_constant.OutFlowActivity)
+Executor - [DEBUG]: args: Activity:instance number 1@edu.mit.icc_componentname_class_constant.OutFlowActivity
+Executor - [BB]: Start param from 1
+DalvikVM - [WARN]: ar 7, (null, android.os.Bundle)
+Executor - [DEBUG]: args: null
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 HALT,SUPER,extra=[null, [6, 7]]> at edu.mit.icc_componentname_class_constant.OutFlowActivity/onCreate[android.os.Bundle]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_HALT -> jump set pc to 2
+Executor - [MSG]: Cannot resolve the invocation
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 MOV,CONST,dst=r4,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040> at edu.mit.icc_componentname_class_constant.OutFlowActivity/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Mov const begin <2 MOV,CONST,dst=r4,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+DalvikVM - [WARN]: ar 4, (2130903040, void)
+Executor - [DEBUG]: data: 2130903040 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 3
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [6, 4]]> at edu.mit.icc_componentname_class_constant.OutFlowActivity/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: Activity:instance number 1@edu.mit.icc_componentname_class_constant.OutFlowActivity
+Executor - [DEBUG]: Reflction class: class android.app.Activity
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg4: 2130903040
+Executor - [DEBUG]: Expected para type: int
+Executor - [DEBUG]: Real para int, value: 2130903040
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: Activity:instance number 1@edu.mit.icc_componentname_class_constant.OutFlowActivity, from class: class android.app.Activity
+DalvikVM - [WARN]: ar -1, (null, void)
+Executor - [MSG]: Reflction invocation public void android.app.Activity.setContentView(int)
+DalvikVM - [BB]: Set reflective call: public void android.app.Activity.setContentView(int)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 4
+Executor - [MSG]: 
+
+Executor - [MSG]: <4 MOV,CONST,dst=r4,type=java.lang.String,extra="phone"> at edu.mit.icc_componentname_class_constant.OutFlowActivity/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Mov const begin <4 MOV,CONST,dst=r4,type=java.lang.String,extra="phone">
+DalvikVM - [WARN]: ar 4 (2130903040, void), (phone, java.lang.String)
+Executor - [DEBUG]: data: phone class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 5
+Executor - [MSG]: 
+
+Executor - [MSG]: <5 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [6, 4]]> at edu.mit.icc_componentname_class_constant.OutFlowActivity/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: Activity:instance number 1@edu.mit.icc_componentname_class_constant.OutFlowActivity
+Executor - [DEBUG]: Reflction class: class android.content.Context
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg4: phone
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: Activity:instance number 1@edu.mit.icc_componentname_class_constant.OutFlowActivity, from class: class android.app.Activity
+DalvikVM - [WARN]: ar -1, (android.telephony.TelephonyManager@25533ae9, java.lang.Object)
+Executor - [DEBUG]: Return data: android.telephony.TelephonyManager@25533ae9 ,class android.telephony.TelephonyManager
+Executor - [MSG]: Reflction invocation public java.lang.Object android.content.Context.getSystemService(java.lang.String)
+DalvikVM - [BB]: Set reflective call: public java.lang.Object android.content.Context.getSystemService(java.lang.String)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 6
+Executor - [MSG]: 
+
+Executor - [MSG]: <6 MOV,RESULT,dst=r3,type=java.lang.Object> at edu.mit.icc_componentname_class_constant.OutFlowActivity/onCreate[android.os.Bundle]
+DalvikVM - [WARN]: ar 3, (android.telephony.TelephonyManager@25533ae9, java.lang.Object)
+OP_MOV_RESULT - [BB]: Result data: android.telephony.TelephonyManager@25533ae9
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.TelephonyManager@25533ae9, type: java.lang.Object, to [reg 3@OutFlowActivity/onCreate]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 7
+Executor - [MSG]: 
+
+Executor - [MSG]: <7 ARITHMETIC,CHECK-AND-CAST,dst=r3,type=android.telephony.TelephonyManager> at edu.mit.icc_componentname_class_constant.OutFlowActivity/onCreate[android.os.Bundle]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARITHETIC -> jump set pc to 8
+Executor - [MSG]: 
+
+Executor - [MSG]: <8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [3]]> at edu.mit.icc_componentname_class_constant.OutFlowActivity/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: android.telephony.TelephonyManager@25533ae9
+Executor - [DEBUG]: Reflction class: class android.telephony.TelephonyManager
+DalvikVM - [WARN]: ar -1, (359874043116909, java.lang.String)
+Executor - [DEBUG]: Return data: 359874043116909 ,class java.lang.String
+Executor - [MSG]: Reflction invocation public java.lang.String android.telephony.TelephonyManager.getDeviceId()
+DalvikVM - [BB]: Set reflective call: public java.lang.String android.telephony.TelephonyManager.getDeviceId()
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 9
+Executor - [MSG]: 
+
+Executor - [MSG]: <9 MOV,RESULT,dst=r2,type=java.lang.Object> at edu.mit.icc_componentname_class_constant.OutFlowActivity/onCreate[android.os.Bundle]
+DalvikVM - [WARN]: ar 2, (359874043116909, java.lang.String)
+OP_MOV_RESULT - [BB]: Result data: 359874043116909
+OP_MOV_RESULT - [DEBUG]: Result data: 359874043116909, type: java.lang.String, to [reg 2@OutFlowActivity/onCreate]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 10
+Executor - [MSG]: 
+
+Executor - [MSG]: <10 NEW,INSTANCE,dst=r0,type=android.content.ComponentName> at edu.mit.icc_componentname_class_constant.OutFlowActivity/onCreate[android.os.Bundle]
+OP_NEW_INSTANCE - [DEBUG]: [reg 0@OutFlowActivity/onCreate]
+DalvikVM - [WARN]: ar 0, (null, android.content.ComponentName)
+OP_NEW_INSTANCE - [BB]: Reflecable instance.
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_NEW_INSTANCE -> jump set pc to 11
+Executor - [MSG]: 
+
+Executor - [MSG]: <11 HALT,VIRTUAL,extra=[null, [6]]> at edu.mit.icc_componentname_class_constant.OutFlowActivity/onCreate[android.os.Bundle]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_HALT -> jump set pc to 12
+Executor - [MSG]: Cannot resolve the invocation
+Executor - [MSG]: 
+
+Executor - [MSG]: <12 MOV,RESULT,dst=r4,type=java.lang.Object> at edu.mit.icc_componentname_class_constant.OutFlowActivity/onCreate[android.os.Bundle]
+Unknown - [BB]: Unknown created!
+DalvikVM - [WARN]: ar -1, ([Unknown var:null, type: java.lang.Object], java.lang.Object)
+DalvikVM - [WARN]: ar 4 (phone, java.lang.String), ([Unknown var:null, type: java.lang.Object], java.lang.Object)
+OP_MOV_RESULT - [BB]: Result data: [Unknown var:null, type: java.lang.Object]
+OP_MOV_RESULT - [DEBUG]: Result data: [Unknown var:null, type: java.lang.Object], type: java.lang.Object, to [reg 4@OutFlowActivity/onCreate]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 13
+Executor - [MSG]: 
+
+Executor - [MSG]: <13 MOV,CONST,dst=r5,type=java.lang.Class,extra=class patdroid.core.ClassInfo?edu.mit.icc_componentname_class_constant.InFlowActivity> at edu.mit.icc_componentname_class_constant.OutFlowActivity/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Mov const begin <13 MOV,CONST,dst=r5,type=java.lang.Class,extra=class patdroid.core.ClassInfo?edu.mit.icc_componentname_class_constant.InFlowActivity>
+DalvikVM - [WARN]: ar 5, (edu.mit.icc_componentname_class_constant.InFlowActivity, java.lang.Class)
+Executor - [DEBUG]: data: edu.mit.icc_componentname_class_constant.InFlowActivity class patdroid.core.ClassInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 14
+Executor - [MSG]: 
+
+Executor - [MSG]: <14 INVOKE,VIRTUAL,extra=[java.lang.Class/getName[], [5]]> at edu.mit.icc_componentname_class_constant.OutFlowActivity/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: edu.mit.icc_componentname_class_constant.InFlowActivity
+Executor - [DEBUG]: Reflction class: class java.lang.Class
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 15
+Executor - [WARN]: Reflection error: object is not an instance of declaring class
+Executor - [MSG]: 
+
+Executor - [MSG]: <15 MOV,RESULT,dst=r5,type=java.lang.Object> at edu.mit.icc_componentname_class_constant.OutFlowActivity/onCreate[android.os.Bundle]
+Unknown - [BB]: Unknown created!
+DalvikVM - [WARN]: ar -1, ([Unknown var:null, type: java.lang.Object], java.lang.Object)
+DalvikVM - [WARN]: ar 5 (edu.mit.icc_componentname_class_constant.InFlowActivity, java.lang.Class), ([Unknown var:null, type: java.lang.Object], java.lang.Object)
+OP_MOV_RESULT - [BB]: Result data: [Unknown var:null, type: java.lang.Object]
+OP_MOV_RESULT - [DEBUG]: Result data: [Unknown var:null, type: java.lang.Object], type: java.lang.Object, to [reg 5@OutFlowActivity/onCreate]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 16
+Executor - [MSG]: 
+
+Executor - [MSG]: <16 HALT,DIRECT,extra=[null, [0, 4, 5]]> at edu.mit.icc_componentname_class_constant.OutFlowActivity/onCreate[android.os.Bundle]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_HALT -> jump set pc to 17
+Executor - [MSG]: Cannot resolve the invocation
+Executor - [MSG]: 
+
+Executor - [MSG]: <17 NEW,INSTANCE,dst=r4,type=android.content.Intent> at edu.mit.icc_componentname_class_constant.OutFlowActivity/onCreate[android.os.Bundle]
+OP_NEW_INSTANCE - [DEBUG]: [reg 4@OutFlowActivity/onCreate]
+DalvikVM - [WARN]: ar 4 ([Unknown var:null, type: java.lang.Object], java.lang.Object), (null, android.content.Intent)
+OP_NEW_INSTANCE - [BB]: Reflecable instance.
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_NEW_INSTANCE -> jump set pc to 18
+Executor - [MSG]: 
+
+Executor - [MSG]: <18 INVOKE,DIRECT,extra=[android.content.Intent/<init>[], [4]]> at edu.mit.icc_componentname_class_constant.OutFlowActivity/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: null
+Executor - [BB]: android.content.Intent/<init>[] is a constructor!
+DalvikVM - [WARN]: ar 4 (null, android.content.Intent), ([intent:, null, {}], void)
+Executor - [DEBUG]: Reflected init instance: [intent:, null, {}], class android.content.Intent
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 19
+Executor - [MSG]: 
+
+Executor - [MSG]: <19 HALT,VIRTUAL,extra=[null, [4, 0]]> at edu.mit.icc_componentname_class_constant.OutFlowActivity/onCreate[android.os.Bundle]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_HALT -> jump set pc to 20
+Executor - [MSG]: Cannot resolve the invocation
+Executor - [MSG]: 
+
+Executor - [MSG]: <20 MOV,RESULT,dst=r1,type=java.lang.Object> at edu.mit.icc_componentname_class_constant.OutFlowActivity/onCreate[android.os.Bundle]
+Unknown - [BB]: Unknown created!
+DalvikVM - [WARN]: ar -1, ([Unknown var:null, type: java.lang.Object], java.lang.Object)
+DalvikVM - [WARN]: ar 1, ([Unknown var:null, type: java.lang.Object], java.lang.Object)
+OP_MOV_RESULT - [BB]: Result data: [Unknown var:null, type: java.lang.Object]
+OP_MOV_RESULT - [DEBUG]: Result data: [Unknown var:null, type: java.lang.Object], type: java.lang.Object, to [reg 1@OutFlowActivity/onCreate]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 21
+Executor - [MSG]: 
+
+Executor - [MSG]: <21 MOV,CONST,dst=r4,type=java.lang.String,extra="DroidBench"> at edu.mit.icc_componentname_class_constant.OutFlowActivity/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Mov const begin <21 MOV,CONST,dst=r4,type=java.lang.String,extra="DroidBench">
+DalvikVM - [WARN]: ar 4 ([intent:, null, {}], void), (DroidBench, java.lang.String)
+Executor - [DEBUG]: data: DroidBench class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 22
+Executor - [MSG]: 
+
+Executor - [MSG]: <22 INVOKE,VIRTUAL,extra=[android.content.Intent/putExtra[java.lang.String, java.lang.String], [1, 4, 2]]> at edu.mit.icc_componentname_class_constant.OutFlowActivity/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: [Unknown var:null, type: java.lang.Object]
+Executor - [DEBUG]: Reflction class: class android.content.Intent
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg4: DroidBench
+Executor - [BB]: arg2@reg2: 359874043116909
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: [intent:, null, {}], from class: class android.content.Intent
+DalvikVM - [WARN]: ar -1, ([intent:, null, {DroidBench=359874043116909}], android.content.Intent)
+Executor - [DEBUG]: Return data: [intent:, null, {DroidBench=359874043116909}] ,class android.content.Intent
+Executor - [MSG]: Reflction invocation public android.content.Intent android.content.Intent.putExtra(java.lang.String,java.lang.String)
+DalvikVM - [BB]: Set reflective call: public android.content.Intent android.content.Intent.putExtra(java.lang.String,java.lang.String)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 23
+Executor - [MSG]: 
+
+Executor - [MSG]: <23 INVOKE,VIRTUAL,extra=[android.content.ContextWrapper/startActivity[android.content.Intent], [6, 1]]> at edu.mit.icc_componentname_class_constant.OutFlowActivity/onCreate[android.os.Bundle]

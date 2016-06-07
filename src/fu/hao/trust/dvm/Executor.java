@@ -3041,6 +3041,7 @@ public class Executor {
 		replacedInvokeList.put("java.util.concurrent.Executors",
 				"android.myclasses.Executors");
 		replacedInvokeList.put("java.lang.Thread", "android.myclasses.Thread");
+		replacedInvokeList.put("java.lang.Class", "patdroid.core.ClassInfo");
 	}
 
 	public void exec(DalvikVM vm, Instruction inst, ClassInfo sitClass) {
