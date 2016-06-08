@@ -81,6 +81,10 @@ public class Activity extends ContextWrapper implements LocationListener {
 	}
 	
     public Intent getIntent() {
+    	if (intent == null) {
+    		// Default is the main
+    		intent = new Intent("android.intent.action.MAIN");
+    	}
     	return intent;
     }
 
@@ -173,5 +177,14 @@ public class Activity extends ContextWrapper implements LocationListener {
 	public static void setWidgetPool(Map<Integer, ClassInfo> widgetPool) {
 		Activity.widgetPool = widgetPool; 
 	}
+	
+	private Map<Integer, Intent> resultIntents = new HashMap<>();
+	
+    public final void setResult(int resultCode, Intent data) {
+    	resultIntents.put(resultCode, data);
+    }
+    
+    public void finish() {
+    }
 	
 }
