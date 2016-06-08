@@ -34,15 +34,14 @@ public class Test {
 		args[3] = "ATaint";
 		Settings.logLevel = 0;
 		
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/IntentSink1/app/";
-		
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/IntentSink2/app/";	
 		args[1] = "srcEventChains";
 		Main.main(args);
 		
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
-		res.put("<android.app.Activity: void setResult(int,android.content.Intent)>",
-				"[intent:android.intent.action.MAIN, null, {secret=359874043116909}]");
+		res.put("<android.content.ContextWrapper: void startActivity(android.content.Intent)>",
+				"[intent:, null, {id=359874043116909}]");
 		assertEquals(true, Results.results.contains(res));
 	}
 	

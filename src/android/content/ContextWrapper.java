@@ -103,9 +103,10 @@ public class ContextWrapper extends Context {
 	public void startActivity(Intent intent) {
 		ClassInfo type = findReceiver(intent);
 		if (type == null) {
-			Log.err(TAG, "Cannot resolve the receiver!");
+			Log.warn(TAG, "Cannot resolve the receiver!");
+		} else {
+			new Activity(vm, type, intent);
 		}
-		new Activity(vm, type, intent);
 	}
 
 	private ClassInfo findReceiver(Intent intent) {

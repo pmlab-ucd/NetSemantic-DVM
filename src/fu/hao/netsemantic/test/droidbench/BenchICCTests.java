@@ -165,4 +165,17 @@ public class BenchICCTests {
 				"[intent:android.intent.action.MAIN, null, {secret=359874043116909}]");
 		assertEquals(true, Results.results.contains(res));
 	}
+	
+	@Test
+	public void IntentSink2() {
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/IntentSink2/app/";	
+		args[1] = "srcEventChains";
+		Main.main(args);
+		
+		assertEquals(false, Results.results.isEmpty());
+		Map<String, String> res = new HashMap<>();
+		res.put("<android.content.ContextWrapper: void startActivity(android.content.Intent)>",
+				"[intent:, null, {id=359874043116909}]");
+		assertEquals(true, Results.results.contains(res));
+	}
 }
