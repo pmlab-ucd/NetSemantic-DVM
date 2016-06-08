@@ -5,7 +5,16 @@ import java.util.Set;
 
 public class IntentFilter {
 	
-	Set<String> actions = new HashSet<>();
+	Set<String> actions;
+	
+	public IntentFilter() {
+		actions = new HashSet<>();
+	}
+	
+    public IntentFilter(String action) {
+    	actions = new HashSet<>();
+    	actions.add(action);
+    }
 
     public final void addAction(String action) {
     	actions.add(action);

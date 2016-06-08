@@ -2,6 +2,8 @@ package fu.hao.trust.dvm;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import fu.hao.trust.utils.Settings;
 import patdroid.core.ClassInfo;
 import android.app.Service;
 
@@ -29,6 +31,9 @@ public class ServicePool {
 	}
 	
 	public Service getService(ClassInfo type) {
+		if (!pool.containsKey(type)) {
+			addService(new Service(Settings.getVM(), type));
+		}
 		return pool.get(type);
 	}
 	

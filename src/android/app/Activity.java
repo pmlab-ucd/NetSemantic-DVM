@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
 
@@ -17,6 +18,7 @@ import android.location.LocationListener;
 import android.myclasses.GenInstance;
 import android.view.View;
 import patdroid.core.ClassInfo;
+import patdroid.core.MethodInfo;
 import fu.hao.trust.dvm.DVMObject;
 import fu.hao.trust.dvm.DalvikVM;
 import fu.hao.trust.dvm.DalvikVM.StackFrame;
@@ -43,23 +45,34 @@ public class Activity extends ContextWrapper implements LocationListener {
 		init(vm, type, null);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void init(DalvikVM vm, ClassInfo type, Intent intent) {
-		Log.bb(TAG, "New Activity Created with type " + type);
+		Log.msg(TAG, "New Activity Created with type " + type);
 		this.intent = intent;
 		views = new HashMap<>();
 		memUrl = memUrl + "/" + type.fullName;
 		if (Settings.execOnCreate) {
+			LinkedList<StackFrame> tmpFrames = new LinkedList<>();
 			if (vm.getCurrStackFrame() != null && type.findMethods("onCreate")[0].equals(vm.getCurrStackFrame().getMethod())) {
-				return;
+				vm.getStack().removeLast();
 			}
-			@SuppressWarnings("unchecked")
+			
 			Pair<Object, ClassInfo>[] params = (Pair<Object, ClassInfo>[]) new Pair[2]; 
 			params[0] = new Pair<Object, ClassInfo>(this, type);
-			params[1] = null;
+			params[1] = new Pair<Object, ClassInfo>(null, ClassInfo.findClass("android.os.Bundle")); // To restore the saved state.
 			StackFrame frame = vm.newStackFrame(type, type.findMethods("onCreate")[0], params, false);
 			frame.setIntent(intent);
 			Log.bb(TAG, "Intent " + intent);
-			vm.runInstrumentedMethods(frame);
+			tmpFrames.addFirst(frame);
+			
+			MethodInfo[] onStarts = type.findMethods("onStart");
+			if (onStarts != null && onStarts.length > 0) {
+				params = (Pair<Object, ClassInfo>[]) new Pair[1]; 
+				params[0] = new Pair<Object, ClassInfo>(this, type);
+				frame = vm.newStackFrame(type, onStarts[0], params, false);
+				tmpFrames.addFirst(frame);
+			}
+			vm.runInstrumentedMethods(tmpFrames);
 		}
 	}
 	

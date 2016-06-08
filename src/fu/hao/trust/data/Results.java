@@ -38,6 +38,8 @@ public class Results {
 		results = new HashSet<>();
 		intent = null;
 		sTaintedFields = new HashMap<>();
+		iTaintedFields = new HashMap<>();
+		aTaintedFields = new HashMap<>();
 		hasNewTaintedHeapLoc = false;
 	}
 

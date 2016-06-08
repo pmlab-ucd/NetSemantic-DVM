@@ -9,6 +9,7 @@ import android.app.Activity;
 import patdroid.core.ClassInfo;
 import patdroid.core.MethodInfo;
 import patdroid.util.Pair;
+import fu.hao.trust.dvm.DVMObject;
 import fu.hao.trust.dvm.DalvikVM.StackFrame;
 import fu.hao.trust.utils.Log;
 import fu.hao.trust.utils.Settings;
@@ -18,7 +19,8 @@ public class SharedPreferences {
 	Map<String, Object> tmpData = new HashMap<>();
 	Map<String, Object> data = new HashMap<>();
 	Editor edit = new Editor(this);
-	Set<OnSharedPreferenceChangeListener> listeners = new HashSet<>();
+	//Set<OnSharedPreferenceChangeListener> listeners = new HashSet<>();
+	Set<DVMObject> listeners = new HashSet<>();
 	final String TAG = getClass().getSimpleName();
 
 	public Map<String, ?> getAll() {
@@ -90,6 +92,11 @@ public class SharedPreferences {
 
 	public void registerOnSharedPreferenceChangeListener(
 			SharedPreferences.OnSharedPreferenceChangeListener var1) {
+		listeners.add((DVMObject)var1);
+	}
+	
+	public void registerOnSharedPreferenceChangeListener(
+			DVMObject var1) {
 		listeners.add(var1);
 	}
 

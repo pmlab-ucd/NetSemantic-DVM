@@ -1,14 +1,18 @@
 package android.content;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.Set;
 
 import android.app.Activity;
 import android.app.Service;
+import android.os.IBinder;
 import patdroid.core.ClassInfo;
 import patdroid.core.MethodInfo;
 import patdroid.core.PrimitiveInfo;
+import fu.hao.trust.dvm.DVMObject;
 import fu.hao.trust.dvm.DalvikVM;
 import fu.hao.trust.dvm.DalvikVM.StackFrame;
 import fu.hao.trust.utils.Log;
@@ -20,9 +24,13 @@ public class ContextWrapper extends Context {
 	Map<IntentFilter, BroadcastReceiver> filters = new HashMap<>();
 	final String TAG = getClass().getName();
 	Map<String, SharedPreferences> preferences = new HashMap<>(); 
+	
+	Intent service;
+	Set<DVMObject> conns;
 
 	public ContextWrapper(DalvikVM vm, ClassInfo type) {
 		super(vm, type);
+		conns = new HashSet<>();
 	}
 
 	public Intent registerReceiver(BroadcastReceiver receiver,
@@ -123,4 +131,54 @@ public class ContextWrapper extends Context {
         return Settings.getApkName();
     }
 	
+    public boolean bindService(Intent service, ServiceConnection conn, int flags) {
+        throw new RuntimeException("Stub!");
+    }
+    
+    @SuppressWarnings("unchecked")
+	public boolean bindService(Intent service, DVMObject conn, int flags) {
+    	// Locate the service
+		ClassInfo serviceClass = service.getTargetClass();
+		MethodInfo[] onBinds = serviceClass.findMethods("onBind");
+    	if (onBinds == null || onBinds.length == 0) {
+    		Log.err(TAG, "Not a correct ServiceClass!");
+    		return false;
+    	}
+    	
+    	Pair<Object, ClassInfo>[] params = (Pair<Object, ClassInfo>[]) new Pair[2]; 
+		params[0] = new Pair<Object, ClassInfo>(vm.getServicePool().getService(serviceClass), serviceClass);
+		params[1] = new Pair<Object, ClassInfo>(service, ClassInfo.findClass("android.content.Intent"));
+		StackFrame frame = vm.newStackFrame(serviceClass, onBinds[0], params, false);	
+		vm.runInstrumentedMethods(frame);
+    	
+    	// Bind with the client 
+    	MethodInfo[] onServices = conn.getType().findMethods("onServiceConnected");
+    	if (onServices == null || onServices.length == 0) {
+    		Log.err(TAG, "Not a correct ServiceConnection!");
+    		return false;
+    	}
+    	
+    	params = (Pair<Object, ClassInfo>[]) new Pair[3]; 
+		params[0] = new Pair<Object, ClassInfo>(conn, conn.getType());
+		ComponentName compName = new ComponentName(Settings.getApkName(), this.getClazz().toString());
+		params[1] = new Pair<Object, ClassInfo>(compName, ClassInfo.findClass("android.content.ComponentName"));
+		IBinder binder = (IBinder) vm.getReturnReg().getData();
+		params[2] = new Pair<Object, ClassInfo>(binder, ClassInfo.findClass("android.os.IBinder"));
+		frame = vm.newStackFrame(conn.getClazz(), onServices[0], params, false);	
+		vm.runInstrumentedMethods(frame);
+		
+
+    	
+    	this.service = service;
+    	conns.add(conn);
+    	return true;
+    }
+
+    public void unbindService(ServiceConnection conn) {
+        throw new RuntimeException("Stub!");
+    }
+    
+    public void unbindService(DVMObject conn) {
+    	conns.remove(conn);
+    }
 }

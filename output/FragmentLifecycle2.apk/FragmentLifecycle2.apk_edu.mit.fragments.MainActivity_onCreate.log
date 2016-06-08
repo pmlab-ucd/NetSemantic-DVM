@@ -1,5 +1,9 @@
 main - [MSG]: Src Chain: [(edu.mit.fragments.HeadlinesFragment, onListItemClick)]
 main - [DEBUG]: Src Entry event: (edu.mit.fragments.MainActivity, onCreate)
+Activity - [MSG]: Find xml view with id 2131034112
+Activity - [MSG]: Find xml view with id 2131034113
+Activity - [MSG]: Find xml view with id 2131034114
+Activity - [MSG]: Find xml view with id 2131034115
 DalvikVM - [MSG]: Begin run onCreate at C:\Users\hao\workspace\DroidBenchProj\FragmentLifecycle2\app\FragmentLifecycle2.apk
 DalvikVM - [MSG]: RUN Method edu.mit.fragments.MainActivity/onCreate[android.os.Bundle]
 Executor - [DEBUG]: Read manifest csv: output/FragmentLifecycle2.apk\FragmentLifecycle2.apk_manifest.csv
@@ -33,42 +37,42 @@ newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.fragments.MainActivity
 newStackFrame - [BB]: Add frame StackFrame edu.mit.fragments.MainActivity/onCreate[android.os.Bundle]
 newStackFrame - [BB]: Stack: [StackFrame edu.mit.fragments.MainActivity/onCreate[android.os.Bundle]]
 Executor - [MSG]: New chain obj with type edu.mit.fragments.MainActivity
-DalvikVM - [BB]: Superclass: edu.mit.fragments.MainActivity
 Activity - [BB]: New instance of edu.mit.fragments.MainActivity
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass edu.mit.fragments.MainActivity at fu.hao.trust.dvm.VMHeap@4344ee21
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for edu.mit.fragments.MainActivity at fu.hao.trust.dvm.VMHeap@4344ee21
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@4344ee21
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@4344ee21
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@4344ee21
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@4344ee21
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@4344ee21
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@4344ee21
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@4344ee21
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@4344ee21
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass edu.mit.fragments.MainActivity at fu.hao.trust.dvm.VMHeap@2b96978f
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for edu.mit.fragments.MainActivity at fu.hao.trust.dvm.VMHeap@2b96978f
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@2b96978f
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@2b96978f
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@2b96978f
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@2b96978f
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@2b96978f
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@2b96978f
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@2b96978f
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@2b96978f
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@4344ee21
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@2b96978f
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.Context
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@4344ee21
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@2b96978f
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.ContextWrapper
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@4344ee21
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@2b96978f
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.app.Activity
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@4344ee21
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@2b96978f
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type edu.mit.fragments.MainActivity
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass edu.mit.fragments.MainActivity at fu.hao.trust.dvm.VMHeap@4344ee21
-Activity - [BB]: Not empty constructor
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass edu.mit.fragments.MainActivity at fu.hao.trust.dvm.VMHeap@2b96978f
+Activity - [MSG]: Not empty constructor
 DalvikVM - [BB]: New method call: edu.mit.fragments.MainActivity/<init>[]
 DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[0]>
 DalvikVM - [BB]: [1]<0 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]>
 DalvikVM - [BB]: [2]<0 RETURN,VOID>
+DalvikVM - [WARN]: ar -2, (Activity:instance number 1@edu.mit.fragments.MainActivity, edu.mit.fragments.MainActivity)
 newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.fragments.MainActivity/<init>[], pc -1 stored. 
 newStackFrame - [BB]: Stack: [StackFrame edu.mit.fragments.MainActivity/onCreate[android.os.Bundle]]
 DalvikVM - [MSG]: Begin run instrumented methods!
-DalvikVM - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[3, 4]>
 DalvikVM - [BB]: Add frames [StackFrame edu.mit.fragments.MainActivity/<init>[]]
 DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
 Executor - [MSG]: 
 
 Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[0]> at edu.mit.fragments.MainActivity/<init>[]
+DalvikVM - [WARN]: ar 0, (Activity:instance number 1@edu.mit.fragments.MainActivity, edu.mit.fragments.MainActivity)
 Executor - [DEBUG]: params: Activity:instance number 1@edu.mit.fragments.MainActivity
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
@@ -76,6 +80,7 @@ Executor - [MSG]:
 
 Executor - [MSG]: <1 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]> at edu.mit.fragments.MainActivity/<init>[]
 Executor - [MSG]: arg0 obj: Activity:instance number 1@edu.mit.fragments.MainActivity
+Executor - [MSG]: Replace the clazz.
 Executor - [BB]: java.lang.Object/<init>[] is a constructor!
 Executor - [WARN]: Reflection error: edu.mit.fragments.MainActivity
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 2
@@ -89,22 +94,55 @@ class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
 DalvikVM - [BB]: stack [StackFrame edu.mit.fragments.MainActivity/onCreate[android.os.Bundle]]
 DalvikVM - [BB]: Back to the last stack frame.StackFrame edu.mit.fragments.MainActivity/onCreate[android.os.Bundle]
 DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame edu.mit.fragments.MainActivity/onCreate[android.os.Bundle]
-Activity - [BB]: New Activity Created with type edu.mit.fragments.MainActivity
-Executor - [MSG]: RUN BEGIN edu.mit.fragments.MainActivity/onCreate[android.os.Bundle]
-DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> execute set pc to 0
+Activity - [MSG]: New Activity Created with type edu.mit.fragments.MainActivity
+DalvikVM - [BB]: New method call: edu.mit.fragments.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[3, 4]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?2131034113>
+DalvikVM - [BB]: [2]<0 HALT,SUPER,extra=[null, [3, 4]]>
+DalvikVM - [BB]: [3]<2 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903041>
+DalvikVM - [BB]: [4]<0 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [3, 1]]>
+DalvikVM - [BB]: [5]<0 INVOKE,VIRTUAL,extra=[android.app.Activity/findViewById[int], [3, 2]]>
+DalvikVM - [BB]: [6]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [7]<0 IF,EQZ,r0=r1,extra=index:9>
+DalvikVM - [BB]: [8]<0 IF,EQZ,r0=r4,extra=index:10>
+DalvikVM - [BB]: [9]<0 RETURN,VOID>
+DalvikVM - [BB]: [10]<0 NEW,INSTANCE,dst=r0,type=edu.mit.fragments.HeadlinesFragment>
+DalvikVM - [BB]: [11]<0 INVOKE,DIRECT,extra=[edu.mit.fragments.HeadlinesFragment/<init>[], [0]]>
+DalvikVM - [BB]: [12]<0 INVOKE,VIRTUAL,extra=[android.app.Activity/getIntent[], [3]]>
+DalvikVM - [BB]: [13]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [14]<0 HALT,VIRTUAL,extra=[null, [1]]>
+DalvikVM - [BB]: [15]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [16]<0 HALT,VIRTUAL,extra=[null, [0, 1]]>
+DalvikVM - [BB]: [17]<0 INVOKE,VIRTUAL,extra=[android.app.Activity/getFragmentManager[], [3]]>
+DalvikVM - [BB]: [18]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [19]<0 INVOKE,VIRTUAL,extra=[android.app.FragmentManager/beginTransaction[], [1]]>
+DalvikVM - [BB]: [20]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [21]<0 INVOKE,VIRTUAL,extra=[android.app.FragmentTransaction/add[int, android.app.Fragment], [1, 2, 0]]>
+DalvikVM - [BB]: [22]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [23]<0 INVOKE,VIRTUAL,extra=[android.app.FragmentTransaction/commit[], [1]]>
+DalvikVM - [BB]: [24]<0 GOTO,extra=index:9>
+DalvikVM - [WARN]: ar -2, (Activity:instance number 1@edu.mit.fragments.MainActivity, edu.mit.fragments.MainActivity)
+DalvikVM - [WARN]: ar -2, (null, android.os.Bundle)
+newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.fragments.MainActivity/onCreate[android.os.Bundle]
+newStackFrame - [BB]: Stack: []
+Activity - [BB]: Intent null
+DalvikVM - [MSG]: Begin run instrumented methods!
+DalvikVM - [BB]: Add frames [StackFrame edu.mit.fragments.MainActivity/onCreate[android.os.Bundle]]
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
 Executor - [MSG]: 
 
 Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[3, 4]> at edu.mit.fragments.MainActivity/onCreate[android.os.Bundle]
-Executor - [WARN]: NULL CallingCtx!
-Executor - [DEBUG]: args: Activity:instance number 1@edu.mit.fragments.MainActivity
-Executor - [BB]: Start param from 1
-Executor - [DEBUG]: args: null
+DalvikVM - [WARN]: ar 3, (Activity:instance number 1@edu.mit.fragments.MainActivity, edu.mit.fragments.MainActivity)
+Executor - [DEBUG]: params: Activity:instance number 1@edu.mit.fragments.MainActivity
+DalvikVM - [WARN]: ar 4, (null, android.os.Bundle)
+Executor - [DEBUG]: params: null
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <1 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?2131034113> at edu.mit.fragments.MainActivity/onCreate[android.os.Bundle]
 Executor - [DEBUG]: Mov const begin <1 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?2131034113>
+DalvikVM - [WARN]: ar 2, (2131034113, void)
 Executor - [DEBUG]: data: 2131034113 class patdroid.core.PrimitiveInfo
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 2
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
@@ -119,6 +157,7 @@ Executor - [MSG]:
 
 Executor - [MSG]: <3 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903041> at edu.mit.fragments.MainActivity/onCreate[android.os.Bundle]
 Executor - [DEBUG]: Mov const begin <3 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903041>
+DalvikVM - [WARN]: ar 1, (2130903041, void)
 Executor - [DEBUG]: data: 2130903041 class patdroid.core.PrimitiveInfo
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 4
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
@@ -133,6 +172,7 @@ Executor - [DEBUG]: Expected para type: int
 Executor - [DEBUG]: Real para int, value: 2130903041
 Executor - [BB]: Nargs? true
 Executor - [DEBUG]: Caller obj: Activity:instance number 1@edu.mit.fragments.MainActivity, from class: class android.app.Activity
+DalvikVM - [WARN]: ar -1, (null, void)
 Executor - [MSG]: Reflction invocation public void android.app.Activity.setContentView(int)
 DalvikVM - [BB]: Set reflective call: public void android.app.Activity.setContentView(int)
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 5
@@ -152,20 +192,19 @@ Executor - [BB]: Nargs? true
 Executor - [DEBUG]: Caller obj: Activity:instance number 1@edu.mit.fragments.MainActivity, from class: class android.app.Activity
 GenInstance - [BB]: Gen view instance with android.widget.FrameLayout, id 2131034113
 View - [BB]: New instance of android.widget.FrameLayout
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.widget.FrameLayout at fu.hao.trust.dvm.VMHeap@4344ee21
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.widget.FrameLayout at fu.hao.trust.dvm.VMHeap@4344ee21
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.widget.FrameLayout at fu.hao.trust.dvm.VMHeap@2b96978f
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.widget.FrameLayout at fu.hao.trust.dvm.VMHeap@2b96978f
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.widget.FrameLayout
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.widget.FrameLayout at fu.hao.trust.dvm.VMHeap@4344ee21
-View - [BB]: Not empty constructor
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.widget.FrameLayout at fu.hao.trust.dvm.VMHeap@2b96978f
+View - [MSG]: Not empty constructor
 DalvikVM - [MSG]: Begin run instrumented methods!
-DalvikVM - [MSG]: <5 INVOKE,VIRTUAL,extra=[android.app.Activity/findViewById[int], [3, 2]]>
 DalvikVM - [BB]: Add frames []
 DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame edu.mit.fragments.MainActivity/onCreate[android.os.Bundle]
 View - [BB]: Try to call default constructor of android.widget.FrameLayout
 DalvikVM - [MSG]: Begin run instrumented methods!
-DalvikVM - [MSG]: <5 INVOKE,VIRTUAL,extra=[android.app.Activity/findViewById[int], [3, 2]]>
 DalvikVM - [BB]: Add frames []
 DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame edu.mit.fragments.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [WARN]: ar -1, (instance number 1@android.widget.FrameLayout, android.view.View)
 Executor - [DEBUG]: Return data: instance number 1@android.widget.FrameLayout ,class android.view.View
 Executor - [MSG]: Reflction invocation public android.view.View android.app.Activity.findViewById(int)
 DalvikVM - [BB]: Set reflective call: public android.view.View android.app.Activity.findViewById(int)
@@ -176,7 +215,7 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <6 MOV,RESULT,dst=r1,type=java.lang.Object> at edu.mit.fragments.MainActivity/onCreate[android.os.Bundle]
-DalvikVM - [BB]: ar1 (2130903041, void), (instance number 1@android.widget.FrameLayout, android.view.View)
+DalvikVM - [WARN]: ar 1 (2130903041, void), (instance number 1@android.widget.FrameLayout, android.view.View)
 OP_MOV_RESULT - [BB]: Result data: instance number 1@android.widget.FrameLayout
 OP_MOV_RESULT - [DEBUG]: Result data: instance number 1@android.widget.FrameLayout, type: android.view.View, to [reg 1@MainActivity/onCreate]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 7
@@ -206,35 +245,36 @@ OP_NEW_INSTANCE - [DEBUG]: [reg 0@MainActivity/onCreate]
 DalvikVM - [BB]: Superclass: edu.mit.fragments.HeadlinesFragment
 GenInstance - [BB]: Gen fragment instance with edu.mit.fragments.HeadlinesFragment
 ListFragment - [BB]: New instance of edu.mit.fragments.HeadlinesFragment
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass edu.mit.fragments.HeadlinesFragment at fu.hao.trust.dvm.VMHeap@4344ee21
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for edu.mit.fragments.HeadlinesFragment at fu.hao.trust.dvm.VMHeap@4344ee21
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.ListFragment at fu.hao.trust.dvm.VMHeap@4344ee21
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.ListFragment at fu.hao.trust.dvm.VMHeap@4344ee21
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Fragment at fu.hao.trust.dvm.VMHeap@4344ee21
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Fragment at fu.hao.trust.dvm.VMHeap@4344ee21
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@4344ee21
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass edu.mit.fragments.HeadlinesFragment at fu.hao.trust.dvm.VMHeap@2b96978f
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for edu.mit.fragments.HeadlinesFragment at fu.hao.trust.dvm.VMHeap@2b96978f
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.ListFragment at fu.hao.trust.dvm.VMHeap@2b96978f
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.ListFragment at fu.hao.trust.dvm.VMHeap@2b96978f
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Fragment at fu.hao.trust.dvm.VMHeap@2b96978f
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Fragment at fu.hao.trust.dvm.VMHeap@2b96978f
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@2b96978f
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@4344ee21
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@2b96978f
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.app.Fragment
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Fragment at fu.hao.trust.dvm.VMHeap@4344ee21
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Fragment at fu.hao.trust.dvm.VMHeap@2b96978f
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.app.ListFragment
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.ListFragment at fu.hao.trust.dvm.VMHeap@4344ee21
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.ListFragment at fu.hao.trust.dvm.VMHeap@2b96978f
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type edu.mit.fragments.HeadlinesFragment
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass edu.mit.fragments.HeadlinesFragment at fu.hao.trust.dvm.VMHeap@4344ee21
-ListFragment - [BB]: Not empty constructor
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass edu.mit.fragments.HeadlinesFragment at fu.hao.trust.dvm.VMHeap@2b96978f
+ListFragment - [MSG]: Not empty constructor
 DalvikVM - [BB]: New method call: edu.mit.fragments.HeadlinesFragment/<init>[]
 DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[0]>
 DalvikVM - [BB]: [1]<0 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]>
 DalvikVM - [BB]: [2]<0 RETURN,VOID>
+DalvikVM - [WARN]: ar -2, (instance number 1@edu.mit.fragments.HeadlinesFragment, edu.mit.fragments.HeadlinesFragment)
 newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.fragments.HeadlinesFragment/<init>[], pc 10 stored. 
 newStackFrame - [BB]: Stack: [StackFrame edu.mit.fragments.MainActivity/onCreate[android.os.Bundle]]
 DalvikVM - [MSG]: Begin run instrumented methods!
-DalvikVM - [MSG]: <10 NEW,INSTANCE,dst=r0,type=edu.mit.fragments.HeadlinesFragment>
 DalvikVM - [BB]: Add frames [StackFrame edu.mit.fragments.HeadlinesFragment/<init>[]]
 DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
 Executor - [MSG]: 
 
 Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[0]> at edu.mit.fragments.HeadlinesFragment/<init>[]
+DalvikVM - [WARN]: ar 0, (instance number 1@edu.mit.fragments.HeadlinesFragment, edu.mit.fragments.HeadlinesFragment)
 Executor - [DEBUG]: params: instance number 1@edu.mit.fragments.HeadlinesFragment
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
@@ -242,6 +282,7 @@ Executor - [MSG]:
 
 Executor - [MSG]: <1 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]> at edu.mit.fragments.HeadlinesFragment/<init>[]
 Executor - [MSG]: arg0 obj: instance number 1@edu.mit.fragments.HeadlinesFragment
+Executor - [MSG]: Replace the clazz.
 Executor - [BB]: java.lang.Object/<init>[] is a constructor!
 Executor - [WARN]: Reflection error: edu.mit.fragments.HeadlinesFragment
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 2
@@ -258,17 +299,18 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame edu.mit.fragments.MainActivity/onCreate[android.os.Bundle]
 ListFragment - [BB]: Framnet of edu.mit.fragments.HeadlinesFragment created!
 ListView - [BB]: New instance of android.widget.ListView
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.widget.ListView at fu.hao.trust.dvm.VMHeap@4344ee21
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.widget.ListView at fu.hao.trust.dvm.VMHeap@4344ee21
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@4344ee21
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.view.View at fu.hao.trust.dvm.VMHeap@4344ee21
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@4344ee21
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.widget.ListView at fu.hao.trust.dvm.VMHeap@2b96978f
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.widget.ListView at fu.hao.trust.dvm.VMHeap@2b96978f
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@2b96978f
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.view.View at fu.hao.trust.dvm.VMHeap@2b96978f
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@2b96978f
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@4344ee21
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@2b96978f
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.view.View
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@4344ee21
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@2b96978f
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.widget.ListView
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.widget.ListView at fu.hao.trust.dvm.VMHeap@4344ee21
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.widget.ListView at fu.hao.trust.dvm.VMHeap@2b96978f
+DalvikVM - [WARN]: ar 0, (instance number 1@edu.mit.fragments.HeadlinesFragment, edu.mit.fragments.HeadlinesFragment)
 OP_NEW_INSTANCE - [DEBUG]: New object of edu.mit.fragments.HeadlinesFragmentcreated:instance number 1@edu.mit.fragments.HeadlinesFragment
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_NEW_INSTANCE -> jump set pc to 11
 TaintSumBranch - [BB]: Rdst [reg 0@MainActivity/onCreate]
@@ -289,10 +331,11 @@ newStackFrame - [BB]: Stack: [StackFrame edu.mit.fragments.MainActivity/onCreate
 TaintSumBranch - [BB]: <edu.mit.fragments.HeadlinesFragment: void <init>()>
 TaintSumBranch - [DEBUG]: Not a taint call: <edu.mit.fragments.HeadlinesFragment: void <init>()>
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
-DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> execute set pc to 0
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
 Executor - [MSG]: 
 
 Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[0]> at edu.mit.fragments.HeadlinesFragment/<init>[]
+DalvikVM - [WARN]: ar 0, (instance number 1@edu.mit.fragments.HeadlinesFragment, edu.mit.fragments.HeadlinesFragment)
 Executor - [DEBUG]: params: instance number 1@edu.mit.fragments.HeadlinesFragment
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
@@ -300,6 +343,7 @@ Executor - [MSG]:
 
 Executor - [MSG]: <1 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]> at edu.mit.fragments.HeadlinesFragment/<init>[]
 Executor - [MSG]: arg0 obj: instance number 1@edu.mit.fragments.HeadlinesFragment
+Executor - [MSG]: Replace the clazz.
 Executor - [BB]: java.lang.Object/<init>[] is a constructor!
 Executor - [WARN]: Reflection error: edu.mit.fragments.HeadlinesFragment
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 2
@@ -318,38 +362,37 @@ Executor - [MSG]:
 Executor - [MSG]: <12 INVOKE,VIRTUAL,extra=[android.app.Activity/getIntent[], [3]]> at edu.mit.fragments.MainActivity/onCreate[android.os.Bundle]
 Executor - [MSG]: arg0 obj: Activity:instance number 1@edu.mit.fragments.MainActivity
 Executor - [DEBUG]: Reflction class: class android.app.Activity
+DalvikVM - [WARN]: ar -1, (null, android.content.Intent)
 Executor - [MSG]: Reflction invocation public android.content.Intent android.app.Activity.getIntent()
 DalvikVM - [BB]: Set reflective call: public android.content.Intent android.app.Activity.getIntent()
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 13
 TaintSumBranch - [BB]: <android.app.Activity: android.content.Intent getIntent()>
-TaintSumBranch - [WARN]: Found a tainted return value!
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Global RetReg]=<12 INVOKE,VIRTUAL,extra=[android.app.Activity/getIntent[], [3]]>}
+TaintSumBranch - [DEBUG]: Not a taint call: <android.app.Activity: android.content.Intent getIntent()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <13 MOV,RESULT,dst=r1,type=java.lang.Object> at edu.mit.fragments.MainActivity/onCreate[android.os.Bundle]
-DalvikVM - [BB]: ar1 (instance number 1@android.widget.FrameLayout, android.view.View), (null, android.content.Intent)
+DalvikVM - [WARN]: ar 1 (instance number 1@android.widget.FrameLayout, android.view.View), (null, android.content.Intent)
 OP_MOV_RESULT - [BB]: Result data: null
 OP_MOV_RESULT - [DEBUG]: Result data: null, type: android.content.Intent, to [reg 1@MainActivity/onCreate]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 14
-TaintSumBranch - [BB]: <12 INVOKE,VIRTUAL,extra=[android.app.Activity/getIntent[], [3]]>
-TaintSumBranch - [BB]: Add reg 1 due to ret reg.
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 1@MainActivity/onCreate]=<12 INVOKE,VIRTUAL,extra=[android.app.Activity/getIntent[], [3]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <14 HALT,VIRTUAL,extra=[null, [1]]> at edu.mit.fragments.MainActivity/onCreate[android.os.Bundle]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_HALT -> jump set pc to 15
 Executor - [MSG]: Cannot resolve the invocation
 TaintSumBranch - [BB]: Not a taint op <14 HALT,VIRTUAL,extra=[null, [1]]>
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 1@MainActivity/onCreate]=<12 INVOKE,VIRTUAL,extra=[android.app.Activity/getIntent[], [3]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <15 MOV,RESULT,dst=r1,type=java.lang.Object> at edu.mit.fragments.MainActivity/onCreate[android.os.Bundle]
 Unknown - [BB]: Unknown created!
-DalvikVM - [BB]: ar1 (null, android.content.Intent), ([Unknown var:null, type: java.lang.Object], java.lang.Object)
+DalvikVM - [WARN]: ar -1, ([Unknown var:null, type: java.lang.Object], java.lang.Object)
+DalvikVM - [WARN]: ar 1 (null, android.content.Intent), ([Unknown var:null, type: java.lang.Object], java.lang.Object)
 OP_MOV_RESULT - [BB]: Result data: [Unknown var:null, type: java.lang.Object]
 OP_MOV_RESULT - [DEBUG]: Result data: [Unknown var:null, type: java.lang.Object], type: java.lang.Object, to [reg 1@MainActivity/onCreate]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 16
-TaintSumBranch - [BB]: Rm reg 1
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
@@ -363,7 +406,8 @@ Executor - [MSG]:
 Executor - [MSG]: <17 INVOKE,VIRTUAL,extra=[android.app.Activity/getFragmentManager[], [3]]> at edu.mit.fragments.MainActivity/onCreate[android.os.Bundle]
 Executor - [MSG]: arg0 obj: Activity:instance number 1@edu.mit.fragments.MainActivity
 Executor - [DEBUG]: Reflction class: class android.app.Activity
-Executor - [DEBUG]: Return data: android.app.FragmentManager@27e33378 ,class android.app.FragmentManager
+DalvikVM - [WARN]: ar -1, (android.app.FragmentManager@60bffa22, android.app.FragmentManager)
+Executor - [DEBUG]: Return data: android.app.FragmentManager@60bffa22 ,class android.app.FragmentManager
 Executor - [MSG]: Reflction invocation public android.app.FragmentManager android.app.Activity.getFragmentManager()
 DalvikVM - [BB]: Set reflective call: public android.app.FragmentManager android.app.Activity.getFragmentManager()
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 18
@@ -373,17 +417,18 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <18 MOV,RESULT,dst=r1,type=java.lang.Object> at edu.mit.fragments.MainActivity/onCreate[android.os.Bundle]
-DalvikVM - [BB]: ar1 ([Unknown var:null, type: java.lang.Object], java.lang.Object), (android.app.FragmentManager@27e33378, android.app.FragmentManager)
-OP_MOV_RESULT - [BB]: Result data: android.app.FragmentManager@27e33378
-OP_MOV_RESULT - [DEBUG]: Result data: android.app.FragmentManager@27e33378, type: android.app.FragmentManager, to [reg 1@MainActivity/onCreate]
+DalvikVM - [WARN]: ar 1 ([Unknown var:null, type: java.lang.Object], java.lang.Object), (android.app.FragmentManager@60bffa22, android.app.FragmentManager)
+OP_MOV_RESULT - [BB]: Result data: android.app.FragmentManager@60bffa22
+OP_MOV_RESULT - [DEBUG]: Result data: android.app.FragmentManager@60bffa22, type: android.app.FragmentManager, to [reg 1@MainActivity/onCreate]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 19
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <19 INVOKE,VIRTUAL,extra=[android.app.FragmentManager/beginTransaction[], [1]]> at edu.mit.fragments.MainActivity/onCreate[android.os.Bundle]
-Executor - [MSG]: arg0 obj: android.app.FragmentManager@27e33378
+Executor - [MSG]: arg0 obj: android.app.FragmentManager@60bffa22
 Executor - [DEBUG]: Reflction class: class android.app.FragmentManager
-Executor - [DEBUG]: Return data: android.app.FragmentTransaction@35481fbd ,class android.app.FragmentTransaction
+DalvikVM - [WARN]: ar -1, (android.app.FragmentTransaction@5bbeffcd, android.app.FragmentTransaction)
+Executor - [DEBUG]: Return data: android.app.FragmentTransaction@5bbeffcd ,class android.app.FragmentTransaction
 Executor - [MSG]: Reflction invocation public android.app.FragmentTransaction android.app.FragmentManager.beginTransaction()
 DalvikVM - [BB]: Set reflective call: public android.app.FragmentTransaction android.app.FragmentManager.beginTransaction()
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 20
@@ -393,15 +438,15 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <20 MOV,RESULT,dst=r1,type=java.lang.Object> at edu.mit.fragments.MainActivity/onCreate[android.os.Bundle]
-DalvikVM - [BB]: ar1 (android.app.FragmentManager@27e33378, android.app.FragmentManager), (android.app.FragmentTransaction@35481fbd, android.app.FragmentTransaction)
-OP_MOV_RESULT - [BB]: Result data: android.app.FragmentTransaction@35481fbd
-OP_MOV_RESULT - [DEBUG]: Result data: android.app.FragmentTransaction@35481fbd, type: android.app.FragmentTransaction, to [reg 1@MainActivity/onCreate]
+DalvikVM - [WARN]: ar 1 (android.app.FragmentManager@60bffa22, android.app.FragmentManager), (android.app.FragmentTransaction@5bbeffcd, android.app.FragmentTransaction)
+OP_MOV_RESULT - [BB]: Result data: android.app.FragmentTransaction@5bbeffcd
+OP_MOV_RESULT - [DEBUG]: Result data: android.app.FragmentTransaction@5bbeffcd, type: android.app.FragmentTransaction, to [reg 1@MainActivity/onCreate]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 21
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <21 INVOKE,VIRTUAL,extra=[android.app.FragmentTransaction/add[int, android.app.Fragment], [1, 2, 0]]> at edu.mit.fragments.MainActivity/onCreate[android.os.Bundle]
-Executor - [MSG]: arg0 obj: android.app.FragmentTransaction@35481fbd
+Executor - [MSG]: arg0 obj: android.app.FragmentTransaction@5bbeffcd
 Executor - [DEBUG]: Reflction class: class android.app.FragmentTransaction
 Executor - [BB]: Normal args? true
 Executor - [BB]: arg1@reg2: 2131034113
@@ -409,7 +454,7 @@ Executor - [DEBUG]: Expected para type: int
 Executor - [DEBUG]: Real para int, value: 2131034113
 Executor - [BB]: arg2@reg0: instance number 1@edu.mit.fragments.HeadlinesFragment
 Executor - [BB]: Nargs? true
-Executor - [DEBUG]: Caller obj: android.app.FragmentTransaction@35481fbd, from class: class android.app.FragmentTransaction
+Executor - [DEBUG]: Caller obj: android.app.FragmentTransaction@5bbeffcd, from class: class android.app.FragmentTransaction
 FragmentTransaction - [BB]: Activity:instance number 1@edu.mit.fragments.MainActivity
 DalvikVM - [BB]: New method call: edu.mit.fragments.HeadlinesFragment/onAttach[android.app.Activity]
 DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[5, 6]>
@@ -434,6 +479,8 @@ DalvikVM - [BB]: [18]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/toString[]
 DalvikVM - [BB]: [19]<0 MOV,RESULT,dst=r3,type=java.lang.Object>
 DalvikVM - [BB]: [20]<0 INVOKE,DIRECT,extra=[java.lang.ClassCastException/<init>[java.lang.String], [2, 3]]>
 DalvikVM - [BB]: [21]<0 EXCEPTION,THROW,r0=r2,type=java.lang.Object>
+DalvikVM - [WARN]: ar -2, (instance number 1@edu.mit.fragments.HeadlinesFragment, edu.mit.fragments.HeadlinesFragment)
+DalvikVM - [WARN]: ar -2, (Activity:instance number 1@edu.mit.fragments.MainActivity, edu.mit.fragments.MainActivity)
 newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.fragments.HeadlinesFragment/onAttach[android.app.Activity], pc 21 stored. 
 newStackFrame - [BB]: Stack: [StackFrame edu.mit.fragments.MainActivity/onCreate[android.os.Bundle]]
 DalvikVM - [BB]: New method call: edu.mit.fragments.HeadlinesFragment/onCreate[android.os.Bundle]
@@ -452,16 +499,18 @@ DalvikVM - [BB]: [11]<0 HALT,VIRTUAL,extra=[null, [4, 1]]>
 DalvikVM - [BB]: [12]<0 RETURN,VOID>
 DalvikVM - [BB]: [13]<12 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?17367043>
 DalvikVM - [BB]: [14]<0 GOTO,extra=index:6>
+DalvikVM - [WARN]: ar -2, (instance number 1@edu.mit.fragments.HeadlinesFragment, edu.mit.fragments.HeadlinesFragment)
 newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.fragments.HeadlinesFragment/onCreate[android.os.Bundle], pc 21 stored. 
 newStackFrame - [BB]: Stack: [StackFrame edu.mit.fragments.MainActivity/onCreate[android.os.Bundle]]
 DalvikVM - [MSG]: Begin run instrumented methods!
-DalvikVM - [MSG]: <21 INVOKE,VIRTUAL,extra=[android.app.FragmentTransaction/add[int, android.app.Fragment], [1, 2, 0]]>
 DalvikVM - [BB]: Add frames [StackFrame edu.mit.fragments.HeadlinesFragment/onCreate[android.os.Bundle], StackFrame edu.mit.fragments.HeadlinesFragment/onAttach[android.app.Activity]]
 DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
 Executor - [MSG]: 
 
 Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[5, 6]> at edu.mit.fragments.HeadlinesFragment/onAttach[android.app.Activity]
+DalvikVM - [WARN]: ar 5, (instance number 1@edu.mit.fragments.HeadlinesFragment, edu.mit.fragments.HeadlinesFragment)
 Executor - [DEBUG]: params: instance number 1@edu.mit.fragments.HeadlinesFragment
+DalvikVM - [WARN]: ar 6, (Activity:instance number 1@edu.mit.fragments.MainActivity, edu.mit.fragments.MainActivity)
 Executor - [DEBUG]: params: Activity:instance number 1@edu.mit.fragments.MainActivity
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
@@ -475,6 +524,7 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <2 MOV,REG,dst=r0,r0=r6,type=java.lang.Object> at edu.mit.fragments.HeadlinesFragment/onAttach[android.app.Activity]
+DalvikVM - [WARN]: ar 0, (Activity:instance number 1@edu.mit.fragments.MainActivity, edu.mit.fragments.MainActivity)
 class fu.hao.trust.dvm.Executor$OP_MOVE_REG - [DEBUG]: mov Activity:instance number 1@edu.mit.fragments.MainActivity to Activity:instance number 1@edu.mit.fragments.MainActivity
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOVE_REG -> jump set pc to 3
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
@@ -483,11 +533,11 @@ Executor - [MSG]:
 Executor - [MSG]: <3 ARITHMETIC,CHECK-AND-CAST,dst=r0,type=edu.mit.fragments.HeadlinesFragment$OnHeadlineSelectedListener> at edu.mit.fragments.HeadlinesFragment/onAttach[android.app.Activity]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARITHETIC -> jump set pc to 4
 OP_A_CHECKCAST - [WARN]: Not consistent type when cast! edu.mit.fragments.HeadlinesFragment$OnHeadlineSelectedListener, edu.mit.fragments.MainActivity
-TaintSumBranch - [BB]: Not a taint op <3 ARITHMETIC,CHECK-AND-CAST,dst=r0,type=edu.mit.fragments.HeadlinesFragment$OnHeadlineSelectedListener>
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <4 MOV,REG,dst=r2,r0=r0,type=java.lang.Object> at edu.mit.fragments.HeadlinesFragment/onAttach[android.app.Activity]
+DalvikVM - [WARN]: ar 2, (Activity:instance number 1@edu.mit.fragments.MainActivity, edu.mit.fragments.MainActivity)
 class fu.hao.trust.dvm.Executor$OP_MOVE_REG - [DEBUG]: mov Activity:instance number 1@edu.mit.fragments.MainActivity to Activity:instance number 1@edu.mit.fragments.MainActivity
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOVE_REG -> jump set pc to 5
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
@@ -511,6 +561,7 @@ DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
 Executor - [MSG]: 
 
 Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[4, 5]> at edu.mit.fragments.HeadlinesFragment/onCreate[android.os.Bundle]
+DalvikVM - [WARN]: ar 4, (instance number 1@edu.mit.fragments.HeadlinesFragment, edu.mit.fragments.HeadlinesFragment)
 Executor - [DEBUG]: params: instance number 1@edu.mit.fragments.HeadlinesFragment
 Executor - [DEBUG]: params: Empty!
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
@@ -525,11 +576,12 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <2 STATIC,SGET,r0=r1,type=void,extra=(android.os.Build$VERSION, SDK_INT)> at edu.mit.fragments.HeadlinesFragment/onCreate[android.os.Bundle]
-Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass android.os.Build$VERSION at fu.hao.trust.dvm.VMHeap@4344ee21
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.os.Build$VERSION at fu.hao.trust.dvm.VMHeap@4344ee21
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass android.os.Build$VERSION at fu.hao.trust.dvm.VMHeap@2b96978f
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.os.Build$VERSION at fu.hao.trust.dvm.VMHeap@2b96978f
 Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type android.os.Build$VERSION
-Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass android.os.Build$VERSION at fu.hao.trust.dvm.VMHeap@4344ee21
-OP_STATIC_GET_FIELD - [DEBUG]: Sget null, from fu.hao.trust.dvm.DVMClass@1b66a538
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass android.os.Build$VERSION at fu.hao.trust.dvm.VMHeap@2b96978f
+DalvikVM - [WARN]: ar 1, (null, int)
+OP_STATIC_GET_FIELD - [DEBUG]: Sget null, from fu.hao.trust.dvm.DVMClass@1182e445
 OP_STATIC_GET_FIELD - [DEBUG]: Expect sget SDK_INT, a int from android.os.Build$VERSION
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD -> jump set pc to 3
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
@@ -537,6 +589,7 @@ Executor - [MSG]:
 
 Executor - [MSG]: <3 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?11> at edu.mit.fragments.HeadlinesFragment/onCreate[android.os.Bundle]
 Executor - [DEBUG]: Mov const begin <3 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?11>
+DalvikVM - [WARN]: ar 2, (11, void)
 Executor - [DEBUG]: data: 11 class patdroid.core.PrimitiveInfo
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 4
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
@@ -556,6 +609,7 @@ Executor - [MSG]:
 
 Executor - [MSG]: <13 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?17367043> at edu.mit.fragments.HeadlinesFragment/onCreate[android.os.Bundle]
 Executor - [DEBUG]: Mov const begin <13 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?17367043>
+DalvikVM - [WARN]: ar 0, (17367043, void)
 Executor - [DEBUG]: data: 17367043 class patdroid.core.PrimitiveInfo
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 14
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
@@ -571,11 +625,11 @@ Executor - [MSG]:
 Executor - [MSG]: <6 NEW,INSTANCE,dst=r1,type=android.widget.ArrayAdapter> at edu.mit.fragments.HeadlinesFragment/onCreate[android.os.Bundle]
 OP_NEW_INSTANCE - [DEBUG]: [reg 1@HeadlinesFragment/onCreate]
 BaseAdapter - [BB]: New instance of android.widget.ArrayAdapter
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.widget.ArrayAdapter at fu.hao.trust.dvm.VMHeap@4344ee21
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.widget.ArrayAdapter at fu.hao.trust.dvm.VMHeap@4344ee21
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.widget.ArrayAdapter at fu.hao.trust.dvm.VMHeap@2b96978f
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.widget.ArrayAdapter at fu.hao.trust.dvm.VMHeap@2b96978f
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.widget.ArrayAdapter
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.widget.ArrayAdapter at fu.hao.trust.dvm.VMHeap@4344ee21
-DalvikVM - [BB]: ar1 (null, int), (instance number 1@android.widget.ArrayAdapter, android.widget.ArrayAdapter)
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.widget.ArrayAdapter at fu.hao.trust.dvm.VMHeap@2b96978f
+DalvikVM - [WARN]: ar 1 (null, int), (instance number 1@android.widget.ArrayAdapter, android.widget.ArrayAdapter)
 OP_NEW_INSTANCE - [DEBUG]: New object of android.widget.ArrayAdaptercreated:instance number 1@android.widget.ArrayAdapter
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_NEW_INSTANCE -> jump set pc to 7
 TaintSumBranch - [BB]: Rdst [reg 1@HeadlinesFragment/onCreate]
@@ -585,6 +639,7 @@ Executor - [MSG]:
 Executor - [MSG]: <7 INVOKE,VIRTUAL,extra=[android.app.Fragment/getActivity[], [4]]> at edu.mit.fragments.HeadlinesFragment/onCreate[android.os.Bundle]
 Executor - [MSG]: arg0 obj: instance number 1@edu.mit.fragments.HeadlinesFragment
 Executor - [DEBUG]: Reflction class: class android.app.Fragment
+DalvikVM - [WARN]: ar -1, (Activity:instance number 1@edu.mit.fragments.MainActivity, android.app.Activity)
 Executor - [DEBUG]: Return data: Activity:instance number 1@edu.mit.fragments.MainActivity ,class android.app.Activity
 Executor - [MSG]: Reflction invocation public final android.app.Activity android.app.Fragment.getActivity()
 DalvikVM - [BB]: Set reflective call: public final android.app.Activity android.app.Fragment.getActivity()
@@ -595,7 +650,7 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <8 MOV,RESULT,dst=r2,type=java.lang.Object> at edu.mit.fragments.HeadlinesFragment/onCreate[android.os.Bundle]
-DalvikVM - [BB]: ar2 (11, void), (Activity:instance number 1@edu.mit.fragments.MainActivity, android.app.Activity)
+DalvikVM - [WARN]: ar 2 (11, void), (Activity:instance number 1@edu.mit.fragments.MainActivity, android.app.Activity)
 OP_MOV_RESULT - [BB]: Result data: Activity:instance number 1@edu.mit.fragments.MainActivity
 OP_MOV_RESULT - [DEBUG]: Result data: Activity:instance number 1@edu.mit.fragments.MainActivity, type: android.app.Activity, to [reg 2@HeadlinesFragment/onCreate]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 9
@@ -603,8 +658,8 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <9 STATIC,SGET,r0=r3,type=java.lang.Object,extra=(edu.mit.fragments.Ipsum, Headlines)> at edu.mit.fragments.HeadlinesFragment/onCreate[android.os.Bundle]
-Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass edu.mit.fragments.Ipsum at fu.hao.trust.dvm.VMHeap@4344ee21
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for edu.mit.fragments.Ipsum at fu.hao.trust.dvm.VMHeap@4344ee21
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass edu.mit.fragments.Ipsum at fu.hao.trust.dvm.VMHeap@2b96978f
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for edu.mit.fragments.Ipsum at fu.hao.trust.dvm.VMHeap@2b96978f
 DalvikVM - [BB]: New method call: edu.mit.fragments.Ipsum/<clinit>[]
 DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[]>
 DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r4,type=void,extra=class patdroid.core.PrimitiveInfo?2>
@@ -630,7 +685,6 @@ DalvikVM - [BB]: [16]<0 RETURN,VOID>
 newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.fragments.Ipsum/<clinit>[], pc 9 stored. 
 newStackFrame - [BB]: Stack: [StackFrame edu.mit.fragments.MainActivity/onCreate[android.os.Bundle], StackFrame edu.mit.fragments.HeadlinesFragment/onCreate[android.os.Bundle]]
 DalvikVM - [MSG]: Begin run instrumented methods!
-DalvikVM - [MSG]: <9 STATIC,SGET,r0=r3,type=java.lang.Object,extra=(edu.mit.fragments.Ipsum, Headlines)>
 DalvikVM - [BB]: Add frames [StackFrame edu.mit.fragments.Ipsum/<clinit>[]]
 DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
 Executor - [MSG]: 
@@ -642,6 +696,7 @@ Executor - [MSG]:
 
 Executor - [MSG]: <1 MOV,CONST,dst=r4,type=void,extra=class patdroid.core.PrimitiveInfo?2> at edu.mit.fragments.Ipsum/<clinit>[]
 Executor - [DEBUG]: Mov const begin <1 MOV,CONST,dst=r4,type=void,extra=class patdroid.core.PrimitiveInfo?2>
+DalvikVM - [WARN]: ar 4, (2, void)
 Executor - [DEBUG]: data: 2 class patdroid.core.PrimitiveInfo
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 2
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
@@ -649,6 +704,7 @@ Executor - [MSG]:
 
 Executor - [MSG]: <2 MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?1> at edu.mit.fragments.Ipsum/<clinit>[]
 Executor - [DEBUG]: Mov const begin <2 MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?1>
+DalvikVM - [WARN]: ar 3, (1, void)
 Executor - [DEBUG]: data: 1 class patdroid.core.PrimitiveInfo
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 3
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
@@ -656,12 +712,14 @@ Executor - [MSG]:
 
 Executor - [MSG]: <3 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0> at edu.mit.fragments.Ipsum/<clinit>[]
 Executor - [DEBUG]: Mov const begin <3 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [WARN]: ar 2, (0, void)
 Executor - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 4
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <4 NEW,ARRAY,dst=r0,r0=r4,type=[Ljava.lang.String;> at edu.mit.fragments.Ipsum/<clinit>[]
+DalvikVM - [WARN]: ar 0, ([Ljava.lang.Object;@e9f0070, [Ljava.lang.String;)
 OP_NEW_ARRAY - [DEBUG]: A new array of [Ljava.lang.String; in size 2 created.
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_NEW_ARRAY -> jump set pc to 5
 TaintSumBranch - [BB]: Not a taint op <4 NEW,ARRAY,dst=r0,r0=r4,type=[Ljava.lang.String;>
@@ -670,6 +728,7 @@ Executor - [MSG]:
 
 Executor - [MSG]: <5 MOV,CONST,dst=r1,type=java.lang.String,extra="Article One"> at edu.mit.fragments.Ipsum/<clinit>[]
 Executor - [DEBUG]: Mov const begin <5 MOV,CONST,dst=r1,type=java.lang.String,extra="Article One">
+DalvikVM - [WARN]: ar 1, (Article One, java.lang.String)
 Executor - [DEBUG]: data: Article One class java.lang.String
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 6
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
@@ -678,13 +737,13 @@ Executor - [MSG]:
 Executor - [MSG]: <6 ARRAY,APUT,dst=r1,r0=r0,r1=r2,type=java.lang.Object> at edu.mit.fragments.Ipsum/<clinit>[]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARRAY_PUT -> jump set pc to 7
 Executor - [BB]: index: 0, length: 2
-Executor - [DEBUG]: data: Article One array: [Ljava.lang.Object;@627a73aa
+Executor - [DEBUG]: data: Article One array: [Ljava.lang.Object;@e9f0070
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <7 MOV,CONST,dst=r1,type=java.lang.String,extra="Article Two"> at edu.mit.fragments.Ipsum/<clinit>[]
 Executor - [DEBUG]: Mov const begin <7 MOV,CONST,dst=r1,type=java.lang.String,extra="Article Two">
-DalvikVM - [BB]: ar1 (Article One, java.lang.String), (Article Two, java.lang.String)
+DalvikVM - [WARN]: ar 1 (Article One, java.lang.String), (Article Two, java.lang.String)
 Executor - [DEBUG]: data: Article Two class java.lang.String
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 8
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
@@ -693,25 +752,25 @@ Executor - [MSG]:
 Executor - [MSG]: <8 ARRAY,APUT,dst=r1,r0=r0,r1=r3,type=java.lang.Object> at edu.mit.fragments.Ipsum/<clinit>[]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARRAY_PUT -> jump set pc to 9
 Executor - [BB]: index: 1, length: 2
-Executor - [DEBUG]: data: Article Two array: [Ljava.lang.Object;@627a73aa
+Executor - [DEBUG]: data: Article Two array: [Ljava.lang.Object;@e9f0070
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <9 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(edu.mit.fragments.Ipsum, Headlines)> at edu.mit.fragments.Ipsum/<clinit>[]
-Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.fragments.Ipsum at fu.hao.trust.dvm.VMHeap@4344ee21
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.fragments.Ipsum at fu.hao.trust.dvm.VMHeap@2b96978f
 Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type edu.mit.fragments.Ipsum
-Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.fragments.Ipsum at fu.hao.trust.dvm.VMHeap@4344ee21
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.fragments.Ipsum at fu.hao.trust.dvm.VMHeap@2b96978f
 class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: expect sput Headlines from edu.mit.fragments.Ipsum
-class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: real sput [Ljava.lang.Object;@627a73aa from fu.hao.trust.dvm.DVMClass@553fd068
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: real sput [Ljava.lang.Object;@e9f0070 from fu.hao.trust.dvm.DVMClass@68d5c08f
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD -> jump set pc to 10
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.fragments.Ipsum at fu.hao.trust.dvm.VMHeap@4344ee21
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.fragments.Ipsum at fu.hao.trust.dvm.VMHeap@2b96978f
 Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type edu.mit.fragments.Ipsum
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.fragments.Ipsum at fu.hao.trust.dvm.VMHeap@4344ee21
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.fragments.Ipsum at fu.hao.trust.dvm.VMHeap@2b96978f
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <10 NEW,ARRAY,dst=r0,r0=r4,type=[Ljava.lang.String;> at edu.mit.fragments.Ipsum/<clinit>[]
-DalvikVM - [BB]: ar0 ([Ljava.lang.Object;@627a73aa, [Ljava.lang.String;), ([Ljava.lang.Object;@508b8791, [Ljava.lang.String;)
+DalvikVM - [WARN]: ar 0 ([Ljava.lang.Object;@e9f0070, [Ljava.lang.String;), ([Ljava.lang.Object;@2955220e, [Ljava.lang.String;)
 OP_NEW_ARRAY - [DEBUG]: A new array of [Ljava.lang.String; in size 2 created.
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_NEW_ARRAY -> jump set pc to 11
 TaintSumBranch - [BB]: Not a taint op <10 NEW,ARRAY,dst=r0,r0=r4,type=[Ljava.lang.String;>
@@ -724,7 +783,7 @@ Excepteur pour-over occaecat squid biodiesel umami gastropub, nulla laborum salv
 Executor - [DEBUG]: Mov const begin <11 MOV,CONST,dst=r1,type=java.lang.String,extra="Article One
 
 Excepteur pour-over occaecat squid biodiesel umami gastropub, nulla laborum salvia dreamcatcher fanny pack. Ullamco culpa retro ea, trust fund excepteur eiusmod direct trade banksy nisi lo-fi cray messenger bag. Nesciunt esse carles selvage put a bird on it gluten-free, wes anderson ut trust fund twee occupy viral. Laboris small batch scenester pork belly, leggings ut farm-to-table aliquip yr nostrud iphone viral next level. Craft beer dreamcatcher pinterest truffaut ethnic, authentic brunch. Esse single-origin coffee banksy do next level tempor. Velit synth dreamcatcher, magna shoreditch in american apparel messenger bag narwhal PBR ennui farm-to-table.">
-DalvikVM - [BB]: ar1 (Article Two, java.lang.String), (Article One
+DalvikVM - [WARN]: ar 1 (Article Two, java.lang.String), (Article One
 
 Excepteur pour-over occaecat squid biodiesel umami gastropub, nulla laborum salvia dreamcatcher fanny pack. Ullamco culpa retro ea, trust fund excepteur eiusmod direct trade banksy nisi lo-fi cray messenger bag. Nesciunt esse carles selvage put a bird on it gluten-free, wes anderson ut trust fund twee occupy viral. Laboris small batch scenester pork belly, leggings ut farm-to-table aliquip yr nostrud iphone viral next level. Craft beer dreamcatcher pinterest truffaut ethnic, authentic brunch. Esse single-origin coffee banksy do next level tempor. Velit synth dreamcatcher, magna shoreditch in american apparel messenger bag narwhal PBR ennui farm-to-table., java.lang.String)
 Executor - [DEBUG]: data: Article One
@@ -739,7 +798,7 @@ DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARRAY_PUT -> jump set pc to 13
 Executor - [BB]: index: 0, length: 2
 Executor - [DEBUG]: data: Article One
 
-Excepteur pour-over occaecat squid biodiesel umami gastropub, nulla laborum salvia dreamcatcher fanny pack. Ullamco culpa retro ea, trust fund excepteur eiusmod direct trade banksy nisi lo-fi cray messenger bag. Nesciunt esse carles selvage put a bird on it gluten-free, wes anderson ut trust fund twee occupy viral. Laboris small batch scenester pork belly, leggings ut farm-to-table aliquip yr nostrud iphone viral next level. Craft beer dreamcatcher pinterest truffaut ethnic, authentic brunch. Esse single-origin coffee banksy do next level tempor. Velit synth dreamcatcher, magna shoreditch in american apparel messenger bag narwhal PBR ennui farm-to-table. array: [Ljava.lang.Object;@508b8791
+Excepteur pour-over occaecat squid biodiesel umami gastropub, nulla laborum salvia dreamcatcher fanny pack. Ullamco culpa retro ea, trust fund excepteur eiusmod direct trade banksy nisi lo-fi cray messenger bag. Nesciunt esse carles selvage put a bird on it gluten-free, wes anderson ut trust fund twee occupy viral. Laboris small batch scenester pork belly, leggings ut farm-to-table aliquip yr nostrud iphone viral next level. Craft beer dreamcatcher pinterest truffaut ethnic, authentic brunch. Esse single-origin coffee banksy do next level tempor. Velit synth dreamcatcher, magna shoreditch in american apparel messenger bag narwhal PBR ennui farm-to-table. array: [Ljava.lang.Object;@2955220e
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
@@ -749,7 +808,7 @@ Vinyl williamsburg non velit, master cleanse four loko banh mi. Enim kogi keytar
 Executor - [DEBUG]: Mov const begin <13 MOV,CONST,dst=r1,type=java.lang.String,extra="Article Two
 
 Vinyl williamsburg non velit, master cleanse four loko banh mi. Enim kogi keytar trust fund pop-up portland gentrify. Non ea typewriter dolore deserunt Austin. Ad magna ethical kogi mixtape next level. Aliqua pork belly thundercats, ut pop-up tattooed dreamcatcher kogi accusamus photo booth irony portland. Semiotics brunch ut locavore irure, enim etsy laborum stumptown carles gentrify post-ironic cray. Butcher 3 wolf moon blog synth, vegan carles odd future.">
-DalvikVM - [BB]: ar1 (Article One
+DalvikVM - [WARN]: ar 1 (Article One
 
 Excepteur pour-over occaecat squid biodiesel umami gastropub, nulla laborum salvia dreamcatcher fanny pack. Ullamco culpa retro ea, trust fund excepteur eiusmod direct trade banksy nisi lo-fi cray messenger bag. Nesciunt esse carles selvage put a bird on it gluten-free, wes anderson ut trust fund twee occupy viral. Laboris small batch scenester pork belly, leggings ut farm-to-table aliquip yr nostrud iphone viral next level. Craft beer dreamcatcher pinterest truffaut ethnic, authentic brunch. Esse single-origin coffee banksy do next level tempor. Velit synth dreamcatcher, magna shoreditch in american apparel messenger bag narwhal PBR ennui farm-to-table., java.lang.String), (Article Two
 
@@ -766,20 +825,20 @@ DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARRAY_PUT -> jump set pc to 15
 Executor - [BB]: index: 1, length: 2
 Executor - [DEBUG]: data: Article Two
 
-Vinyl williamsburg non velit, master cleanse four loko banh mi. Enim kogi keytar trust fund pop-up portland gentrify. Non ea typewriter dolore deserunt Austin. Ad magna ethical kogi mixtape next level. Aliqua pork belly thundercats, ut pop-up tattooed dreamcatcher kogi accusamus photo booth irony portland. Semiotics brunch ut locavore irure, enim etsy laborum stumptown carles gentrify post-ironic cray. Butcher 3 wolf moon blog synth, vegan carles odd future. array: [Ljava.lang.Object;@508b8791
+Vinyl williamsburg non velit, master cleanse four loko banh mi. Enim kogi keytar trust fund pop-up portland gentrify. Non ea typewriter dolore deserunt Austin. Ad magna ethical kogi mixtape next level. Aliqua pork belly thundercats, ut pop-up tattooed dreamcatcher kogi accusamus photo booth irony portland. Semiotics brunch ut locavore irure, enim etsy laborum stumptown carles gentrify post-ironic cray. Butcher 3 wolf moon blog synth, vegan carles odd future. array: [Ljava.lang.Object;@2955220e
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <15 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(edu.mit.fragments.Ipsum, Articles)> at edu.mit.fragments.Ipsum/<clinit>[]
-Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.fragments.Ipsum at fu.hao.trust.dvm.VMHeap@4344ee21
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.fragments.Ipsum at fu.hao.trust.dvm.VMHeap@2b96978f
 Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type edu.mit.fragments.Ipsum
-Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.fragments.Ipsum at fu.hao.trust.dvm.VMHeap@4344ee21
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.fragments.Ipsum at fu.hao.trust.dvm.VMHeap@2b96978f
 class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: expect sput Articles from edu.mit.fragments.Ipsum
-class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: real sput [Ljava.lang.Object;@508b8791 from fu.hao.trust.dvm.DVMClass@553fd068
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: real sput [Ljava.lang.Object;@2955220e from fu.hao.trust.dvm.DVMClass@68d5c08f
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD -> jump set pc to 16
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.fragments.Ipsum at fu.hao.trust.dvm.VMHeap@4344ee21
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.fragments.Ipsum at fu.hao.trust.dvm.VMHeap@2b96978f
 Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type edu.mit.fragments.Ipsum
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.fragments.Ipsum at fu.hao.trust.dvm.VMHeap@4344ee21
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.fragments.Ipsum at fu.hao.trust.dvm.VMHeap@2b96978f
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
@@ -790,13 +849,14 @@ DalvikVM - [BB]: Back to the last stack frame.StackFrame edu.mit.fragments.Headl
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame edu.mit.fragments.HeadlinesFragment/onCreate[android.os.Bundle]
 Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type edu.mit.fragments.Ipsum
-Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass edu.mit.fragments.Ipsum at fu.hao.trust.dvm.VMHeap@4344ee21
-OP_STATIC_GET_FIELD - [DEBUG]: Sget [Ljava.lang.Object;@627a73aa, from fu.hao.trust.dvm.DVMClass@553fd068
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass edu.mit.fragments.Ipsum at fu.hao.trust.dvm.VMHeap@2b96978f
+DalvikVM - [WARN]: ar 3, ([Ljava.lang.Object;@e9f0070, [Ljava.lang.String;)
+OP_STATIC_GET_FIELD - [DEBUG]: Sget [Ljava.lang.Object;@e9f0070, from fu.hao.trust.dvm.DVMClass@68d5c08f
 OP_STATIC_GET_FIELD - [DEBUG]: Expect sget Headlines, a [Ljava.lang.String; from edu.mit.fragments.Ipsum
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD -> jump set pc to 10
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass edu.mit.fragments.Ipsum at fu.hao.trust.dvm.VMHeap@4344ee21
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass edu.mit.fragments.Ipsum at fu.hao.trust.dvm.VMHeap@2b96978f
 Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type edu.mit.fragments.Ipsum
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass edu.mit.fragments.Ipsum at fu.hao.trust.dvm.VMHeap@4344ee21
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass edu.mit.fragments.Ipsum at fu.hao.trust.dvm.VMHeap@2b96978f
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
@@ -821,7 +881,8 @@ DalvikVM - [BB]: Back to the last stack frame.StackFrame edu.mit.fragments.MainA
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame edu.mit.fragments.MainActivity/onCreate[android.os.Bundle]
 ListFragment - [BB]: What!
-Executor - [DEBUG]: Return data: android.app.FragmentTransaction@35481fbd ,class android.app.FragmentTransaction
+DalvikVM - [WARN]: ar -1, (android.app.FragmentTransaction@5bbeffcd, android.app.FragmentTransaction)
+Executor - [DEBUG]: Return data: android.app.FragmentTransaction@5bbeffcd ,class android.app.FragmentTransaction
 Executor - [MSG]: Reflction invocation public android.app.FragmentTransaction android.app.FragmentTransaction.add(int,android.app.Fragment)
 DalvikVM - [BB]: Set reflective call: public android.app.FragmentTransaction android.app.FragmentTransaction.add(int,android.app.Fragment)
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 22
@@ -831,15 +892,15 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <22 MOV,RESULT,dst=r1,type=java.lang.Object> at edu.mit.fragments.MainActivity/onCreate[android.os.Bundle]
-DalvikVM - [BB]: ar1 (android.app.FragmentTransaction@35481fbd, android.app.FragmentTransaction), (android.app.FragmentTransaction@35481fbd, android.app.FragmentTransaction)
-OP_MOV_RESULT - [BB]: Result data: android.app.FragmentTransaction@35481fbd
-OP_MOV_RESULT - [DEBUG]: Result data: android.app.FragmentTransaction@35481fbd, type: android.app.FragmentTransaction, to [reg 1@MainActivity/onCreate]
+DalvikVM - [WARN]: ar 1 (android.app.FragmentTransaction@5bbeffcd, android.app.FragmentTransaction), (android.app.FragmentTransaction@5bbeffcd, android.app.FragmentTransaction)
+OP_MOV_RESULT - [BB]: Result data: android.app.FragmentTransaction@5bbeffcd
+OP_MOV_RESULT - [DEBUG]: Result data: android.app.FragmentTransaction@5bbeffcd, type: android.app.FragmentTransaction, to [reg 1@MainActivity/onCreate]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 23
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <23 INVOKE,VIRTUAL,extra=[android.app.FragmentTransaction/commit[], [1]]> at edu.mit.fragments.MainActivity/onCreate[android.os.Bundle]
-Executor - [MSG]: arg0 obj: android.app.FragmentTransaction@35481fbd
+Executor - [MSG]: arg0 obj: android.app.FragmentTransaction@5bbeffcd
 Executor - [DEBUG]: Reflction class: class android.app.FragmentTransaction
 DalvikVM - [BB]: New method call: edu.mit.fragments.HeadlinesFragment/onStart[]
 DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[2]>
@@ -855,15 +916,16 @@ DalvikVM - [BB]: [9]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
 DalvikVM - [BB]: [10]<9 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?1>
 DalvikVM - [BB]: [11]<0 INVOKE,VIRTUAL,extra=[android.widget.ListView/setChoiceMode[int], [0, 1]]>
 DalvikVM - [BB]: [12]<0 RETURN,VOID>
+DalvikVM - [WARN]: ar -2, (instance number 1@edu.mit.fragments.HeadlinesFragment, edu.mit.fragments.HeadlinesFragment)
 newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.fragments.HeadlinesFragment/onStart[], pc 23 stored. 
 newStackFrame - [BB]: Stack: [StackFrame edu.mit.fragments.MainActivity/onCreate[android.os.Bundle]]
 DalvikVM - [MSG]: Begin run instrumented methods!
-DalvikVM - [MSG]: <23 INVOKE,VIRTUAL,extra=[android.app.FragmentTransaction/commit[], [1]]>
 DalvikVM - [BB]: Add frames [StackFrame edu.mit.fragments.HeadlinesFragment/onStart[]]
 DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
 Executor - [MSG]: 
 
 Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[2]> at edu.mit.fragments.HeadlinesFragment/onStart[]
+DalvikVM - [WARN]: ar 2, (instance number 1@edu.mit.fragments.HeadlinesFragment, edu.mit.fragments.HeadlinesFragment)
 Executor - [DEBUG]: params: instance number 1@edu.mit.fragments.HeadlinesFragment
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
@@ -879,7 +941,8 @@ Executor - [MSG]:
 Executor - [MSG]: <2 INVOKE,VIRTUAL,extra=[android.app.Fragment/getFragmentManager[], [2]]> at edu.mit.fragments.HeadlinesFragment/onStart[]
 Executor - [MSG]: arg0 obj: instance number 1@edu.mit.fragments.HeadlinesFragment
 Executor - [DEBUG]: Reflction class: class android.app.Fragment
-Executor - [DEBUG]: Return data: android.app.FragmentManager@27e33378 ,class android.app.FragmentManager
+DalvikVM - [WARN]: ar -1, (android.app.FragmentManager@60bffa22, android.app.FragmentManager)
+Executor - [DEBUG]: Return data: android.app.FragmentManager@60bffa22 ,class android.app.FragmentManager
 Executor - [MSG]: Reflction invocation public final android.app.FragmentManager android.app.Fragment.getFragmentManager()
 DalvikVM - [BB]: Set reflective call: public final android.app.FragmentManager android.app.Fragment.getFragmentManager()
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 3
@@ -889,53 +952,56 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <3 MOV,RESULT,dst=r0,type=java.lang.Object> at edu.mit.fragments.HeadlinesFragment/onStart[]
-OP_MOV_RESULT - [BB]: Result data: android.app.FragmentManager@27e33378
-OP_MOV_RESULT - [DEBUG]: Result data: android.app.FragmentManager@27e33378, type: android.app.FragmentManager, to [reg 0@HeadlinesFragment/onStart]
+DalvikVM - [WARN]: ar 0, (android.app.FragmentManager@60bffa22, android.app.FragmentManager)
+OP_MOV_RESULT - [BB]: Result data: android.app.FragmentManager@60bffa22
+OP_MOV_RESULT - [DEBUG]: Result data: android.app.FragmentManager@60bffa22, type: android.app.FragmentManager, to [reg 0@HeadlinesFragment/onStart]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 4
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <4 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2131034115> at edu.mit.fragments.HeadlinesFragment/onStart[]
 Executor - [DEBUG]: Mov const begin <4 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2131034115>
+DalvikVM - [WARN]: ar 1, (2131034115, void)
 Executor - [DEBUG]: data: 2131034115 class patdroid.core.PrimitiveInfo
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 5
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <5 INVOKE,VIRTUAL,extra=[android.app.FragmentManager/findFragmentById[int], [0, 1]]> at edu.mit.fragments.HeadlinesFragment/onStart[]
-Executor - [MSG]: arg0 obj: android.app.FragmentManager@27e33378
+Executor - [MSG]: arg0 obj: android.app.FragmentManager@60bffa22
 Executor - [DEBUG]: Reflction class: class android.app.FragmentManager
 Executor - [BB]: Normal args? true
 Executor - [BB]: arg1@reg1: 2131034115
 Executor - [DEBUG]: Expected para type: int
 Executor - [DEBUG]: Real para int, value: 2131034115
 Executor - [BB]: Nargs? true
-Executor - [DEBUG]: Caller obj: android.app.FragmentManager@27e33378, from class: class android.app.FragmentManager
+Executor - [DEBUG]: Caller obj: android.app.FragmentManager@60bffa22, from class: class android.app.FragmentManager
 GenInstance - [BB]: Gen fragment instance with edu.mit.fragments.ArticleFragment
 Fragment - [BB]: New instance of edu.mit.fragments.ArticleFragment
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass edu.mit.fragments.ArticleFragment at fu.hao.trust.dvm.VMHeap@4344ee21
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for edu.mit.fragments.ArticleFragment at fu.hao.trust.dvm.VMHeap@4344ee21
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Fragment at fu.hao.trust.dvm.VMHeap@4344ee21
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass edu.mit.fragments.ArticleFragment at fu.hao.trust.dvm.VMHeap@2b96978f
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for edu.mit.fragments.ArticleFragment at fu.hao.trust.dvm.VMHeap@2b96978f
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Fragment at fu.hao.trust.dvm.VMHeap@2b96978f
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.app.Fragment
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Fragment at fu.hao.trust.dvm.VMHeap@4344ee21
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Fragment at fu.hao.trust.dvm.VMHeap@2b96978f
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type edu.mit.fragments.ArticleFragment
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass edu.mit.fragments.ArticleFragment at fu.hao.trust.dvm.VMHeap@4344ee21
-Fragment - [BB]: Not empty constructor
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass edu.mit.fragments.ArticleFragment at fu.hao.trust.dvm.VMHeap@2b96978f
+Fragment - [MSG]: Not empty constructor
 DalvikVM - [BB]: New method call: edu.mit.fragments.ArticleFragment/<init>[]
 DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[1]>
 DalvikVM - [BB]: [1]<0 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [1]]>
-DalvikVM - [BB]: [2]<1 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?NaNf>
+DalvikVM - [BB]: [2]<1 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?-1>
 DalvikVM - [BB]: [3]<0 INSTANCE,IPUT,r0=r1,r1=r0,type=void,extra=edu.mit.fragments.ArticleFragment.mCurrentPosition>
 DalvikVM - [BB]: [4]<0 RETURN,VOID>
+DalvikVM - [WARN]: ar -2, (instance number 1@edu.mit.fragments.ArticleFragment, edu.mit.fragments.ArticleFragment)
 newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.fragments.ArticleFragment/<init>[], pc 5 stored. 
 newStackFrame - [BB]: Stack: [StackFrame edu.mit.fragments.MainActivity/onCreate[android.os.Bundle], StackFrame edu.mit.fragments.HeadlinesFragment/onStart[]]
 DalvikVM - [MSG]: Begin run instrumented methods!
-DalvikVM - [MSG]: <5 INVOKE,VIRTUAL,extra=[android.app.FragmentManager/findFragmentById[int], [0, 1]]>
 DalvikVM - [BB]: Add frames [StackFrame edu.mit.fragments.ArticleFragment/<init>[]]
 DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
 Executor - [MSG]: 
 
 Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[1]> at edu.mit.fragments.ArticleFragment/<init>[]
+DalvikVM - [WARN]: ar 1, (instance number 1@edu.mit.fragments.ArticleFragment, edu.mit.fragments.ArticleFragment)
 Executor - [DEBUG]: params: instance number 1@edu.mit.fragments.ArticleFragment
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
@@ -943,6 +1009,7 @@ Executor - [MSG]:
 
 Executor - [MSG]: <1 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [1]]> at edu.mit.fragments.ArticleFragment/<init>[]
 Executor - [MSG]: arg0 obj: instance number 1@edu.mit.fragments.ArticleFragment
+Executor - [MSG]: Replace the clazz.
 Executor - [BB]: java.lang.Object/<init>[] is a constructor!
 Executor - [WARN]: Reflection error: edu.mit.fragments.ArticleFragment
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 2
@@ -951,9 +1018,10 @@ TaintSumBranch - [DEBUG]: Not a taint call: <java.lang.Object: void <init>()>
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
-Executor - [MSG]: <2 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?NaNf> at edu.mit.fragments.ArticleFragment/<init>[]
-Executor - [DEBUG]: Mov const begin <2 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?NaNf>
-Executor - [DEBUG]: data: NaNf class patdroid.core.PrimitiveInfo
+Executor - [MSG]: <2 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?-1> at edu.mit.fragments.ArticleFragment/<init>[]
+Executor - [DEBUG]: Mov const begin <2 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?-1>
+DalvikVM - [WARN]: ar 0, (-1, void)
+Executor - [DEBUG]: data: -1 class patdroid.core.PrimitiveInfo
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 3
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
@@ -961,8 +1029,8 @@ Executor - [MSG]:
 Executor - [MSG]: <3 INSTANCE,IPUT,r0=r1,r1=r0,type=void,extra=edu.mit.fragments.ArticleFragment.mCurrentPosition> at edu.mit.fragments.ArticleFragment/<init>[]
 class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field edu.mit.fragments.ArticleFragment.mCurrentPosition
 class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@edu.mit.fragments.ArticleFragment
-Fragment - [DEBUG]: put field NaNf
-class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data NaNf to the field of instance number 1@edu.mit.fragments.ArticleFragment
+Fragment - [DEBUG]: put field -1
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data -1 to the field of instance number 1@edu.mit.fragments.ArticleFragment
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 4
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
@@ -978,18 +1046,19 @@ Fragment - [BB]: Try to call default constructor of edu.mit.fragments.ArticleFra
 DalvikVM - [BB]: New method call: edu.mit.fragments.ArticleFragment/<init>[]
 DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[1]>
 DalvikVM - [BB]: [1]<1 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [1]]>
-DalvikVM - [BB]: [2]<2 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?NaNf>
+DalvikVM - [BB]: [2]<2 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?-1>
 DalvikVM - [BB]: [3]<3 INSTANCE,IPUT,r0=r1,r1=r0,type=void,extra=edu.mit.fragments.ArticleFragment.mCurrentPosition>
 DalvikVM - [BB]: [4]<4 RETURN,VOID>
+DalvikVM - [WARN]: ar -2, (instance number 1@edu.mit.fragments.ArticleFragment, edu.mit.fragments.ArticleFragment)
 newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.fragments.ArticleFragment/<init>[], pc 5 stored. 
 newStackFrame - [BB]: Stack: [StackFrame edu.mit.fragments.MainActivity/onCreate[android.os.Bundle], StackFrame edu.mit.fragments.HeadlinesFragment/onStart[]]
 DalvikVM - [MSG]: Begin run instrumented methods!
-DalvikVM - [MSG]: <4 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2131034115>
 DalvikVM - [BB]: Add frames [StackFrame edu.mit.fragments.ArticleFragment/<init>[]]
 DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
 Executor - [MSG]: 
 
 Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[1]> at edu.mit.fragments.ArticleFragment/<init>[]
+DalvikVM - [WARN]: ar 1, (instance number 1@edu.mit.fragments.ArticleFragment, edu.mit.fragments.ArticleFragment)
 Executor - [DEBUG]: params: instance number 1@edu.mit.fragments.ArticleFragment
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
@@ -997,6 +1066,7 @@ Executor - [MSG]:
 
 Executor - [MSG]: <1 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [1]]> at edu.mit.fragments.ArticleFragment/<init>[]
 Executor - [MSG]: arg0 obj: instance number 1@edu.mit.fragments.ArticleFragment
+Executor - [MSG]: Replace the clazz.
 Executor - [BB]: java.lang.Object/<init>[] is a constructor!
 Executor - [WARN]: Reflection error: edu.mit.fragments.ArticleFragment
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 2
@@ -1005,9 +1075,10 @@ TaintSumBranch - [DEBUG]: Not a taint call: <java.lang.Object: void <init>()>
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
-Executor - [MSG]: <2 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?NaNf> at edu.mit.fragments.ArticleFragment/<init>[]
-Executor - [DEBUG]: Mov const begin <2 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?NaNf>
-Executor - [DEBUG]: data: NaNf class patdroid.core.PrimitiveInfo
+Executor - [MSG]: <2 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?-1> at edu.mit.fragments.ArticleFragment/<init>[]
+Executor - [DEBUG]: Mov const begin <2 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?-1>
+DalvikVM - [WARN]: ar 0, (-1, void)
+Executor - [DEBUG]: data: -1 class patdroid.core.PrimitiveInfo
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 3
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
@@ -1015,8 +1086,8 @@ Executor - [MSG]:
 Executor - [MSG]: <3 INSTANCE,IPUT,r0=r1,r1=r0,type=void,extra=edu.mit.fragments.ArticleFragment.mCurrentPosition> at edu.mit.fragments.ArticleFragment/<init>[]
 class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field edu.mit.fragments.ArticleFragment.mCurrentPosition
 class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@edu.mit.fragments.ArticleFragment
-Fragment - [DEBUG]: put field NaNf
-class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data NaNf to the field of instance number 1@edu.mit.fragments.ArticleFragment
+Fragment - [DEBUG]: put field -1
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data -1 to the field of instance number 1@edu.mit.fragments.ArticleFragment
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 4
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
@@ -1028,7 +1099,6 @@ DalvikVM - [BB]: Back to the last stack frame.StackFrame edu.mit.fragments.Headl
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame edu.mit.fragments.HeadlinesFragment/onStart[]
 DalvikVM - [MSG]: Begin run instrumented methods!
-DalvikVM - [MSG]: <4 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2131034115>
 DalvikVM - [BB]: Add frames []
 DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame edu.mit.fragments.HeadlinesFragment/onStart[]
 Fragment - [BB]: What!
@@ -1044,6 +1114,8 @@ DalvikVM - [BB]: [7]<6 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.Prim
 DalvikVM - [BB]: [8]<0 HALT,VIRTUAL,extra=[null, [3, 0, 4, 1]]>
 DalvikVM - [BB]: [9]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
 DalvikVM - [BB]: [10]<0 RETURN,VALUE,r0=r0,type=java.lang.Object>
+DalvikVM - [WARN]: ar -2, (instance number 1@edu.mit.fragments.ArticleFragment, edu.mit.fragments.ArticleFragment)
+DalvikVM - [WARN]: ar -2, (null, android.os.Bundle)
 newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.fragments.ArticleFragment/onCreateView[android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle], pc 5 stored. 
 newStackFrame - [BB]: Stack: [StackFrame edu.mit.fragments.MainActivity/onCreate[android.os.Bundle], StackFrame edu.mit.fragments.HeadlinesFragment/onStart[]]
 DalvikVM - [BB]: New method call: edu.mit.fragments.ArticleFragment/onStart[]
@@ -1059,24 +1131,26 @@ DalvikVM - [BB]: [8]<7 MOV,CONST,dst=r2,type=java.lang.String,extra="">
 DalvikVM - [BB]: [9]<0 INVOKE,VIRTUAL,extra=[edu.mit.fragments.ArticleFragment/updateArticleView[int, java.lang.String], [3, 1, 2]]>
 DalvikVM - [BB]: [10]<0 RETURN,VOID>
 DalvikVM - [BB]: [11]<0 INSTANCE,IGET,r0=r3,r1=r1,type=void,extra=edu.mit.fragments.ArticleFragment.mCurrentPosition>
-DalvikVM - [BB]: [12]<11 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?NaNf>
+DalvikVM - [BB]: [12]<11 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?-1>
 DalvikVM - [BB]: [13]<0 IF,EQ,r0=r1,r1=r2,extra=index:10>
 DalvikVM - [BB]: [14]<0 INSTANCE,IGET,r0=r3,r1=r1,type=void,extra=edu.mit.fragments.ArticleFragment.mCurrentPosition>
 DalvikVM - [BB]: [15]<14 MOV,CONST,dst=r2,type=java.lang.String,extra="">
 DalvikVM - [BB]: [16]<0 INVOKE,VIRTUAL,extra=[edu.mit.fragments.ArticleFragment/updateArticleView[int, java.lang.String], [3, 1, 2]]>
 DalvikVM - [BB]: [17]<0 GOTO,extra=index:10>
+DalvikVM - [WARN]: ar -2, (instance number 1@edu.mit.fragments.ArticleFragment, edu.mit.fragments.ArticleFragment)
 newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.fragments.ArticleFragment/onStart[], pc 5 stored. 
 newStackFrame - [BB]: Stack: [StackFrame edu.mit.fragments.MainActivity/onCreate[android.os.Bundle], StackFrame edu.mit.fragments.HeadlinesFragment/onStart[]]
 DalvikVM - [MSG]: Begin run instrumented methods!
-DalvikVM - [MSG]: <4 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2131034115>
 DalvikVM - [BB]: Add frames [StackFrame edu.mit.fragments.ArticleFragment/onStart[], StackFrame edu.mit.fragments.ArticleFragment/onCreateView[android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle]]
 DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
 Executor - [MSG]: 
 
 Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[2, 3, 4, 5]> at edu.mit.fragments.ArticleFragment/onCreateView[android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle]
+DalvikVM - [WARN]: ar 2, (instance number 1@edu.mit.fragments.ArticleFragment, edu.mit.fragments.ArticleFragment)
 Executor - [DEBUG]: params: instance number 1@edu.mit.fragments.ArticleFragment
 Executor - [DEBUG]: params: Empty!
 Executor - [DEBUG]: params: Empty!
+DalvikVM - [WARN]: ar 5, (null, android.os.Bundle)
 Executor - [DEBUG]: params: null
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
@@ -1093,6 +1167,7 @@ Executor - [MSG]:
 
 Executor - [MSG]: <6 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040> at edu.mit.fragments.ArticleFragment/onCreateView[android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle]
 Executor - [DEBUG]: Mov const begin <6 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+DalvikVM - [WARN]: ar 0, (2130903040, void)
 Executor - [DEBUG]: data: 2130903040 class patdroid.core.PrimitiveInfo
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 7
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
@@ -1100,6 +1175,7 @@ Executor - [MSG]:
 
 Executor - [MSG]: <7 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?0> at edu.mit.fragments.ArticleFragment/onCreateView[android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle]
 Executor - [DEBUG]: Mov const begin <7 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [WARN]: ar 1, (0, void)
 Executor - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 8
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
@@ -1114,7 +1190,8 @@ Executor - [MSG]:
 
 Executor - [MSG]: <9 MOV,RESULT,dst=r0,type=java.lang.Object> at edu.mit.fragments.ArticleFragment/onCreateView[android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle]
 Unknown - [BB]: Unknown created!
-DalvikVM - [BB]: ar0 (2130903040, void), ([Unknown var:null, type: java.lang.Object], java.lang.Object)
+DalvikVM - [WARN]: ar -1, ([Unknown var:null, type: java.lang.Object], java.lang.Object)
+DalvikVM - [WARN]: ar 0 (2130903040, void), ([Unknown var:null, type: java.lang.Object], java.lang.Object)
 OP_MOV_RESULT - [BB]: Result data: [Unknown var:null, type: java.lang.Object]
 OP_MOV_RESULT - [DEBUG]: Result data: [Unknown var:null, type: java.lang.Object], type: java.lang.Object, to [reg 0@ArticleFragment/onCreateView]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 10
@@ -1122,7 +1199,7 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <10 RETURN,VALUE,r0=r0,type=java.lang.Object> at edu.mit.fragments.ArticleFragment/onCreateView[android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle]
-DalvikVM - [BB]: ar-1 ([Unknown var:null, type: java.lang.Object], java.lang.Object), ([Unknown var:null, type: java.lang.Object], java.lang.Object)
+DalvikVM - [WARN]: ar -1 ([Unknown var:null, type: java.lang.Object], java.lang.Object), ([Unknown var:null, type: java.lang.Object], java.lang.Object)
 Executor - [BB]: Return data: [Unknown var:null, type: java.lang.Object]
 DalvikVM - [BB]: stack [StackFrame edu.mit.fragments.MainActivity/onCreate[android.os.Bundle], StackFrame edu.mit.fragments.HeadlinesFragment/onStart[], StackFrame edu.mit.fragments.ArticleFragment/onStart[]]
 DalvikVM - [BB]: Back to the last stack frame.StackFrame edu.mit.fragments.ArticleFragment/onStart[]
@@ -1131,6 +1208,7 @@ DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
 Executor - [MSG]: 
 
 Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[3]> at edu.mit.fragments.ArticleFragment/onStart[]
+DalvikVM - [WARN]: ar 3, (instance number 1@edu.mit.fragments.ArticleFragment, edu.mit.fragments.ArticleFragment)
 Executor - [DEBUG]: params: instance number 1@edu.mit.fragments.ArticleFragment
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
@@ -1146,6 +1224,7 @@ Executor - [MSG]:
 Executor - [MSG]: <2 INVOKE,VIRTUAL,extra=[android.app.Fragment/getArguments[], [3]]> at edu.mit.fragments.ArticleFragment/onStart[]
 Executor - [MSG]: arg0 obj: instance number 1@edu.mit.fragments.ArticleFragment
 Executor - [DEBUG]: Reflction class: class android.app.Fragment
+DalvikVM - [WARN]: ar -1, (null, android.os.Bundle)
 Executor - [MSG]: Reflction invocation public final android.os.Bundle android.app.Fragment.getArguments()
 DalvikVM - [BB]: Set reflective call: public final android.os.Bundle android.app.Fragment.getArguments()
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 3
@@ -1155,6 +1234,7 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <3 MOV,RESULT,dst=r0,type=java.lang.Object> at edu.mit.fragments.ArticleFragment/onStart[]
+DalvikVM - [WARN]: ar 0, (null, android.os.Bundle)
 OP_MOV_RESULT - [BB]: Result data: null
 OP_MOV_RESULT - [DEBUG]: Result data: null, type: android.os.Bundle, to [reg 0@ArticleFragment/onStart]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 4
@@ -1173,25 +1253,27 @@ Executor - [MSG]:
 Executor - [MSG]: <11 INSTANCE,IGET,r0=r3,r1=r1,type=void,extra=edu.mit.fragments.ArticleFragment.mCurrentPosition> at edu.mit.fragments.ArticleFragment/onStart[]
 class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Obj instance number 1@edu.mit.fragments.ArticleFragment
 class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Fieldinfo edu.mit.fragments.ArticleFragment.mCurrentPosition
-class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: NaNf
+DalvikVM - [WARN]: ar 1, (-1, int)
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: -1
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD -> jump set pc to 12
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
-Executor - [MSG]: <12 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?NaNf> at edu.mit.fragments.ArticleFragment/onStart[]
-Executor - [DEBUG]: Mov const begin <12 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?NaNf>
-Executor - [DEBUG]: data: NaNf class patdroid.core.PrimitiveInfo
+Executor - [MSG]: <12 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?-1> at edu.mit.fragments.ArticleFragment/onStart[]
+Executor - [DEBUG]: Mov const begin <12 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?-1>
+DalvikVM - [WARN]: ar 2, (-1, void)
+Executor - [DEBUG]: data: -1 class patdroid.core.PrimitiveInfo
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 13
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <13 IF,EQ,r0=r1,r1=r2,extra=index:10> at edu.mit.fragments.ArticleFragment/onStart[]
-OP_CMP - [DEBUG]: r1 data NaNf
+OP_CMP - [DEBUG]: r1 data -1
 OP_CMP - [DEBUG]: r1 type void
 OP_CMP - [BB]: Types: int, void
-OP_CMP - [DEBUG]: r0 data NaNf
+OP_CMP - [DEBUG]: r0 data -1
 OP_CMP - [DEBUG]: r0 type int
-Executor - [DEBUG]: ops: NaNf NaNf
+Executor - [DEBUG]: ops: -1 -1
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_IF_EQ -> jump set pc to 10
 OP_IF_EQ - [DEBUG]: equ: <13 IF,EQ,r0=r1,r1=r2,extra=index:10>
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
@@ -1203,7 +1285,7 @@ DalvikVM - [BB]: stack [StackFrame edu.mit.fragments.MainActivity/onCreate[andro
 DalvikVM - [BB]: Back to the last stack frame.StackFrame edu.mit.fragments.HeadlinesFragment/onStart[]
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame edu.mit.fragments.HeadlinesFragment/onStart[]
-DalvikVM - [BB]: ar-1 (null, android.os.Bundle), (instance number 1@edu.mit.fragments.ArticleFragment, android.app.Fragment)
+DalvikVM - [WARN]: ar -1 (null, android.os.Bundle), (instance number 1@edu.mit.fragments.ArticleFragment, android.app.Fragment)
 Executor - [DEBUG]: Return data: instance number 1@edu.mit.fragments.ArticleFragment ,class android.app.Fragment
 Executor - [MSG]: Reflction invocation public android.app.Fragment android.app.FragmentManager.findFragmentById(int)
 DalvikVM - [BB]: Set reflective call: public android.app.Fragment android.app.FragmentManager.findFragmentById(int)
@@ -1214,7 +1296,7 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <6 MOV,RESULT,dst=r0,type=java.lang.Object> at edu.mit.fragments.HeadlinesFragment/onStart[]
-DalvikVM - [BB]: ar0 (android.app.FragmentManager@27e33378, android.app.FragmentManager), (instance number 1@edu.mit.fragments.ArticleFragment, android.app.Fragment)
+DalvikVM - [WARN]: ar 0 (android.app.FragmentManager@60bffa22, android.app.FragmentManager), (instance number 1@edu.mit.fragments.ArticleFragment, android.app.Fragment)
 OP_MOV_RESULT - [BB]: Result data: instance number 1@edu.mit.fragments.ArticleFragment
 OP_MOV_RESULT - [DEBUG]: Result data: instance number 1@edu.mit.fragments.ArticleFragment, type: android.app.Fragment, to [reg 0@HeadlinesFragment/onStart]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 7
@@ -1233,6 +1315,7 @@ Executor - [MSG]:
 Executor - [MSG]: <8 INVOKE,VIRTUAL,extra=[android.app.ListFragment/getListView[], [2]]> at edu.mit.fragments.HeadlinesFragment/onStart[]
 Executor - [MSG]: arg0 obj: instance number 1@edu.mit.fragments.HeadlinesFragment
 Executor - [DEBUG]: Reflction class: class android.app.ListFragment
+DalvikVM - [WARN]: ar -1, (instance number 1@android.widget.ListView, android.widget.ListView)
 Executor - [DEBUG]: Return data: instance number 1@android.widget.ListView ,class android.widget.ListView
 Executor - [MSG]: Reflction invocation public android.widget.ListView android.app.ListFragment.getListView()
 DalvikVM - [BB]: Set reflective call: public android.widget.ListView android.app.ListFragment.getListView()
@@ -1243,7 +1326,7 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <9 MOV,RESULT,dst=r0,type=java.lang.Object> at edu.mit.fragments.HeadlinesFragment/onStart[]
-DalvikVM - [BB]: ar0 (instance number 1@edu.mit.fragments.ArticleFragment, android.app.Fragment), (instance number 1@android.widget.ListView, android.widget.ListView)
+DalvikVM - [WARN]: ar 0 (instance number 1@edu.mit.fragments.ArticleFragment, android.app.Fragment), (instance number 1@android.widget.ListView, android.widget.ListView)
 OP_MOV_RESULT - [BB]: Result data: instance number 1@android.widget.ListView
 OP_MOV_RESULT - [DEBUG]: Result data: instance number 1@android.widget.ListView, type: android.widget.ListView, to [reg 0@HeadlinesFragment/onStart]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 10
@@ -1252,7 +1335,7 @@ Executor - [MSG]:
 
 Executor - [MSG]: <10 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?1> at edu.mit.fragments.HeadlinesFragment/onStart[]
 Executor - [DEBUG]: Mov const begin <10 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?1>
-DalvikVM - [BB]: ar1 (2131034115, void), (1, void)
+DalvikVM - [WARN]: ar 1 (2131034115, void), (1, void)
 Executor - [DEBUG]: data: 1 class patdroid.core.PrimitiveInfo
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 11
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
@@ -1267,6 +1350,7 @@ Executor - [DEBUG]: Expected para type: int
 Executor - [DEBUG]: Real para int, value: 1
 Executor - [BB]: Nargs? true
 Executor - [DEBUG]: Caller obj: instance number 1@android.widget.ListView, from class: class android.widget.ListView
+DalvikVM - [WARN]: ar -1, (null, void)
 Executor - [MSG]: Reflction invocation public void android.widget.ListView.setChoiceMode(int)
 DalvikVM - [BB]: Set reflective call: public void android.widget.ListView.setChoiceMode(int)
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 12
@@ -1281,7 +1365,7 @@ DalvikVM - [BB]: stack [StackFrame edu.mit.fragments.MainActivity/onCreate[andro
 DalvikVM - [BB]: Back to the last stack frame.StackFrame edu.mit.fragments.MainActivity/onCreate[android.os.Bundle]
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame edu.mit.fragments.MainActivity/onCreate[android.os.Bundle]
-DalvikVM - [BB]: ar-1 (null, void), (1, int)
+DalvikVM - [WARN]: ar -1 (null, void), (1, int)
 Executor - [DEBUG]: Return data: 1 ,class java.lang.Integer
 Executor - [MSG]: Reflction invocation public int android.app.FragmentTransaction.commit()
 DalvikVM - [BB]: Set reflective call: public int android.app.FragmentTransaction.commit()
@@ -1302,11 +1386,13 @@ Executor - [MSG]: <9 RETURN,VOID> at edu.mit.fragments.MainActivity/onCreate[and
 class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
 DalvikVM - [BB]: stack []
 DalvikVM - [BB]: Back to the last stack frame.null
+DalvikVM - [MSG]: Finish running instrumented methods! Back to null
+Executor - [MSG]: RUN BEGIN edu.mit.fragments.MainActivity/onCreate[android.os.Bundle]
 Executor - [MSG]: eventMethod: onListItemClick
 View - [BB]: New instance of android.view.View
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@4344ee21
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@2b96978f
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.view.View
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@4344ee21
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@2b96978f
 DalvikVM - [BB]: New method call: edu.mit.fragments.HeadlinesFragment/onListItemClick[android.widget.ListView, android.view.View, int, long]
 DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7, 8, 9]>
 DalvikVM - [BB]: [1]<0 INSTANCE,IGET,r0=r5,r1=r0,type=java.lang.Object,extra=edu.mit.fragments.HeadlinesFragment.mCallback>
@@ -1324,6 +1410,10 @@ DalvikVM - [BB]: [12]<0 MOV,RESULT,dst=r3,type=java.lang.Object>
 DalvikVM - [BB]: [13]<12 MOV,CONST,dst=r4,type=void,extra=class patdroid.core.PrimitiveInfo?1>
 DalvikVM - [BB]: [14]<0 HALT,VIRTUAL,extra=[null, [3, 8, 4]]>
 DalvikVM - [BB]: [15]<0 RETURN,VOID>
+DalvikVM - [WARN]: ar -2, (instance number 1@edu.mit.fragments.HeadlinesFragment, edu.mit.fragments.HeadlinesFragment)
+DalvikVM - [WARN]: ar -2, (instance number 1@android.view.View, android.view.View)
+DalvikVM - [WARN]: ar -2, (instance number 1@android.view.View, android.view.View)
+DalvikVM - [WARN]: ar -2, (0, int)
 newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.fragments.HeadlinesFragment/onListItemClick[android.widget.ListView, android.view.View, int, long]
 newStackFrame - [BB]: Add frame StackFrame edu.mit.fragments.HeadlinesFragment/onListItemClick[android.widget.ListView, android.view.View, int, long]
 newStackFrame - [BB]: Stack: [StackFrame edu.mit.fragments.HeadlinesFragment/onListItemClick[android.widget.ListView, android.view.View, int, long]]
@@ -1331,9 +1421,13 @@ DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> execute set pc to 0
 Executor - [MSG]: 
 
 Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[5, 6, 7, 8, 9]> at edu.mit.fragments.HeadlinesFragment/onListItemClick[android.widget.ListView, android.view.View, int, long]
+DalvikVM - [WARN]: ar 5, (instance number 1@edu.mit.fragments.HeadlinesFragment, edu.mit.fragments.HeadlinesFragment)
 Executor - [DEBUG]: params: instance number 1@edu.mit.fragments.HeadlinesFragment
+DalvikVM - [WARN]: ar 6, (instance number 1@android.view.View, android.view.View)
 Executor - [DEBUG]: params: instance number 1@android.view.View
+DalvikVM - [WARN]: ar 7, (instance number 1@android.view.View, android.view.View)
 Executor - [DEBUG]: params: instance number 1@android.view.View
+DalvikVM - [WARN]: ar 8, (0, int)
 Executor - [DEBUG]: params: 0
 Executor - [DEBUG]: params: Empty!
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
@@ -1343,6 +1437,7 @@ Executor - [MSG]:
 Executor - [MSG]: <1 INSTANCE,IGET,r0=r5,r1=r0,type=java.lang.Object,extra=edu.mit.fragments.HeadlinesFragment.mCallback> at edu.mit.fragments.HeadlinesFragment/onListItemClick[android.widget.ListView, android.view.View, int, long]
 class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Obj instance number 1@edu.mit.fragments.HeadlinesFragment
 class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Fieldinfo edu.mit.fragments.HeadlinesFragment.mCallback
+DalvikVM - [WARN]: ar 0, (Activity:instance number 1@edu.mit.fragments.MainActivity, edu.mit.fragments.HeadlinesFragment$OnHeadlineSelectedListener)
 class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: Activity:instance number 1@edu.mit.fragments.MainActivity
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD -> jump set pc to 2
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
@@ -1351,12 +1446,12 @@ Executor - [MSG]:
 Executor - [MSG]: <2 ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.app.Activity> at edu.mit.fragments.HeadlinesFragment/onListItemClick[android.widget.ListView, android.view.View, int, long]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARITHETIC -> jump set pc to 3
 OP_A_CHECKCAST - [WARN]: Not consistent type when cast! android.app.Activity, edu.mit.fragments.HeadlinesFragment$OnHeadlineSelectedListener
-TaintSumBranch - [BB]: Not a taint op <2 ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.app.Activity>
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <3 MOV,CONST,dst=r3,type=java.lang.String,extra="phone"> at edu.mit.fragments.HeadlinesFragment/onListItemClick[android.widget.ListView, android.view.View, int, long]
 Executor - [DEBUG]: Mov const begin <3 MOV,CONST,dst=r3,type=java.lang.String,extra="phone">
+DalvikVM - [WARN]: ar 3, (phone, java.lang.String)
 Executor - [DEBUG]: data: phone class java.lang.String
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 4
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
@@ -1369,7 +1464,8 @@ Executor - [BB]: Normal args? true
 Executor - [BB]: arg1@reg3: phone
 Executor - [BB]: Nargs? true
 Executor - [DEBUG]: Caller obj: Activity:instance number 1@edu.mit.fragments.MainActivity, from class: class android.app.Activity
-Executor - [DEBUG]: Return data: android.telephony.TelephonyManager@36577c06 ,class android.telephony.TelephonyManager
+DalvikVM - [WARN]: ar -1, (android.telephony.TelephonyManager@640eac4a, java.lang.Object)
+Executor - [DEBUG]: Return data: android.telephony.TelephonyManager@640eac4a ,class android.telephony.TelephonyManager
 Executor - [MSG]: Reflction invocation public java.lang.Object android.content.Context.getSystemService(java.lang.String)
 DalvikVM - [BB]: Set reflective call: public java.lang.Object android.content.Context.getSystemService(java.lang.String)
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 5
@@ -1379,46 +1475,48 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <5 MOV,RESULT,dst=r2,type=java.lang.Object> at edu.mit.fragments.HeadlinesFragment/onListItemClick[android.widget.ListView, android.view.View, int, long]
-OP_MOV_RESULT - [BB]: Result data: android.telephony.TelephonyManager@36577c06
-OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.TelephonyManager@36577c06, type: java.lang.Object, to [reg 2@HeadlinesFragment/onListItemClick]
+DalvikVM - [WARN]: ar 2, (android.telephony.TelephonyManager@640eac4a, java.lang.Object)
+OP_MOV_RESULT - [BB]: Result data: android.telephony.TelephonyManager@640eac4a
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.TelephonyManager@640eac4a, type: java.lang.Object, to [reg 2@HeadlinesFragment/onListItemClick]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 6
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <6 ARITHMETIC,CHECK-AND-CAST,dst=r2,type=android.telephony.TelephonyManager> at edu.mit.fragments.HeadlinesFragment/onListItemClick[android.widget.ListView, android.view.View, int, long]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARITHETIC -> jump set pc to 7
-TaintSumBranch - [BB]: Not a taint op <6 ARITHMETIC,CHECK-AND-CAST,dst=r2,type=android.telephony.TelephonyManager>
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]> at edu.mit.fragments.HeadlinesFragment/onListItemClick[android.widget.ListView, android.view.View, int, long]
-Executor - [MSG]: arg0 obj: android.telephony.TelephonyManager@36577c06
+Executor - [MSG]: arg0 obj: android.telephony.TelephonyManager@640eac4a
 Executor - [DEBUG]: Reflction class: class android.telephony.TelephonyManager
+DalvikVM - [WARN]: ar -1, (359874043116909, java.lang.String)
 Executor - [DEBUG]: Return data: 359874043116909 ,class java.lang.String
 Executor - [MSG]: Reflction invocation public java.lang.String android.telephony.TelephonyManager.getDeviceId()
 DalvikVM - [BB]: Set reflective call: public java.lang.String android.telephony.TelephonyManager.getDeviceId()
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 8
 TaintSumBranch - [BB]: <android.telephony.TelephonyManager: java.lang.String getDeviceId()>
 TaintSumBranch - [WARN]: Found a tainted return value!
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [Global RetReg]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Global RetReg]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, 359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <8 MOV,RESULT,dst=r1,type=java.lang.Object> at edu.mit.fragments.HeadlinesFragment/onListItemClick[android.widget.ListView, android.view.View, int, long]
+DalvikVM - [WARN]: ar 1, (359874043116909, java.lang.String)
 OP_MOV_RESULT - [BB]: Result data: 359874043116909
 OP_MOV_RESULT - [DEBUG]: Result data: 359874043116909, type: java.lang.String, to [reg 1@HeadlinesFragment/onListItemClick]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 9
 TaintSumBranch - [BB]: <7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>
 TaintSumBranch - [BB]: Add reg 1 due to ret reg.
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 1@HeadlinesFragment/onListItemClick]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, 359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 1@HeadlinesFragment/onListItemClick]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <9 INSTANCE,IGET,r0=r5,r1=r3,type=java.lang.Object,extra=edu.mit.fragments.HeadlinesFragment.mCallback> at edu.mit.fragments.HeadlinesFragment/onListItemClick[android.widget.ListView, android.view.View, int, long]
 class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Obj instance number 1@edu.mit.fragments.HeadlinesFragment
 class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Fieldinfo edu.mit.fragments.HeadlinesFragment.mCallback
-DalvikVM - [BB]: ar3 (phone, java.lang.String), (Activity:instance number 1@edu.mit.fragments.MainActivity, edu.mit.fragments.HeadlinesFragment$OnHeadlineSelectedListener)
+DalvikVM - [WARN]: ar 3 (phone, java.lang.String), (Activity:instance number 1@edu.mit.fragments.MainActivity, edu.mit.fragments.HeadlinesFragment$OnHeadlineSelectedListener)
 class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: Activity:instance number 1@edu.mit.fragments.MainActivity
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD -> jump set pc to 10
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 1@HeadlinesFragment/onListItemClick]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, 359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 1@HeadlinesFragment/onListItemClick]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <10 INVOKE,INTERFACE,extra=[edu.mit.fragments.HeadlinesFragment$OnHeadlineSelectedListener/onArticleSelected[int, java.lang.String], [3, 8, 1]]> at edu.mit.fragments.HeadlinesFragment/onListItemClick[android.widget.ListView, android.view.View, int, long]
@@ -1456,13 +1554,16 @@ DalvikVM - [BB]: [26]<0 GOTO,extra=index:9>
 newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.fragments.MainActivity/onArticleSelected[int, java.lang.String], pc 11 stored. 
 newStackFrame - [BB]: Add frame StackFrame edu.mit.fragments.MainActivity/onArticleSelected[int, java.lang.String]
 newStackFrame - [BB]: Stack: [StackFrame edu.mit.fragments.HeadlinesFragment/onListItemClick[android.widget.ListView, android.view.View, int, long], StackFrame edu.mit.fragments.MainActivity/onArticleSelected[int, java.lang.String]]
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 1@HeadlinesFragment/onListItemClick]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, 359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 1@HeadlinesFragment/onListItemClick]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> execute set pc to 0
 Executor - [MSG]: 
 
 Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[6, 7, 8]> at edu.mit.fragments.MainActivity/onArticleSelected[int, java.lang.String]
+DalvikVM - [WARN]: ar 6, (Activity:instance number 1@edu.mit.fragments.MainActivity, edu.mit.fragments.HeadlinesFragment$OnHeadlineSelectedListener)
 Executor - [DEBUG]: params: Activity:instance number 1@edu.mit.fragments.MainActivity
+DalvikVM - [WARN]: ar 7, (0, int)
 Executor - [DEBUG]: params: 0
+DalvikVM - [WARN]: ar 8, (359874043116909, java.lang.String)
 Executor - [DEBUG]: params: 359874043116909
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
 TaintSumBranch - [BB]: Copy 359874043116909 as tainted.
@@ -1473,7 +1574,8 @@ Executor - [MSG]:
 Executor - [MSG]: <1 INVOKE,VIRTUAL,extra=[android.app.Activity/getFragmentManager[], [6]]> at edu.mit.fragments.MainActivity/onArticleSelected[int, java.lang.String]
 Executor - [MSG]: arg0 obj: Activity:instance number 1@edu.mit.fragments.MainActivity
 Executor - [DEBUG]: Reflction class: class android.app.Activity
-Executor - [DEBUG]: Return data: android.app.FragmentManager@27e33378 ,class android.app.FragmentManager
+DalvikVM - [WARN]: ar -1, (android.app.FragmentManager@60bffa22, android.app.FragmentManager)
+Executor - [DEBUG]: Return data: android.app.FragmentManager@60bffa22 ,class android.app.FragmentManager
 Executor - [MSG]: Reflction invocation public android.app.FragmentManager android.app.Activity.getFragmentManager()
 DalvikVM - [BB]: Set reflective call: public android.app.FragmentManager android.app.Activity.getFragmentManager()
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 2
@@ -1483,28 +1585,31 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<7 INVOKE,VI
 Executor - [MSG]: 
 
 Executor - [MSG]: <2 MOV,RESULT,dst=r4,type=java.lang.Object> at edu.mit.fragments.MainActivity/onArticleSelected[int, java.lang.String]
-OP_MOV_RESULT - [BB]: Result data: android.app.FragmentManager@27e33378
-OP_MOV_RESULT - [DEBUG]: Result data: android.app.FragmentManager@27e33378, type: android.app.FragmentManager, to [reg 4@MainActivity/onArticleSelected]
+DalvikVM - [WARN]: ar 4, (android.app.FragmentManager@60bffa22, android.app.FragmentManager)
+OP_MOV_RESULT - [BB]: Result data: android.app.FragmentManager@60bffa22
+OP_MOV_RESULT - [DEBUG]: Result data: android.app.FragmentManager@60bffa22, type: android.app.FragmentManager, to [reg 4@MainActivity/onArticleSelected]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 3
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 8@MainActivity/onArticleSelected]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <3 MOV,CONST,dst=r5,type=void,extra=class patdroid.core.PrimitiveInfo?2131034115> at edu.mit.fragments.MainActivity/onArticleSelected[int, java.lang.String]
 Executor - [DEBUG]: Mov const begin <3 MOV,CONST,dst=r5,type=void,extra=class patdroid.core.PrimitiveInfo?2131034115>
+DalvikVM - [WARN]: ar 5, (2131034115, void)
 Executor - [DEBUG]: data: 2131034115 class patdroid.core.PrimitiveInfo
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 4
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 8@MainActivity/onArticleSelected]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <4 INVOKE,VIRTUAL,extra=[android.app.FragmentManager/findFragmentById[int], [4, 5]]> at edu.mit.fragments.MainActivity/onArticleSelected[int, java.lang.String]
-Executor - [MSG]: arg0 obj: android.app.FragmentManager@27e33378
+Executor - [MSG]: arg0 obj: android.app.FragmentManager@60bffa22
 Executor - [DEBUG]: Reflction class: class android.app.FragmentManager
 Executor - [BB]: Normal args? true
 Executor - [BB]: arg1@reg5: 2131034115
 Executor - [DEBUG]: Expected para type: int
 Executor - [DEBUG]: Real para int, value: 2131034115
 Executor - [BB]: Nargs? true
-Executor - [DEBUG]: Caller obj: android.app.FragmentManager@27e33378, from class: class android.app.FragmentManager
+Executor - [DEBUG]: Caller obj: android.app.FragmentManager@60bffa22, from class: class android.app.FragmentManager
+DalvikVM - [WARN]: ar -1, (instance number 1@edu.mit.fragments.ArticleFragment, android.app.Fragment)
 Executor - [DEBUG]: Return data: instance number 1@edu.mit.fragments.ArticleFragment ,class android.app.Fragment
 Executor - [MSG]: Reflction invocation public android.app.Fragment android.app.FragmentManager.findFragmentById(int)
 DalvikVM - [BB]: Set reflective call: public android.app.Fragment android.app.FragmentManager.findFragmentById(int)
@@ -1515,6 +1620,7 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<7 INVOKE,VI
 Executor - [MSG]: 
 
 Executor - [MSG]: <5 MOV,RESULT,dst=r1,type=java.lang.Object> at edu.mit.fragments.MainActivity/onArticleSelected[int, java.lang.String]
+DalvikVM - [WARN]: ar 1, (instance number 1@edu.mit.fragments.ArticleFragment, android.app.Fragment)
 OP_MOV_RESULT - [BB]: Result data: instance number 1@edu.mit.fragments.ArticleFragment
 OP_MOV_RESULT - [DEBUG]: Result data: instance number 1@edu.mit.fragments.ArticleFragment, type: android.app.Fragment, to [reg 1@MainActivity/onArticleSelected]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 6
@@ -1523,7 +1629,6 @@ Executor - [MSG]:
 
 Executor - [MSG]: <6 ARITHMETIC,CHECK-AND-CAST,dst=r1,type=edu.mit.fragments.ArticleFragment> at edu.mit.fragments.MainActivity/onArticleSelected[int, java.lang.String]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARITHETIC -> jump set pc to 7
-TaintSumBranch - [BB]: Not a taint op <6 ARITHMETIC,CHECK-AND-CAST,dst=r1,type=edu.mit.fragments.ArticleFragment>
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 8@MainActivity/onArticleSelected]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
 Executor - [MSG]: 
 
@@ -1571,8 +1676,11 @@ DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> execute set pc to 0
 Executor - [MSG]: 
 
 Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[7, 8, 9]> at edu.mit.fragments.ArticleFragment/updateArticleView[int, java.lang.String]
+DalvikVM - [WARN]: ar 7, (instance number 1@edu.mit.fragments.ArticleFragment, android.app.Fragment)
 Executor - [DEBUG]: params: instance number 1@edu.mit.fragments.ArticleFragment
+DalvikVM - [WARN]: ar 8, (0, int)
 Executor - [DEBUG]: params: 0
+DalvikVM - [WARN]: ar 9, (359874043116909, java.lang.String)
 Executor - [DEBUG]: params: 359874043116909
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
 TaintSumBranch - [BB]: Copy 359874043116909 as tainted.
@@ -1582,6 +1690,7 @@ Executor - [MSG]:
 
 Executor - [MSG]: <1 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0> at edu.mit.fragments.ArticleFragment/updateArticleView[int, java.lang.String]
 Executor - [DEBUG]: Mov const begin <1 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [WARN]: ar 2, (0, void)
 Executor - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 2
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 9@ArticleFragment/updateArticleView]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
@@ -1590,6 +1699,7 @@ Executor - [MSG]:
 Executor - [MSG]: <2 INVOKE,VIRTUAL,extra=[android.app.Fragment/getActivity[], [7]]> at edu.mit.fragments.ArticleFragment/updateArticleView[int, java.lang.String]
 Executor - [MSG]: arg0 obj: instance number 1@edu.mit.fragments.ArticleFragment
 Executor - [DEBUG]: Reflction class: class android.app.Fragment
+DalvikVM - [WARN]: ar -1, (Activity:instance number 1@edu.mit.fragments.MainActivity, android.app.Activity)
 Executor - [DEBUG]: Return data: Activity:instance number 1@edu.mit.fragments.MainActivity ,class android.app.Activity
 Executor - [MSG]: Reflction invocation public final android.app.Activity android.app.Fragment.getActivity()
 DalvikVM - [BB]: Set reflective call: public final android.app.Activity android.app.Fragment.getActivity()
@@ -1600,6 +1710,7 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<7 INVOKE,VI
 Executor - [MSG]: 
 
 Executor - [MSG]: <3 MOV,RESULT,dst=r1,type=java.lang.Object> at edu.mit.fragments.ArticleFragment/updateArticleView[int, java.lang.String]
+DalvikVM - [WARN]: ar 1, (Activity:instance number 1@edu.mit.fragments.MainActivity, android.app.Activity)
 OP_MOV_RESULT - [BB]: Result data: Activity:instance number 1@edu.mit.fragments.MainActivity
 OP_MOV_RESULT - [DEBUG]: Result data: Activity:instance number 1@edu.mit.fragments.MainActivity, type: android.app.Activity, to [reg 1@ArticleFragment/updateArticleView]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 4
@@ -1608,6 +1719,7 @@ Executor - [MSG]:
 
 Executor - [MSG]: <4 MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?2131034112> at edu.mit.fragments.ArticleFragment/updateArticleView[int, java.lang.String]
 Executor - [DEBUG]: Mov const begin <4 MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?2131034112>
+DalvikVM - [WARN]: ar 3, (2131034112, void)
 Executor - [DEBUG]: data: 2131034112 class patdroid.core.PrimitiveInfo
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 5
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 9@ArticleFragment/updateArticleView]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
@@ -1624,14 +1736,15 @@ Executor - [BB]: Nargs? true
 Executor - [DEBUG]: Caller obj: Activity:instance number 1@edu.mit.fragments.MainActivity, from class: class android.app.Activity
 GenInstance - [BB]: Gen view instance with android.widget.TextView, id 2131034112
 TextView - [BB]: New instance of android.widget.TextView
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.widget.TextView at fu.hao.trust.dvm.VMHeap@4344ee21
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.widget.TextView at fu.hao.trust.dvm.VMHeap@4344ee21
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@4344ee21
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.widget.TextView at fu.hao.trust.dvm.VMHeap@2b96978f
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.widget.TextView at fu.hao.trust.dvm.VMHeap@2b96978f
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@2b96978f
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.view.View
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@4344ee21
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.view.View at fu.hao.trust.dvm.VMHeap@2b96978f
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type android.widget.TextView
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.widget.TextView at fu.hao.trust.dvm.VMHeap@4344ee21
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass android.widget.TextView at fu.hao.trust.dvm.VMHeap@2b96978f
 TextView - [BB]: Try to call default constructor of android.widget.TextView
+DalvikVM - [WARN]: ar -1, (instance number 1@android.widget.TextView, android.view.View)
 Executor - [DEBUG]: Return data: instance number 1@android.widget.TextView ,class android.widget.TextView
 Executor - [MSG]: Reflction invocation public android.view.View android.app.Activity.findViewById(int)
 DalvikVM - [BB]: Set reflective call: public android.view.View android.app.Activity.findViewById(int)
@@ -1642,6 +1755,7 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<7 INVOKE,VI
 Executor - [MSG]: 
 
 Executor - [MSG]: <6 MOV,RESULT,dst=r6,type=java.lang.Object> at edu.mit.fragments.ArticleFragment/updateArticleView[int, java.lang.String]
+DalvikVM - [WARN]: ar 6, (instance number 1@android.widget.TextView, android.view.View)
 OP_MOV_RESULT - [BB]: Result data: instance number 1@android.widget.TextView
 OP_MOV_RESULT - [DEBUG]: Result data: instance number 1@android.widget.TextView, type: android.view.View, to [reg 6@ArticleFragment/updateArticleView]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 7
@@ -1650,33 +1764,32 @@ Executor - [MSG]:
 
 Executor - [MSG]: <7 ARITHMETIC,CHECK-AND-CAST,dst=r6,type=android.widget.TextView> at edu.mit.fragments.ArticleFragment/updateArticleView[int, java.lang.String]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARITHETIC -> jump set pc to 8
-TaintSumBranch - [BB]: Not a taint op <7 ARITHMETIC,CHECK-AND-CAST,dst=r6,type=android.widget.TextView>
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 9@ArticleFragment/updateArticleView]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <8 STATIC,SGET,r0=r1,type=java.lang.Object,extra=(edu.mit.fragments.Ipsum, Articles)> at edu.mit.fragments.ArticleFragment/updateArticleView[int, java.lang.String]
-Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass edu.mit.fragments.Ipsum at fu.hao.trust.dvm.VMHeap@4344ee21
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass edu.mit.fragments.Ipsum at fu.hao.trust.dvm.VMHeap@2b96978f
 Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type edu.mit.fragments.Ipsum
-Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass edu.mit.fragments.Ipsum at fu.hao.trust.dvm.VMHeap@4344ee21
-DalvikVM - [BB]: ar1 (Activity:instance number 1@edu.mit.fragments.MainActivity, android.app.Activity), ([Ljava.lang.Object;@508b8791, [Ljava.lang.String;)
-OP_STATIC_GET_FIELD - [DEBUG]: Sget [Ljava.lang.Object;@508b8791, from fu.hao.trust.dvm.DVMClass@553fd068
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass edu.mit.fragments.Ipsum at fu.hao.trust.dvm.VMHeap@2b96978f
+DalvikVM - [WARN]: ar 1 (Activity:instance number 1@edu.mit.fragments.MainActivity, android.app.Activity), ([Ljava.lang.Object;@2955220e, [Ljava.lang.String;)
+OP_STATIC_GET_FIELD - [DEBUG]: Sget [Ljava.lang.Object;@2955220e, from fu.hao.trust.dvm.DVMClass@68d5c08f
 OP_STATIC_GET_FIELD - [DEBUG]: Expect sget Articles, a [Ljava.lang.String; from edu.mit.fragments.Ipsum
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD -> jump set pc to 9
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass edu.mit.fragments.Ipsum at fu.hao.trust.dvm.VMHeap@4344ee21
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass edu.mit.fragments.Ipsum at fu.hao.trust.dvm.VMHeap@2b96978f
 Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type edu.mit.fragments.Ipsum
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass edu.mit.fragments.Ipsum at fu.hao.trust.dvm.VMHeap@4344ee21
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass edu.mit.fragments.Ipsum at fu.hao.trust.dvm.VMHeap@2b96978f
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 9@ArticleFragment/updateArticleView]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <9 ARRAY,AGET,dst=r1,r0=r1,r1=r8,type=java.lang.Object> at edu.mit.fragments.ArticleFragment/updateArticleView[int, java.lang.String]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARRAY_GET -> jump set pc to 10
-Executor - [BB]: Array: [Ljava.lang.Object;@508b8791
+Executor - [BB]: Array: [Ljava.lang.Object;@2955220e
 Executor - [BB]: Length: 2
 Executor - [BB]: Index: 0
 Executor - [DEBUG]: Elem: Article One
 
-Excepteur pour-over occaecat squid biodiesel umami gastropub, nulla laborum salvia dreamcatcher fanny pack. Ullamco culpa retro ea, trust fund excepteur eiusmod direct trade banksy nisi lo-fi cray messenger bag. Nesciunt esse carles selvage put a bird on it gluten-free, wes anderson ut trust fund twee occupy viral. Laboris small batch scenester pork belly, leggings ut farm-to-table aliquip yr nostrud iphone viral next level. Craft beer dreamcatcher pinterest truffaut ethnic, authentic brunch. Esse single-origin coffee banksy do next level tempor. Velit synth dreamcatcher, magna shoreditch in american apparel messenger bag narwhal PBR ennui farm-to-table. at 0 of [Ljava.lang.Object;@508b8791
-DalvikVM - [BB]: ar1 ([Ljava.lang.Object;@508b8791, [Ljava.lang.String;), (Article One
+Excepteur pour-over occaecat squid biodiesel umami gastropub, nulla laborum salvia dreamcatcher fanny pack. Ullamco culpa retro ea, trust fund excepteur eiusmod direct trade banksy nisi lo-fi cray messenger bag. Nesciunt esse carles selvage put a bird on it gluten-free, wes anderson ut trust fund twee occupy viral. Laboris small batch scenester pork belly, leggings ut farm-to-table aliquip yr nostrud iphone viral next level. Craft beer dreamcatcher pinterest truffaut ethnic, authentic brunch. Esse single-origin coffee banksy do next level tempor. Velit synth dreamcatcher, magna shoreditch in american apparel messenger bag narwhal PBR ennui farm-to-table. at 0 of [Ljava.lang.Object;@2955220e
+DalvikVM - [WARN]: ar 1 ([Ljava.lang.Object;@2955220e, [Ljava.lang.String;), (Article One
 
 Excepteur pour-over occaecat squid biodiesel umami gastropub, nulla laborum salvia dreamcatcher fanny pack. Ullamco culpa retro ea, trust fund excepteur eiusmod direct trade banksy nisi lo-fi cray messenger bag. Nesciunt esse carles selvage put a bird on it gluten-free, wes anderson ut trust fund twee occupy viral. Laboris small batch scenester pork belly, leggings ut farm-to-table aliquip yr nostrud iphone viral next level. Craft beer dreamcatcher pinterest truffaut ethnic, authentic brunch. Esse single-origin coffee banksy do next level tempor. Velit synth dreamcatcher, magna shoreditch in american apparel messenger bag narwhal PBR ennui farm-to-table., java.lang.Object)
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 9@ArticleFragment/updateArticleView]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
@@ -1689,13 +1802,14 @@ Executor - [BB]: Normal args? true
 Executor - [BB]: arg1@reg1: Article One
 
 Excepteur pour-over occaecat squid biodiesel umami gastropub, nulla laborum salvia dreamcatcher fanny pack. Ullamco culpa retro ea, trust fund excepteur eiusmod direct trade banksy nisi lo-fi cray messenger bag. Nesciunt esse carles selvage put a bird on it gluten-free, wes anderson ut trust fund twee occupy viral. Laboris small batch scenester pork belly, leggings ut farm-to-table aliquip yr nostrud iphone viral next level. Craft beer dreamcatcher pinterest truffaut ethnic, authentic brunch. Esse single-origin coffee banksy do next level tempor. Velit synth dreamcatcher, magna shoreditch in american apparel messenger bag narwhal PBR ennui farm-to-table.
-DalvikVM - [BB]: ar1 (Article One
+DalvikVM - [WARN]: ar 1 (Article One
 
 Excepteur pour-over occaecat squid biodiesel umami gastropub, nulla laborum salvia dreamcatcher fanny pack. Ullamco culpa retro ea, trust fund excepteur eiusmod direct trade banksy nisi lo-fi cray messenger bag. Nesciunt esse carles selvage put a bird on it gluten-free, wes anderson ut trust fund twee occupy viral. Laboris small batch scenester pork belly, leggings ut farm-to-table aliquip yr nostrud iphone viral next level. Craft beer dreamcatcher pinterest truffaut ethnic, authentic brunch. Esse single-origin coffee banksy do next level tempor. Velit synth dreamcatcher, magna shoreditch in american apparel messenger bag narwhal PBR ennui farm-to-table., java.lang.Object), (Article One
 
 Excepteur pour-over occaecat squid biodiesel umami gastropub, nulla laborum salvia dreamcatcher fanny pack. Ullamco culpa retro ea, trust fund excepteur eiusmod direct trade banksy nisi lo-fi cray messenger bag. Nesciunt esse carles selvage put a bird on it gluten-free, wes anderson ut trust fund twee occupy viral. Laboris small batch scenester pork belly, leggings ut farm-to-table aliquip yr nostrud iphone viral next level. Craft beer dreamcatcher pinterest truffaut ethnic, authentic brunch. Esse single-origin coffee banksy do next level tempor. Velit synth dreamcatcher, magna shoreditch in american apparel messenger bag narwhal PBR ennui farm-to-table., java.lang.CharSequence)
 Executor - [BB]: Nargs? true
 Executor - [DEBUG]: Caller obj: instance number 1@android.widget.TextView, from class: class android.widget.TextView
+DalvikVM - [WARN]: ar -1, (null, void)
 Executor - [MSG]: Reflction invocation public void android.widget.TextView.setText(java.lang.CharSequence)
 DalvikVM - [BB]: Set reflective call: public void android.widget.TextView.setText(java.lang.CharSequence)
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 11
@@ -1715,7 +1829,7 @@ Executor - [MSG]:
 
 Executor - [MSG]: <12 MOV,CONST,dst=r1,type=java.lang.String,extra="DroidBench"> at edu.mit.fragments.ArticleFragment/updateArticleView[int, java.lang.String]
 Executor - [DEBUG]: Mov const begin <12 MOV,CONST,dst=r1,type=java.lang.String,extra="DroidBench">
-DalvikVM - [BB]: ar1 (Article One
+DalvikVM - [WARN]: ar 1 (Article One
 
 Excepteur pour-over occaecat squid biodiesel umami gastropub, nulla laborum salvia dreamcatcher fanny pack. Ullamco culpa retro ea, trust fund excepteur eiusmod direct trade banksy nisi lo-fi cray messenger bag. Nesciunt esse carles selvage put a bird on it gluten-free, wes anderson ut trust fund twee occupy viral. Laboris small batch scenester pork belly, leggings ut farm-to-table aliquip yr nostrud iphone viral next level. Craft beer dreamcatcher pinterest truffaut ethnic, authentic brunch. Esse single-origin coffee banksy do next level tempor. Velit synth dreamcatcher, magna shoreditch in american apparel messenger bag narwhal PBR ennui farm-to-table., java.lang.CharSequence), (DroidBench, java.lang.String)
 Executor - [DEBUG]: data: DroidBench class java.lang.String
@@ -1729,17 +1843,21 @@ Executor - [BB]: arg0@reg1: DroidBench
 Executor - [BB]: arg1@reg9: 359874043116909
 Executor - [BB]: param: DroidBench
 Executor - [BB]: param: 359874043116909
+DalvikVM - [WARN]: ar -1, (1, int)
 Executor - [MSG]: reflction invocation public static int android.util.Log.i(java.lang.String,java.lang.String)
 DalvikVM - [BB]: Set reflective call: public static int android.util.Log.i(java.lang.String,java.lang.String)
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INVOKE_STATIC -> jump set pc to 14
 TaintSumBranch - [BB]: <android.util.Log: int i(java.lang.String,java.lang.String)>
+TaintSumBranch - [WARN]: Found a tainted return val!
+Results - [MSG]: New recorded tainted field: i
 TaintSumBranch - [DEBUG]: Not a taint call: <android.util.Log: int i(java.lang.String,java.lang.String)>
 TaintSumBranch - [WARN]: Found a tainted return val!
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [Global RetReg]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 9@ArticleFragment/updateArticleView]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Global RetReg]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, 359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 9@ArticleFragment/updateArticleView]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <14 INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]> at edu.mit.fragments.ArticleFragment/updateArticleView[int, java.lang.String]
 Executor - [DEBUG]: Reflction class android.telephony.SmsManager
+DalvikVM - [WARN]: ar -1, (android.telephony.SmsManager@3963542c, android.telephony.SmsManager)
 Executor - [MSG]: reflction invocation public static android.telephony.SmsManager android.telephony.SmsManager.getDefault()
 DalvikVM - [BB]: Set reflective call: public static android.telephony.SmsManager android.telephony.SmsManager.getDefault()
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INVOKE_STATIC -> jump set pc to 15
@@ -1749,41 +1867,44 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<7 INVOKE,VI
 Executor - [MSG]: 
 
 Executor - [MSG]: <15 MOV,RESULT,dst=r0,type=java.lang.Object> at edu.mit.fragments.ArticleFragment/updateArticleView[int, java.lang.String]
-OP_MOV_RESULT - [BB]: Result data: android.telephony.SmsManager@7608d498
-OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.SmsManager@7608d498, type: android.telephony.SmsManager, to [reg 0@ArticleFragment/updateArticleView]
+DalvikVM - [WARN]: ar 0, (android.telephony.SmsManager@3963542c, android.telephony.SmsManager)
+OP_MOV_RESULT - [BB]: Result data: android.telephony.SmsManager@3963542c
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.SmsManager@3963542c, type: android.telephony.SmsManager, to [reg 0@ArticleFragment/updateArticleView]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 16
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 9@ArticleFragment/updateArticleView]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <16 MOV,CONST,dst=r1,type=java.lang.String,extra="+49"> at edu.mit.fragments.ArticleFragment/updateArticleView[int, java.lang.String]
 Executor - [DEBUG]: Mov const begin <16 MOV,CONST,dst=r1,type=java.lang.String,extra="+49">
-DalvikVM - [BB]: ar1 (DroidBench, java.lang.String), (+49, java.lang.String)
+DalvikVM - [WARN]: ar 1 (DroidBench, java.lang.String), (+49, java.lang.String)
 Executor - [DEBUG]: data: +49 class java.lang.String
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 17
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 9@ArticleFragment/updateArticleView]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <17 MOV,REG,dst=r3,r0=r9,type=java.lang.Object> at edu.mit.fragments.ArticleFragment/updateArticleView[int, java.lang.String]
-DalvikVM - [BB]: ar3 (2131034112, void), (359874043116909, java.lang.String)
+DalvikVM - [WARN]: ar 3 (2131034112, void), (359874043116909, java.lang.String)
 class fu.hao.trust.dvm.Executor$OP_MOVE_REG - [DEBUG]: mov 359874043116909 to 359874043116909
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOVE_REG -> jump set pc to 18
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 3@ArticleFragment/updateArticleView]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, 359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 9@ArticleFragment/updateArticleView]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 3@ArticleFragment/updateArticleView]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 9@ArticleFragment/updateArticleView]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <18 MOV,REG,dst=r4,r0=r2,type=java.lang.Object> at edu.mit.fragments.ArticleFragment/updateArticleView[int, java.lang.String]
+DalvikVM - [WARN]: ar 4, (0, void)
 class fu.hao.trust.dvm.Executor$OP_MOVE_REG - [DEBUG]: mov 0 to 0
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOVE_REG -> jump set pc to 19
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 3@ArticleFragment/updateArticleView]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, 359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 9@ArticleFragment/updateArticleView]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 9@ArticleFragment/updateArticleView]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 3@ArticleFragment/updateArticleView]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <19 MOV,REG,dst=r5,r0=r2,type=java.lang.Object> at edu.mit.fragments.ArticleFragment/updateArticleView[int, java.lang.String]
+DalvikVM - [WARN]: ar 5, (0, void)
 class fu.hao.trust.dvm.Executor$OP_MOVE_REG - [DEBUG]: mov 0 to 0
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOVE_REG -> jump set pc to 20
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 3@ArticleFragment/updateArticleView]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, 359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 9@ArticleFragment/updateArticleView]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 3@ArticleFragment/updateArticleView]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 9@ArticleFragment/updateArticleView]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <20 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]> at edu.mit.fragments.ArticleFragment/updateArticleView[int, java.lang.String]
-Executor - [MSG]: arg0 obj: android.telephony.SmsManager@7608d498
+Executor - [MSG]: arg0 obj: android.telephony.SmsManager@3963542c
 Executor - [DEBUG]: Reflction class: class android.telephony.SmsManager
 Executor - [BB]: Normal args? true
 Executor - [BB]: arg1@reg1: +49
@@ -1795,62 +1916,67 @@ Executor - [WARN]: Mismatch type! arg 4, real para type: class patdroid.core.Pri
 Executor - [BB]: arg5@reg5: 0
 Executor - [WARN]: Mismatch type! arg 5, real para type: class patdroid.core.PrimitiveInfo, expected para type: class android.app.PendingIntent
 Executor - [BB]: Nargs? true
-Executor - [DEBUG]: Caller obj: android.telephony.SmsManager@7608d498, from class: class android.telephony.SmsManager
+Executor - [DEBUG]: Caller obj: android.telephony.SmsManager@3963542c, from class: class android.telephony.SmsManager
+DalvikVM - [WARN]: ar -1, (null, void)
 Executor - [MSG]: Reflction invocation public void android.telephony.SmsManager.sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)
 DalvikVM - [BB]: Set reflective call: public void android.telephony.SmsManager.sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 21
 TaintSumBranch - [BB]: <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>
+TaintSumBranch - [WARN]: Found a tainted return val!
+Results - [MSG]: New recorded tainted field: sendTextMessage
 TaintSumBranch - [BB]: Found a sink invocation. <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>
-TaintSumBranch - [WARN]: Found a taint sink <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)> leaking data [359874043116909] at reg 3!!!
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 3@ArticleFragment/updateArticleView]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, 359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 9@ArticleFragment/updateArticleView]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+TaintSumBranch - [WARN]: Found a tainted sink <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)> leaking data [359874043116909] at reg 3!!!
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Global RetReg]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, 359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 3@ArticleFragment/updateArticleView]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 9@ArticleFragment/updateArticleView]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <21 RETURN,VOID> at edu.mit.fragments.ArticleFragment/updateArticleView[int, java.lang.String]
 class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
 DalvikVM - [BB]: stack [StackFrame edu.mit.fragments.HeadlinesFragment/onListItemClick[android.widget.ListView, android.view.View, int, long], StackFrame edu.mit.fragments.MainActivity/onArticleSelected[int, java.lang.String]]
 DalvikVM - [BB]: Back to the last stack frame.StackFrame edu.mit.fragments.MainActivity/onArticleSelected[int, java.lang.String]
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 8@MainActivity/onArticleSelected]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Global RetReg]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, 359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 8@MainActivity/onArticleSelected]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <9 RETURN,VOID> at edu.mit.fragments.MainActivity/onArticleSelected[int, java.lang.String]
 class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
 DalvikVM - [BB]: stack [StackFrame edu.mit.fragments.HeadlinesFragment/onListItemClick[android.widget.ListView, android.view.View, int, long]]
 DalvikVM - [BB]: Back to the last stack frame.StackFrame edu.mit.fragments.HeadlinesFragment/onListItemClick[android.widget.ListView, android.view.View, int, long]
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 1@HeadlinesFragment/onListItemClick]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, 359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Global RetReg]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, 359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 1@HeadlinesFragment/onListItemClick]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <11 INVOKE,VIRTUAL,extra=[android.app.ListFragment/getListView[], [5]]> at edu.mit.fragments.HeadlinesFragment/onListItemClick[android.widget.ListView, android.view.View, int, long]
 Executor - [MSG]: arg0 obj: instance number 1@edu.mit.fragments.HeadlinesFragment
 Executor - [DEBUG]: Reflction class: class android.app.ListFragment
+DalvikVM - [WARN]: ar -1, (instance number 1@android.widget.ListView, android.widget.ListView)
 Executor - [DEBUG]: Return data: instance number 1@android.widget.ListView ,class android.widget.ListView
 Executor - [MSG]: Reflction invocation public android.widget.ListView android.app.ListFragment.getListView()
 DalvikVM - [BB]: Set reflective call: public android.widget.ListView android.app.ListFragment.getListView()
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 12
 TaintSumBranch - [BB]: <android.app.ListFragment: android.widget.ListView getListView()>
 TaintSumBranch - [DEBUG]: Not a taint call: <android.app.ListFragment: android.widget.ListView getListView()>
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 1@HeadlinesFragment/onListItemClick]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, 359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 1@HeadlinesFragment/onListItemClick]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <12 MOV,RESULT,dst=r3,type=java.lang.Object> at edu.mit.fragments.HeadlinesFragment/onListItemClick[android.widget.ListView, android.view.View, int, long]
-DalvikVM - [BB]: ar3 (Activity:instance number 1@edu.mit.fragments.MainActivity, edu.mit.fragments.HeadlinesFragment$OnHeadlineSelectedListener), (instance number 1@android.widget.ListView, android.widget.ListView)
+DalvikVM - [WARN]: ar 3 (Activity:instance number 1@edu.mit.fragments.MainActivity, edu.mit.fragments.HeadlinesFragment$OnHeadlineSelectedListener), (instance number 1@android.widget.ListView, android.widget.ListView)
 OP_MOV_RESULT - [BB]: Result data: instance number 1@android.widget.ListView
 OP_MOV_RESULT - [DEBUG]: Result data: instance number 1@android.widget.ListView, type: android.widget.ListView, to [reg 3@HeadlinesFragment/onListItemClick]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 13
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 1@HeadlinesFragment/onListItemClick]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, 359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 1@HeadlinesFragment/onListItemClick]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <13 MOV,CONST,dst=r4,type=void,extra=class patdroid.core.PrimitiveInfo?1> at edu.mit.fragments.HeadlinesFragment/onListItemClick[android.widget.ListView, android.view.View, int, long]
 Executor - [DEBUG]: Mov const begin <13 MOV,CONST,dst=r4,type=void,extra=class patdroid.core.PrimitiveInfo?1>
+DalvikVM - [WARN]: ar 4, (1, void)
 Executor - [DEBUG]: data: 1 class patdroid.core.PrimitiveInfo
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 14
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 1@HeadlinesFragment/onListItemClick]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, 359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 1@HeadlinesFragment/onListItemClick]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <14 HALT,VIRTUAL,extra=[null, [3, 8, 4]]> at edu.mit.fragments.HeadlinesFragment/onListItemClick[android.widget.ListView, android.view.View, int, long]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_HALT -> jump set pc to 15
 Executor - [MSG]: Cannot resolve the invocation
 TaintSumBranch - [BB]: Not a taint op <14 HALT,VIRTUAL,extra=[null, [3, 8, 4]]>
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 1@HeadlinesFragment/onListItemClick]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, 359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 1@HeadlinesFragment/onListItemClick]=<7 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <15 RETURN,VOID> at edu.mit.fragments.HeadlinesFragment/onListItemClick[android.widget.ListView, android.view.View, int, long]
@@ -1860,5 +1986,5 @@ DalvikVM - [BB]: Back to the last stack frame.null
 Executor - [MSG]: RUN DONE! The last one is onListItemClick
 DalvikVM - [MSG]: FINISHED!
 
-main - [MSG]: Analysis has run for 6.389752052 seconds
+main - [MSG]: Analysis has run for 5.294136831 seconds
 

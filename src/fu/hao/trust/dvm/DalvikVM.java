@@ -18,6 +18,7 @@ import android.content.Intent;
 import android.location.MyLocationListener;
 import android.myclasses.GenInstance;
 import android.os.AsyncTask;
+import android.os.Handler;
 import android.view.View;
 import android.widget.BaseAdapter;
 import fu.hao.trust.analysis.Plugin;
@@ -602,7 +603,7 @@ public class DalvikVM {
 	private Activity currtActivity;
 	
 	private LinkedList<Activity> activityStack;
-
+	
 	/**
 	 * @Title: getClass
 	 * @Description: Get the class in the heap.
@@ -711,6 +712,10 @@ public class DalvikVM {
 		stack.remove(null);
 		return stack.getLast();
 	}
+	
+	public LinkedList<StackFrame> getStack() {
+		return stack;
+	}
 
 	public StackFrame getCallerFrame() {
 		if (stack.size() > 1) {
@@ -746,7 +751,7 @@ public class DalvikVM {
 	public StackFrame newStackFrame(ClassInfo sitClass, MethodInfo mi,
 			Pair<Object, ClassInfo>[] callCtxObjs, boolean nowAddToStack) {
 		String TAG = "newStackFrame";
-		if (mi == null || mi.insns == null) {
+		if (mi == null || mi.insns == null || mi.myClass.fullName.startsWith("android.support.v")) {
 			return null;
 		}
 
@@ -937,7 +942,7 @@ public class DalvikVM {
 		if (instrumentedFrames != null && instrumentedFrames.size() > 0) {
 			instrumentedFrames.remove(null);
 			StackFrame stopSign = getCurrStackFrame();
-			Log.msg(TAG, getCurrtInst());
+			// Log.msg(TAG, getCurrtInst());
 			// Object backObj = getReturnReg().getData();
 			// ClassInfo backType = getReturnReg().getType();
 			resetCallCtx();
@@ -1150,14 +1155,21 @@ public class DalvikVM {
 	public int getNowPC() {
 		return nowPC;
 	}
+	
+	private Instruction currtInst;
 
 	public Instruction getCurrtInst() {
-		if (getCurrStackFrame() != null) {
-			return getCurrStackFrame().getInst(nowPC);
+		if (currtInst == null && getCurrStackFrame() != null) {
+			currtInst = getCurrStackFrame().getInst(0);
 		}
-
-		return null;
+		
+		return currtInst;
 	}
+	
+	public void setCurrtInst(Instruction currtInst) {
+		this.currtInst = currtInst;
+	}
+	
 
 	public void setNowPC(int nowPC) {
 		this.nowPC = nowPC;
@@ -1254,6 +1266,14 @@ public class DalvikVM {
 
 	}
 
+	/**
+	* @Title: newVMObject
+	* @Author: Hao Fu
+	* @Description: Create a VM object instance that "extends" the certain API class 
+	* @param type 
+	* @return DVMObject   
+	* @throws
+	*/
 	public DVMObject newVMObject(ClassInfo type) {
 		ClassInfo oType = type;
 		
@@ -1264,12 +1284,14 @@ public class DalvikVM {
 			if (type.isConvertibleTo(ClassInfo.findClass("android.location.LocationListener"))) {
 				return new MyLocationListener(this, oType);
 			}
+			
+			if (type.isConvertibleTo(ClassInfo.findClass("android.os.Handler"))) {
+				return new Handler(this, oType);
+			}
 			String typeName = type.toString();
 			
 			if (!typeName.contains("$")) {
-				if (typeName.contains("android.app.Activity")) {
-					return new Activity(this, oType);
-				} else if (typeName.contains("View")) {
+				if (typeName.contains("View")) {
 					return GenInstance.getView(this, oType, -1);
 				} else if (typeName.contains("AsyncTask")) {
 					return new AsyncTask(this, oType);

@@ -64,7 +64,7 @@ public class DVMObject {
 			}
 			MethodInfo oinit = type.getDefaultConstructor();
 			if (oinit != null) {
-				Log.bb(TAG, "Not empty constructor");
+				Log.msg(TAG, "Not empty constructor");
 				@SuppressWarnings("unchecked")
 				Pair<Object, ClassInfo>[] params = (Pair<Object, ClassInfo>[]) new Pair[1];
 				params[0] = new Pair<Object, ClassInfo>(this, type);

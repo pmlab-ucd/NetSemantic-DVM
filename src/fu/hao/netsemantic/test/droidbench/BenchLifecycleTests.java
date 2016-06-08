@@ -227,7 +227,6 @@ public class BenchLifecycleTests {
 	@Test
 	public void testLifecycle_SharedPreferenceChanged1() {
 		args[0] = "C:/Users/hao/workspace/DroidBenchProj/SharedPreferenceChanged1/app/";
-		
 		args[1] = "srcEventChains";
 		Main.main(args);
 		

@@ -1200,15 +1200,18 @@ public class Taint extends Plugin {
 		 * auxByteCodes.put(0x0F, new TAINT_OP_INVOKE_INTERFACE()); //
 		 * auxByteCodes.put(0x10, new TAINT_OP_A_INSTANCEOF()); //
 		 * auxByteCodes.put(0x11, new TAINT_OP_A_ARRAY_LENGTH()); //
-		 * auxByteCodes.put(0x12, new TAINT_OP_A_CHECKCAST());
-		 * auxByteCodes.put(0x13, new TAINT_OP_A_NOT()); auxByteCodes.put(0x14,
-		 * new TAINT_OP_A_NEG());
 		 */
+		auxByteCodes.put(0x12, new TAINT_OP_A_CHECKCAST());
+		 
+		  //auxByteCodes.put(0x13, new TAINT_OP_A_NOT()); auxByteCodes.put(0x14,
+		  //new TAINT_OP_A_NEG());
+		 
 		auxByteCodes.put(0x15, new TAINT_OP_MOV_RESULT());
 		auxByteCodes.put(0x16, new TAINT_OP_MOV_EXCEPTION());
-		/*
-		 * auxByteCodes.put(0x17, new TAINT_OP_A_CAST()); auxByteCodes.put(0x18,
-		 * new TAINT_OP_IF_EQ()); auxByteCodes.put(0x19, new TAINT_OP_IF_NE());
+		
+		auxByteCodes.put(0x17, new TAINT_OP_A_CAST()); 
+		 /*auxByteCodes.put(0x18,
+		  new TAINT_OP_IF_EQ()); auxByteCodes.put(0x19, new TAINT_OP_IF_NE());
 		 * auxByteCodes.put(0x1A, new TAINT_OP_IF_LT()); auxByteCodes.put(0x1B,
 		 * new TAINT_OP_IF_GE()); auxByteCodes.put(0x1C, new TAINT_OP_IF_GT());
 		 * auxByteCodes.put(0x1D, new TAINT_OP_IF_LE()); auxByteCodes.put(0x1E,

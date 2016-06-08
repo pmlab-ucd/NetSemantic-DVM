@@ -23,5 +23,9 @@ public class BroadcastReceiver extends DVMObject {
 	public void setContext(Context context) {
 		this.context = context;
 	}
+	
+	public void onReceive(Context var1, Intent var2) {
+		
+	}
 
 }

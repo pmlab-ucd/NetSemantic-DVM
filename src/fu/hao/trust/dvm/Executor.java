@@ -444,7 +444,7 @@ public class Executor {
 				invocation(vm, mi, inst, args);
 			} catch (Exception e) {
 				e.printStackTrace();
-				Log.warn(TAG, "error in reflection");
+				Log.err(TAG, "Error in reflection: " + e.getMessage());
 				jump(vm, inst, true);
 			}
 
@@ -1901,13 +1901,16 @@ public class Executor {
 			@SuppressWarnings("unchecked")
 			Map<Integer, Integer> switchTable = (Map<Integer, Integer>) inst
 					.getExtra();
-			Object data = vm.getReg(inst.r0);
+			Object data = vm.getReg(inst.r0).getData();
+			if (data instanceof PrimitiveInfo) {
+				data = ((PrimitiveInfo)data).intValue();
+			}
 
-			for (int key : switchTable.keySet()) {
-				if (data.equals(key)) {
-					jump(vm, inst, false);
-					return;
-				}
+			Log.msg(TAG, "data: " + data);
+			
+			if (switchTable.keySet().contains(data)) {
+				jump(vm, switchTable.get(data));
+				return;
 			}
 
 			jump(vm, inst, true);
@@ -2121,6 +2124,14 @@ public class Executor {
 				Log.err(TAG, "unresolve dest address in goto: " + inst);
 			}
 			vm.setPC((int) inst.getExtra());
+		}
+	}
+	
+	public void jump(DalvikVM vm, int loc) {
+		if (vm.getCurrStackFrame() == null) {
+			return;
+		} else {
+			vm.setPC(loc);
 		}
 	}
 
@@ -2485,7 +2496,12 @@ public class Executor {
 					Log.warn(TAG, "Mismatch type! arg " + i
 							+ ", real para type: " + argData.getClass()
 							+ ", expected para type: " + argsClass[j]);
-					if (argData instanceof SymbolicVar) {
+					if (mi.paramTypes[j].isInterface()) {
+						params[j] = argData;
+						//argsClass[j] = argData.getClass();
+						argsClass[j] = DVMObject.class;
+						Log.warn(TAG, "Call the mirror method instead! " + mi.paramTypes[j] + " is a interface.");
+					} else if (argData instanceof SymbolicVar) {
 						SymbolicVar bidirVar = (SymbolicVar) argData;
 						if (bidirVar.getType() == null
 								|| bidirVar.getType().toString()
@@ -3071,6 +3087,7 @@ public class Executor {
 		}
 
 		if (!pass) {
+			vm.setCurrtInst(inst);
 			if (byteCodes.containsKey((int) inst.opcode)) {
 				byteCodes.get((int) inst.opcode).func(vm, inst);
 			} else if (auxByteCodes.containsKey((int) inst.opcode_aux)) {
