@@ -735,11 +735,11 @@ public class Executor {
 
 			if (op1.intValue() != op2.intValue()) {
 				jump(vm, inst, false);
-				Log.debug(TAG, "not equ: " + inst + " " + op1.intValue() + " "
+				Log.debug(TAG, "Not equ: " + inst + " " + op1.intValue() + ", "
 						+ op2.intValue());
 			} else {
 				jump(vm, inst, true);
-				Log.debug(TAG, "equ: " + inst + " " + op1.intValue() + " "
+				Log.debug(TAG, "Equ: " + inst + " " + op1.intValue() + ", "
 						+ op2.intValue());
 			}
 		}
@@ -2081,6 +2081,8 @@ public class Executor {
 		} else {
 			if (r0.getData() instanceof PrimitiveInfo) {
 				op1 = (PrimitiveInfo) r0.getData();
+			} else if (r0.getData() instanceof Integer) {
+				op1 = new PrimitiveInfo((int) r0.getData());
 			} else {
 				op1 = new PrimitiveInfo(42);
 			}
@@ -2098,7 +2100,7 @@ public class Executor {
 		res[0] = op1;
 		res[1] = op2;
 
-		Log.debug(TAG, "ops: " + op1 + " " + op2);
+		Log.debug(TAG, "Ops: " + op1 + ", " + op2);
 		return res;
 	}
 

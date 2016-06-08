@@ -186,5 +186,21 @@ public class Activity extends ContextWrapper implements LocationListener {
     
     public void finish() {
     }
+    
+    public void startActivityForResult(Intent intent, int requestCode) {
+       MethodInfo[] onActivityResults = type.findMethods("onActivityResult");
+       if (onActivityResults != null && onActivityResults.length > 0) {
+			@SuppressWarnings("unchecked")
+			Pair<Object, ClassInfo>[] params = (Pair<Object, ClassInfo>[]) new Pair[4]; 
+			params[0] = new Pair<Object, ClassInfo>(this, type);
+			params[1] = new Pair<Object, ClassInfo>(requestCode, ClassInfo.primitiveInt); 
+			params[2] = new Pair<Object, ClassInfo>(1, ClassInfo.primitiveInt);
+			params[3] = new Pair<Object, ClassInfo>(intent, ClassInfo.findClass("android.content.Intent"));
+			StackFrame frame = vm.newStackFrame(type, onActivityResults[0], params, false);
+			vm.runInstrumentedMethods(frame);
+       } else {
+    	   	Log.warn(TAG, "Cannot find the onActivityResult!");
+       }
+    }
 	
 }

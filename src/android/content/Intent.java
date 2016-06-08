@@ -3,6 +3,7 @@ package android.content;
 import java.util.HashMap;
 import java.util.Map;
 
+import android.os.Bundle;
 import fu.hao.trust.utils.Log;
 import patdroid.core.ClassInfo;
 
@@ -174,35 +175,37 @@ public class Intent {
 	public static final int FILL_IN_COMPONENT = 8;
 	public static final int FILL_IN_PACKAGE = 16;
 	public static final int FILL_IN_SOURCE_BOUNDS = 32;
-	
-	final String TAG = getClass().getSimpleName(); 
+
+	final String TAG = getClass().getSimpleName();
 
 	String action = "";
 	Map<String, Object> values; // The stored data
 	private ClassInfo targetClass;
-	
+	Bundle bundle;
+
 	public Intent(String action) {
 		this.action = action;
 		values = new HashMap<>();
 	}
-	
-    public Intent() {
-    	values = new HashMap<>();
-    }
-    
-    public Intent(Context packageContext, Class<?> cls) {
-    	setTargetClass(ClassInfo.findClass(cls.getName()));
-    	values = new HashMap<>();
-    }
-    
-    public Intent(Context packageContext, ClassInfo cls) {
-    	setTargetClass(cls);
-    	Log.bb(TAG, "New intent with target cls " + cls);
-    	values = new HashMap<>();
-    }
+
+	public Intent() {
+		values = new HashMap<>();
+	}
+
+	public Intent(Context packageContext, Class<?> cls) {
+		setTargetClass(ClassInfo.findClass(cls.getName()));
+		values = new HashMap<>();
+	}
+
+	public Intent(Context packageContext, ClassInfo cls) {
+		setTargetClass(cls);
+		Log.bb(TAG, "New intent with target cls " + cls);
+		values = new HashMap<>();
+	}
 
 	public Intent putExtra(String name, String value) {
 		values.put(name, value);
+		bundle = new Bundle(values);
 		return this;
 	}
 
@@ -222,11 +225,11 @@ public class Intent {
 	public boolean hasExtra(String name) {
 		return values.containsKey(name);
 	}
-	
-    public Intent setAction(String action) {
-       this.action = action; 
-       return this;
-    }
+
+	public Intent setAction(String action) {
+		this.action = action;
+		return this;
+	}
 
 	public ClassInfo getTargetClass() {
 		return targetClass;
@@ -235,14 +238,18 @@ public class Intent {
 	public void setTargetClass(ClassInfo targetClass) {
 		this.targetClass = targetClass;
 	}
-	
-    public Intent setComponent(ComponentName component) {
-       targetClass = ClassInfo.findClass(component.getClassName());
-       if (targetClass == null) {
-    	   Log.err(TAG, "Cannot identify the targetClass!" + component);
-       }
-       
-       return this;
-    }
+
+	public Intent setComponent(ComponentName component) {
+		targetClass = ClassInfo.findClass(component.getClassName());
+		if (targetClass == null) {
+			Log.err(TAG, "Cannot identify the targetClass!" + component);
+		}
+
+		return this;
+	}
+
+	public Bundle getExtras() {
+		return bundle;
+	}
 
 }
