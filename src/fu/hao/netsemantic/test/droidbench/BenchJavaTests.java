@@ -311,6 +311,17 @@ public class BenchJavaTests {
 				tm.getDeviceId());
 		assertEquals(true, Results.results.contains(res));
 	}
+	
+	@Test 
+	public void StringToOutputStream1() {
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/StringToOutputStream1/app/";
+		args[1] = "srcEventChains";
+		Main.main(args);
+		Map<String, String> res = new HashMap<>();
+		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
+				tm.getDeviceId());
+		assertEquals(true, Results.results.contains(res));
+	}
 
 	//@Test
 	public void testDroidKunfu() {

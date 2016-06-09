@@ -5,11 +5,11 @@ import java.io.OutputStream;
 public class ObjectOutputStream {
 	
 	Object writtenObj;
-	ByteArrayOutputStream output;
+	MyByteArrayOutputStream output;
 	
     public ObjectOutputStream(OutputStream output) {
-    	if (output instanceof ByteArrayOutputStream) {
-    		this.output = (ByteArrayOutputStream) output;
+    	if (output instanceof MyByteArrayOutputStream) {
+    		this.output = (MyByteArrayOutputStream) output;
     	}
     }
 	

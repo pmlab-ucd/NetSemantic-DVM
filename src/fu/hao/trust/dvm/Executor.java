@@ -3105,7 +3105,7 @@ public class Executor {
 		replacedInvokeList.put("java.lang.Object", "fu.hao.trust.dvm.DVMObject");
 		replacedInvokeList.put("java.io.ObjectOutputStream", "android.myclasses.ObjectOutputStream");
 		replacedInvokeList.put("java.io.ObjectInputStream", "android.myclasses.ObjectInputStream");
-		replacedInvokeList.put("java.io.ByteArrayOutputStream", "android.myclasses.ByteArrayOutputStream");
+		replacedInvokeList.put("java.io.ByteArrayOutputStream", "android.myclasses.MyByteArrayOutputStream");
 		replacedInvokeList.put("java.io.ByteArrayInputStream", "android.myclasses.ByteArrayInputStream");
 	}
 
