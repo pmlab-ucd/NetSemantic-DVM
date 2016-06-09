@@ -205,8 +205,16 @@ public class BenchICCTests {
 		assertEquals(true, Results.results.contains(res));
 	}
 	
-	//@Test
-	public void Singletonjs1() {
+	@Test
+	public void UnresolvableIntent1() {
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/UnresolvableIntent1/app/";	
+		args[1] = "srcEventChains";
+		Main.main(args);
 		
+		assertEquals(false, Results.results.isEmpty());
+		Map<String, String> res = new HashMap<>();
+		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
+				"359874043116909");
+		assertEquals(true, Results.results.contains(res));
 	}
 }
