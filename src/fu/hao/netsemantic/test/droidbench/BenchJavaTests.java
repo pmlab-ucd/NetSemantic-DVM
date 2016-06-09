@@ -19,7 +19,7 @@ public class BenchJavaTests {
 
 	public BenchJavaTests() {
 		Settings.logLevel = 0;
-		args[3] = "Taint";
+		args[3] = "ATaint";
 		tm = new TelephonyManager();
 	}
 	
