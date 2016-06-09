@@ -114,13 +114,13 @@ public class BenchICCTests {
 				"359874043116909");
 		assertEquals(true, Results.results.contains(res));
 	}
-	
+
 	@Test
 	public void testActivityCommunication8() {
 		args[0] = "C:/Users/hao/workspace/DroidBenchProj/ActivityCommunication8/app/";
 		Settings.addCallBlkListElem("android.content.ContextWrapper/startActivity");
 		ResolveIntent.main(args);
-		
+
 		args[0] = "C:/Users/hao/workspace/DroidBenchProj/ActivityCommunication8/app/";
 		args[1] = "srcEventChains";
 		Main.main(args);
@@ -129,7 +129,7 @@ public class BenchICCTests {
 				"359874043116909");
 		assertEquals(true, Results.results.contains(res));
 	}
-	
+
 	@Test
 	public void testBroadcastTaintAndLeak1() {
 		args[0] = "C:/Users/hao/workspace/DroidBenchProj/BroadcastTaintAndLeak1/app/";
@@ -140,7 +140,7 @@ public class BenchICCTests {
 				"359874043116909");
 		assertEquals(true, Results.results.contains(res));
 	}
-	
+
 	@Test
 	public void ServiceCommunication1() {
 		args[0] = "C:/Users/hao/workspace/DroidBenchProj/ServiceCommunication1/app/";
@@ -149,46 +149,64 @@ public class BenchICCTests {
 		Map<String, String> res = new HashMap<>();
 		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
 				"[Unknown var:Tainted: -1266614931, type: java.lang.String]");
-		assertEquals(true, Results.results.contains(res));	
+		assertEquals(true, Results.results.contains(res));
 	}
-	
+
 	@Test
 	public void IntentSink1() {
 		args[0] = "C:/Users/hao/workspace/DroidBenchProj/IntentSink1/app/";
-		
+
 		args[1] = "srcEventChains";
 		Main.main(args);
-		
+
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
 		res.put("<android.app.Activity: void setResult(int,android.content.Intent)>",
 				"[intent:android.intent.action.MAIN, null, {secret=359874043116909}]");
 		assertEquals(true, Results.results.contains(res));
 	}
-	
+
 	@Test
 	public void IntentSink2() {
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/IntentSink2/app/";	
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/IntentSink2/app/";
 		args[1] = "srcEventChains";
 		Main.main(args);
-		
+
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
 		res.put("<android.content.ContextWrapper: void startActivity(android.content.Intent)>",
 				"[intent:, null, {id=359874043116909}]");
 		assertEquals(true, Results.results.contains(res));
 	}
-	
+
 	@Test
 	public void IntentSource1() {
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/IntentSource1/app/";	
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/IntentSource1/app/";
 		args[1] = "srcEventChains";
 		Main.main(args);
-		
+
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
 		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
 				"[Unknown var:dump: 359874043116909, type: java.lang.String]");
 		assertEquals(true, Results.results.contains(res));
+	}
+
+	@Test
+	public void Singletons1() {
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Singletons1/app/";
+		args[1] = "srcEventChains";
+		Main.main(args);
+
+		assertEquals(false, Results.results.isEmpty());
+		Map<String, String> res = new HashMap<>();
+		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
+				"359874043116909");
+		assertEquals(true, Results.results.contains(res));
+	}
+	
+	//@Test
+	public void Singletonjs1() {
+		
 	}
 }

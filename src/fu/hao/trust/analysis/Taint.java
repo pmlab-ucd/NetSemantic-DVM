@@ -983,23 +983,15 @@ public class Taint extends Plugin {
 		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
 				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
 			Map<String, Map<Object, Instruction>> outs = new HashMap<>();
-			if (vm.getReg(inst.r0).isUsed()) {
+			if (vm.getReg(inst.r1).isUsed()) {
 				for (String tag : ins.keySet()) {
 					Map<Object, Instruction> in = ins.get(tag);
 					Map<Object, Instruction> out = new HashMap<>(in);
-					if (!(vm.getReg(inst.r0).getData() instanceof DVMObject)) {
-						Log.warn(tag, "Object not DVMObject, it is "
-								+ vm.getReg(inst.r0).getData());
-						return outs;
-					}
-					DVMObject obj = (DVMObject) vm.getReg(inst.r0).getData();
-					FieldInfo fieldInfo = (FieldInfo) inst.getExtra();
-					Object field = obj.getFieldObj(fieldInfo);
 
-					if (in.containsKey(field)) {
-						out.put(vm.getReg(inst.r1), in.get(field));
+					if (in.containsKey(vm.getReg(inst.r1).getData())) {
+						out.put(vm.getReg(inst.r1), in.get(vm.getReg(inst.r1).getData()));
 						Log.bb(tag, "Add " + vm.getReg(inst.r1)
-								+ " as tainted due to field " + field);
+								+ " as tainted due to field " + vm.getReg(inst.r1).getData());
 					} else if (in.containsKey(vm.getReg(inst.r1))) {
 						// value register, has been assigned to new value
 						out.remove(vm.getReg(inst.r1));
