@@ -331,34 +331,71 @@ public class Taint extends Plugin {
 				if (vm.getReflectMethod() != null || mi.isConstructor()) {
 					String sootSignature = Taint.getSootSignature(mi);
 					Log.bb(tag, sootSignature);
-					
+
 					for (int i = 0; i < args.length; i++) {
 						if (in.containsKey(vm.getReg(args[i]))) {
 							if (vm.getReturnReg().isUsed()) {
-							Log.warn(tag, "Found a tainted return val!");
-							out.put(vm.getReturnReg(),
-									in.get(vm.getReg(args[i])));
-							out.put(vm.getReturnReg().getData(),
-									in.get(vm.getReg(args[i])));
-							Pair<Object, Instruction> value = new Pair<>(vm.getReg(args[i]).getData(), in.get(vm.getReg(args[i])));
-							Results.addTaintedField(mi.name, value, Results.getATaintedFields());
+								Log.warn(tag, "Found a tainted return val!");
+								out.put(vm.getReturnReg(),
+										in.get(vm.getReg(args[i])));
+								out.put(vm.getReturnReg().getData(),
+										in.get(vm.getReg(args[i])));
+								Pair<Object, Instruction> value = new Pair<>(vm
+										.getReg(args[i]).getData(), in.get(vm
+										.getReg(args[i])));
+								Results.addTaintedField(mi.name, value,
+										Results.getATaintedFields());
 							}
 							break;
 						} else if (vm.getReg(args[i]).isUsed()
-								&& in.containsKey(vm.getReg(args[i])
-										.getData())) {
+								&& in.containsKey(vm.getReg(args[i]).getData())) {
 							if (vm.getReturnReg().isUsed()) {
-							Log.warn(tag, "Found a tainted return val!");
-							out.put(vm.getReturnReg(), in.get(vm
-									.getReg(args[i]).getData()));
-							out.put(vm.getReturnReg().getData(), in
-									.get(vm.getReg(args[i]).getData()));
-							Results.addTaintedField(mi.name, new Pair<>(vm.getReg(args[i]).getData(), in.get(vm.getReg(args[i]))), Results.getATaintedFields());
+								Log.warn(tag, "Found a tainted return val!");
+								out.put(vm.getReturnReg(),
+										in.get(vm.getReg(args[i]).getData()));
+								out.put(vm.getReturnReg().getData(),
+										in.get(vm.getReg(args[i]).getData()));
+								Results.addTaintedField(mi.name,
+										new Pair<>(
+												vm.getReg(args[i]).getData(),
+												in.get(vm.getReg(args[i]))),
+										Results.getATaintedFields());
 							}
 							break;
+						} else if (vm.getReg(args[i]).isUsed()
+								&& vm.getReg(args[i]).getData() != null
+								&& vm.getReg(args[i]).getData().getClass()
+										.isArray()) {
+							Object array = vm.getReg(args[i]).getData();
+							boolean bre = false;
+							for (int j = 0; j < Array.getLength(array); j++) {
+								if (in.containsKey(Array.get(array, j))) {
+									if (vm.getReturnReg().isUsed()) {
+										Log.warn(tag,
+												"Found a tainted return val!");
+										out.put(vm.getReturnReg(),
+												in.get(Array.get(array, j)));
+										out.put(vm.getReturnReg().getData(),
+												in.get(Array.get(array, j)));
+										Results.addTaintedField(
+												mi.name,
+												new Pair<>(vm.getReg(args[i])
+														.getData(), in
+														.get(Array
+																.get(array, j))),
+												Results.getATaintedFields());
+									}
+									bre = true;
+									break;
+								}
+							}
+
+							if (bre) {
+								break;
+							}
 						}
 					}
-					
+
 					if (sinks != null && sinks.contains(sootSignature)) {
 						Log.bb(tag, "Found a sink invocation. " + sootSignature);
 						for (int i = 0; i < args.length; i++) {
@@ -932,8 +969,8 @@ public class Taint extends Plugin {
 						Results.addTaintedField(
 								fieldInfo,
 								new Pair<>(dvmClass.getStatField(fieldName), in
-										.get(vm.getReg(inst.r0))),
-										Results.getSTaintedFields());
+										.get(vm.getReg(inst.r0))), Results
+										.getSTaintedFields());
 					}
 				} else if (vm.getReg(inst.r0).isUsed()
 						&& in.containsKey(vm.getReg(inst.r0).getData())) {
@@ -950,15 +987,15 @@ public class Taint extends Plugin {
 								fieldInfo,
 								new Pair<>(dvmClass.getStatField(fieldName), in
 										.get(vm.getReg(inst.r0).getData())),
-										Results.getSTaintedFields());
+								Results.getSTaintedFields());
 					}
 				} else {
 					if (in.containsKey(dvmClass.getStatField(fieldName))) {
 						out.remove(dvmClass.getStatField(fieldName));
 					}
 					if (Settings.isRecordTaintedFields()
-							&& Results.getSTaintedFields()
-									.containsKey(fieldInfo)) {
+							&& Results.getSTaintedFields().containsKey(
+									fieldInfo)) {
 						Results.getSTaintedFields().remove(fieldInfo);
 					}
 				}
@@ -989,9 +1026,12 @@ public class Taint extends Plugin {
 					Map<Object, Instruction> out = new HashMap<>(in);
 
 					if (in.containsKey(vm.getReg(inst.r1).getData())) {
-						out.put(vm.getReg(inst.r1), in.get(vm.getReg(inst.r1).getData()));
-						Log.bb(tag, "Add " + vm.getReg(inst.r1)
-								+ " as tainted due to field " + vm.getReg(inst.r1).getData());
+						out.put(vm.getReg(inst.r1),
+								in.get(vm.getReg(inst.r1).getData()));
+						Log.bb(tag,
+								"Add " + vm.getReg(inst.r1)
+										+ " as tainted due to field "
+										+ vm.getReg(inst.r1).getData());
 					} else if (in.containsKey(vm.getReg(inst.r1))) {
 						// value register, has been assigned to new value
 						out.remove(vm.getReg(inst.r1));
@@ -1034,8 +1074,8 @@ public class Taint extends Plugin {
 					// FIXME should be the absolute path to the field, such as
 					// "Activity1/button1/imei".
 					if (vm.getCurrtActivity() != null) {
-						fieldString = "/" + vm.getCurrtActivity().getType() + "/" + obj
-							+ "/" + fieldInfo.fieldName;
+						fieldString = "/" + vm.getCurrtActivity().getType()
+								+ "/" + obj + "/" + fieldInfo.fieldName;
 					} else {
 						fieldString = obj + "/" + fieldInfo.fieldName;
 					}
@@ -1061,7 +1101,8 @@ public class Taint extends Plugin {
 									break;
 
 								} else {
-									Log.warn(tag, "Not equ " + str + ", " + fieldString);
+									Log.warn(tag, "Not equ " + str + ", "
+											+ fieldString);
 								}
 							}
 							if (!found) {
@@ -1074,8 +1115,8 @@ public class Taint extends Plugin {
 						Results.addTaintedField(
 								fieldString,
 								new Pair<>(obj.getFieldObj(fieldInfo), in
-										.get(vm.getReg(inst.r1))),
-										Results.getITaintedFields());
+										.get(vm.getReg(inst.r1))), Results
+										.getITaintedFields());
 						Log.msg(tag, "has " + Results.isHasNewTaintedHeapLoc());
 					}
 				} else if (in.containsKey(vm.getReg(inst.r1).getData())) {
@@ -1098,7 +1139,7 @@ public class Taint extends Plugin {
 								fieldString,
 								new Pair<>(obj.getFieldObj(fieldInfo), in
 										.get(vm.getReg(inst.r1).getData())),
-										Results.getITaintedFields());
+								Results.getITaintedFields());
 					}
 				} else {
 					if (obj != null
@@ -1194,24 +1235,24 @@ public class Taint extends Plugin {
 		 * auxByteCodes.put(0x11, new TAINT_OP_A_ARRAY_LENGTH()); //
 		 */
 		auxByteCodes.put(0x12, new TAINT_OP_A_CHECKCAST());
-		 
-		  //auxByteCodes.put(0x13, new TAINT_OP_A_NOT()); auxByteCodes.put(0x14,
-		  //new TAINT_OP_A_NEG());
-		 
+
+		// auxByteCodes.put(0x13, new TAINT_OP_A_NOT()); auxByteCodes.put(0x14,
+		// new TAINT_OP_A_NEG());
+
 		auxByteCodes.put(0x15, new TAINT_OP_MOV_RESULT());
 		auxByteCodes.put(0x16, new TAINT_OP_MOV_EXCEPTION());
-		
-		auxByteCodes.put(0x17, new TAINT_OP_A_CAST()); 
-		 /*auxByteCodes.put(0x18,
-		  new TAINT_OP_IF_EQ()); auxByteCodes.put(0x19, new TAINT_OP_IF_NE());
-		 * auxByteCodes.put(0x1A, new TAINT_OP_IF_LT()); auxByteCodes.put(0x1B,
-		 * new TAINT_OP_IF_GE()); auxByteCodes.put(0x1C, new TAINT_OP_IF_GT());
-		 * auxByteCodes.put(0x1D, new TAINT_OP_IF_LE()); auxByteCodes.put(0x1E,
-		 * new TAINT_OP_IF_EQZ()); auxByteCodes.put(0x1F, new
-		 * TAINT_OP_IF_NEZ()); auxByteCodes.put(0x20, new TAINT_OP_IF_LTZ());
-		 * auxByteCodes.put(0x21, new TAINT_OP_IF_GEZ()); auxByteCodes.put(0x22,
-		 * new TAINT_OP_IF_GTZ()); auxByteCodes.put(0x23, new
-		 * TAINT_OP_IF_LEZ());
+
+		auxByteCodes.put(0x17, new TAINT_OP_A_CAST());
+		/*
+		 * auxByteCodes.put(0x18, new TAINT_OP_IF_EQ()); auxByteCodes.put(0x19,
+		 * new TAINT_OP_IF_NE()); auxByteCodes.put(0x1A, new TAINT_OP_IF_LT());
+		 * auxByteCodes.put(0x1B, new TAINT_OP_IF_GE()); auxByteCodes.put(0x1C,
+		 * new TAINT_OP_IF_GT()); auxByteCodes.put(0x1D, new TAINT_OP_IF_LE());
+		 * auxByteCodes.put(0x1E, new TAINT_OP_IF_EQZ()); auxByteCodes.put(0x1F,
+		 * new TAINT_OP_IF_NEZ()); auxByteCodes.put(0x20, new
+		 * TAINT_OP_IF_LTZ()); auxByteCodes.put(0x21, new TAINT_OP_IF_GEZ());
+		 * auxByteCodes.put(0x22, new TAINT_OP_IF_GTZ()); auxByteCodes.put(0x23,
+		 * new TAINT_OP_IF_LEZ());
 		 */
 		auxByteCodes.put(0x24, new TAINT_OP_ARRAY_GET());
 		auxByteCodes.put(0x25, new TAINT_OP_ARRAY_PUT());

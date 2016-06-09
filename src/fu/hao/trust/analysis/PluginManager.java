@@ -63,7 +63,25 @@ public class PluginManager {
 	public void printResults() {
 		for (Plugin plugin : plugins) {
 			for (String tag : plugin.getCurrtRes().keySet()) {
-				Log.msg(TAG, tag + " Tainted Res: " + plugin.getCurrtRes().get(tag));
+				try {
+					Log.msg(TAG, tag + " Tainted Res: " + plugin.getCurrtRes().get(tag));
+				} catch (Exception e) {
+					e.printStackTrace();
+					Log.warn(tag, e); 
+					/*
+					Map<Object, Instruction> newCurrtRes = new HashMap<>();
+					for (Object obj : plugin.getCurrtRes().get(tag).keySet()) {
+						try {
+							newCurrtRes.put(obj, plugin.getCurrtRes().get(tag).get(obj));
+							Log.msg(TAG, tag + " Tainted Res: " + obj + plugin.getCurrtRes().get(tag).get(obj));
+						} catch (Exception e1) {
+							e1.printStackTrace();
+							Log.warn(tag, e);
+						}
+					}
+					
+					plugin.getCurrtRes().put(tag, newCurrtRes); */
+				}
 			}
 		}
 	}
