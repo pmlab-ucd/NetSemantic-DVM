@@ -333,13 +333,37 @@ public class Executor {
 			}
 
 			Object[] newArray;
-			if (inst.type.isPrimitive()) {
-				newArray = new PrimitiveInfo[count];
+			if (inst.type.getElementClass().isPrimitive()) {
+				if (inst.type.getElementClass().equals(ClassInfo.primitiveInt)) {
+					int[] intArray = new int[count];
+					vm.getReg(inst.rdst).setValue(intArray, inst.type);
+				} else if (inst.type.getElementClass().equals(ClassInfo.primitiveFloat)) {
+					float[] floatArray = new float[count];
+					vm.getReg(inst.rdst).setValue(floatArray, inst.type);
+				} else if (inst.type.getElementClass().equals(ClassInfo.primitiveDouble)) {
+					double[] doubleArray = new double[count];
+					vm.getReg(inst.rdst).setValue(doubleArray, inst.type);
+				} else if (inst.type.getElementClass().equals(ClassInfo.primitiveChar)) {
+					char[] charArray = new char[count];
+					vm.getReg(inst.rdst).setValue(charArray, inst.type);
+				} else if (inst.type.getElementClass().equals(ClassInfo.primitiveShort)) {
+					short[] shortArray = new short[count];
+					vm.getReg(inst.rdst).setValue(shortArray, inst.type);
+				} else if (inst.type.getElementClass().equals(ClassInfo.primitiveLong)) {
+					long[] longArray = new long[count];
+					vm.getReg(inst.rdst).setValue(longArray, inst.type);
+				} else if (inst.type.getElementClass().equals(ClassInfo.primitiveBoolean)) {
+					boolean[] booleanArray = new boolean[count];
+					vm.getReg(inst.rdst).setValue(booleanArray, inst.type);
+				} else {
+					newArray = new PrimitiveInfo[count];
+					vm.getReg(inst.rdst).setValue(newArray, inst.type);
+				}
 			} else {
 				newArray = new Object[count];
+				vm.getReg(inst.rdst).setValue(newArray, inst.type);
 			}
 
-			vm.getReg(inst.rdst).setValue(newArray, inst.type);
 			Log.debug(TAG, "A new array of " + inst.type + " in size " + count
 					+ " created.");
 			jump(vm, inst, true);
@@ -2494,7 +2518,7 @@ public class Executor {
 							"Null in the " + i + "th arg, is "
 									+ vm.getReg(args[i]));
 					params[j] = null;
-				} else if (matchType(argData.getClass(), argsClass[j])) {
+				} else if (matchType(argData, argsClass[j])) {
 					params[j] = argData;
 					// argData.getClass().getInterfaces()
 				} else {
@@ -2553,7 +2577,11 @@ public class Executor {
 		return true;
 	}
 
-	public boolean matchType(Class<?> real, Class<?> expected) {
+	public boolean matchType(Object obj, Class<?> expected) {
+		return expected.isInstance(obj);
+		// Class<?> real = obj.getClass();
+		// return expected.isAssignableFrom(real);
+		/*
 		if (ClassInfo.findClass(real.getName()) != null
 				&& ClassInfo.findClass(real.getName()).isConvertibleTo(
 						ClassInfo.findClass(expected.getName()))) {
@@ -2569,7 +2597,7 @@ public class Executor {
 			}
 		}
 
-		return false;
+		return false;*/
 	}
 
 	/**
