@@ -34,14 +34,14 @@ public class Test {
 		args[3] = "ATaint";
 		Settings.logLevel = 0;
 		
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/VirtualDispatch2/app/";	
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FactoryMethods1/app/";	
 		args[1] = "srcEventChains";
 		Main.main(args);
 		
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
 		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
-				"359874043116909");
+				"[Unknown var:Latitude: 38.53203, type: java.lang.String]");
 		assertEquals(true, Results.results.contains(res));
 	}
 	

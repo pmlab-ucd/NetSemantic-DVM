@@ -232,6 +232,37 @@ public class BenchJavaTests {
 				"359874043116909");
 		assertEquals(true, Results.results.contains(res));
 	}
+	
+	@Test
+	public void VirtualDispatch3() {
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/VirtualDispatch3/app/";	
+		args[1] = "srcEventChains";
+		Main.main(args);
+		
+		assertEquals(true, Results.results.isEmpty());
+	}
+	
+	@Test
+	public void VirtualDispatch4() {
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/VirtualDispatch4/app/";	
+		args[1] = "srcEventChains";
+		Main.main(args);
+		
+		assertEquals(true, Results.results.isEmpty());
+	}
+	
+	@Test
+	public void FactoryMethods1() {
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FactoryMethods1/app/";	
+		args[1] = "srcEventChains";
+		Main.main(args);
+		
+		assertEquals(false, Results.results.isEmpty());
+		Map<String, String> res = new HashMap<>();
+		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
+				"[Unknown var:Latitude: 38.53203, type: java.lang.String]");
+		assertEquals(true, Results.results.contains(res));
+	}
 
 	//@Test
 	public void testDroidKunfu() {
