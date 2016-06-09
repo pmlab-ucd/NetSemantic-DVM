@@ -148,7 +148,7 @@ public class BenchICCTests {
 		Main.main(args);
 		Map<String, String> res = new HashMap<>();
 		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
-				"[Unknown var:Tainted: -1266614931, type: java.lang.String]");
+				"Tainted: -1266614931");
 		assertEquals(true, Results.results.contains(res));
 	}
 
@@ -188,7 +188,7 @@ public class BenchICCTests {
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
 		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
-				"[Unknown var:dump: 359874043116909, type: java.lang.String]");
+				"dump: 359874043116909");
 		assertEquals(true, Results.results.contains(res));
 	}
 

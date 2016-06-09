@@ -31,7 +31,7 @@ public class BenchJavaTests {
 		Main.main(args);
 		Map<String, String> res = new HashMap<>();
 		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
-				"[Unknown var:3_5_9_8_7_4_0_4_3_1_1_6_9_0_9_, type: java.lang.String]");
+				"3_5_9_8_7_4_0_4_3_1_1_6_9_0_9_");
 		assertEquals(true, Results.results.contains(res));
 	}
 
@@ -43,7 +43,7 @@ public class BenchJavaTests {
 		Main.main(args);
 		Map<String, String> res = new HashMap<>();
 		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
-				"[Unknown var:3_5_9_8_7_4_0_4_3_1_1_6_9_0_9_, type: java.lang.String]");
+				"3_5_9_8_7_4_0_4_3_1_1_6_9_0_9_");
 		assertEquals(Results.results.contains(res), true);
 	}
 	
@@ -260,7 +260,33 @@ public class BenchJavaTests {
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
 		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
-				"[Unknown var:Latitude: 38.53203, type: java.lang.String]");
+				"Latitude: 38.53203");
+		assertEquals(true, Results.results.contains(res));
+	}
+	
+	@Test
+	public void Serialization1() {
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Serialization1/app/";	
+		args[1] = "srcEventChains";
+		Main.main(args);
+		
+		assertEquals(false, Results.results.isEmpty());
+		Map<String, String> res = new HashMap<>();
+		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
+				"359874043116909");
+		assertEquals(true, Results.results.contains(res));
+	}
+	
+	@Test
+	public void StringFormatter1() {
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/StringFormatter1/app/";
+		args[1] = "srcEventChains";
+		Main.main(args);
+		
+		assertEquals(false, Results.results.isEmpty());
+		Map<String, String> res = new HashMap<>();
+		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
+				"359874043116909");
 		assertEquals(true, Results.results.contains(res));
 	}
 

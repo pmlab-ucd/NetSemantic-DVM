@@ -42,6 +42,11 @@ public class View extends DVMObject {
 		
 	}
 	
+	// TODO
+	public void setOnClickListener(DVMObject listener) {
+		
+	}
+	
 	public void setType() {
 		
 	}

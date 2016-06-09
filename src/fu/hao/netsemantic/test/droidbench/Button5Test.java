@@ -28,7 +28,7 @@ public class Button5Test {
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
 		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
-				"[Unknown var:359874043116909, type: java.lang.String]");
+				"359874043116909");
 		assertEquals(true, Results.results.contains(res));
 	}
 

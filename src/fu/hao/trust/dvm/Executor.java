@@ -2369,7 +2369,11 @@ public class Executor {
 			if (inst.toString().contains("java.util.Random/nextInt[int]")) {
 				Log.warn(TAG, "Reflection error: " + e.getMessage());
 			} else {
-				Log.err(TAG, "Error in reflection: " + e.getMessage());
+				if (mi.myClass.fullName.startsWith("java.io.ObjectInputStream")) {
+					Log.warn(TAG, "Error in reflection: " + e.getMessage());
+				} else {
+					Log.err(TAG, "Error in reflection: " + e.getMessage());
+				}
 			}
 			jump(vm, inst, true);
 		}
@@ -2534,6 +2538,11 @@ public class Executor {
 							.equals("java.lang.Runnable")) {
 						argsClass[j] = android.myclasses.Runnable.class;
 						params[j] = argData;
+					} else if (argData instanceof DVMObject) {
+						params[j] = argData;
+						//argsClass[j] = argData.getClass();
+						argsClass[j] = DVMObject.class;
+						Log.warn(TAG, "Call the mirror method instead! " + mi.paramTypes[j] + " is replaced by a dvmObj.");
 					}
 
 					// params[j] = argData;
@@ -3042,10 +3051,10 @@ public class Executor {
 		noInvokeList.add("java.io.InputStreamReader");
 		noInvokeList.add("java.io.BufferedReader");
 		noInvokeList.add("java.io.File");
-		noInvokeList.add("java.io.OutputStream");
+		//noInvokeList.add("java.io.OutputStream");
 		noInvokeList.add("android.support");
 		noInvokeList.add("getStatusCode");
-		noInvokeList.add("java.io.ByteArrayOutputStream");
+		//noInvokeList.add("java.io.ByteArrayOutputStream");
 
 		noInvokeList2 = new HashSet<>();
 		noInvokeList2.add("equals");
@@ -3055,8 +3064,8 @@ public class Executor {
 		noInvokeList2.add("trim");
 
 		invokeButUnknownRet = new HashSet<>();
-		invokeButUnknownRet.add("append");
-		invokeButUnknownRet.add("toString");
+		//invokeButUnknownRet.add("append");
+		//invokeButUnknownRet.add("toString");
 
 		replacedInvokeList = new HashMap<String, String>();
 		replacedInvokeList.put("java.util.concurrent.Executor",
@@ -3066,6 +3075,10 @@ public class Executor {
 		replacedInvokeList.put("java.lang.Thread", "android.myclasses.Thread");
 		replacedInvokeList.put("java.lang.Class", "patdroid.core.ClassInfo");
 		replacedInvokeList.put("java.lang.Object", "fu.hao.trust.dvm.DVMObject");
+		replacedInvokeList.put("java.io.ObjectOutputStream", "android.myclasses.ObjectOutputStream");
+		replacedInvokeList.put("java.io.ObjectInputStream", "android.myclasses.ObjectInputStream");
+		replacedInvokeList.put("java.io.ByteArrayOutputStream", "android.myclasses.ByteArrayOutputStream");
+		replacedInvokeList.put("java.io.ByteArrayInputStream", "android.myclasses.ByteArrayInputStream");
 	}
 
 	public void exec(DalvikVM vm, Instruction inst, ClassInfo sitClass) {

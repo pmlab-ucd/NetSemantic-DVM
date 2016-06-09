@@ -26,7 +26,7 @@ public class Location3Test {
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
 		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
-				"[Unknown var:Location: Longitude: -121.759603, Latitude: 38.53203, type: java.lang.String]");
+				"Location: Longitude: -121.759603, Latitude: 38.53203");
 		assertEquals(true, Results.results.contains(res));
 	}
 
