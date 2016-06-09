@@ -13,7 +13,7 @@ import org.junit.runners.Suite.SuiteClasses;
 		BenchJavaTests.class, BenchLifecycleTests.class,
 		BenchThreadingTests.class, BenchUnknownTests.class,
 		Location1Test.class, Location2Test.class, Location3Test.class,
-		BenchAndroidSpecific.class})
+		BenchAndroidSpecific.class, BenchArraysAndLists.class})
 public class AllTests {
 
 }
