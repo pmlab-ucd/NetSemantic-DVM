@@ -1,0 +1,1075 @@
+main - [MSG]: Src Chain: []
+main - [DEBUG]: Src Entry event: (edu.mit.dynamic_dispatch.MainActivity, onCreate)
+DalvikVM - [MSG]: Begin run onCreate at C:\Users\hao\workspace\DroidBenchProj\VirtualDispatch2\app\VirtualDispatch2.apk
+DalvikVM - [MSG]: RUN Method edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Read manifest csv: output/VirtualDispatch2.apk\VirtualDispatch2.apk_manifest.csv
+Executor - [WARN]: output\VirtualDispatch2.apk\VirtualDispatch2.apk_manifest.csv (The system cannot find the file specified)
+DalvikVM - [BB]: New method call: edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[10, 11]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [2]<0 HALT,SUPER,extra=[null, [10, 11]]>
+DalvikVM - [BB]: [3]<2 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+DalvikVM - [BB]: [4]<0 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [10, 1]]>
+DalvikVM - [BB]: [5]<4 MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: [6]<0 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [10, 1]]>
+DalvikVM - [BB]: [7]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [8]<0 ARITHMETIC,CHECK-AND-CAST,dst=r1,type=android.telephony.TelephonyManager>
+DalvikVM - [BB]: [9]<0 STATIC,SPUT,r0=r1,type=java.lang.Object,extra=(edu.mit.dynamic_dispatch.B, mgr)>
+DalvikVM - [BB]: [10]<0 NEW,INSTANCE,dst=r8,type=edu.mit.dynamic_dispatch.Test>
+DalvikVM - [BB]: [11]<0 INVOKE,DIRECT,extra=[edu.mit.dynamic_dispatch.Test/<init>[], [8]]>
+DalvikVM - [BB]: [12]<0 NEW,INSTANCE,dst=r9,type=edu.mit.dynamic_dispatch.Test>
+DalvikVM - [BB]: [13]<0 INVOKE,DIRECT,extra=[edu.mit.dynamic_dispatch.Test/<init>[], [9]]>
+DalvikVM - [BB]: [14]<0 NEW,INSTANCE,dst=r6,type=edu.mit.dynamic_dispatch.B>
+DalvikVM - [BB]: [15]<0 INVOKE,DIRECT,extra=[edu.mit.dynamic_dispatch.B/<init>[], [6]]>
+DalvikVM - [BB]: [16]<0 NEW,INSTANCE,dst=r7,type=edu.mit.dynamic_dispatch.C>
+DalvikVM - [BB]: [17]<0 INVOKE,DIRECT,extra=[edu.mit.dynamic_dispatch.C/<init>[], [7]]>
+DalvikVM - [BB]: [18]<0 INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]>
+DalvikVM - [BB]: [19]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [20]<19 MOV,CONST,dst=r1,type=java.lang.String,extra="+49 1234">
+DalvikVM - [BB]: [21]<0 INVOKE,VIRTUAL,extra=[edu.mit.dynamic_dispatch.Test/method[edu.mit.dynamic_dispatch.A], [8, 6]]>
+DalvikVM - [BB]: [22]<0 MOV,RESULT,dst=r3,type=java.lang.Object>
+DalvikVM - [BB]: [23]<0 MOV,REG,dst=r4,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [24]<0 MOV,REG,dst=r5,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [25]<0 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]>
+DalvikVM - [BB]: [26]<25 MOV,CONST,dst=r1,type=java.lang.String,extra="DroidBench">
+DalvikVM - [BB]: [27]<0 INVOKE,VIRTUAL,extra=[edu.mit.dynamic_dispatch.Test/method[edu.mit.dynamic_dispatch.A], [9, 7]]>
+DalvikVM - [BB]: [28]<0 MOV,RESULT,dst=r2,type=java.lang.Object>
+DalvikVM - [BB]: [29]<0 INVOKE,STATIC,extra=[android.util.Log/i[java.lang.String, java.lang.String], [1, 2]]>
+DalvikVM - [BB]: [30]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+newStackFrame - [BB]: Add frame StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+newStackFrame - [BB]: Stack: [StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]]
+Executor - [MSG]: New chain obj with type edu.mit.dynamic_dispatch.MainActivity
+Activity - [BB]: New instance of edu.mit.dynamic_dispatch.MainActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass edu.mit.dynamic_dispatch.MainActivity at fu.hao.trust.dvm.VMHeap@129e49c0
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for edu.mit.dynamic_dispatch.MainActivity at fu.hao.trust.dvm.VMHeap@129e49c0
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@129e49c0
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@129e49c0
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@129e49c0
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@129e49c0
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@129e49c0
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@129e49c0
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@129e49c0
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@129e49c0
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@129e49c0
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.Context
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@129e49c0
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.ContextWrapper
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@129e49c0
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@129e49c0
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type edu.mit.dynamic_dispatch.MainActivity
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass edu.mit.dynamic_dispatch.MainActivity at fu.hao.trust.dvm.VMHeap@129e49c0
+Activity - [MSG]: Not empty constructor
+DalvikVM - [BB]: New method call: edu.mit.dynamic_dispatch.MainActivity/<init>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[0]>
+DalvikVM - [BB]: [1]<0 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]>
+DalvikVM - [BB]: [2]<0 RETURN,VOID>
+DalvikVM - [WARN]: ar -2, (Activity:instance number 1@edu.mit.dynamic_dispatch.MainActivity, edu.mit.dynamic_dispatch.MainActivity)
+newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.dynamic_dispatch.MainActivity/<init>[], pc -1 stored. 
+newStackFrame - [BB]: Stack: [StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]]
+DalvikVM - [MSG]: Begin run instrumented methods!
+DalvikVM - [BB]: Add frames [StackFrame edu.mit.dynamic_dispatch.MainActivity/<init>[]]
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[0]> at edu.mit.dynamic_dispatch.MainActivity/<init>[]
+DalvikVM - [WARN]: ar 0, (Activity:instance number 1@edu.mit.dynamic_dispatch.MainActivity, edu.mit.dynamic_dispatch.MainActivity)
+Executor - [DEBUG]: params: Activity:instance number 1@edu.mit.dynamic_dispatch.MainActivity
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]> at edu.mit.dynamic_dispatch.MainActivity/<init>[]
+Executor - [MSG]: arg0 obj: Activity:instance number 1@edu.mit.dynamic_dispatch.MainActivity
+Executor - [MSG]: Replace the clazz.
+Executor - [BB]: java.lang.Object/<init>[] is a constructor!
+Executor - [WARN]: Reflection error: edu.mit.dynamic_dispatch.MainActivity
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 2
+TaintSumBranch - [BB]: <java.lang.Object: void <init>()>
+TaintSumBranch - [DEBUG]: Not a taint call: <java.lang.Object: void <init>()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 RETURN,VOID> at edu.mit.dynamic_dispatch.MainActivity/<init>[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+Activity - [MSG]: New Activity Created with type edu.mit.dynamic_dispatch.MainActivity
+DalvikVM - [BB]: New method call: edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[10, 11]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [2]<0 HALT,SUPER,extra=[null, [10, 11]]>
+DalvikVM - [BB]: [3]<2 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+DalvikVM - [BB]: [4]<0 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [10, 1]]>
+DalvikVM - [BB]: [5]<4 MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: [6]<0 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [10, 1]]>
+DalvikVM - [BB]: [7]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [8]<0 ARITHMETIC,CHECK-AND-CAST,dst=r1,type=android.telephony.TelephonyManager>
+DalvikVM - [BB]: [9]<0 STATIC,SPUT,r0=r1,type=java.lang.Object,extra=(edu.mit.dynamic_dispatch.B, mgr)>
+DalvikVM - [BB]: [10]<0 NEW,INSTANCE,dst=r8,type=edu.mit.dynamic_dispatch.Test>
+DalvikVM - [BB]: [11]<0 INVOKE,DIRECT,extra=[edu.mit.dynamic_dispatch.Test/<init>[], [8]]>
+DalvikVM - [BB]: [12]<0 NEW,INSTANCE,dst=r9,type=edu.mit.dynamic_dispatch.Test>
+DalvikVM - [BB]: [13]<0 INVOKE,DIRECT,extra=[edu.mit.dynamic_dispatch.Test/<init>[], [9]]>
+DalvikVM - [BB]: [14]<0 NEW,INSTANCE,dst=r6,type=edu.mit.dynamic_dispatch.B>
+DalvikVM - [BB]: [15]<0 INVOKE,DIRECT,extra=[edu.mit.dynamic_dispatch.B/<init>[], [6]]>
+DalvikVM - [BB]: [16]<0 NEW,INSTANCE,dst=r7,type=edu.mit.dynamic_dispatch.C>
+DalvikVM - [BB]: [17]<0 INVOKE,DIRECT,extra=[edu.mit.dynamic_dispatch.C/<init>[], [7]]>
+DalvikVM - [BB]: [18]<0 INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]>
+DalvikVM - [BB]: [19]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [20]<19 MOV,CONST,dst=r1,type=java.lang.String,extra="+49 1234">
+DalvikVM - [BB]: [21]<0 INVOKE,VIRTUAL,extra=[edu.mit.dynamic_dispatch.Test/method[edu.mit.dynamic_dispatch.A], [8, 6]]>
+DalvikVM - [BB]: [22]<0 MOV,RESULT,dst=r3,type=java.lang.Object>
+DalvikVM - [BB]: [23]<0 MOV,REG,dst=r4,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [24]<0 MOV,REG,dst=r5,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [25]<0 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]>
+DalvikVM - [BB]: [26]<25 MOV,CONST,dst=r1,type=java.lang.String,extra="DroidBench">
+DalvikVM - [BB]: [27]<0 INVOKE,VIRTUAL,extra=[edu.mit.dynamic_dispatch.Test/method[edu.mit.dynamic_dispatch.A], [9, 7]]>
+DalvikVM - [BB]: [28]<0 MOV,RESULT,dst=r2,type=java.lang.Object>
+DalvikVM - [BB]: [29]<0 INVOKE,STATIC,extra=[android.util.Log/i[java.lang.String, java.lang.String], [1, 2]]>
+DalvikVM - [BB]: [30]<0 RETURN,VOID>
+DalvikVM - [WARN]: ar -2, (Activity:instance number 1@edu.mit.dynamic_dispatch.MainActivity, edu.mit.dynamic_dispatch.MainActivity)
+DalvikVM - [WARN]: ar -2, (null, android.os.Bundle)
+newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+newStackFrame - [BB]: Stack: []
+Activity - [BB]: Intent null
+DalvikVM - [MSG]: Begin run instrumented methods!
+DalvikVM - [BB]: Add frames [StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]]
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[10, 11]> at edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [WARN]: ar 10, (Activity:instance number 1@edu.mit.dynamic_dispatch.MainActivity, edu.mit.dynamic_dispatch.MainActivity)
+Executor - [DEBUG]: params: Activity:instance number 1@edu.mit.dynamic_dispatch.MainActivity
+DalvikVM - [WARN]: ar 11, (null, android.os.Bundle)
+Executor - [DEBUG]: params: null
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0> at edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Mov const begin <1 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [WARN]: ar 2, (0, void)
+Executor - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 2
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 HALT,SUPER,extra=[null, [10, 11]]> at edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_HALT -> jump set pc to 3
+Executor - [MSG]: Cannot resolve the invocation
+TaintSumBranch - [BB]: Not a taint op <2 HALT,SUPER,extra=[null, [10, 11]]>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040> at edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Mov const begin <3 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+DalvikVM - [WARN]: ar 1, (2130903040, void)
+Executor - [DEBUG]: data: 2130903040 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 4
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <4 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [10, 1]]> at edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: Activity:instance number 1@edu.mit.dynamic_dispatch.MainActivity
+Executor - [DEBUG]: Reflction class: class android.app.Activity
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg1: 2130903040
+Executor - [DEBUG]: Expected para type: int
+Executor - [DEBUG]: Real para int, value: 2130903040
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: Activity:instance number 1@edu.mit.dynamic_dispatch.MainActivity, from class: class android.app.Activity
+DalvikVM - [WARN]: ar -1, (null, void)
+Executor - [MSG]: Reflction invocation public void android.app.Activity.setContentView(int)
+DalvikVM - [BB]: Set reflective call: public void android.app.Activity.setContentView(int)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 5
+TaintSumBranch - [BB]: <android.app.Activity: void setContentView(int)>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.app.Activity: void setContentView(int)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <5 MOV,CONST,dst=r1,type=java.lang.String,extra="phone"> at edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Mov const begin <5 MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+DalvikVM - [WARN]: ar 1 (2130903040, void), (phone, java.lang.String)
+Executor - [DEBUG]: data: phone class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 6
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <6 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [10, 1]]> at edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: Activity:instance number 1@edu.mit.dynamic_dispatch.MainActivity
+Executor - [DEBUG]: Reflction class: class android.content.Context
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg1: phone
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: Activity:instance number 1@edu.mit.dynamic_dispatch.MainActivity, from class: class android.app.Activity
+DalvikVM - [WARN]: ar -1, (android.telephony.TelephonyManager@49498526, java.lang.Object)
+Executor - [DEBUG]: Return data: android.telephony.TelephonyManager@49498526 ,class android.telephony.TelephonyManager
+Executor - [MSG]: Reflction invocation public java.lang.Object android.content.Context.getSystemService(java.lang.String)
+DalvikVM - [BB]: Set reflective call: public java.lang.Object android.content.Context.getSystemService(java.lang.String)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 7
+TaintSumBranch - [BB]: <android.content.Context: java.lang.Object getSystemService(java.lang.String)>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.content.Context: java.lang.Object getSystemService(java.lang.String)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <7 MOV,RESULT,dst=r1,type=java.lang.Object> at edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [WARN]: ar 1 (phone, java.lang.String), (android.telephony.TelephonyManager@49498526, java.lang.Object)
+OP_MOV_RESULT - [BB]: Result data: android.telephony.TelephonyManager@49498526
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.TelephonyManager@49498526, type: java.lang.Object, to [reg 1@MainActivity/onCreate]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 8
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <8 ARITHMETIC,CHECK-AND-CAST,dst=r1,type=android.telephony.TelephonyManager> at edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARITHETIC -> jump set pc to 9
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <9 STATIC,SPUT,r0=r1,type=java.lang.Object,extra=(edu.mit.dynamic_dispatch.B, mgr)> at edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.dynamic_dispatch.B at fu.hao.trust.dvm.VMHeap@129e49c0
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for edu.mit.dynamic_dispatch.B at fu.hao.trust.dvm.VMHeap@129e49c0
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass edu.mit.dynamic_dispatch.A at fu.hao.trust.dvm.VMHeap@129e49c0
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for edu.mit.dynamic_dispatch.A at fu.hao.trust.dvm.VMHeap@129e49c0
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type edu.mit.dynamic_dispatch.A
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass edu.mit.dynamic_dispatch.A at fu.hao.trust.dvm.VMHeap@129e49c0
+Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type edu.mit.dynamic_dispatch.B
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.dynamic_dispatch.B at fu.hao.trust.dvm.VMHeap@129e49c0
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [WARN]: Type inconsistent! java.lang.Object android.telephony.TelephonyManager
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: expect sput mgr from edu.mit.dynamic_dispatch.B
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: real sput android.telephony.TelephonyManager@49498526 from fu.hao.trust.dvm.DVMClass@2a51b326
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD -> jump set pc to 10
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.dynamic_dispatch.B at fu.hao.trust.dvm.VMHeap@129e49c0
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type edu.mit.dynamic_dispatch.B
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass edu.mit.dynamic_dispatch.B at fu.hao.trust.dvm.VMHeap@129e49c0
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <10 NEW,INSTANCE,dst=r8,type=edu.mit.dynamic_dispatch.Test> at edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+OP_NEW_INSTANCE - [DEBUG]: [reg 8@MainActivity/onCreate]
+DalvikVM - [BB]: Superclass: edu.mit.dynamic_dispatch.Test
+DalvikVM - [BB]: Superclass: java.lang.Object
+DVMObject - [BB]: New instance of edu.mit.dynamic_dispatch.Test
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass edu.mit.dynamic_dispatch.Test at fu.hao.trust.dvm.VMHeap@129e49c0
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for edu.mit.dynamic_dispatch.Test at fu.hao.trust.dvm.VMHeap@129e49c0
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type edu.mit.dynamic_dispatch.Test
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass edu.mit.dynamic_dispatch.Test at fu.hao.trust.dvm.VMHeap@129e49c0
+DVMObject - [MSG]: Not empty constructor
+DalvikVM - [BB]: New method call: edu.mit.dynamic_dispatch.Test/<init>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[0]>
+DalvikVM - [BB]: [1]<0 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]>
+DalvikVM - [BB]: [2]<0 RETURN,VOID>
+DalvikVM - [WARN]: ar -2, (instance number 1@edu.mit.dynamic_dispatch.Test, edu.mit.dynamic_dispatch.Test)
+newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.dynamic_dispatch.Test/<init>[], pc 10 stored. 
+newStackFrame - [BB]: Stack: [StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]]
+DalvikVM - [MSG]: Begin run instrumented methods!
+DalvikVM - [BB]: Add frames [StackFrame edu.mit.dynamic_dispatch.Test/<init>[]]
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[0]> at edu.mit.dynamic_dispatch.Test/<init>[]
+DalvikVM - [WARN]: ar 0, (instance number 1@edu.mit.dynamic_dispatch.Test, edu.mit.dynamic_dispatch.Test)
+Executor - [DEBUG]: params: instance number 1@edu.mit.dynamic_dispatch.Test
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]> at edu.mit.dynamic_dispatch.Test/<init>[]
+Executor - [MSG]: arg0 obj: instance number 1@edu.mit.dynamic_dispatch.Test
+Executor - [MSG]: Replace the clazz.
+Executor - [BB]: java.lang.Object/<init>[] is a constructor!
+Executor - [WARN]: Reflection error: edu.mit.dynamic_dispatch.Test
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 2
+TaintSumBranch - [BB]: <java.lang.Object: void <init>()>
+TaintSumBranch - [DEBUG]: Not a taint call: <java.lang.Object: void <init>()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 RETURN,VOID> at edu.mit.dynamic_dispatch.Test/<init>[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [WARN]: ar 8, (instance number 1@edu.mit.dynamic_dispatch.Test, edu.mit.dynamic_dispatch.Test)
+OP_NEW_INSTANCE - [DEBUG]: New object of edu.mit.dynamic_dispatch.Testcreated:instance number 1@edu.mit.dynamic_dispatch.Test
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_NEW_INSTANCE -> jump set pc to 11
+TaintSumBranch - [BB]: Rdst [reg 8@MainActivity/onCreate]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <11 INVOKE,DIRECT,extra=[edu.mit.dynamic_dispatch.Test/<init>[], [8]]> at edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: instance number 1@edu.mit.dynamic_dispatch.Test
+Executor - [WARN]: Reflection error: edu.mit.dynamic_dispatch.Test
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 12
+DalvikVM - [BB]: New method call: edu.mit.dynamic_dispatch.Test/<init>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[0]>
+DalvikVM - [BB]: [1]<1 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]>
+DalvikVM - [BB]: [2]<2 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.dynamic_dispatch.Test/<init>[], pc 12 stored. 
+newStackFrame - [BB]: Add frame StackFrame edu.mit.dynamic_dispatch.Test/<init>[]
+newStackFrame - [BB]: Stack: [StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle], StackFrame edu.mit.dynamic_dispatch.Test/<init>[]]
+TaintSumBranch - [BB]: <edu.mit.dynamic_dispatch.Test: void <init>()>
+TaintSumBranch - [DEBUG]: Not a taint call: <edu.mit.dynamic_dispatch.Test: void <init>()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[0]> at edu.mit.dynamic_dispatch.Test/<init>[]
+DalvikVM - [WARN]: ar 0, (instance number 1@edu.mit.dynamic_dispatch.Test, edu.mit.dynamic_dispatch.Test)
+Executor - [DEBUG]: params: instance number 1@edu.mit.dynamic_dispatch.Test
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]> at edu.mit.dynamic_dispatch.Test/<init>[]
+Executor - [MSG]: arg0 obj: instance number 1@edu.mit.dynamic_dispatch.Test
+Executor - [MSG]: Replace the clazz.
+Executor - [BB]: java.lang.Object/<init>[] is a constructor!
+Executor - [WARN]: Reflection error: edu.mit.dynamic_dispatch.Test
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 2
+TaintSumBranch - [BB]: <java.lang.Object: void <init>()>
+TaintSumBranch - [DEBUG]: Not a taint call: <java.lang.Object: void <init>()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 RETURN,VOID> at edu.mit.dynamic_dispatch.Test/<init>[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <12 NEW,INSTANCE,dst=r9,type=edu.mit.dynamic_dispatch.Test> at edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+OP_NEW_INSTANCE - [DEBUG]: [reg 9@MainActivity/onCreate]
+DalvikVM - [BB]: Superclass: edu.mit.dynamic_dispatch.Test
+DalvikVM - [BB]: Superclass: java.lang.Object
+DVMObject - [BB]: New instance of edu.mit.dynamic_dispatch.Test
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass edu.mit.dynamic_dispatch.Test at fu.hao.trust.dvm.VMHeap@129e49c0
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type edu.mit.dynamic_dispatch.Test
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass edu.mit.dynamic_dispatch.Test at fu.hao.trust.dvm.VMHeap@129e49c0
+DVMObject - [MSG]: Not empty constructor
+DalvikVM - [BB]: New method call: edu.mit.dynamic_dispatch.Test/<init>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[0]>
+DalvikVM - [BB]: [1]<1 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]>
+DalvikVM - [BB]: [2]<2 RETURN,VOID>
+DalvikVM - [WARN]: ar -2, (instance number 2@edu.mit.dynamic_dispatch.Test, edu.mit.dynamic_dispatch.Test)
+newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.dynamic_dispatch.Test/<init>[], pc 12 stored. 
+newStackFrame - [BB]: Stack: [StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]]
+DalvikVM - [MSG]: Begin run instrumented methods!
+DalvikVM - [BB]: Add frames [StackFrame edu.mit.dynamic_dispatch.Test/<init>[]]
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[0]> at edu.mit.dynamic_dispatch.Test/<init>[]
+DalvikVM - [WARN]: ar 0, (instance number 2@edu.mit.dynamic_dispatch.Test, edu.mit.dynamic_dispatch.Test)
+Executor - [DEBUG]: params: instance number 2@edu.mit.dynamic_dispatch.Test
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]> at edu.mit.dynamic_dispatch.Test/<init>[]
+Executor - [MSG]: arg0 obj: instance number 2@edu.mit.dynamic_dispatch.Test
+Executor - [MSG]: Replace the clazz.
+Executor - [BB]: java.lang.Object/<init>[] is a constructor!
+Executor - [WARN]: Reflection error: edu.mit.dynamic_dispatch.Test
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 2
+TaintSumBranch - [BB]: <java.lang.Object: void <init>()>
+TaintSumBranch - [DEBUG]: Not a taint call: <java.lang.Object: void <init>()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 RETURN,VOID> at edu.mit.dynamic_dispatch.Test/<init>[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [WARN]: ar 9, (instance number 2@edu.mit.dynamic_dispatch.Test, edu.mit.dynamic_dispatch.Test)
+OP_NEW_INSTANCE - [DEBUG]: New object of edu.mit.dynamic_dispatch.Testcreated:instance number 2@edu.mit.dynamic_dispatch.Test
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_NEW_INSTANCE -> jump set pc to 13
+TaintSumBranch - [BB]: Rdst [reg 9@MainActivity/onCreate]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <13 INVOKE,DIRECT,extra=[edu.mit.dynamic_dispatch.Test/<init>[], [9]]> at edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: instance number 2@edu.mit.dynamic_dispatch.Test
+Executor - [WARN]: Reflection error: edu.mit.dynamic_dispatch.Test
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 14
+DalvikVM - [BB]: New method call: edu.mit.dynamic_dispatch.Test/<init>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[0]>
+DalvikVM - [BB]: [1]<1 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]>
+DalvikVM - [BB]: [2]<2 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.dynamic_dispatch.Test/<init>[], pc 14 stored. 
+newStackFrame - [BB]: Add frame StackFrame edu.mit.dynamic_dispatch.Test/<init>[]
+newStackFrame - [BB]: Stack: [StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle], StackFrame edu.mit.dynamic_dispatch.Test/<init>[]]
+TaintSumBranch - [BB]: <edu.mit.dynamic_dispatch.Test: void <init>()>
+TaintSumBranch - [DEBUG]: Not a taint call: <edu.mit.dynamic_dispatch.Test: void <init>()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[0]> at edu.mit.dynamic_dispatch.Test/<init>[]
+DalvikVM - [WARN]: ar 0, (instance number 2@edu.mit.dynamic_dispatch.Test, edu.mit.dynamic_dispatch.Test)
+Executor - [DEBUG]: params: instance number 2@edu.mit.dynamic_dispatch.Test
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]> at edu.mit.dynamic_dispatch.Test/<init>[]
+Executor - [MSG]: arg0 obj: instance number 2@edu.mit.dynamic_dispatch.Test
+Executor - [MSG]: Replace the clazz.
+Executor - [BB]: java.lang.Object/<init>[] is a constructor!
+Executor - [WARN]: Reflection error: edu.mit.dynamic_dispatch.Test
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 2
+TaintSumBranch - [BB]: <java.lang.Object: void <init>()>
+TaintSumBranch - [DEBUG]: Not a taint call: <java.lang.Object: void <init>()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 RETURN,VOID> at edu.mit.dynamic_dispatch.Test/<init>[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <14 NEW,INSTANCE,dst=r6,type=edu.mit.dynamic_dispatch.B> at edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+OP_NEW_INSTANCE - [DEBUG]: [reg 6@MainActivity/onCreate]
+DalvikVM - [BB]: Superclass: edu.mit.dynamic_dispatch.B
+DalvikVM - [BB]: Superclass: edu.mit.dynamic_dispatch.A
+DalvikVM - [BB]: Superclass: java.lang.Object
+DVMObject - [BB]: New instance of edu.mit.dynamic_dispatch.B
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass edu.mit.dynamic_dispatch.B at fu.hao.trust.dvm.VMHeap@129e49c0
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type edu.mit.dynamic_dispatch.B
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass edu.mit.dynamic_dispatch.B at fu.hao.trust.dvm.VMHeap@129e49c0
+DVMObject - [MSG]: Not empty constructor
+DalvikVM - [BB]: New method call: edu.mit.dynamic_dispatch.B/<init>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[0]>
+DalvikVM - [BB]: [1]<0 INVOKE,DIRECT,extra=[edu.mit.dynamic_dispatch.A/<init>[], [0]]>
+DalvikVM - [BB]: [2]<0 RETURN,VOID>
+DalvikVM - [WARN]: ar -2, (instance number 1@edu.mit.dynamic_dispatch.B, edu.mit.dynamic_dispatch.B)
+newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.dynamic_dispatch.B/<init>[], pc 14 stored. 
+newStackFrame - [BB]: Stack: [StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]]
+DalvikVM - [MSG]: Begin run instrumented methods!
+DalvikVM - [BB]: Add frames [StackFrame edu.mit.dynamic_dispatch.B/<init>[]]
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[0]> at edu.mit.dynamic_dispatch.B/<init>[]
+DalvikVM - [WARN]: ar 0, (instance number 1@edu.mit.dynamic_dispatch.B, edu.mit.dynamic_dispatch.B)
+Executor - [DEBUG]: params: instance number 1@edu.mit.dynamic_dispatch.B
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 INVOKE,DIRECT,extra=[edu.mit.dynamic_dispatch.A/<init>[], [0]]> at edu.mit.dynamic_dispatch.B/<init>[]
+Executor - [MSG]: arg0 obj: instance number 1@edu.mit.dynamic_dispatch.B
+Executor - [WARN]: Reflection error: edu.mit.dynamic_dispatch.A
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 2
+DalvikVM - [BB]: New method call: edu.mit.dynamic_dispatch.A/<init>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[0]>
+DalvikVM - [BB]: [1]<0 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]>
+DalvikVM - [BB]: [2]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.dynamic_dispatch.A/<init>[], pc 2 stored. 
+newStackFrame - [BB]: Add frame StackFrame edu.mit.dynamic_dispatch.A/<init>[]
+newStackFrame - [BB]: Stack: [StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle], StackFrame edu.mit.dynamic_dispatch.B/<init>[], StackFrame edu.mit.dynamic_dispatch.A/<init>[]]
+TaintSumBranch - [BB]: <edu.mit.dynamic_dispatch.A: void <init>()>
+TaintSumBranch - [DEBUG]: Not a taint call: <edu.mit.dynamic_dispatch.A: void <init>()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[0]> at edu.mit.dynamic_dispatch.A/<init>[]
+DalvikVM - [WARN]: ar 0, (instance number 1@edu.mit.dynamic_dispatch.B, edu.mit.dynamic_dispatch.B)
+Executor - [DEBUG]: params: instance number 1@edu.mit.dynamic_dispatch.B
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]> at edu.mit.dynamic_dispatch.A/<init>[]
+Executor - [MSG]: arg0 obj: instance number 1@edu.mit.dynamic_dispatch.B
+Executor - [MSG]: Replace the clazz.
+Executor - [BB]: java.lang.Object/<init>[] is a constructor!
+Executor - [WARN]: Reflection error: edu.mit.dynamic_dispatch.B
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 2
+TaintSumBranch - [BB]: <java.lang.Object: void <init>()>
+TaintSumBranch - [DEBUG]: Not a taint call: <java.lang.Object: void <init>()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 RETURN,VOID> at edu.mit.dynamic_dispatch.A/<init>[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle], StackFrame edu.mit.dynamic_dispatch.B/<init>[]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame edu.mit.dynamic_dispatch.B/<init>[]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 RETURN,VOID> at edu.mit.dynamic_dispatch.B/<init>[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [WARN]: ar 6, (instance number 1@edu.mit.dynamic_dispatch.B, edu.mit.dynamic_dispatch.B)
+OP_NEW_INSTANCE - [DEBUG]: New object of edu.mit.dynamic_dispatch.Bcreated:instance number 1@edu.mit.dynamic_dispatch.B
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_NEW_INSTANCE -> jump set pc to 15
+TaintSumBranch - [BB]: Rdst [reg 6@MainActivity/onCreate]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <15 INVOKE,DIRECT,extra=[edu.mit.dynamic_dispatch.B/<init>[], [6]]> at edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: instance number 1@edu.mit.dynamic_dispatch.B
+Executor - [WARN]: Reflection error: edu.mit.dynamic_dispatch.B
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 16
+DalvikVM - [BB]: New method call: edu.mit.dynamic_dispatch.B/<init>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[0]>
+DalvikVM - [BB]: [1]<1 INVOKE,DIRECT,extra=[edu.mit.dynamic_dispatch.A/<init>[], [0]]>
+DalvikVM - [BB]: [2]<2 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.dynamic_dispatch.B/<init>[], pc 16 stored. 
+newStackFrame - [BB]: Add frame StackFrame edu.mit.dynamic_dispatch.B/<init>[]
+newStackFrame - [BB]: Stack: [StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle], StackFrame edu.mit.dynamic_dispatch.B/<init>[]]
+TaintSumBranch - [BB]: <edu.mit.dynamic_dispatch.B: void <init>()>
+TaintSumBranch - [DEBUG]: Not a taint call: <edu.mit.dynamic_dispatch.B: void <init>()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[0]> at edu.mit.dynamic_dispatch.B/<init>[]
+DalvikVM - [WARN]: ar 0, (instance number 1@edu.mit.dynamic_dispatch.B, edu.mit.dynamic_dispatch.B)
+Executor - [DEBUG]: params: instance number 1@edu.mit.dynamic_dispatch.B
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 INVOKE,DIRECT,extra=[edu.mit.dynamic_dispatch.A/<init>[], [0]]> at edu.mit.dynamic_dispatch.B/<init>[]
+Executor - [MSG]: arg0 obj: instance number 1@edu.mit.dynamic_dispatch.B
+Executor - [WARN]: Reflection error: edu.mit.dynamic_dispatch.A
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 2
+DalvikVM - [BB]: New method call: edu.mit.dynamic_dispatch.A/<init>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[0]>
+DalvikVM - [BB]: [1]<1 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]>
+DalvikVM - [BB]: [2]<2 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.dynamic_dispatch.A/<init>[], pc 2 stored. 
+newStackFrame - [BB]: Add frame StackFrame edu.mit.dynamic_dispatch.A/<init>[]
+newStackFrame - [BB]: Stack: [StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle], StackFrame edu.mit.dynamic_dispatch.B/<init>[], StackFrame edu.mit.dynamic_dispatch.A/<init>[]]
+TaintSumBranch - [BB]: <edu.mit.dynamic_dispatch.A: void <init>()>
+TaintSumBranch - [DEBUG]: Not a taint call: <edu.mit.dynamic_dispatch.A: void <init>()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[0]> at edu.mit.dynamic_dispatch.A/<init>[]
+DalvikVM - [WARN]: ar 0, (instance number 1@edu.mit.dynamic_dispatch.B, edu.mit.dynamic_dispatch.B)
+Executor - [DEBUG]: params: instance number 1@edu.mit.dynamic_dispatch.B
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]> at edu.mit.dynamic_dispatch.A/<init>[]
+Executor - [MSG]: arg0 obj: instance number 1@edu.mit.dynamic_dispatch.B
+Executor - [MSG]: Replace the clazz.
+Executor - [BB]: java.lang.Object/<init>[] is a constructor!
+Executor - [WARN]: Reflection error: edu.mit.dynamic_dispatch.B
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 2
+TaintSumBranch - [BB]: <java.lang.Object: void <init>()>
+TaintSumBranch - [DEBUG]: Not a taint call: <java.lang.Object: void <init>()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 RETURN,VOID> at edu.mit.dynamic_dispatch.A/<init>[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle], StackFrame edu.mit.dynamic_dispatch.B/<init>[]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame edu.mit.dynamic_dispatch.B/<init>[]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 RETURN,VOID> at edu.mit.dynamic_dispatch.B/<init>[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <16 NEW,INSTANCE,dst=r7,type=edu.mit.dynamic_dispatch.C> at edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+OP_NEW_INSTANCE - [DEBUG]: [reg 7@MainActivity/onCreate]
+DalvikVM - [BB]: Superclass: edu.mit.dynamic_dispatch.C
+DalvikVM - [BB]: Superclass: edu.mit.dynamic_dispatch.A
+DalvikVM - [BB]: Superclass: java.lang.Object
+DVMObject - [BB]: New instance of edu.mit.dynamic_dispatch.C
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass edu.mit.dynamic_dispatch.C at fu.hao.trust.dvm.VMHeap@129e49c0
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for edu.mit.dynamic_dispatch.C at fu.hao.trust.dvm.VMHeap@129e49c0
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass edu.mit.dynamic_dispatch.A at fu.hao.trust.dvm.VMHeap@129e49c0
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type edu.mit.dynamic_dispatch.A
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass edu.mit.dynamic_dispatch.A at fu.hao.trust.dvm.VMHeap@129e49c0
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type edu.mit.dynamic_dispatch.C
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass edu.mit.dynamic_dispatch.C at fu.hao.trust.dvm.VMHeap@129e49c0
+DVMObject - [MSG]: Not empty constructor
+DalvikVM - [BB]: New method call: edu.mit.dynamic_dispatch.C/<init>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[0]>
+DalvikVM - [BB]: [1]<0 INVOKE,DIRECT,extra=[edu.mit.dynamic_dispatch.A/<init>[], [0]]>
+DalvikVM - [BB]: [2]<0 RETURN,VOID>
+DalvikVM - [WARN]: ar -2, (instance number 1@edu.mit.dynamic_dispatch.C, edu.mit.dynamic_dispatch.C)
+newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.dynamic_dispatch.C/<init>[], pc 16 stored. 
+newStackFrame - [BB]: Stack: [StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]]
+DalvikVM - [MSG]: Begin run instrumented methods!
+DalvikVM - [BB]: Add frames [StackFrame edu.mit.dynamic_dispatch.C/<init>[]]
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[0]> at edu.mit.dynamic_dispatch.C/<init>[]
+DalvikVM - [WARN]: ar 0, (instance number 1@edu.mit.dynamic_dispatch.C, edu.mit.dynamic_dispatch.C)
+Executor - [DEBUG]: params: instance number 1@edu.mit.dynamic_dispatch.C
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 INVOKE,DIRECT,extra=[edu.mit.dynamic_dispatch.A/<init>[], [0]]> at edu.mit.dynamic_dispatch.C/<init>[]
+Executor - [MSG]: arg0 obj: instance number 1@edu.mit.dynamic_dispatch.C
+Executor - [WARN]: Reflection error: edu.mit.dynamic_dispatch.A
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 2
+DalvikVM - [BB]: New method call: edu.mit.dynamic_dispatch.A/<init>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[0]>
+DalvikVM - [BB]: [1]<1 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]>
+DalvikVM - [BB]: [2]<2 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.dynamic_dispatch.A/<init>[], pc 2 stored. 
+newStackFrame - [BB]: Add frame StackFrame edu.mit.dynamic_dispatch.A/<init>[]
+newStackFrame - [BB]: Stack: [StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle], StackFrame edu.mit.dynamic_dispatch.C/<init>[], StackFrame edu.mit.dynamic_dispatch.A/<init>[]]
+TaintSumBranch - [BB]: <edu.mit.dynamic_dispatch.A: void <init>()>
+TaintSumBranch - [DEBUG]: Not a taint call: <edu.mit.dynamic_dispatch.A: void <init>()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[0]> at edu.mit.dynamic_dispatch.A/<init>[]
+DalvikVM - [WARN]: ar 0, (instance number 1@edu.mit.dynamic_dispatch.C, edu.mit.dynamic_dispatch.C)
+Executor - [DEBUG]: params: instance number 1@edu.mit.dynamic_dispatch.C
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]> at edu.mit.dynamic_dispatch.A/<init>[]
+Executor - [MSG]: arg0 obj: instance number 1@edu.mit.dynamic_dispatch.C
+Executor - [MSG]: Replace the clazz.
+Executor - [BB]: java.lang.Object/<init>[] is a constructor!
+Executor - [WARN]: Reflection error: edu.mit.dynamic_dispatch.C
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 2
+TaintSumBranch - [BB]: <java.lang.Object: void <init>()>
+TaintSumBranch - [DEBUG]: Not a taint call: <java.lang.Object: void <init>()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 RETURN,VOID> at edu.mit.dynamic_dispatch.A/<init>[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle], StackFrame edu.mit.dynamic_dispatch.C/<init>[]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame edu.mit.dynamic_dispatch.C/<init>[]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 RETURN,VOID> at edu.mit.dynamic_dispatch.C/<init>[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [WARN]: ar 7, (instance number 1@edu.mit.dynamic_dispatch.C, edu.mit.dynamic_dispatch.C)
+OP_NEW_INSTANCE - [DEBUG]: New object of edu.mit.dynamic_dispatch.Ccreated:instance number 1@edu.mit.dynamic_dispatch.C
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_NEW_INSTANCE -> jump set pc to 17
+TaintSumBranch - [BB]: Rdst [reg 7@MainActivity/onCreate]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <17 INVOKE,DIRECT,extra=[edu.mit.dynamic_dispatch.C/<init>[], [7]]> at edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: instance number 1@edu.mit.dynamic_dispatch.C
+Executor - [WARN]: Reflection error: edu.mit.dynamic_dispatch.C
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 18
+DalvikVM - [BB]: New method call: edu.mit.dynamic_dispatch.C/<init>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[0]>
+DalvikVM - [BB]: [1]<1 INVOKE,DIRECT,extra=[edu.mit.dynamic_dispatch.A/<init>[], [0]]>
+DalvikVM - [BB]: [2]<2 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.dynamic_dispatch.C/<init>[], pc 18 stored. 
+newStackFrame - [BB]: Add frame StackFrame edu.mit.dynamic_dispatch.C/<init>[]
+newStackFrame - [BB]: Stack: [StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle], StackFrame edu.mit.dynamic_dispatch.C/<init>[]]
+TaintSumBranch - [BB]: <edu.mit.dynamic_dispatch.C: void <init>()>
+TaintSumBranch - [DEBUG]: Not a taint call: <edu.mit.dynamic_dispatch.C: void <init>()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[0]> at edu.mit.dynamic_dispatch.C/<init>[]
+DalvikVM - [WARN]: ar 0, (instance number 1@edu.mit.dynamic_dispatch.C, edu.mit.dynamic_dispatch.C)
+Executor - [DEBUG]: params: instance number 1@edu.mit.dynamic_dispatch.C
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 INVOKE,DIRECT,extra=[edu.mit.dynamic_dispatch.A/<init>[], [0]]> at edu.mit.dynamic_dispatch.C/<init>[]
+Executor - [MSG]: arg0 obj: instance number 1@edu.mit.dynamic_dispatch.C
+Executor - [WARN]: Reflection error: edu.mit.dynamic_dispatch.A
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 2
+DalvikVM - [BB]: New method call: edu.mit.dynamic_dispatch.A/<init>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[0]>
+DalvikVM - [BB]: [1]<1 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]>
+DalvikVM - [BB]: [2]<2 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.dynamic_dispatch.A/<init>[], pc 2 stored. 
+newStackFrame - [BB]: Add frame StackFrame edu.mit.dynamic_dispatch.A/<init>[]
+newStackFrame - [BB]: Stack: [StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle], StackFrame edu.mit.dynamic_dispatch.C/<init>[], StackFrame edu.mit.dynamic_dispatch.A/<init>[]]
+TaintSumBranch - [BB]: <edu.mit.dynamic_dispatch.A: void <init>()>
+TaintSumBranch - [DEBUG]: Not a taint call: <edu.mit.dynamic_dispatch.A: void <init>()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[0]> at edu.mit.dynamic_dispatch.A/<init>[]
+DalvikVM - [WARN]: ar 0, (instance number 1@edu.mit.dynamic_dispatch.C, edu.mit.dynamic_dispatch.C)
+Executor - [DEBUG]: params: instance number 1@edu.mit.dynamic_dispatch.C
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]> at edu.mit.dynamic_dispatch.A/<init>[]
+Executor - [MSG]: arg0 obj: instance number 1@edu.mit.dynamic_dispatch.C
+Executor - [MSG]: Replace the clazz.
+Executor - [BB]: java.lang.Object/<init>[] is a constructor!
+Executor - [WARN]: Reflection error: edu.mit.dynamic_dispatch.C
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 2
+TaintSumBranch - [BB]: <java.lang.Object: void <init>()>
+TaintSumBranch - [DEBUG]: Not a taint call: <java.lang.Object: void <init>()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 RETURN,VOID> at edu.mit.dynamic_dispatch.A/<init>[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle], StackFrame edu.mit.dynamic_dispatch.C/<init>[]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame edu.mit.dynamic_dispatch.C/<init>[]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 RETURN,VOID> at edu.mit.dynamic_dispatch.C/<init>[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <18 INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]> at edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Reflction class android.telephony.SmsManager
+DalvikVM - [WARN]: ar -1, (android.telephony.SmsManager@759c1f49, android.telephony.SmsManager)
+Executor - [MSG]: reflction invocation public static android.telephony.SmsManager android.telephony.SmsManager.getDefault()
+DalvikVM - [BB]: Set reflective call: public static android.telephony.SmsManager android.telephony.SmsManager.getDefault()
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INVOKE_STATIC -> jump set pc to 19
+TaintSumBranch - [BB]: <android.telephony.SmsManager: android.telephony.SmsManager getDefault()>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.telephony.SmsManager: android.telephony.SmsManager getDefault()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <19 MOV,RESULT,dst=r0,type=java.lang.Object> at edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [WARN]: ar 0, (android.telephony.SmsManager@759c1f49, android.telephony.SmsManager)
+OP_MOV_RESULT - [BB]: Result data: android.telephony.SmsManager@759c1f49
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.SmsManager@759c1f49, type: android.telephony.SmsManager, to [reg 0@MainActivity/onCreate]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 20
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <20 MOV,CONST,dst=r1,type=java.lang.String,extra="+49 1234"> at edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Mov const begin <20 MOV,CONST,dst=r1,type=java.lang.String,extra="+49 1234">
+DalvikVM - [WARN]: ar 1 (android.telephony.TelephonyManager@49498526, java.lang.Object), (+49 1234, java.lang.String)
+Executor - [DEBUG]: data: +49 1234 class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 21
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <21 INVOKE,VIRTUAL,extra=[edu.mit.dynamic_dispatch.Test/method[edu.mit.dynamic_dispatch.A], [8, 6]]> at edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: instance number 1@edu.mit.dynamic_dispatch.Test
+Executor - [WARN]: Reflection error: edu.mit.dynamic_dispatch.Test
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 22
+DalvikVM - [BB]: New method call: edu.mit.dynamic_dispatch.Test/method[edu.mit.dynamic_dispatch.A]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[1, 2]>
+DalvikVM - [BB]: [1]<0 INVOKE,VIRTUAL,extra=[edu.mit.dynamic_dispatch.A/f[], [2]]>
+DalvikVM - [BB]: [2]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [3]<0 RETURN,VALUE,r0=r0,type=java.lang.Object>
+newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.dynamic_dispatch.Test/method[edu.mit.dynamic_dispatch.A], pc 22 stored. 
+newStackFrame - [BB]: Add frame StackFrame edu.mit.dynamic_dispatch.Test/method[edu.mit.dynamic_dispatch.A]
+newStackFrame - [BB]: Stack: [StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle], StackFrame edu.mit.dynamic_dispatch.Test/method[edu.mit.dynamic_dispatch.A]]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[1, 2]> at edu.mit.dynamic_dispatch.Test/method[edu.mit.dynamic_dispatch.A]
+DalvikVM - [WARN]: ar 1, (instance number 1@edu.mit.dynamic_dispatch.Test, edu.mit.dynamic_dispatch.Test)
+Executor - [DEBUG]: params: instance number 1@edu.mit.dynamic_dispatch.Test
+DalvikVM - [WARN]: ar 2, (instance number 1@edu.mit.dynamic_dispatch.B, edu.mit.dynamic_dispatch.B)
+Executor - [DEBUG]: params: instance number 1@edu.mit.dynamic_dispatch.B
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 INVOKE,VIRTUAL,extra=[edu.mit.dynamic_dispatch.A/f[], [2]]> at edu.mit.dynamic_dispatch.Test/method[edu.mit.dynamic_dispatch.A]
+Executor - [MSG]: arg0 obj: instance number 1@edu.mit.dynamic_dispatch.B
+Executor - [WARN]: Reflection error: edu.mit.dynamic_dispatch.A
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 2
+DalvikVM - [BB]: New method call: edu.mit.dynamic_dispatch.B/f[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[1]>
+DalvikVM - [BB]: [1]<0 STATIC,SGET,r0=r0,type=java.lang.Object,extra=(edu.mit.dynamic_dispatch.B, mgr)>
+DalvikVM - [BB]: [2]<0 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>
+DalvikVM - [BB]: [3]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [4]<0 RETURN,VALUE,r0=r0,type=java.lang.Object>
+newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.dynamic_dispatch.B/f[], pc 2 stored. 
+newStackFrame - [BB]: Add frame StackFrame edu.mit.dynamic_dispatch.B/f[]
+newStackFrame - [BB]: Stack: [StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle], StackFrame edu.mit.dynamic_dispatch.Test/method[edu.mit.dynamic_dispatch.A], StackFrame edu.mit.dynamic_dispatch.B/f[]]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[1]> at edu.mit.dynamic_dispatch.B/f[]
+DalvikVM - [WARN]: ar 1, (instance number 1@edu.mit.dynamic_dispatch.B, edu.mit.dynamic_dispatch.B)
+Executor - [DEBUG]: params: instance number 1@edu.mit.dynamic_dispatch.B
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 STATIC,SGET,r0=r0,type=java.lang.Object,extra=(edu.mit.dynamic_dispatch.B, mgr)> at edu.mit.dynamic_dispatch.B/f[]
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass edu.mit.dynamic_dispatch.B at fu.hao.trust.dvm.VMHeap@129e49c0
+Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type edu.mit.dynamic_dispatch.B
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass edu.mit.dynamic_dispatch.B at fu.hao.trust.dvm.VMHeap@129e49c0
+DalvikVM - [WARN]: ar 0, (android.telephony.TelephonyManager@49498526, android.telephony.TelephonyManager)
+OP_STATIC_GET_FIELD - [DEBUG]: Sget android.telephony.TelephonyManager@49498526, from fu.hao.trust.dvm.DVMClass@2a51b326
+OP_STATIC_GET_FIELD - [DEBUG]: Expect sget mgr, a android.telephony.TelephonyManager from edu.mit.dynamic_dispatch.B
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD -> jump set pc to 2
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass edu.mit.dynamic_dispatch.B at fu.hao.trust.dvm.VMHeap@129e49c0
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type edu.mit.dynamic_dispatch.B
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass edu.mit.dynamic_dispatch.B at fu.hao.trust.dvm.VMHeap@129e49c0
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]> at edu.mit.dynamic_dispatch.B/f[]
+Executor - [MSG]: arg0 obj: android.telephony.TelephonyManager@49498526
+Executor - [DEBUG]: Reflction class: class android.telephony.TelephonyManager
+DalvikVM - [WARN]: ar -1, (359874043116909, java.lang.String)
+Executor - [DEBUG]: Return data: 359874043116909 ,class java.lang.String
+Executor - [MSG]: Reflction invocation public java.lang.String android.telephony.TelephonyManager.getDeviceId()
+DalvikVM - [BB]: Set reflective call: public java.lang.String android.telephony.TelephonyManager.getDeviceId()
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 3
+TaintSumBranch - [BB]: <android.telephony.TelephonyManager: java.lang.String getDeviceId()>
+TaintSumBranch - [WARN]: Found a tainted return value!
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Global RetReg]=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 MOV,RESULT,dst=r0,type=java.lang.Object> at edu.mit.dynamic_dispatch.B/f[]
+DalvikVM - [WARN]: ar 0 (android.telephony.TelephonyManager@49498526, android.telephony.TelephonyManager), (359874043116909, java.lang.String)
+OP_MOV_RESULT - [BB]: Result data: 359874043116909
+OP_MOV_RESULT - [DEBUG]: Result data: 359874043116909, type: java.lang.String, to [reg 0@B/f]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 4
+TaintSumBranch - [BB]: <2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>
+TaintSumBranch - [BB]: Add reg 0 due to ret reg.
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 0@B/f]=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <4 RETURN,VALUE,r0=r0,type=java.lang.Object> at edu.mit.dynamic_dispatch.B/f[]
+DalvikVM - [WARN]: ar -1 (359874043116909, java.lang.String), (359874043116909, java.lang.String)
+Executor - [BB]: Return data: 359874043116909
+DalvikVM - [BB]: stack [StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle], StackFrame edu.mit.dynamic_dispatch.Test/method[edu.mit.dynamic_dispatch.A]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame edu.mit.dynamic_dispatch.Test/method[edu.mit.dynamic_dispatch.A]
+TaintSumBranch - [BB]: Add [Global RetReg] as tainted due to [reg 0@B/f]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Global RetReg]=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 MOV,RESULT,dst=r0,type=java.lang.Object> at edu.mit.dynamic_dispatch.Test/method[edu.mit.dynamic_dispatch.A]
+DalvikVM - [WARN]: ar 0, (359874043116909, java.lang.String)
+OP_MOV_RESULT - [BB]: Result data: 359874043116909
+OP_MOV_RESULT - [DEBUG]: Result data: 359874043116909, type: java.lang.String, to [reg 0@Test/method]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 3
+TaintSumBranch - [BB]: <2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>
+TaintSumBranch - [BB]: Add reg 0 due to ret reg.
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 0@Test/method]=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 RETURN,VALUE,r0=r0,type=java.lang.Object> at edu.mit.dynamic_dispatch.Test/method[edu.mit.dynamic_dispatch.A]
+DalvikVM - [WARN]: ar -1 (359874043116909, java.lang.String), (359874043116909, java.lang.String)
+Executor - [BB]: Return data: 359874043116909
+DalvikVM - [BB]: stack [StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+TaintSumBranch - [BB]: Add [Global RetReg] as tainted due to [reg 0@Test/method]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Global RetReg]=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <22 MOV,RESULT,dst=r3,type=java.lang.Object> at edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [WARN]: ar 3, (359874043116909, java.lang.String)
+OP_MOV_RESULT - [BB]: Result data: 359874043116909
+OP_MOV_RESULT - [DEBUG]: Result data: 359874043116909, type: java.lang.String, to [reg 3@MainActivity/onCreate]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 23
+TaintSumBranch - [BB]: <2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>
+TaintSumBranch - [BB]: Add reg 3 due to ret reg.
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@MainActivity/onCreate]=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <23 MOV,REG,dst=r4,r0=r2,type=java.lang.Object> at edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [WARN]: ar 4, (0, void)
+class fu.hao.trust.dvm.Executor$OP_MOVE_REG - [DEBUG]: mov 0 to 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOVE_REG -> jump set pc to 24
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@MainActivity/onCreate]=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <24 MOV,REG,dst=r5,r0=r2,type=java.lang.Object> at edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [WARN]: ar 5, (0, void)
+class fu.hao.trust.dvm.Executor$OP_MOVE_REG - [DEBUG]: mov 0 to 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOVE_REG -> jump set pc to 25
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@MainActivity/onCreate]=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <25 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]> at edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: android.telephony.SmsManager@759c1f49
+Executor - [DEBUG]: Reflction class: class android.telephony.SmsManager
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg1: +49 1234
+Executor - [BB]: arg2@reg2: 0
+Executor - [WARN]: Mismatch type! arg 2, real para type: class patdroid.core.PrimitiveInfo, expected para type: class java.lang.String
+Executor - [BB]: arg3@reg3: 359874043116909
+Executor - [BB]: arg4@reg4: 0
+Executor - [WARN]: Mismatch type! arg 4, real para type: class patdroid.core.PrimitiveInfo, expected para type: class android.app.PendingIntent
+Executor - [BB]: arg5@reg5: 0
+Executor - [WARN]: Mismatch type! arg 5, real para type: class patdroid.core.PrimitiveInfo, expected para type: class android.app.PendingIntent
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: android.telephony.SmsManager@759c1f49, from class: class android.telephony.SmsManager
+DalvikVM - [WARN]: ar -1, (null, void)
+Executor - [MSG]: Reflction invocation public void android.telephony.SmsManager.sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)
+DalvikVM - [BB]: Set reflective call: public void android.telephony.SmsManager.sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 26
+TaintSumBranch - [BB]: <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>
+TaintSumBranch - [WARN]: Found a tainted return val!
+Results - [MSG]: New recorded tainted field: sendTextMessage
+TaintSumBranch - [BB]: Found a sink invocation. <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>
+TaintSumBranch - [WARN]: Found a tainted sink <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)> leaking data [359874043116909] at reg 3!!!
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@MainActivity/onCreate]=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Global RetReg]=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <26 MOV,CONST,dst=r1,type=java.lang.String,extra="DroidBench"> at edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Mov const begin <26 MOV,CONST,dst=r1,type=java.lang.String,extra="DroidBench">
+DalvikVM - [WARN]: ar 1 (+49 1234, java.lang.String), (DroidBench, java.lang.String)
+Executor - [DEBUG]: data: DroidBench class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 27
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@MainActivity/onCreate]=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Global RetReg]=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <27 INVOKE,VIRTUAL,extra=[edu.mit.dynamic_dispatch.Test/method[edu.mit.dynamic_dispatch.A], [9, 7]]> at edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: instance number 2@edu.mit.dynamic_dispatch.Test
+Executor - [WARN]: Reflection error: edu.mit.dynamic_dispatch.Test
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 28
+DalvikVM - [BB]: New method call: edu.mit.dynamic_dispatch.Test/method[edu.mit.dynamic_dispatch.A]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[1, 2]>
+DalvikVM - [BB]: [1]<1 INVOKE,VIRTUAL,extra=[edu.mit.dynamic_dispatch.A/f[], [2]]>
+DalvikVM - [BB]: [2]<2 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [3]<3 RETURN,VALUE,r0=r0,type=java.lang.Object>
+newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.dynamic_dispatch.Test/method[edu.mit.dynamic_dispatch.A], pc 28 stored. 
+newStackFrame - [BB]: Add frame StackFrame edu.mit.dynamic_dispatch.Test/method[edu.mit.dynamic_dispatch.A]
+newStackFrame - [BB]: Stack: [StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle], StackFrame edu.mit.dynamic_dispatch.Test/method[edu.mit.dynamic_dispatch.A]]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[1, 2]> at edu.mit.dynamic_dispatch.Test/method[edu.mit.dynamic_dispatch.A]
+DalvikVM - [WARN]: ar 1, (instance number 2@edu.mit.dynamic_dispatch.Test, edu.mit.dynamic_dispatch.Test)
+Executor - [DEBUG]: params: instance number 2@edu.mit.dynamic_dispatch.Test
+DalvikVM - [WARN]: ar 2, (instance number 1@edu.mit.dynamic_dispatch.C, edu.mit.dynamic_dispatch.C)
+Executor - [DEBUG]: params: instance number 1@edu.mit.dynamic_dispatch.C
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+TaintSumBranch - [BB]: Copy 359874043116909 as tainted.
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 INVOKE,VIRTUAL,extra=[edu.mit.dynamic_dispatch.A/f[], [2]]> at edu.mit.dynamic_dispatch.Test/method[edu.mit.dynamic_dispatch.A]
+Executor - [MSG]: arg0 obj: instance number 1@edu.mit.dynamic_dispatch.C
+Executor - [WARN]: Reflection error: edu.mit.dynamic_dispatch.A
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 2
+DalvikVM - [BB]: New method call: edu.mit.dynamic_dispatch.C/f[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[1]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r0,type=java.lang.String,extra="not tainted">
+DalvikVM - [BB]: [2]<0 RETURN,VALUE,r0=r0,type=java.lang.Object>
+newStackFrame - [BB]: New Stack Frame: StackFrame edu.mit.dynamic_dispatch.C/f[], pc 2 stored. 
+newStackFrame - [BB]: Add frame StackFrame edu.mit.dynamic_dispatch.C/f[]
+newStackFrame - [BB]: Stack: [StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle], StackFrame edu.mit.dynamic_dispatch.Test/method[edu.mit.dynamic_dispatch.A], StackFrame edu.mit.dynamic_dispatch.C/f[]]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[1]> at edu.mit.dynamic_dispatch.C/f[]
+DalvikVM - [WARN]: ar 1, (instance number 1@edu.mit.dynamic_dispatch.C, edu.mit.dynamic_dispatch.C)
+Executor - [DEBUG]: params: instance number 1@edu.mit.dynamic_dispatch.C
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+TaintSumBranch - [BB]: Copy 359874043116909 as tainted.
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 MOV,CONST,dst=r0,type=java.lang.String,extra="not tainted"> at edu.mit.dynamic_dispatch.C/f[]
+Executor - [DEBUG]: Mov const begin <1 MOV,CONST,dst=r0,type=java.lang.String,extra="not tainted">
+DalvikVM - [WARN]: ar 0, (not tainted, java.lang.String)
+Executor - [DEBUG]: data: not tainted class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 2
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 RETURN,VALUE,r0=r0,type=java.lang.Object> at edu.mit.dynamic_dispatch.C/f[]
+DalvikVM - [WARN]: ar -1, (not tainted, java.lang.String)
+Executor - [BB]: Return data: not tainted
+DalvikVM - [BB]: stack [StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle], StackFrame edu.mit.dynamic_dispatch.Test/method[edu.mit.dynamic_dispatch.A]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame edu.mit.dynamic_dispatch.Test/method[edu.mit.dynamic_dispatch.A]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 MOV,RESULT,dst=r0,type=java.lang.Object> at edu.mit.dynamic_dispatch.Test/method[edu.mit.dynamic_dispatch.A]
+DalvikVM - [WARN]: ar 0, (not tainted, java.lang.String)
+OP_MOV_RESULT - [BB]: Result data: not tainted
+OP_MOV_RESULT - [DEBUG]: Result data: not tainted, type: java.lang.String, to [reg 0@Test/method]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 3
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 RETURN,VALUE,r0=r0,type=java.lang.Object> at edu.mit.dynamic_dispatch.Test/method[edu.mit.dynamic_dispatch.A]
+DalvikVM - [WARN]: ar -1 (not tainted, java.lang.String), (not tainted, java.lang.String)
+Executor - [BB]: Return data: not tainted
+DalvikVM - [BB]: stack [StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@MainActivity/onCreate]=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Global RetReg]=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <28 MOV,RESULT,dst=r2,type=java.lang.Object> at edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+DalvikVM - [WARN]: ar 2 (0, void), (not tainted, java.lang.String)
+OP_MOV_RESULT - [BB]: Result data: not tainted
+OP_MOV_RESULT - [DEBUG]: Result data: not tainted, type: java.lang.String, to [reg 2@MainActivity/onCreate]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 29
+TaintSumBranch - [BB]: <2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>
+TaintSumBranch - [BB]: Add reg 2 due to ret reg.
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {not tainted=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 2@MainActivity/onCreate]=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@MainActivity/onCreate]=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <29 INVOKE,STATIC,extra=[android.util.Log/i[java.lang.String, java.lang.String], [1, 2]]> at edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Reflction class android.util.Log
+Executor - [BB]: arg0@reg1: DroidBench
+Executor - [BB]: arg1@reg2: not tainted
+Executor - [BB]: param: DroidBench
+Executor - [BB]: param: not tainted
+DalvikVM - [WARN]: ar -1, (1, int)
+Executor - [MSG]: reflction invocation public static int android.util.Log.i(java.lang.String,java.lang.String)
+DalvikVM - [BB]: Set reflective call: public static int android.util.Log.i(java.lang.String,java.lang.String)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INVOKE_STATIC -> jump set pc to 30
+TaintSumBranch - [BB]: <android.util.Log: int i(java.lang.String,java.lang.String)>
+TaintSumBranch - [WARN]: Found a tainted return val!
+Results - [MSG]: New recorded tainted field: i
+TaintSumBranch - [DEBUG]: Not a taint call: <android.util.Log: int i(java.lang.String,java.lang.String)>
+TaintSumBranch - [WARN]: Found a tainted return val!
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {not tainted=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, 359874043116909=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 2@MainActivity/onCreate]=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [reg 3@MainActivity/onCreate]=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>, [Global RetReg]=<2 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <30 RETURN,VOID> at edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack []
+DalvikVM - [BB]: Back to the last stack frame.null
+DalvikVM - [MSG]: Finish running instrumented methods! Back to null
+Executor - [MSG]: RUN BEGIN edu.mit.dynamic_dispatch.MainActivity/onCreate[android.os.Bundle]
+Executor - [MSG]: RUN DONE! The last one is null
+DalvikVM - [MSG]: FINISHED!
+
+main - [MSG]: Analysis has run for 1.693157291 seconds
+
