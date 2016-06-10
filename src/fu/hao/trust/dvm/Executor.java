@@ -1773,6 +1773,8 @@ public class Executor {
 		 *               is referenced by r0.
 		 * @param vm
 		 * @param inst
+		 * @throws SecurityException 
+		 * @throws NoSuchFieldException 
 		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
 		 *      patdroid.dalvik.Instruction)
 		 */
@@ -1810,11 +1812,31 @@ public class Executor {
 
 				Log.debug(TAG, "Get data: " + vm.getReg(inst.r1).getData());
 			} else {
-				Log.err(TAG, "Obj is not a DVMObject!");
+				Log.warn(TAG, obj + " is not a DVMObject!");
+				Class<?> rclass = obj.getClass();
+				try {
+					Field rfield = findRField(rclass, fieldInfo.fieldName);
+					vm.getReg(inst.r1)
+						.setValue(rfield.get(obj), fieldInfo.owner);
+				} catch (Exception e) {
+					e.printStackTrace();
+					Log.err(TAG, "Cannot get the field!");
+				} 
+				
 			}
 
 			jump(vm, inst, true);
 		}
+	}
+	
+	public Field findRField(Class<?> clazz, String fieldName) {
+	    Class<?> current = clazz;
+	    do {
+	       try {
+	           return current.getDeclaredField(fieldName);
+	       } catch(Exception e) {}
+	    } while((current = current.getSuperclass()) != null);
+	    return null;
 	}
 
 	class OP_INSTANCE_PUT_FIELD implements ByteCode {

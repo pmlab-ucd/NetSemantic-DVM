@@ -1,5 +1,6 @@
 package android.content;
 
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.location.LocationManager;
 import android.telephony.TelephonyManager;
@@ -59,7 +60,8 @@ public class Context extends DVMObject {
 	public static final int CONTEXT_IGNORE_SECURITY = 2;
 	public static final int CONTEXT_RESTRICTED = 4;
 
-	Resources resources;
+	Resources resources = new Resources();;
+	PackageManager packageManager = new PackageManager();
 
 	public Context(DalvikVM vm, ClassInfo type) {
 		super(vm, type);
@@ -74,10 +76,6 @@ public class Context extends DVMObject {
 	}
 
 	public Resources getResources() {
-		if (resources == null) {
-			resources = new Resources();
-		}
-
 		return resources;
 	}
 
@@ -97,20 +95,9 @@ public class Context extends DVMObject {
 	public Context getApplicationContext() {
 		return this;
 	}
-
-	/*
-	 * 
-	 * public ComponentName startService(Intent service) {
-	 * 
-	 * }
-	 * 
-	 * public boolean stopService(Intent service) {
-	 * 
-	 * }
-	 * 
-	 * public void sendBroadcast(Intent intent) {
-	 * 
-	 * }
-	 */
+	
+	public PackageManager getPackageManager() {
+		return packageManager;
+	}
 
 }

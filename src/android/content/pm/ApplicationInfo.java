@@ -1,6 +1,6 @@
 package android.content.pm;
 
-public class ApplicationInfo {
+public class ApplicationInfo extends PackageItemInfo {
 	public String taskAffinity;
 	public String permission;
 	public String processName;

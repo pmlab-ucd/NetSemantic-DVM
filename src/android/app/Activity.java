@@ -31,7 +31,7 @@ public class Activity extends ContextWrapper implements LocationListener {
 	Map<Integer, View> views;
 	private final static String TAG = Activity.class.getSimpleName();
 	Intent intent;
-	FragmentManager fragmentManager;
+	FragmentManager fragmentManager = new FragmentManager(this);;
 	private static Map<Integer, ClassInfo> widgetPool;
 	private View tmpView;
 	
@@ -83,7 +83,7 @@ public class Activity extends ContextWrapper implements LocationListener {
     public Intent getIntent() {
     	if (intent == null) {
     		// Default is the main
-    		intent = new Intent("android.intent.action.MAIN");
+    		intent = new Intent(Intent.ACTION_MAIN);
     	}
     	return intent;
     }
@@ -143,10 +143,10 @@ public class Activity extends ContextWrapper implements LocationListener {
 	}
 	
     public FragmentManager getFragmentManager() {
-        if (fragmentManager == null) {
-        	fragmentManager = new FragmentManager(this);
-        }
-        
+        return fragmentManager;
+    }
+    
+    public FragmentManager getSupportFragmentManager() {
         return fragmentManager;
     }
 

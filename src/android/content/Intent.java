@@ -1,8 +1,11 @@
 package android.content;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
+import android.net.Uri;
 import android.os.Bundle;
 import fu.hao.trust.utils.Log;
 import patdroid.core.ClassInfo;
@@ -182,6 +185,8 @@ public class Intent {
 	Map<String, Object> values; // The stored data
 	private ClassInfo targetClass;
 	Bundle bundle;
+	Set<String> categories = new HashSet<>();
+	Uri uri;
 
 	public Intent(String action) {
 		this.action = action;
@@ -191,6 +196,12 @@ public class Intent {
 	public Intent() {
 		values = new HashMap<>();
 	}
+	
+    public Intent(String action, Uri uri) {
+    	values = new HashMap<>();
+    	this.action = action;
+    	this.uri = uri;
+    }
 
 	public Intent(Context packageContext, Class<?> cls) {
 		setTargetClass(ClassInfo.findClass(cls.getName()));
@@ -251,5 +262,14 @@ public class Intent {
 	public Bundle getExtras() {
 		return bundle;
 	}
+	
+    public Intent addCategory(String category) {
+    	categories.add(category);
+    	return this;
+    }
+
+    public void removeCategory(String category) {
+    	categories.remove(category);
+    }
 
 }
