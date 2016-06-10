@@ -316,7 +316,8 @@ public class Executor {
 				count = 42;
 				Log.warn(TAG, "Incorrect size!");
 			} else if (vm.getReg(inst.r0).getData() instanceof PrimitiveInfo) {
-				PrimitiveInfo value = (PrimitiveInfo) vm.getReg(inst.r0).getData();
+				PrimitiveInfo value = (PrimitiveInfo) vm.getReg(inst.r0)
+						.getData();
 				if (value.isInteger()) {
 					count = value.intValue();
 				} else if (value.isFloat()) {
@@ -337,22 +338,28 @@ public class Executor {
 				if (inst.type.getElementClass().equals(ClassInfo.primitiveInt)) {
 					int[] intArray = new int[count];
 					vm.getReg(inst.rdst).setValue(intArray, inst.type);
-				} else if (inst.type.getElementClass().equals(ClassInfo.primitiveFloat)) {
+				} else if (inst.type.getElementClass().equals(
+						ClassInfo.primitiveFloat)) {
 					float[] floatArray = new float[count];
 					vm.getReg(inst.rdst).setValue(floatArray, inst.type);
-				} else if (inst.type.getElementClass().equals(ClassInfo.primitiveDouble)) {
+				} else if (inst.type.getElementClass().equals(
+						ClassInfo.primitiveDouble)) {
 					double[] doubleArray = new double[count];
 					vm.getReg(inst.rdst).setValue(doubleArray, inst.type);
-				} else if (inst.type.getElementClass().equals(ClassInfo.primitiveChar)) {
+				} else if (inst.type.getElementClass().equals(
+						ClassInfo.primitiveChar)) {
 					char[] charArray = new char[count];
 					vm.getReg(inst.rdst).setValue(charArray, inst.type);
-				} else if (inst.type.getElementClass().equals(ClassInfo.primitiveShort)) {
+				} else if (inst.type.getElementClass().equals(
+						ClassInfo.primitiveShort)) {
 					short[] shortArray = new short[count];
 					vm.getReg(inst.rdst).setValue(shortArray, inst.type);
-				} else if (inst.type.getElementClass().equals(ClassInfo.primitiveLong)) {
+				} else if (inst.type.getElementClass().equals(
+						ClassInfo.primitiveLong)) {
 					long[] longArray = new long[count];
 					vm.getReg(inst.rdst).setValue(longArray, inst.type);
-				} else if (inst.type.getElementClass().equals(ClassInfo.primitiveBoolean)) {
+				} else if (inst.type.getElementClass().equals(
+						ClassInfo.primitiveBoolean)) {
 					boolean[] booleanArray = new boolean[count];
 					vm.getReg(inst.rdst).setValue(booleanArray, inst.type);
 				} else {
@@ -614,11 +621,10 @@ public class Executor {
 				if (vm.getReturnReg().isUsed()
 						&& vm.getReturnReg().getType() != null
 						&& vm.getReturnReg().getType().isPrimitive()) {
-					Object obj = vm.getReturnReg()
-							.getData();
+					Object obj = vm.getReturnReg().getData();
 					PrimitiveInfo info = PrimitiveInfo.fromObject(obj);
-					vm.getReturnReg().setValue(
-							info, vm.getReturnReg().getType());
+					vm.getReturnReg().setValue(info,
+							vm.getReturnReg().getType());
 				}
 			}
 
@@ -1844,16 +1850,17 @@ public class Executor {
 				vm.getAssigned()[1] = fieldInfo;
 				Object data = vm.getReg(inst.r1).getData();
 				vm.getAssigned()[2] = data;
-				
+
 				dvmObj.setField(fieldInfo, data);
 				Log.msg(TAG, "Put data " + dvmObj.getFieldObj(fieldInfo)
 						+ " to the field of " + dvmObj);
-				
+
 				if (data instanceof DVMObject) {
 					DVMObject fieldData = (DVMObject) data;
-					fieldData.setMemUrl(dvmObj.getMemUrl() + "/"  + fieldInfo.fieldName);
+					fieldData.setMemUrl(dvmObj.getMemUrl() + "/"
+							+ fieldInfo.fieldName);
 				}
-				
+
 			} else {
 				Log.err(TAG, "obj is not a DVMObject!");
 			}
@@ -1927,11 +1934,11 @@ public class Executor {
 					.getExtra();
 			Object data = vm.getReg(inst.r0).getData();
 			if (data instanceof PrimitiveInfo) {
-				data = ((PrimitiveInfo)data).intValue();
+				data = ((PrimitiveInfo) data).intValue();
 			}
 
 			Log.msg(TAG, "data: " + data);
-			
+
 			if (switchTable.keySet().contains(data)) {
 				jump(vm, switchTable.get(data));
 				return;
@@ -2152,7 +2159,7 @@ public class Executor {
 			vm.setPC((int) inst.getExtra());
 		}
 	}
-	
+
 	public void jump(DalvikVM vm, int loc) {
 		if (vm.getCurrStackFrame() == null) {
 			return;
@@ -2265,9 +2272,10 @@ public class Executor {
 				Log.debug(TAG, "Reflction class: " + clazz);
 				thisInstance = vm.getReg(args[0]).isUsed() ? vm.getReg(args[0])
 						.getData() : null;
-						
+
 				if (mi.name.equals("getClass")) {
-					mi = ClassInfo.findClass("fu.hao.trust.dvm.DVMObject").findMethods("getClazz")[0];
+					mi = ClassInfo.findClass("fu.hao.trust.dvm.DVMObject")
+							.findMethods("getClazz")[0];
 					Log.msg(TAG, "Replaced method " + mi);
 				}
 				if (thisInstance instanceof MultiValueVar) {
@@ -2528,9 +2536,10 @@ public class Executor {
 							+ ", expected para type: " + argsClass[j]);
 					if (mi.paramTypes[j].isInterface()) {
 						params[j] = argData;
-						//argsClass[j] = argData.getClass();
+						// argsClass[j] = argData.getClass();
 						argsClass[j] = DVMObject.class;
-						Log.warn(TAG, "Call the mirror method instead! " + mi.paramTypes[j] + " is a interface.");
+						Log.warn(TAG, "Call the mirror method instead! "
+								+ mi.paramTypes[j] + " is a interface.");
 					} else if (argData instanceof SymbolicVar) {
 						SymbolicVar bidirVar = (SymbolicVar) argData;
 						if (bidirVar.getType() == null
@@ -2564,9 +2573,11 @@ public class Executor {
 						params[j] = argData;
 					} else if (argData instanceof DVMObject) {
 						params[j] = argData;
-						//argsClass[j] = argData.getClass();
+						// argsClass[j] = argData.getClass();
 						argsClass[j] = DVMObject.class;
-						Log.warn(TAG, "Call the mirror method instead! " + mi.paramTypes[j] + " is replaced by a dvmObj.");
+						Log.warn(TAG, "Call the mirror method instead! "
+								+ mi.paramTypes[j]
+								+ " is replaced by a dvmObj.");
 					}
 
 					// params[j] = argData;
@@ -2582,22 +2593,17 @@ public class Executor {
 		// Class<?> real = obj.getClass();
 		// return expected.isAssignableFrom(real);
 		/*
-		if (ClassInfo.findClass(real.getName()) != null
-				&& ClassInfo.findClass(real.getName()).isConvertibleTo(
-						ClassInfo.findClass(expected.getName()))) {
-			return true;
-		}
-		if (expected.equals(real) || expected.equals(real.getSuperclass())) {
-			return true;
-		}
-
-		for (Class<?> interf : real.getInterfaces()) {
-			if (interf.equals(expected)) {
-				return true;
-			}
-		}
-
-		return false;*/
+		 * if (ClassInfo.findClass(real.getName()) != null &&
+		 * ClassInfo.findClass(real.getName()).isConvertibleTo(
+		 * ClassInfo.findClass(expected.getName()))) { return true; } if
+		 * (expected.equals(real) || expected.equals(real.getSuperclass())) {
+		 * return true; }
+		 * 
+		 * for (Class<?> interf : real.getInterfaces()) { if
+		 * (interf.equals(expected)) { return true; } }
+		 * 
+		 * return false;
+		 */
 	}
 
 	/**
@@ -2755,34 +2761,26 @@ public class Executor {
 	}
 
 	public void runMethod(ClassInfo sitClass, DalvikVM vm, MethodInfo method) {
-		List<MethodInfo> runs = new ArrayList<>();
-		runs.addAll(getPreCallback(sitClass, method));
-		runs.add(method);
+		/*
+		 * List<MethodInfo> runs = new ArrayList<>();
+		 * runs.addAll(getPreCallback(sitClass, method)); runs.add(method);
+		 * DVMObject thisObj = vm.newVMObject(method.myClass);
+		 * 
+		 * for (MethodInfo mi : runs) { // Create a new stack frame and push it
+		 * to the stack. StackFrame stackFrame = vm.newStackFrame(mi.myClass,
+		 * mi); if (stackFrame == null) { continue; } if (mi.isStatic()) {
+		 * Log.bb(TAG, "Entry method is static!"); stackFrame.setThisObj(null);
+		 * } else { if (vm.getChainThisObj() == null) { Log.msg(TAG,
+		 * "New chain obj with type " + mi.myClass);
+		 * stackFrame.setThisObj(vm.newVMObject(mi.myClass));
+		 * vm.setChainThisObj(stackFrame.getThisObj()); } else {
+		 * stackFrame.setThisObj(vm.getChainThisObj()); } } }
+		 */
+		StackFrame stackFrame = vm.newStackFrame(method.myClass, method);
+		stackFrame.setThisObj(vm.newVMObject(method.myClass));
+		Log.msg(TAG, "RUN BEGIN " + method);
+		run(vm);
 
-		for (MethodInfo mi : runs) {
-			// Create a new stack frame and push it to the stack.
-			StackFrame stackFrame = vm.newStackFrame(mi.myClass, mi);
-			if (stackFrame == null) {
-				return;
-			}
-			if (mi.isStatic()) {
-				Log.bb(TAG, "Entry method is static!");
-				stackFrame.setThisObj(null);
-			} else {
-				if (vm.getChainThisObj() == null) {
-					Log.msg(TAG, "New chain obj with type " + mi.myClass);
-					stackFrame.setThisObj(vm.newVMObject(mi.myClass));
-					vm.setChainThisObj(stackFrame.getThisObj());
-				} else {
-					stackFrame.setThisObj(vm.getChainThisObj());
-				}
-			}
-
-			if (!running) {
-				Log.msg(TAG, "RUN BEGIN " + mi);
-				run(vm);
-			}
-		}
 	}
 
 	public void runInstrumentedMethods(DalvikVM vm, StackFrame stopSign) {
@@ -2819,86 +2817,105 @@ public class Executor {
 	}
 
 	/**
-	* @Title: genChainsFromDefaultSinks
-	* @Author: Hao Fu
-	* @Description: Generate chains by identifying potential sinks could be connected. 
-	* @param vm  
-	* @return void   
-	* @throws
-	*/
+	 * @Title: genChainsFromDefaultSinks
+	 * @Author: Hao Fu
+	 * @Description: Generate chains by identifying potential sinks could be
+	 *               connected.
+	 * @param vm
+	 * @return void
+	 * @throws
+	 */
 	public void genChainsFromDefaultSinks(DalvikVM vm) {
 		if (!Results.isHasNewTaintedHeapLoc()) {
 			return;
 		}
 		Activity activity = vm.getCurrtActivity();
-		if (activity != null) {
-			for (List<Pair<String, String>> sinkChain : Settings
-					.getSinkChains()) {
-				boolean add = false;			
-				List<Pair<String, String>> newChain = new LinkedList<>(
-						Settings.getOriEventChain());
-				for (int i = 0; i < newChain.size(); i++) {
-					if (newChain.get(i).getFirst().equals("lastStop")) {
-						newChain.remove(i);
-						break;
-					}
+		for (List<Pair<String, String>> sinkChain : Settings.getSinkChains()) {
+			boolean add = false;
+			List<Pair<String, String>> newChain = new LinkedList<>(
+					Settings.getOriEventChain());
+			for (int i = 0; i < newChain.size(); i++) {
+				if (newChain.get(i).getFirst().equals("lastStop")) {
+					newChain.remove(i);
+					break;
 				}
-				Log.msg(TAG, "newChain: " + newChain);
-				Pair<String, String> stopSign = new Pair<String, String>("lastStop", "lastStop");
-				newChain.add(stopSign);
-				for (Pair<String, String> methodInfo : sinkChain) {
-					String className = methodInfo.getFirst();
-					String methodName = methodInfo.getSecond();
-					if (add) {
-						newChain.add(methodInfo);
-					} else {					
-						if (className.equals(activity.getType().fullName)) {
-							if (methodName.equals("onCreate")) {
-								continue;
-							} else {
-								add = true;
-								newChain.add(methodInfo);
-							}
+			}
+			Log.msg(TAG, "newChain: " + newChain);
+			Pair<String, String> stopSign = new Pair<String, String>(
+					"lastStop", "lastStop");
+			newChain.add(stopSign);
+			for (Pair<String, String> methodInfo : sinkChain) {
+				String className = methodInfo.getFirst();
+				String methodName = methodInfo.getSecond();
+				Log.bb(TAG, "Add Event? " + methodInfo);
+				// Do not repeatly init the activities/services/application
+				if (newChain.contains(methodInfo) && (methodName.equals("onCreate")
+						|| methodName.startsWith("onStart"))) {
+					continue;
+				}
+				if (add) {
+					newChain.add(methodInfo);
+				} else {
+					if (activity != null
+							&& className.equals(activity.getType().fullName)) {
+						if (methodName.equals("onCreate")) {
+							continue;
 						} else {
-							if (methodName.equals("onCreate")
-									|| methodName.startsWith("onStart")) {
-								add = true;
-								newChain.add(methodInfo);
-							}
+							add = true;
+							newChain.add(methodInfo);
+						}
+					} else {
+						if ((methodName.equals("onCreate")
+								|| methodName.startsWith("onStart"))) {
+							add = true;
+							newChain.add(methodInfo);
+						} else if (ClassInfo
+								.findClass(className)
+								.isConvertibleTo(
+										ClassInfo
+												.findClass("android.app.Application"))) {
+							add = true;
+							newChain.add(methodInfo);
+						} else {
+							add = true;
+							newChain.add(methodInfo);
 						}
 					}
 				}
+			}
 
-				if (add) {
-					Settings.getEventChains().add(newChain);
-					Log.msg(TAG, "Add chain " + newChain);
-				}
+			if (add) {
+				Settings.getEventChains().add(newChain);
+				Log.msg(TAG, "Sink Event Add chain " + newChain);
 			}
 		}
-		
+
 		Results.getSTaintedFields().clear();
 		Results.getITaintedFields().clear();
 		Results.getATaintedFields().clear();
 	}
-	
+
 	/**
-	* @Title: genChainsByMemUrl
-	* @Author: Hao Fu
-	* @Description: TODO
-	* @param   
-	* @return void   
-	* @throws
-	*/
+	 * @Title: genChainsByMemUrl
+	 * @Author: Hao Fu
+	 * @Description: Generate new chain when the new field URL is tainted.
+	 * @param
+	 * @return void
+	 * @throws
+	 */
 	private void genChainsByMemUrl(DalvikVM vm) {
+		// FIXME It is not actually called.
 		if (!Results.isHasNewTaintedHeapLoc()) {
 			return;
 		}
 		Activity activity = vm.getCurrtActivity();
 		if (activity != null) {
 			for (MethodInfo mi : activity.getType().getAllMethods()) {
-				for (List<Pair<String, String>> chain : Settings.getEventChains()) {
+				for (List<Pair<String, String>> chain : Settings
+						.getEventChains()) {
 					for (Pair<String, String> event : chain) {
-						if (event.getFirst().equals(mi.myClass.fullName) && event.getSecond().equals(mi.name)) {
+						if (event.getFirst().equals(mi.myClass.fullName)
+								&& event.getSecond().equals(mi.name)) {
 							continue;
 						}
 					}
@@ -2909,22 +2926,26 @@ public class Executor {
 					for (Instruction inst : mi.insns) {
 						if (inst.opcode_aux == Instruction.OP_INSTANCE_GET_FIELD) {
 							FieldInfo fieldInfo = (FieldInfo) inst.getExtra();
-							for (String fieldString : Results.getITaintedFields().keySet()) {
+							for (String fieldString : Results
+									.getITaintedFields().keySet()) {
 								if (fieldString.contains(fieldInfo.fieldName)) {
 									List<Pair<String, String>> newChain = new LinkedList<>(
 											Settings.getOriEventChain());
 									for (int i = 0; i < newChain.size(); i++) {
-										if (newChain.get(i).getFirst().equals("lastStop")) {
+										if (newChain.get(i).getFirst()
+												.equals("lastStop")) {
 											newChain.remove(i);
 											break;
 										}
 									}
-									Pair<String, String> stopSign = new Pair<String, String>("lastStop", "lastStop");
+									Pair<String, String> stopSign = new Pair<String, String>(
+											"lastStop", "lastStop");
 									newChain.add(stopSign);
-									Pair<String, String> methodInfo = new Pair<>(mi.myClass.fullName, mi.name);
+									Pair<String, String> methodInfo = new Pair<>(
+											mi.myClass.fullName, mi.name);
 									newChain.add(methodInfo);
 									Settings.getEventChains().add(newChain);
-									Log.msg(TAG, "Add chain " + newChain);
+									Log.msg(TAG, "MemURL Add chain " + newChain);
 								}
 							}
 						}
@@ -2932,7 +2953,7 @@ public class Executor {
 				}
 			}
 		}
-		
+
 		Results.getSTaintedFields().clear();
 		Results.getITaintedFields().clear();
 		Results.getATaintedFields().clear();
@@ -2949,31 +2970,47 @@ public class Executor {
 			String eventClass = event.getFirst();
 			String eventMethod = event.getSecond();
 
-			Log.msg(TAG, "eventMethod: " + eventMethod);
-			
+			Log.msg(TAG, "EventMethod: " + eventMethod);
+
 			if (eventClass.equals("lastStop")) {
 				Settings.setCheckNewTaintedHeapLoc(true);
 				continue;
 			}
-			
-			if (activity == null) {
-				Log.err(TAG, "Inconsistent  no currt activity!");
-			} else {
+
+			if (activity != null) {
 				if (activity.type.fullName.equals(eventClass)) {
 					vm.addEventFrame(activity, eventMethod);
 				} else {
 					if (eventMethod.startsWith("onCreate")) {
 						vm.addEventFrame(eventClass, eventMethod, null);
 					} else {
-					for (DVMObject obj : activity.getAllUIs()) {
-						if (obj.getType().toString().contains(eventClass)) {
-							if (vm.addEventFrame(obj, eventMethod)) {
-								break;
+						for (DVMObject obj : activity.getAllUIs()) {
+							if (obj.getType().toString().contains(eventClass)) {
+								if (vm.addEventFrame(obj, eventMethod)) {
+									break;
+								}
 							}
 						}
 					}
-					}
 				}
+				mname = execute(vm);
+			} else {
+				ClassInfo eventType = ClassInfo.findClass(eventClass);
+				Log.warn(TAG, "Do not have current activity!");
+				if (vm.getThisObj().getType().equals(eventType)) {
+					vm.addEventFrame(vm.getThisObj(), eventMethod);
+				} else if (vm.getCallbackPool().containsKey(eventClass)) {
+					Log.warn(TAG,
+							"Event obj " + vm.getCallbackPool().get(eventClass));
+					vm.addEventFrame(vm.getCallbackPool().get(eventClass),
+							eventMethod);
+				} else if (eventMethod.startsWith("onCreate")) {
+					vm.addEventFrame(vm.newVMObject(eventType), eventMethod);
+				} else if (eventType.isConvertibleTo(ClassInfo
+						.findClass("android.app.Activity"))) {
+					vm.addEventFrame(vm.newVMObject(eventType), eventMethod);
+				}
+
 				mname = execute(vm);
 			}
 		}
@@ -3079,10 +3116,10 @@ public class Executor {
 		noInvokeList.add("java.io.InputStreamReader");
 		noInvokeList.add("java.io.BufferedReader");
 		noInvokeList.add("java.io.File");
-		//noInvokeList.add("java.io.OutputStream");
+		// noInvokeList.add("java.io.OutputStream");
 		noInvokeList.add("android.support");
 		noInvokeList.add("getStatusCode");
-		//noInvokeList.add("java.io.ByteArrayOutputStream");
+		// noInvokeList.add("java.io.ByteArrayOutputStream");
 
 		noInvokeList2 = new HashSet<>();
 		noInvokeList2.add("equals");
@@ -3092,8 +3129,8 @@ public class Executor {
 		noInvokeList2.add("trim");
 
 		invokeButUnknownRet = new HashSet<>();
-		//invokeButUnknownRet.add("append");
-		//invokeButUnknownRet.add("toString");
+		// invokeButUnknownRet.add("append");
+		// invokeButUnknownRet.add("toString");
 
 		replacedInvokeList = new HashMap<String, String>();
 		replacedInvokeList.put("java.util.concurrent.Executor",
@@ -3102,11 +3139,16 @@ public class Executor {
 				"android.myclasses.Executors");
 		replacedInvokeList.put("java.lang.Thread", "android.myclasses.Thread");
 		replacedInvokeList.put("java.lang.Class", "patdroid.core.ClassInfo");
-		replacedInvokeList.put("java.lang.Object", "fu.hao.trust.dvm.DVMObject");
-		replacedInvokeList.put("java.io.ObjectOutputStream", "android.myclasses.ObjectOutputStream");
-		replacedInvokeList.put("java.io.ObjectInputStream", "android.myclasses.ObjectInputStream");
-		replacedInvokeList.put("java.io.ByteArrayOutputStream", "android.myclasses.MyByteArrayOutputStream");
-		replacedInvokeList.put("java.io.ByteArrayInputStream", "android.myclasses.ByteArrayInputStream");
+		replacedInvokeList
+				.put("java.lang.Object", "fu.hao.trust.dvm.DVMObject");
+		replacedInvokeList.put("java.io.ObjectOutputStream",
+				"android.myclasses.ObjectOutputStream");
+		replacedInvokeList.put("java.io.ObjectInputStream",
+				"android.myclasses.ObjectInputStream");
+		replacedInvokeList.put("java.io.ByteArrayOutputStream",
+				"android.myclasses.MyByteArrayOutputStream");
+		replacedInvokeList.put("java.io.ByteArrayInputStream",
+				"android.myclasses.ByteArrayInputStream");
 	}
 
 	public void exec(DalvikVM vm, Instruction inst, ClassInfo sitClass) {
@@ -3122,8 +3164,11 @@ public class Executor {
 			// (sitClass.isConvertibleTo(ClassInfo.findClass("android.app.Activity")))
 			// {
 			DVMObject thisObj = vm.getCurrStackFrame().getThisObj();
-			if (thisObj != null && thisObj instanceof Activity) {
-				vm.setCurrtActivity((Activity) thisObj);
+			if (thisObj != null) {
+				if (thisObj instanceof Activity) {
+					vm.setCurrtActivity((Activity) thisObj);
+				}
+				vm.setThisObj(thisObj);
 			}
 
 			vm.getPluginManager().preprossing(vm, inst);
@@ -3199,7 +3244,7 @@ public class Executor {
 				}
 
 				vm.getPluginManager().printResults();
-				//vm.getCurrStackFrame().printRegs();
+				// vm.getCurrStackFrame().printRegs();
 			}
 		} else {
 			pass = false;

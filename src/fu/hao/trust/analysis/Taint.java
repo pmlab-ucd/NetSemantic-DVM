@@ -978,6 +978,7 @@ public class Taint extends Plugin {
 							in.get(vm.getReg(inst.r0).getData()));
 					if (Settings.isRecordTaintedFields()) {
 						if (Settings.isCheckNewTaintedHeapLoc()) {
+							Log.bb(tag, "Is new heap loc?");
 							if (!Results.getSTaintedFields().containsKey(
 									fieldInfo)) {
 								Results.setHasNewTaintedHeapLoc(true);
@@ -1073,12 +1074,8 @@ public class Taint extends Plugin {
 				} else {
 					// FIXME should be the absolute path to the field, such as
 					// "Activity1/button1/imei".
-					if (vm.getCurrtActivity() != null) {
-						fieldString = "/" + vm.getCurrtActivity().getType()
-								+ "/" + obj + "/" + fieldInfo.fieldName;
-					} else {
-						fieldString = obj + "/" + fieldInfo.fieldName;
-					}
+					fieldString = obj.getMemUrl() + "/" + fieldInfo.fieldName;
+					
 				}
 
 				if (in.containsKey(vm.getReg(inst.r1))) {
@@ -1099,7 +1096,6 @@ public class Taint extends Plugin {
 								if (str.equals(fieldString)) {
 									found = true;
 									break;
-
 								} else {
 									Log.warn(tag, "Not equ " + str + ", "
 											+ fieldString);
@@ -1109,6 +1105,8 @@ public class Taint extends Plugin {
 								Results.setHasNewTaintedHeapLoc(true);
 								Log.msg(tag, "New tainted heap loc: "
 										+ fieldString);
+								Log.msg(tag, Results
+										.getITaintedFields());
 							}
 							// }
 						}

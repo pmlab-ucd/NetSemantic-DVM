@@ -1,0 +1,543 @@
+main - [MSG]: Src Chain: []
+main - [DEBUG]: Src Entry event: (de.ecspride.MainService, onStartCommand)
+DalvikVM - [MSG]: Begin run onStartCommand at C:\Users\hao\workspace\DroidBenchProj\Lifecycle_ServiceLifecycle1\app\Lifecycle_ServiceLifecycle1.apk
+DalvikVM - [MSG]: RUN Method de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]
+DalvikVM - [BB]: New method call: de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[2, 3, 4, 5]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: [2]<0 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [2, 1]]>
+DalvikVM - [BB]: [3]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [4]<0 ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.telephony.TelephonyManager>
+DalvikVM - [BB]: [5]<0 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>
+DalvikVM - [BB]: [6]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [7]<0 INSTANCE,IPUT,r0=r2,r1=r1,type=java.lang.Object,extra=de.ecspride.MainService.secret>
+DalvikVM - [BB]: [8]<7 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [9]<0 RETURN,VALUE,r0=r1,type=void>
+newStackFrame - [BB]: New Stack Frame: StackFrame de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]
+newStackFrame - [BB]: Add frame StackFrame de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]
+newStackFrame - [BB]: Stack: [StackFrame de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]]
+DalvikVM - [BB]: Superclass: de.ecspride.MainService
+Service - [BB]: New instance of de.ecspride.MainService
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainService at fu.hao.trust.dvm.VMHeap@26b7d94c
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for de.ecspride.MainService at fu.hao.trust.dvm.VMHeap@26b7d94c
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Service at fu.hao.trust.dvm.VMHeap@26b7d94c
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Service at fu.hao.trust.dvm.VMHeap@26b7d94c
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@26b7d94c
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@26b7d94c
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@26b7d94c
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@26b7d94c
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@26b7d94c
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@26b7d94c
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@26b7d94c
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.Context
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@26b7d94c
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.ContextWrapper
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@26b7d94c
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.app.Service
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Service at fu.hao.trust.dvm.VMHeap@26b7d94c
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type de.ecspride.MainService
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainService at fu.hao.trust.dvm.VMHeap@26b7d94c
+Service - [MSG]: Not empty constructor
+DalvikVM - [BB]: New method call: de.ecspride.MainService/<init>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[1]>
+DalvikVM - [BB]: [1]<0 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [1]]>
+DalvikVM - [BB]: [2]<1 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [3]<0 INSTANCE,IPUT,r0=r1,r1=r0,type=java.lang.Object,extra=de.ecspride.MainService.secret>
+DalvikVM - [BB]: [4]<0 RETURN,VOID>
+DalvikVM - [WARN]: ar -2, (instance number 1@de.ecspride.MainService, de.ecspride.MainService)
+newStackFrame - [BB]: New Stack Frame: StackFrame de.ecspride.MainService/<init>[], pc -1 stored. 
+newStackFrame - [BB]: Stack: [StackFrame de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]]
+DalvikVM - [MSG]: Begin run instrumented methods!
+DalvikVM - [BB]: Add frames [StackFrame de.ecspride.MainService/<init>[]]
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[1]> at de.ecspride.MainService/<init>[]
+DalvikVM - [WARN]: ar 1, (instance number 1@de.ecspride.MainService, de.ecspride.MainService)
+Executor - [DEBUG]: params: instance number 1@de.ecspride.MainService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [1]]> at de.ecspride.MainService/<init>[]
+Executor - [MSG]: arg0 obj: instance number 1@de.ecspride.MainService
+Executor - [MSG]: Replace the clazz.
+Executor - [BB]: java.lang.Object/<init>[] is a constructor!
+Executor - [WARN]: Reflection error: de.ecspride.MainService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 2
+TaintSumBranch - [BB]: <java.lang.Object: void <init>()>
+TaintSumBranch - [DEBUG]: Not a taint call: <java.lang.Object: void <init>()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0> at de.ecspride.MainService/<init>[]
+Executor - [DEBUG]: Mov const begin <2 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [WARN]: ar 0, (0, void)
+Executor - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 3
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 INSTANCE,IPUT,r0=r1,r1=r0,type=java.lang.Object,extra=de.ecspride.MainService.secret> at de.ecspride.MainService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field de.ecspride.MainService.secret
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@de.ecspride.MainService
+Service - [DEBUG]: put field 0
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data 0 to the field of instance number 1@de.ecspride.MainService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 4
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <4 RETURN,VOID> at de.ecspride.MainService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]
+DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]
+Service - [BB]: New Service Created with type de.ecspride.MainService
+Executor - [MSG]: RUN BEGIN de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> execute set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[2, 3, 4, 5]> at de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]
+Executor - [WARN]: NULL CallingCtx!
+DalvikVM - [WARN]: ar 2, (instance number 1@de.ecspride.MainService, de.ecspride.MainService)
+Executor - [DEBUG]: args: instance number 1@de.ecspride.MainService
+Executor - [BB]: Start param from 1
+DalvikVM - [WARN]: ar 3, ([intent:, null, {}], android.content.Intent)
+Executor - [DEBUG]: args: [intent:, null, {}]
+Unknown - [BB]: Unknown created!
+DalvikVM - [WARN]: ar 4, ([Unknown var:null, type: int], int)
+Executor - [DEBUG]: args: [Unknown var:null, type: int]
+Unknown - [BB]: Unknown created!
+DalvikVM - [WARN]: ar 5, ([Unknown var:null, type: int], int)
+Executor - [DEBUG]: args: [Unknown var:null, type: int]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 MOV,CONST,dst=r1,type=java.lang.String,extra="phone"> at de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]
+Executor - [DEBUG]: Mov const begin <1 MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+DalvikVM - [WARN]: ar 1, (phone, java.lang.String)
+Executor - [DEBUG]: data: phone class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 2
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [2, 1]]> at de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]
+Executor - [MSG]: arg0 obj: instance number 1@de.ecspride.MainService
+Executor - [DEBUG]: Reflction class: class android.content.Context
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg1: phone
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: instance number 1@de.ecspride.MainService, from class: class android.app.Service
+DalvikVM - [WARN]: ar -1, (android.telephony.TelephonyManager@3cde8a82, java.lang.Object)
+Executor - [DEBUG]: Return data: android.telephony.TelephonyManager@3cde8a82 ,class android.telephony.TelephonyManager
+Executor - [MSG]: Reflction invocation public java.lang.Object android.content.Context.getSystemService(java.lang.String)
+DalvikVM - [BB]: Set reflective call: public java.lang.Object android.content.Context.getSystemService(java.lang.String)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 3
+TaintSumBranch - [BB]: <android.content.Context: java.lang.Object getSystemService(java.lang.String)>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.content.Context: java.lang.Object getSystemService(java.lang.String)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 MOV,RESULT,dst=r0,type=java.lang.Object> at de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]
+DalvikVM - [WARN]: ar 0, (android.telephony.TelephonyManager@3cde8a82, java.lang.Object)
+OP_MOV_RESULT - [BB]: Result data: android.telephony.TelephonyManager@3cde8a82
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.TelephonyManager@3cde8a82, type: java.lang.Object, to [reg 0@MainService/onStartCommand]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 4
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <4 ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.telephony.TelephonyManager> at de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARITHETIC -> jump set pc to 5
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]> at de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]
+Executor - [MSG]: arg0 obj: android.telephony.TelephonyManager@3cde8a82
+Executor - [DEBUG]: Reflction class: class android.telephony.TelephonyManager
+DalvikVM - [WARN]: ar -1, (89014103211501404960, java.lang.String)
+Executor - [DEBUG]: Return data: 89014103211501404960 ,class java.lang.String
+Executor - [MSG]: Reflction invocation public java.lang.String android.telephony.TelephonyManager.getSimSerialNumber()
+DalvikVM - [BB]: Set reflective call: public java.lang.String android.telephony.TelephonyManager.getSimSerialNumber()
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 6
+TaintSumBranch - [BB]: <android.telephony.TelephonyManager: java.lang.String getSimSerialNumber()>
+TaintSumBranch - [WARN]: Found a tainted return value!
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {89014103211501404960=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>, [Global RetReg]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <6 MOV,RESULT,dst=r1,type=java.lang.Object> at de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]
+DalvikVM - [WARN]: ar 1 (phone, java.lang.String), (89014103211501404960, java.lang.String)
+OP_MOV_RESULT - [BB]: Result data: 89014103211501404960
+OP_MOV_RESULT - [DEBUG]: Result data: 89014103211501404960, type: java.lang.String, to [reg 1@MainService/onStartCommand]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 7
+TaintSumBranch - [BB]: <5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>
+TaintSumBranch - [BB]: Add reg 1 due to ret reg.
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {89014103211501404960=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>, [reg 1@MainService/onStartCommand]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <7 INSTANCE,IPUT,r0=r2,r1=r1,type=java.lang.Object,extra=de.ecspride.MainService.secret> at de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field de.ecspride.MainService.secret
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@de.ecspride.MainService
+Service - [DEBUG]: put field 89014103211501404960
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data 89014103211501404960 to the field of instance number 1@de.ecspride.MainService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 8
+TaintSumBranch - [BB]: Add 89014103211501404960as tainted due to [reg 1@MainService/onStartCommand]
+TaintSumBranch - [MSG]: has false
+TaintSumBranch - [MSG]: Tfields: {}
+Results - [MSG]: Set new tainted heap loc true
+TaintSumBranch - [MSG]: New tainted heap loc: /secret
+TaintSumBranch - [MSG]: {}
+Results - [MSG]: New recorded tainted field: /secret
+TaintSumBranch - [MSG]: has true
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {89014103211501404960=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>, [reg 1@MainService/onStartCommand]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <8 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?0> at de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]
+Executor - [DEBUG]: Mov const begin <8 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [WARN]: ar 1 (89014103211501404960, java.lang.String), (0, void)
+Executor - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 9
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {89014103211501404960=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <9 RETURN,VALUE,r0=r1,type=void> at de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]
+DalvikVM - [WARN]: ar -1 (89014103211501404960, java.lang.String), (0, void)
+Executor - [BB]: Return data: 0
+DalvikVM - [BB]: stack []
+DalvikVM - [BB]: Back to the last stack frame.null
+Executor - [MSG]: RUN DONE! The last one is onStartCommand
+Executor - [MSG]: newChain: [(de.ecspride.MainService, onStartCommand)]
+Executor - [BB]: Add Event? (de.ecspride.MainService, onLowMemory)
+Executor - [MSG]: Sink Event Add chain [(de.ecspride.MainService, onStartCommand), (lastStop, lastStop), (de.ecspride.MainService, onLowMemory)]
+DalvikVM - [MSG]: FINISHED!
+
+main - [MSG]: hhas false
+main - [DEBUG]: Generated Entry event: [(de.ecspride.MainService, onStartCommand), (lastStop, lastStop), (de.ecspride.MainService, onLowMemory)]
+DalvikVM - [MSG]: Begin run onStartCommand at C:\Users\hao\workspace\DroidBenchProj\Lifecycle_ServiceLifecycle1\app\Lifecycle_ServiceLifecycle1.apk
+DalvikVM - [MSG]: RUN Method de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]
+DalvikVM - [BB]: New method call: de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[2, 3, 4, 5]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: [2]<0 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [2, 1]]>
+DalvikVM - [BB]: [3]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [4]<0 ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.telephony.TelephonyManager>
+DalvikVM - [BB]: [5]<0 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>
+DalvikVM - [BB]: [6]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [7]<0 INSTANCE,IPUT,r0=r2,r1=r1,type=java.lang.Object,extra=de.ecspride.MainService.secret>
+DalvikVM - [BB]: [8]<7 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [9]<0 RETURN,VALUE,r0=r1,type=void>
+newStackFrame - [BB]: New Stack Frame: StackFrame de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]
+newStackFrame - [BB]: Add frame StackFrame de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]
+newStackFrame - [BB]: Stack: [StackFrame de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]]
+DalvikVM - [BB]: Superclass: de.ecspride.MainService
+Service - [BB]: New instance of de.ecspride.MainService
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainService at fu.hao.trust.dvm.VMHeap@2ec6b7f6
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for de.ecspride.MainService at fu.hao.trust.dvm.VMHeap@2ec6b7f6
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Service at fu.hao.trust.dvm.VMHeap@2ec6b7f6
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Service at fu.hao.trust.dvm.VMHeap@2ec6b7f6
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@2ec6b7f6
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@2ec6b7f6
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@2ec6b7f6
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@2ec6b7f6
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@2ec6b7f6
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@2ec6b7f6
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@2ec6b7f6
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.Context
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@2ec6b7f6
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.ContextWrapper
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@2ec6b7f6
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.app.Service
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Service at fu.hao.trust.dvm.VMHeap@2ec6b7f6
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type de.ecspride.MainService
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.MainService at fu.hao.trust.dvm.VMHeap@2ec6b7f6
+Service - [MSG]: Not empty constructor
+DalvikVM - [BB]: New method call: de.ecspride.MainService/<init>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[1]>
+DalvikVM - [BB]: [1]<0 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [1]]>
+DalvikVM - [BB]: [2]<1 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [3]<0 INSTANCE,IPUT,r0=r1,r1=r0,type=java.lang.Object,extra=de.ecspride.MainService.secret>
+DalvikVM - [BB]: [4]<0 RETURN,VOID>
+DalvikVM - [WARN]: ar -2, (instance number 1@de.ecspride.MainService, de.ecspride.MainService)
+newStackFrame - [BB]: New Stack Frame: StackFrame de.ecspride.MainService/<init>[], pc -1 stored. 
+newStackFrame - [BB]: Stack: [StackFrame de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]]
+DalvikVM - [MSG]: Begin run instrumented methods!
+DalvikVM - [BB]: Add frames [StackFrame de.ecspride.MainService/<init>[]]
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[1]> at de.ecspride.MainService/<init>[]
+DalvikVM - [WARN]: ar 1, (instance number 1@de.ecspride.MainService, de.ecspride.MainService)
+Executor - [DEBUG]: params: instance number 1@de.ecspride.MainService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [1]]> at de.ecspride.MainService/<init>[]
+Executor - [MSG]: arg0 obj: instance number 1@de.ecspride.MainService
+Executor - [MSG]: Replace the clazz.
+Executor - [BB]: java.lang.Object/<init>[] is a constructor!
+Executor - [WARN]: Reflection error: de.ecspride.MainService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 2
+TaintSumBranch - [BB]: <java.lang.Object: void <init>()>
+TaintSumBranch - [DEBUG]: Not a taint call: <java.lang.Object: void <init>()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0> at de.ecspride.MainService/<init>[]
+Executor - [DEBUG]: Mov const begin <2 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [WARN]: ar 0, (0, void)
+Executor - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 3
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 INSTANCE,IPUT,r0=r1,r1=r0,type=java.lang.Object,extra=de.ecspride.MainService.secret> at de.ecspride.MainService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field de.ecspride.MainService.secret
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@de.ecspride.MainService
+Service - [DEBUG]: put field 0
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data 0 to the field of instance number 1@de.ecspride.MainService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 4
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <4 RETURN,VOID> at de.ecspride.MainService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]
+DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]
+Service - [BB]: New Service Created with type de.ecspride.MainService
+Executor - [MSG]: RUN BEGIN de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> execute set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[2, 3, 4, 5]> at de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]
+Executor - [WARN]: NULL CallingCtx!
+DalvikVM - [WARN]: ar 2, (instance number 1@de.ecspride.MainService, de.ecspride.MainService)
+Executor - [DEBUG]: args: instance number 1@de.ecspride.MainService
+Executor - [BB]: Start param from 1
+DalvikVM - [WARN]: ar 3, ([intent:, null, {}], android.content.Intent)
+Executor - [DEBUG]: args: [intent:, null, {}]
+Unknown - [BB]: Unknown created!
+DalvikVM - [WARN]: ar 4, ([Unknown var:null, type: int], int)
+Executor - [DEBUG]: args: [Unknown var:null, type: int]
+Unknown - [BB]: Unknown created!
+DalvikVM - [WARN]: ar 5, ([Unknown var:null, type: int], int)
+Executor - [DEBUG]: args: [Unknown var:null, type: int]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 MOV,CONST,dst=r1,type=java.lang.String,extra="phone"> at de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]
+Executor - [DEBUG]: Mov const begin <1 MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+DalvikVM - [WARN]: ar 1, (phone, java.lang.String)
+Executor - [DEBUG]: data: phone class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 2
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [2, 1]]> at de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]
+Executor - [MSG]: arg0 obj: instance number 1@de.ecspride.MainService
+Executor - [DEBUG]: Reflction class: class android.content.Context
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg1: phone
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: instance number 1@de.ecspride.MainService, from class: class android.app.Service
+DalvikVM - [WARN]: ar -1, (android.telephony.TelephonyManager@e3d60c4, java.lang.Object)
+Executor - [DEBUG]: Return data: android.telephony.TelephonyManager@e3d60c4 ,class android.telephony.TelephonyManager
+Executor - [MSG]: Reflction invocation public java.lang.Object android.content.Context.getSystemService(java.lang.String)
+DalvikVM - [BB]: Set reflective call: public java.lang.Object android.content.Context.getSystemService(java.lang.String)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 3
+TaintSumBranch - [BB]: <android.content.Context: java.lang.Object getSystemService(java.lang.String)>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.content.Context: java.lang.Object getSystemService(java.lang.String)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 MOV,RESULT,dst=r0,type=java.lang.Object> at de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]
+DalvikVM - [WARN]: ar 0, (android.telephony.TelephonyManager@e3d60c4, java.lang.Object)
+OP_MOV_RESULT - [BB]: Result data: android.telephony.TelephonyManager@e3d60c4
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.TelephonyManager@e3d60c4, type: java.lang.Object, to [reg 0@MainService/onStartCommand]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 4
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <4 ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.telephony.TelephonyManager> at de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARITHETIC -> jump set pc to 5
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]> at de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]
+Executor - [MSG]: arg0 obj: android.telephony.TelephonyManager@e3d60c4
+Executor - [DEBUG]: Reflction class: class android.telephony.TelephonyManager
+DalvikVM - [WARN]: ar -1, (89014103211501404960, java.lang.String)
+Executor - [DEBUG]: Return data: 89014103211501404960 ,class java.lang.String
+Executor - [MSG]: Reflction invocation public java.lang.String android.telephony.TelephonyManager.getSimSerialNumber()
+DalvikVM - [BB]: Set reflective call: public java.lang.String android.telephony.TelephonyManager.getSimSerialNumber()
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 6
+TaintSumBranch - [BB]: <android.telephony.TelephonyManager: java.lang.String getSimSerialNumber()>
+TaintSumBranch - [WARN]: Found a tainted return value!
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {89014103211501404960=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>, [Global RetReg]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <6 MOV,RESULT,dst=r1,type=java.lang.Object> at de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]
+DalvikVM - [WARN]: ar 1 (phone, java.lang.String), (89014103211501404960, java.lang.String)
+OP_MOV_RESULT - [BB]: Result data: 89014103211501404960
+OP_MOV_RESULT - [DEBUG]: Result data: 89014103211501404960, type: java.lang.String, to [reg 1@MainService/onStartCommand]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 7
+TaintSumBranch - [BB]: <5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>
+TaintSumBranch - [BB]: Add reg 1 due to ret reg.
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {89014103211501404960=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>, [reg 1@MainService/onStartCommand]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <7 INSTANCE,IPUT,r0=r2,r1=r1,type=java.lang.Object,extra=de.ecspride.MainService.secret> at de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field de.ecspride.MainService.secret
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@de.ecspride.MainService
+Service - [DEBUG]: put field 89014103211501404960
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data 89014103211501404960 to the field of instance number 1@de.ecspride.MainService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 8
+TaintSumBranch - [BB]: Add 89014103211501404960as tainted due to [reg 1@MainService/onStartCommand]
+TaintSumBranch - [MSG]: has false
+TaintSumBranch - [MSG]: Tfields: {}
+Results - [MSG]: New recorded tainted field: /secret
+TaintSumBranch - [MSG]: has false
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {89014103211501404960=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>, [reg 1@MainService/onStartCommand]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <8 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?0> at de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]
+Executor - [DEBUG]: Mov const begin <8 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [WARN]: ar 1 (89014103211501404960, java.lang.String), (0, void)
+Executor - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 9
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {89014103211501404960=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <9 RETURN,VALUE,r0=r1,type=void> at de.ecspride.MainService/onStartCommand[android.content.Intent, int, int]
+DalvikVM - [WARN]: ar -1 (89014103211501404960, java.lang.String), (0, void)
+Executor - [BB]: Return data: 0
+DalvikVM - [BB]: stack []
+DalvikVM - [BB]: Back to the last stack frame.null
+Executor - [MSG]: EventMethod: lastStop
+Executor - [MSG]: EventMethod: onLowMemory
+Executor - [WARN]: Do not have current activity!
+DalvikVM - [BB]: New method call: de.ecspride.MainService/onLowMemory[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[6]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [2]<0 INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]>
+DalvikVM - [BB]: [3]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [4]<3 MOV,CONST,dst=r1,type=java.lang.String,extra="+49 1234">
+DalvikVM - [BB]: [5]<0 INSTANCE,IGET,r0=r6,r1=r3,type=java.lang.Object,extra=de.ecspride.MainService.secret>
+DalvikVM - [BB]: [6]<0 MOV,REG,dst=r4,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [7]<0 MOV,REG,dst=r5,r0=r2,type=java.lang.Object>
+DalvikVM - [BB]: [8]<0 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]>
+DalvikVM - [BB]: [9]<0 RETURN,VOID>
+DalvikVM - [WARN]: ar -2, (instance number 1@de.ecspride.MainService, de.ecspride.MainService)
+newStackFrame - [BB]: New Stack Frame: StackFrame de.ecspride.MainService/onLowMemory[]
+newStackFrame - [BB]: Add frame StackFrame de.ecspride.MainService/onLowMemory[]
+newStackFrame - [BB]: Stack: [StackFrame de.ecspride.MainService/onLowMemory[]]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> execute set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[6]> at de.ecspride.MainService/onLowMemory[]
+DalvikVM - [WARN]: ar 6, (instance number 1@de.ecspride.MainService, de.ecspride.MainService)
+Executor - [DEBUG]: params: instance number 1@de.ecspride.MainService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+TaintSumBranch - [BB]: Copy 89014103211501404960 as tainted.
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {89014103211501404960=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0> at de.ecspride.MainService/onLowMemory[]
+Executor - [DEBUG]: Mov const begin <1 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [WARN]: ar 2, (0, void)
+Executor - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 2
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {89014103211501404960=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 INVOKE,STATIC,extra=[android.telephony.SmsManager/getDefault[], []]> at de.ecspride.MainService/onLowMemory[]
+Executor - [DEBUG]: Reflction class android.telephony.SmsManager
+DalvikVM - [WARN]: ar -1, (android.telephony.SmsManager@3a4b9e67, android.telephony.SmsManager)
+Executor - [MSG]: reflction invocation public static android.telephony.SmsManager android.telephony.SmsManager.getDefault()
+DalvikVM - [BB]: Set reflective call: public static android.telephony.SmsManager android.telephony.SmsManager.getDefault()
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INVOKE_STATIC -> jump set pc to 3
+TaintSumBranch - [BB]: <android.telephony.SmsManager: android.telephony.SmsManager getDefault()>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.telephony.SmsManager: android.telephony.SmsManager getDefault()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {89014103211501404960=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 MOV,RESULT,dst=r0,type=java.lang.Object> at de.ecspride.MainService/onLowMemory[]
+DalvikVM - [WARN]: ar 0, (android.telephony.SmsManager@3a4b9e67, android.telephony.SmsManager)
+OP_MOV_RESULT - [BB]: Result data: android.telephony.SmsManager@3a4b9e67
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.SmsManager@3a4b9e67, type: android.telephony.SmsManager, to [reg 0@MainService/onLowMemory]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 4
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {89014103211501404960=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <4 MOV,CONST,dst=r1,type=java.lang.String,extra="+49 1234"> at de.ecspride.MainService/onLowMemory[]
+Executor - [DEBUG]: Mov const begin <4 MOV,CONST,dst=r1,type=java.lang.String,extra="+49 1234">
+DalvikVM - [WARN]: ar 1, (+49 1234, java.lang.String)
+Executor - [DEBUG]: data: +49 1234 class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 5
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {89014103211501404960=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <5 INSTANCE,IGET,r0=r6,r1=r3,type=java.lang.Object,extra=de.ecspride.MainService.secret> at de.ecspride.MainService/onLowMemory[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Obj instance number 1@de.ecspride.MainService
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Fieldinfo de.ecspride.MainService.secret
+DalvikVM - [WARN]: ar 3, (89014103211501404960, java.lang.String)
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: 89014103211501404960
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD -> jump set pc to 6
+TaintSumBranch - [BB]: Add [reg 3@MainService/onLowMemory] as tainted due to field 89014103211501404960
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 3@MainService/onLowMemory]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>, 89014103211501404960=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <6 MOV,REG,dst=r4,r0=r2,type=java.lang.Object> at de.ecspride.MainService/onLowMemory[]
+DalvikVM - [WARN]: ar 4, (0, void)
+class fu.hao.trust.dvm.Executor$OP_MOVE_REG - [DEBUG]: mov 0 to 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOVE_REG -> jump set pc to 7
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 3@MainService/onLowMemory]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>, 89014103211501404960=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <7 MOV,REG,dst=r5,r0=r2,type=java.lang.Object> at de.ecspride.MainService/onLowMemory[]
+DalvikVM - [WARN]: ar 5, (0, void)
+class fu.hao.trust.dvm.Executor$OP_MOVE_REG - [DEBUG]: mov 0 to 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOVE_REG -> jump set pc to 8
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 3@MainService/onLowMemory]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>, 89014103211501404960=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <8 INVOKE,VIRTUAL,extra=[android.telephony.SmsManager/sendTextMessage[java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent], [0, 1, 2, 3, 4, 5]]> at de.ecspride.MainService/onLowMemory[]
+Executor - [MSG]: arg0 obj: android.telephony.SmsManager@3a4b9e67
+Executor - [DEBUG]: Reflction class: class android.telephony.SmsManager
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg1: +49 1234
+Executor - [BB]: arg2@reg2: 0
+Executor - [WARN]: Mismatch type! arg 2, real para type: class patdroid.core.PrimitiveInfo, expected para type: class java.lang.String
+Executor - [BB]: arg3@reg3: 89014103211501404960
+Executor - [BB]: arg4@reg4: 0
+Executor - [WARN]: Mismatch type! arg 4, real para type: class patdroid.core.PrimitiveInfo, expected para type: class android.app.PendingIntent
+Executor - [BB]: arg5@reg5: 0
+Executor - [WARN]: Mismatch type! arg 5, real para type: class patdroid.core.PrimitiveInfo, expected para type: class android.app.PendingIntent
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: android.telephony.SmsManager@3a4b9e67, from class: class android.telephony.SmsManager
+DalvikVM - [WARN]: ar -1, (null, void)
+Executor - [MSG]: Reflction invocation public void android.telephony.SmsManager.sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)
+DalvikVM - [BB]: Set reflective call: public void android.telephony.SmsManager.sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 9
+TaintSumBranch - [BB]: <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>
+TaintSumBranch - [WARN]: Found a tainted return val!
+Results - [MSG]: New recorded tainted field: sendTextMessage
+TaintSumBranch - [BB]: Found a sink invocation. <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>
+TaintSumBranch - [WARN]: Found a tainted sink <android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)> leaking data [89014103211501404960] at reg 3!!!
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 3@MainService/onLowMemory]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>, [Global RetReg]=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>, 89014103211501404960=<5 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <9 RETURN,VOID> at de.ecspride.MainService/onLowMemory[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack []
+DalvikVM - [BB]: Back to the last stack frame.null
+Executor - [MSG]: RUN DONE! The last one is onLowMemory
+DalvikVM - [MSG]: FINISHED!
+
+main - [MSG]: output/Lifecycle_ServiceLifecycle1.apk\Lifecycle_ServiceLifecycle1.apk_SrcTaintedFields.csv
+main - [MSG]: Analysis has run for 3.867648671 seconds
+

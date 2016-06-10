@@ -115,14 +115,15 @@ public class Main {
 					if (args[1].contains("src")) {
 						Settings.setRecordTaintedFields(true);
 					} else if (args[1].contains("sink")) {
-						//Settings.setInitTaintedFields(true);
-						//Settings.initTaintedFields();
+						// Settings.setInitTaintedFields(true);
+						// Settings.initTaintedFields();
 					}
 					System.out.println(TAG + csv);
 					file = new File(csv);
 					if (file.exists()) {
 						CSVReader reader = new CSVReader(new FileReader(csv));
-						Queue<List<Pair<String, String>>> eventChains = Settings.getSrcChains();
+						Queue<List<Pair<String, String>>> eventChains = Settings
+								.getSrcChains();
 						for (String[] chain : reader.readAll()) {
 							List<Pair<String, String>> eventChain = new LinkedList<>();
 							for (String sootMethod : chain) {
@@ -138,10 +139,11 @@ public class Main {
 							eventChains.add(eventChain);
 						}
 						reader.close();
-						
+
 						csv = Settings.getStaticOutDir()
-								+ Settings.getApkName() + "_sinkEventChains.csv";
-						
+								+ Settings.getApkName()
+								+ "_sinkEventChains.csv";
+
 						reader = new CSVReader(new FileReader(csv));
 						eventChains = Settings.getSinkChains();
 						for (String[] chain : reader.readAll()) {
@@ -159,7 +161,7 @@ public class Main {
 							eventChains.add(eventChain);
 						}
 						reader.close();
-						
+
 						eventChains = Settings.getSrcChains();
 						while (!eventChains.isEmpty()) {
 							Settings.setCheckNewTaintedHeapLoc(true);
@@ -170,35 +172,51 @@ public class Main {
 							if (eventChain.size() > 0) {
 								Pair<String, String> entryEvent = eventChain
 										.remove(0);
-								Settings.setEntryClass(entryEvent.getFirst());
-								Settings.setEntryMethod(entryEvent.getSecond());
-								getResolvedIntents();
-								Log.msg(TAG, "Src Chain: " + eventChain);
-								Log.debug(TAG, "Src Entry event: " + entryEvent);
-								main.runMethod(pluginManager);
+								if (entryEvent.getSecond().startsWith(
+										"onCreate")
+										|| entryEvent.getSecond().startsWith(
+												"onStart")
+										|| entryEvent.getSecond().startsWith(
+												"onReceive")) {
+									Settings.setEntryClass(entryEvent
+											.getFirst());
+									Settings.setEntryMethod(entryEvent
+											.getSecond());
+									getResolvedIntents();
+									Log.msg(TAG, "Src Chain: " + eventChain);
+									Log.debug(TAG, "Src Entry event: "
+											+ entryEvent);
+									main.runMethod(pluginManager);
+								} else {
+									throw new RuntimeException("Entry method "
+											+ entryEvent.getSecond()
+											+ " is not supported!");
+								}
 							}
 							eventChain.clear();
-							//if (Settings.isRecordTaintedFields()) {
-								//writeTaintedFields();
-							//}
+							// if (Settings.isRecordTaintedFields()) {
+							// writeTaintedFields();
+							// }
 						}
-						
+
 						eventChains = Settings.getEventChains();
 						while (!eventChains.isEmpty()) {
 							Settings.setCheckNewTaintedHeapLoc(false);
 							Results.reset();
-							Log.msg(TAG, "hhas " + Results.isHasNewTaintedHeapLoc());
+							Log.msg(TAG,
+									"hhas " + Results.isHasNewTaintedHeapLoc());
 							List<Pair<String, String>> eventChain = eventChains
 									.poll();
 							Settings.setEventChain(eventChain);
-							Log.debug(TAG, "Generated Entry event: " + eventChain);
+							Log.debug(TAG, "Generated Entry event: "
+									+ eventChain);
 							if (eventChain.size() > 0) {
 								Pair<String, String> entryEvent = eventChain
 										.remove(0);
 								Settings.setEntryClass(entryEvent.getFirst());
 								Settings.setEntryMethod(entryEvent.getSecond());
 								getResolvedIntents();
-								
+
 								main.runMethod(pluginManager);
 							}
 							eventChain.clear();
@@ -206,7 +224,7 @@ public class Main {
 								writeTaintedFields();
 							}
 						}
-						
+
 					}
 				} else if (args[2] != null && !"".equals(args[2])) {
 					Settings.setEntryClass(args[1]);
@@ -246,7 +264,7 @@ public class Main {
 					.size()]);
 			results.add(resultArray);
 		}
-		
+
 		for (String fieldInfo : Results.getITaintedFields().keySet()) {
 			List<String> result = new ArrayList<>();
 			result.add(fieldInfo);
@@ -258,7 +276,7 @@ public class Main {
 					.size()]);
 			results.add(resultArray);
 		}
-		
+
 		for (String fieldInfo : Results.getATaintedFields().keySet()) {
 			List<String> result = new ArrayList<>();
 			result.add(fieldInfo);
@@ -325,7 +343,8 @@ public class Main {
 				CSVReader reader = new CSVReader(new FileReader(csv));
 				for (String[] intent : reader.readAll()) {
 					Settings.addIntentTarget(intent[0], intent[1]);
-					Log.msg(TAG, "Retrieve intent target: " + intent[0] + ", " + intent[1]);
+					Log.msg(TAG, "Retrieve intent target: " + intent[0] + ", "
+							+ intent[1]);
 				}
 
 				reader.close();

@@ -12,6 +12,7 @@ import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 
 import android.app.Activity;
+import android.app.Application;
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
@@ -604,6 +605,10 @@ public class DalvikVM {
 	
 	private LinkedList<Activity> activityStack;
 	
+	private Map<String, DVMObject> callbackPool; 
+	
+	private DVMObject thisObj;
+	
 	/**
 	 * @Title: getClass
 	 * @Description: Get the class in the heap.
@@ -672,7 +677,9 @@ public class DalvikVM {
 		stack = new LinkedList<>();
 		callingCtx = null;
 		activityStack = new LinkedList<>();
-
+		
+		callbackPool = new HashMap<>();
+		
 		try {
 			loadAPK(APK);
 		} catch (ZipException e) {
@@ -872,6 +879,7 @@ public class DalvikVM {
 			}
 
 			// Instrument inherited non-override call-backs
+			Log.msg(TAG, "Instrument inherited non-override call-backs");
 			MethodInfo onCreate = c.findMethodsHere("onCreate")[0];
 			if (onCreate != null) {
 				Instruction[] insts = new Instruction[onCreate.insns.length + 1];
@@ -1276,17 +1284,21 @@ public class DalvikVM {
 	*/
 	public DVMObject newVMObject(ClassInfo type) {
 		ClassInfo oType = type;
+		ClassInfo activityClass = ClassInfo.findClass("android.app.Activity");
+		
+		if (type.equals(activityClass)) {
+			return null;
+		}
 		
 		while (type != null) {	
-			if (type.isConvertibleTo(ClassInfo.findClass("android.app.Activity"))) {
+			if (type.isConvertibleTo(activityClass)) {
 				return new Activity(this, oType);
-			}
-			if (type.isConvertibleTo(ClassInfo.findClass("android.location.LocationListener"))) {
+			} else if (type.isConvertibleTo(ClassInfo.findClass("android.location.LocationListener"))) {
 				return new MyLocationListener(this, oType);
-			}
-			
-			if (type.isConvertibleTo(ClassInfo.findClass("android.os.Handler"))) {
+			} else if (type.isConvertibleTo(ClassInfo.findClass("android.os.Handler"))) {
 				return new Handler(this, oType);
+			} else if (type.isConvertibleTo(ClassInfo.findClass("android.app.Application"))) {
+				return new Application(this, oType);
 			}
 			String typeName = type.toString();
 			
@@ -1419,6 +1431,22 @@ public class DalvikVM {
 
 	public void setActivityStack(LinkedList<Activity> activityStack) {
 		this.activityStack = activityStack;
+	}
+
+	public Map<String, DVMObject> getCallbackPool() {
+		return callbackPool;
+	}
+
+	public void setCallbackPool(Map<String, DVMObject> callbackPool) {
+		this.callbackPool = callbackPool;
+	}
+
+	public DVMObject getThisObj() {
+		return thisObj;
+	}
+
+	public void setThisObj(DVMObject thisObj) {
+		this.thisObj = thisObj;
 	}
 
 }

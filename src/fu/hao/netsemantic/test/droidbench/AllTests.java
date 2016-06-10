@@ -9,7 +9,7 @@ import org.junit.runners.Suite.SuiteClasses;
 		Button4Test.class, Button5Test.class, Location1Test.class,
 		Location2Test.class, Location3Test.class, MethodOverride1.class,
 		MultiHandlersTest.class,
-		BenchICCTests.class,
+		BenchICCTests.class, BenchCallbacks.class,
 		BenchJavaTests.class, BenchLifecycleTests.class,
 		BenchThreadingTests.class, BenchUnknownTests.class,
 		Location1Test.class, Location2Test.class, Location3Test.class,
