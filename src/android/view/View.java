@@ -13,6 +13,8 @@ public class View extends DVMObject {
 	int color;
 	String hint = "";
 	
+	DVMObject listener;
+	
 	class OnClickListener {
 		
 	}
@@ -42,9 +44,15 @@ public class View extends DVMObject {
 		
 	}
 	
-	// TODO
 	public void setOnClickListener(DVMObject listener) {
 		
+		if (this.listener != null) {
+			vm.getCallbackPool().remove(listener.getClazz().fullName);
+		}
+		this.listener = listener;
+		if (listener != null) {
+			vm.getCallbackPool().put(listener.getClazz().fullName, listener);
+		}
 	}
 	
 	public void setType() {

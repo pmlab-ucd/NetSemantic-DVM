@@ -2969,8 +2969,8 @@ public class Executor {
 			Activity activity = vm.getCurrtActivity();
 			String eventClass = event.getFirst();
 			String eventMethod = event.getSecond();
-
-			Log.msg(TAG, "EventMethod: " + eventMethod);
+			Log.bb(TAG, vm.getCallbackPool());
+			Log.msg(TAG, "EventClass: " + eventClass + ", EventMethod: " + eventMethod);
 
 			if (eventClass.equals("lastStop")) {
 				Settings.setCheckNewTaintedHeapLoc(true);
@@ -2983,14 +2983,11 @@ public class Executor {
 				} else {
 					if (eventMethod.startsWith("onCreate")) {
 						vm.addEventFrame(eventClass, eventMethod, null);
-					} else {
-						for (DVMObject obj : activity.getAllUIs()) {
-							if (obj.getType().toString().contains(eventClass)) {
-								if (vm.addEventFrame(obj, eventMethod)) {
-									break;
-								}
-							}
-						}
+					} else if (vm.getCallbackPool().containsKey(eventClass)) {
+						Log.warn(TAG,
+								"Event obj " + vm.getCallbackPool().get(eventClass));
+						vm.addEventFrame(vm.getCallbackPool().get(eventClass),
+								eventMethod);
 					}
 				}
 				mname = execute(vm);

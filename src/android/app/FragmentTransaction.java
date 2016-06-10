@@ -21,6 +21,7 @@ public class FragmentTransaction  {
 		}
 		
 		fragments.put(var1, fragment);
+		Settings.getVM().getCallbackPool().put(fragment.getClazz().fullName, fragment);
 		Log.bb(TAG, Settings.getVM().getCurrtActivity());
 		fragment.myOnAttach(Settings.getVM().getCurrtActivity());
 		return this;
