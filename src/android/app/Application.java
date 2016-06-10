@@ -1,5 +1,6 @@
 package android.app;
 
+import android.content.ComponentCallbacks;
 import android.os.Bundle;
 import patdroid.core.ClassInfo;
 import fu.hao.trust.dvm.DVMObject;
@@ -10,6 +11,22 @@ public class Application extends DVMObject {
 	public Application(DalvikVM vm, ClassInfo type) {
 		super(vm, type);
 	}
+	
+    public void registerComponentCallbacks(ComponentCallbacks callback) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public void unregisterComponentCallbacks(ComponentCallbacks callback) {
+        throw new RuntimeException("Stub!");
+    }
+	
+    public void registerComponentCallbacks(DVMObject callback) {
+    	vm.getCallbackPool().put(callback.getClazz().fullName, callback);
+    }
+
+    public void unregisterComponentCallbacks(DVMObject callback) {
+    	vm.getCallbackPool().remove(callback.getClazz());
+    }
 	
     public void registerActivityLifecycleCallbacks(Application.ActivityLifecycleCallbacks callback) {
         throw new RuntimeException("Stub!");
