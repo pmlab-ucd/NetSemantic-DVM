@@ -970,6 +970,135 @@ public class Executor {
 			}
 		}
 	}
+	
+	class OP_CMP_LONG implements ByteCode {
+		/**
+		 * @Title: func
+		 * @Description: cmpl-float v0, v6, v7 Compares the float values in v6
+		 *               and v7 then sets v0 accordingly. NaN bias is less-than,
+		 *               the instruction will return -1 if any of the parameters
+		 *               is NaN. Compare operations return positive value if the
+		 *               first operand is greater than the second operand, 0 if
+		 *               they are equal and negative value if the first operand
+		 *               is smaller than the second operand.
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
+		@Override
+		public void func(DalvikVM vm, Instruction inst) {
+			PrimitiveInfo[] res = OP_CMP(vm, inst, true);
+			PrimitiveInfo op1 = res[0];
+			PrimitiveInfo op2 = res[1];
+			Register rdst = vm.getReg(inst.rdst);
+			ClassInfo type = ClassInfo.primitiveInt;
+			jump(vm, inst, true);
+
+			if (op1 == null || op2 == null) {
+				Log.warn(TAG, "CMP_Long error! null value");
+				return;
+			}
+
+			if (op1.longValue() > op2.longValue()) {
+				rdst.setValue(new PrimitiveInfo(1), type);
+			} else if (op1.longValue() == op2.longValue()) {
+				rdst.setValue(new PrimitiveInfo(0), type);
+			} else {
+				rdst.setValue(new PrimitiveInfo(-1), type);
+			}
+
+			Log.debug(TAG, "CMPLong " + inst);
+		}
+	}
+
+	class OP_CMP_LESS implements ByteCode {
+		/**
+		 * @Title: func
+		 * @Description: cmpl-float v0, v6, v7 Compares the float values in v6
+		 *               and v7 then sets v0 accordingly. NaN bias is less-than,
+		 *               the instruction will return -1 if any of the parameters
+		 *               is NaN.
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
+		@Override
+		public void func(DalvikVM vm, Instruction inst) {
+			PrimitiveInfo[] res = OP_CMP(vm, inst, true);
+			PrimitiveInfo op1 = res[0];
+			PrimitiveInfo op2 = res[1]; 
+			Register rdst = vm.getReg(inst.rdst);
+			ClassInfo type = ClassInfo.primitiveInt;
+			// FIXME NaN handling
+			if (op1.isFloat()) {
+				if (op1.floatValue() > op2.floatValue()) {
+					rdst.setValue(new PrimitiveInfo(1), type);
+				} else if (op1.floatValue() == op2.floatValue()) {
+					rdst.setValue(new PrimitiveInfo(0), type);
+				} else {
+					rdst.setValue(new PrimitiveInfo(-1), type);
+				}
+			} else if (op1.isDouble()) {
+				if (op1.doubleValue() > op2.doubleValue()) {
+					rdst.setValue(new PrimitiveInfo(1), type);
+				} else if (op1.doubleValue() == op2.doubleValue()) {
+					rdst.setValue(new PrimitiveInfo(0), type);
+				} else {
+					rdst.setValue(new PrimitiveInfo(-1), type);
+				}
+			} else {
+				Log.err(TAG, "unknown type " + inst);
+			}
+
+			jump(vm, inst, true);
+		}
+	}
+
+	class OP_CMP_GREATER implements ByteCode {
+		/**
+		 * @Title: func
+		 * @Description: cmpg-float v0, v6, v7 Compares the float values in v6
+		 *               and v7 then sets v0 accordingly. NaN bias is
+		 *               greater-than, the instruction will return 1 if any of
+		 *               the parameters is NaN.
+		 * @param vm
+		 * @param inst
+		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
+		 *      patdroid.dalvik.Instruction)
+		 */
+		@Override
+		public void func(DalvikVM vm, Instruction inst) {
+			PrimitiveInfo[] res = OP_CMP(vm, inst, true);
+			PrimitiveInfo op1 = res[0];
+			PrimitiveInfo op2 = res[1]; 
+			Register rdst = vm.getReg(inst.rdst);
+			ClassInfo type = ClassInfo.primitiveInt;
+			// FIXME NaN handling
+			if (op1.isFloat()) {
+				if (op1.floatValue() > op2.floatValue()) {
+					rdst.setValue(new PrimitiveInfo(1), type);
+				} else if (op1.floatValue() == op2.floatValue()) {
+					rdst.setValue(new PrimitiveInfo(0), type);
+				} else {
+					rdst.setValue(new PrimitiveInfo(-1), type);
+				}
+			} else if (op1.isDouble()) {
+				if (op1.doubleValue() > op2.doubleValue()) {
+					rdst.setValue(new PrimitiveInfo(1), type);
+				} else if (op1.doubleValue() == op2.doubleValue()) {
+					rdst.setValue(new PrimitiveInfo(0), type);
+				} else {
+					rdst.setValue(new PrimitiveInfo(-1), type);
+				}
+			} else {
+				Log.err(TAG, "unknown type " + inst);
+			}
+
+			jump(vm, inst, true);
+		}
+	}
 
 	class OP_ARRAY_GET implements ByteCode {
 		/**
@@ -1540,144 +1669,7 @@ public class Executor {
 		}
 	}
 
-	class OP_CMP_LONG implements ByteCode {
-		/**
-		 * @Title: func
-		 * @Description: cmpl-float v0, v6, v7 Compares the float values in v6
-		 *               and v7 then sets v0 accordingly. NaN bias is less-than,
-		 *               the instruction will return -1 if any of the parameters
-		 *               is NaN. Compare operations return positive value if the
-		 *               first operand is greater than the second operand, 0 if
-		 *               they are equal and negative value if the first operand
-		 *               is smaller than the second operand.
-		 * @param vm
-		 * @param inst
-		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
-		 *      patdroid.dalvik.Instruction)
-		 */
-		@Override
-		public void func(DalvikVM vm, Instruction inst) {
-			PrimitiveInfo[] res = OP_CMP(vm, inst, true);
-			PrimitiveInfo op1 = res[0];
-			PrimitiveInfo op2 = res[1];
-			Register rdst = vm.getReg(inst.rdst);
-			ClassInfo type = ClassInfo.primitiveInt;
-			jump(vm, inst, true);
-
-			if (op1 == null || op2 == null) {
-				Log.warn(TAG, "CMP_Long error! null value");
-				return;
-			}
-
-			if (op1.longValue() > op2.longValue()) {
-				rdst.setValue(new PrimitiveInfo(1), type);
-			} else if (op1.longValue() == op2.longValue()) {
-				rdst.setValue(new PrimitiveInfo(0), type);
-			} else {
-				rdst.setValue(new PrimitiveInfo(-1), type);
-			}
-
-			Log.debug(TAG, "CMPLong " + inst);
-		}
-	}
-
-	class OP_CMP_LESS implements ByteCode {
-		/**
-		 * @Title: func
-		 * @Description: cmpl-float v0, v6, v7 Compares the float values in v6
-		 *               and v7 then sets v0 accordingly. NaN bias is less-than,
-		 *               the instruction will return -1 if any of the parameters
-		 *               is NaN.
-		 * @param vm
-		 * @param inst
-		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
-		 *      patdroid.dalvik.Instruction)
-		 */
-		@Override
-		public void func(DalvikVM vm, Instruction inst) {
-			Register r0 = vm.getReg(inst.r0), r1 = vm.getReg(inst.r1);
-			if (!r0.getType().equals(r1.getType())) {
-				Log.err(TAG, "incosistent type " + inst);
-				return;
-			}
-
-			PrimitiveInfo op1 = (PrimitiveInfo) vm.getReg(inst.r0).getData();
-			PrimitiveInfo op2 = (PrimitiveInfo) vm.getReg(inst.r1).getData();
-			Register rdst = vm.getReg(inst.rdst);
-			ClassInfo type = ClassInfo.primitiveInt;
-			// FIXME NaN handling
-			if (r0.getType().equals(ClassInfo.primitiveFloat)) {
-				if (op1.floatValue() > op2.floatValue()) {
-					rdst.setValue(new PrimitiveInfo(1), type);
-				} else if (op1.floatValue() == op2.floatValue()) {
-					rdst.setValue(new PrimitiveInfo(0), type);
-				} else {
-					rdst.setValue(new PrimitiveInfo(-1), type);
-				}
-			} else if (r0.getType().equals(ClassInfo.primitiveDouble)) {
-				if (op1.doubleValue() > op2.doubleValue()) {
-					rdst.setValue(new PrimitiveInfo(1), type);
-				} else if (op1.doubleValue() == op2.doubleValue()) {
-					rdst.setValue(new PrimitiveInfo(0), type);
-				} else {
-					rdst.setValue(new PrimitiveInfo(-1), type);
-				}
-			} else {
-				Log.err(TAG, "unknown type " + inst);
-			}
-
-			jump(vm, inst, true);
-		}
-	}
-
-	class OP_CMP_GREATER implements ByteCode {
-		/**
-		 * @Title: func
-		 * @Description: cmpg-float v0, v6, v7 Compares the float values in v6
-		 *               and v7 then sets v0 accordingly. NaN bias is
-		 *               greater-than, the instruction will return 1 if any of
-		 *               the parameters is NaN.
-		 * @param vm
-		 * @param inst
-		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
-		 *      patdroid.dalvik.Instruction)
-		 */
-		@Override
-		public void func(DalvikVM vm, Instruction inst) {
-			Register r0 = vm.getReg(inst.r0), r1 = vm.getReg(inst.r1);
-			if (!r0.getType().equals(r1.getType())) {
-				Log.err(TAG, "incosistent type " + inst);
-				return;
-			}
-
-			PrimitiveInfo op1 = (PrimitiveInfo) vm.getReg(inst.r0).getData();
-			PrimitiveInfo op2 = (PrimitiveInfo) vm.getReg(inst.r1).getData();
-			Register rdst = vm.getReg(inst.rdst);
-			ClassInfo type = ClassInfo.primitiveInt;
-			// FIXME NaN handling
-			if (r0.getType().equals(ClassInfo.primitiveFloat)) {
-				if (op1.floatValue() > op2.floatValue()) {
-					rdst.setValue(new PrimitiveInfo(1), type);
-				} else if (op1.floatValue() == op2.floatValue()) {
-					rdst.setValue(new PrimitiveInfo(0), type);
-				} else {
-					rdst.setValue(new PrimitiveInfo(-1), type);
-				}
-			} else if (r0.getType().equals(ClassInfo.primitiveDouble)) {
-				if (op1.doubleValue() > op2.doubleValue()) {
-					rdst.setValue(new PrimitiveInfo(1), type);
-				} else if (op1.doubleValue() == op2.doubleValue()) {
-					rdst.setValue(new PrimitiveInfo(0), type);
-				} else {
-					rdst.setValue(new PrimitiveInfo(-1), type);
-				}
-			} else {
-				Log.err(TAG, "unknown type " + inst);
-			}
-
-			jump(vm, inst, true);
-		}
-	}
+	
 
 	class OP_STATIC_GET_FIELD implements ByteCode {
 		/**
@@ -2010,6 +2002,7 @@ public class Executor {
 				Log.debug(TAG, "r1 type " + (r1.isUsed() ? r1.getType() : null));
 				if (r0.isUsed() && r1.isUsed()) {
 					Log.bb(TAG, "Types: " + r0.getType() + ", " + r1.getType());
+					// Check whether an instance is null.
 					if (r0.getType().isConvertibleTo(r1.getType())
 							&& !r0.getType().isPrimitive()) {
 						if (inst.opcode_aux == Instruction.OP_IF_NE) {
