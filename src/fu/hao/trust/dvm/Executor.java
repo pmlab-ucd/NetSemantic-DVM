@@ -963,10 +963,10 @@ public class Executor {
 			PrimitiveInfo op2 = res[1];
 			if (op1.intValue() <= op2.intValue()) {
 				jump(vm, inst, false);
-				Log.debug(TAG, "not equ: " + inst);
+				Log.debug(TAG, "Not equ: " + inst);
 			} else {
 				jump(vm, inst, true);
-				Log.debug(TAG, "not equ: " + inst);
+				Log.debug(TAG, "Not equ: " + inst);
 			}
 		}
 	}

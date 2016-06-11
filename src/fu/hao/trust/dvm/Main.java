@@ -321,6 +321,7 @@ public class Main {
 		}
 	}
 
+	@Deprecated
 	public void runMethods(String[] items, PluginManager pluginManager) {
 		// DalvikVM vm = DalvikVM.v();
 		// Results.reset();

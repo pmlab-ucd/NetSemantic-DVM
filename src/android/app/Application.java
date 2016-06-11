@@ -10,6 +10,7 @@ public class Application extends DVMObject {
 
 	public Application(DalvikVM vm, ClassInfo type) {
 		super(vm, type);
+		vm.setApplication(this);
 	}
 	
     public void registerComponentCallbacks(ComponentCallbacks callback) {

@@ -1,6 +1,7 @@
 package fu.hao.trust.dvm;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -10,6 +11,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
+
+import com.opencsv.CSVReader;
 
 import android.app.Activity;
 import android.app.Application;
@@ -609,6 +612,8 @@ public class DalvikVM {
 	
 	private DVMObject thisObj;
 	
+	private Application application;
+	
 	/**
 	 * @Title: getClass
 	 * @Description: Get the class in the heap.
@@ -838,6 +843,39 @@ public class DalvikVM {
 		new SmaliClassDetailLoader(apkFile, true).loadAll();
 		Activity.xmlViewDefs();
 	}
+	
+	private String[] readManifestXML() {
+		String[] res = null;
+		try {
+			String csv = Settings.getOutdir() + Settings.getApkName()
+					+ "_manifest.csv";
+			File file = new File(csv);
+			if (file.exists()) {
+				CSVReader reader = new CSVReader(new FileReader(csv));
+				for (String[] mains : reader.readAll()) {
+					res = mains;
+					break;
+				}
+
+				reader.close();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+	
+	private void initApplication() {
+		String[] mains = readManifestXML();
+		if (mains != null) {
+			String appClassName = mains[0];
+			if (appClassName != null) {
+				ClassInfo appClass = ClassInfo.findClass(appClassName);
+				application = new Application(this, appClass); 
+			}
+		}
+	}
 
 	/**
 	 * @Title: runMethod
@@ -863,6 +901,8 @@ public class DalvikVM {
 		MethodInfo[] methods = c.findMethodsHere(main);
 		Log.msg(TAG, "Begin run " + main + " at " + apk);
 		this.setPluginManager(pluginManager);
+		
+		initApplication();
 
 		if (methods.length == 0) {
 			MethodInfo[] targets = null;
@@ -918,6 +958,7 @@ public class DalvikVM {
 		}
 	}
 
+	@Deprecated
 	public void runMethods(String apk, String[] chain,
 			PluginManager pluginManager) throws ZipException, IOException {
 		Log.msg(TAG, "apk " + apk);
@@ -985,6 +1026,7 @@ public class DalvikVM {
 		executor.runMethod(sitClass, this, method);
 	}
 
+	@Deprecated
 	public void runMethod(ClassInfo sitClass, MethodInfo method,
 			Object[] params, boolean force) {
 		Log.msg(TAG, "Instrumented Method: " + method);
@@ -1298,6 +1340,9 @@ public class DalvikVM {
 			} else if (type.isConvertibleTo(ClassInfo.findClass("android.os.Handler"))) {
 				return new Handler(this, oType);
 			} else if (type.isConvertibleTo(ClassInfo.findClass("android.app.Application"))) {
+				if (application != null && application.getType().equals(oType)) {
+					return application;
+				}
 				return new Application(this, oType);
 			}
 			String typeName = type.toString();
@@ -1447,6 +1492,14 @@ public class DalvikVM {
 
 	public void setThisObj(DVMObject thisObj) {
 		this.thisObj = thisObj;
+	}
+
+	public Application getApplication() {
+		return application;
+	}
+
+	public void setApplication(Application application) {
+		this.application = application;
 	}
 
 }

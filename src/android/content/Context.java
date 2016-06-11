@@ -1,5 +1,6 @@
 package android.content;
 
+import android.app.Application;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.location.LocationManager;
@@ -95,9 +96,13 @@ public class Context extends DVMObject {
 	public Context getApplicationContext() {
 		return this;
 	}
-	
+
 	public PackageManager getPackageManager() {
 		return packageManager;
+	}
+
+	public Application getApplication() {
+		return vm.getApplication();
 	}
 
 }
