@@ -6,11 +6,11 @@ import patdroid.dalvik.Instruction;
 import fu.hao.trust.dvm.DVMObject;
 import fu.hao.trust.dvm.DalvikVM;
 import fu.hao.trust.dvm.DalvikVM.StackFrame;
+import fu.hao.trust.utils.Log;
 import fu.hao.trust.utils.Pair;
 import fu.hao.trust.utils.Settings;
 
 public class Handler extends DVMObject {
-	DalvikVM vm;
 
 	public Handler(Looper looper) {
 		super(Settings.getVM(), ClassInfo.findClass("android.os.Handler"));
@@ -22,7 +22,6 @@ public class Handler extends DVMObject {
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public final boolean post(Runnable r) {
-		vm = Settings.getVM();
 		Instruction inst = vm.getCurrtInst();
 		Object[] extra = (Object[]) inst.getExtra();
 		int[] args = (int[]) extra[1];
@@ -36,5 +35,21 @@ public class Handler extends DVMObject {
 		vm.runInstrumentedMethods(frame);
 		return true;
 	}
+	
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+	public void dispatchMessage(Message msg) {
+    	// Look for handle message 
+		MethodInfo[] handleMsgs = type.findMethods("handleMessage");
+		if (handleMsgs != null && handleMsgs.length > 0) {
+			Pair[] params = new Pair[2];
+			params[0] = new Pair(this, type);
+			params[1] = new Pair(msg, msg.getType());
+			StackFrame frame = vm.newStackFrame(type, handleMsgs[0], params,
+					false);
+			vm.runInstrumentedMethods(frame);
+		} else {
+			Log.warn(TAG, "Cannot locate the handleMsg method!");
+		}
+    }
 
 }
