@@ -35,5 +35,17 @@ public class BenchIACTests {
 				tm.getDeviceId());
 		assertEquals(true, Results.results.contains(res));
 	}
+	
+	@Test
+	public void StartActivityForResult1() {
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/StartActivityForResult1/app/";
+		args[1] = "srcEventChains";
+		Main.main(args);
+		assertEquals(false, Results.results.isEmpty());
+		Map<String, String> res = new HashMap<>();
+		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
+				"Longitude: -121.759603, Latitude: 38.53203");
+		assertEquals(true, Results.results.contains(res));
+	}
 
 }
