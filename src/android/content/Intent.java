@@ -271,5 +271,5 @@ public class Intent {
     public void removeCategory(String category) {
     	categories.remove(category);
     }
-
+    
 }

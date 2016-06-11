@@ -1,0 +1,442 @@
+main - [MSG]: Src Chain: []
+main - [DEBUG]: Src Entry event: (de.ecspride.ImplicitFlow1, onCreate)
+DalvikVM - [MSG]: Begin run onCreate at C:\Users\hao\workspace\DroidBenchProj\ImplicitFlow1\app\ImplicitFlow1.apk
+DalvikVM - [MSG]: RUN Method de.ecspride.ImplicitFlow1/onCreate[android.os.Bundle]
+DalvikVM - [BB]: New method call: de.ecspride.ImplicitFlow1/onCreate[android.os.Bundle]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[4, 5]>
+DalvikVM - [BB]: [1]<0 HALT,SUPER,extra=[null, [4, 5]]>
+DalvikVM - [BB]: [2]<1 MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+DalvikVM - [BB]: [3]<0 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [4, 3]]>
+DalvikVM - [BB]: [4]<3 MOV,CONST,dst=r3,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: [5]<0 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [4, 3]]>
+DalvikVM - [BB]: [6]<0 MOV,RESULT,dst=r2,type=java.lang.Object>
+DalvikVM - [BB]: [7]<0 ARITHMETIC,CHECK-AND-CAST,dst=r2,type=android.telephony.TelephonyManager>
+DalvikVM - [BB]: [8]<0 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>
+DalvikVM - [BB]: [9]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [10]<0 INVOKE,DIRECT,extra=[de.ecspride.ImplicitFlow1/obfuscateIMEI[java.lang.String], [4, 0]]>
+DalvikVM - [BB]: [11]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [12]<0 INVOKE,DIRECT,extra=[de.ecspride.ImplicitFlow1/writeToLog[java.lang.String], [4, 1]]>
+DalvikVM - [BB]: [13]<0 INVOKE,DIRECT,extra=[de.ecspride.ImplicitFlow1/copyIMEI[java.lang.String], [4, 0]]>
+DalvikVM - [BB]: [14]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [15]<0 INVOKE,DIRECT,extra=[de.ecspride.ImplicitFlow1/writeToLog[java.lang.String], [4, 1]]>
+DalvikVM - [BB]: [16]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame de.ecspride.ImplicitFlow1/onCreate[android.os.Bundle]
+newStackFrame - [BB]: Add frame StackFrame de.ecspride.ImplicitFlow1/onCreate[android.os.Bundle]
+newStackFrame - [BB]: Stack: [StackFrame de.ecspride.ImplicitFlow1/onCreate[android.os.Bundle]]
+Activity - [BB]: New instance of de.ecspride.ImplicitFlow1
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.ImplicitFlow1 at fu.hao.trust.dvm.VMHeap@598e915a
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for de.ecspride.ImplicitFlow1 at fu.hao.trust.dvm.VMHeap@598e915a
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@598e915a
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Activity at fu.hao.trust.dvm.VMHeap@598e915a
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@598e915a
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@598e915a
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@598e915a
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@598e915a
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@598e915a
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@598e915a
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@598e915a
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.Context
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@598e915a
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.ContextWrapper
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@598e915a
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.app.Activity
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Activity at fu.hao.trust.dvm.VMHeap@598e915a
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type de.ecspride.ImplicitFlow1
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass de.ecspride.ImplicitFlow1 at fu.hao.trust.dvm.VMHeap@598e915a
+Activity - [MSG]: Not empty constructor
+DalvikVM - [BB]: New method call: de.ecspride.ImplicitFlow1/<init>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[0]>
+DalvikVM - [BB]: [1]<0 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]>
+DalvikVM - [BB]: [2]<0 RETURN,VOID>
+DalvikVM - [WARN]: ar -2, (Activity:instance number 1@de.ecspride.ImplicitFlow1, de.ecspride.ImplicitFlow1)
+newStackFrame - [BB]: New Stack Frame: StackFrame de.ecspride.ImplicitFlow1/<init>[], pc -1 stored. 
+newStackFrame - [BB]: Stack: [StackFrame de.ecspride.ImplicitFlow1/onCreate[android.os.Bundle]]
+DalvikVM - [MSG]: Begin run instrumented methods!
+DalvikVM - [BB]: Add frames [StackFrame de.ecspride.ImplicitFlow1/<init>[]]
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[0]> at de.ecspride.ImplicitFlow1/<init>[]
+DalvikVM - [WARN]: ar 0, (Activity:instance number 1@de.ecspride.ImplicitFlow1, de.ecspride.ImplicitFlow1)
+Executor - [DEBUG]: params: Activity:instance number 1@de.ecspride.ImplicitFlow1
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]> at de.ecspride.ImplicitFlow1/<init>[]
+Executor - [MSG]: arg0 obj: Activity:instance number 1@de.ecspride.ImplicitFlow1
+Executor - [MSG]: Replace the clazz.
+Executor - [BB]: java.lang.Object/<init>[] is a constructor!
+Executor - [WARN]: Reflection error: de.ecspride.ImplicitFlow1
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 2
+TaintSumBranch - [BB]: <java.lang.Object: void <init>()>
+TaintSumBranch - [DEBUG]: Not a taint call: <java.lang.Object: void <init>()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 RETURN,VOID> at de.ecspride.ImplicitFlow1/<init>[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame de.ecspride.ImplicitFlow1/onCreate[android.os.Bundle]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame de.ecspride.ImplicitFlow1/onCreate[android.os.Bundle]
+DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame de.ecspride.ImplicitFlow1/onCreate[android.os.Bundle]
+Activity - [MSG]: New Activity Created with type de.ecspride.ImplicitFlow1
+DalvikVM - [BB]: New method call: de.ecspride.ImplicitFlow1/onCreate[android.os.Bundle]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[4, 5]>
+DalvikVM - [BB]: [1]<0 HALT,SUPER,extra=[null, [4, 5]]>
+DalvikVM - [BB]: [2]<1 MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+DalvikVM - [BB]: [3]<0 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [4, 3]]>
+DalvikVM - [BB]: [4]<3 MOV,CONST,dst=r3,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: [5]<0 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [4, 3]]>
+DalvikVM - [BB]: [6]<0 MOV,RESULT,dst=r2,type=java.lang.Object>
+DalvikVM - [BB]: [7]<0 ARITHMETIC,CHECK-AND-CAST,dst=r2,type=android.telephony.TelephonyManager>
+DalvikVM - [BB]: [8]<0 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>
+DalvikVM - [BB]: [9]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [10]<0 INVOKE,DIRECT,extra=[de.ecspride.ImplicitFlow1/obfuscateIMEI[java.lang.String], [4, 0]]>
+DalvikVM - [BB]: [11]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [12]<0 INVOKE,DIRECT,extra=[de.ecspride.ImplicitFlow1/writeToLog[java.lang.String], [4, 1]]>
+DalvikVM - [BB]: [13]<0 INVOKE,DIRECT,extra=[de.ecspride.ImplicitFlow1/copyIMEI[java.lang.String], [4, 0]]>
+DalvikVM - [BB]: [14]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [15]<0 INVOKE,DIRECT,extra=[de.ecspride.ImplicitFlow1/writeToLog[java.lang.String], [4, 1]]>
+DalvikVM - [BB]: [16]<0 RETURN,VOID>
+DalvikVM - [WARN]: ar -2, (Activity:instance number 1@de.ecspride.ImplicitFlow1, de.ecspride.ImplicitFlow1)
+DalvikVM - [WARN]: ar -2, (null, android.os.Bundle)
+newStackFrame - [BB]: New Stack Frame: StackFrame de.ecspride.ImplicitFlow1/onCreate[android.os.Bundle]
+newStackFrame - [BB]: Stack: []
+Activity - [BB]: Intent null
+DalvikVM - [MSG]: Begin run instrumented methods!
+DalvikVM - [BB]: Add frames [StackFrame de.ecspride.ImplicitFlow1/onCreate[android.os.Bundle]]
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[4, 5]> at de.ecspride.ImplicitFlow1/onCreate[android.os.Bundle]
+DalvikVM - [WARN]: ar 4, (Activity:instance number 1@de.ecspride.ImplicitFlow1, de.ecspride.ImplicitFlow1)
+Executor - [DEBUG]: params: Activity:instance number 1@de.ecspride.ImplicitFlow1
+DalvikVM - [WARN]: ar 5, (null, android.os.Bundle)
+Executor - [DEBUG]: params: null
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 HALT,SUPER,extra=[null, [4, 5]]> at de.ecspride.ImplicitFlow1/onCreate[android.os.Bundle]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_HALT -> jump set pc to 2
+Executor - [MSG]: Cannot resolve the invocation
+TaintSumBranch - [BB]: Not a taint op <1 HALT,SUPER,extra=[null, [4, 5]]>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040> at de.ecspride.ImplicitFlow1/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Mov const begin <2 MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?2130903040>
+DalvikVM - [WARN]: ar 3, (2130903040, void)
+Executor - [DEBUG]: data: 2130903040 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 3
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 INVOKE,VIRTUAL,extra=[android.app.Activity/setContentView[int], [4, 3]]> at de.ecspride.ImplicitFlow1/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: Activity:instance number 1@de.ecspride.ImplicitFlow1
+Executor - [DEBUG]: Reflction class: class android.app.Activity
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg3: 2130903040
+Executor - [DEBUG]: Expected para type: int
+Executor - [DEBUG]: Real para int, value: 2130903040
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: Activity:instance number 1@de.ecspride.ImplicitFlow1, from class: class android.app.Activity
+DalvikVM - [WARN]: ar -1, (null, void)
+Executor - [MSG]: Reflction invocation public void android.app.Activity.setContentView(int)
+DalvikVM - [BB]: Set reflective call: public void android.app.Activity.setContentView(int)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 4
+TaintSumBranch - [BB]: <android.app.Activity: void setContentView(int)>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.app.Activity: void setContentView(int)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <4 MOV,CONST,dst=r3,type=java.lang.String,extra="phone"> at de.ecspride.ImplicitFlow1/onCreate[android.os.Bundle]
+Executor - [DEBUG]: Mov const begin <4 MOV,CONST,dst=r3,type=java.lang.String,extra="phone">
+DalvikVM - [WARN]: ar 3 (2130903040, void), (phone, java.lang.String)
+Executor - [DEBUG]: data: phone class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 5
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <5 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [4, 3]]> at de.ecspride.ImplicitFlow1/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: Activity:instance number 1@de.ecspride.ImplicitFlow1
+Executor - [DEBUG]: Reflction class: class android.content.Context
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg3: phone
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: Activity:instance number 1@de.ecspride.ImplicitFlow1, from class: class android.app.Activity
+DalvikVM - [WARN]: ar -1, (android.telephony.TelephonyManager@20f92649, java.lang.Object)
+Executor - [DEBUG]: Return data: android.telephony.TelephonyManager@20f92649 ,class android.telephony.TelephonyManager
+Executor - [MSG]: Reflction invocation public java.lang.Object android.content.Context.getSystemService(java.lang.String)
+DalvikVM - [BB]: Set reflective call: public java.lang.Object android.content.Context.getSystemService(java.lang.String)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 6
+TaintSumBranch - [BB]: <android.content.Context: java.lang.Object getSystemService(java.lang.String)>
+TaintSumBranch - [DEBUG]: Not a taint call: <android.content.Context: java.lang.Object getSystemService(java.lang.String)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <6 MOV,RESULT,dst=r2,type=java.lang.Object> at de.ecspride.ImplicitFlow1/onCreate[android.os.Bundle]
+DalvikVM - [WARN]: ar 2, (android.telephony.TelephonyManager@20f92649, java.lang.Object)
+OP_MOV_RESULT - [BB]: Result data: android.telephony.TelephonyManager@20f92649
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.TelephonyManager@20f92649, type: java.lang.Object, to [reg 2@ImplicitFlow1/onCreate]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 7
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <7 ARITHMETIC,CHECK-AND-CAST,dst=r2,type=android.telephony.TelephonyManager> at de.ecspride.ImplicitFlow1/onCreate[android.os.Bundle]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARITHETIC -> jump set pc to 8
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]> at de.ecspride.ImplicitFlow1/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: android.telephony.TelephonyManager@20f92649
+Executor - [DEBUG]: Reflction class: class android.telephony.TelephonyManager
+DalvikVM - [WARN]: ar -1, (359874043116909, java.lang.String)
+Executor - [DEBUG]: Return data: 359874043116909 ,class java.lang.String
+Executor - [MSG]: Reflction invocation public java.lang.String android.telephony.TelephonyManager.getDeviceId()
+DalvikVM - [BB]: Set reflective call: public java.lang.String android.telephony.TelephonyManager.getDeviceId()
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 9
+TaintSumBranch - [BB]: <android.telephony.TelephonyManager: java.lang.String getDeviceId()>
+TaintSumBranch - [WARN]: Found a tainted return value!
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Global RetReg]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <9 MOV,RESULT,dst=r0,type=java.lang.Object> at de.ecspride.ImplicitFlow1/onCreate[android.os.Bundle]
+DalvikVM - [WARN]: ar 0, (359874043116909, java.lang.String)
+OP_MOV_RESULT - [BB]: Result data: 359874043116909
+OP_MOV_RESULT - [DEBUG]: Result data: 359874043116909, type: java.lang.String, to [reg 0@ImplicitFlow1/onCreate]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 10
+TaintSumBranch - [BB]: <8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>
+TaintSumBranch - [BB]: Add reg 0 due to ret reg.
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 0@ImplicitFlow1/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <10 INVOKE,DIRECT,extra=[de.ecspride.ImplicitFlow1/obfuscateIMEI[java.lang.String], [4, 0]]> at de.ecspride.ImplicitFlow1/onCreate[android.os.Bundle]
+Executor - [MSG]: arg0 obj: Activity:instance number 1@de.ecspride.ImplicitFlow1
+Executor - [WARN]: Reflection error: de.ecspride.ImplicitFlow1
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 11
+DalvikVM - [BB]: New method call: de.ecspride.ImplicitFlow1/obfuscateIMEI[java.lang.String]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[8, 9]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r4,type=java.lang.String,extra="">
+DalvikVM - [BB]: [2]<0 INVOKE,VIRTUAL,extra=[java.lang.String/toCharArray[], [9]]>
+DalvikVM - [BB]: [3]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [4]<0 ARITHMETIC,ARRAY_LENGTH,dst=r3,r0=r0,type=int>
+DalvikVM - [BB]: [5]<4 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [6]<0 IF,GE,r0=r2,r1=r3,extra=index:122>
+DalvikVM - [BB]: [7]<0 ARRAY,AGET,dst=r1,r0=r0,r1=r2,type=char>
+DalvikVM - [BB]: [8]<0 SWITCH,r0=r1,extra={51=52, 50=42, 49=32, 48=22, 55=92, 54=82, 53=72, 52=62, 57=112, 56=102}>
+DalvikVM - [BB]: [9]<0 STATIC,SGET,r0=r5,type=java.lang.Object,extra=(java.lang.System, err)>
+DalvikVM - [BB]: [10]<0 NEW,INSTANCE,dst=r6,type=java.lang.StringBuilder>
+DalvikVM - [BB]: [11]<0 INVOKE,DIRECT,extra=[java.lang.StringBuilder/<init>[], [6]]>
+DalvikVM - [BB]: [12]<11 MOV,CONST,dst=r7,type=java.lang.String,extra="Problem in obfuscateIMEI for character: ">
+DalvikVM - [BB]: [13]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [6, 7]]>
+DalvikVM - [BB]: [14]<0 MOV,RESULT,dst=r6,type=java.lang.Object>
+DalvikVM - [BB]: [15]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[char], [6, 1]]>
+DalvikVM - [BB]: [16]<0 MOV,RESULT,dst=r6,type=java.lang.Object>
+DalvikVM - [BB]: [17]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/toString[], [6]]>
+DalvikVM - [BB]: [18]<0 MOV,RESULT,dst=r6,type=java.lang.Object>
+DalvikVM - [BB]: [19]<0 INVOKE,VIRTUAL,extra=[java.io.PrintStream/println[java.lang.String], [5, 6]]>
+DalvikVM - [BB]: [20]<0 ARITHMETIC,ADD,dst=r2,r0=r2,extra=class patdroid.core.PrimitiveInfo?1>
+DalvikVM - [BB]: [21]<0 GOTO,extra=index:6>
+DalvikVM - [BB]: [22]<0 NEW,INSTANCE,dst=r5,type=java.lang.StringBuilder>
+DalvikVM - [BB]: [23]<0 INVOKE,DIRECT,extra=[java.lang.StringBuilder/<init>[], [5]]>
+DalvikVM - [BB]: [24]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [5, 4]]>
+DalvikVM - [BB]: [25]<0 MOV,RESULT,dst=r5,type=java.lang.Object>
+DalvikVM - [BB]: [26]<25 MOV,CONST,dst=r6,type=void,extra=class patdroid.core.PrimitiveInfo?97>
+DalvikVM - [BB]: [27]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[char], [5, 6]]>
+DalvikVM - [BB]: [28]<0 MOV,RESULT,dst=r5,type=java.lang.Object>
+DalvikVM - [BB]: [29]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/toString[], [5]]>
+DalvikVM - [BB]: [30]<0 MOV,RESULT,dst=r4,type=java.lang.Object>
+DalvikVM - [BB]: [31]<0 GOTO,extra=index:20>
+DalvikVM - [BB]: [32]<0 NEW,INSTANCE,dst=r5,type=java.lang.StringBuilder>
+DalvikVM - [BB]: [33]<0 INVOKE,DIRECT,extra=[java.lang.StringBuilder/<init>[], [5]]>
+DalvikVM - [BB]: [34]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [5, 4]]>
+DalvikVM - [BB]: [35]<0 MOV,RESULT,dst=r5,type=java.lang.Object>
+DalvikVM - [BB]: [36]<35 MOV,CONST,dst=r6,type=void,extra=class patdroid.core.PrimitiveInfo?98>
+DalvikVM - [BB]: [37]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[char], [5, 6]]>
+DalvikVM - [BB]: [38]<0 MOV,RESULT,dst=r5,type=java.lang.Object>
+DalvikVM - [BB]: [39]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/toString[], [5]]>
+DalvikVM - [BB]: [40]<0 MOV,RESULT,dst=r4,type=java.lang.Object>
+DalvikVM - [BB]: [41]<0 GOTO,extra=index:20>
+DalvikVM - [BB]: [42]<0 NEW,INSTANCE,dst=r5,type=java.lang.StringBuilder>
+DalvikVM - [BB]: [43]<0 INVOKE,DIRECT,extra=[java.lang.StringBuilder/<init>[], [5]]>
+DalvikVM - [BB]: [44]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [5, 4]]>
+DalvikVM - [BB]: [45]<0 MOV,RESULT,dst=r5,type=java.lang.Object>
+DalvikVM - [BB]: [46]<45 MOV,CONST,dst=r6,type=void,extra=class patdroid.core.PrimitiveInfo?99>
+DalvikVM - [BB]: [47]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[char], [5, 6]]>
+DalvikVM - [BB]: [48]<0 MOV,RESULT,dst=r5,type=java.lang.Object>
+DalvikVM - [BB]: [49]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/toString[], [5]]>
+DalvikVM - [BB]: [50]<0 MOV,RESULT,dst=r4,type=java.lang.Object>
+DalvikVM - [BB]: [51]<0 GOTO,extra=index:20>
+DalvikVM - [BB]: [52]<0 NEW,INSTANCE,dst=r5,type=java.lang.StringBuilder>
+DalvikVM - [BB]: [53]<0 INVOKE,DIRECT,extra=[java.lang.StringBuilder/<init>[], [5]]>
+DalvikVM - [BB]: [54]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [5, 4]]>
+DalvikVM - [BB]: [55]<0 MOV,RESULT,dst=r5,type=java.lang.Object>
+DalvikVM - [BB]: [56]<55 MOV,CONST,dst=r6,type=void,extra=class patdroid.core.PrimitiveInfo?100>
+DalvikVM - [BB]: [57]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[char], [5, 6]]>
+DalvikVM - [BB]: [58]<0 MOV,RESULT,dst=r5,type=java.lang.Object>
+DalvikVM - [BB]: [59]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/toString[], [5]]>
+DalvikVM - [BB]: [60]<0 MOV,RESULT,dst=r4,type=java.lang.Object>
+DalvikVM - [BB]: [61]<0 GOTO,extra=index:20>
+DalvikVM - [BB]: [62]<0 NEW,INSTANCE,dst=r5,type=java.lang.StringBuilder>
+DalvikVM - [BB]: [63]<0 INVOKE,DIRECT,extra=[java.lang.StringBuilder/<init>[], [5]]>
+DalvikVM - [BB]: [64]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [5, 4]]>
+DalvikVM - [BB]: [65]<0 MOV,RESULT,dst=r5,type=java.lang.Object>
+DalvikVM - [BB]: [66]<65 MOV,CONST,dst=r6,type=void,extra=class patdroid.core.PrimitiveInfo?101>
+DalvikVM - [BB]: [67]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[char], [5, 6]]>
+DalvikVM - [BB]: [68]<0 MOV,RESULT,dst=r5,type=java.lang.Object>
+DalvikVM - [BB]: [69]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/toString[], [5]]>
+DalvikVM - [BB]: [70]<0 MOV,RESULT,dst=r4,type=java.lang.Object>
+DalvikVM - [BB]: [71]<0 GOTO,extra=index:20>
+DalvikVM - [BB]: [72]<0 NEW,INSTANCE,dst=r5,type=java.lang.StringBuilder>
+DalvikVM - [BB]: [73]<0 INVOKE,DIRECT,extra=[java.lang.StringBuilder/<init>[], [5]]>
+DalvikVM - [BB]: [74]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [5, 4]]>
+DalvikVM - [BB]: [75]<0 MOV,RESULT,dst=r5,type=java.lang.Object>
+DalvikVM - [BB]: [76]<75 MOV,CONST,dst=r6,type=void,extra=class patdroid.core.PrimitiveInfo?102>
+DalvikVM - [BB]: [77]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[char], [5, 6]]>
+DalvikVM - [BB]: [78]<0 MOV,RESULT,dst=r5,type=java.lang.Object>
+DalvikVM - [BB]: [79]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/toString[], [5]]>
+DalvikVM - [BB]: [80]<0 MOV,RESULT,dst=r4,type=java.lang.Object>
+DalvikVM - [BB]: [81]<0 GOTO,extra=index:20>
+DalvikVM - [BB]: [82]<0 NEW,INSTANCE,dst=r5,type=java.lang.StringBuilder>
+DalvikVM - [BB]: [83]<0 INVOKE,DIRECT,extra=[java.lang.StringBuilder/<init>[], [5]]>
+DalvikVM - [BB]: [84]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [5, 4]]>
+DalvikVM - [BB]: [85]<0 MOV,RESULT,dst=r5,type=java.lang.Object>
+DalvikVM - [BB]: [86]<85 MOV,CONST,dst=r6,type=void,extra=class patdroid.core.PrimitiveInfo?103>
+DalvikVM - [BB]: [87]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[char], [5, 6]]>
+DalvikVM - [BB]: [88]<0 MOV,RESULT,dst=r5,type=java.lang.Object>
+DalvikVM - [BB]: [89]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/toString[], [5]]>
+DalvikVM - [BB]: [90]<0 MOV,RESULT,dst=r4,type=java.lang.Object>
+DalvikVM - [BB]: [91]<0 GOTO,extra=index:20>
+DalvikVM - [BB]: [92]<0 NEW,INSTANCE,dst=r5,type=java.lang.StringBuilder>
+DalvikVM - [BB]: [93]<0 INVOKE,DIRECT,extra=[java.lang.StringBuilder/<init>[], [5]]>
+DalvikVM - [BB]: [94]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [5, 4]]>
+DalvikVM - [BB]: [95]<0 MOV,RESULT,dst=r5,type=java.lang.Object>
+DalvikVM - [BB]: [96]<95 MOV,CONST,dst=r6,type=void,extra=class patdroid.core.PrimitiveInfo?104>
+DalvikVM - [BB]: [97]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[char], [5, 6]]>
+DalvikVM - [BB]: [98]<0 MOV,RESULT,dst=r5,type=java.lang.Object>
+DalvikVM - [BB]: [99]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/toString[], [5]]>
+DalvikVM - [BB]: [100]<0 MOV,RESULT,dst=r4,type=java.lang.Object>
+DalvikVM - [BB]: [101]<0 GOTO,extra=index:20>
+DalvikVM - [BB]: [102]<0 NEW,INSTANCE,dst=r5,type=java.lang.StringBuilder>
+DalvikVM - [BB]: [103]<0 INVOKE,DIRECT,extra=[java.lang.StringBuilder/<init>[], [5]]>
+DalvikVM - [BB]: [104]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [5, 4]]>
+DalvikVM - [BB]: [105]<0 MOV,RESULT,dst=r5,type=java.lang.Object>
+DalvikVM - [BB]: [106]<105 MOV,CONST,dst=r6,type=void,extra=class patdroid.core.PrimitiveInfo?105>
+DalvikVM - [BB]: [107]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[char], [5, 6]]>
+DalvikVM - [BB]: [108]<0 MOV,RESULT,dst=r5,type=java.lang.Object>
+DalvikVM - [BB]: [109]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/toString[], [5]]>
+DalvikVM - [BB]: [110]<0 MOV,RESULT,dst=r4,type=java.lang.Object>
+DalvikVM - [BB]: [111]<0 GOTO,extra=index:20>
+DalvikVM - [BB]: [112]<0 NEW,INSTANCE,dst=r5,type=java.lang.StringBuilder>
+DalvikVM - [BB]: [113]<0 INVOKE,DIRECT,extra=[java.lang.StringBuilder/<init>[], [5]]>
+DalvikVM - [BB]: [114]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[java.lang.String], [5, 4]]>
+DalvikVM - [BB]: [115]<0 MOV,RESULT,dst=r5,type=java.lang.Object>
+DalvikVM - [BB]: [116]<115 MOV,CONST,dst=r6,type=void,extra=class patdroid.core.PrimitiveInfo?106>
+DalvikVM - [BB]: [117]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/append[char], [5, 6]]>
+DalvikVM - [BB]: [118]<0 MOV,RESULT,dst=r5,type=java.lang.Object>
+DalvikVM - [BB]: [119]<0 INVOKE,VIRTUAL,extra=[java.lang.StringBuilder/toString[], [5]]>
+DalvikVM - [BB]: [120]<0 MOV,RESULT,dst=r4,type=java.lang.Object>
+DalvikVM - [BB]: [121]<0 GOTO,extra=index:20>
+DalvikVM - [BB]: [122]<0 RETURN,VALUE,r0=r4,type=java.lang.Object>
+newStackFrame - [BB]: New Stack Frame: StackFrame de.ecspride.ImplicitFlow1/obfuscateIMEI[java.lang.String], pc 11 stored. 
+newStackFrame - [BB]: Add frame StackFrame de.ecspride.ImplicitFlow1/obfuscateIMEI[java.lang.String]
+newStackFrame - [BB]: Stack: [StackFrame de.ecspride.ImplicitFlow1/onCreate[android.os.Bundle], StackFrame de.ecspride.ImplicitFlow1/obfuscateIMEI[java.lang.String]]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 0@ImplicitFlow1/onCreate]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[8, 9]> at de.ecspride.ImplicitFlow1/obfuscateIMEI[java.lang.String]
+DalvikVM - [WARN]: ar 8, (Activity:instance number 1@de.ecspride.ImplicitFlow1, de.ecspride.ImplicitFlow1)
+Executor - [DEBUG]: params: Activity:instance number 1@de.ecspride.ImplicitFlow1
+DalvikVM - [WARN]: ar 9, (359874043116909, java.lang.String)
+Executor - [DEBUG]: params: 359874043116909
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+TaintSumBranch - [BB]: Copy 359874043116909 as tainted.
+TaintSumBranch - [BB]: Add [reg 9@ImplicitFlow1/obfuscateIMEI] as tainted due to [reg 0@ImplicitFlow1/onCreate]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 9@ImplicitFlow1/obfuscateIMEI]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 MOV,CONST,dst=r4,type=java.lang.String,extra=""> at de.ecspride.ImplicitFlow1/obfuscateIMEI[java.lang.String]
+Executor - [DEBUG]: Mov const begin <1 MOV,CONST,dst=r4,type=java.lang.String,extra="">
+DalvikVM - [WARN]: ar 4, (, java.lang.String)
+Executor - [DEBUG]: data:  class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 2
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 9@ImplicitFlow1/obfuscateIMEI]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 INVOKE,VIRTUAL,extra=[java.lang.String/toCharArray[], [9]]> at de.ecspride.ImplicitFlow1/obfuscateIMEI[java.lang.String]
+Executor - [MSG]: arg0 obj: 359874043116909
+Executor - [DEBUG]: Reflction class: class java.lang.String
+DalvikVM - [WARN]: ar -1, ([C@799f4192, [C)
+Executor - [DEBUG]: Return data: [C@799f4192 ,class [C
+Executor - [MSG]: Reflction invocation public char[] java.lang.String.toCharArray()
+DalvikVM - [BB]: Set reflective call: public char[] java.lang.String.toCharArray()
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 3
+TaintSumBranch - [BB]: <java.lang.String: [C toCharArray()>
+TaintSumBranch - [WARN]: Found a tainted return val!
+Results - [MSG]: New recorded tainted field: toCharArray
+TaintSumBranch - [DEBUG]: Not a taint call: <java.lang.String: [C toCharArray()>
+TaintSumBranch - [WARN]: Found a tainted return val!
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Global RetReg]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 9@ImplicitFlow1/obfuscateIMEI]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [C@799f4192=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 MOV,RESULT,dst=r0,type=java.lang.Object> at de.ecspride.ImplicitFlow1/obfuscateIMEI[java.lang.String]
+DalvikVM - [WARN]: ar 0, ([C@799f4192, [C)
+OP_MOV_RESULT - [BB]: Result data: [C@799f4192
+OP_MOV_RESULT - [DEBUG]: Result data: [C@799f4192, type: [C, to [reg 0@ImplicitFlow1/obfuscateIMEI]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 4
+TaintSumBranch - [BB]: <8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>
+TaintSumBranch - [BB]: Add reg 0 due to ret reg.
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 0@ImplicitFlow1/obfuscateIMEI]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 9@ImplicitFlow1/obfuscateIMEI]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [C@799f4192=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <4 ARITHMETIC,ARRAY_LENGTH,dst=r3,r0=r0,type=int> at de.ecspride.ImplicitFlow1/obfuscateIMEI[java.lang.String]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARITHETIC -> jump set pc to 5
+DalvikVM - [WARN]: ar 3, (15, int)
+OP_A_ARRAY_LENGTH - [DEBUG]: Array len 15
+DalvikVM - [WARN]: ar 3 (15, int), (15, int)
+OP_A_ARRAY_LENGTH - [DEBUG]: Array len 15
+TaintSumBranch - [BB]: Not a taint op <4 ARITHMETIC,ARRAY_LENGTH,dst=r3,r0=r0,type=int>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 0@ImplicitFlow1/obfuscateIMEI]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 9@ImplicitFlow1/obfuscateIMEI]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [C@799f4192=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <5 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0> at de.ecspride.ImplicitFlow1/obfuscateIMEI[java.lang.String]
+Executor - [DEBUG]: Mov const begin <5 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [WARN]: ar 2, (0, void)
+Executor - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 6
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 0@ImplicitFlow1/obfuscateIMEI]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 9@ImplicitFlow1/obfuscateIMEI]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [C@799f4192=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <6 IF,GE,r0=r2,r1=r3,extra=index:122> at de.ecspride.ImplicitFlow1/obfuscateIMEI[java.lang.String]
+OP_CMP - [DEBUG]: r1 data 15
+OP_CMP - [DEBUG]: r1 type int
+OP_CMP - [BB]: Types: void, int
+OP_CMP - [DEBUG]: r0 data 0
+OP_CMP - [DEBUG]: r0 type void
+Executor - [DEBUG]: Ops: 0, 15
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_IF_GE -> jump set pc to 7
+Executor - [DEBUG]: not ge: <6 IF,GE,r0=r2,r1=r3,extra=index:122>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 0@ImplicitFlow1/obfuscateIMEI]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 9@ImplicitFlow1/obfuscateIMEI]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [C@799f4192=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <7 ARRAY,AGET,dst=r1,r0=r0,r1=r2,type=char> at de.ecspride.ImplicitFlow1/obfuscateIMEI[java.lang.String]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARRAY_GET -> jump set pc to 8
+Executor - [BB]: Array: [C@799f4192
+Executor - [BB]: Length: 15
+Executor - [BB]: Index: 0
+Executor - [DEBUG]: Elem: 3 at 0 of [C@799f4192
+DalvikVM - [WARN]: ar 1, (3, char)
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {3=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 1@ImplicitFlow1/obfuscateIMEI]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 0@ImplicitFlow1/obfuscateIMEI]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 9@ImplicitFlow1/obfuscateIMEI]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [C@799f4192=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <8 SWITCH,r0=r1,extra={51=52, 50=42, 49=32, 48=22, 55=92, 54=82, 53=72, 52=62, 57=112, 56=102}> at de.ecspride.ImplicitFlow1/obfuscateIMEI[java.lang.String]
+Executor - [MSG]: data: 3
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SWITCH -> jump set pc to 9
+TaintSumBranch - [BB]: Not a taint op <8 SWITCH,r0=r1,extra={51=52, 50=42, 49=32, 48=22, 55=92, 54=82, 53=72, 52=62, 57=112, 56=102}>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {3=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 1@ImplicitFlow1/obfuscateIMEI]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, 359874043116909=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 0@ImplicitFlow1/obfuscateIMEI]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [reg 9@ImplicitFlow1/obfuscateIMEI]=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>, [C@799f4192=<8 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [2]]>}
+Executor - [MSG]: 
+
+Executor - [MSG]: <9 STATIC,SGET,r0=r5,type=java.lang.Object,extra=(java.lang.System, err)> at de.ecspride.ImplicitFlow1/obfuscateIMEI[java.lang.String]
