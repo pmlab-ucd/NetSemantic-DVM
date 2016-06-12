@@ -2418,6 +2418,8 @@ public class Executor {
 			} else {
 				if (mi.myClass.fullName.startsWith("java.io.ObjectInputStream")) {
 					Log.warn(TAG, "Error in reflection: " + e.getMessage());
+				} else if (mi.isConstructor() && mi.myClass.fullName.startsWith("java.lang.String")) {
+					Log.warn(TAG, "Error in reflection: " + e.getMessage());
 				} else {
 					Log.err(TAG, "Error in reflection: " + e.getMessage());
 				}
@@ -2545,11 +2547,13 @@ public class Executor {
 					params[j] = argData;
 					// argData.getClass().getInterfaces()
 				} else {
-					// FIXME null
 					Log.warn(TAG, "Mismatch type! arg " + i
 							+ ", real para type: " + argData.getClass()
 							+ ", expected para type: " + argsClass[j]);
-					if (mi.paramTypes[j].isInterface()) {
+					if (argData instanceof PrimitiveInfo && ((PrimitiveInfo) argData).intValue() == 0) {
+						// Check whether is null
+						params[j] = null;
+					} else if (mi.paramTypes[j].isInterface()) {
 						params[j] = argData;
 						// argsClass[j] = argData.getClass();
 						argsClass[j] = DVMObject.class;
@@ -2593,9 +2597,10 @@ public class Executor {
 						Log.warn(TAG, "Call the mirror method instead! "
 								+ mi.paramTypes[j]
 								+ " is replaced by a dvmObj.");
+					} else {
+						argsClass[j] = argData.getClass();
+						params[j] = argData;
 					}
-
-					// params[j] = argData;
 				}
 			}
 		}

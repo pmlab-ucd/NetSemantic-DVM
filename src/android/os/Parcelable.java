@@ -1,14 +1,21 @@
 package android.os;
 
-import patdroid.core.ClassInfo;
-import fu.hao.trust.dvm.DVMObject;
-import fu.hao.trust.dvm.DalvikVM;
+public interface Parcelable {
+    int PARCELABLE_WRITE_RETURN_VALUE = 1;
+    int CONTENTS_FILE_DESCRIPTOR = 1;
 
-public class Parcelable extends DVMObject {
+    int describeContents();
 
-	public Parcelable(DalvikVM vm, ClassInfo type) {
-		super(vm, type);
-		// TODO Auto-generated constructor stub
-	}
+    void writeToParcel(Parcel var1, int var2);
+
+    public interface ClassLoaderCreator<T> extends Parcelable.Creator<T> {
+        T createFromParcel(Parcel var1, ClassLoader var2);
+    }
+
+    public interface Creator<T> {
+        T createFromParcel(Parcel var1);
+
+        T[] newArray(int var1);
+    }
 
 }

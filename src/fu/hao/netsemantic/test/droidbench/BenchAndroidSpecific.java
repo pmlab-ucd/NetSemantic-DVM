@@ -74,4 +74,17 @@ public class BenchAndroidSpecific {
 		assertEquals(true, Results.results.contains(res));
 	}
 	
+	@Test
+	public void Parcel1() {
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Parcel1/app/";
+		args[1] = "srcEventChains";
+		Main.main(args);
+		assertEquals(false, Results.results.isEmpty());
+		Map<String, String> res = new HashMap<>();
+		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
+				tm.getDeviceId());
+		assertEquals(true, Results.results.contains(res));
+	}
+	
+	
 }
