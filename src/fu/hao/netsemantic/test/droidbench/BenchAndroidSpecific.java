@@ -86,5 +86,17 @@ public class BenchAndroidSpecific {
 		assertEquals(true, Results.results.contains(res));
 	}
 	
+	@Test
+	public void PublicAPIField1() {
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/PublicAPIField1/app/";
+		args[1] = "srcEventChains";
+		Main.main(args);
+		assertEquals(false, Results.results.isEmpty());
+		Map<String, String> res = new HashMap<>();
+		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
+				"3.5987404E73116909.0");
+		assertEquals(true, Results.results.contains(res));
+	}
+	
 	
 }
