@@ -1501,5 +1501,9 @@ public class DalvikVM {
 	public void setApplication(Application application) {
 		this.application = application;
 	}
+	
+    public static DVMObject newInstance(ClassInfo type) {
+        return Settings.getVM().newVMObject(type);
+    }
 
 }

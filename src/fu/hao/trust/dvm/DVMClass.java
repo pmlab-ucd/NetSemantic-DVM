@@ -87,5 +87,9 @@ public class DVMClass {
 		DVMClass newClass = new DVMClass(vm, type);
 		return newClass;
 	}
+	
+    public DVMObject newInstance() {
+        return vm.newVMObject(type);
+    }
 
 }

@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import android.telephony.TelephonyManager;
@@ -18,7 +19,8 @@ public class BenchAndroidSpecific {
 	
 	TelephonyManager tm;
 
-	public BenchAndroidSpecific() {
+	@Before
+	public void prepare() {
 		Settings.logLevel = 0;
 		args[3] = "ATaint";
 		tm = new TelephonyManager();
