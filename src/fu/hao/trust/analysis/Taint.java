@@ -1204,6 +1204,53 @@ public class Taint extends Plugin {
 			return outs;
 		}
 	}
+	
+	private Map<String, Instruction> switchTainted = new HashMap<>();
+	
+	class TAINT_OP_SWITCH implements Rule {
+		final String tag = getClass().getSimpleName();
+
+		@Override
+		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
+				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
+			Map<String, Map<Object, Instruction>> outs = ins;
+			if (vm.getReg(inst.r0).isUsed()) {
+				for (String tag : ins.keySet()) {
+					Map<Object, Instruction> in = ins.get(tag);
+					Map<Object, Instruction> out = new HashMap<>(in);
+					if (in.containsKey(vm.getReg(inst.r0))) {
+						switchTainted.put(tag, in.get(vm.getReg(inst.r0)));
+						Log.msg(tag,
+								"SwitchTainted as tainted due to field "
+										+ vm.getReg(inst.r0));
+					} else if (in.containsKey(vm.getReg(inst.r0).getData())) {
+						switchTainted.put(tag, in.get(vm.getReg(inst.r0).getData()));
+						Log.msg(tag,
+								"SwitchTainted as tainted due to field "
+										+ vm.getReg(inst.r0).getData());
+					} else {
+						// value register, has been assigned to new value
+						switchTainted.remove(tag);
+					}
+					outs.put(tag, out);
+				}
+			}
+
+			return outs;
+		}
+	}
+	
+	class TAINT_OP_GOTO implements Rule {
+		final String tag = getClass().getSimpleName();
+
+		@Override
+		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
+				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
+			// FIXME is it a correct way?
+			switchTainted.clear();;
+			return ins;
+		}
+	}
 
 	public Taint() {
 		configs = new HashMap<>();
@@ -1212,6 +1259,8 @@ public class Taint extends Plugin {
 		byteCodes.put(0x08, new TAINT_OP_IF());
 		byteCodes.put(0x0C, new TAINT_OP_INVOKE());
 		byteCodes.put(0x02, new TAINT_OP_RETURN());
+		byteCodes.put(0x0E, new TAINT_OP_SWITCH());
+		byteCodes.put(0x06, new TAINT_OP_GOTO());
 
 		auxByteCodes.put(0x01, new TAINT_OP_MOV_REG());
 		auxByteCodes.put(0x02, new TAINT_OP_MOV_CONST());
@@ -1290,6 +1339,13 @@ public class Taint extends Plugin {
 			Log.bb(tag, "Not a taint op " + inst);
 			outs = new HashMap<>(ins);
 		}
+		
+		for (String tag : outs.keySet()) {
+			if (switchTainted.containsKey(tag) && !vm.getAssigned()[0].equals(-1)) {
+				outs.get(tag).put(vm.getAssigned()[0], switchTainted.get(tag));
+				Log.warn(tag, "Add " + vm.getAssigned()[0] + " as tainted due to switchTaitned.");
+			}			
+		}
 
 		for (Map<Object, Instruction> out : outs.values()) {
 			if (out.isEmpty()) {
@@ -1356,6 +1412,7 @@ public class Taint extends Plugin {
 				}
 			}
 		}
+		
 
 		setCurrtRes(outs);
 		return outs;

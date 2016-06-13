@@ -34,13 +34,13 @@ public class Test {
 		args[3] = "ATaint";
 		Settings.logLevel = 0;
 		
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Reflection4/app/";
-		args[1] = "srcEventChains";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_Loop1/app/";
+		args[1] = "de.ecspride.LoopExample1";
+		args[2] = "onCreate";
 		Main.main(args);
-		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
 		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
-				tm.getDeviceId());
+				"3_5_9_8_7_4_0_4_3_1_1_6_9_0_9_");
 		assertEquals(true, Results.results.contains(res));
 	}
 	

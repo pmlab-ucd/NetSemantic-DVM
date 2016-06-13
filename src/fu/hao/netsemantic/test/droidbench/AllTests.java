@@ -10,7 +10,7 @@ import org.junit.runners.Suite.SuiteClasses;
 		Location2Test.class, Location3Test.class, MethodOverride1.class,
 		MultiHandlersTest.class, BenchIACTests.class, BenchAliasing.class,
 		BenchICCTests.class, BenchCallbacks.class, BenchReflectionTests.class,
-		BenchJavaTests.class, BenchLifecycleTests.class,
+		BenchJavaTests.class, BenchLifecycleTests.class, BenchImplicitTests.class,
 		BenchThreadingTests.class, BenchUnknownTests.class,
 		Location1Test.class, Location2Test.class, Location3Test.class,
 		BenchAndroidSpecific.class, BenchArraysAndLists.class})

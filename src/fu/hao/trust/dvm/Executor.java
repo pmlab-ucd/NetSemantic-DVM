@@ -1695,11 +1695,12 @@ public class Executor {
 
 			try {
 				Class<?> clazz = Class.forName(pair.getFirst().toString());
-				Field field = clazz.getDeclaredField(pair.getSecond()
+				Log.bb(TAG, "Class " + clazz);
+				Field field = clazz.getField(pair.getSecond()
 						.toString());
+				Log.bb(TAG, "Field " + field);
 				// TODO only support static field now
-				ClassInfo type = ClassInfo.findOrCreateClass(vm.getReg(inst.r0)
-						.getData().getClass());
+				ClassInfo type = ClassInfo.findOrCreateClass(field.getClass());
 				vm.getReg(inst.r0).setValue(field.get(clazz), type);
 				Log.debug(TAG, "Refleciton " + vm.getReg(inst.r0).getData());
 			} catch (Exception e) {
@@ -1953,13 +1954,19 @@ public class Executor {
 					.getExtra();
 			Object data = vm.getReg(inst.r0).getData();
 			if (data instanceof PrimitiveInfo) {
+				PrimitiveInfo primitive = (PrimitiveInfo) data;
 				data = ((PrimitiveInfo) data).intValue();
+				if (primitive.isChar()) {
+					data = (int)primitive.charValue; 
+				}
+				Log.bb(TAG, "Primitive: " + data);
 			}
 
 			Log.msg(TAG, "data: " + data);
 
 			if (switchTable.keySet().contains(data)) {
 				jump(vm, switchTable.get(data));
+				Log.bb(TAG, "Jump to " + switchTable.get(data));
 				return;
 			}
 
@@ -2537,7 +2544,7 @@ public class Executor {
 					argClass = boolean.class;
 				}
 
-				Log.debug(TAG, "Real para " + argClass + ", value: "
+				Log.debug(TAG, "Real para type: " + argClass + ", value: "
 						+ params[j]);
 				argsClass[j] = argClass;
 			} else {
@@ -3305,6 +3312,7 @@ public class Executor {
 			op1 = PrimitiveInfo.fromObject(op);
 		}
 		if (type.equals(ClassInfo.primitiveChar)) {
+			Log.bb(TAG, "Char value " + (op1 == null ? 0 : op1.charValue()) + " resolved.");
 			return new Character(op1 == null ? 0 : op1.charValue());
 		} else if (type.equals(ClassInfo.primitiveBoolean)) {
 			return new Boolean(op1 == null ? false : op1.booleanValue());
