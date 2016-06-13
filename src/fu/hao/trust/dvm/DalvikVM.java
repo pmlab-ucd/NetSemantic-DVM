@@ -988,8 +988,11 @@ public class DalvikVM {
 
 	public void runInstrumentedMethods(LinkedList<StackFrame> instrumentedFrames) {
 		Log.msg(TAG, "Begin run instrumented methods!");
-		if (instrumentedFrames != null && instrumentedFrames.size() > 0) {
-			instrumentedFrames.remove(null);
+		if (instrumentedFrames == null) {
+			return;
+		}
+		instrumentedFrames.remove(null);
+		if (instrumentedFrames.size() > 0) {
 			StackFrame stopSign = getCurrStackFrame();
 			// Log.msg(TAG, getCurrtInst());
 			// Object backObj = getReturnReg().getData();
@@ -1504,6 +1507,28 @@ public class DalvikVM {
 	
     public static DVMObject newInstance(ClassInfo type) {
         return Settings.getVM().newVMObject(type);
+    }
+    
+    /**
+    * @Title: runReflectMethod
+    * @Author: Hao Fu
+    * @Description: Support MethodInfo.invoke(Object, args)
+    * @param @return  
+    * @return Object   
+    * @throws
+    */
+    public static void runReflectMethod(MethodInfo mi, Object receiver, Object... args) {
+    	DalvikVM vm = Settings.getVM();
+    	Log.msg(vm.TAG, "Run refectMethod " + mi);
+		@SuppressWarnings("unchecked")
+		Pair<Object, ClassInfo>[] arguments = (Pair<Object, ClassInfo>[]) new Pair[args.length + 1]; 
+		arguments[0] = new Pair<Object, ClassInfo>(receiver, mi.myClass);
+		for (int i = 0; i < args.length; i++) {
+			arguments[i + 1] = new Pair<Object, ClassInfo>(args[i], ClassInfo.findClass(args[i].getClass().getName()));
+		}
+		StackFrame frame = vm.newStackFrame(mi.myClass, mi, arguments, false);
+		vm.runInstrumentedMethods(frame);
+		Log.msg(vm.TAG, "Finish refectMethod " + mi);
     }
 
 }

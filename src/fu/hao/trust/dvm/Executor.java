@@ -452,10 +452,11 @@ public class Executor {
 				Method method;
 				// TODO what is static (no this) but have multiple params
 				// static invocation
+				Object retVal = null;
 				if (args.length == 0) {
 					method = clazz.getDeclaredMethod(mi.name);
-					vm.getReturnReg().setValue(method.invoke(null),
-							mi.returnType);
+					retVal = method.invoke(null);
+					
 				} else {
 					Object[] params = new Object[args.length];
 
@@ -464,7 +465,11 @@ public class Executor {
 					for (Object param : params) {
 						Log.bb(TAG, "param: " + param);
 					}
-					vm.getReturnReg().setValue(method.invoke(null, params),
+					retVal = method.invoke(null, params);
+				}
+				
+				if (retVal == null || !retVal.equals("KeepRetMark")) {
+					vm.getReturnReg().setValue(retVal,
 							mi.returnType);
 				}
 
@@ -2322,8 +2327,11 @@ public class Executor {
 								new Unknown(vm, mi.returnType), mi.returnType);
 						Log.warn(TAG, "Found noInvokeMethod " + method);
 					} else {
-						vm.getReturnReg().setValue(method.invoke(thisInstance),
-								mi.returnType);
+						Object retVal = method.invoke(thisInstance);
+						if (retVal == null || !retVal.equals("KeepRetMark")) {
+							vm.getReturnReg().setValue(retVal,
+									mi.returnType);
+						}
 					}
 				} else {
 					Log.bb(TAG, "Normal args? " + normalArg);
@@ -2339,15 +2347,19 @@ public class Executor {
 						Log.debug(TAG, "Caller obj: " + thisInstance
 								+ ", from class: "
 								+ thisInstance.getClass().toString());
-						vm.getReturnReg().setValue(
-								method.invoke(thisInstance, params),
-								mi.returnType);
+						Object retVal = method.invoke(thisInstance, params);
+						
+						if (retVal == null || !retVal.equals("KeepRetMark")) {
+							vm.getReturnReg().setValue(retVal,
+									mi.returnType);
+						}
+						
 					} else {
 						vm.getReturnReg().setValue(
 								new Unknown(vm, mi.returnType), mi.returnType);
 					}
 				}
-				if (vm.getReturnReg().getData() != null) {
+				if (vm.getReturnReg().isUsed() && vm.getReturnReg().getData() != null) {
 					Log.debug(TAG, "Return data: "
 							+ vm.getReturnReg().getData() + " ,"
 							+ vm.getReturnReg().getData().getClass());
@@ -3166,6 +3178,7 @@ public class Executor {
 				"android.myclasses.MyByteArrayOutputStream");
 		replacedInvokeList.put("java.io.ByteArrayInputStream",
 				"android.myclasses.ByteArrayInputStream");
+		replacedInvokeList.put("java.lang.reflect.Method", "patdroid.core.MethodInfo");
 	}
 
 	public void exec(DalvikVM vm, Instruction inst, ClassInfo sitClass) {
