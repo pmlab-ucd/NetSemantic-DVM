@@ -88,6 +88,8 @@ public class PackageManager {
     public static final String FEATURE_TELEVISION = "android.hardware.type.television";
     public static final String EXTRA_VERIFICATION_ID = "android.content.pm.extra.VERIFICATION_ID";
     public static final String EXTRA_VERIFICATION_RESULT = "android.content.pm.extra.VERIFICATION_RESULT";
+    
+    ApplicationInfo appInfo = new ApplicationInfo();
 
     public PackageManager() {
     	
@@ -111,7 +113,7 @@ public class PackageManager {
     }
 
     public ApplicationInfo getApplicationInfo(String var1, int var2) {
-    	throw new RuntimeException("Stub!");
+    	return appInfo;
     }
 
     public int checkPermission(String var1, String var2) {

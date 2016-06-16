@@ -86,6 +86,8 @@ public class Settings {
 	private static Queue<List<Pair<String, String>>> srcChains;
 	private static Queue<List<Pair<String, String>>> sinkChains;
 	
+	private static boolean runEntryException = false;
+	
 	private static boolean checkNewTaintedHeapLoc;
 	
 	static {
@@ -337,6 +339,14 @@ public class Settings {
 
 	public static void setCheckNewTaintedHeapLoc(boolean checkNewTaintedHeapLoc) {
 		Settings.checkNewTaintedHeapLoc = checkNewTaintedHeapLoc;
+	}
+
+	public static boolean isRunEntryException() {
+		return runEntryException;
+	}
+
+	public static void setRunEntryException(boolean runEntryException) {
+		Settings.runEntryException = runEntryException;
 	}
 
 }

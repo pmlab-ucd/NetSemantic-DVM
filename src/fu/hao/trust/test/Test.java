@@ -34,8 +34,23 @@ public class Test {
 		args[3] = "ATaint";
 		Settings.logLevel = 0;
 		
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/StaticInitialization3/app/";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/ServiceCommunication1/app/";
 		args[1] = "srcEventChains";
+		Main.main(args);
+		Map<String, String> res = new HashMap<>();
+		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
+				"Tainted: -1266614931");
+		assertEquals(true, Results.results.contains(res));
+	}
+	
+	public void DroidKunfu3() {
+		String[] args = new String[4];
+		args[3] = "ATaint";
+		Settings.logLevel = 0;
+		
+		args[0] = "D:/malwares/DroidKungFu3/255a1b74428b5615d65f39775ec7234e27bd9e74";
+		args[1] = "com.google.update.UpdateService";
+		args[2] = "onCreate";
 		Main.main(args);
 		
 		assertEquals(false, Results.results.isEmpty());

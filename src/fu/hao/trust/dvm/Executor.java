@@ -34,6 +34,8 @@ import patdroid.core.ClassInfo;
 import patdroid.core.FieldInfo;
 import patdroid.core.MethodInfo;
 import patdroid.core.PrimitiveInfo;
+import patdroid.core.TryBlockInfo;
+import patdroid.core.TryBlockInfo.ExceptionHandler;
 import patdroid.dalvik.Instruction;
 import patdroid.util.Pair;
 
@@ -645,7 +647,7 @@ public class Executor {
 	class OP_MOV_EXCEPTION implements ByteCode {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			vm.getReg(inst.rdst).copy(vm.getCurrStackFrame().exceptReg);
+			vm.getReg(inst.rdst).copy(vm.getCurrStackFrame().getExceptReg());
 			jump(vm, inst, true);
 		}
 	}
@@ -1156,6 +1158,21 @@ public class Executor {
 					type = inst.type;
 					Log.bb(TAG, "Index: " + index);
 					if (index >= Array.getLength(array)) {
+						// If the method contains catch handler
+						for (TryBlockInfo tryBlk: vm.getCurrStackFrame().method.tbs) {
+							Log.msg(TAG, "Try-catches: " + tryBlk.startInsnIndex + ", " + tryBlk.endInsnIndex);
+							for (ExceptionHandler handler : tryBlk.handlers) {
+								if (handler.exceptionType.fullName.startsWith("java.lang")) {
+									Log.warn(TAG, "Handler index: " + handler.handlerInsnIndex + ", " + handler.exceptionType);
+									vm.getCurrStackFrame().setExceptReg();
+									vm.getCurrStackFrame().getExceptReg().setValue(new DVMObject(vm, handler.exceptionType), handler.exceptionType);
+									jump(vm, handler.handlerInsnIndex);
+									return;
+								}
+							}		
+						}
+						
+						Log.err(TAG, "Index beyond the array length!");
 						Object[] newArray = new Object[2 * index];
 						for (int i = 0; i < Array.getLength(array); i++) {
 							newArray[i] = Array.get(array, i);
@@ -1900,7 +1917,7 @@ public class Executor {
 	class OP_EXCEPTION_THROW implements ByteCode {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			vm.getCurrStackFrame().exceptReg = vm.getReg(inst.r0);
+			vm.getCurrStackFrame().setExceptReg(vm.getReg(inst.r0));
 			jump(vm, inst, true);
 			// vm.backCallCtx(null);
 		}
@@ -2799,7 +2816,7 @@ public class Executor {
 		return res;
 	}
 
-	public void runMethod(ClassInfo sitClass, DalvikVM vm, MethodInfo method) {
+	public void runEntryMethod(ClassInfo sitClass, DalvikVM vm, MethodInfo method) {
 		/*
 		 * List<MethodInfo> runs = new ArrayList<>();
 		 * runs.addAll(getPreCallback(sitClass, method)); runs.add(method);
@@ -2816,10 +2833,31 @@ public class Executor {
 		 * stackFrame.setThisObj(vm.getChainThisObj()); } } }
 		 */
 		StackFrame stackFrame = vm.newStackFrame(method.myClass, method);
-		stackFrame.setThisObj(vm.newVMObject(method.myClass));
-		Log.msg(TAG, "RUN BEGIN " + method);
+		DVMObject thisObj = vm.newVMObject(method.myClass);	
+		stackFrame.setThisObj(thisObj);
+		
+		if (Settings.isRunEntryException()) {
+		// FIXME Enfore to run catch blk;
+		for (TryBlockInfo tryBlk: method.tbs) {
+			Log.msg(TAG, "Try-catches: " + tryBlk.startInsnIndex + ", " + tryBlk.endInsnIndex);
+			for (ExceptionHandler handler : tryBlk.handlers) {
+				Log.msg(TAG, "Handler index: " + handler.handlerInsnIndex + ", " + handler.exceptionType);
+				// Enfore to run the catch-blk
+				Instruction inst = new Instruction();
+				inst.opcode = Instruction.OP_GOTO;
+				inst.extra = handler.handlerInsnIndex;
+				method.insns[tryBlk.startInsnIndex] = inst;
+				stackFrame = vm.newStackFrame(method.myClass, method);
+				stackFrame.setThisObj(thisObj);
+				stackFrame.setExceptReg();
+				stackFrame.getExceptReg().setValue(new DVMObject(vm, handler.exceptionType), handler.exceptionType);
+				break;
+			}		
+		}
+		}
+		
+		Log.msg(TAG, "BEGIN RUN ENTRY: " + method);
 		run(vm);
-
 	}
 
 	public void runInstrumentedMethods(DalvikVM vm, StackFrame stopSign) {

@@ -161,7 +161,7 @@ public class DalvikVM {
 		Map<Plugin, Map<String, Map<Object, Instruction>>> pluginRes;
 		private DVMObject thisObj;
 		private Register[] regs = new Register[65536]; // locals
-		Register exceptReg; // Register to store exceptional obj.
+		private Register exceptReg; // Register to store exception.
 		private Register thisReg;
 		private Register[] callCtx;
 		private ClassInfo myClass;
@@ -398,6 +398,14 @@ public class DalvikVM {
 					Log.bb(TAG, regs[i] + ", " + regs[i].getData());
 				}
 			}
+		}
+
+		public void setExceptReg(Register exceptReg) {
+			this.exceptReg = exceptReg;
+		}
+		
+		public void setExceptReg() {
+			this.exceptReg = new Register(this, -2);
 		}
 		
 	}
@@ -879,7 +887,7 @@ public class DalvikVM {
 
 	/**
 	 * @Title: runMethod
-	 * @Author: hao
+	 * @Author: Hao Fu
 	 * @Description: For external usage.
 	 * @param apk
 	 * @param className
@@ -1026,7 +1034,7 @@ public class DalvikVM {
 			return;
 		}
 
-		executor.runMethod(sitClass, this, method);
+		executor.runEntryMethod(sitClass, this, method);
 	}
 
 	@Deprecated
@@ -1096,7 +1104,7 @@ public class DalvikVM {
 			args[i] = i;
 		}
 
-		executor.runMethod(sitClass, this, method);
+		executor.runEntryMethod(sitClass, this, method);
 	}
 
 	public boolean addEventFrame(DVMObject obj, String eventMethod) {

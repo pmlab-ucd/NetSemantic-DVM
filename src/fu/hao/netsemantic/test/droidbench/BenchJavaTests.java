@@ -200,16 +200,16 @@ public class BenchJavaTests {
 		assertEquals(true, Results.results.contains(res));
 	}
 	
-	//@Test
+	@Test
 	public void testGeneralJava_Exceptions2() {
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_Exceptions2/app/";
-		args[1] = "de.ecspride.Exceptions2";
-		args[2] = "onCreate";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_Exceptions2/app";
+		args[1] = "srcEventChains";
 		Main.main(args);
+		
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
 		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
-				"359874043116909");
+				tm.getDeviceId());
 		assertEquals(true, Results.results.contains(res));
 	}
 	

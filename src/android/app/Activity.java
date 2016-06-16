@@ -47,7 +47,7 @@ public class Activity extends ContextWrapper implements LocationListener {
 	
 	@SuppressWarnings("unchecked")
 	public void init(DalvikVM vm, ClassInfo type, Intent intent) {
-		Log.msg(TAG, "New Activity Created with type " + type);
+		Log.msg(TAG, "Finish creating new Activity with type: " + type);
 		this.intent = intent;
 		views = new HashMap<>();
 		memUrl = memUrl + "/" + type.fullName;
