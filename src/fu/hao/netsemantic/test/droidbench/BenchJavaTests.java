@@ -213,9 +213,10 @@ public class BenchJavaTests {
 		assertEquals(true, Results.results.contains(res));
 	}
 	
-	//@Test
+	@Test
 	public void testGeneralJava_Exceptions3() {
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_Exceptions3/app/";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/GeneralJava_Exceptions3/app";
+		args[1] = "srcEventChains";
 		Main.main(args);
 		assertEquals(true, Results.results.isEmpty());
 	}
