@@ -39,7 +39,8 @@ import com.opencsv.CSVReader;
 import patdroid.util.Pair;
 
 public class Settings {
-    private static final String TAG = Settings.class.getSimpleName();
+    @SuppressWarnings("unused")
+	private static final String TAG = Settings.class.getSimpleName();
 	/**
      * Minimum log level to be printed
      */

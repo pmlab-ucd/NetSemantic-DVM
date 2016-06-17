@@ -93,13 +93,13 @@ public class Main {
 				while (i < args.length) {
 					if (args[i] == null) {
 						i++;
-					} if (args[i].equalsIgnoreCase("--runEntryException")) {
+					} else if (args[i].equalsIgnoreCase("--runEntryException")) {
 						Settings.setRunEntryException(true);
 						i++;
 					} else if (args[i].equalsIgnoreCase("--norun")) {
 						Settings.addCallBlkListElem(args[i + 1]);
 						i += 2;
-					} if (args[i].equalsIgnoreCase("Taint")) {
+					} else if (args[i].equalsIgnoreCase("Taint")) {
 						pluginManager.addPlugin(new Taint());
 						i++;
 					} else if (args[i].equalsIgnoreCase("ATaint")) {

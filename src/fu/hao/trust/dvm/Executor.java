@@ -632,6 +632,7 @@ public class Executor {
 				var.setValue(PrimitiveInfo.fromObject(var.getValue()));
 			} else {
 				if (vm.getReturnReg().isUsed()
+						&& !(vm.getReturnReg().getData() instanceof PrimitiveInfo)
 						&& vm.getReturnReg().getType() != null
 						&& vm.getReturnReg().getType().isPrimitive()) {
 					Object obj = vm.getReturnReg().getData();
@@ -3217,7 +3218,7 @@ public class Executor {
 		// noInvokeList.add("java.io.OutputStream");
 		noInvokeList.add("android.support");
 		noInvokeList.add("getStatusCode");
-		noInvokeList.add("java.net.Socket");
+		//noInvokeList.add("java.net.Socket");
 		// noInvokeList.add("java.io.ByteArrayOutputStream");
 
 		noInvokeList2 = new HashSet<>();
