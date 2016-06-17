@@ -394,7 +394,7 @@ public class Executor {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
 			// TODO Auto-generated method stub
-			Log.err(TAG, "stub! " + inst);
+			vm.getReg(inst.rdst).setValue(inst.extra, ClassInfo.findClass(inst.extra.getClass().getName()));
 			jump(vm, inst, true);
 		}
 	}
@@ -442,6 +442,14 @@ public class Executor {
 			int[] args = (int[]) extra[1];
 
 			vm.getReturnReg().reset();
+			
+			if (Settings.callBlkListHas(inst.toString())) {
+				vm.getReturnReg().setValue(
+						new Unknown(vm, mi.returnType), mi.returnType);
+				jump(vm, inst, true);
+				return;
+			}
+			
 			try {
 				// If applicable, directly use reflection to run the method,
 				// the method is inside java.lang
@@ -458,7 +466,6 @@ public class Executor {
 				if (args.length == 0) {
 					method = clazz.getDeclaredMethod(mi.name);
 					retVal = method.invoke(null);
-
 				} else {
 					Object[] params = new Object[args.length];
 
@@ -2224,8 +2231,8 @@ public class Executor {
 	 * @Title: invocation
 	 * @Author: Hao Fu
 	 * @Description: invocation helper
-	 * @param @param vm
-	 * @param @param mi
+	 * @param vm
+	 * @param mi
 	 * @return void
 	 * @throws
 	 */
@@ -2243,7 +2250,7 @@ public class Executor {
 		checkIntent(vm, inst);
 		try {
 			// If applicable, directly use reflection to run the method,
-			// the method is inside java.lang
+			// e.g. the methods inside java.lang
 			// Class<?> clazz = Class.forName(mi.myClass.toString());
 			if (vm.getReg(args[0]).isUsed()) {
 				Log.msg(TAG, "arg0 obj: " + vm.getReg(args[0]).getData());
@@ -3210,6 +3217,7 @@ public class Executor {
 		// noInvokeList.add("java.io.OutputStream");
 		noInvokeList.add("android.support");
 		noInvokeList.add("getStatusCode");
+		noInvokeList.add("java.net.Socket");
 		// noInvokeList.add("java.io.ByteArrayOutputStream");
 
 		noInvokeList2 = new HashSet<>();

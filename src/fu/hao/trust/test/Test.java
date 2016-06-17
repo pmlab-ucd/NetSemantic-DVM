@@ -19,10 +19,10 @@ public class Test {
 
 	public static void main(String[] margs) {
 		Test t = new Test();
-		t.testMain();
+		//t.testMain();
 		// t.testAnve();
 		// t.test00983aad12700be0a440296c6173b18a829e9369_a();
-		//t.DroidKunfu3();
+		t.DroidKunfu3();
 		// t.testMopub_onCreate();
 		// t.testMopub_loadAd();
 		// t.test7613973();
@@ -45,14 +45,16 @@ public class Test {
 	}
 	
 	public void DroidKunfu3() {
-		String[] args = new String[4];
+		String[] args = new String[7];
 		args[3] = "ATaint";
 		Settings.logLevel = 0;
 		
 		args[0] = "D:/malwares/DroidKungFu3/3d79d12d1abcddf9b53ca04469488a84a91aabdc";
 		args[1] = "com.google.update.UpdateService";
 		args[2] = "onCreate";
-		Settings.setRunEntryException(true);
+		args[4] = "--norun";
+		args[5] = "com.google.update.Utils/runsh";
+		args[6] = "--runEntryException";
 		Main.main(args);
 		
 		assertEquals(false, Results.results.isEmpty());

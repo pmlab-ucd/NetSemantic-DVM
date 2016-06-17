@@ -22,7 +22,6 @@ package fu.hao.trust.utils;
 import fu.hao.trust.dvm.DalvikVM;
 import patdroid.core.ClassInfo;
 import patdroid.dalvik.Instruction;
-import patdroid.util.Log;
 
 import java.io.File;
 import java.io.FileReader;
@@ -40,7 +39,8 @@ import com.opencsv.CSVReader;
 import patdroid.util.Pair;
 
 public class Settings {
-    /**
+    private static final String TAG = Settings.class.getSimpleName();
+	/**
      * Minimum log level to be printed
      */
     public static int logLevel = Log.MODE_MSG;
@@ -109,6 +109,7 @@ public class Settings {
 		eventChains.clear();
 		srcChains.clear();
 		sinkChains.clear();
+		runEntryException = false;
 	}
 	
 	public static String getRuntimeCaller() {

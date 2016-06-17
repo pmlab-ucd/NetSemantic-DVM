@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.location.LocationManager;
+import android.net.ConnectivityManager;
 import android.telephony.TelephonyManager;
 import android.view.WindowManager;
 import patdroid.core.ClassInfo;
@@ -88,6 +89,8 @@ public class Context extends DVMObject {
 			return new TelephonyManager();
 		case "windown":
 			return new WindowManager();
+		case "connectivity":
+			return new ConnectivityManager();
 		}
 
 		return null;

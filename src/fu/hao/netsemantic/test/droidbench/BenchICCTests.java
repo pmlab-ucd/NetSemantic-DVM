@@ -11,7 +11,7 @@ import org.junit.Test;
 import android.telephony.TelephonyManager;
 import fu.hao.trust.data.Results;
 import fu.hao.trust.dvm.Main;
-import fu.hao.trust.dvm.ResolveIntent;
+//import fu.hao.trust.dvm.ResolveIntent;
 import fu.hao.trust.utils.Settings;
 
 public class BenchICCTests {
@@ -41,9 +41,9 @@ public class BenchICCTests {
 
 	@Test
 	public void testActivityCommunication2() {
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/ActivityCommunication2/app/";
-		Settings.addCallBlkListElem("android.content.ContextWrapper/startActivity");
-		ResolveIntent.main(args);
+		//args[0] = "C:/Users/hao/workspace/DroidBenchProj/ActivityCommunication2/app/";
+		//Settings.addCallBlkListElem("android.content.ContextWrapper/startActivity");
+		//ResolveIntent.main(args);
 
 		// Call parse_xmls.py to get the intent targets
 
@@ -69,9 +69,9 @@ public class BenchICCTests {
 
 	@Test
 	public void testActivityCommunication4() {
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/ActivityCommunication4/app/";
-		Settings.addCallBlkListElem("android.content.ContextWrapper/startActivity");
-		ResolveIntent.main(args);
+		//args[0] = "C:/Users/hao/workspace/DroidBenchProj/ActivityCommunication4/app/";
+		//Settings.addCallBlkListElem("android.content.ContextWrapper/startActivity");
+		//ResolveIntent.main(args);
 
 		args[0] = "C:/Users/hao/workspace/DroidBenchProj/ActivityCommunication4/app/";
 		args[1] = "srcEventChains";
@@ -117,9 +117,9 @@ public class BenchICCTests {
 
 	@Test
 	public void testActivityCommunication8() {
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/ActivityCommunication8/app/";
-		Settings.addCallBlkListElem("android.content.ContextWrapper/startActivity");
-		ResolveIntent.main(args);
+		//args[0] = "C:/Users/hao/workspace/DroidBenchProj/ActivityCommunication8/app/";
+		//Settings.addCallBlkListElem("android.content.ContextWrapper/startActivity");
+		//ResolveIntent.main(args);
 
 		args[0] = "C:/Users/hao/workspace/DroidBenchProj/ActivityCommunication8/app/";
 		args[1] = "srcEventChains";

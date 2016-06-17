@@ -53,9 +53,7 @@ public class Main {
 		main(args);
 	}
 
-	public static void main(String[] args) {
-		Results.reset();
-		Settings.reset();
+	public static void main(String[] args) {	
 		try {
 			List<String> apkFiles = new ArrayList<>();
 			File apkFile = new File(args[0]);
@@ -88,26 +86,40 @@ public class Main {
 			}
 
 			for (final String apk : apkFiles) {
-				long beforeRun = System.nanoTime();
+				Results.reset();
 				Settings.reset();
+				PluginManager pluginManager = new PluginManager();
+				int i = 2;
+				while (i < args.length) {
+					if (args[i] == null) {
+						i++;
+					} if (args[i].equalsIgnoreCase("--runEntryException")) {
+						Settings.setRunEntryException(true);
+						i++;
+					} else if (args[i].equalsIgnoreCase("--norun")) {
+						Settings.addCallBlkListElem(args[i + 1]);
+						i += 2;
+					} if (args[i].equalsIgnoreCase("Taint")) {
+						pluginManager.addPlugin(new Taint());
+						i++;
+					} else if (args[i].equalsIgnoreCase("ATaint")) {
+						pluginManager.addPlugin(new TaintSumBranch());
+						i++;
+					} else if (args[i].equalsIgnoreCase("Full")) {
+						pluginManager.addPlugin(new FullAnalysis());
+						i++;
+					} else {
+						i++;
+					}
+				}
+				
+				long beforeRun = System.nanoTime();
 				Settings.setApkPath(apk);
 				File file = new File(apk);
 				Settings.setApkName(file.getName());
 				Main main = new Main();
 				// Settings.logLevel = 0;
-				PluginManager pluginManager = new PluginManager();
-				for (int i = 0; i < args.length; i++) {
-					if (args[i] != null && args[i].equalsIgnoreCase("Taint")) {
-						pluginManager.addPlugin(new Taint());
-					} else if (args[i] != null
-							&& args[i].equalsIgnoreCase("ATaint")) {
-						pluginManager.addPlugin(new TaintSumBranch());
-					} else if (args[i] != null
-							&& args[i].equalsIgnoreCase("Full")) {
-						pluginManager.addPlugin(new FullAnalysis());
-					}
-				}
-
+				
 				if (args[1] != null && args[1].endsWith("EventChains")) {
 					// Run callbacks
 					String csv = Settings.getStaticOutDir()
