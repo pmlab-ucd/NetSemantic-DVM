@@ -1,0 +1,432 @@
+DalvikVM - [MSG]: Begin run onCreate at D:\malwares\DroidKungFu3\3d79d12d1abcddf9b53ca04469488a84a91aabdc\3d79d12d1abcddf9b53ca04469488a84a91aabdc.apk
+DalvikVM - [MSG]: RUN Method com.google.update.UpdateService/onCreate[]
+DalvikVM - [BB]: Superclass: com.google.update.UpdateService
+Service - [BB]: New instance of com.google.update.UpdateService
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.google.update.UpdateService at fu.hao.trust.dvm.VMHeap@222f8903
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for com.google.update.UpdateService at fu.hao.trust.dvm.VMHeap@222f8903
+DalvikVM - [BB]: New method call: com.google.update.UpdateService/<clinit>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r0,type=AndroidWide,extra=class java.lang.Double?2.9644E-319>
+DalvikVM - [BB]: [2]<0 STATIC,SPUT,r0=r0,type=AndroidWide,extra=(com.google.update.UpdateService, INTERVAL)>
+DalvikVM - [BB]: [3]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame com.google.update.UpdateService/<clinit>[]
+newStackFrame - [BB]: Stack: []
+DalvikVM - [MSG]: Begin run instrumented methods!
+DalvikVM - [BB]: Add frames [StackFrame com.google.update.UpdateService/<clinit>[]]
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[]> at com.google.update.UpdateService/<clinit>[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 MOV,CONST,dst=r0,type=AndroidWide,extra=class java.lang.Double?2.9644E-319> at com.google.update.UpdateService/<clinit>[]
+Executor - [DEBUG]: Mov const begin <1 MOV,CONST,dst=r0,type=AndroidWide,extra=class java.lang.Double?2.9644E-319>
+DalvikVM - [WARN]: ar 0, (2.9644E-319, AndroidWide)
+Executor - [DEBUG]: data: 2.9644E-319 class java.lang.Double
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 2
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 STATIC,SPUT,r0=r0,type=AndroidWide,extra=(com.google.update.UpdateService, INTERVAL)> at com.google.update.UpdateService/<clinit>[]
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.google.update.UpdateService at fu.hao.trust.dvm.VMHeap@222f8903
+Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.google.update.UpdateService
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.google.update.UpdateService at fu.hao.trust.dvm.VMHeap@222f8903
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: expect sput INTERVAL from com.google.update.UpdateService
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: real sput 2.9644E-319 from fu.hao.trust.dvm.DVMClass@609ba29e
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD -> jump set pc to 3
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.google.update.UpdateService at fu.hao.trust.dvm.VMHeap@222f8903
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.google.update.UpdateService
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.google.update.UpdateService at fu.hao.trust.dvm.VMHeap@222f8903
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 RETURN,VOID> at com.google.update.UpdateService/<clinit>[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack []
+DalvikVM - [BB]: Back to the last stack frame.null
+DalvikVM - [MSG]: Finish running instrumented methods! Back to null
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Service at fu.hao.trust.dvm.VMHeap@222f8903
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Service at fu.hao.trust.dvm.VMHeap@222f8903
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@222f8903
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@222f8903
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@222f8903
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@222f8903
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@222f8903
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@222f8903
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@222f8903
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.Context
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@222f8903
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.ContextWrapper
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@222f8903
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.app.Service
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Service at fu.hao.trust.dvm.VMHeap@222f8903
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type com.google.update.UpdateService
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.google.update.UpdateService at fu.hao.trust.dvm.VMHeap@222f8903
+Service - [MSG]: Not empty constructor
+DalvikVM - [BB]: New method call: com.google.update.UpdateService/<init>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[3]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [2]<0 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [3]]>
+DalvikVM - [BB]: [3]<0 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.update.UpdateService.mPreferences>
+DalvikVM - [BB]: [4]<0 MOV,CONST,dst=r0,type=java.lang.String,extra="-1">
+DalvikVM - [BB]: [5]<0 INSTANCE,IPUT,r0=r3,r1=r0,type=java.lang.Object,extra=com.google.update.UpdateService.mIdentifier>
+DalvikVM - [BB]: [6]<0 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.update.UpdateService.mImei>
+DalvikVM - [BB]: [7]<0 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.update.UpdateService.mMobile>
+DalvikVM - [BB]: [8]<0 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.update.UpdateService.mModel>
+DalvikVM - [BB]: [9]<0 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.update.UpdateService.mOsType>
+DalvikVM - [BB]: [10]<0 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.update.UpdateService.mOsAPI>
+DalvikVM - [BB]: [11]<0 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.update.UpdateService.mAliaMem>
+DalvikVM - [BB]: [12]<0 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.update.UpdateService.mSDMem>
+DalvikVM - [BB]: [13]<0 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.update.UpdateService.mNetType>
+DalvikVM - [BB]: [14]<0 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.update.UpdateService.mOperater>
+DalvikVM - [BB]: [15]<0 MOV,CONST,dst=r0,type=java.lang.String,extra="">
+DalvikVM - [BB]: [16]<0 INSTANCE,IPUT,r0=r3,r1=r0,type=java.lang.Object,extra=com.google.update.UpdateService.mTaskId>
+DalvikVM - [BB]: [17]<0 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [18]<0 INSTANCE,IPUT,r0=r3,r1=r0,type=void,extra=com.google.update.UpdateService.mPermState>
+DalvikVM - [BB]: [19]<0 MOV,CONST,dst=r0,type=AndroidWide,extra=class java.lang.Double?4.4E-323>
+DalvikVM - [BB]: [20]<0 INSTANCE,IPUT,r0=r3,r1=r0,type=AndroidWide,extra=com.google.update.UpdateService.mTickets>
+DalvikVM - [BB]: [21]<0 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.update.UpdateService.mTimer>
+DalvikVM - [BB]: [22]<0 MOV,CONST,dst=r0,type=AndroidWide,extra=class java.lang.Double?1.7786E-320>
+DalvikVM - [BB]: [23]<0 INSTANCE,IPUT,r0=r3,r1=r0,type=AndroidWide,extra=com.google.update.UpdateService.startDelay>
+DalvikVM - [BB]: [24]<0 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.update.UpdateService.mJu6Ad>
+DalvikVM - [BB]: [25]<0 RETURN,VOID>
+DalvikVM - [WARN]: ar -2, (instance number 1@com.google.update.UpdateService, com.google.update.UpdateService)
+newStackFrame - [BB]: New Stack Frame: StackFrame com.google.update.UpdateService/<init>[]
+newStackFrame - [BB]: Stack: []
+DalvikVM - [MSG]: Begin run instrumented methods!
+DalvikVM - [BB]: Add frames [StackFrame com.google.update.UpdateService/<init>[]]
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[3]> at com.google.update.UpdateService/<init>[]
+DalvikVM - [WARN]: ar 3, (instance number 1@com.google.update.UpdateService, com.google.update.UpdateService)
+Executor - [DEBUG]: params: instance number 1@com.google.update.UpdateService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0> at com.google.update.UpdateService/<init>[]
+Executor - [DEBUG]: Mov const begin <1 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [WARN]: ar 2, (0, void)
+Executor - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 2
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [3]]> at com.google.update.UpdateService/<init>[]
+Executor - [MSG]: arg0 obj: instance number 1@com.google.update.UpdateService
+Executor - [MSG]: Replace the clazz.
+Executor - [BB]: java.lang.Object/<init>[] is a constructor!
+Executor - [WARN]: Reflection error: com.google.update.UpdateService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 3
+TaintSumBranch - [BB]: <java.lang.Object: void <init>()>
+TaintSumBranch - [DEBUG]: Not a taint call: <java.lang.Object: void <init>()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.update.UpdateService.mPreferences> at com.google.update.UpdateService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.google.update.UpdateService.mPreferences
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.google.update.UpdateService
+Service - [DEBUG]: put field 0
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data 0 to the field of instance number 1@com.google.update.UpdateService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 4
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <4 MOV,CONST,dst=r0,type=java.lang.String,extra="-1"> at com.google.update.UpdateService/<init>[]
+Executor - [DEBUG]: Mov const begin <4 MOV,CONST,dst=r0,type=java.lang.String,extra="-1">
+DalvikVM - [WARN]: ar 0, (-1, java.lang.String)
+Executor - [DEBUG]: data: -1 class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 5
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <5 INSTANCE,IPUT,r0=r3,r1=r0,type=java.lang.Object,extra=com.google.update.UpdateService.mIdentifier> at com.google.update.UpdateService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.google.update.UpdateService.mIdentifier
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.google.update.UpdateService
+Service - [DEBUG]: put field -1
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data -1 to the field of instance number 1@com.google.update.UpdateService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 6
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <6 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.update.UpdateService.mImei> at com.google.update.UpdateService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.google.update.UpdateService.mImei
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.google.update.UpdateService
+Service - [DEBUG]: put field 0
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data 0 to the field of instance number 1@com.google.update.UpdateService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 7
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <7 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.update.UpdateService.mMobile> at com.google.update.UpdateService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.google.update.UpdateService.mMobile
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.google.update.UpdateService
+Service - [DEBUG]: put field 0
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data 0 to the field of instance number 1@com.google.update.UpdateService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 8
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <8 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.update.UpdateService.mModel> at com.google.update.UpdateService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.google.update.UpdateService.mModel
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.google.update.UpdateService
+Service - [DEBUG]: put field 0
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data 0 to the field of instance number 1@com.google.update.UpdateService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 9
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <9 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.update.UpdateService.mOsType> at com.google.update.UpdateService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.google.update.UpdateService.mOsType
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.google.update.UpdateService
+Service - [DEBUG]: put field 0
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data 0 to the field of instance number 1@com.google.update.UpdateService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 10
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <10 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.update.UpdateService.mOsAPI> at com.google.update.UpdateService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.google.update.UpdateService.mOsAPI
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.google.update.UpdateService
+Service - [DEBUG]: put field 0
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data 0 to the field of instance number 1@com.google.update.UpdateService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 11
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <11 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.update.UpdateService.mAliaMem> at com.google.update.UpdateService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.google.update.UpdateService.mAliaMem
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.google.update.UpdateService
+Service - [DEBUG]: put field 0
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data 0 to the field of instance number 1@com.google.update.UpdateService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 12
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <12 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.update.UpdateService.mSDMem> at com.google.update.UpdateService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.google.update.UpdateService.mSDMem
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.google.update.UpdateService
+Service - [DEBUG]: put field 0
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data 0 to the field of instance number 1@com.google.update.UpdateService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 13
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <13 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.update.UpdateService.mNetType> at com.google.update.UpdateService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.google.update.UpdateService.mNetType
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.google.update.UpdateService
+Service - [DEBUG]: put field 0
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data 0 to the field of instance number 1@com.google.update.UpdateService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 14
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <14 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.update.UpdateService.mOperater> at com.google.update.UpdateService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.google.update.UpdateService.mOperater
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.google.update.UpdateService
+Service - [DEBUG]: put field 0
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data 0 to the field of instance number 1@com.google.update.UpdateService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 15
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <15 MOV,CONST,dst=r0,type=java.lang.String,extra=""> at com.google.update.UpdateService/<init>[]
+Executor - [DEBUG]: Mov const begin <15 MOV,CONST,dst=r0,type=java.lang.String,extra="">
+DalvikVM - [WARN]: ar 0 (-1, java.lang.String), (, java.lang.String)
+Executor - [DEBUG]: data:  class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 16
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <16 INSTANCE,IPUT,r0=r3,r1=r0,type=java.lang.Object,extra=com.google.update.UpdateService.mTaskId> at com.google.update.UpdateService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.google.update.UpdateService.mTaskId
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.google.update.UpdateService
+Service - [DEBUG]: put field 
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data  to the field of instance number 1@com.google.update.UpdateService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 17
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <17 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0> at com.google.update.UpdateService/<init>[]
+Executor - [DEBUG]: Mov const begin <17 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [WARN]: ar 0 (, java.lang.String), (0, void)
+Executor - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 18
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <18 INSTANCE,IPUT,r0=r3,r1=r0,type=void,extra=com.google.update.UpdateService.mPermState> at com.google.update.UpdateService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.google.update.UpdateService.mPermState
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.google.update.UpdateService
+Service - [DEBUG]: put field 0
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data 0 to the field of instance number 1@com.google.update.UpdateService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 19
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <19 MOV,CONST,dst=r0,type=AndroidWide,extra=class java.lang.Double?4.4E-323> at com.google.update.UpdateService/<init>[]
+Executor - [DEBUG]: Mov const begin <19 MOV,CONST,dst=r0,type=AndroidWide,extra=class java.lang.Double?4.4E-323>
+DalvikVM - [WARN]: ar 0 (0, void), (4.4E-323, AndroidWide)
+Executor - [DEBUG]: data: 4.4E-323 class java.lang.Double
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 20
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <20 INSTANCE,IPUT,r0=r3,r1=r0,type=AndroidWide,extra=com.google.update.UpdateService.mTickets> at com.google.update.UpdateService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.google.update.UpdateService.mTickets
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.google.update.UpdateService
+Service - [DEBUG]: put field 4.4E-323
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data 4.4E-323 to the field of instance number 1@com.google.update.UpdateService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 21
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <21 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.update.UpdateService.mTimer> at com.google.update.UpdateService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.google.update.UpdateService.mTimer
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.google.update.UpdateService
+Service - [DEBUG]: put field 0
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data 0 to the field of instance number 1@com.google.update.UpdateService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 22
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <22 MOV,CONST,dst=r0,type=AndroidWide,extra=class java.lang.Double?1.7786E-320> at com.google.update.UpdateService/<init>[]
+Executor - [DEBUG]: Mov const begin <22 MOV,CONST,dst=r0,type=AndroidWide,extra=class java.lang.Double?1.7786E-320>
+DalvikVM - [WARN]: ar 0 (4.4E-323, AndroidWide), (1.7786E-320, AndroidWide)
+Executor - [DEBUG]: data: 1.7786E-320 class java.lang.Double
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 23
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <23 INSTANCE,IPUT,r0=r3,r1=r0,type=AndroidWide,extra=com.google.update.UpdateService.startDelay> at com.google.update.UpdateService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.google.update.UpdateService.startDelay
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.google.update.UpdateService
+Service - [DEBUG]: put field 1.7786E-320
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data 1.7786E-320 to the field of instance number 1@com.google.update.UpdateService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 24
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <24 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.update.UpdateService.mJu6Ad> at com.google.update.UpdateService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.google.update.UpdateService.mJu6Ad
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.google.update.UpdateService
+Service - [DEBUG]: put field 0
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data 0 to the field of instance number 1@com.google.update.UpdateService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 25
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <25 RETURN,VOID> at com.google.update.UpdateService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack []
+DalvikVM - [BB]: Back to the last stack frame.null
+DalvikVM - [MSG]: Finish running instrumented methods! Back to null
+Service - [BB]: New Service Created with type com.google.update.UpdateService
+DalvikVM - [BB]: New method call: com.google.update.UpdateService/onCreate[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[21]>
+DalvikVM - [BB]: [1]<0 HALT,SUPER,extra=[null, [21]]>
+DalvikVM - [BB]: [2]<0 INVOKE,VIRTUAL,extra=[android.content.Context/getPackageManager[], [21]]>
+DalvikVM - [BB]: [3]<0 MOV,RESULT,dst=r15,type=java.lang.Object>
+DalvikVM - [BB]: [4]<0 INVOKE,VIRTUAL,extra=[android.content.ContextWrapper/getPackageName[], [21]]>
+DalvikVM - [BB]: [5]<0 MOV,RESULT,dst=r16,type=java.lang.Object>
+DalvikVM - [BB]: [6]<0 MOV,CONST,dst=r17,type=void,extra=class patdroid.core.PrimitiveInfo?128>
+DalvikVM - [BB]: [7]<0 INVOKE,VIRTUAL,extra=[android.content.pm.PackageManager/getApplicationInfo[java.lang.String, int], [15, 16, 17]]>
+DalvikVM - [BB]: [8]<0 MOV,RESULT,dst=r4,type=java.lang.Object>
+DalvikVM - [BB]: [9]<0 INSTANCE,IGET,r0=r4,r1=r5,type=java.lang.Object,extra=android.content.pm.ApplicationInfo.metaData>
+DalvikVM - [BB]: [10]<0 MOV,CONST,dst=r15,type=java.lang.String,extra="ST_START_DELAY">
+DalvikVM - [BB]: [11]<0 INVOKE,VIRTUAL,extra=[android.os.Bundle/get[java.lang.String], [5, 15]]>
+DalvikVM - [BB]: [12]<0 MOV,RESULT,dst=r13,type=java.lang.Object>
+DalvikVM - [BB]: [13]<0 IF,EQZ,r0=r13,extra=index:21>
+DalvikVM - [BB]: [14]<0 ARITHMETIC,CHECK-AND-CAST,dst=r13,type=java.lang.Integer>
+DalvikVM - [BB]: [15]<0 INVOKE,VIRTUAL,extra=[java.lang.Integer/intValue[], [13]]>
+DalvikVM - [BB]: [16]<0 MOV,RESULT,dst=r15,type=void>
+DalvikVM - [BB]: [17]<0 ARITHMETIC,CAST,dst=r15,r0=r15,type=long,extra=class patdroid.core.ClassInfo?int>
+DalvikVM - [BB]: [18]<0 MOV,REG,dst=r0,r0=r15,type=AndroidWide>
+DalvikVM - [BB]: [19]<0 MOV,REG,dst=r2,r0=r21,type=java.lang.Object>
+DalvikVM - [BB]: [20]<0 INSTANCE,IPUT,r0=r2,r1=r0,type=AndroidWide,extra=com.google.update.UpdateService.startDelay>
+DalvikVM - [BB]: [21]<0 MOV,CONST,dst=r15,type=java.lang.String,extra="ST_MY_PID">
+DalvikVM - [BB]: [22]<0 INVOKE,VIRTUAL,extra=[android.os.Bundle/get[java.lang.String], [5, 15]]>
+DalvikVM - [BB]: [23]<0 MOV,RESULT,dst=r14,type=java.lang.Object>
+DalvikVM - [BB]: [24]<0 IF,EQZ,r0=r14,extra=index:29>
+DalvikVM - [BB]: [25]<0 ARITHMETIC,CHECK-AND-CAST,dst=r14,type=java.lang.String>
+DalvikVM - [BB]: [26]<0 MOV,REG,dst=r0,r0=r14,type=java.lang.Object>
+DalvikVM - [BB]: [27]<0 MOV,REG,dst=r1,r0=r21,type=java.lang.Object>
+DalvikVM - [BB]: [28]<0 INSTANCE,IPUT,r0=r1,r1=r0,type=java.lang.Object,extra=com.google.update.UpdateService.mIdentifier>
+DalvikVM - [BB]: [29]<0 MOV,CONST,dst=r15,type=java.lang.String,extra="sstimestamp">
+DalvikVM - [BB]: [30]<0 MOV,CONST,dst=r16,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [31]<0 MOV,REG,dst=r0,r0=r21,type=java.lang.Object>
+DalvikVM - [BB]: [32]<0 MOV,REG,dst=r1,r0=r15,type=java.lang.Object>
+DalvikVM - [BB]: [33]<0 MOV,REG,dst=r2,r0=r16,type=void>
+DalvikVM - [BB]: [34]<0 INVOKE,VIRTUAL,extra=[android.content.ContextWrapper/getSharedPreferences[java.lang.String, int], [0, 1, 2]]>
+DalvikVM - [BB]: [35]<0 MOV,RESULT,dst=r12,type=java.lang.Object>
+DalvikVM - [BB]: [36]<0 MOV,CONST,dst=r15,type=java.lang.String,extra="start">
+DalvikVM - [BB]: [37]<0 MOV,CONST,dst=r16,type=AndroidWide,extra=class java.lang.Double?0.0>
+DalvikVM - [BB]: [38]<0 MOV,REG,dst=r0,r0=r12,type=java.lang.Object>
+DalvikVM - [BB]: [39]<0 MOV,REG,dst=r1,r0=r15,type=java.lang.Object>
+DalvikVM - [BB]: [40]<0 MOV,REG,dst=r2,r0=r16,type=AndroidWide>
+DalvikVM - [BB]: [41]<0 INVOKE,INTERFACE,extra=[android.content.SharedPreferences/getLong[java.lang.String, long], [0, 1, 2]]>
+DalvikVM - [BB]: [42]<0 MOV,RESULT,dst=r10,type=AndroidWide>
+DalvikVM - [BB]: [43]<0 INVOKE,STATIC,extra=[java.lang.System/currentTimeMillis[], []]>
+DalvikVM - [BB]: [44]<0 MOV,RESULT,dst=r6,type=AndroidWide>
+DalvikVM - [BB]: [45]<0 MOV,CONST,dst=r15,type=AndroidWide,extra=class java.lang.Double?0.0>
+DalvikVM - [BB]: [46]<0 CMP,CMPLONG,dst=r15,r0=r10,r1=r15,type=long>
+DalvikVM - [BB]: [47]<0 IF,NEZ,r0=r15,extra=index:65>
+DalvikVM - [BB]: [48]<0 INVOKE,INTERFACE,extra=[android.content.SharedPreferences/edit[], [12]]>
+DalvikVM - [BB]: [49]<0 MOV,RESULT,dst=r9,type=java.lang.Object>
+DalvikVM - [BB]: [50]<0 MOV,CONST,dst=r15,type=java.lang.String,extra="start">
+DalvikVM - [BB]: [51]<0 INVOKE,INTERFACE,extra=[android.content.SharedPreferences$Editor/putLong[java.lang.String, long], [9, 15, 6]]>
+DalvikVM - [BB]: [52]<0 INVOKE,INTERFACE,extra=[android.content.SharedPreferences$Editor/commit[], [9]]>
+DalvikVM - [BB]: [53]<0 MOV,REG,dst=r0,r0=r21,type=java.lang.Object>
+DalvikVM - [BB]: [54]<0 INSTANCE,IGET,r0=r0,r1=r0,type=AndroidWide,extra=com.google.update.UpdateService.startDelay>
+DalvikVM - [BB]: [55]<0 MOV,REG,dst=r15,r0=r0,type=AndroidWide>
+DalvikVM - [BB]: [56]<0 MOV,CONST,dst=r17,type=AndroidWide,extra=class java.lang.Double?0.0>
+DalvikVM - [BB]: [57]<0 CMP,CMPLONG,dst=r15,r0=r15,r1=r17,type=long>
+DalvikVM - [BB]: [58]<0 IF,LEZ,r0=r15,extra=index:75>
+DalvikVM - [BB]: [59]<0 HALT,VIRTUAL,extra=[null, [21]]>
+DalvikVM - [BB]: [60]<0 RETURN,VOID>
+DalvikVM - [BB]: [61]<0 MOV,EXCETPION,dst=r15,type=java.lang.Object>
+DalvikVM - [BB]: [62]<0 MOV,REG,dst=r8,r0=r15,type=java.lang.Object>
+DalvikVM - [BB]: [63]<0 INVOKE,VIRTUAL,extra=[java.lang.Throwable/printStackTrace[], [8]]>
+DalvikVM - [BB]: [64]<0 GOTO,extra=index:29>
+DalvikVM - [BB]: [65]<0 ARITHMETIC,SUB,dst=r15,r0=r6,r1=r10,type=long>
+DalvikVM - [BB]: [66]<0 MOV,REG,dst=r0,r0=r21,type=java.lang.Object>
+DalvikVM - [BB]: [67]<0 INSTANCE,IGET,r0=r0,r1=r0,type=AndroidWide,extra=com.google.update.UpdateService.startDelay>
+DalvikVM - [BB]: [68]<0 MOV,REG,dst=r17,r0=r0,type=AndroidWide>
+DalvikVM - [BB]: [69]<0 MOV,CONST,dst=r19,type=AndroidWide,extra=class java.lang.Double?4.94E-321>
+DalvikVM - [BB]: [70]<0 ARITHMETIC,MUL,dst=r17,r0=r17,r1=r19,type=long>
+DalvikVM - [BB]: [71]<0 CMP,CMPLONG,dst=r15,r0=r15,r1=r17,type=long>
+DalvikVM - [BB]: [72]<0 IF,GEZ,r0=r15,extra=index:75>
+DalvikVM - [BB]: [73]<0 HALT,VIRTUAL,extra=[null, [21]]>
+DalvikVM - [BB]: [74]<0 GOTO,extra=index:60>
+DalvikVM - [BB]: [75]<0 MOV,CONST,dst=r15,type=java.lang.String,extra="permission">
+DalvikVM - [BB]: [76]<0 MOV,CONST,dst=r16,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [77]<0 MOV,REG,dst=r0,r0=r21,type=java.lang.Object>
+DalvikVM - [BB]: [78]<0 MOV,REG,dst=r1,r0=r15,type=java.lang.Object>
+DalvikVM - [BB]: [79]<0 MOV,REG,dst=r2,r0=r16,type=void>
+DalvikVM - [BB]: [80]<0 INVOKE,VIRTUAL,extra=[android.content.ContextWrapper/getSharedPreferences[java.lang.String, int], [0, 1, 2]]>
+DalvikVM - [BB]: [81]<0 MOV,RESULT,dst=r15,type=java.lang.Object>
+DalvikVM - [BB]: [82]<0 MOV,REG,dst=r0,r0=r15,type=java.lang.Object>
+DalvikVM - [BB]: [83]<0 MOV,REG,dst=r1,r0=r21,type=java.lang.Object>
+DalvikVM - [BB]: [84]<0 INSTANCE,IPUT,r0=r1,r1=r0,type=java.lang.Object,extra=com.google.update.UpdateService.mPreferences>
+DalvikVM - [BB]: [85]<0 INVOKE,STATIC,extra=[com.google.update.Utils/isConnected[android.content.Context], [21]]>
+DalvikVM - [BB]: [86]<0 MOV,RESULT,dst=r15,type=void>
+DalvikVM - [BB]: [87]<0 IF,EQZ,r0=r15,extra=index:89>
+DalvikVM - [BB]: [88]<0 INVOKE,DIRECT,extra=[com.google.update.UpdateService/doSearchReport[], [21]]>
+DalvikVM - [BB]: [89]<0 INVOKE,DIRECT,extra=[com.google.update.UpdateService/getPermission[], [21]]>
+DalvikVM - [BB]: [90]<0 INVOKE,DIRECT,extra=[com.google.update.UpdateService/provideService[], [21]]>
+DalvikVM - [BB]: [91]<0 GOTO,extra=index:60>
+DalvikVM - [WARN]: ar -2, (instance number 1@com.google.update.UpdateService, com.google.update.UpdateService)
+newStackFrame - [BB]: New Stack Frame: StackFrame com.google.update.UpdateService/onCreate[]
+newStackFrame - [BB]: Stack: []
+Service - [BB]: Intent null
+DalvikVM - [MSG]: Begin run instrumented methods!
+DalvikVM - [BB]: Add frames [StackFrame com.google.update.UpdateService/onCreate[]]
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[21]> at com.google.update.UpdateService/onCreate[]
+Executor - [ERROR]: invalid ctx for invocation!1, 2

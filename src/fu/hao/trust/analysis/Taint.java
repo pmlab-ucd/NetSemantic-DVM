@@ -141,7 +141,11 @@ public class Taint extends Plugin {
 						continue;
 					}
 					out.put(res, in.get(res));
-					Log.bb(tag, "Copy " + res + " as tainted.");
+					try {
+						Log.bb(tag, "Copy " + res + " as tainted.");
+					} catch (Exception e) {
+						e.printStackTrace();
+					}	
 				}
 
 				if (callingCtx != null) {

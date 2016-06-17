@@ -458,7 +458,7 @@ public class Executor {
 				if (args.length == 0) {
 					method = clazz.getDeclaredMethod(mi.name);
 					retVal = method.invoke(null);
-					
+
 				} else {
 					Object[] params = new Object[args.length];
 
@@ -469,10 +469,9 @@ public class Executor {
 					}
 					retVal = method.invoke(null, params);
 				}
-				
+
 				if (retVal == null || !retVal.equals("KeepRetMark")) {
-					vm.getReturnReg().setValue(retVal,
-							mi.returnType);
+					vm.getReturnReg().setValue(retVal, mi.returnType);
 				}
 
 				Log.msg(TAG, "reflction invocation " + method);
@@ -977,7 +976,7 @@ public class Executor {
 			}
 		}
 	}
-	
+
 	class OP_CMP_LONG implements ByteCode {
 		/**
 		 * @Title: func
@@ -1035,7 +1034,7 @@ public class Executor {
 		public void func(DalvikVM vm, Instruction inst) {
 			PrimitiveInfo[] res = OP_CMP(vm, inst, true);
 			PrimitiveInfo op1 = res[0];
-			PrimitiveInfo op2 = res[1]; 
+			PrimitiveInfo op2 = res[1];
 			Register rdst = vm.getReg(inst.rdst);
 			ClassInfo type = ClassInfo.primitiveInt;
 			// FIXME NaN handling
@@ -1079,7 +1078,7 @@ public class Executor {
 		public void func(DalvikVM vm, Instruction inst) {
 			PrimitiveInfo[] res = OP_CMP(vm, inst, true);
 			PrimitiveInfo op1 = res[0];
-			PrimitiveInfo op2 = res[1]; 
+			PrimitiveInfo op2 = res[1];
 			Register rdst = vm.getReg(inst.rdst);
 			ClassInfo type = ClassInfo.primitiveInt;
 			// FIXME NaN handling
@@ -1159,19 +1158,30 @@ public class Executor {
 					Log.bb(TAG, "Index: " + index);
 					if (index >= Array.getLength(array)) {
 						// If the method contains catch handler
-						for (TryBlockInfo tryBlk: vm.getCurrStackFrame().method.tbs) {
-							Log.msg(TAG, "Try-catches: " + tryBlk.startInsnIndex + ", " + tryBlk.endInsnIndex);
+						for (TryBlockInfo tryBlk : vm.getCurrStackFrame().method.tbs) {
+							Log.msg(TAG, "Try-catches: "
+									+ tryBlk.startInsnIndex + ", "
+									+ tryBlk.endInsnIndex);
 							for (ExceptionHandler handler : tryBlk.handlers) {
-								if (handler.exceptionType.fullName.startsWith("java.lang")) {
-									Log.warn(TAG, "Handler index: " + handler.handlerInsnIndex + ", " + handler.exceptionType);
+								if (handler.exceptionType.fullName
+										.startsWith("java.lang")) {
+									Log.warn(TAG, "Handler index: "
+											+ handler.handlerInsnIndex + ", "
+											+ handler.exceptionType);
 									vm.getCurrStackFrame().setExceptReg();
-									vm.getCurrStackFrame().getExceptReg().setValue(new DVMObject(vm, handler.exceptionType), handler.exceptionType);
+									vm.getCurrStackFrame()
+											.getExceptReg()
+											.setValue(
+													new DVMObject(
+															vm,
+															handler.exceptionType),
+													handler.exceptionType);
 									jump(vm, handler.handlerInsnIndex);
 									return;
 								}
-							}		
+							}
 						}
-						
+
 						Log.err(TAG, "Index beyond the array length!");
 						Object[] newArray = new Object[2 * index];
 						for (int i = 0; i < Array.getLength(array); i++) {
@@ -1691,8 +1701,6 @@ public class Executor {
 		}
 	}
 
-	
-
 	class OP_STATIC_GET_FIELD implements ByteCode {
 		/**
 		 * @Title: func
@@ -1713,8 +1721,7 @@ public class Executor {
 			try {
 				Class<?> clazz = Class.forName(pair.getFirst().toString());
 				Log.bb(TAG, "Class " + clazz);
-				Field field = clazz.getField(pair.getSecond()
-						.toString());
+				Field field = clazz.getField(pair.getSecond().toString());
 				Log.bb(TAG, "Field " + field);
 				// TODO only support static field now
 				ClassInfo type = ClassInfo.findOrCreateClass(field.getClass());
@@ -1788,8 +1795,8 @@ public class Executor {
 		 *               is referenced by r0.
 		 * @param vm
 		 * @param inst
-		 * @throws SecurityException 
-		 * @throws NoSuchFieldException 
+		 * @throws SecurityException
+		 * @throws NoSuchFieldException
 		 * @see fu.hao.trust.dvm.ByteCode#func(fu.hao.trust.dvm.DalvikVM,
 		 *      patdroid.dalvik.Instruction)
 		 */
@@ -1831,27 +1838,28 @@ public class Executor {
 				Class<?> rclass = obj.getClass();
 				try {
 					Field rfield = findRField(rclass, fieldInfo.fieldName);
-					vm.getReg(inst.r1)
-						.setValue(rfield.get(obj), fieldInfo.owner);
+					vm.getReg(inst.r1).setValue(rfield.get(obj),
+							fieldInfo.owner);
 				} catch (Exception e) {
 					e.printStackTrace();
 					Log.err(TAG, "Cannot get the field!");
-				} 
-				
+				}
+
 			}
 
 			jump(vm, inst, true);
 		}
 	}
-	
+
 	public Field findRField(Class<?> clazz, String fieldName) {
-	    Class<?> current = clazz;
-	    do {
-	       try {
-	           return current.getDeclaredField(fieldName);
-	       } catch(Exception e) {}
-	    } while((current = current.getSuperclass()) != null);
-	    return null;
+		Class<?> current = clazz;
+		do {
+			try {
+				return current.getDeclaredField(fieldName);
+			} catch (Exception e) {
+			}
+		} while ((current = current.getSuperclass()) != null);
+		return null;
 	}
 
 	class OP_INSTANCE_PUT_FIELD implements ByteCode {
@@ -1974,7 +1982,7 @@ public class Executor {
 				PrimitiveInfo primitive = (PrimitiveInfo) data;
 				data = ((PrimitiveInfo) data).intValue();
 				if (primitive.isChar()) {
-					data = (int)primitive.charValue; 
+					data = (int) primitive.charValue;
 				}
 				Log.bb(TAG, "Primitive: " + data);
 			}
@@ -2353,8 +2361,7 @@ public class Executor {
 					} else {
 						Object retVal = method.invoke(thisInstance);
 						if (retVal == null || !retVal.equals("KeepRetMark")) {
-							vm.getReturnReg().setValue(retVal,
-									mi.returnType);
+							vm.getReturnReg().setValue(retVal, mi.returnType);
 						}
 					}
 				} else {
@@ -2372,18 +2379,18 @@ public class Executor {
 								+ ", from class: "
 								+ thisInstance.getClass().toString());
 						Object retVal = method.invoke(thisInstance, params);
-						
+
 						if (retVal == null || !retVal.equals("KeepRetMark")) {
-							vm.getReturnReg().setValue(retVal,
-									mi.returnType);
+							vm.getReturnReg().setValue(retVal, mi.returnType);
 						}
-						
+
 					} else {
 						vm.getReturnReg().setValue(
 								new Unknown(vm, mi.returnType), mi.returnType);
 					}
 				}
-				if (vm.getReturnReg().isUsed() && vm.getReturnReg().getData() != null) {
+				if (vm.getReturnReg().isUsed()
+						&& vm.getReturnReg().getData() != null) {
 					Log.debug(TAG, "Return data: "
 							+ vm.getReturnReg().getData() + " ,"
 							+ vm.getReturnReg().getData().getClass());
@@ -2454,7 +2461,8 @@ public class Executor {
 			} else {
 				if (mi.myClass.fullName.startsWith("java.io.ObjectInputStream")) {
 					Log.warn(TAG, "Error in reflection: " + e.getMessage());
-				} else if (mi.isConstructor() && mi.myClass.fullName.startsWith("java.lang.String")) {
+				} else if (mi.isConstructor()
+						&& mi.myClass.fullName.startsWith("java.lang.String")) {
 					Log.warn(TAG, "Error in reflection: " + e.getMessage());
 				} else {
 					Log.err(TAG, "Error in reflection: " + e.getMessage());
@@ -2586,7 +2594,8 @@ public class Executor {
 					Log.warn(TAG, "Mismatch type! arg " + i
 							+ ", real para type: " + argData.getClass()
 							+ ", expected para type: " + argsClass[j]);
-					if (argData instanceof PrimitiveInfo && ((PrimitiveInfo) argData).intValue() == 0) {
+					if (argData instanceof PrimitiveInfo
+							&& ((PrimitiveInfo) argData).intValue() == 0) {
 						// Check whether is null
 						params[j] = null;
 					} else if (mi.paramTypes[j].isInterface()) {
@@ -2816,7 +2825,8 @@ public class Executor {
 		return res;
 	}
 
-	public void runEntryMethod(ClassInfo sitClass, DalvikVM vm, MethodInfo method) {
+	public void runEntryMethod(ClassInfo sitClass, DalvikVM vm,
+			MethodInfo method) {
 		/*
 		 * List<MethodInfo> runs = new ArrayList<>();
 		 * runs.addAll(getPreCallback(sitClass, method)); runs.add(method);
@@ -2832,29 +2842,32 @@ public class Executor {
 		 * vm.setChainThisObj(stackFrame.getThisObj()); } else {
 		 * stackFrame.setThisObj(vm.getChainThisObj()); } } }
 		 */
+		
+		DVMObject thisObj = vm.newVMObject(method.myClass);
 		StackFrame stackFrame = vm.newStackFrame(method.myClass, method);
-		DVMObject thisObj = vm.newVMObject(method.myClass);	
 		stackFrame.setThisObj(thisObj);
 		
 		if (Settings.isRunEntryException()) {
-		// FIXME Enfore to run catch blk;
-		for (TryBlockInfo tryBlk: method.tbs) {
-			Log.msg(TAG, "Try-catches: " + tryBlk.startInsnIndex + ", " + tryBlk.endInsnIndex);
-			for (ExceptionHandler handler : tryBlk.handlers) {
-				Log.msg(TAG, "Handler index: " + handler.handlerInsnIndex + ", " + handler.exceptionType);
-				// Enfore to run the catch-blk
-				Instruction inst = new Instruction();
-				inst.opcode = Instruction.OP_GOTO;
-				inst.extra = handler.handlerInsnIndex;
-				method.insns[tryBlk.startInsnIndex] = inst;
-				stackFrame = vm.newStackFrame(method.myClass, method);
-				stackFrame.setThisObj(thisObj);
-				stackFrame.setExceptReg();
-				stackFrame.getExceptReg().setValue(new DVMObject(vm, handler.exceptionType), handler.exceptionType);
-				break;
-			}		
-		}
-		}
+			// FIXME Enfore to run catch blk;
+			for (TryBlockInfo tryBlk : method.tbs) {
+				Log.msg(TAG, "Try-catches: " + tryBlk.startInsnIndex + ", "
+						+ tryBlk.endInsnIndex);
+				for (ExceptionHandler handler : tryBlk.handlers) {
+					Log.msg(TAG, "Handler index: " + handler.handlerInsnIndex
+							+ ", " + handler.exceptionType);
+					// Enfore to run the catch-blk
+					Instruction inst = new Instruction();
+					inst.opcode = Instruction.OP_GOTO;
+					inst.extra = handler.handlerInsnIndex;
+					method.insns[tryBlk.startInsnIndex] = inst;
+					stackFrame.setExceptReg();
+					stackFrame.getExceptReg().setValue(
+							new DVMObject(vm, handler.exceptionType),
+							handler.exceptionType);
+					break;
+				}
+			}
+		} 
 		
 		Log.msg(TAG, "BEGIN RUN ENTRY: " + method);
 		run(vm);
@@ -2926,8 +2939,9 @@ public class Executor {
 				String methodName = methodInfo.getSecond();
 				Log.bb(TAG, "Add Event? " + methodInfo);
 				// Do not repeatly init the activities/services/application
-				if (newChain.contains(methodInfo) && (methodName.equals("onCreate")
-						|| methodName.startsWith("onStart"))) {
+				if (newChain.contains(methodInfo)
+						&& (methodName.equals("onCreate") || methodName
+								.startsWith("onStart"))) {
 					continue;
 				}
 				if (add) {
@@ -2942,8 +2956,8 @@ public class Executor {
 							newChain.add(methodInfo);
 						}
 					} else {
-						if ((methodName.equals("onCreate")
-								|| methodName.startsWith("onStart"))) {
+						if ((methodName.equals("onCreate") || methodName
+								.startsWith("onStart"))) {
 							add = true;
 							newChain.add(methodInfo);
 						} else if (ClassInfo
@@ -3047,7 +3061,8 @@ public class Executor {
 			String eventClass = event.getFirst();
 			String eventMethod = event.getSecond();
 			Log.bb(TAG, vm.getCallbackPool());
-			Log.msg(TAG, "EventClass: " + eventClass + ", EventMethod: " + eventMethod);
+			Log.msg(TAG, "EventClass: " + eventClass + ", EventMethod: "
+					+ eventMethod);
 
 			if (eventClass.equals("lastStop")) {
 				Settings.setCheckNewTaintedHeapLoc(true);
@@ -3061,8 +3076,10 @@ public class Executor {
 					if (eventMethod.startsWith("onCreate")) {
 						vm.addEventFrame(eventClass, eventMethod, null);
 					} else if (vm.getCallbackPool().containsKey(eventClass)) {
-						Log.warn(TAG,
-								"Event obj " + vm.getCallbackPool().get(eventClass));
+						Log.warn(
+								TAG,
+								"Event obj "
+										+ vm.getCallbackPool().get(eventClass));
 						vm.addEventFrame(vm.getCallbackPool().get(eventClass),
 								eventMethod);
 					}
@@ -3223,7 +3240,8 @@ public class Executor {
 				"android.myclasses.MyByteArrayOutputStream");
 		replacedInvokeList.put("java.io.ByteArrayInputStream",
 				"android.myclasses.ByteArrayInputStream");
-		replacedInvokeList.put("java.lang.reflect.Method", "patdroid.core.MethodInfo");
+		replacedInvokeList.put("java.lang.reflect.Method",
+				"patdroid.core.MethodInfo");
 	}
 
 	public void exec(DalvikVM vm, Instruction inst, ClassInfo sitClass) {
@@ -3350,7 +3368,8 @@ public class Executor {
 			op1 = PrimitiveInfo.fromObject(op);
 		}
 		if (type.equals(ClassInfo.primitiveChar)) {
-			Log.bb(TAG, "Char value " + (op1 == null ? 0 : op1.charValue()) + " resolved.");
+			Log.bb(TAG, "Char value " + (op1 == null ? 0 : op1.charValue())
+					+ " resolved.");
 			return new Character(op1 == null ? 0 : op1.charValue());
 		} else if (type.equals(ClassInfo.primitiveBoolean)) {
 			return new Boolean(op1 == null ? false : op1.booleanValue());

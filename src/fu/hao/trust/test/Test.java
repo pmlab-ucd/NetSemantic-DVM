@@ -19,9 +19,10 @@ public class Test {
 
 	public static void main(String[] margs) {
 		Test t = new Test();
+		t.testMain();
 		// t.testAnve();
 		// t.test00983aad12700be0a440296c6173b18a829e9369_a();
-		t.testMain();
+		//t.DroidKunfu3();
 		// t.testMopub_onCreate();
 		// t.testMopub_loadAd();
 		// t.test7613973();
@@ -48,9 +49,10 @@ public class Test {
 		args[3] = "ATaint";
 		Settings.logLevel = 0;
 		
-		args[0] = "D:/malwares/DroidKungFu3/255a1b74428b5615d65f39775ec7234e27bd9e74";
+		args[0] = "D:/malwares/DroidKungFu3/3d79d12d1abcddf9b53ca04469488a84a91aabdc";
 		args[1] = "com.google.update.UpdateService";
 		args[2] = "onCreate";
+		Settings.setRunEntryException(true);
 		Main.main(args);
 		
 		assertEquals(false, Results.results.isEmpty());

@@ -876,7 +876,7 @@ public class DalvikVM {
 	
 	private void initApplication() {
 		String[] mains = readManifestXML();
-		if (mains != null) {
+		if (mains != null && mains[0] != null && !mains[0].equals("")) {
 			String appClassName = mains[0];
 			if (appClassName != null) {
 				ClassInfo appClass = ClassInfo.findClass(appClassName);

@@ -62,6 +62,8 @@ public class DVMObject {
 					return;
 				}
 			}
+		}
+		if (inst == null || inst != null && inst.opcode != Instruction.OP_NEW_INSTANCE) {
 			MethodInfo oinit = type.getDefaultConstructor();
 			if (oinit != null) {
 				Log.msg(TAG, "Not empty constructor");
