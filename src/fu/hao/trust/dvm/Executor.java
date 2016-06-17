@@ -2112,8 +2112,7 @@ public class Executor {
 		public void func(DalvikVM vm, Instruction inst) {
 			jump(vm, inst, true);
 
-			// If operands contains instance of Unknown, directly set the res
-			// reg (r0) as unknowon
+			// If operands contain Unknown, directly set the res reg (r0) as unknowon
 			Unknown op = null;
 
 			if (inst.r0 != -1
@@ -2143,7 +2142,9 @@ public class Executor {
 				op.addLastArith(inst);
 				vm.getReg(inst.r0).setValue(op, type);
 			} else {
-				auxByteCodes.get((int) inst.opcode_aux).func(vm, inst);
+				if (inst.opcode_aux != Instruction.OP_A_ARRAY_LENGTH) {
+					auxByteCodes.get((int) inst.opcode_aux).func(vm, inst);
+				}
 			}
 
 			if (inst.opcode_aux == Instruction.OP_A_ARRAY_LENGTH) {
@@ -2580,6 +2581,9 @@ public class Executor {
 				Log.debug(TAG, "Real para type: " + argClass + ", value: "
 						+ params[j]);
 				argsClass[j] = argClass;
+			} else if (params[j] != null && params[j].toString().contains("[Lpatdroid.core.PrimitiveInfo")) {
+				// If is an array of PrimitiveInfo
+				params[j] = resolvePrimitiveArray((PrimitiveInfo[])params[j], Class.forName(mi.paramTypes[j].fullName));
 			} else {
 				String argClass = mi.paramTypes[j].toString();
 				argsClass[j] = Class.forName(argClass);
@@ -3352,6 +3356,19 @@ public class Executor {
 			pass = false;
 		}
 
+	}
+	
+	public Object resolvePrimitiveArray(PrimitiveInfo[] primArray, Class<?> argClass) {
+		Object res = null;
+		if (argClass.toString().contains("[B")) {
+			res = new byte[primArray.length];
+			for (int i = 0; i < primArray.length; i++) {
+				Array.setByte(res, i, (byte)primArray[i].intValue());
+			}
+		}
+		
+		
+		return res;
 	}
 
 	/**
