@@ -2581,9 +2581,11 @@ public class Executor {
 				Log.debug(TAG, "Real para type: " + argClass + ", value: "
 						+ params[j]);
 				argsClass[j] = argClass;
-			} else if (params[j] != null && params[j].toString().contains("[Lpatdroid.core.PrimitiveInfo")) {
+			} else if (data != null && data.toString().contains("[Lpatdroid.core.PrimitiveInfo")) {
 				// If is an array of PrimitiveInfo
-				params[j] = resolvePrimitiveArray((PrimitiveInfo[])params[j], Class.forName(mi.paramTypes[j].fullName));
+				Class<?> argClass = Class.forName(mi.paramTypes[j].fullName);
+				params[j] = resolvePrimitiveArray((PrimitiveInfo[])data, argClass);
+				argsClass[j] = argClass;
 			} else {
 				String argClass = mi.paramTypes[j].toString();
 				argsClass[j] = Class.forName(argClass);
@@ -3359,15 +3361,28 @@ public class Executor {
 	}
 	
 	public Object resolvePrimitiveArray(PrimitiveInfo[] primArray, Class<?> argClass) {
+		Log.bb(TAG, "ResolvePrimitiveArray: " + argClass);
 		Object res = null;
 		if (argClass.toString().contains("[B")) {
-			res = new byte[primArray.length];
+			res = new byte[primArray.length];			
 			for (int i = 0; i < primArray.length; i++) {
 				Array.setByte(res, i, (byte)primArray[i].intValue());
 			}
+		} else if (argClass.toString().contains("[C")) {
+			res = new char[primArray.length];
+			for (int i = 0; i < primArray.length; i++) {
+				Array.setChar(res, i, primArray[i].charValue());
+			}
+		} else if (argClass.toString().contains("[I")) {
+			res = new int[primArray.length];
+			for (int i = 0; i < primArray.length; i++) {
+				Array.setInt(res, i, primArray[i].intValue());
+			}
+		} else {
+			Log.err(TAG, "Unsupported type!");
 		}
 		
-		
+		Log.bb(TAG, "ResolvePrimitiveArray: " + res);
 		return res;
 	}
 
