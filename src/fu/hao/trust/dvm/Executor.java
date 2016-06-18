@@ -2228,6 +2228,16 @@ public class Executor {
 			vm.setPC(loc);
 		}
 	}
+	
+	private boolean isNoInvoke(String inst) {
+		for (String noInvoke : noInvokeList) {
+			if (inst.contains(noInvoke)) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
 
 	/**
 	 * @Title: invocation
@@ -2267,8 +2277,7 @@ public class Executor {
 			Object[] params = new Object[args.length - 1];
 			boolean normalArg = true;
 
-			if (noInvokeList.contains(mi.name)
-					|| noInvokeList.contains(mi.myClass.fullName)
+			if (isNoInvoke(inst.toString())
 					|| Settings.callBlkListHas(inst.toString())) {
 				normalArg = false;
 			}
@@ -2699,8 +2708,7 @@ public class Executor {
 		vm.getReturnReg().reset();
 		jump(vm, inst, true);
 
-		if (noInvokeList.contains(mi.name)
-				|| noInvokeList.contains(mi.myClass.fullName)
+		if (isNoInvoke(inst.toString())
 				|| mi.myClass.fullName.startsWith("android.support")
 				|| Settings.callBlkListHas(inst.toString())) {
 			vm.getReturnReg().setValue(new Unknown(vm, mi.returnType),
@@ -3226,6 +3234,7 @@ public class Executor {
 		noInvokeList.add("getStatusCode");
 		//noInvokeList.add("java.net.Socket");
 		// noInvokeList.add("java.io.ByteArrayOutputStream");
+		noInvokeList.add("HttpClient/execute");
 
 		noInvokeList2 = new HashSet<>();
 		noInvokeList2.add("equals");

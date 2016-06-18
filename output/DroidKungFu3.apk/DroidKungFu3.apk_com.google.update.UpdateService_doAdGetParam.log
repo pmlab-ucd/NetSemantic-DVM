@@ -2,8 +2,8 @@ DalvikVM - [MSG]: Begin run doAdGetParam at C:\Users\hao\workspace\DroidBenchPro
 DalvikVM - [MSG]: RUN Method com.google.update.UpdateService/doAdGetParam[]
 DalvikVM - [BB]: Superclass: com.google.update.UpdateService
 Service - [BB]: New instance of com.google.update.UpdateService
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.google.update.UpdateService at fu.hao.trust.dvm.VMHeap@54fc3ac5
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for com.google.update.UpdateService at fu.hao.trust.dvm.VMHeap@54fc3ac5
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.google.update.UpdateService at fu.hao.trust.dvm.VMHeap@7a74bff1
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for com.google.update.UpdateService at fu.hao.trust.dvm.VMHeap@7a74bff1
 DalvikVM - [BB]: New method call: com.google.update.UpdateService/<clinit>[]
 DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[]>
 DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r0,type=AndroidWide,extra=class patdroid.core.PrimitiveInfo?60000l>
@@ -30,15 +30,15 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <2 STATIC,SPUT,r0=r0,type=AndroidWide,extra=(com.google.update.UpdateService, INTERVAL)> at com.google.update.UpdateService/<clinit>[]
-Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.google.update.UpdateService at fu.hao.trust.dvm.VMHeap@54fc3ac5
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.google.update.UpdateService at fu.hao.trust.dvm.VMHeap@7a74bff1
 Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.google.update.UpdateService
-Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.google.update.UpdateService at fu.hao.trust.dvm.VMHeap@54fc3ac5
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.google.update.UpdateService at fu.hao.trust.dvm.VMHeap@7a74bff1
 class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: expect sput INTERVAL from com.google.update.UpdateService
-class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: real sput 60000l from fu.hao.trust.dvm.DVMClass@afd9691
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: real sput 60000l from fu.hao.trust.dvm.DVMClass@266f4689
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD -> jump set pc to 3
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.google.update.UpdateService at fu.hao.trust.dvm.VMHeap@54fc3ac5
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.google.update.UpdateService at fu.hao.trust.dvm.VMHeap@7a74bff1
 Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.google.update.UpdateService
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.google.update.UpdateService at fu.hao.trust.dvm.VMHeap@54fc3ac5
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.google.update.UpdateService at fu.hao.trust.dvm.VMHeap@7a74bff1
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
@@ -47,24 +47,24 @@ class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
 DalvikVM - [BB]: stack []
 DalvikVM - [BB]: Back to the last stack frame.null
 DalvikVM - [MSG]: Finish running instrumented methods! Back to null
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Service at fu.hao.trust.dvm.VMHeap@54fc3ac5
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Service at fu.hao.trust.dvm.VMHeap@54fc3ac5
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@54fc3ac5
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@54fc3ac5
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@54fc3ac5
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@54fc3ac5
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@54fc3ac5
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@54fc3ac5
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Service at fu.hao.trust.dvm.VMHeap@7a74bff1
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.app.Service at fu.hao.trust.dvm.VMHeap@7a74bff1
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@7a74bff1
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@7a74bff1
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@7a74bff1
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for android.content.Context at fu.hao.trust.dvm.VMHeap@7a74bff1
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@7a74bff1
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@7a74bff1
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@54fc3ac5
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@7a74bff1
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.Context
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@54fc3ac5
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@7a74bff1
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.ContextWrapper
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@54fc3ac5
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@7a74bff1
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.app.Service
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Service at fu.hao.trust.dvm.VMHeap@54fc3ac5
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Service at fu.hao.trust.dvm.VMHeap@7a74bff1
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type com.google.update.UpdateService
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.google.update.UpdateService at fu.hao.trust.dvm.VMHeap@54fc3ac5
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.google.update.UpdateService at fu.hao.trust.dvm.VMHeap@7a74bff1
 Service - [MSG]: Not empty constructor
 DalvikVM - [BB]: New method call: com.google.update.UpdateService/<init>[]
 DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[3]>
@@ -417,8 +417,8 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <2 STATIC,SGET,r0=r3,type=java.lang.Object,extra=(com.google.update.StateRes, Servers)> at com.google.update.UpdateService/doAdGetParam[]
-Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass com.google.update.StateRes at fu.hao.trust.dvm.VMHeap@54fc3ac5
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for com.google.update.StateRes at fu.hao.trust.dvm.VMHeap@54fc3ac5
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass com.google.update.StateRes at fu.hao.trust.dvm.VMHeap@7a74bff1
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for com.google.update.StateRes at fu.hao.trust.dvm.VMHeap@7a74bff1
 DalvikVM - [BB]: New method call: com.google.update.StateRes/<clinit>[]
 DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[]>
 DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r4,type=void,extra=class patdroid.core.PrimitiveInfo?48>
@@ -459,7 +459,7 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <2 NEW,ARRAY,dst=r0,r0=r4,type=[B> at com.google.update.StateRes/<clinit>[]
-DalvikVM - [WARN]: ar 0, ([Lpatdroid.core.PrimitiveInfo;@40b07205, [B)
+DalvikVM - [WARN]: ar 0, ([Lpatdroid.core.PrimitiveInfo;@2e0dc005, [B)
 OP_NEW_ARRAY - [DEBUG]: A new array of [B in size 48 created.
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_NEW_ARRAY -> jump set pc to 3
 TaintSumBranch - [BB]: Not a taint op <2 NEW,ARRAY,dst=r0,r0=r4,type=[B>
@@ -467,7 +467,7 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <3 NEW,FILLED_ARRAY,dst=r0,extra=[-45, -21, 111, -41, -42, 5, -112, 104, -114, 34, -69, -98, 109, -90, 76, 30, -119, 107, -82, 47, 39, 103, 20, 9, -42, -55, -14, -57, -25, 90, -75, 69, 20, 38, -14, -38, -121, 32, -93, -63, -110, -91, 62, 57, -110, -74, -26, 49]> at com.google.update.StateRes/<clinit>[]
-DalvikVM - [WARN]: ar 0 ([Lpatdroid.core.PrimitiveInfo;@40b07205, [B), ([Lpatdroid.core.PrimitiveInfo;@266f4689, null)
+DalvikVM - [WARN]: ar 0 ([Lpatdroid.core.PrimitiveInfo;@2e0dc005, [B), ([Lpatdroid.core.PrimitiveInfo;@5fee77ef, null)
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_NEW_FILLED_ARRAY -> jump set pc to 4
 TaintSumBranch - [BB]: Not a taint op <3 NEW,FILLED_ARRAY,dst=r0,extra=[-45, -21, 111, -41, -42, 5, -112, 104, -114, 34, -69, -98, 109, -90, 76, 30, -119, 107, -82, 47, 39, 103, 20, 9, -42, -55, -14, -57, -25, 90, -75, 69, 20, 38, -14, -38, -121, 32, -93, -63, -110, -91, 62, 57, -110, -74, -26, 49]>
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
@@ -482,7 +482,7 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <5 NEW,ARRAY,dst=r1,r0=r1,type=[[B> at com.google.update.StateRes/<clinit>[]
-DalvikVM - [WARN]: ar 1 (3, void), ([Ljava.lang.Object;@dc771, [[B)
+DalvikVM - [WARN]: ar 1 (3, void), ([Ljava.lang.Object;@8b99fe2, [[B)
 OP_NEW_ARRAY - [DEBUG]: A new array of [[B in size 3 created.
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_NEW_ARRAY -> jump set pc to 6
 TaintSumBranch - [BB]: Not a taint op <5 NEW,ARRAY,dst=r1,r0=r1,type=[[B>
@@ -498,7 +498,7 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <7 NEW,ARRAY,dst=r3,r0=r4,type=[B> at com.google.update.StateRes/<clinit>[]
-DalvikVM - [WARN]: ar 3, ([Lpatdroid.core.PrimitiveInfo;@8a0cbbe, [B)
+DalvikVM - [WARN]: ar 3, ([Lpatdroid.core.PrimitiveInfo;@52afb2e7, [B)
 OP_NEW_ARRAY - [DEBUG]: A new array of [B in size 48 created.
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_NEW_ARRAY -> jump set pc to 8
 TaintSumBranch - [BB]: Not a taint op <7 NEW,ARRAY,dst=r3,r0=r4,type=[B>
@@ -506,7 +506,7 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <8 NEW,FILLED_ARRAY,dst=r3,extra=[-88, -93, 102, -67, 106, 127, 104, -20, -42, 44, 34, -81, -29, -97, 107, -88, -66, 70, 90, -106, 122, 97, 91, -70, -109, 97, 118, 115, -33, 106, 29, -5, -56, 82, -92, 86, 116, -27, 56, 7, -39, -66, -64, -108, 107, 92, 69, -115]> at com.google.update.StateRes/<clinit>[]
-DalvikVM - [WARN]: ar 3 ([Lpatdroid.core.PrimitiveInfo;@8a0cbbe, [B), ([Lpatdroid.core.PrimitiveInfo;@537fe015, null)
+DalvikVM - [WARN]: ar 3 ([Lpatdroid.core.PrimitiveInfo;@52afb2e7, [B), ([Lpatdroid.core.PrimitiveInfo;@21041d1d, null)
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_NEW_FILLED_ARRAY -> jump set pc to 9
 TaintSumBranch - [BB]: Not a taint op <8 NEW,FILLED_ARRAY,dst=r3,extra=[-88, -93, 102, -67, 106, 127, 104, -20, -42, 44, 34, -81, -29, -97, 107, -88, -66, 70, 90, -106, 122, 97, 91, -70, -109, 97, 118, 115, -33, 106, 29, -5, -56, 82, -92, 86, 116, -27, 56, 7, -39, -66, -64, -108, 107, 92, 69, -115]>
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
@@ -514,9 +514,9 @@ Executor - [MSG]:
 
 Executor - [MSG]: <9 ARRAY,APUT,dst=r3,r0=r1,r1=r2,type=java.lang.Object> at com.google.update.StateRes/<clinit>[]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARRAY_PUT -> jump set pc to 10
-DalvikVM - [WARN]: ar 3 ([Lpatdroid.core.PrimitiveInfo;@537fe015, null), ([Lpatdroid.core.PrimitiveInfo;@537fe015, java.lang.Object)
+DalvikVM - [WARN]: ar 3 ([Lpatdroid.core.PrimitiveInfo;@21041d1d, null), ([Lpatdroid.core.PrimitiveInfo;@21041d1d, java.lang.Object)
 Executor - [BB]: index: 0, length: 3
-Executor - [DEBUG]: data: [Lpatdroid.core.PrimitiveInfo;@537fe015 array: [Ljava.lang.Object;@dc771
+Executor - [DEBUG]: data: [Lpatdroid.core.PrimitiveInfo;@21041d1d array: [Ljava.lang.Object;@8b99fe2
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
@@ -530,9 +530,9 @@ Executor - [MSG]:
 
 Executor - [MSG]: <11 ARRAY,APUT,dst=r0,r0=r1,r1=r2,type=java.lang.Object> at com.google.update.StateRes/<clinit>[]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARRAY_PUT -> jump set pc to 12
-DalvikVM - [WARN]: ar 0 ([Lpatdroid.core.PrimitiveInfo;@266f4689, null), ([Lpatdroid.core.PrimitiveInfo;@266f4689, java.lang.Object)
+DalvikVM - [WARN]: ar 0 ([Lpatdroid.core.PrimitiveInfo;@5fee77ef, null), ([Lpatdroid.core.PrimitiveInfo;@5fee77ef, java.lang.Object)
 Executor - [BB]: index: 1, length: 3
-Executor - [DEBUG]: data: [Lpatdroid.core.PrimitiveInfo;@266f4689 array: [Ljava.lang.Object;@dc771
+Executor - [DEBUG]: data: [Lpatdroid.core.PrimitiveInfo;@5fee77ef array: [Ljava.lang.Object;@8b99fe2
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
@@ -545,7 +545,7 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <13 NEW,ARRAY,dst=r3,r0=r4,type=[B> at com.google.update.StateRes/<clinit>[]
-DalvikVM - [WARN]: ar 3 ([Lpatdroid.core.PrimitiveInfo;@537fe015, java.lang.Object), ([Lpatdroid.core.PrimitiveInfo;@74a02b5e, [B)
+DalvikVM - [WARN]: ar 3 ([Lpatdroid.core.PrimitiveInfo;@21041d1d, java.lang.Object), ([Lpatdroid.core.PrimitiveInfo;@d0a861a, [B)
 OP_NEW_ARRAY - [DEBUG]: A new array of [B in size 48 created.
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_NEW_ARRAY -> jump set pc to 14
 TaintSumBranch - [BB]: Not a taint op <13 NEW,ARRAY,dst=r3,r0=r4,type=[B>
@@ -553,7 +553,7 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <14 NEW,FILLED_ARRAY,dst=r3,extra=[41, -69, 8, 59, -109, -82, 109, -42, -5, 78, 47, 53, 53, -122, -59, 98, 24, -38, -103, -14, 66, 27, 75, 18, -58, -4, 116, -1, 62, -114, -113, -14, 41, 89, 7, 83, 72, 20, -112, 111, -31, 90, 70, 12, 59, -96, 62, 120]> at com.google.update.StateRes/<clinit>[]
-DalvikVM - [WARN]: ar 3 ([Lpatdroid.core.PrimitiveInfo;@74a02b5e, [B), ([Lpatdroid.core.PrimitiveInfo;@7050ad86, null)
+DalvikVM - [WARN]: ar 3 ([Lpatdroid.core.PrimitiveInfo;@d0a861a, [B), ([Lpatdroid.core.PrimitiveInfo;@15136bda, null)
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_NEW_FILLED_ARRAY -> jump set pc to 15
 TaintSumBranch - [BB]: Not a taint op <14 NEW,FILLED_ARRAY,dst=r3,extra=[41, -69, 8, 59, -109, -82, 109, -42, -5, 78, 47, 53, 53, -122, -59, 98, 24, -38, -103, -14, 66, 27, 75, 18, -58, -4, 116, -1, 62, -114, -113, -14, 41, 89, 7, 83, 72, 20, -112, 111, -31, 90, 70, 12, 59, -96, 62, 120]>
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
@@ -561,22 +561,22 @@ Executor - [MSG]:
 
 Executor - [MSG]: <15 ARRAY,APUT,dst=r3,r0=r1,r1=r2,type=java.lang.Object> at com.google.update.StateRes/<clinit>[]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARRAY_PUT -> jump set pc to 16
-DalvikVM - [WARN]: ar 3 ([Lpatdroid.core.PrimitiveInfo;@7050ad86, null), ([Lpatdroid.core.PrimitiveInfo;@7050ad86, java.lang.Object)
+DalvikVM - [WARN]: ar 3 ([Lpatdroid.core.PrimitiveInfo;@15136bda, null), ([Lpatdroid.core.PrimitiveInfo;@15136bda, java.lang.Object)
 Executor - [BB]: index: 2, length: 3
-Executor - [DEBUG]: data: [Lpatdroid.core.PrimitiveInfo;@7050ad86 array: [Ljava.lang.Object;@dc771
+Executor - [DEBUG]: data: [Lpatdroid.core.PrimitiveInfo;@15136bda array: [Ljava.lang.Object;@8b99fe2
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <16 STATIC,SPUT,r0=r1,type=java.lang.Object,extra=(com.google.update.StateRes, Servers)> at com.google.update.StateRes/<clinit>[]
-Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.google.update.StateRes at fu.hao.trust.dvm.VMHeap@54fc3ac5
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.google.update.StateRes at fu.hao.trust.dvm.VMHeap@7a74bff1
 Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.google.update.StateRes
-Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.google.update.StateRes at fu.hao.trust.dvm.VMHeap@54fc3ac5
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.google.update.StateRes at fu.hao.trust.dvm.VMHeap@7a74bff1
 class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: expect sput Servers from com.google.update.StateRes
-class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: real sput [Ljava.lang.Object;@dc771 from fu.hao.trust.dvm.DVMClass@44875666
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: real sput [Ljava.lang.Object;@8b99fe2 from fu.hao.trust.dvm.DVMClass@2dea1ba6
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD -> jump set pc to 17
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.google.update.StateRes at fu.hao.trust.dvm.VMHeap@54fc3ac5
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.google.update.StateRes at fu.hao.trust.dvm.VMHeap@7a74bff1
 Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.google.update.StateRes
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.google.update.StateRes at fu.hao.trust.dvm.VMHeap@54fc3ac5
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.google.update.StateRes at fu.hao.trust.dvm.VMHeap@7a74bff1
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
@@ -587,20 +587,20 @@ DalvikVM - [BB]: Back to the last stack frame.StackFrame com.google.update.Updat
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame com.google.update.UpdateService/doAdGetParam[]
 Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.google.update.StateRes
-Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass com.google.update.StateRes at fu.hao.trust.dvm.VMHeap@54fc3ac5
-DalvikVM - [WARN]: ar 3, ([Ljava.lang.Object;@dc771, [[B)
-OP_STATIC_GET_FIELD - [DEBUG]: Sget [Ljava.lang.Object;@dc771, from fu.hao.trust.dvm.DVMClass@44875666
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass com.google.update.StateRes at fu.hao.trust.dvm.VMHeap@7a74bff1
+DalvikVM - [WARN]: ar 3, ([Ljava.lang.Object;@8b99fe2, [[B)
+OP_STATIC_GET_FIELD - [DEBUG]: Sget [Ljava.lang.Object;@8b99fe2, from fu.hao.trust.dvm.DVMClass@2dea1ba6
 OP_STATIC_GET_FIELD - [DEBUG]: Expect sget Servers, a [[B from com.google.update.StateRes
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD -> jump set pc to 3
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.google.update.StateRes at fu.hao.trust.dvm.VMHeap@54fc3ac5
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.google.update.StateRes at fu.hao.trust.dvm.VMHeap@7a74bff1
 Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.google.update.StateRes
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.google.update.StateRes at fu.hao.trust.dvm.VMHeap@54fc3ac5
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.google.update.StateRes at fu.hao.trust.dvm.VMHeap@7a74bff1
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <3 ARITHMETIC,ARRAY_LENGTH,dst=r3,r0=r3,type=int> at com.google.update.UpdateService/doAdGetParam[]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARITHETIC -> jump set pc to 4
-DalvikVM - [WARN]: ar 3 ([Ljava.lang.Object;@dc771, [[B), (3, int)
+DalvikVM - [WARN]: ar 3 ([Ljava.lang.Object;@8b99fe2, [[B), (3, int)
 OP_A_ARRAY_LENGTH - [DEBUG]: Array len 3
 TaintSumBranch - [BB]: Not a taint op <3 ARITHMETIC,ARRAY_LENGTH,dst=r3,r0=r3,type=int>
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
@@ -648,26 +648,26 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <9 STATIC,SGET,r0=r5,type=java.lang.Object,extra=(com.google.update.StateRes, Servers)> at com.google.update.UpdateService/doAdGetParam[]
-Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass com.google.update.StateRes at fu.hao.trust.dvm.VMHeap@54fc3ac5
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass com.google.update.StateRes at fu.hao.trust.dvm.VMHeap@7a74bff1
 Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.google.update.StateRes
-Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass com.google.update.StateRes at fu.hao.trust.dvm.VMHeap@54fc3ac5
-DalvikVM - [WARN]: ar 5, ([Ljava.lang.Object;@dc771, [[B)
-OP_STATIC_GET_FIELD - [DEBUG]: Sget [Ljava.lang.Object;@dc771, from fu.hao.trust.dvm.DVMClass@44875666
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass com.google.update.StateRes at fu.hao.trust.dvm.VMHeap@7a74bff1
+DalvikVM - [WARN]: ar 5, ([Ljava.lang.Object;@8b99fe2, [[B)
+OP_STATIC_GET_FIELD - [DEBUG]: Sget [Ljava.lang.Object;@8b99fe2, from fu.hao.trust.dvm.DVMClass@2dea1ba6
 OP_STATIC_GET_FIELD - [DEBUG]: Expect sget Servers, a [[B from com.google.update.StateRes
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD -> jump set pc to 10
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.google.update.StateRes at fu.hao.trust.dvm.VMHeap@54fc3ac5
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.google.update.StateRes at fu.hao.trust.dvm.VMHeap@7a74bff1
 Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.google.update.StateRes
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.google.update.StateRes at fu.hao.trust.dvm.VMHeap@54fc3ac5
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.google.update.StateRes at fu.hao.trust.dvm.VMHeap@7a74bff1
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <10 ARRAY,AGET,dst=r5,r0=r5,r1=r0,type=java.lang.Object> at com.google.update.UpdateService/doAdGetParam[]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARRAY_GET -> jump set pc to 11
-Executor - [BB]: Array: [Ljava.lang.Object;@dc771
+Executor - [BB]: Array: [Ljava.lang.Object;@8b99fe2
 Executor - [BB]: Length: 3
 Executor - [BB]: Index: 0
-Executor - [DEBUG]: Elem: [Lpatdroid.core.PrimitiveInfo;@537fe015 at 0 of [Ljava.lang.Object;@dc771
-DalvikVM - [WARN]: ar 5 ([Ljava.lang.Object;@dc771, [[B), ([Lpatdroid.core.PrimitiveInfo;@537fe015, java.lang.Object)
+Executor - [DEBUG]: Elem: [Lpatdroid.core.PrimitiveInfo;@21041d1d at 0 of [Ljava.lang.Object;@8b99fe2
+DalvikVM - [WARN]: ar 5 ([Ljava.lang.Object;@8b99fe2, [[B), ([Lpatdroid.core.PrimitiveInfo;@21041d1d, java.lang.Object)
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
@@ -695,8 +695,8 @@ DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> execute set pc to 0
 Executor - [MSG]: 
 
 Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[4]> at com.google.update.Utils/decrypt[[B]
-DalvikVM - [WARN]: ar 4, ([Lpatdroid.core.PrimitiveInfo;@537fe015, java.lang.Object)
-Executor - [DEBUG]: params: [Lpatdroid.core.PrimitiveInfo;@537fe015
+DalvikVM - [WARN]: ar 4, ([Lpatdroid.core.PrimitiveInfo;@21041d1d, java.lang.Object)
+Executor - [DEBUG]: params: [Lpatdroid.core.PrimitiveInfo;@21041d1d
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
@@ -711,8 +711,8 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <2 STATIC,SGET,r0=r2,type=java.lang.Object,extra=(com.google.update.Utils, defPassword)> at com.google.update.Utils/decrypt[[B]
-Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass com.google.update.Utils at fu.hao.trust.dvm.VMHeap@54fc3ac5
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for com.google.update.Utils at fu.hao.trust.dvm.VMHeap@54fc3ac5
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass com.google.update.Utils at fu.hao.trust.dvm.VMHeap@7a74bff1
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for com.google.update.Utils at fu.hao.trust.dvm.VMHeap@7a74bff1
 DalvikVM - [BB]: New method call: com.google.update.Utils/<clinit>[]
 DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[]>
 DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?16>
@@ -741,7 +741,7 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <2 NEW,ARRAY,dst=r0,r0=r0,type=[B> at com.google.update.Utils/<clinit>[]
-DalvikVM - [WARN]: ar 0 (16, void), ([Lpatdroid.core.PrimitiveInfo;@18b3c498, [B)
+DalvikVM - [WARN]: ar 0 (16, void), ([Lpatdroid.core.PrimitiveInfo;@7b4ab41e, [B)
 OP_NEW_ARRAY - [DEBUG]: A new array of [B in size 16 created.
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_NEW_ARRAY -> jump set pc to 3
 TaintSumBranch - [BB]: Not a taint op <2 NEW,ARRAY,dst=r0,r0=r0,type=[B>
@@ -749,22 +749,22 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <3 NEW,FILLED_ARRAY,dst=r0,extra=[70, 117, 99, 107, 95, 115, 69, 120, 121, 45, 97, 76, 108, 33, 80, 119]> at com.google.update.Utils/<clinit>[]
-DalvikVM - [WARN]: ar 0 ([Lpatdroid.core.PrimitiveInfo;@18b3c498, [B), ([Lpatdroid.core.PrimitiveInfo;@3d7436b5, null)
+DalvikVM - [WARN]: ar 0 ([Lpatdroid.core.PrimitiveInfo;@7b4ab41e, [B), ([Lpatdroid.core.PrimitiveInfo;@31b6421, null)
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_NEW_FILLED_ARRAY -> jump set pc to 4
 TaintSumBranch - [BB]: Not a taint op <3 NEW,FILLED_ARRAY,dst=r0,extra=[70, 117, 99, 107, 95, 115, 69, 120, 121, 45, 97, 76, 108, 33, 80, 119]>
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <4 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(com.google.update.Utils, defPassword)> at com.google.update.Utils/<clinit>[]
-Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.google.update.Utils at fu.hao.trust.dvm.VMHeap@54fc3ac5
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.google.update.Utils at fu.hao.trust.dvm.VMHeap@7a74bff1
 Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.google.update.Utils
-Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.google.update.Utils at fu.hao.trust.dvm.VMHeap@54fc3ac5
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.google.update.Utils at fu.hao.trust.dvm.VMHeap@7a74bff1
 class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: expect sput defPassword from com.google.update.Utils
-class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: real sput [Lpatdroid.core.PrimitiveInfo;@3d7436b5 from fu.hao.trust.dvm.DVMClass@422fe3d3
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: real sput [Lpatdroid.core.PrimitiveInfo;@31b6421 from fu.hao.trust.dvm.DVMClass@65775cce
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD -> jump set pc to 5
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.google.update.Utils at fu.hao.trust.dvm.VMHeap@54fc3ac5
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.google.update.Utils at fu.hao.trust.dvm.VMHeap@7a74bff1
 Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.google.update.Utils
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.google.update.Utils at fu.hao.trust.dvm.VMHeap@54fc3ac5
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.google.update.Utils at fu.hao.trust.dvm.VMHeap@7a74bff1
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
@@ -775,14 +775,14 @@ DalvikVM - [BB]: Back to the last stack frame.StackFrame com.google.update.Utils
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame com.google.update.Utils/decrypt[[B]
 Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.google.update.Utils
-Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass com.google.update.Utils at fu.hao.trust.dvm.VMHeap@54fc3ac5
-DalvikVM - [WARN]: ar 2, ([Lpatdroid.core.PrimitiveInfo;@3d7436b5, [B)
-OP_STATIC_GET_FIELD - [DEBUG]: Sget [Lpatdroid.core.PrimitiveInfo;@3d7436b5, from fu.hao.trust.dvm.DVMClass@422fe3d3
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass com.google.update.Utils at fu.hao.trust.dvm.VMHeap@7a74bff1
+DalvikVM - [WARN]: ar 2, ([Lpatdroid.core.PrimitiveInfo;@31b6421, [B)
+OP_STATIC_GET_FIELD - [DEBUG]: Sget [Lpatdroid.core.PrimitiveInfo;@31b6421, from fu.hao.trust.dvm.DVMClass@65775cce
 OP_STATIC_GET_FIELD - [DEBUG]: Expect sget defPassword, a [B from com.google.update.Utils
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD -> jump set pc to 3
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.google.update.Utils at fu.hao.trust.dvm.VMHeap@54fc3ac5
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.google.update.Utils at fu.hao.trust.dvm.VMHeap@7a74bff1
 Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.google.update.Utils
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.google.update.Utils at fu.hao.trust.dvm.VMHeap@54fc3ac5
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.google.update.Utils at fu.hao.trust.dvm.VMHeap@7a74bff1
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
@@ -797,9 +797,9 @@ Executor - [MSG]:
 Executor - [MSG]: <4 INVOKE,DIRECT,extra=[javax.crypto.spec.SecretKeySpec/<init>[[B, java.lang.String], [1, 2, 3]]> at com.google.update.Utils/decrypt[[B]
 Executor - [MSG]: arg0 obj: null
 Executor - [BB]: javax.crypto.spec.SecretKeySpec/<init>[[B, java.lang.String] is a constructor!
-Executor - [BB]: arg1@reg2: [Lpatdroid.core.PrimitiveInfo;@3d7436b5
+Executor - [BB]: arg1@reg2: [Lpatdroid.core.PrimitiveInfo;@31b6421
 Executor - [BB]: ResolvePrimitiveArray: class [B
-Executor - [BB]: ResolvePrimitiveArray: [B@56165397
+Executor - [BB]: ResolvePrimitiveArray: [B@7f6e0c6c
 Executor - [BB]: arg2@reg3: AES
 DalvikVM - [WARN]: ar 1 (null, javax.crypto.spec.SecretKeySpec), (javax.crypto.spec.SecretKeySpec@15151, javax.crypto.spec.SecretKeySpec)
 Executor - [DEBUG]: Init instance: javax.crypto.spec.SecretKeySpec@15151 class javax.crypto.spec.SecretKeySpec
@@ -811,7 +811,7 @@ Executor - [MSG]:
 
 Executor - [MSG]: <5 MOV,CONST,dst=r2,type=java.lang.String,extra="AES"> at com.google.update.Utils/decrypt[[B]
 Executor - [DEBUG]: Mov const begin <5 MOV,CONST,dst=r2,type=java.lang.String,extra="AES">
-DalvikVM - [WARN]: ar 2 ([Lpatdroid.core.PrimitiveInfo;@3d7436b5, [B), (AES, java.lang.String)
+DalvikVM - [WARN]: ar 2 ([Lpatdroid.core.PrimitiveInfo;@31b6421, [B), (AES, java.lang.String)
 Executor - [DEBUG]: data: AES class java.lang.String
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 6
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
@@ -821,7 +821,7 @@ Executor - [MSG]: <6 INVOKE,STATIC,extra=[javax.crypto.Cipher/getInstance[java.l
 Executor - [DEBUG]: Reflction class javax.crypto.Cipher
 Executor - [BB]: arg0@reg2: AES
 Executor - [BB]: param: AES
-DalvikVM - [WARN]: ar -1, (javax.crypto.Cipher@5d1348a7, javax.crypto.Cipher)
+DalvikVM - [WARN]: ar -1, (javax.crypto.Cipher@61ffdf0d, javax.crypto.Cipher)
 Executor - [MSG]: reflction invocation public static final javax.crypto.Cipher javax.crypto.Cipher.getInstance(java.lang.String) throws java.security.NoSuchAlgorithmException,javax.crypto.NoSuchPaddingException
 DalvikVM - [BB]: Set reflective call: public static final javax.crypto.Cipher javax.crypto.Cipher.getInstance(java.lang.String) throws java.security.NoSuchAlgorithmException,javax.crypto.NoSuchPaddingException
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INVOKE_STATIC -> jump set pc to 7
@@ -831,9 +831,9 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <7 MOV,RESULT,dst=r0,type=java.lang.Object> at com.google.update.Utils/decrypt[[B]
-DalvikVM - [WARN]: ar 0, (javax.crypto.Cipher@5d1348a7, javax.crypto.Cipher)
-OP_MOV_RESULT - [BB]: Result data: javax.crypto.Cipher@5d1348a7
-OP_MOV_RESULT - [DEBUG]: Result data: javax.crypto.Cipher@5d1348a7, type: javax.crypto.Cipher, to [reg 0@Utils/decrypt]
+DalvikVM - [WARN]: ar 0, (javax.crypto.Cipher@61ffdf0d, javax.crypto.Cipher)
+OP_MOV_RESULT - [BB]: Result data: javax.crypto.Cipher@61ffdf0d
+OP_MOV_RESULT - [DEBUG]: Result data: javax.crypto.Cipher@61ffdf0d, type: javax.crypto.Cipher, to [reg 0@Utils/decrypt]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 8
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
@@ -847,7 +847,7 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <9 INVOKE,VIRTUAL,extra=[javax.crypto.Cipher/init[int, java.security.Key], [0, 2, 1]]> at com.google.update.Utils/decrypt[[B]
-Executor - [MSG]: arg0 obj: javax.crypto.Cipher@5d1348a7
+Executor - [MSG]: arg0 obj: javax.crypto.Cipher@61ffdf0d
 Executor - [DEBUG]: Reflction class: class javax.crypto.Cipher
 Executor - [BB]: Normal args? true
 Executor - [BB]: arg1@reg2: 2
@@ -855,7 +855,7 @@ Executor - [DEBUG]: Expected para type: int
 Executor - [DEBUG]: Real para type: int, value: 2
 Executor - [BB]: arg2@reg1: javax.crypto.spec.SecretKeySpec@15151
 Executor - [BB]: Nargs? true
-Executor - [DEBUG]: Caller obj: javax.crypto.Cipher@5d1348a7, from class: class javax.crypto.Cipher
+Executor - [DEBUG]: Caller obj: javax.crypto.Cipher@61ffdf0d, from class: class javax.crypto.Cipher
 DalvikVM - [WARN]: ar -1, (null, void)
 Executor - [MSG]: Reflction invocation public final void javax.crypto.Cipher.init(int,java.security.Key) throws java.security.InvalidKeyException
 DalvikVM - [BB]: Set reflective call: public final void javax.crypto.Cipher.init(int,java.security.Key) throws java.security.InvalidKeyException
@@ -866,16 +866,16 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <10 INVOKE,VIRTUAL,extra=[javax.crypto.Cipher/doFinal[[B], [0, 4]]> at com.google.update.Utils/decrypt[[B]
-Executor - [MSG]: arg0 obj: javax.crypto.Cipher@5d1348a7
+Executor - [MSG]: arg0 obj: javax.crypto.Cipher@61ffdf0d
 Executor - [DEBUG]: Reflction class: class javax.crypto.Cipher
 Executor - [BB]: Normal args? true
-Executor - [BB]: arg1@reg4: [Lpatdroid.core.PrimitiveInfo;@537fe015
+Executor - [BB]: arg1@reg4: [Lpatdroid.core.PrimitiveInfo;@21041d1d
 Executor - [BB]: ResolvePrimitiveArray: class [B
-Executor - [BB]: ResolvePrimitiveArray: [B@6a367507
+Executor - [BB]: ResolvePrimitiveArray: [B@5c797bc6
 Executor - [BB]: Nargs? true
-Executor - [DEBUG]: Caller obj: javax.crypto.Cipher@5d1348a7, from class: class javax.crypto.Cipher
-DalvikVM - [WARN]: ar -1, ([B@370c27fd, [B)
-Executor - [DEBUG]: Return data: [B@370c27fd ,class [B
+Executor - [DEBUG]: Caller obj: javax.crypto.Cipher@61ffdf0d, from class: class javax.crypto.Cipher
+DalvikVM - [WARN]: ar -1, ([B@28cc23a, [B)
+Executor - [DEBUG]: Return data: [B@28cc23a ,class [B
 Executor - [MSG]: Reflction invocation public final byte[] javax.crypto.Cipher.doFinal(byte[]) throws javax.crypto.IllegalBlockSizeException,javax.crypto.BadPaddingException
 DalvikVM - [BB]: Set reflective call: public final byte[] javax.crypto.Cipher.doFinal(byte[]) throws javax.crypto.IllegalBlockSizeException,javax.crypto.BadPaddingException
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 11
@@ -885,25 +885,25 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <11 MOV,RESULT,dst=r2,type=java.lang.Object> at com.google.update.Utils/decrypt[[B]
-DalvikVM - [WARN]: ar 2 (2, void), ([B@370c27fd, [B)
-OP_MOV_RESULT - [BB]: Result data: [B@370c27fd
-OP_MOV_RESULT - [DEBUG]: Result data: [B@370c27fd, type: [B, to [reg 2@Utils/decrypt]
+DalvikVM - [WARN]: ar 2 (2, void), ([B@28cc23a, [B)
+OP_MOV_RESULT - [BB]: Result data: [B@28cc23a
+OP_MOV_RESULT - [DEBUG]: Result data: [B@28cc23a, type: [B, to [reg 2@Utils/decrypt]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 12
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <12 RETURN,VALUE,r0=r2,type=java.lang.Object> at com.google.update.Utils/decrypt[[B]
-DalvikVM - [WARN]: ar -1 ([B@370c27fd, [B), ([B@370c27fd, [B)
-Executor - [BB]: Return data: [B@370c27fd
+DalvikVM - [WARN]: ar -1 ([B@28cc23a, [B), ([B@28cc23a, [B)
+Executor - [BB]: Return data: [B@28cc23a
 DalvikVM - [BB]: stack [StackFrame com.google.update.UpdateService/doAdGetParam[]]
 DalvikVM - [BB]: Back to the last stack frame.StackFrame com.google.update.UpdateService/doAdGetParam[]
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <12 MOV,RESULT,dst=r5,type=java.lang.Object> at com.google.update.UpdateService/doAdGetParam[]
-DalvikVM - [WARN]: ar 5 ([Lpatdroid.core.PrimitiveInfo;@537fe015, java.lang.Object), ([B@370c27fd, [B)
-OP_MOV_RESULT - [BB]: Result data: [B@370c27fd
-OP_MOV_RESULT - [DEBUG]: Result data: [B@370c27fd, type: [B, to [reg 5@UpdateService/doAdGetParam]
+DalvikVM - [WARN]: ar 5 ([Lpatdroid.core.PrimitiveInfo;@21041d1d, java.lang.Object), ([B@28cc23a, [B)
+OP_MOV_RESULT - [BB]: Result data: [B@28cc23a
+OP_MOV_RESULT - [DEBUG]: Result data: [B@28cc23a, type: [B, to [reg 5@UpdateService/doAdGetParam]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 13
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
@@ -911,7 +911,7 @@ Executor - [MSG]:
 Executor - [MSG]: <13 INVOKE,DIRECT,extra=[java.lang.String/<init>[[B], [4, 5]]> at com.google.update.UpdateService/doAdGetParam[]
 Executor - [MSG]: arg0 obj: null
 Executor - [BB]: java.lang.String/<init>[[B] is a constructor!
-Executor - [BB]: arg1@reg5: [B@370c27fd
+Executor - [BB]: arg1@reg5: [B@28cc23a
 DalvikVM - [WARN]: ar 4 (null, java.lang.String), (http://search.gongfu-android.com:8511/search/, java.lang.String)
 Executor - [DEBUG]: Init instance: http://search.gongfu-android.com:8511/search/ class java.lang.String
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 14
@@ -1396,8 +1396,8 @@ Executor - [MSG]:
 Executor - [MSG]: <33 INVOKE,DIRECT,extra=[org.apache.http.impl.client.DefaultHttpClient/<init>[], [5]]> at com.google.update.UpdateService/_doAdGetParam[java.lang.String]
 Executor - [MSG]: arg0 obj: null
 Executor - [BB]: org.apache.http.impl.client.DefaultHttpClient/<init>[] is a constructor!
-DalvikVM - [WARN]: ar 5 (null, org.apache.http.impl.client.DefaultHttpClient), (org.apache.http.impl.client.DefaultHttpClient@77878e70, void)
-Executor - [DEBUG]: Reflected init instance: org.apache.http.impl.client.DefaultHttpClient@77878e70, class org.apache.http.impl.client.DefaultHttpClient
+DalvikVM - [WARN]: ar 5 (null, org.apache.http.impl.client.DefaultHttpClient), (org.apache.http.impl.client.DefaultHttpClient@62faaa17, void)
+Executor - [DEBUG]: Reflected init instance: org.apache.http.impl.client.DefaultHttpClient@62faaa17, class org.apache.http.impl.client.DefaultHttpClient
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 34
 TaintSumBranch - [BB]: <org.apache.http.impl.client.DefaultHttpClient: void <init>()>
 TaintSumBranch - [DEBUG]: Not a taint call: <org.apache.http.impl.client.DefaultHttpClient: void <init>()>
@@ -1405,10 +1405,179 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <34 INVOKE,VIRTUAL,extra=[org.apache.http.impl.client.CloseableHttpClient/execute[org.apache.http.client.methods.HttpUriRequest], [5, 4]]> at com.google.update.UpdateService/_doAdGetParam[java.lang.String]
-Executor - [MSG]: arg0 obj: org.apache.http.impl.client.DefaultHttpClient@77878e70
+Executor - [MSG]: arg0 obj: org.apache.http.impl.client.DefaultHttpClient@62faaa17
 Executor - [DEBUG]: Reflction class: class org.apache.http.impl.client.CloseableHttpClient
-Executor - [BB]: Normal args? true
+Executor - [BB]: Normal args? false
 Executor - [BB]: arg1@reg4: POST http://search.gongfu-android.com:8511/search/adp.php HTTP/1.1
 Executor - [BB]: Nargs? true
-Executor - [DEBUG]: Caller obj: org.apache.http.impl.client.DefaultHttpClient@77878e70, from class: class org.apache.http.impl.client.DefaultHttpClient
-Executor - [ERROR]: Error in reflection: null
+DalvikVM - [BB]: Superclass: org.apache.http.client.methods.CloseableHttpResponse
+DalvikVM - [BB]: Superclass: java.lang.Object
+DVMObject - [BB]: New instance of org.apache.http.client.methods.CloseableHttpResponse
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass org.apache.http.client.methods.CloseableHttpResponse at fu.hao.trust.dvm.VMHeap@7a74bff1
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: new class representation for org.apache.http.client.methods.CloseableHttpResponse at fu.hao.trust.dvm.VMHeap@7a74bff1
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type org.apache.http.client.methods.CloseableHttpResponse
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass org.apache.http.client.methods.CloseableHttpResponse at fu.hao.trust.dvm.VMHeap@7a74bff1
+Unknown - [BB]: Unknown created!
+DalvikVM - [WARN]: ar -1, ([Unknown var:instance number 1@org.apache.http.client.methods.CloseableHttpResponse, type: org.apache.http.client.methods.CloseableHttpResponse], org.apache.http.client.methods.CloseableHttpResponse)
+Executor - [DEBUG]: Return data: [Unknown var:instance number 1@org.apache.http.client.methods.CloseableHttpResponse, type: org.apache.http.client.methods.CloseableHttpResponse] ,class fu.hao.trust.solver.Unknown
+Executor - [MSG]: Reflction invocation public org.apache.http.client.methods.CloseableHttpResponse org.apache.http.impl.client.CloseableHttpClient.execute(org.apache.http.client.methods.HttpUriRequest) throws java.io.IOException,org.apache.http.client.ClientProtocolException
+Executor - [WARN]: Abnormal args, contain abstract value.
+DalvikVM - [BB]: Set reflective call: public org.apache.http.client.methods.CloseableHttpResponse org.apache.http.impl.client.CloseableHttpClient.execute(org.apache.http.client.methods.HttpUriRequest) throws java.io.IOException,org.apache.http.client.ClientProtocolException
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 35
+TaintSumBranch - [BB]: <org.apache.http.impl.client.CloseableHttpClient: org.apache.http.client.methods.CloseableHttpResponse execute(org.apache.http.client.methods.HttpUriRequest)>
+TaintSumBranch - [DEBUG]: Not a taint call: <org.apache.http.impl.client.CloseableHttpClient: org.apache.http.client.methods.CloseableHttpResponse execute(org.apache.http.client.methods.HttpUriRequest)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <35 MOV,RESULT,dst=r3,type=java.lang.Object> at com.google.update.UpdateService/_doAdGetParam[java.lang.String]
+DalvikVM - [WARN]: ar 3 ([imei, ch=-1, ver=a11], void), ([Unknown var:instance number 1@org.apache.http.client.methods.CloseableHttpResponse, type: org.apache.http.client.methods.CloseableHttpResponse], org.apache.http.client.methods.CloseableHttpResponse)
+OP_MOV_RESULT - [BB]: Result data: [Unknown var:instance number 1@org.apache.http.client.methods.CloseableHttpResponse, type: org.apache.http.client.methods.CloseableHttpResponse]
+OP_MOV_RESULT - [DEBUG]: Result data: [Unknown var:instance number 1@org.apache.http.client.methods.CloseableHttpResponse, type: org.apache.http.client.methods.CloseableHttpResponse], type: org.apache.http.client.methods.CloseableHttpResponse, to [reg 3@UpdateService/_doAdGetParam]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 36
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <36 MOV,REG,dst=r0,r0=r2,type=java.lang.Object> at com.google.update.UpdateService/_doAdGetParam[java.lang.String]
+DalvikVM - [WARN]: ar 0, (0, void)
+class fu.hao.trust.dvm.Executor$OP_MOVE_REG - [DEBUG]: mov 0 to 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOVE_REG -> jump set pc to 37
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <37 ARITHMETIC,CHECK-AND-CAST,dst=r0,type=java.lang.String> at com.google.update.UpdateService/_doAdGetParam[java.lang.String]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARITHETIC -> jump set pc to 38
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <38 MOV,REG,dst=r10,r0=r0,type=java.lang.Object> at com.google.update.UpdateService/_doAdGetParam[java.lang.String]
+DalvikVM - [WARN]: ar 10 (http://search.gongfu-android.com:8511/search/adp.php, java.lang.String), (0, void)
+class fu.hao.trust.dvm.Executor$OP_MOVE_REG - [DEBUG]: mov 0 to 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOVE_REG -> jump set pc to 39
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <39 MOV,REG,dst=r0,r0=r3,type=java.lang.Object> at com.google.update.UpdateService/_doAdGetParam[java.lang.String]
+DalvikVM - [WARN]: ar 0 (0, void), ([Unknown var:instance number 1@org.apache.http.client.methods.CloseableHttpResponse, type: org.apache.http.client.methods.CloseableHttpResponse], org.apache.http.client.methods.CloseableHttpResponse)
+class fu.hao.trust.dvm.Executor$OP_MOVE_REG - [DEBUG]: mov [Unknown var:instance number 1@org.apache.http.client.methods.CloseableHttpResponse, type: org.apache.http.client.methods.CloseableHttpResponse] to [Unknown var:instance number 1@org.apache.http.client.methods.CloseableHttpResponse, type: org.apache.http.client.methods.CloseableHttpResponse]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOVE_REG -> jump set pc to 40
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <40 ARITHMETIC,CHECK-AND-CAST,dst=r0,type=org.apache.http.HttpResponse> at com.google.update.UpdateService/_doAdGetParam[java.lang.String]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARITHETIC -> jump set pc to 41
+OP_A_CHECKCAST - [WARN]: Not consistent type when cast! org.apache.http.HttpResponse, org.apache.http.client.methods.CloseableHttpResponse
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <41 MOV,REG,dst=r5,r0=r0,type=java.lang.Object> at com.google.update.UpdateService/_doAdGetParam[java.lang.String]
+DalvikVM - [WARN]: ar 5 (org.apache.http.impl.client.DefaultHttpClient@62faaa17, void), ([Unknown var:instance number 1@org.apache.http.client.methods.CloseableHttpResponse, type: org.apache.http.client.methods.CloseableHttpResponse], org.apache.http.client.methods.CloseableHttpResponse)
+class fu.hao.trust.dvm.Executor$OP_MOVE_REG - [DEBUG]: mov [Unknown var:instance number 1@org.apache.http.client.methods.CloseableHttpResponse, type: org.apache.http.client.methods.CloseableHttpResponse] to [Unknown var:instance number 1@org.apache.http.client.methods.CloseableHttpResponse, type: org.apache.http.client.methods.CloseableHttpResponse]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOVE_REG -> jump set pc to 42
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <42 INVOKE,INTERFACE,extra=[org.apache.http.HttpResponse/getStatusLine[], [5]]> at com.google.update.UpdateService/_doAdGetParam[java.lang.String]
+Executor - [MSG]: arg0 obj: [Unknown var:instance number 1@org.apache.http.client.methods.CloseableHttpResponse, type: org.apache.http.client.methods.CloseableHttpResponse]
+Executor - [DEBUG]: Reflction class: interface org.apache.http.HttpResponse
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 43
+Executor - [WARN]: Reflection error: object is not an instance of declaring class
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <43 MOV,RESULT,dst=r5,type=java.lang.Object> at com.google.update.UpdateService/_doAdGetParam[java.lang.String]
+Unknown - [BB]: Unknown created!
+DalvikVM - [WARN]: ar -1, ([Unknown var:null, type: java.lang.Object], java.lang.Object)
+DalvikVM - [WARN]: ar 5 ([Unknown var:instance number 1@org.apache.http.client.methods.CloseableHttpResponse, type: org.apache.http.client.methods.CloseableHttpResponse], org.apache.http.client.methods.CloseableHttpResponse), ([Unknown var:null, type: java.lang.Object], java.lang.Object)
+OP_MOV_RESULT - [BB]: Result data: [Unknown var:null, type: java.lang.Object]
+OP_MOV_RESULT - [DEBUG]: Result data: [Unknown var:null, type: java.lang.Object], type: java.lang.Object, to [reg 5@UpdateService/_doAdGetParam]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 44
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <44 INVOKE,INTERFACE,extra=[org.apache.http.StatusLine/getStatusCode[], [5]]> at com.google.update.UpdateService/_doAdGetParam[java.lang.String]
+Executor - [MSG]: arg0 obj: [Unknown var:null, type: java.lang.Object]
+Executor - [DEBUG]: Reflction class: interface org.apache.http.StatusLine
+Unknown - [BB]: Unknown created!
+DalvikVM - [WARN]: ar -1, ([Unknown var:null, type: int], int)
+Executor - [WARN]: Found noInvokeMethod public abstract int org.apache.http.StatusLine.getStatusCode()
+Executor - [DEBUG]: Return data: [Unknown var:null, type: int] ,class fu.hao.trust.solver.Unknown
+Executor - [MSG]: Reflction invocation public abstract int org.apache.http.StatusLine.getStatusCode()
+Executor - [WARN]: Abnormal args, contain abstract value.
+DalvikVM - [BB]: Set reflective call: public abstract int org.apache.http.StatusLine.getStatusCode()
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 45
+TaintSumBranch - [BB]: <org.apache.http.StatusLine: int getStatusCode()>
+TaintSumBranch - [DEBUG]: Not a taint call: <org.apache.http.StatusLine: int getStatusCode()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <45 MOV,RESULT,dst=r5,type=void> at com.google.update.UpdateService/_doAdGetParam[java.lang.String]
+DalvikVM - [WARN]: ar 5 ([Unknown var:null, type: java.lang.Object], java.lang.Object), ([Unknown var:null, type: int], int)
+OP_MOV_RESULT - [BB]: Result data: [Unknown var:null, type: int]
+OP_MOV_RESULT - [DEBUG]: Result data: [Unknown var:null, type: int], type: int, to [reg 5@UpdateService/_doAdGetParam]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 46
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <46 MOV,CONST,dst=r6,type=void,extra=class patdroid.core.PrimitiveInfo?200> at com.google.update.UpdateService/_doAdGetParam[java.lang.String]
+Executor - [DEBUG]: Mov const begin <46 MOV,CONST,dst=r6,type=void,extra=class patdroid.core.PrimitiveInfo?200>
+DalvikVM - [WARN]: ar 6 (UTF-8, java.lang.String), (200, void)
+Executor - [DEBUG]: data: 200 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 47
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <47 IF,NE,r0=r5,r1=r6,extra=index:54> at com.google.update.UpdateService/_doAdGetParam[java.lang.String]
+OP_CMP - [DEBUG]: r1 data 200
+OP_CMP - [DEBUG]: r1 type void
+OP_CMP - [BB]: Types: int, void
+OP_CMP - [DEBUG]: r0 data [Unknown var:null, type: int]
+OP_CMP - [DEBUG]: r0 type int
+DalvikVM - [BB]: fu.hao.trust.analysis.Taint -> flow set pc to 48
+ATAINT_OP_CMP - [BB]: ret: 55
+ATAINT_OP_CMP - [WARN]: New Simple Branch [Branch: 47--[cond: <47 IF,NE,r0=r5,r1=r6,extra=index:54>][sumpoint: <0 MOV,REG,dst=r5,r0=r10,type=java.lang.Object>]@_doAdGetParam]
+ATAINT_OP_CMP - [BB]: Set sum point 54 <0 MOV,REG,dst=r5,r0=r10,type=java.lang.Object>
+ATAINT_OP_CMP - [MSG]: ATAINT_OP_IF:  <47 IF,NE,r0=r5,r1=r6,extra=index:54> 54
+ATAINT_OP_CMP - [BB]: Add <47 IF,NE,r0=r5,r1=r6,extra=index:54> to met of [Branch: 47--[cond: <47 IF,NE,r0=r5,r1=r6,extra=index:54>][sumpoint: <0 MOV,REG,dst=r5,r0=r10,type=java.lang.Object>]@_doAdGetParam]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <48 ARITHMETIC,CHECK-AND-CAST,dst=r3,type=org.apache.http.HttpResponse> at com.google.update.UpdateService/_doAdGetParam[java.lang.String]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARITHETIC -> jump set pc to 49
+OP_A_CHECKCAST - [WARN]: Not consistent type when cast! org.apache.http.HttpResponse, org.apache.http.client.methods.CloseableHttpResponse
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <49 INVOKE,INTERFACE,extra=[org.apache.http.HttpResponse/getEntity[], [3]]> at com.google.update.UpdateService/_doAdGetParam[java.lang.String]
+Executor - [MSG]: arg0 obj: [Unknown var:instance number 1@org.apache.http.client.methods.CloseableHttpResponse, type: org.apache.http.client.methods.CloseableHttpResponse]
+Executor - [DEBUG]: Reflction class: interface org.apache.http.HttpResponse
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 50
+Executor - [WARN]: Reflection error: object is not an instance of declaring class
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <50 MOV,RESULT,dst=r5,type=java.lang.Object> at com.google.update.UpdateService/_doAdGetParam[java.lang.String]
+Unknown - [BB]: Unknown created!
+DalvikVM - [WARN]: ar -1, ([Unknown var:null, type: java.lang.Object], java.lang.Object)
+DalvikVM - [WARN]: ar 5 ([Unknown var:null, type: int], int), ([Unknown var:null, type: java.lang.Object], java.lang.Object)
+OP_MOV_RESULT - [BB]: Result data: [Unknown var:null, type: java.lang.Object]
+OP_MOV_RESULT - [DEBUG]: Result data: [Unknown var:null, type: java.lang.Object], type: java.lang.Object, to [reg 5@UpdateService/_doAdGetParam]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 51
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <51 MOV,CONST,dst=r6,type=java.lang.String,extra="utf-8"> at com.google.update.UpdateService/_doAdGetParam[java.lang.String]
+Executor - [DEBUG]: Mov const begin <51 MOV,CONST,dst=r6,type=java.lang.String,extra="utf-8">
+DalvikVM - [WARN]: ar 6 (200, void), (utf-8, java.lang.String)
+Executor - [DEBUG]: data: utf-8 class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 52
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <52 INVOKE,STATIC,extra=[org.apache.http.util.EntityUtils/toString[org.apache.http.HttpEntity, java.lang.String], [5, 6]]> at com.google.update.UpdateService/_doAdGetParam[java.lang.String]
+Executor - [DEBUG]: Reflction class org.apache.http.util.EntityUtils
+Executor - [BB]: arg0@reg5: [Unknown var:null, type: java.lang.Object]
+DalvikVM - [WARN]: ar 5 ([Unknown var:null, type: java.lang.Object], java.lang.Object), ([Unknown var:null, type: java.lang.Object], org.apache.http.HttpEntity)
+Executor - [WARN]: Mismatch type! arg 0, real para type: class fu.hao.trust.solver.Unknown, expected para type: interface org.apache.http.HttpEntity
+Executor - [WARN]: Call the mirror method instead! org.apache.http.HttpEntity is a interface.
+Executor - [BB]: arg1@reg6: utf-8
+Executor - [ERROR]: Error in reflection: org.apache.http.util.EntityUtils.toString(fu.hao.trust.dvm.DVMObject, java.lang.String)

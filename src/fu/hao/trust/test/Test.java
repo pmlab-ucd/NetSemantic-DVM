@@ -23,6 +23,7 @@ public class Test {
 		// t.testAnve();
 		// t.test00983aad12700be0a440296c6173b18a829e9369_a();
 		t.myDroidKunfu3();
+		//t.DroidKunfu3();
 		// t.testMopub_onCreate();
 		// t.testMopub_loadAd();
 		// t.test7613973();
