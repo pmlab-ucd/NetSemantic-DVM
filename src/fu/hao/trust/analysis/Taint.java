@@ -5,6 +5,7 @@ import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -24,6 +25,7 @@ import fu.hao.trust.dvm.DVMObject;
 import fu.hao.trust.dvm.DalvikVM;
 import fu.hao.trust.dvm.DalvikVM.Register;
 import fu.hao.trust.utils.Log;
+import fu.hao.trust.utils.Maid;
 import fu.hao.trust.utils.Settings;
 import fu.hao.trust.utils.SrcSinkParser;
 
@@ -49,6 +51,8 @@ public class Taint extends Plugin {
 			e.printStackTrace();
 		}
 	}
+	
+	protected Set<String> thisAsTaintedList;
 
 	class TAINT_OP_MOV_REG implements Rule {
 		/**
@@ -342,10 +346,10 @@ public class Taint extends Plugin {
 						Log.warn(tag, "Found a tainted return value!");
 						out.put(vm.getReturnReg(), inst);
 						out.put(vm.getReturnReg().getData(), inst);
-					} else if (!mi.returnType.isPrimitive() || mi.name.contains("parse")) {
+					} else if (!mi.returnType.isPrimitive()
+							|| mi.name.contains("parse")) {
 						Log.debug(tag, "Not a taint source call: "
 								+ sootSignature);
-
 						for (int i = 0; i < args.length; i++) {
 							if (in.containsKey(vm.getReg(args[i]))) {
 								if (vm.getReturnReg().isUsed()) {
@@ -401,19 +405,10 @@ public class Taint extends Plugin {
 					}
 
 					if (sinks != null && sinks.contains(sootSignature)) {
-						Log.bb(tag, "Found a sink invocation. " + sootSignature);
+						Log.debug(tag, "Found a sink invocation. " + sootSignature);
 						if (hasTaintedParam == null) {
 							// Double Check
-							for (int i = 0; i < args.length; i++) {
-								if (vm.getReg(args[i]).isUsed()
-										&& in.containsKey(vm.getReg(args[i]))
-										|| in.containsKey(vm.getReg(args[i])
-												.getData())) {
-									hasTaintedParam = new Pair<>(
-											args[i],
-											in.get(vm.getReg(args[i]).getData()));
-								}
-							}
+							hasTaintedParam = hasTaintedParam(vm, args, in);
 						}
 
 						if (hasTaintedParam != null) {
@@ -432,7 +427,33 @@ public class Taint extends Plugin {
 							if (mi.isConstructor()) {
 								out.put(vm.getReg(args[0]),
 										hasTaintedParam.getSecond());
+								out.put(vm.getReg(args[0]).getData(),
+										hasTaintedParam.getSecond());
+								Log.warn(tag,
+										"A tainted init "
+												+ vm.getReg(args[0]).getData()
+												+ " identified, add reg"
+												+ args[0] + " as tainted");
 							}
+						}
+					}
+					
+					if (Maid.isElem(thisAsTaintedList, mi.toString())) {
+						if (hasTaintedParam == null) {
+							// Double Check
+							hasTaintedParam = hasTaintedParam(vm, args, in);
+						}
+						
+						if (hasTaintedParam != null) {
+							out.put(vm.getReg(args[0]),
+									hasTaintedParam.getSecond());
+							out.put(vm.getReg(args[0]).getData(),
+									hasTaintedParam.getSecond());
+							Log.warn(tag,
+									"A tainted thisObj "
+											+ vm.getReg(args[0]).getData()
+											+ " identified, add reg"
+											+ args[0] + " as tainted");
 						}
 					}
 
@@ -446,6 +467,30 @@ public class Taint extends Plugin {
 			}
 			return outs;
 		}
+	}
+	
+	private Pair<Integer, Instruction> hasTaintedParam(DalvikVM vm, int[] args, Map<Object, Instruction> in) {
+		for (int i = 0; i < args.length; i++) {
+			if (vm.getReg(args[i]).isUsed()) {
+				if (in.containsKey(vm.getReg(args[i]))
+						|| in.containsKey(vm
+								.getReg(args[i]).getData())) {
+					return new Pair<>(args[i],
+							in.get(vm.getReg(args[i])
+									.getData()));
+				} else if (vm.getReg(args[i]).getData() instanceof List) {
+					List<?> list = (List<?>) vm.getReg(args[i]).getData();
+					for (Object elem : list) {
+						if (in.containsKey(elem)) {
+							return new Pair<>(args[i],
+									in.get(elem));
+						}
+					}
+				}
+			}
+		}
+		
+		return null;
 	}
 
 	class TAINT_OP_A_INSTANCEOF implements Rule {
@@ -1313,6 +1358,9 @@ public class Taint extends Plugin {
 
 		preProcessings = new HashMap<>();
 		preProcessings.put(0x0c, new TAINT_PRE_INVOKE());
+		
+		thisAsTaintedList = new HashSet<>();
+		thisAsTaintedList.add("HttpEntityEnclosingRequestBase/setEntity");
 	}
 
 	@Override

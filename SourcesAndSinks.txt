@@ -14,6 +14,8 @@
 <android.util.Log: int i(java.lang.String,java.lang.String,java.lang.Throwable)> -> _SINK_
 <android.location.Geocoder: java.util.List getFromLocation(double,double,int)> -> _SINK_
 <java.net.URL: java.net.URLConnection openConnection()> -> _SINK_
+<org.apache.http.client.entity.UrlEncodedFormEntity: void <init>(java.util.List,java.lang.String)> -> _SINK_
+<org.apache.http.impl.client.CloseableHttpClient: org.apache.http.client.methods.CloseableHttpResponse execute(org.apache.http.client.methods.HttpUriRequest)> -> _SINK_
 
 % UI
 %<android.view.View: android.view.View findViewById(int)> -> _SOURCE_
