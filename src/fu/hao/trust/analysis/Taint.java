@@ -335,13 +335,14 @@ public class Taint extends Plugin {
 				if (vm.getReflectMethod() != null || mi.isConstructor()) {
 					String sootSignature = Taint.getSootSignature(mi);
 					Log.bb(tag, sootSignature);
+					Pair<Integer, Instruction> hasTaintedParam = null;
 
 					// Decide whether add return value.
 					if (sources != null && sources.contains(sootSignature)) {
 						Log.warn(tag, "Found a tainted return value!");
 						out.put(vm.getReturnReg(), inst);
 						out.put(vm.getReturnReg().getData(), inst);
-					} else {
+					} else if (!mi.returnType.isPrimitive() || mi.name.contains("parse")) {
 						Log.debug(tag, "Not a taint source call: "
 								+ sootSignature);
 
@@ -354,6 +355,8 @@ public class Taint extends Plugin {
 									out.put(vm.getReturnReg().getData(),
 											in.get(vm.getReg(args[i])));
 								}
+								hasTaintedParam = new Pair<>(args[i], in.get(vm
+										.getReg(args[i])));
 								break;
 							} else if (vm.getReg(args[i]).isUsed()
 									&& in.containsKey(vm.getReg(args[i])
@@ -365,6 +368,8 @@ public class Taint extends Plugin {
 									out.put(vm.getReturnReg().getData(), in
 											.get(vm.getReg(args[i]).getData()));
 								}
+								hasTaintedParam = new Pair<>(args[i], in.get(vm
+										.getReg(args[i]).getData()));
 								break;
 							} else if (vm.getReg(args[i]).isUsed()
 									&& vm.getReg(args[i]).getData() != null
@@ -372,7 +377,6 @@ public class Taint extends Plugin {
 											.isArray()) {
 								// For array.
 								Object array = vm.getReg(args[i]).getData();
-								boolean bre = false;
 								for (int j = 0; j < Array.getLength(array); j++) {
 									if (in.containsKey(Array.get(array, j))) {
 										if (vm.getReturnReg().isUsed()) {
@@ -383,41 +387,58 @@ public class Taint extends Plugin {
 											out.put(vm.getReturnReg().getData(),
 													in.get(Array.get(array, j)));
 										}
-										bre = true;
+										hasTaintedParam = new Pair<>(args[i],
+												in.get(Array.get(array, j)));
 										break;
 									}
 								}
 
-								if (bre) {
+								if (hasTaintedParam != null) {
 									break;
 								}
 							}
 						}
+					}
 
-						if (sinks != null && sinks.contains(sootSignature)) {
-							Log.bb(tag, "Found a sink invocation. "
-									+ sootSignature);
+					if (sinks != null && sinks.contains(sootSignature)) {
+						Log.bb(tag, "Found a sink invocation. " + sootSignature);
+						if (hasTaintedParam == null) {
+							// Double Check
 							for (int i = 0; i < args.length; i++) {
-								if (in.containsKey(vm.getReg(args[i]))
-										|| vm.getReg(args[i]).isUsed()
-										&& in.containsKey(vm.getReg(args[i])
+								if (vm.getReg(args[i]).isUsed()
+										&& in.containsKey(vm.getReg(args[i]))
+										|| in.containsKey(vm.getReg(args[i])
 												.getData())) {
-									Log.warn(tag, "Found a tainted sink "
-											+ sootSignature + " leaking data ["
-											+ vm.getReg(args[i]).getData()
-											+ "] at reg " + args[i] + "!!!");
-									Map<String, String> res = new HashMap<>();
-									res.put(sootSignature, vm.getReg(args[i])
-											.getData().toString());
-									Results.results.add(res);
+									hasTaintedParam = new Pair<>(
+											args[i],
+											in.get(vm.getReg(args[i]).getData()));
 								}
 							}
 						}
 
-						if (in.size() == out.size()
-								&& in.containsKey(vm.getReturnReg())) {
-							out.remove(vm.getReturnReg());
+						if (hasTaintedParam != null) {
+							Log.warn(tag, "Found a tainted sink "
+									+ sootSignature
+									+ " leaking data ["
+									+ vm.getReg(hasTaintedParam.getFirst())
+											.getData() + "] at reg "
+									+ hasTaintedParam.getFirst() + "!!!");
+							Map<String, String> res = new HashMap<>();
+							res.put(sootSignature,
+									vm.getReg(hasTaintedParam.getFirst())
+											.getData().toString());
+							Results.results.add(res);
+
+							if (mi.isConstructor()) {
+								out.put(vm.getReg(args[0]),
+										hasTaintedParam.getSecond());
+							}
 						}
+					}
+
+					if (in.size() == out.size()
+							&& in.containsKey(vm.getReturnReg())) {
+						out.remove(vm.getReturnReg());
 					}
 
 				}
