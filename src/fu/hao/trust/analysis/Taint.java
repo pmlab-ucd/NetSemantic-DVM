@@ -145,7 +145,7 @@ public class Taint extends Plugin {
 						Log.bb(tag, "Copy " + res + " as tainted.");
 					} catch (Exception e) {
 						e.printStackTrace();
-					}	
+					}
 				}
 
 				if (callingCtx != null) {
@@ -331,125 +331,89 @@ public class Taint extends Plugin {
 				Set<String> sources = configs.get(tag).getSources();
 				Set<String> sinks = configs.get(tag).getSinks();
 
-				// Must be a reflection call;
+				// Must be a reflective call;
 				if (vm.getReflectMethod() != null || mi.isConstructor()) {
 					String sootSignature = Taint.getSootSignature(mi);
 					Log.bb(tag, sootSignature);
 
-					for (int i = 0; i < args.length; i++) {
-						if (in.containsKey(vm.getReg(args[i]))) {
-							if (vm.getReturnReg().isUsed()) {
-								Log.warn(tag, "Found a tainted return val!");
-								out.put(vm.getReturnReg(),
-										in.get(vm.getReg(args[i])));
-								out.put(vm.getReturnReg().getData(),
-										in.get(vm.getReg(args[i])));
-								Pair<Object, Instruction> value = new Pair<>(vm
-										.getReg(args[i]).getData(), in.get(vm
-										.getReg(args[i])));
-								Results.addTaintedField(mi.name, value,
-										Results.getATaintedFields());
-							}
-							break;
-						} else if (vm.getReg(args[i]).isUsed()
-								&& in.containsKey(vm.getReg(args[i]).getData())) {
-							if (vm.getReturnReg().isUsed()) {
-								Log.warn(tag, "Found a tainted return val!");
-								out.put(vm.getReturnReg(),
-										in.get(vm.getReg(args[i]).getData()));
-								out.put(vm.getReturnReg().getData(),
-										in.get(vm.getReg(args[i]).getData()));
-								Results.addTaintedField(mi.name,
-										new Pair<>(
-												vm.getReg(args[i]).getData(),
-												in.get(vm.getReg(args[i]))),
-										Results.getATaintedFields());
-							}
-							break;
-						} else if (vm.getReg(args[i]).isUsed()
-								&& vm.getReg(args[i]).getData() != null
-								&& vm.getReg(args[i]).getData().getClass()
-										.isArray()) {
-							Object array = vm.getReg(args[i]).getData();
-							boolean bre = false;
-							for (int j = 0; j < Array.getLength(array); j++) {
-								if (in.containsKey(Array.get(array, j))) {
-									if (vm.getReturnReg().isUsed()) {
-										Log.warn(tag,
-												"Found a tainted return val!");
-										out.put(vm.getReturnReg(),
-												in.get(Array.get(array, j)));
-										out.put(vm.getReturnReg().getData(),
-												in.get(Array.get(array, j)));
-										Results.addTaintedField(
-												mi.name,
-												new Pair<>(vm.getReg(args[i])
-														.getData(), in
-														.get(Array
-																.get(array, j))),
-												Results.getATaintedFields());
-									}
-									bre = true;
-									break;
-								}
-							}
-
-							if (bre) {
-								break;
-							}
-						}
-					}
-
-					if (sinks != null && sinks.contains(sootSignature)) {
-						Log.bb(tag, "Found a sink invocation. " + sootSignature);
-						for (int i = 0; i < args.length; i++) {
-							if (in.containsKey(vm.getReg(args[i]))
-									|| vm.getReg(args[i]).isUsed()
-									&& in.containsKey(vm.getReg(args[i])
-											.getData())) {
-								Log.warn(tag, "Found a tainted sink "
-										+ sootSignature + " leaking data ["
-										+ vm.getReg(args[i]).getData()
-										+ "] at reg " + args[i] + "!!!");
-								Map<String, String> res = new HashMap<>();
-								res.put(sootSignature, vm.getReg(args[i])
-										.getData().toString());
-								Results.results.add(res);
-							}
-						}
+					// Decide whether add return value.
+					if (sources != null && sources.contains(sootSignature)) {
+						Log.warn(tag, "Found a tainted return value!");
+						out.put(vm.getReturnReg(), inst);
+						out.put(vm.getReturnReg().getData(), inst);
 					} else {
-						// Decide whether add return value.
-						if (sources != null && sources.contains(sootSignature)) {
-							Log.warn(tag, "Found a tainted return value!");
-							out.put(vm.getReturnReg(), inst);
-							out.put(vm.getReturnReg().getData(), inst);
-						} else {
-							Log.debug(tag, "Not a taint call: " + sootSignature);
-						}
+						Log.debug(tag, "Not a taint source call: "
+								+ sootSignature);
 
-						if (vm.getReturnReg().isUsed()
-								&& (vm.getReturnReg().getData() != null || vm
-										.getReturnReg().getType() != null)) {
-							for (int i = 0; i < args.length; i++) {
-								if (in.containsKey(vm.getReg(args[i]))) {
+						for (int i = 0; i < args.length; i++) {
+							if (in.containsKey(vm.getReg(args[i]))) {
+								if (vm.getReturnReg().isUsed()) {
 									Log.warn(tag, "Found a tainted return val!");
 									out.put(vm.getReturnReg(),
 											in.get(vm.getReg(args[i])));
 									out.put(vm.getReturnReg().getData(),
 											in.get(vm.getReg(args[i])));
-									break;
-								} else if (vm.getReg(args[i]).isUsed()
-										&& in.containsKey(vm.getReg(args[i])
-												.getData())) {
+								}
+								break;
+							} else if (vm.getReg(args[i]).isUsed()
+									&& in.containsKey(vm.getReg(args[i])
+											.getData())) {
+								if (vm.getReturnReg().isUsed()) {
 									Log.warn(tag, "Found a tainted return val!");
 									out.put(vm.getReturnReg(), in.get(vm
 											.getReg(args[i]).getData()));
 									out.put(vm.getReturnReg().getData(), in
 											.get(vm.getReg(args[i]).getData()));
+								}
+								break;
+							} else if (vm.getReg(args[i]).isUsed()
+									&& vm.getReg(args[i]).getData() != null
+									&& vm.getReg(args[i]).getData().getClass()
+											.isArray()) {
+								// For array.
+								Object array = vm.getReg(args[i]).getData();
+								boolean bre = false;
+								for (int j = 0; j < Array.getLength(array); j++) {
+									if (in.containsKey(Array.get(array, j))) {
+										if (vm.getReturnReg().isUsed()) {
+											Log.warn(tag,
+													"Found a tainted return val!");
+											out.put(vm.getReturnReg(),
+													in.get(Array.get(array, j)));
+											out.put(vm.getReturnReg().getData(),
+													in.get(Array.get(array, j)));
+										}
+										bre = true;
+										break;
+									}
+								}
+
+								if (bre) {
 									break;
 								}
 							}
 						}
+
+						if (sinks != null && sinks.contains(sootSignature)) {
+							Log.bb(tag, "Found a sink invocation. "
+									+ sootSignature);
+							for (int i = 0; i < args.length; i++) {
+								if (in.containsKey(vm.getReg(args[i]))
+										|| vm.getReg(args[i]).isUsed()
+										&& in.containsKey(vm.getReg(args[i])
+												.getData())) {
+									Log.warn(tag, "Found a tainted sink "
+											+ sootSignature + " leaking data ["
+											+ vm.getReg(args[i]).getData()
+											+ "] at reg " + args[i] + "!!!");
+									Map<String, String> res = new HashMap<>();
+									res.put(sootSignature, vm.getReg(args[i])
+											.getData().toString());
+									Results.results.add(res);
+								}
+							}
+						}
+
 						if (in.size() == out.size()
 								&& in.containsKey(vm.getReturnReg())) {
 							out.remove(vm.getReturnReg());
@@ -1079,7 +1043,7 @@ public class Taint extends Plugin {
 					// FIXME should be the absolute path to the field, such as
 					// "Activity1/button1/imei".
 					fieldString = obj.getMemUrl() + "/" + fieldInfo.fieldName;
-					
+
 				}
 
 				if (in.containsKey(vm.getReg(inst.r1))) {
@@ -1109,8 +1073,7 @@ public class Taint extends Plugin {
 								Results.setHasNewTaintedHeapLoc(true);
 								Log.msg(tag, "New tainted heap loc: "
 										+ fieldString);
-								Log.msg(tag, Results
-										.getITaintedFields());
+								Log.msg(tag, Results.getITaintedFields());
 							}
 							// }
 						}
@@ -1208,9 +1171,9 @@ public class Taint extends Plugin {
 			return outs;
 		}
 	}
-	
+
 	private Map<String, Instruction> switchTainted = new HashMap<>();
-	
+
 	class TAINT_OP_SWITCH implements Rule {
 		final String tag = getClass().getSimpleName();
 
@@ -1224,14 +1187,13 @@ public class Taint extends Plugin {
 					Map<Object, Instruction> out = new HashMap<>(in);
 					if (in.containsKey(vm.getReg(inst.r0))) {
 						switchTainted.put(tag, in.get(vm.getReg(inst.r0)));
-						Log.msg(tag,
-								"SwitchTainted as tainted due to field "
-										+ vm.getReg(inst.r0));
+						Log.msg(tag, "SwitchTainted as tainted due to field "
+								+ vm.getReg(inst.r0));
 					} else if (in.containsKey(vm.getReg(inst.r0).getData())) {
-						switchTainted.put(tag, in.get(vm.getReg(inst.r0).getData()));
-						Log.msg(tag,
-								"SwitchTainted as tainted due to field "
-										+ vm.getReg(inst.r0).getData());
+						switchTainted.put(tag,
+								in.get(vm.getReg(inst.r0).getData()));
+						Log.msg(tag, "SwitchTainted as tainted due to field "
+								+ vm.getReg(inst.r0).getData());
 					} else {
 						// value register, has been assigned to new value
 						switchTainted.remove(tag);
@@ -1243,7 +1205,7 @@ public class Taint extends Plugin {
 			return outs;
 		}
 	}
-	
+
 	class TAINT_OP_GOTO implements Rule {
 		final String tag = getClass().getSimpleName();
 
@@ -1251,7 +1213,8 @@ public class Taint extends Plugin {
 		public Map<String, Map<Object, Instruction>> flow(DalvikVM vm,
 				Instruction inst, Map<String, Map<Object, Instruction>> ins) {
 			// FIXME is it a correct way?
-			switchTainted.clear();;
+			switchTainted.clear();
+			;
 			return ins;
 		}
 	}
@@ -1343,12 +1306,14 @@ public class Taint extends Plugin {
 			Log.bb(tag, "Not a taint op " + inst);
 			outs = new HashMap<>(ins);
 		}
-		
+
 		for (String tag : outs.keySet()) {
-			if (switchTainted.containsKey(tag) && !vm.getAssigned()[0].equals(-1)) {
+			if (switchTainted.containsKey(tag)
+					&& !vm.getAssigned()[0].equals(-1)) {
 				outs.get(tag).put(vm.getAssigned()[0], switchTainted.get(tag));
-				Log.warn(tag, "Add " + vm.getAssigned()[0] + " as tainted due to switchTaitned.");
-			}			
+				Log.warn(tag, "Add " + vm.getAssigned()[0]
+						+ " as tainted due to switchTaitned.");
+			}
 		}
 
 		for (Map<Object, Instruction> out : outs.values()) {
@@ -1416,7 +1381,6 @@ public class Taint extends Plugin {
 				}
 			}
 		}
-		
 
 		setCurrtRes(outs);
 		return outs;

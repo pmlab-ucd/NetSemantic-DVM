@@ -52,7 +52,7 @@ public class Test {
 		
 		args[0] = "C:/Users/hao/workspace/DroidBenchProj/DroidKungFu3/app/";
 		args[1] = "com.google.update.UpdateService";
-		args[2] = "doAdGetParam";
+		args[2] = "onCreate";
 		args[4] = "--norun";
 		args[5] = "com.google.update.Utils/checkPermission";
 		args[6] = "--norun";

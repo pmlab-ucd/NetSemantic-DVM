@@ -443,7 +443,7 @@ public class Executor {
 
 			vm.getReturnReg().reset();
 			
-			if (Settings.callBlkListHas(inst.toString())) {
+			if (Settings.callBlkListHas(inst.toString()) || isNoInvoke(inst.toString())) {
 				vm.getReturnReg().setValue(
 						new Unknown(vm, mi.returnType), mi.returnType);
 				jump(vm, inst, true);
@@ -3231,10 +3231,13 @@ public class Executor {
 		noInvokeList.add("java.io.File");
 		// noInvokeList.add("java.io.OutputStream");
 		noInvokeList.add("android.support");
-		noInvokeList.add("getStatusCode");
+		noInvokeList.add("HttpResponse/get");
 		//noInvokeList.add("java.net.Socket");
 		// noInvokeList.add("java.io.ByteArrayOutputStream");
 		noInvokeList.add("HttpClient/execute");
+		noInvokeList.add("HttpResponse/getEntity");
+		noInvokeList.add("EntityUtils/toString");
+		noInvokeList.add("StatusLine/get");
 
 		noInvokeList2 = new HashSet<>();
 		noInvokeList2.add("equals");
