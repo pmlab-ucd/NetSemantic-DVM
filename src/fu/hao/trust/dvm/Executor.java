@@ -483,14 +483,26 @@ public class Executor {
 					vm.getReturnReg().setValue(retVal, mi.returnType);
 				}
 
-				Log.msg(TAG, "reflction invocation " + method);
+				Log.msg(TAG, "Reflction invocation " + method);
 				vm.setReflectMethod(method);
 				jump(vm, inst, true);
 			} catch (java.lang.ClassNotFoundException e) {
 				invocation(vm, mi, inst, args);
 			} catch (Exception e) {
 				e.printStackTrace();
-				Log.err(TAG, "Error in reflection: " + e.getMessage());
+				String cause = "";
+				if (e.getCause() != null) {
+					cause = e.getCause().getMessage();
+				}
+				switch (cause) {
+					case "no native in java.library.path":
+						Log.warn(TAG, "Trying to load native lib: " + cause);
+						break;
+					default:				
+						Log.err(TAG, "Error in reflection: " + e.getMessage());
+						break;
+				}
+				
 				jump(vm, inst, true);
 			}
 
@@ -1790,8 +1802,9 @@ public class Executor {
 			vm.getAssigned()[1] = fieldName;
 			vm.getAssigned()[2] = vm.getReg(inst.r0).getData();
 			dvmClass.setStatField(fieldName, vm.getReg(inst.r0).getData());
-			Log.debug(TAG, "expect sput " + fieldName + " from " + owner);
-			Log.debug(TAG, "real sput " + vm.getReg(inst.r0).getData()
+			Log.bb(TAG, "ffa:" +  vm.getCurrStackFrame().method);
+			Log.debug(TAG, "Expect sput " + fieldName + " from " + owner);
+			Log.debug(TAG, "Real sput " + vm.getReg(inst.r0).getData()
 					+ " from " + dvmClass);
 			jump(vm, inst, true);
 		}
@@ -2245,7 +2258,7 @@ public class Executor {
 	/**
 	 * @Title: invocation
 	 * @Author: Hao Fu
-	 * @Description: invocation helper
+	 * @Description: Invocation helper
 	 * @param vm
 	 * @param mi
 	 * @return void
@@ -2499,6 +2512,10 @@ public class Executor {
 						} else if (mi.isConstructor()
 								&& mi.myClass.fullName.startsWith("java.lang.String")) {
 							Log.warn(TAG, "Error in reflection: " + e.getMessage());
+						} else if (cause.startsWith("Cannot run program")) { 
+							Log.warn(TAG, cause);
+						} else if (mi.name.contains("loadLibrary")) { 
+							Log.warn(TAG, "Trying to load native lib: " + cause);
 						} else {
 							Log.err(TAG, "Error in reflection: " + e.getMessage());
 						}
@@ -3299,6 +3316,9 @@ public class Executor {
 				"patdroid.core.MethodInfo");
 		replacedInvokeList.put("java.io.File",
 				"android.myclasses.java.io.File");
+		replacedInvokeList.put("java.io.FileOutputStream",
+				"android.myclasses.java.io.File");
+		replacedInvokeList.put("java.util.Timer", "android.myclasses.java.util.Timer");
 	}
 
 	public void exec(DalvikVM vm, Instruction inst, ClassInfo sitClass) {

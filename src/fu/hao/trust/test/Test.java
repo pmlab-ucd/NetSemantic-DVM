@@ -22,7 +22,6 @@ public class Test {
 		//t.testMain();
 		// t.testAnve();
 		// t.test00983aad12700be0a440296c6173b18a829e9369_a();
-		//t.myDroidKunfu3();
 		t.DroidKunfu3();
 		// t.testMopub_onCreate();
 		// t.testMopub_loadAd();
@@ -36,50 +35,33 @@ public class Test {
 		args[3] = "ATaint";
 		Settings.logLevel = 0;
 		
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/ActivityCommunication7/app/";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/StartActivityForResult1/app/";
 		args[1] = "srcEventChains";
 		Main.main(args);
-		Map<String, String> res = new HashMap<>();
-		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
-				"359874043116909");
-		assertEquals(true, Results.results.contains(res));
-	}
-	
-	public void myDroidKunfu3() {
-		String[] args = new String[9];
-		args[3] = "ATaint";
-		Settings.logLevel = 0;
-		
-		args[0] = "C:/Users/hao/workspace/DroidKungFu3/app/";
-		args[1] = "com.google.update.UpdateService";
-		args[2] = "onCreate";
-		//args[8] = "--runEntryException";
-		Main.main(args);
-		
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
 		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
-				tm.getDeviceId());
+				"Longitude: -121.759603, Latitude: 38.53203");
 		assertEquals(true, Results.results.contains(res));
 	}
-	
+		
 	public void DroidKunfu3() {
 		String[] args = new String[9];
 		args[3] = "ATaint";
 		Settings.logLevel = 0;
 		
-		args[0] = "D:/malwares/DroidKungFu3/3d79d12d1abcddf9b53ca04469488a84a91aabdc";
+		args[0] = "D:/malwares/DroidKungFu3/e7185137929a0cca9dab752564ab47a3c99bb371";
 		args[1] = "com.google.update.UpdateService";
 		args[2] = "onCreate";
 		args[4] = "--norun";
-		args[5] = "com.google.update.Utils$TCP/startListen";
+		args[5] = "com.google.update.RU$U12/U1";
 		args[8] = "--runEntryException";
 		Main.main(args);
 		
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
-		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
-				tm.getDeviceId());
+		res.put("<org.apache.http.impl.client.CloseableHttpClient: org.apache.http.client.methods.CloseableHttpResponse execute(org.apache.http.client.methods.HttpUriRequest)>",
+				"POST http://search.best188.net:8511/search/newhi.php HTTP/1.1"); // devID
 		assertEquals(true, Results.results.contains(res));
 	}
 	

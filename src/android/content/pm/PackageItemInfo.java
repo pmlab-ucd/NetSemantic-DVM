@@ -9,11 +9,14 @@ import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Parcel;
+
 import java.util.Comparator;
+
+import fu.hao.trust.utils.Settings;
 
 public class PackageItemInfo {
     public String name;
-    public String packageName;
+    public String packageName = Settings.getApkName();
     public int labelRes;
     public CharSequence nonLocalizedLabel;
     public int icon;
@@ -32,7 +35,7 @@ public class PackageItemInfo {
     }
 
     public CharSequence loadLabel(PackageManager pm) {
-        throw new RuntimeException("Stub!");
+    	return "";
     }
 
     public Drawable loadIcon(PackageManager pm) {

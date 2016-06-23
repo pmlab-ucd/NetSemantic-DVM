@@ -8,6 +8,7 @@ import java.util.Set;
 
 import android.app.Activity;
 import android.app.Service;
+import android.content.pm.ApplicationInfo;
 import android.os.IBinder;
 import patdroid.core.ClassInfo;
 import patdroid.core.MethodInfo;
@@ -24,6 +25,7 @@ public class ContextWrapper extends Context {
 	Map<IntentFilter, BroadcastReceiver> filters = new HashMap<>();
 	final String TAG = getClass().getName();
 	Map<String, SharedPreferences> preferences = new HashMap<>(); 
+	private ApplicationInfo appInfo = new ApplicationInfo();
 	
 	Intent service;
 	Set<DVMObject> conns;
@@ -181,5 +183,9 @@ public class ContextWrapper extends Context {
     
     public void unbindService(DVMObject conn) {
     	conns.remove(conn);
+    }
+    
+    public ApplicationInfo getApplicationInfo() {
+    	return appInfo;
     }
 }

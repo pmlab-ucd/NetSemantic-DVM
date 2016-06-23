@@ -22,6 +22,7 @@ package fu.hao.trust.utils;
 import fu.hao.trust.dvm.DalvikVM;
 import patdroid.core.ClassInfo;
 import patdroid.dalvik.Instruction;
+import patdroid.fs.EmulatedFS;
 
 import java.io.File;
 import java.io.FileReader;
@@ -349,6 +350,20 @@ public class Settings {
 
 	public static void setRunEntryException(boolean runEntryException) {
 		Settings.runEntryException = runEntryException;
+	}
+	
+	public static EmulatedFS getFileSystem() {
+		return fileSystem;
+	}
+
+	public static void setFileSystem(EmulatedFS fileSystem) {
+		Settings.fileSystem = fileSystem;
+	}
+
+	private static EmulatedFS fileSystem;
+	
+	static {
+		setFileSystem(new EmulatedFS());
 	}
 
 }

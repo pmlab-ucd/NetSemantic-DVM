@@ -24,7 +24,7 @@ public class VMHeap {
 	}
 
 	public void setClass(DalvikVM vm, ClassInfo type) {
-		Log.bb(Settings.getRuntimeCaller(), "new class representation for " + type + " at "
+		Log.bb(Settings.getRuntimeCaller(), "New DVMClass representation for " + type + " at "
 				+ vm.heap);
 		dvmClasses.put(type, new DVMClass(vm, type));
 	}

@@ -109,7 +109,7 @@ public class PackageManager {
     }
 
     public Intent getLaunchIntentForPackage(String var1) {
-    	throw new RuntimeException("Stub!");
+    	return new Intent(Intent.ACTION_MAIN);
     }
 
     public ApplicationInfo getApplicationInfo(String var1, int var2) {

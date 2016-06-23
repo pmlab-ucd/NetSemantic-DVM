@@ -91,5 +91,10 @@ public class DVMClass {
     public DVMObject newInstance() {
         return vm.newVMObject(type);
     }
+    
+    @Override
+    public String toString() {
+    	return "[DVMClass: " + type.getName() + "@" + super.hashCode() +  "]";
+    }
 
 }

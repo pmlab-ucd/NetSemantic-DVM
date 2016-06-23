@@ -56,5 +56,9 @@ public class Thread extends DVMObject {
 	public String toString() {
 		return "[myThread: " + super.toString() + "]";
 	}
+	
+	public static void sleep(long time) {
+		Log.warn("Thread", "Sleep duration" + time);
+	}
 
 }
