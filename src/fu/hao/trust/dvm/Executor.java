@@ -495,14 +495,14 @@ public class Executor {
 					cause = e.getCause().getMessage();
 				}
 				switch (cause) {
-					case "no native in java.library.path":
-						Log.warn(TAG, "Trying to load native lib: " + cause);
-						break;
-					default:				
-						Log.err(TAG, "Error in reflection: " + e.getMessage());
-						break;
+				case "no native in java.library.path":
+					Log.warn(TAG, "Trying to load native lib: " + cause);
+					break;
+				default:
+					Log.err(TAG, "Error in reflection: " + e.getMessage());
+					break;
 				}
-				
+
 				jump(vm, inst, true);
 			}
 
@@ -1272,32 +1272,44 @@ public class Executor {
 				}
 				vm.getReg(inst.r0).setValue(objs, ClassInfo.primitiveVoid);
 			}
-			// array reg
-			Object[] array = (Object[]) vm.getReg(inst.r0).getData();
-			// index reg
+			
 			int index = ((PrimitiveInfo) vm.getReg(inst.r1).getData())
 					.intValue();
-			if (!rdst.getType().isConvertibleTo(inst.type)) {
-				Log.warn(TAG, "inconsistent type " + inst);
-				return;
-			}
 
-			Log.bb(TAG, "index: " + index + ", length: " + array.length);
-			if (index >= array.length) {
-				Object[] newArray = new Object[2 * index];
-				for (int i = 0; i < array.length; i++) {
-					newArray[i] = array[i];
+			if (vm.getReg(inst.r0).getData() instanceof Object[]) {
+				// array reg
+				Object[] array = (Object[]) vm.getReg(inst.r0).getData();
+				// index reg
+
+				if (!rdst.getType().isConvertibleTo(inst.type)) {
+					Log.warn(TAG, "inconsistent type " + inst);
+					return;
 				}
 
-				for (int i = array.length; i < newArray.length; i++) {
-					newArray[i] = new Unknown(vm, inst.type);
-				}
-				vm.getReg(inst.r0).setValue(newArray, ClassInfo.primitiveVoid);
-				array = (Object[]) vm.getReg(inst.r0).getData();
-			}
+				Log.bb(TAG, "index: " + index + ", length: " + array.length);
+				if (index >= array.length) {
+					Object[] newArray = new Object[2 * index];
+					for (int i = 0; i < array.length; i++) {
+						newArray[i] = array[i];
+					}
 
-			Log.debug(TAG, "data: " + rdst.getData() + " array: " + array);
-			array[index] = rdst.getData();
+					for (int i = array.length; i < newArray.length; i++) {
+						newArray[i] = new Unknown(vm, inst.type);
+					}
+					vm.getReg(inst.r0).setValue(newArray,
+							ClassInfo.primitiveVoid);
+					array = (Object[]) vm.getReg(inst.r0).getData();
+				}
+
+				Log.debug(TAG, "data: " + rdst.getData() + " array: " + array);
+				array[index] = rdst.getData();
+			} else if (vm.getReg(inst.r0).getData().getClass().isArray()) {
+				Object data = resolvePrimitive(rdst.getData(), rdst.getType());
+				Array.set(vm.getReg(inst.r0).getData(), index, data);
+			} else {
+				Log.err(TAG, "Not an array!");
+			}
+			
 		}
 	}
 
@@ -1802,7 +1814,7 @@ public class Executor {
 			vm.getAssigned()[1] = fieldName;
 			vm.getAssigned()[2] = vm.getReg(inst.r0).getData();
 			dvmClass.setStatField(fieldName, vm.getReg(inst.r0).getData());
-			Log.bb(TAG, "ffa:" +  vm.getCurrStackFrame().method);
+			Log.bb(TAG, "ffa:" + vm.getCurrStackFrame().method);
 			Log.debug(TAG, "Expect sput " + fieldName + " from " + owner);
 			Log.debug(TAG, "Real sput " + vm.getReg(inst.r0).getData()
 					+ " from " + dvmClass);
@@ -2303,7 +2315,8 @@ public class Executor {
 			}
 
 			// When the class should not be replaced by my class
-			clazz = getReplacedInvoke(clazz, vm.getReg(args[0]).isUsed() ? vm.getReg(args[0]).getData() : null);
+			clazz = getReplacedInvoke(clazz, vm.getReg(args[0]).isUsed() ? vm
+					.getReg(args[0]).getData() : null);
 
 			// If args contains a symbolic var, directly set the return val as a
 			// symbolic var.
@@ -2495,34 +2508,36 @@ public class Executor {
 				cause = e.getCause().getMessage();
 			}
 			switch (cause) {
-				case "Connection refused: connect":
-					vm.getReturnReg().setValue(null, mi.returnType);
-					Log.warn(TAG, cause);
-					break;
-				case "Given final block not properly padded":
-					Log.warn(TAG, "Decryption error: " + cause);
-					break;
-				default:				
-					// FIXME
-					if (inst.toString().contains("java.util.Random/nextInt[int]")) {
-						Log.warn(TAG, "Reflection error: " + e.getMessage());
+			case "Connection refused: connect":
+				vm.getReturnReg().setValue(null, mi.returnType);
+				Log.warn(TAG, cause);
+				break;
+			case "Given final block not properly padded":
+				Log.warn(TAG, "Decryption error: " + cause);
+				break;
+			default:
+				// FIXME
+				if (inst.toString().contains("java.util.Random/nextInt[int]")) {
+					Log.warn(TAG, "Reflection error: " + e.getMessage());
+				} else {
+					if (mi.myClass.fullName
+							.startsWith("java.io.ObjectInputStream")) {
+						Log.warn(TAG, "Error in reflection: " + e.getMessage());
+					} else if (mi.isConstructor()
+							&& mi.myClass.fullName
+									.startsWith("java.lang.String")) {
+						Log.warn(TAG, "Error in reflection: " + e.getMessage());
+					} else if (cause.startsWith("Cannot run program")) {
+						Log.warn(TAG, cause);
+					} else if (mi.name.contains("loadLibrary")) {
+						Log.warn(TAG, "Trying to load native lib: " + cause);
 					} else {
-						if (mi.myClass.fullName.startsWith("java.io.ObjectInputStream")) {
-							Log.warn(TAG, "Error in reflection: " + e.getMessage());
-						} else if (mi.isConstructor()
-								&& mi.myClass.fullName.startsWith("java.lang.String")) {
-							Log.warn(TAG, "Error in reflection: " + e.getMessage());
-						} else if (cause.startsWith("Cannot run program")) { 
-							Log.warn(TAG, cause);
-						} else if (mi.name.contains("loadLibrary")) { 
-							Log.warn(TAG, "Trying to load native lib: " + cause);
-						} else {
-							Log.err(TAG, "Error in reflection: " + e.getMessage());
-						}
+						Log.err(TAG, "Error in reflection: " + e.getMessage());
 					}
-					break;
+				}
+				break;
 			}
-			
+
 			jump(vm, inst, true);
 		}
 
@@ -3314,11 +3329,12 @@ public class Executor {
 				"android.myclasses.ByteArrayInputStream");
 		replacedInvokeList.put("java.lang.reflect.Method",
 				"patdroid.core.MethodInfo");
-		replacedInvokeList.put("java.io.File",
-				"android.myclasses.java.io.File");
+		replacedInvokeList
+				.put("java.io.File", "android.myclasses.java.io.File");
 		replacedInvokeList.put("java.io.FileOutputStream",
 				"android.myclasses.java.io.File");
-		replacedInvokeList.put("java.util.Timer", "android.myclasses.java.util.Timer");
+		replacedInvokeList.put("java.util.Timer",
+				"android.myclasses.java.util.Timer");
 	}
 
 	public void exec(DalvikVM vm, Instruction inst, ClassInfo sitClass) {
@@ -3466,9 +3482,9 @@ public class Executor {
 		if (op instanceof Unknown
 				&& ((Unknown) op).getType() != ClassInfo.primitiveVoid) {
 			type = ((Unknown) op).getType();
-			Log.bb(TAG, "Unknown type " + type);
+			Log.warn(TAG, "Unknown type " + type);
 		}
-
+		
 		PrimitiveInfo op1 = null;
 		if (op instanceof PrimitiveInfo) {
 			op1 = (PrimitiveInfo) op;
@@ -3489,8 +3505,11 @@ public class Executor {
 			return new Float(op1 == null ? 0 : op1.floatValue());
 		} else if (type.equals(ClassInfo.primitiveDouble)) {
 			return new Double(op1 == null ? 0 : op1.doubleValue());
+		} else if (type.equals(ClassInfo.primitiveVoid)) {
+			return new Integer(op1 == null ? 0 : op1.intValue());
 		}
 
+		Log.warn("ResolvePrimitive", "Return null due to " + type);
 		return null;
 	}
 

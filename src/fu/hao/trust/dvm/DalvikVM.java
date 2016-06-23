@@ -1037,10 +1037,8 @@ public class DalvikVM {
 		executor.runEntryMethod(sitClass, this, method);
 	}
 
-	@Deprecated
 	public void runMethod(ClassInfo sitClass, MethodInfo method,
 			Object[] params, boolean force) {
-		Log.msg(TAG, "Instrumented Method: " + method);
 		if (params == null) {
 			resetCallCtx();
 			runMethod(sitClass, method);

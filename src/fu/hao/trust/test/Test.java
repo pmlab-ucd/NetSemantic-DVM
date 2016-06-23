@@ -22,7 +22,7 @@ public class Test {
 		//t.testMain();
 		// t.testAnve();
 		// t.test00983aad12700be0a440296c6173b18a829e9369_a();
-		t.DroidKunfu3();
+		t.DroidKunfu4();
 		// t.testMopub_onCreate();
 		// t.testMopub_loadAd();
 		// t.test7613973();
@@ -45,18 +45,23 @@ public class Test {
 		assertEquals(true, Results.results.contains(res));
 	}
 		
-	public void DroidKunfu3() {
+	public void DroidKunfu4() {
 		String[] args = new String[9];
 		args[3] = "ATaint";
 		Settings.logLevel = 0;
 		
-		args[0] = "D:/malwares/DroidKungFu3/e7185137929a0cca9dab752564ab47a3c99bb371";
-		args[1] = "com.google.update.UpdateService";
+		args[0] = "D:/malwares/DroidKungFu4/e1c2188a69727bf4ec4a5d72319cfe87428c7f35/";
+		args[1] = "com.safesys.remover.Uninstall";
 		args[2] = "onCreate";
+		Main.main(args);
+		/*args[1] = "com.safesys.remover.JmAdV2";
+		args[2] = "initJu6Ad";
 		args[4] = "--norun";
 		args[5] = "com.google.update.RU$U12/U1";
-		args[8] = "--runEntryException";
-		Main.main(args);
+		Object[] initArgs = new Object[2];
+		initArgs[0] = "e1c2188a69727bf4ec4a5d72319cfe87428c7f35";
+		initArgs[1] = "c62b31cb3a7041d5:88857ec052e653eb";
+		Main.main(args, initArgs);*/
 		
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();

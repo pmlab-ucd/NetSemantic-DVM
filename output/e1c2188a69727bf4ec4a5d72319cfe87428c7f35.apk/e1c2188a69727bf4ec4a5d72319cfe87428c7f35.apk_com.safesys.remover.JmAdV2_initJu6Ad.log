@@ -1,0 +1,2126 @@
+DalvikVM - [MSG]: Begin run initJu6Ad at D:\malwares\DroidKungFu4\e1c2188a69727bf4ec4a5d72319cfe87428c7f35\e1c2188a69727bf4ec4a5d72319cfe87428c7f35.apk
+DalvikVM - [BB]: paramLen3, 2
+DalvikVM - [BB]: Superclass: com.safesys.remover.JmAdV2
+DalvikVM - [BB]: Superclass: java.lang.Object
+DVMObject - [BB]: New instance of com.safesys.remover.JmAdV2
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.safesys.remover.JmAdV2 at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: New DVMClass representation for com.safesys.remover.JmAdV2 at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type com.safesys.remover.JmAdV2
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.safesys.remover.JmAdV2 at fu.hao.trust.dvm.VMHeap@45b12c9b
+DalvikVM - [WARN]: ar 0, (instance number 1@com.safesys.remover.JmAdV2, com.safesys.remover.JmAdV2)
+DalvikVM - [BB]: param: e1c2188a69727bf4ec4a5d72319cfe87428c7f35
+DalvikVM - [WARN]: ar 1, (e1c2188a69727bf4ec4a5d72319cfe87428c7f35, java.lang.String)
+DalvikVM - [BB]: param: c62b31cb3a7041d5:88857ec052e653eb
+DalvikVM - [WARN]: ar 2, (c62b31cb3a7041d5:88857ec052e653eb, java.lang.String)
+DalvikVM - [BB]: Superclass: com.safesys.remover.JmAdV2
+DalvikVM - [BB]: Superclass: java.lang.Object
+DVMObject - [BB]: New instance of com.safesys.remover.JmAdV2
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.safesys.remover.JmAdV2 at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type com.safesys.remover.JmAdV2
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.safesys.remover.JmAdV2 at fu.hao.trust.dvm.VMHeap@45b12c9b
+DalvikVM - [BB]: New method call: com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[2, 3, 4]>
+DalvikVM - [BB]: [1]<0 INSTANCE,IGET,r0=r2,r1=r0,type=boolean,extra=com.safesys.remover.JmAdV2.mDebug>
+DalvikVM - [BB]: [2]<0 INVOKE,STATIC,extra=[com.ju6.AdManager/init[java.lang.String, java.lang.String, boolean], [3, 4, 0]]>
+DalvikVM - [BB]: [3]<0 NEW,INSTANCE,dst=r0,type=com.ju6.AdRequester>
+DalvikVM - [BB]: [4]<0 INSTANCE,IGET,r0=r2,r1=r1,type=java.lang.Object,extra=com.safesys.remover.JmAdV2.mActivity>
+DalvikVM - [BB]: [5]<0 INVOKE,DIRECT,extra=[com.ju6.AdRequester/<init>[android.content.Context], [0, 1]]>
+DalvikVM - [BB]: [6]<0 INSTANCE,IPUT,r0=r2,r1=r0,type=java.lang.Object,extra=com.safesys.remover.JmAdV2.mJu6Ad>
+DalvikVM - [BB]: [7]<0 INSTANCE,IGET,r0=r2,r1=r0,type=java.lang.Object,extra=com.safesys.remover.JmAdV2.mJu6Ad>
+DalvikVM - [BB]: [8]<0 NEW,INSTANCE,dst=r1,type=com.safesys.remover.JmAdV2$4>
+DalvikVM - [BB]: [9]<0 INVOKE,DIRECT,extra=[com.safesys.remover.JmAdV2$4/<init>[com.safesys.remover.JmAdV2], [1, 2]]>
+DalvikVM - [BB]: [10]<0 INVOKE,VIRTUAL,extra=[com.ju6.AdRequester/setAdListener[com.ju6.AdListener], [0, 1]]>
+DalvikVM - [BB]: [11]<0 INSTANCE,IGET,r0=r2,r1=r0,type=java.lang.Object,extra=com.safesys.remover.JmAdV2.mJu6Ad>
+DalvikVM - [BB]: [12]<0 INVOKE,VIRTUAL,extra=[com.ju6.AdRequester/getAd[], [0]]>
+DalvikVM - [BB]: [13]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String]
+newStackFrame - [BB]: Add frame StackFrame com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String]
+newStackFrame - [BB]: Stack: [StackFrame com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String]]
+Executor - [MSG]: BEGIN RUN ENTRY: com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> execute set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[2, 3, 4]> at com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String]
+DalvikVM - [WARN]: ar 2, (instance number 1@com.safesys.remover.JmAdV2, com.safesys.remover.JmAdV2)
+Executor - [DEBUG]: params: instance number 1@com.safesys.remover.JmAdV2
+DalvikVM - [WARN]: ar 3, (e1c2188a69727bf4ec4a5d72319cfe87428c7f35, java.lang.String)
+Executor - [DEBUG]: params: e1c2188a69727bf4ec4a5d72319cfe87428c7f35
+DalvikVM - [WARN]: ar 4, (c62b31cb3a7041d5:88857ec052e653eb, java.lang.String)
+Executor - [DEBUG]: params: c62b31cb3a7041d5:88857ec052e653eb
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 INSTANCE,IGET,r0=r2,r1=r0,type=boolean,extra=com.safesys.remover.JmAdV2.mDebug> at com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Obj instance number 1@com.safesys.remover.JmAdV2
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Fieldinfo com.safesys.remover.JmAdV2.mDebug
+Unknown - [BB]: Unknown created!
+DVMObject - [DEBUG]: put field [Unknown var:null, type: boolean]
+DalvikVM - [WARN]: ar 0, ([Unknown var:null, type: boolean], boolean)
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: [Unknown var:null, type: boolean]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD -> jump set pc to 2
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 INVOKE,STATIC,extra=[com.ju6.AdManager/init[java.lang.String, java.lang.String, boolean], [3, 4, 0]]> at com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 3
+DalvikVM - [BB]: New method call: com.ju6.AdManager/init[java.lang.String, java.lang.String, boolean]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[0, 1, 2]>
+DalvikVM - [BB]: [1]<0 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(com.ju6.AdManager, c)>
+DalvikVM - [BB]: [2]<0 STATIC,SPUT,r0=r1,type=java.lang.Object,extra=(com.ju6.AdManager, d)>
+DalvikVM - [BB]: [3]<0 STATIC,SPUT,r0=r2,type=boolean,extra=(com.ju6.AdManager, e)>
+DalvikVM - [BB]: [4]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame com.ju6.AdManager/init[java.lang.String, java.lang.String, boolean], pc 3 stored. 
+newStackFrame - [BB]: Add frame StackFrame com.ju6.AdManager/init[java.lang.String, java.lang.String, boolean]
+newStackFrame - [BB]: Stack: [StackFrame com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String], StackFrame com.ju6.AdManager/init[java.lang.String, java.lang.String, boolean]]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> execute set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[0, 1, 2]> at com.ju6.AdManager/init[java.lang.String, java.lang.String, boolean]
+DalvikVM - [WARN]: ar 0, (e1c2188a69727bf4ec4a5d72319cfe87428c7f35, java.lang.String)
+Executor - [DEBUG]: params: e1c2188a69727bf4ec4a5d72319cfe87428c7f35
+DalvikVM - [WARN]: ar 1, (c62b31cb3a7041d5:88857ec052e653eb, java.lang.String)
+Executor - [DEBUG]: params: c62b31cb3a7041d5:88857ec052e653eb
+DalvikVM - [WARN]: ar 2, ([Unknown var:null, type: boolean], boolean)
+Executor - [DEBUG]: params: [Unknown var:null, type: boolean]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(com.ju6.AdManager, c)> at com.ju6.AdManager/init[java.lang.String, java.lang.String, boolean]
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: New DVMClass representation for com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+DalvikVM - [BB]: New method call: com.ju6.AdManager/<clinit>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [2]<0 STATIC,SPUT,r0=r1,type=boolean,extra=(com.ju6.AdManager, a)>
+DalvikVM - [BB]: [3]<2 MOV,CONST,dst=r0,type=java.lang.String,extra="">
+DalvikVM - [BB]: [4]<0 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(com.ju6.AdManager, c)>
+DalvikVM - [BB]: [5]<4 MOV,CONST,dst=r0,type=java.lang.String,extra="">
+DalvikVM - [BB]: [6]<0 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(com.ju6.AdManager, d)>
+DalvikVM - [BB]: [7]<0 STATIC,SPUT,r0=r1,type=boolean,extra=(com.ju6.AdManager, e)>
+DalvikVM - [BB]: [8]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame com.ju6.AdManager/<clinit>[], pc 1 stored. 
+newStackFrame - [BB]: Stack: [StackFrame com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String], StackFrame com.ju6.AdManager/init[java.lang.String, java.lang.String, boolean]]
+DalvikVM - [MSG]: Begin run instrumented methods!
+DalvikVM - [BB]: Add frames [StackFrame com.ju6.AdManager/<clinit>[]]
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[]> at com.ju6.AdManager/<clinit>[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?0> at com.ju6.AdManager/<clinit>[]
+Executor - [DEBUG]: Mov const begin <1 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [WARN]: ar 1, (0, void)
+Executor - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 2
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 STATIC,SPUT,r0=r1,type=boolean,extra=(com.ju6.AdManager, a)> at com.ju6.AdManager/<clinit>[]
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.ju6.AdManager
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: ffa:com.ju6.AdManager/<clinit>[]
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: Expect sput a from com.ju6.AdManager
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: Real sput 0 from [DVMClass: com.ju6.AdManager@2079066544]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD -> jump set pc to 3
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.ju6.AdManager
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 MOV,CONST,dst=r0,type=java.lang.String,extra=""> at com.ju6.AdManager/<clinit>[]
+Executor - [DEBUG]: Mov const begin <3 MOV,CONST,dst=r0,type=java.lang.String,extra="">
+DalvikVM - [WARN]: ar 0, (, java.lang.String)
+Executor - [DEBUG]: data:  class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 4
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <4 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(com.ju6.AdManager, c)> at com.ju6.AdManager/<clinit>[]
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.ju6.AdManager
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: ffa:com.ju6.AdManager/<clinit>[]
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: Expect sput c from com.ju6.AdManager
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: Real sput  from [DVMClass: com.ju6.AdManager@2079066544]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD -> jump set pc to 5
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.ju6.AdManager
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <5 MOV,CONST,dst=r0,type=java.lang.String,extra=""> at com.ju6.AdManager/<clinit>[]
+Executor - [DEBUG]: Mov const begin <5 MOV,CONST,dst=r0,type=java.lang.String,extra="">
+DalvikVM - [WARN]: ar 0 (, java.lang.String), (, java.lang.String)
+Executor - [DEBUG]: data:  class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 6
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <6 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(com.ju6.AdManager, d)> at com.ju6.AdManager/<clinit>[]
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.ju6.AdManager
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: ffa:com.ju6.AdManager/<clinit>[]
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: Expect sput d from com.ju6.AdManager
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: Real sput  from [DVMClass: com.ju6.AdManager@2079066544]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD -> jump set pc to 7
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.ju6.AdManager
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <7 STATIC,SPUT,r0=r1,type=boolean,extra=(com.ju6.AdManager, e)> at com.ju6.AdManager/<clinit>[]
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.ju6.AdManager
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: ffa:com.ju6.AdManager/<clinit>[]
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: Expect sput e from com.ju6.AdManager
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: Real sput 0 from [DVMClass: com.ju6.AdManager@2079066544]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD -> jump set pc to 8
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.ju6.AdManager
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <8 RETURN,VOID> at com.ju6.AdManager/<clinit>[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String], StackFrame com.ju6.AdManager/init[java.lang.String, java.lang.String, boolean]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame com.ju6.AdManager/init[java.lang.String, java.lang.String, boolean]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame com.ju6.AdManager/init[java.lang.String, java.lang.String, boolean]
+Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.ju6.AdManager
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: ffa:com.ju6.AdManager/init[java.lang.String, java.lang.String, boolean]
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: Expect sput c from com.ju6.AdManager
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: Real sput e1c2188a69727bf4ec4a5d72319cfe87428c7f35 from [DVMClass: com.ju6.AdManager@2079066544]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD -> jump set pc to 2
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.ju6.AdManager
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 STATIC,SPUT,r0=r1,type=java.lang.Object,extra=(com.ju6.AdManager, d)> at com.ju6.AdManager/init[java.lang.String, java.lang.String, boolean]
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.ju6.AdManager
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: ffa:com.ju6.AdManager/init[java.lang.String, java.lang.String, boolean]
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: Expect sput d from com.ju6.AdManager
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: Real sput c62b31cb3a7041d5:88857ec052e653eb from [DVMClass: com.ju6.AdManager@2079066544]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD -> jump set pc to 3
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.ju6.AdManager
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 STATIC,SPUT,r0=r2,type=boolean,extra=(com.ju6.AdManager, e)> at com.ju6.AdManager/init[java.lang.String, java.lang.String, boolean]
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.ju6.AdManager
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: ffa:com.ju6.AdManager/init[java.lang.String, java.lang.String, boolean]
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: Expect sput e from com.ju6.AdManager
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: Real sput [Unknown var:null, type: boolean] from [DVMClass: com.ju6.AdManager@2079066544]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD -> jump set pc to 4
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.ju6.AdManager
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <4 RETURN,VOID> at com.ju6.AdManager/init[java.lang.String, java.lang.String, boolean]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 NEW,INSTANCE,dst=r0,type=com.ju6.AdRequester> at com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String]
+OP_NEW_INSTANCE - [DEBUG]: [reg 0@JmAdV2/initJu6Ad]
+DalvikVM - [BB]: Superclass: com.ju6.AdRequester
+DalvikVM - [BB]: Superclass: java.lang.Object
+DVMObject - [BB]: New instance of com.ju6.AdRequester
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.ju6.AdRequester at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: New DVMClass representation for com.ju6.AdRequester at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type com.ju6.AdRequester
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.ju6.AdRequester at fu.hao.trust.dvm.VMHeap@45b12c9b
+DalvikVM - [WARN]: ar 0 ([Unknown var:null, type: boolean], boolean), (instance number 1@com.ju6.AdRequester, com.ju6.AdRequester)
+OP_NEW_INSTANCE - [DEBUG]: New object of com.ju6.AdRequestercreated:instance number 1@com.ju6.AdRequester
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_NEW_INSTANCE -> jump set pc to 4
+TaintSumBranch - [BB]: Rdst [reg 0@JmAdV2/initJu6Ad]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <4 INSTANCE,IGET,r0=r2,r1=r1,type=java.lang.Object,extra=com.safesys.remover.JmAdV2.mActivity> at com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Obj instance number 1@com.safesys.remover.JmAdV2
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Fieldinfo com.safesys.remover.JmAdV2.mActivity
+Unknown - [BB]: Unknown created!
+DVMObject - [DEBUG]: put field [Unknown var:null, type: android.app.Activity]
+DalvikVM - [WARN]: ar 1, ([Unknown var:null, type: android.app.Activity], android.app.Activity)
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: [Unknown var:null, type: android.app.Activity]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD -> jump set pc to 5
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <5 INVOKE,DIRECT,extra=[com.ju6.AdRequester/<init>[android.content.Context], [0, 1]]> at com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String]
+Executor - [MSG]: arg0 obj: instance number 1@com.ju6.AdRequester
+Executor - [WARN]: Reflection error: com.ju6.AdRequester
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 6
+DalvikVM - [BB]: New method call: com.ju6.AdRequester/<init>[android.content.Context]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[0, 1]>
+DalvikVM - [BB]: [1]<0 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]>
+DalvikVM - [BB]: [2]<0 INSTANCE,IPUT,r0=r0,r1=r1,type=java.lang.Object,extra=com.ju6.AdRequester.a>
+DalvikVM - [BB]: [3]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame com.ju6.AdRequester/<init>[android.content.Context], pc 6 stored. 
+newStackFrame - [BB]: Add frame StackFrame com.ju6.AdRequester/<init>[android.content.Context]
+newStackFrame - [BB]: Stack: [StackFrame com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String], StackFrame com.ju6.AdRequester/<init>[android.content.Context]]
+TaintSumBranch - [BB]: <com.ju6.AdRequester: void <init>(android.content.Context)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> execute set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[0, 1]> at com.ju6.AdRequester/<init>[android.content.Context]
+DalvikVM - [WARN]: ar 0, (instance number 1@com.ju6.AdRequester, com.ju6.AdRequester)
+Executor - [DEBUG]: params: instance number 1@com.ju6.AdRequester
+DalvikVM - [WARN]: ar 1, ([Unknown var:null, type: android.app.Activity], android.app.Activity)
+Executor - [DEBUG]: params: [Unknown var:null, type: android.app.Activity]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]> at com.ju6.AdRequester/<init>[android.content.Context]
+Executor - [MSG]: arg0 obj: instance number 1@com.ju6.AdRequester
+Executor - [BB]: java.lang.Object/<init>[] is a constructor!
+Executor - [WARN]: Reflection error: com.ju6.AdRequester
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 2
+TaintSumBranch - [BB]: <java.lang.Object: void <init>()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 INSTANCE,IPUT,r0=r0,r1=r1,type=java.lang.Object,extra=com.ju6.AdRequester.a> at com.ju6.AdRequester/<init>[android.content.Context]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.ju6.AdRequester.a
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.ju6.AdRequester
+DVMObject - [DEBUG]: put field [Unknown var:null, type: android.app.Activity]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data [Unknown var:null, type: android.app.Activity] to the field of instance number 1@com.ju6.AdRequester
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 3
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 RETURN,VOID> at com.ju6.AdRequester/<init>[android.content.Context]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <6 INSTANCE,IPUT,r0=r2,r1=r0,type=java.lang.Object,extra=com.safesys.remover.JmAdV2.mJu6Ad> at com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.safesys.remover.JmAdV2.mJu6Ad
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.safesys.remover.JmAdV2
+DVMObject - [DEBUG]: put field instance number 1@com.ju6.AdRequester
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data instance number 1@com.ju6.AdRequester to the field of instance number 1@com.safesys.remover.JmAdV2
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 7
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <7 INSTANCE,IGET,r0=r2,r1=r0,type=java.lang.Object,extra=com.safesys.remover.JmAdV2.mJu6Ad> at com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Obj instance number 1@com.safesys.remover.JmAdV2
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Fieldinfo com.safesys.remover.JmAdV2.mJu6Ad
+DalvikVM - [WARN]: ar 0 (instance number 1@com.ju6.AdRequester, com.ju6.AdRequester), (instance number 1@com.ju6.AdRequester, com.ju6.AdRequester)
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: instance number 1@com.ju6.AdRequester
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD -> jump set pc to 8
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <8 NEW,INSTANCE,dst=r1,type=com.safesys.remover.JmAdV2$4> at com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String]
+OP_NEW_INSTANCE - [DEBUG]: [reg 1@JmAdV2/initJu6Ad]
+DalvikVM - [BB]: Superclass: com.safesys.remover.JmAdV2$4
+DalvikVM - [BB]: Superclass: java.lang.Object
+DVMObject - [BB]: New instance of com.safesys.remover.JmAdV2$4
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.safesys.remover.JmAdV2$4 at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: New DVMClass representation for com.safesys.remover.JmAdV2$4 at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type com.safesys.remover.JmAdV2$4
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.safesys.remover.JmAdV2$4 at fu.hao.trust.dvm.VMHeap@45b12c9b
+DalvikVM - [WARN]: ar 1 ([Unknown var:null, type: android.app.Activity], android.app.Activity), (instance number 1@com.safesys.remover.JmAdV2$4, com.safesys.remover.JmAdV2$4)
+OP_NEW_INSTANCE - [DEBUG]: New object of com.safesys.remover.JmAdV2$4created:instance number 1@com.safesys.remover.JmAdV2$4
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_NEW_INSTANCE -> jump set pc to 9
+TaintSumBranch - [BB]: Rdst [reg 1@JmAdV2/initJu6Ad]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <9 INVOKE,DIRECT,extra=[com.safesys.remover.JmAdV2$4/<init>[com.safesys.remover.JmAdV2], [1, 2]]> at com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String]
+Executor - [MSG]: arg0 obj: instance number 1@com.safesys.remover.JmAdV2$4
+Executor - [WARN]: Reflection error: com.safesys.remover.JmAdV2$4
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 10
+DalvikVM - [BB]: New method call: com.safesys.remover.JmAdV2$4/<init>[com.safesys.remover.JmAdV2]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[0, 1]>
+DalvikVM - [BB]: [1]<0 INSTANCE,IPUT,r0=r0,r1=r1,type=java.lang.Object,extra=com.safesys.remover.JmAdV2$4.this$0>
+DalvikVM - [BB]: [2]<0 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]>
+DalvikVM - [BB]: [3]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame com.safesys.remover.JmAdV2$4/<init>[com.safesys.remover.JmAdV2], pc 10 stored. 
+newStackFrame - [BB]: Add frame StackFrame com.safesys.remover.JmAdV2$4/<init>[com.safesys.remover.JmAdV2]
+newStackFrame - [BB]: Stack: [StackFrame com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String], StackFrame com.safesys.remover.JmAdV2$4/<init>[com.safesys.remover.JmAdV2]]
+TaintSumBranch - [BB]: <com.safesys.remover.JmAdV2$4: void <init>(com.safesys.remover.JmAdV2)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> execute set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[0, 1]> at com.safesys.remover.JmAdV2$4/<init>[com.safesys.remover.JmAdV2]
+DalvikVM - [WARN]: ar 0, (instance number 1@com.safesys.remover.JmAdV2$4, com.safesys.remover.JmAdV2$4)
+Executor - [DEBUG]: params: instance number 1@com.safesys.remover.JmAdV2$4
+DalvikVM - [WARN]: ar 1, (instance number 1@com.safesys.remover.JmAdV2, com.safesys.remover.JmAdV2)
+Executor - [DEBUG]: params: instance number 1@com.safesys.remover.JmAdV2
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 INSTANCE,IPUT,r0=r0,r1=r1,type=java.lang.Object,extra=com.safesys.remover.JmAdV2$4.this$0> at com.safesys.remover.JmAdV2$4/<init>[com.safesys.remover.JmAdV2]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.safesys.remover.JmAdV2$4.this$0
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.safesys.remover.JmAdV2$4
+DVMObject - [DEBUG]: put field instance number 1@com.safesys.remover.JmAdV2
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data instance number 1@com.safesys.remover.JmAdV2 to the field of instance number 1@com.safesys.remover.JmAdV2$4
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 2
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [0]]> at com.safesys.remover.JmAdV2$4/<init>[com.safesys.remover.JmAdV2]
+Executor - [MSG]: arg0 obj: instance number 1@com.safesys.remover.JmAdV2$4
+Executor - [BB]: java.lang.Object/<init>[] is a constructor!
+Executor - [WARN]: Reflection error: com.safesys.remover.JmAdV2$4
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 3
+TaintSumBranch - [BB]: <java.lang.Object: void <init>()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 RETURN,VOID> at com.safesys.remover.JmAdV2$4/<init>[com.safesys.remover.JmAdV2]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <10 INVOKE,VIRTUAL,extra=[com.ju6.AdRequester/setAdListener[com.ju6.AdListener], [0, 1]]> at com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String]
+Executor - [MSG]: arg0 obj: instance number 1@com.ju6.AdRequester
+Executor - [WARN]: Reflection error: com.ju6.AdRequester
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 11
+DalvikVM - [BB]: New method call: com.ju6.AdRequester/setAdListener[com.ju6.AdListener]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[1, 2]>
+DalvikVM - [BB]: [1]<0 INSTANCE,IPUT,r0=r1,r1=r2,type=java.lang.Object,extra=com.ju6.AdRequester.b>
+DalvikVM - [BB]: [2]<0 RETURN,VOID>
+DalvikVM - [BB]: [3]<0 MOV,EXCETPION,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [4]<0 GOTO,extra=index:2>
+newStackFrame - [BB]: New Stack Frame: StackFrame com.ju6.AdRequester/setAdListener[com.ju6.AdListener], pc 11 stored. 
+newStackFrame - [BB]: Add frame StackFrame com.ju6.AdRequester/setAdListener[com.ju6.AdListener]
+newStackFrame - [BB]: Stack: [StackFrame com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String], StackFrame com.ju6.AdRequester/setAdListener[com.ju6.AdListener]]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> execute set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[1, 2]> at com.ju6.AdRequester/setAdListener[com.ju6.AdListener]
+DalvikVM - [WARN]: ar 1, (instance number 1@com.ju6.AdRequester, com.ju6.AdRequester)
+Executor - [DEBUG]: params: instance number 1@com.ju6.AdRequester
+DalvikVM - [WARN]: ar 2, (instance number 1@com.safesys.remover.JmAdV2$4, com.safesys.remover.JmAdV2$4)
+Executor - [DEBUG]: params: instance number 1@com.safesys.remover.JmAdV2$4
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 INSTANCE,IPUT,r0=r1,r1=r2,type=java.lang.Object,extra=com.ju6.AdRequester.b> at com.ju6.AdRequester/setAdListener[com.ju6.AdListener]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.ju6.AdRequester.b
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.ju6.AdRequester
+DVMObject - [DEBUG]: put field instance number 1@com.safesys.remover.JmAdV2$4
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data instance number 1@com.safesys.remover.JmAdV2$4 to the field of instance number 1@com.ju6.AdRequester
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 2
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 RETURN,VOID> at com.ju6.AdRequester/setAdListener[com.ju6.AdListener]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <11 INSTANCE,IGET,r0=r2,r1=r0,type=java.lang.Object,extra=com.safesys.remover.JmAdV2.mJu6Ad> at com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Obj instance number 1@com.safesys.remover.JmAdV2
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Fieldinfo com.safesys.remover.JmAdV2.mJu6Ad
+DalvikVM - [WARN]: ar 0 (instance number 1@com.ju6.AdRequester, com.ju6.AdRequester), (instance number 1@com.ju6.AdRequester, com.ju6.AdRequester)
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: instance number 1@com.ju6.AdRequester
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD -> jump set pc to 12
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <12 INVOKE,VIRTUAL,extra=[com.ju6.AdRequester/getAd[], [0]]> at com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String]
+Executor - [MSG]: arg0 obj: instance number 1@com.ju6.AdRequester
+Executor - [WARN]: Reflection error: com.ju6.AdRequester
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 13
+DalvikVM - [BB]: New method call: com.ju6.AdRequester/getAd[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[3]>
+DalvikVM - [BB]: [1]<0 NEW,INSTANCE,dst=r0,type=com.ju6.c>
+DalvikVM - [BB]: [2]<0 INSTANCE,IGET,r0=r3,r1=r1,type=java.lang.Object,extra=com.ju6.AdRequester.a>
+DalvikVM - [BB]: [3]<0 INSTANCE,IGET,r0=r3,r1=r2,type=java.lang.Object,extra=com.ju6.AdRequester.b>
+DalvikVM - [BB]: [4]<0 INVOKE,DIRECT,extra=[com.ju6.c/<init>[android.content.Context, com.ju6.AdListener], [0, 1, 2]]>
+DalvikVM - [BB]: [5]<0 INVOKE,VIRTUAL,extra=[java.lang.Thread/start[], [0]]>
+DalvikVM - [BB]: [6]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame com.ju6.AdRequester/getAd[], pc 13 stored. 
+newStackFrame - [BB]: Add frame StackFrame com.ju6.AdRequester/getAd[]
+newStackFrame - [BB]: Stack: [StackFrame com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String], StackFrame com.ju6.AdRequester/getAd[]]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> execute set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[3]> at com.ju6.AdRequester/getAd[]
+DalvikVM - [WARN]: ar 3, (instance number 1@com.ju6.AdRequester, com.ju6.AdRequester)
+Executor - [DEBUG]: params: instance number 1@com.ju6.AdRequester
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 NEW,INSTANCE,dst=r0,type=com.ju6.c> at com.ju6.AdRequester/getAd[]
+OP_NEW_INSTANCE - [DEBUG]: [reg 0@AdRequester/getAd]
+DalvikVM - [BB]: Superclass: com.ju6.c
+Thread - [BB]: New instance of com.ju6.c
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.ju6.c at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: New DVMClass representation for com.ju6.c at fu.hao.trust.dvm.VMHeap@45b12c9b
+DalvikVM - [BB]: New method call: com.ju6.c/<clinit>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r0,type=AndroidWide,extra=class patdroid.core.PrimitiveInfo?1800000l>
+DalvikVM - [BB]: [2]<0 STATIC,SPUT,r0=r0,type=AndroidWide,extra=(com.ju6.c, a)>
+DalvikVM - [BB]: [3]<2 MOV,CONST,dst=r0,type=AndroidWide,extra=class patdroid.core.PrimitiveInfo?60000l>
+DalvikVM - [BB]: [4]<0 STATIC,SPUT,r0=r0,type=AndroidWide,extra=(com.ju6.c, b)>
+DalvikVM - [BB]: [5]<4 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?10000>
+DalvikVM - [BB]: [6]<0 STATIC,SPUT,r0=r0,type=void,extra=(com.ju6.c, c)>
+DalvikVM - [BB]: [7]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame com.ju6.c/<clinit>[], pc 1 stored. 
+newStackFrame - [BB]: Stack: [StackFrame com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String], StackFrame com.ju6.AdRequester/getAd[]]
+DalvikVM - [MSG]: Begin run instrumented methods!
+DalvikVM - [BB]: Add frames [StackFrame com.ju6.c/<clinit>[]]
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[]> at com.ju6.c/<clinit>[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 MOV,CONST,dst=r0,type=AndroidWide,extra=class patdroid.core.PrimitiveInfo?1800000l> at com.ju6.c/<clinit>[]
+Executor - [DEBUG]: Mov const begin <1 MOV,CONST,dst=r0,type=AndroidWide,extra=class patdroid.core.PrimitiveInfo?1800000l>
+DalvikVM - [WARN]: ar 0, (1800000l, AndroidWide)
+Executor - [DEBUG]: data: 1800000l class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 2
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 STATIC,SPUT,r0=r0,type=AndroidWide,extra=(com.ju6.c, a)> at com.ju6.c/<clinit>[]
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.c at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.ju6.c
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.c at fu.hao.trust.dvm.VMHeap@45b12c9b
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: ffa:com.ju6.c/<clinit>[]
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: Expect sput a from com.ju6.c
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: Real sput 1800000l from [DVMClass: com.ju6.c@758309302]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD -> jump set pc to 3
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.c at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.ju6.c
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.c at fu.hao.trust.dvm.VMHeap@45b12c9b
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 MOV,CONST,dst=r0,type=AndroidWide,extra=class patdroid.core.PrimitiveInfo?60000l> at com.ju6.c/<clinit>[]
+Executor - [DEBUG]: Mov const begin <3 MOV,CONST,dst=r0,type=AndroidWide,extra=class patdroid.core.PrimitiveInfo?60000l>
+DalvikVM - [WARN]: ar 0 (1800000l, AndroidWide), (60000l, AndroidWide)
+Executor - [DEBUG]: data: 60000l class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 4
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <4 STATIC,SPUT,r0=r0,type=AndroidWide,extra=(com.ju6.c, b)> at com.ju6.c/<clinit>[]
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.c at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.ju6.c
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.c at fu.hao.trust.dvm.VMHeap@45b12c9b
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: ffa:com.ju6.c/<clinit>[]
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: Expect sput b from com.ju6.c
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: Real sput 60000l from [DVMClass: com.ju6.c@758309302]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD -> jump set pc to 5
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.c at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.ju6.c
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.c at fu.hao.trust.dvm.VMHeap@45b12c9b
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <5 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?10000> at com.ju6.c/<clinit>[]
+Executor - [DEBUG]: Mov const begin <5 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?10000>
+DalvikVM - [WARN]: ar 0 (60000l, AndroidWide), (10000, void)
+Executor - [DEBUG]: data: 10000 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 6
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <6 STATIC,SPUT,r0=r0,type=void,extra=(com.ju6.c, c)> at com.ju6.c/<clinit>[]
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.c at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.ju6.c
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.c at fu.hao.trust.dvm.VMHeap@45b12c9b
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: ffa:com.ju6.c/<clinit>[]
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: Expect sput c from com.ju6.c
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: Real sput 10000 from [DVMClass: com.ju6.c@758309302]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD -> jump set pc to 7
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.c at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.ju6.c
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.c at fu.hao.trust.dvm.VMHeap@45b12c9b
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <7 RETURN,VOID> at com.ju6.c/<clinit>[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String], StackFrame com.ju6.AdRequester/getAd[]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame com.ju6.AdRequester/getAd[]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame com.ju6.AdRequester/getAd[]
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type com.ju6.c
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.ju6.c at fu.hao.trust.dvm.VMHeap@45b12c9b
+DalvikVM - [WARN]: ar 0, ([myThread: instance number 1@com.ju6.c], com.ju6.c)
+OP_NEW_INSTANCE - [DEBUG]: New object of com.ju6.ccreated:[myThread: instance number 1@com.ju6.c]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_NEW_INSTANCE -> jump set pc to 2
+TaintSumBranch - [BB]: Rdst [reg 0@AdRequester/getAd]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 INSTANCE,IGET,r0=r3,r1=r1,type=java.lang.Object,extra=com.ju6.AdRequester.a> at com.ju6.AdRequester/getAd[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Obj instance number 1@com.ju6.AdRequester
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Fieldinfo com.ju6.AdRequester.a
+DalvikVM - [WARN]: ar 1, ([Unknown var:null, type: android.app.Activity], android.content.Context)
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: [Unknown var:null, type: android.app.Activity]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD -> jump set pc to 3
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 INSTANCE,IGET,r0=r3,r1=r2,type=java.lang.Object,extra=com.ju6.AdRequester.b> at com.ju6.AdRequester/getAd[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Obj instance number 1@com.ju6.AdRequester
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Fieldinfo com.ju6.AdRequester.b
+DalvikVM - [WARN]: ar 2, (instance number 1@com.safesys.remover.JmAdV2$4, com.ju6.AdListener)
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: instance number 1@com.safesys.remover.JmAdV2$4
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD -> jump set pc to 4
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <4 INVOKE,DIRECT,extra=[com.ju6.c/<init>[android.content.Context, com.ju6.AdListener], [0, 1, 2]]> at com.ju6.AdRequester/getAd[]
+Executor - [MSG]: arg0 obj: [myThread: instance number 1@com.ju6.c]
+Executor - [WARN]: Reflection error: com.ju6.c
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 5
+DalvikVM - [BB]: New method call: com.ju6.c/<init>[android.content.Context, com.ju6.AdListener]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[1, 2, 3]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?-1>
+DalvikVM - [BB]: [2]<0 INVOKE,DIRECT,extra=[java.lang.Thread/<init>[], [1]]>
+DalvikVM - [BB]: [3]<0 INSTANCE,IPUT,r0=r1,r1=r0,type=void,extra=com.ju6.c.f>
+DalvikVM - [BB]: [4]<0 INSTANCE,IPUT,r0=r1,r1=r0,type=void,extra=com.ju6.c.o>
+DalvikVM - [BB]: [5]<0 INSTANCE,IPUT,r0=r1,r1=r2,type=java.lang.Object,extra=com.ju6.c.e>
+DalvikVM - [BB]: [6]<0 INSTANCE,IPUT,r0=r1,r1=r3,type=java.lang.Object,extra=com.ju6.c.v>
+DalvikVM - [BB]: [7]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame com.ju6.c/<init>[android.content.Context, com.ju6.AdListener], pc 5 stored. 
+newStackFrame - [BB]: Add frame StackFrame com.ju6.c/<init>[android.content.Context, com.ju6.AdListener]
+newStackFrame - [BB]: Stack: [StackFrame com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String], StackFrame com.ju6.AdRequester/getAd[], StackFrame com.ju6.c/<init>[android.content.Context, com.ju6.AdListener]]
+TaintSumBranch - [BB]: <com.ju6.c: void <init>(android.content.Context,com.ju6.AdListener)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> execute set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[1, 2, 3]> at com.ju6.c/<init>[android.content.Context, com.ju6.AdListener]
+DalvikVM - [WARN]: ar 1, ([myThread: instance number 1@com.ju6.c], com.ju6.c)
+Executor - [DEBUG]: params: [myThread: instance number 1@com.ju6.c]
+DalvikVM - [WARN]: ar 2, ([Unknown var:null, type: android.app.Activity], android.content.Context)
+Executor - [DEBUG]: params: [Unknown var:null, type: android.app.Activity]
+DalvikVM - [WARN]: ar 3, (instance number 1@com.safesys.remover.JmAdV2$4, com.ju6.AdListener)
+Executor - [DEBUG]: params: instance number 1@com.safesys.remover.JmAdV2$4
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?-1> at com.ju6.c/<init>[android.content.Context, com.ju6.AdListener]
+Executor - [DEBUG]: Mov const begin <1 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?-1>
+DalvikVM - [WARN]: ar 0, (-1, void)
+Executor - [DEBUG]: data: -1 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 2
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 INVOKE,DIRECT,extra=[java.lang.Thread/<init>[], [1]]> at com.ju6.c/<init>[android.content.Context, com.ju6.AdListener]
+Executor - [MSG]: arg0 obj: [myThread: instance number 1@com.ju6.c]
+Executor - [MSG]: Replace the clazz.
+Executor - [BB]: java.lang.Thread/<init>[] is a constructor!
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 3
+TaintSumBranch - [BB]: <java.lang.Thread: void <init>()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 INSTANCE,IPUT,r0=r1,r1=r0,type=void,extra=com.ju6.c.f> at com.ju6.c/<init>[android.content.Context, com.ju6.AdListener]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.ju6.c.f
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj [myThread: instance number 1@com.ju6.c]
+Thread - [DEBUG]: put field -1
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data -1 to the field of [myThread: instance number 1@com.ju6.c]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 4
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <4 INSTANCE,IPUT,r0=r1,r1=r0,type=void,extra=com.ju6.c.o> at com.ju6.c/<init>[android.content.Context, com.ju6.AdListener]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.ju6.c.o
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj [myThread: instance number 1@com.ju6.c]
+Thread - [DEBUG]: put field -1
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data -1 to the field of [myThread: instance number 1@com.ju6.c]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 5
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <5 INSTANCE,IPUT,r0=r1,r1=r2,type=java.lang.Object,extra=com.ju6.c.e> at com.ju6.c/<init>[android.content.Context, com.ju6.AdListener]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.ju6.c.e
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj [myThread: instance number 1@com.ju6.c]
+Thread - [DEBUG]: put field [Unknown var:null, type: android.app.Activity]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data [Unknown var:null, type: android.app.Activity] to the field of [myThread: instance number 1@com.ju6.c]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 6
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <6 INSTANCE,IPUT,r0=r1,r1=r3,type=java.lang.Object,extra=com.ju6.c.v> at com.ju6.c/<init>[android.content.Context, com.ju6.AdListener]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.ju6.c.v
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj [myThread: instance number 1@com.ju6.c]
+Thread - [DEBUG]: put field instance number 1@com.safesys.remover.JmAdV2$4
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data instance number 1@com.safesys.remover.JmAdV2$4 to the field of [myThread: instance number 1@com.ju6.c]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 7
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <7 RETURN,VOID> at com.ju6.c/<init>[android.content.Context, com.ju6.AdListener]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String], StackFrame com.ju6.AdRequester/getAd[]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame com.ju6.AdRequester/getAd[]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <5 INVOKE,VIRTUAL,extra=[java.lang.Thread/start[], [0]]> at com.ju6.AdRequester/getAd[]
+Executor - [MSG]: arg0 obj: [myThread: instance number 1@com.ju6.c]
+Executor - [MSG]: Replace the clazz.
+Executor - [DEBUG]: Reflction class: class android.myclasses.Thread
+Thread - [BB]: Run replaced exec!
+DalvikVM - [BB]: New method call: com.ju6.c/run[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[10]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r9,type=void,extra=class patdroid.core.PrimitiveInfo?1>
+DalvikVM - [BB]: [2]<1 MOV,CONST,dst=r8,type=void,extra=class patdroid.core.PrimitiveInfo?5>
+DalvikVM - [BB]: [3]<2 MOV,CONST,dst=r7,type=void,extra=class patdroid.core.PrimitiveInfo?3>
+DalvikVM - [BB]: [4]<3 MOV,CONST,dst=r6,type=void,extra=class patdroid.core.PrimitiveInfo?-1>
+DalvikVM - [BB]: [5]<4 MOV,CONST,dst=r5,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [6]<0 INVOKE,STATIC,extra=[com.ju6.AdManager/isAdFinish[], []]>
+DalvikVM - [BB]: [7]<0 MOV,RESULT,dst=r0,type=void>
+DalvikVM - [BB]: [8]<0 IF,EQZ,r0=r0,extra=index:31>
+DalvikVM - [BB]: [9]<0 INVOKE,STATIC,extra=[com.ju6.AdManager/getAdTimestamp[], []]>
+DalvikVM - [BB]: [10]<0 MOV,RESULT,dst=r0,type=AndroidWide>
+DalvikVM - [BB]: [11]<0 STATIC,SGET,r0=r2,type=AndroidWide,extra=(com.ju6.c, a)>
+DalvikVM - [BB]: [12]<0 ARITHMETIC,ADD,dst=r0,r0=r0,r1=r2,type=long>
+DalvikVM - [BB]: [13]<0 INVOKE,STATIC,extra=[java.lang.System/currentTimeMillis[], []]>
+DalvikVM - [BB]: [14]<0 MOV,RESULT,dst=r2,type=AndroidWide>
+DalvikVM - [BB]: [15]<0 CMP,CMPLONG,dst=r0,r0=r0,r1=r2,type=long>
+DalvikVM - [BB]: [16]<0 IF,GEZ,r0=r0,extra=index:20>
+DalvikVM - [BB]: [17]<0 INVOKE,STATIC,extra=[com.ju6.AdManager/isTestmode[], []]>
+DalvikVM - [BB]: [18]<0 MOV,RESULT,dst=r0,type=void>
+DalvikVM - [BB]: [19]<0 IF,EQZ,r0=r0,extra=index:31>
+DalvikVM - [BB]: [20]<0 INVOKE,STATIC,extra=[com.ju6.AdManager/getAdTimestamp[], []]>
+DalvikVM - [BB]: [21]<0 MOV,RESULT,dst=r0,type=AndroidWide>
+DalvikVM - [BB]: [22]<0 STATIC,SGET,r0=r2,type=AndroidWide,extra=(com.ju6.c, b)>
+DalvikVM - [BB]: [23]<0 ARITHMETIC,ADD,dst=r0,r0=r0,r1=r2,type=long>
+DalvikVM - [BB]: [24]<0 INVOKE,STATIC,extra=[java.lang.System/currentTimeMillis[], []]>
+DalvikVM - [BB]: [25]<0 MOV,RESULT,dst=r2,type=AndroidWide>
+DalvikVM - [BB]: [26]<0 CMP,CMPLONG,dst=r0,r0=r0,r1=r2,type=long>
+DalvikVM - [BB]: [27]<0 IF,GEZ,r0=r0,extra=index:54>
+DalvikVM - [BB]: [28]<0 INVOKE,STATIC,extra=[com.ju6.AdManager/isTestmode[], []]>
+DalvikVM - [BB]: [29]<0 MOV,RESULT,dst=r0,type=void>
+DalvikVM - [BB]: [30]<0 IF,EQZ,r0=r0,extra=index:54>
+DalvikVM - [BB]: [31]<0 INVOKE,STATIC,extra=[com.ju6.AdManager/setAdFinish[], []]>
+DalvikVM - [BB]: [32]<0 INVOKE,STATIC,extra=[com.ju6.AdManager/setAdTimestamp[], []]>
+DalvikVM - [BB]: [33]<0 INVOKE,STATIC,extra=[com.ju6.AdManager/getAppid[], []]>
+DalvikVM - [BB]: [34]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [35]<0 IF,EQZ,r0=r0,extra=index:51>
+DalvikVM - [BB]: [36]<0 INVOKE,STATIC,extra=[com.ju6.AdManager/getAppid[], []]>
+DalvikVM - [BB]: [37]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [38]<37 MOV,CONST,dst=r1,type=java.lang.String,extra="">
+DalvikVM - [BB]: [39]<0 INVOKE,VIRTUAL,extra=[java.lang.String/equals[java.lang.Object], [0, 1]]>
+DalvikVM - [BB]: [40]<0 MOV,RESULT,dst=r0,type=void>
+DalvikVM - [BB]: [41]<0 IF,NEZ,r0=r0,extra=index:51>
+DalvikVM - [BB]: [42]<0 INVOKE,STATIC,extra=[com.ju6.AdManager/getPwd[], []]>
+DalvikVM - [BB]: [43]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [44]<0 IF,EQZ,r0=r0,extra=index:51>
+DalvikVM - [BB]: [45]<0 INVOKE,STATIC,extra=[com.ju6.AdManager/getPwd[], []]>
+DalvikVM - [BB]: [46]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [47]<46 MOV,CONST,dst=r1,type=java.lang.String,extra="">
+DalvikVM - [BB]: [48]<0 INVOKE,VIRTUAL,extra=[java.lang.String/equals[java.lang.Object], [0, 1]]>
+DalvikVM - [BB]: [49]<0 MOV,RESULT,dst=r0,type=void>
+DalvikVM - [BB]: [50]<0 IF,EQZ,r0=r0,extra=index:55>
+DalvikVM - [BB]: [51]<50 MOV,CONST,dst=r0,type=java.lang.String,extra="Ju6 Ad">
+DalvikVM - [BB]: [52]<51 MOV,CONST,dst=r1,type=java.lang.String,extra="请先使用AdManager.init方法初始化应用ID和密码！">
+DalvikVM - [BB]: [53]<0 INVOKE,STATIC,extra=[android.util.Log/e[java.lang.String, java.lang.String], [0, 1]]>
+DalvikVM - [BB]: [54]<0 RETURN,VOID>
+DalvikVM - [BB]: [55]<0 INSTANCE,IGET,r0=r10,r1=r0,type=java.lang.Object,extra=com.ju6.c.e>
+DalvikVM - [BB]: [56]<55 MOV,CONST,dst=r1,type=java.lang.String,extra="android.permission.INTERNET">
+DalvikVM - [BB]: [57]<0 HALT,VIRTUAL,extra=[null, [0, 1]]>
+DalvikVM - [BB]: [58]<0 MOV,RESULT,dst=r0,type=void>
+DalvikVM - [BB]: [59]<0 IF,NE,r0=r0,r1=r6,extra=index:316>
+DalvikVM - [BB]: [60]<59 MOV,CONST,dst=r0,type=java.lang.String,extra="Ju6 Ad">
+DalvikVM - [BB]: [61]<60 MOV,CONST,dst=r1,type=java.lang.String,extra="Cannot request an ad without Internet permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.INTERNET" />">
+DalvikVM - [BB]: [62]<0 INVOKE,STATIC,extra=[android.util.Log/e[java.lang.String, java.lang.String], [0, 1]]>
+DalvikVM - [BB]: [63]<0 MOV,REG,dst=r0,r0=r5,type=void>
+DalvikVM - [BB]: [64]<0 INSTANCE,IGET,r0=r10,r1=r1,type=java.lang.Object,extra=com.ju6.c.e>
+DalvikVM - [BB]: [65]<64 MOV,CONST,dst=r2,type=java.lang.String,extra="android.permission.ACCESS_COARSE_LOCATION">
+DalvikVM - [BB]: [66]<0 HALT,VIRTUAL,extra=[null, [1, 2]]>
+DalvikVM - [BB]: [67]<0 MOV,RESULT,dst=r1,type=void>
+DalvikVM - [BB]: [68]<0 IF,NE,r0=r1,r1=r6,extra=index:73>
+DalvikVM - [BB]: [69]<68 MOV,CONST,dst=r0,type=java.lang.String,extra="Ju6 Ad">
+DalvikVM - [BB]: [70]<69 MOV,CONST,dst=r1,type=java.lang.String,extra="Cannot request an ad without ACCESS_COARSE_LOCATION permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />">
+DalvikVM - [BB]: [71]<0 INVOKE,STATIC,extra=[android.util.Log/e[java.lang.String, java.lang.String], [0, 1]]>
+DalvikVM - [BB]: [72]<0 MOV,REG,dst=r0,r0=r5,type=void>
+DalvikVM - [BB]: [73]<0 INSTANCE,IGET,r0=r10,r1=r1,type=java.lang.Object,extra=com.ju6.c.e>
+DalvikVM - [BB]: [74]<73 MOV,CONST,dst=r2,type=java.lang.String,extra="android.permission.WRITE_SMS">
+DalvikVM - [BB]: [75]<0 HALT,VIRTUAL,extra=[null, [1, 2]]>
+DalvikVM - [BB]: [76]<0 MOV,RESULT,dst=r1,type=void>
+DalvikVM - [BB]: [77]<0 IF,NE,r0=r1,r1=r6,extra=index:82>
+DalvikVM - [BB]: [78]<77 MOV,CONST,dst=r0,type=java.lang.String,extra="Ju6 Ad">
+DalvikVM - [BB]: [79]<78 MOV,CONST,dst=r1,type=java.lang.String,extra="Cannot request an ad without WRITE_SMS permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.WRITE_SMS" />">
+DalvikVM - [BB]: [80]<0 INVOKE,STATIC,extra=[android.util.Log/e[java.lang.String, java.lang.String], [0, 1]]>
+DalvikVM - [BB]: [81]<0 MOV,REG,dst=r0,r0=r5,type=void>
+DalvikVM - [BB]: [82]<0 INSTANCE,IGET,r0=r10,r1=r1,type=java.lang.Object,extra=com.ju6.c.e>
+DalvikVM - [BB]: [83]<82 MOV,CONST,dst=r2,type=java.lang.String,extra="android.permission.READ_SMS">
+DalvikVM - [BB]: [84]<0 HALT,VIRTUAL,extra=[null, [1, 2]]>
+DalvikVM - [BB]: [85]<0 MOV,RESULT,dst=r1,type=void>
+DalvikVM - [BB]: [86]<0 IF,NE,r0=r1,r1=r6,extra=index:91>
+DalvikVM - [BB]: [87]<86 MOV,CONST,dst=r0,type=java.lang.String,extra="Ju6 Ad">
+DalvikVM - [BB]: [88]<87 MOV,CONST,dst=r1,type=java.lang.String,extra="Cannot request an ad without READ_SMS permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.READ_SMS" />">
+DalvikVM - [BB]: [89]<0 INVOKE,STATIC,extra=[android.util.Log/e[java.lang.String, java.lang.String], [0, 1]]>
+DalvikVM - [BB]: [90]<0 MOV,REG,dst=r0,r0=r5,type=void>
+DalvikVM - [BB]: [91]<0 INSTANCE,IGET,r0=r10,r1=r1,type=java.lang.Object,extra=com.ju6.c.e>
+DalvikVM - [BB]: [92]<91 MOV,CONST,dst=r2,type=java.lang.String,extra="android.permission.READ_PHONE_STATE">
+DalvikVM - [BB]: [93]<0 HALT,VIRTUAL,extra=[null, [1, 2]]>
+DalvikVM - [BB]: [94]<0 MOV,RESULT,dst=r1,type=void>
+DalvikVM - [BB]: [95]<0 IF,NE,r0=r1,r1=r6,extra=index:100>
+DalvikVM - [BB]: [96]<95 MOV,CONST,dst=r0,type=java.lang.String,extra="Ju6 Ad">
+DalvikVM - [BB]: [97]<96 MOV,CONST,dst=r1,type=java.lang.String,extra="Cannot request an ad without READ_PHONE_STATE permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.READ_PHONE_STATE" />">
+DalvikVM - [BB]: [98]<0 INVOKE,STATIC,extra=[android.util.Log/e[java.lang.String, java.lang.String], [0, 1]]>
+DalvikVM - [BB]: [99]<0 MOV,REG,dst=r0,r0=r5,type=void>
+DalvikVM - [BB]: [100]<0 INSTANCE,IGET,r0=r10,r1=r1,type=java.lang.Object,extra=com.ju6.c.e>
+DalvikVM - [BB]: [101]<100 MOV,CONST,dst=r2,type=java.lang.String,extra="android.permission.ACCESS_NETWORK_STATE">
+DalvikVM - [BB]: [102]<0 HALT,VIRTUAL,extra=[null, [1, 2]]>
+DalvikVM - [BB]: [103]<0 MOV,RESULT,dst=r1,type=void>
+DalvikVM - [BB]: [104]<0 IF,NE,r0=r1,r1=r6,extra=index:109>
+DalvikVM - [BB]: [105]<104 MOV,CONST,dst=r0,type=java.lang.String,extra="Ju6 Ad">
+DalvikVM - [BB]: [106]<105 MOV,CONST,dst=r1,type=java.lang.String,extra="Cannot request an ad without ACCESS_NETWORK_STATE permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />">
+DalvikVM - [BB]: [107]<0 INVOKE,STATIC,extra=[android.util.Log/e[java.lang.String, java.lang.String], [0, 1]]>
+DalvikVM - [BB]: [108]<0 MOV,REG,dst=r0,r0=r5,type=void>
+DalvikVM - [BB]: [109]<0 IF,EQZ,r0=r0,extra=index:54>
+DalvikVM - [BB]: [110]<109 MOV,CONST,dst=r0,type=java.lang.String,extra="Ju6 Ad">
+DalvikVM - [BB]: [111]<110 MOV,CONST,dst=r1,type=java.lang.String,extra="开始取手机信息...">
+DalvikVM - [BB]: [112]<0 INVOKE,STATIC,extra=[android.util.Log/d[java.lang.String, java.lang.String], [0, 1]]>
+DalvikVM - [BB]: [113]<0 INSTANCE,IGET,r0=r10,r1=r0,type=java.lang.Object,extra=com.ju6.c.e>
+DalvikVM - [BB]: [114]<113 MOV,CONST,dst=r1,type=java.lang.String,extra="phone">
+DalvikVM - [BB]: [115]<0 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [0, 1]]>
+DalvikVM - [BB]: [116]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [117]<0 ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.telephony.TelephonyManager>
+DalvikVM - [BB]: [118]<0 IF,EQZ,r0=r0,extra=index:169>
+DalvikVM - [BB]: [119]<0 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [0]]>
+DalvikVM - [BB]: [120]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [121]<0 INSTANCE,IPUT,r0=r10,r1=r1,type=java.lang.Object,extra=com.ju6.c.j>
+DalvikVM - [BB]: [122]<0 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSimSerialNumber[], [0]]>
+DalvikVM - [BB]: [123]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [124]<0 INSTANCE,IPUT,r0=r10,r1=r1,type=java.lang.Object,extra=com.ju6.c.k>
+DalvikVM - [BB]: [125]<0 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getSubscriberId[], [0]]>
+DalvikVM - [BB]: [126]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [127]<0 INSTANCE,IPUT,r0=r10,r1=r1,type=java.lang.Object,extra=com.ju6.c.l>
+DalvikVM - [BB]: [128]<0 HALT,VIRTUAL,extra=[null, [0]]>
+DalvikVM - [BB]: [129]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [130]<0 IF,EQZ,r0=r1,extra=index:152>
+DalvikVM - [BB]: [131]<0 INVOKE,VIRTUAL,extra=[java.lang.String/length[], [1]]>
+DalvikVM - [BB]: [132]<0 MOV,RESULT,dst=r2,type=void>
+DalvikVM - [BB]: [133]<0 IF,LT,r0=r2,r1=r8,extra=index:152>
+DalvikVM - [BB]: [134]<133 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [BB]: [135]<134 MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?3>
+DalvikVM - [BB]: [136]<0 INVOKE,VIRTUAL,extra=[java.lang.String/substring[int, int], [1, 2, 3]]>
+DalvikVM - [BB]: [137]<0 MOV,RESULT,dst=r2,type=java.lang.Object>
+DalvikVM - [BB]: [138]<0 INVOKE,STATIC,extra=[java.lang.Integer/valueOf[java.lang.String], [2]]>
+DalvikVM - [BB]: [139]<0 MOV,RESULT,dst=r2,type=java.lang.Object>
+DalvikVM - [BB]: [140]<0 INVOKE,VIRTUAL,extra=[java.lang.Integer/intValue[], [2]]>
+DalvikVM - [BB]: [141]<0 MOV,RESULT,dst=r2,type=void>
+DalvikVM - [BB]: [142]<0 INSTANCE,IPUT,r0=r10,r1=r2,type=void,extra=com.ju6.c.h>
+DalvikVM - [BB]: [143]<142 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?3>
+DalvikVM - [BB]: [144]<143 MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?5>
+DalvikVM - [BB]: [145]<0 INVOKE,VIRTUAL,extra=[java.lang.String/substring[int, int], [1, 2, 3]]>
+DalvikVM - [BB]: [146]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [147]<0 INVOKE,STATIC,extra=[java.lang.Integer/valueOf[java.lang.String], [1]]>
+DalvikVM - [BB]: [148]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [149]<0 INVOKE,VIRTUAL,extra=[java.lang.Integer/intValue[], [1]]>
+DalvikVM - [BB]: [150]<0 MOV,RESULT,dst=r1,type=void>
+DalvikVM - [BB]: [151]<0 INSTANCE,IPUT,r0=r10,r1=r1,type=void,extra=com.ju6.c.i>
+DalvikVM - [BB]: [152]<0 INSTANCE,IGET,r0=r10,r1=r1,type=java.lang.Object,extra=com.ju6.c.e>
+DalvikVM - [BB]: [153]<0 HALT,VIRTUAL,extra=[null, [1]]>
+DalvikVM - [BB]: [154]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [155]<154 MOV,CONST,dst=r2,type=java.lang.String,extra="android_id">
+DalvikVM - [BB]: [156]<0 INVOKE,STATIC,extra=[android.provider.Settings$System/getString[android.content.ContentResolver, java.lang.String], [1, 2]]>
+DalvikVM - [BB]: [157]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [158]<0 INSTANCE,IPUT,r0=r10,r1=r1,type=java.lang.Object,extra=com.ju6.c.m>
+DalvikVM - [BB]: [159]<0 HALT,VIRTUAL,extra=[null, [0]]>
+DalvikVM - [BB]: [160]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [161]<0 ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.telephony.gsm.GsmCellLocation>
+DalvikVM - [BB]: [162]<0 IF,EQZ,r0=r0,extra=index:169>
+DalvikVM - [BB]: [163]<0 HALT,VIRTUAL,extra=[null, [0]]>
+DalvikVM - [BB]: [164]<0 MOV,RESULT,dst=r1,type=void>
+DalvikVM - [BB]: [165]<0 INSTANCE,IPUT,r0=r10,r1=r1,type=void,extra=com.ju6.c.f>
+DalvikVM - [BB]: [166]<0 HALT,VIRTUAL,extra=[null, [0]]>
+DalvikVM - [BB]: [167]<0 MOV,RESULT,dst=r0,type=void>
+DalvikVM - [BB]: [168]<0 INSTANCE,IPUT,r0=r10,r1=r0,type=void,extra=com.ju6.c.g>
+DalvikVM - [BB]: [169]<0 INSTANCE,IGET,r0=r10,r1=r0,type=java.lang.Object,extra=com.ju6.c.e>
+DalvikVM - [BB]: [170]<169 MOV,CONST,dst=r1,type=java.lang.String,extra="location">
+DalvikVM - [BB]: [171]<0 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [0, 1]]>
+DalvikVM - [BB]: [172]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [173]<0 ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.location.LocationManager>
+DalvikVM - [BB]: [174]<173 MOV,CONST,dst=r1,type=java.lang.String,extra="network">
+DalvikVM - [BB]: [175]<0 HALT,VIRTUAL,extra=[null, [0, 1]]>
+DalvikVM - [BB]: [176]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [177]<0 IF,EQZ,r0=r0,extra=index:194>
+DalvikVM - [BB]: [178]<0 INVOKE,VIRTUAL,extra=[android.location.Location/getLatitude[], [0]]>
+DalvikVM - [BB]: [179]<0 MOV,RESULT,dst=r1,type=AndroidWide>
+DalvikVM - [BB]: [180]<0 INSTANCE,IPUT,r0=r10,r1=r1,type=AndroidWide,extra=com.ju6.c.p>
+DalvikVM - [BB]: [181]<0 INVOKE,VIRTUAL,extra=[android.location.Location/getLongitude[], [0]]>
+DalvikVM - [BB]: [182]<0 MOV,RESULT,dst=r1,type=AndroidWide>
+DalvikVM - [BB]: [183]<0 INSTANCE,IPUT,r0=r10,r1=r1,type=AndroidWide,extra=com.ju6.c.q>
+DalvikVM - [BB]: [184]<0 HALT,VIRTUAL,extra=[null, [0]]>
+DalvikVM - [BB]: [185]<0 MOV,RESULT,dst=r1,type=void>
+DalvikVM - [BB]: [186]<0 ARITHMETIC,CAST,dst=r1,r0=r1,type=double,extra=class patdroid.core.ClassInfo?float>
+DalvikVM - [BB]: [187]<0 INSTANCE,IPUT,r0=r10,r1=r1,type=AndroidWide,extra=com.ju6.c.r>
+DalvikVM - [BB]: [188]<0 INVOKE,STATIC,extra=[java.lang.System/currentTimeMillis[], []]>
+DalvikVM - [BB]: [189]<0 MOV,RESULT,dst=r1,type=AndroidWide>
+DalvikVM - [BB]: [190]<0 HALT,VIRTUAL,extra=[null, [0]]>
+DalvikVM - [BB]: [191]<0 MOV,RESULT,dst=r3,type=AndroidWide>
+DalvikVM - [BB]: [192]<0 ARITHMETIC,SUB,dst=r0,r0=r1,r1=r3,type=long>
+DalvikVM - [BB]: [193]<0 INSTANCE,IPUT,r0=r10,r1=r0,type=AndroidWide,extra=com.ju6.c.s>
+DalvikVM - [BB]: [194]<0 INSTANCE,IGET,r0=r10,r1=r0,type=java.lang.Object,extra=com.ju6.c.e>
+DalvikVM - [BB]: [195]<194 MOV,CONST,dst=r1,type=java.lang.String,extra="connectivity">
+DalvikVM - [BB]: [196]<0 INVOKE,VIRTUAL,extra=[android.content.Context/getSystemService[java.lang.String], [0, 1]]>
+DalvikVM - [BB]: [197]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [198]<0 ARITHMETIC,CHECK-AND-CAST,dst=r0,type=android.net.ConnectivityManager>
+DalvikVM - [BB]: [199]<0 INVOKE,VIRTUAL,extra=[android.net.ConnectivityManager/getActiveNetworkInfo[], [0]]>
+DalvikVM - [BB]: [200]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [201]<0 IF,EQZ,r0=r0,extra=index:250>
+DalvikVM - [BB]: [202]<0 INVOKE,VIRTUAL,extra=[android.net.NetworkInfo/isAvailable[], [0]]>
+DalvikVM - [BB]: [203]<0 MOV,RESULT,dst=r1,type=void>
+DalvikVM - [BB]: [204]<0 IF,EQZ,r0=r1,extra=index:246>
+DalvikVM - [BB]: [205]<0 INVOKE,VIRTUAL,extra=[android.net.NetworkInfo/getType[], [0]]>
+DalvikVM - [BB]: [206]<0 MOV,RESULT,dst=r1,type=void>
+DalvikVM - [BB]: [207]<0 IF,NEZ,r0=r1,extra=index:241>
+DalvikVM - [BB]: [208]<0 INVOKE,VIRTUAL,extra=[android.net.NetworkInfo/getExtraInfo[], [0]]>
+DalvikVM - [BB]: [209]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [210]<0 IF,EQZ,r0=r0,extra=index:216>
+DalvikVM - [BB]: [211]<0 INVOKE,VIRTUAL,extra=[java.lang.String/trim[], [0]]>
+DalvikVM - [BB]: [212]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [213]<0 INVOKE,VIRTUAL,extra=[java.lang.String/toLowerCase[], [0]]>
+DalvikVM - [BB]: [214]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [215]<0 INSTANCE,IPUT,r0=r10,r1=r0,type=java.lang.Object,extra=com.ju6.c.n>
+DalvikVM - [BB]: [216]<0 INSTANCE,IGET,r0=r10,r1=r0,type=java.lang.Object,extra=com.ju6.c.n>
+DalvikVM - [BB]: [217]<0 IF,EQZ,r0=r0,extra=index:308>
+DalvikVM - [BB]: [218]<0 INVOKE,VIRTUAL,extra=[java.lang.String/toLowerCase[], [0]]>
+DalvikVM - [BB]: [219]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [220]<0 INVOKE,VIRTUAL,extra=[java.lang.String/trim[], [0]]>
+DalvikVM - [BB]: [221]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [222]<0 INVOKE,VIRTUAL,extra=[java.lang.String/length[], [0]]>
+DalvikVM - [BB]: [223]<0 MOV,RESULT,dst=r1,type=void>
+DalvikVM - [BB]: [224]<0 IF,EQZ,r0=r1,extra=index:308>
+DalvikVM - [BB]: [225]<224 MOV,CONST,dst=r1,type=java.lang.String,extra="wifi">
+DalvikVM - [BB]: [226]<0 INVOKE,VIRTUAL,extra=[java.lang.String/equals[java.lang.Object], [0, 1]]>
+DalvikVM - [BB]: [227]<0 MOV,RESULT,dst=r1,type=void>
+DalvikVM - [BB]: [228]<0 IF,EQZ,r0=r1,extra=index:254>
+DalvikVM - [BB]: [229]<0 MOV,REG,dst=r0,r0=r5,type=void>
+DalvikVM - [BB]: [230]<0 INSTANCE,IPUT,r0=r10,r1=r0,type=void,extra=com.ju6.c.o>
+DalvikVM - [BB]: [231]<0 INSTANCE,IGET,r0=r10,r1=r0,type=void,extra=com.ju6.c.f>
+DalvikVM - [BB]: [232]<0 IF,GTZ,r0=r0,extra=index:236>
+DalvikVM - [BB]: [233]<0 INVOKE,STATIC,extra=[com.ju6.AdManager/isTestmode[], []]>
+DalvikVM - [BB]: [234]<0 MOV,RESULT,dst=r0,type=void>
+DalvikVM - [BB]: [235]<0 IF,EQZ,r0=r0,extra=index:310>
+DalvikVM - [BB]: [236]<235 MOV,CONST,dst=r0,type=java.lang.String,extra="Ju6 Ad">
+DalvikVM - [BB]: [237]<236 MOV,CONST,dst=r1,type=java.lang.String,extra="开始取广告...">
+DalvikVM - [BB]: [238]<0 INVOKE,STATIC,extra=[android.util.Log/d[java.lang.String, java.lang.String], [0, 1]]>
+DalvikVM - [BB]: [239]<0 INVOKE,DIRECT,extra=[com.ju6.c/b[], [10]]>
+DalvikVM - [BB]: [240]<0 GOTO,extra=index:54>
+DalvikVM - [BB]: [241]<240 MOV,CONST,dst=r0,type=java.lang.String,extra="wifi">
+DalvikVM - [BB]: [242]<0 INSTANCE,IPUT,r0=r10,r1=r0,type=java.lang.Object,extra=com.ju6.c.n>
+DalvikVM - [BB]: [243]<0 GOTO,extra=index:216>
+DalvikVM - [BB]: [244]<0 MOV,EXCETPION,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [245]<0 GOTO,extra=index:231>
+DalvikVM - [BB]: [246]<245 MOV,CONST,dst=r0,type=java.lang.String,extra="Ju6 Ad">
+DalvikVM - [BB]: [247]<246 MOV,CONST,dst=r1,type=java.lang.String,extra="不能连接到网络，请检查网络配置！">
+DalvikVM - [BB]: [248]<0 INVOKE,STATIC,extra=[android.util.Log/d[java.lang.String, java.lang.String], [0, 1]]>
+DalvikVM - [BB]: [249]<0 GOTO,extra=index:216>
+DalvikVM - [BB]: [250]<249 MOV,CONST,dst=r0,type=java.lang.String,extra="Ju6 Ad">
+DalvikVM - [BB]: [251]<250 MOV,CONST,dst=r1,type=java.lang.String,extra="不能连接到网络，请检查网络配置！">
+DalvikVM - [BB]: [252]<0 INVOKE,STATIC,extra=[android.util.Log/d[java.lang.String, java.lang.String], [0, 1]]>
+DalvikVM - [BB]: [253]<0 GOTO,extra=index:216>
+DalvikVM - [BB]: [254]<253 MOV,CONST,dst=r1,type=java.lang.String,extra="cmnet">
+DalvikVM - [BB]: [255]<0 INVOKE,VIRTUAL,extra=[java.lang.String/equals[java.lang.Object], [0, 1]]>
+DalvikVM - [BB]: [256]<0 MOV,RESULT,dst=r1,type=void>
+DalvikVM - [BB]: [257]<0 IF,EQZ,r0=r1,extra=index:260>
+DalvikVM - [BB]: [258]<0 MOV,REG,dst=r0,r0=r9,type=void>
+DalvikVM - [BB]: [259]<0 GOTO,extra=index:230>
+DalvikVM - [BB]: [260]<259 MOV,CONST,dst=r1,type=java.lang.String,extra="cmwap">
+DalvikVM - [BB]: [261]<0 INVOKE,VIRTUAL,extra=[java.lang.String/equals[java.lang.Object], [0, 1]]>
+DalvikVM - [BB]: [262]<0 MOV,RESULT,dst=r1,type=void>
+DalvikVM - [BB]: [263]<0 IF,EQZ,r0=r1,extra=index:266>
+DalvikVM - [BB]: [264]<263 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?2>
+DalvikVM - [BB]: [265]<0 GOTO,extra=index:230>
+DalvikVM - [BB]: [266]<265 MOV,CONST,dst=r1,type=java.lang.String,extra="uninet">
+DalvikVM - [BB]: [267]<0 INVOKE,VIRTUAL,extra=[java.lang.String/equals[java.lang.Object], [0, 1]]>
+DalvikVM - [BB]: [268]<0 MOV,RESULT,dst=r1,type=void>
+DalvikVM - [BB]: [269]<0 IF,EQZ,r0=r1,extra=index:272>
+DalvikVM - [BB]: [270]<0 MOV,REG,dst=r0,r0=r7,type=void>
+DalvikVM - [BB]: [271]<0 GOTO,extra=index:230>
+DalvikVM - [BB]: [272]<271 MOV,CONST,dst=r1,type=java.lang.String,extra="uniwap">
+DalvikVM - [BB]: [273]<0 INVOKE,VIRTUAL,extra=[java.lang.String/equals[java.lang.Object], [0, 1]]>
+DalvikVM - [BB]: [274]<0 MOV,RESULT,dst=r1,type=void>
+DalvikVM - [BB]: [275]<0 IF,EQZ,r0=r1,extra=index:278>
+DalvikVM - [BB]: [276]<275 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?4>
+DalvikVM - [BB]: [277]<0 GOTO,extra=index:230>
+DalvikVM - [BB]: [278]<277 MOV,CONST,dst=r1,type=java.lang.String,extra="3gnet">
+DalvikVM - [BB]: [279]<0 INVOKE,VIRTUAL,extra=[java.lang.String/equals[java.lang.Object], [0, 1]]>
+DalvikVM - [BB]: [280]<0 MOV,RESULT,dst=r1,type=void>
+DalvikVM - [BB]: [281]<0 IF,EQZ,r0=r1,extra=index:284>
+DalvikVM - [BB]: [282]<0 MOV,REG,dst=r0,r0=r8,type=void>
+DalvikVM - [BB]: [283]<0 GOTO,extra=index:230>
+DalvikVM - [BB]: [284]<283 MOV,CONST,dst=r1,type=java.lang.String,extra="3gwap">
+DalvikVM - [BB]: [285]<0 INVOKE,VIRTUAL,extra=[java.lang.String/equals[java.lang.Object], [0, 1]]>
+DalvikVM - [BB]: [286]<0 MOV,RESULT,dst=r1,type=void>
+DalvikVM - [BB]: [287]<0 IF,EQZ,r0=r1,extra=index:290>
+DalvikVM - [BB]: [288]<287 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?6>
+DalvikVM - [BB]: [289]<0 GOTO,extra=index:230>
+DalvikVM - [BB]: [290]<289 MOV,CONST,dst=r1,type=java.lang.String,extra="ctnet">
+DalvikVM - [BB]: [291]<0 INVOKE,VIRTUAL,extra=[java.lang.String/equals[java.lang.Object], [0, 1]]>
+DalvikVM - [BB]: [292]<0 MOV,RESULT,dst=r1,type=void>
+DalvikVM - [BB]: [293]<0 IF,EQZ,r0=r1,extra=index:296>
+DalvikVM - [BB]: [294]<293 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?7>
+DalvikVM - [BB]: [295]<0 GOTO,extra=index:230>
+DalvikVM - [BB]: [296]<295 MOV,CONST,dst=r1,type=java.lang.String,extra="ctwap">
+DalvikVM - [BB]: [297]<0 INVOKE,VIRTUAL,extra=[java.lang.String/equals[java.lang.Object], [0, 1]]>
+DalvikVM - [BB]: [298]<0 MOV,RESULT,dst=r1,type=void>
+DalvikVM - [BB]: [299]<0 IF,EQZ,r0=r1,extra=index:302>
+DalvikVM - [BB]: [300]<299 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?8>
+DalvikVM - [BB]: [301]<0 GOTO,extra=index:230>
+DalvikVM - [BB]: [302]<301 MOV,CONST,dst=r1,type=java.lang.String,extra="internet">
+DalvikVM - [BB]: [303]<0 INVOKE,VIRTUAL,extra=[java.lang.String/equals[java.lang.Object], [0, 1]]>
+DalvikVM - [BB]: [304]<0 MOV,RESULT,dst=r0,type=void>
+DalvikVM - [BB]: [305]<0 IF,EQZ,r0=r0,extra=index:308>
+DalvikVM - [BB]: [306]<305 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?9>
+DalvikVM - [BB]: [307]<0 GOTO,extra=index:230>
+DalvikVM - [BB]: [308]<0 MOV,REG,dst=r0,r0=r6,type=void>
+DalvikVM - [BB]: [309]<0 GOTO,extra=index:230>
+DalvikVM - [BB]: [310]<309 MOV,CONST,dst=r0,type=java.lang.String,extra="Ju6 Ad">
+DalvikVM - [BB]: [311]<310 MOV,CONST,dst=r1,type=java.lang.String,extra="没有取到cellid，不取广告...">
+DalvikVM - [BB]: [312]<0 INVOKE,STATIC,extra=[android.util.Log/d[java.lang.String, java.lang.String], [0, 1]]>
+DalvikVM - [BB]: [313]<0 GOTO,extra=index:54>
+DalvikVM - [BB]: [314]<0 MOV,EXCETPION,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [315]<0 GOTO,extra=index:152>
+DalvikVM - [BB]: [316]<0 MOV,REG,dst=r0,r0=r9,type=void>
+DalvikVM - [BB]: [317]<0 GOTO,extra=index:64>
+DalvikVM - [WARN]: ar -2, ([myThread: instance number 1@com.ju6.c], com.ju6.c)
+newStackFrame - [BB]: New Stack Frame: StackFrame com.ju6.c/run[], pc 5 stored. 
+newStackFrame - [BB]: Stack: [StackFrame com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String], StackFrame com.ju6.AdRequester/getAd[]]
+DalvikVM - [MSG]: Begin run instrumented methods!
+DalvikVM - [BB]: Add frames [StackFrame com.ju6.c/run[]]
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[10]> at com.ju6.c/run[]
+DalvikVM - [WARN]: ar 10, ([myThread: instance number 1@com.ju6.c], com.ju6.c)
+Executor - [DEBUG]: params: [myThread: instance number 1@com.ju6.c]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 MOV,CONST,dst=r9,type=void,extra=class patdroid.core.PrimitiveInfo?1> at com.ju6.c/run[]
+Executor - [DEBUG]: Mov const begin <1 MOV,CONST,dst=r9,type=void,extra=class patdroid.core.PrimitiveInfo?1>
+DalvikVM - [WARN]: ar 9, (1, void)
+Executor - [DEBUG]: data: 1 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 2
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 MOV,CONST,dst=r8,type=void,extra=class patdroid.core.PrimitiveInfo?5> at com.ju6.c/run[]
+Executor - [DEBUG]: Mov const begin <2 MOV,CONST,dst=r8,type=void,extra=class patdroid.core.PrimitiveInfo?5>
+DalvikVM - [WARN]: ar 8, (5, void)
+Executor - [DEBUG]: data: 5 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 3
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 MOV,CONST,dst=r7,type=void,extra=class patdroid.core.PrimitiveInfo?3> at com.ju6.c/run[]
+Executor - [DEBUG]: Mov const begin <3 MOV,CONST,dst=r7,type=void,extra=class patdroid.core.PrimitiveInfo?3>
+DalvikVM - [WARN]: ar 7, (3, void)
+Executor - [DEBUG]: data: 3 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 4
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <4 MOV,CONST,dst=r6,type=void,extra=class patdroid.core.PrimitiveInfo?-1> at com.ju6.c/run[]
+Executor - [DEBUG]: Mov const begin <4 MOV,CONST,dst=r6,type=void,extra=class patdroid.core.PrimitiveInfo?-1>
+DalvikVM - [WARN]: ar 6, (-1, void)
+Executor - [DEBUG]: data: -1 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 5
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <5 MOV,CONST,dst=r5,type=void,extra=class patdroid.core.PrimitiveInfo?0> at com.ju6.c/run[]
+Executor - [DEBUG]: Mov const begin <5 MOV,CONST,dst=r5,type=void,extra=class patdroid.core.PrimitiveInfo?0>
+DalvikVM - [WARN]: ar 5, (0, void)
+Executor - [DEBUG]: data: 0 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 6
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <6 INVOKE,STATIC,extra=[com.ju6.AdManager/isAdFinish[], []]> at com.ju6.c/run[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 7
+DalvikVM - [BB]: New method call: com.ju6.AdManager/isAdFinish[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[]>
+DalvikVM - [BB]: [1]<0 STATIC,SGET,r0=r0,type=boolean,extra=(com.ju6.AdManager, a)>
+DalvikVM - [BB]: [2]<0 RETURN,VALUE,r0=r0,type=void>
+newStackFrame - [BB]: New Stack Frame: StackFrame com.ju6.AdManager/isAdFinish[], pc 7 stored. 
+newStackFrame - [BB]: Add frame StackFrame com.ju6.AdManager/isAdFinish[]
+newStackFrame - [BB]: Stack: [StackFrame com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String], StackFrame com.ju6.AdRequester/getAd[], StackFrame com.ju6.c/run[], StackFrame com.ju6.AdManager/isAdFinish[]]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[]> at com.ju6.AdManager/isAdFinish[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 STATIC,SGET,r0=r0,type=boolean,extra=(com.ju6.AdManager, a)> at com.ju6.AdManager/isAdFinish[]
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.ju6.AdManager
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+DalvikVM - [WARN]: ar 0, (0, boolean)
+OP_STATIC_GET_FIELD - [DEBUG]: Sget 0, from [DVMClass: com.ju6.AdManager@2079066544]
+OP_STATIC_GET_FIELD - [DEBUG]: Expect sget a, a boolean from com.ju6.AdManager
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD -> jump set pc to 2
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.ju6.AdManager
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 RETURN,VALUE,r0=r0,type=void> at com.ju6.AdManager/isAdFinish[]
+DalvikVM - [WARN]: ar -1, (0, boolean)
+Executor - [BB]: Return data: 0
+DalvikVM - [BB]: stack [StackFrame com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String], StackFrame com.ju6.AdRequester/getAd[], StackFrame com.ju6.c/run[]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame com.ju6.c/run[]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <7 MOV,RESULT,dst=r0,type=void> at com.ju6.c/run[]
+DalvikVM - [WARN]: ar 0, (0, boolean)
+OP_MOV_RESULT - [BB]: Result data: 0
+OP_MOV_RESULT - [DEBUG]: Result data: 0, type: boolean, to [reg 0@c/run]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 8
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <8 IF,EQZ,r0=r0,extra=index:31> at com.ju6.c/run[]
+OP_CMP - [DEBUG]: r0 data 0
+OP_CMP - [DEBUG]: r0 type boolean
+Executor - [DEBUG]: Ops: 0, 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_IF_EQZ -> jump set pc to 31
+Executor - [DEBUG]: equ: <8 IF,EQZ,r0=r0,extra=index:31>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <31 INVOKE,STATIC,extra=[com.ju6.AdManager/setAdFinish[], []]> at com.ju6.c/run[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 32
+DalvikVM - [BB]: New method call: com.ju6.AdManager/setAdFinish[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?1>
+DalvikVM - [BB]: [2]<0 STATIC,SPUT,r0=r0,type=boolean,extra=(com.ju6.AdManager, a)>
+DalvikVM - [BB]: [3]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame com.ju6.AdManager/setAdFinish[], pc 32 stored. 
+newStackFrame - [BB]: Add frame StackFrame com.ju6.AdManager/setAdFinish[]
+newStackFrame - [BB]: Stack: [StackFrame com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String], StackFrame com.ju6.AdRequester/getAd[], StackFrame com.ju6.c/run[], StackFrame com.ju6.AdManager/setAdFinish[]]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[]> at com.ju6.AdManager/setAdFinish[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?1> at com.ju6.AdManager/setAdFinish[]
+Executor - [DEBUG]: Mov const begin <1 MOV,CONST,dst=r0,type=void,extra=class patdroid.core.PrimitiveInfo?1>
+DalvikVM - [WARN]: ar 0, (1, void)
+Executor - [DEBUG]: data: 1 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 2
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 STATIC,SPUT,r0=r0,type=boolean,extra=(com.ju6.AdManager, a)> at com.ju6.AdManager/setAdFinish[]
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.ju6.AdManager
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: ffa:com.ju6.AdManager/setAdFinish[]
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: Expect sput a from com.ju6.AdManager
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: Real sput 1 from [DVMClass: com.ju6.AdManager@2079066544]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD -> jump set pc to 3
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.ju6.AdManager
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 RETURN,VOID> at com.ju6.AdManager/setAdFinish[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String], StackFrame com.ju6.AdRequester/getAd[], StackFrame com.ju6.c/run[]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame com.ju6.c/run[]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <32 INVOKE,STATIC,extra=[com.ju6.AdManager/setAdTimestamp[], []]> at com.ju6.c/run[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 33
+DalvikVM - [BB]: New method call: com.ju6.AdManager/setAdTimestamp[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[]>
+DalvikVM - [BB]: [1]<0 INVOKE,STATIC,extra=[java.lang.System/currentTimeMillis[], []]>
+DalvikVM - [BB]: [2]<0 MOV,RESULT,dst=r0,type=AndroidWide>
+DalvikVM - [BB]: [3]<0 STATIC,SPUT,r0=r0,type=AndroidWide,extra=(com.ju6.AdManager, b)>
+DalvikVM - [BB]: [4]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame com.ju6.AdManager/setAdTimestamp[], pc 33 stored. 
+newStackFrame - [BB]: Add frame StackFrame com.ju6.AdManager/setAdTimestamp[]
+newStackFrame - [BB]: Stack: [StackFrame com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String], StackFrame com.ju6.AdRequester/getAd[], StackFrame com.ju6.c/run[], StackFrame com.ju6.AdManager/setAdTimestamp[]]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[]> at com.ju6.AdManager/setAdTimestamp[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 INVOKE,STATIC,extra=[java.lang.System/currentTimeMillis[], []]> at com.ju6.AdManager/setAdTimestamp[]
+Executor - [DEBUG]: Reflction class java.lang.System
+DalvikVM - [WARN]: ar -1, (1466715150494, long)
+Executor - [MSG]: Reflction invocation public static native long java.lang.System.currentTimeMillis()
+DalvikVM - [BB]: Set reflective call: public static native long java.lang.System.currentTimeMillis()
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INVOKE_STATIC -> jump set pc to 2
+TaintSumBranch - [BB]: <java.lang.System: long currentTimeMillis()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 MOV,RESULT,dst=r0,type=AndroidWide> at com.ju6.AdManager/setAdTimestamp[]
+DalvikVM - [WARN]: ar -1 (1466715150494, long), (1466715150494l, long)
+DalvikVM - [WARN]: ar 0, (1466715150494l, long)
+OP_MOV_RESULT - [BB]: Result data: 1466715150494l
+OP_MOV_RESULT - [DEBUG]: Result data: 1466715150494l, type: long, to [reg 0@AdManager/setAdTimestamp]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 3
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 STATIC,SPUT,r0=r0,type=AndroidWide,extra=(com.ju6.AdManager, b)> at com.ju6.AdManager/setAdTimestamp[]
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.ju6.AdManager
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: ffa:com.ju6.AdManager/setAdTimestamp[]
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: Expect sput b from com.ju6.AdManager
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: Real sput 1466715150494l from [DVMClass: com.ju6.AdManager@2079066544]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD -> jump set pc to 4
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.ju6.AdManager
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <4 RETURN,VOID> at com.ju6.AdManager/setAdTimestamp[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String], StackFrame com.ju6.AdRequester/getAd[], StackFrame com.ju6.c/run[]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame com.ju6.c/run[]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <33 INVOKE,STATIC,extra=[com.ju6.AdManager/getAppid[], []]> at com.ju6.c/run[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 34
+DalvikVM - [BB]: New method call: com.ju6.AdManager/getAppid[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[]>
+DalvikVM - [BB]: [1]<0 STATIC,SGET,r0=r0,type=java.lang.Object,extra=(com.ju6.AdManager, c)>
+DalvikVM - [BB]: [2]<0 RETURN,VALUE,r0=r0,type=java.lang.Object>
+newStackFrame - [BB]: New Stack Frame: StackFrame com.ju6.AdManager/getAppid[], pc 34 stored. 
+newStackFrame - [BB]: Add frame StackFrame com.ju6.AdManager/getAppid[]
+newStackFrame - [BB]: Stack: [StackFrame com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String], StackFrame com.ju6.AdRequester/getAd[], StackFrame com.ju6.c/run[], StackFrame com.ju6.AdManager/getAppid[]]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[]> at com.ju6.AdManager/getAppid[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 STATIC,SGET,r0=r0,type=java.lang.Object,extra=(com.ju6.AdManager, c)> at com.ju6.AdManager/getAppid[]
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.ju6.AdManager
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+DalvikVM - [WARN]: ar 0, (e1c2188a69727bf4ec4a5d72319cfe87428c7f35, java.lang.String)
+OP_STATIC_GET_FIELD - [DEBUG]: Sget e1c2188a69727bf4ec4a5d72319cfe87428c7f35, from [DVMClass: com.ju6.AdManager@2079066544]
+OP_STATIC_GET_FIELD - [DEBUG]: Expect sget c, a java.lang.String from com.ju6.AdManager
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD -> jump set pc to 2
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.ju6.AdManager
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 RETURN,VALUE,r0=r0,type=java.lang.Object> at com.ju6.AdManager/getAppid[]
+DalvikVM - [WARN]: ar -1, (e1c2188a69727bf4ec4a5d72319cfe87428c7f35, java.lang.String)
+Executor - [BB]: Return data: e1c2188a69727bf4ec4a5d72319cfe87428c7f35
+DalvikVM - [BB]: stack [StackFrame com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String], StackFrame com.ju6.AdRequester/getAd[], StackFrame com.ju6.c/run[]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame com.ju6.c/run[]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <34 MOV,RESULT,dst=r0,type=java.lang.Object> at com.ju6.c/run[]
+DalvikVM - [WARN]: ar 0 (0, boolean), (e1c2188a69727bf4ec4a5d72319cfe87428c7f35, java.lang.String)
+OP_MOV_RESULT - [BB]: Result data: e1c2188a69727bf4ec4a5d72319cfe87428c7f35
+OP_MOV_RESULT - [DEBUG]: Result data: e1c2188a69727bf4ec4a5d72319cfe87428c7f35, type: java.lang.String, to [reg 0@c/run]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 35
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <35 IF,EQZ,r0=r0,extra=index:51> at com.ju6.c/run[]
+OP_CMP - [DEBUG]: r0 data e1c2188a69727bf4ec4a5d72319cfe87428c7f35
+OP_CMP - [DEBUG]: r0 type java.lang.String
+Executor - [DEBUG]: Ops: 42, 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_IF_EQZ -> jump set pc to 36
+Executor - [DEBUG]: not equ: <35 IF,EQZ,r0=r0,extra=index:51>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <36 INVOKE,STATIC,extra=[com.ju6.AdManager/getAppid[], []]> at com.ju6.c/run[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 37
+DalvikVM - [BB]: New method call: com.ju6.AdManager/getAppid[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[]>
+DalvikVM - [BB]: [1]<1 STATIC,SGET,r0=r0,type=java.lang.Object,extra=(com.ju6.AdManager, c)>
+DalvikVM - [BB]: [2]<2 RETURN,VALUE,r0=r0,type=java.lang.Object>
+newStackFrame - [BB]: New Stack Frame: StackFrame com.ju6.AdManager/getAppid[], pc 37 stored. 
+newStackFrame - [BB]: Add frame StackFrame com.ju6.AdManager/getAppid[]
+newStackFrame - [BB]: Stack: [StackFrame com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String], StackFrame com.ju6.AdRequester/getAd[], StackFrame com.ju6.c/run[], StackFrame com.ju6.AdManager/getAppid[]]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[]> at com.ju6.AdManager/getAppid[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 STATIC,SGET,r0=r0,type=java.lang.Object,extra=(com.ju6.AdManager, c)> at com.ju6.AdManager/getAppid[]
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.ju6.AdManager
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+DalvikVM - [WARN]: ar 0, (e1c2188a69727bf4ec4a5d72319cfe87428c7f35, java.lang.String)
+OP_STATIC_GET_FIELD - [DEBUG]: Sget e1c2188a69727bf4ec4a5d72319cfe87428c7f35, from [DVMClass: com.ju6.AdManager@2079066544]
+OP_STATIC_GET_FIELD - [DEBUG]: Expect sget c, a java.lang.String from com.ju6.AdManager
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD -> jump set pc to 2
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.ju6.AdManager
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 RETURN,VALUE,r0=r0,type=java.lang.Object> at com.ju6.AdManager/getAppid[]
+DalvikVM - [WARN]: ar -1, (e1c2188a69727bf4ec4a5d72319cfe87428c7f35, java.lang.String)
+Executor - [BB]: Return data: e1c2188a69727bf4ec4a5d72319cfe87428c7f35
+DalvikVM - [BB]: stack [StackFrame com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String], StackFrame com.ju6.AdRequester/getAd[], StackFrame com.ju6.c/run[]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame com.ju6.c/run[]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <37 MOV,RESULT,dst=r0,type=java.lang.Object> at com.ju6.c/run[]
+DalvikVM - [WARN]: ar 0 (e1c2188a69727bf4ec4a5d72319cfe87428c7f35, java.lang.String), (e1c2188a69727bf4ec4a5d72319cfe87428c7f35, java.lang.String)
+OP_MOV_RESULT - [BB]: Result data: e1c2188a69727bf4ec4a5d72319cfe87428c7f35
+OP_MOV_RESULT - [DEBUG]: Result data: e1c2188a69727bf4ec4a5d72319cfe87428c7f35, type: java.lang.String, to [reg 0@c/run]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 38
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <38 MOV,CONST,dst=r1,type=java.lang.String,extra=""> at com.ju6.c/run[]
+Executor - [DEBUG]: Mov const begin <38 MOV,CONST,dst=r1,type=java.lang.String,extra="">
+DalvikVM - [WARN]: ar 1, (, java.lang.String)
+Executor - [DEBUG]: data:  class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 39
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <39 INVOKE,VIRTUAL,extra=[java.lang.String/equals[java.lang.Object], [0, 1]]> at com.ju6.c/run[]
+Executor - [MSG]: arg0 obj: e1c2188a69727bf4ec4a5d72319cfe87428c7f35
+Executor - [DEBUG]: Reflction class: class java.lang.String
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg1: 
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: e1c2188a69727bf4ec4a5d72319cfe87428c7f35, from class: class java.lang.String
+DalvikVM - [WARN]: ar -1, (false, boolean)
+Executor - [DEBUG]: Return data: false ,class java.lang.Boolean
+Executor - [MSG]: Reflction invocation public boolean java.lang.String.equals(java.lang.Object)
+DalvikVM - [BB]: Set reflective call: public boolean java.lang.String.equals(java.lang.Object)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 40
+TaintSumBranch - [BB]: <java.lang.String: boolean equals(java.lang.Object)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <40 MOV,RESULT,dst=r0,type=void> at com.ju6.c/run[]
+DalvikVM - [WARN]: ar -1 (false, boolean), (false, boolean)
+DalvikVM - [WARN]: ar 0 (e1c2188a69727bf4ec4a5d72319cfe87428c7f35, java.lang.String), (false, boolean)
+OP_MOV_RESULT - [BB]: Result data: false
+OP_MOV_RESULT - [DEBUG]: Result data: false, type: boolean, to [reg 0@c/run]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 41
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <41 IF,NEZ,r0=r0,extra=index:51> at com.ju6.c/run[]
+OP_CMP - [DEBUG]: r0 data false
+OP_CMP - [DEBUG]: r0 type boolean
+Executor - [DEBUG]: Ops: false, 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_IF_NEZ -> jump set pc to 42
+Executor - [DEBUG]: Equ: <41 IF,NEZ,r0=r0,extra=index:51>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <42 INVOKE,STATIC,extra=[com.ju6.AdManager/getPwd[], []]> at com.ju6.c/run[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 43
+DalvikVM - [BB]: New method call: com.ju6.AdManager/getPwd[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[]>
+DalvikVM - [BB]: [1]<0 STATIC,SGET,r0=r0,type=java.lang.Object,extra=(com.ju6.AdManager, d)>
+DalvikVM - [BB]: [2]<0 RETURN,VALUE,r0=r0,type=java.lang.Object>
+newStackFrame - [BB]: New Stack Frame: StackFrame com.ju6.AdManager/getPwd[], pc 43 stored. 
+newStackFrame - [BB]: Add frame StackFrame com.ju6.AdManager/getPwd[]
+newStackFrame - [BB]: Stack: [StackFrame com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String], StackFrame com.ju6.AdRequester/getAd[], StackFrame com.ju6.c/run[], StackFrame com.ju6.AdManager/getPwd[]]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[]> at com.ju6.AdManager/getPwd[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 STATIC,SGET,r0=r0,type=java.lang.Object,extra=(com.ju6.AdManager, d)> at com.ju6.AdManager/getPwd[]
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.ju6.AdManager
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+DalvikVM - [WARN]: ar 0, (c62b31cb3a7041d5:88857ec052e653eb, java.lang.String)
+OP_STATIC_GET_FIELD - [DEBUG]: Sget c62b31cb3a7041d5:88857ec052e653eb, from [DVMClass: com.ju6.AdManager@2079066544]
+OP_STATIC_GET_FIELD - [DEBUG]: Expect sget d, a java.lang.String from com.ju6.AdManager
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD -> jump set pc to 2
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.ju6.AdManager
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 RETURN,VALUE,r0=r0,type=java.lang.Object> at com.ju6.AdManager/getPwd[]
+DalvikVM - [WARN]: ar -1, (c62b31cb3a7041d5:88857ec052e653eb, java.lang.String)
+Executor - [BB]: Return data: c62b31cb3a7041d5:88857ec052e653eb
+DalvikVM - [BB]: stack [StackFrame com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String], StackFrame com.ju6.AdRequester/getAd[], StackFrame com.ju6.c/run[]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame com.ju6.c/run[]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <43 MOV,RESULT,dst=r0,type=java.lang.Object> at com.ju6.c/run[]
+DalvikVM - [WARN]: ar 0 (false, boolean), (c62b31cb3a7041d5:88857ec052e653eb, java.lang.String)
+OP_MOV_RESULT - [BB]: Result data: c62b31cb3a7041d5:88857ec052e653eb
+OP_MOV_RESULT - [DEBUG]: Result data: c62b31cb3a7041d5:88857ec052e653eb, type: java.lang.String, to [reg 0@c/run]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 44
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <44 IF,EQZ,r0=r0,extra=index:51> at com.ju6.c/run[]
+OP_CMP - [DEBUG]: r0 data c62b31cb3a7041d5:88857ec052e653eb
+OP_CMP - [DEBUG]: r0 type java.lang.String
+Executor - [DEBUG]: Ops: 42, 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_IF_EQZ -> jump set pc to 45
+Executor - [DEBUG]: not equ: <44 IF,EQZ,r0=r0,extra=index:51>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <45 INVOKE,STATIC,extra=[com.ju6.AdManager/getPwd[], []]> at com.ju6.c/run[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 46
+DalvikVM - [BB]: New method call: com.ju6.AdManager/getPwd[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[]>
+DalvikVM - [BB]: [1]<1 STATIC,SGET,r0=r0,type=java.lang.Object,extra=(com.ju6.AdManager, d)>
+DalvikVM - [BB]: [2]<2 RETURN,VALUE,r0=r0,type=java.lang.Object>
+newStackFrame - [BB]: New Stack Frame: StackFrame com.ju6.AdManager/getPwd[], pc 46 stored. 
+newStackFrame - [BB]: Add frame StackFrame com.ju6.AdManager/getPwd[]
+newStackFrame - [BB]: Stack: [StackFrame com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String], StackFrame com.ju6.AdRequester/getAd[], StackFrame com.ju6.c/run[], StackFrame com.ju6.AdManager/getPwd[]]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[]> at com.ju6.AdManager/getPwd[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 STATIC,SGET,r0=r0,type=java.lang.Object,extra=(com.ju6.AdManager, d)> at com.ju6.AdManager/getPwd[]
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.ju6.AdManager
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+DalvikVM - [WARN]: ar 0, (c62b31cb3a7041d5:88857ec052e653eb, java.lang.String)
+OP_STATIC_GET_FIELD - [DEBUG]: Sget c62b31cb3a7041d5:88857ec052e653eb, from [DVMClass: com.ju6.AdManager@2079066544]
+OP_STATIC_GET_FIELD - [DEBUG]: Expect sget d, a java.lang.String from com.ju6.AdManager
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD -> jump set pc to 2
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.ju6.AdManager
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.ju6.AdManager at fu.hao.trust.dvm.VMHeap@45b12c9b
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 RETURN,VALUE,r0=r0,type=java.lang.Object> at com.ju6.AdManager/getPwd[]
+DalvikVM - [WARN]: ar -1, (c62b31cb3a7041d5:88857ec052e653eb, java.lang.String)
+Executor - [BB]: Return data: c62b31cb3a7041d5:88857ec052e653eb
+DalvikVM - [BB]: stack [StackFrame com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String], StackFrame com.ju6.AdRequester/getAd[], StackFrame com.ju6.c/run[]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame com.ju6.c/run[]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <46 MOV,RESULT,dst=r0,type=java.lang.Object> at com.ju6.c/run[]
+DalvikVM - [WARN]: ar 0 (c62b31cb3a7041d5:88857ec052e653eb, java.lang.String), (c62b31cb3a7041d5:88857ec052e653eb, java.lang.String)
+OP_MOV_RESULT - [BB]: Result data: c62b31cb3a7041d5:88857ec052e653eb
+OP_MOV_RESULT - [DEBUG]: Result data: c62b31cb3a7041d5:88857ec052e653eb, type: java.lang.String, to [reg 0@c/run]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 47
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <47 MOV,CONST,dst=r1,type=java.lang.String,extra=""> at com.ju6.c/run[]
+Executor - [DEBUG]: Mov const begin <47 MOV,CONST,dst=r1,type=java.lang.String,extra="">
+DalvikVM - [WARN]: ar 1 (, java.lang.String), (, java.lang.String)
+Executor - [DEBUG]: data:  class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 48
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <48 INVOKE,VIRTUAL,extra=[java.lang.String/equals[java.lang.Object], [0, 1]]> at com.ju6.c/run[]
+Executor - [MSG]: arg0 obj: c62b31cb3a7041d5:88857ec052e653eb
+Executor - [DEBUG]: Reflction class: class java.lang.String
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg1: 
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: c62b31cb3a7041d5:88857ec052e653eb, from class: class java.lang.String
+DalvikVM - [WARN]: ar -1, (false, boolean)
+Executor - [DEBUG]: Return data: false ,class java.lang.Boolean
+Executor - [MSG]: Reflction invocation public boolean java.lang.String.equals(java.lang.Object)
+DalvikVM - [BB]: Set reflective call: public boolean java.lang.String.equals(java.lang.Object)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 49
+TaintSumBranch - [BB]: <java.lang.String: boolean equals(java.lang.Object)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <49 MOV,RESULT,dst=r0,type=void> at com.ju6.c/run[]
+DalvikVM - [WARN]: ar -1 (false, boolean), (false, boolean)
+DalvikVM - [WARN]: ar 0 (c62b31cb3a7041d5:88857ec052e653eb, java.lang.String), (false, boolean)
+OP_MOV_RESULT - [BB]: Result data: false
+OP_MOV_RESULT - [DEBUG]: Result data: false, type: boolean, to [reg 0@c/run]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 50
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <50 IF,EQZ,r0=r0,extra=index:55> at com.ju6.c/run[]
+OP_CMP - [DEBUG]: r0 data false
+OP_CMP - [DEBUG]: r0 type boolean
+Executor - [DEBUG]: Ops: false, 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_IF_EQZ -> jump set pc to 55
+Executor - [DEBUG]: equ: <50 IF,EQZ,r0=r0,extra=index:55>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <55 INSTANCE,IGET,r0=r10,r1=r0,type=java.lang.Object,extra=com.ju6.c.e> at com.ju6.c/run[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Obj [myThread: instance number 1@com.ju6.c]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Fieldinfo com.ju6.c.e
+DalvikVM - [WARN]: ar 0 (false, boolean), ([Unknown var:null, type: android.app.Activity], android.content.Context)
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: [Unknown var:null, type: android.app.Activity]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD -> jump set pc to 56
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <56 MOV,CONST,dst=r1,type=java.lang.String,extra="android.permission.INTERNET"> at com.ju6.c/run[]
+Executor - [DEBUG]: Mov const begin <56 MOV,CONST,dst=r1,type=java.lang.String,extra="android.permission.INTERNET">
+DalvikVM - [WARN]: ar 1 (, java.lang.String), (android.permission.INTERNET, java.lang.String)
+Executor - [DEBUG]: data: android.permission.INTERNET class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 57
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <57 HALT,VIRTUAL,extra=[null, [0, 1]]> at com.ju6.c/run[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_HALT -> jump set pc to 58
+Executor - [MSG]: Cannot resolve the invocation
+TaintSumBranch - [BB]: Not a taint op <57 HALT,VIRTUAL,extra=[null, [0, 1]]>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <58 MOV,RESULT,dst=r0,type=void> at com.ju6.c/run[]
+Unknown - [BB]: Unknown created!
+DalvikVM - [WARN]: ar -1, ([Unknown var:null, type: void], void)
+DalvikVM - [WARN]: ar 0 ([Unknown var:null, type: android.app.Activity], android.content.Context), ([Unknown var:null, type: void], void)
+OP_MOV_RESULT - [BB]: Result data: [Unknown var:null, type: void]
+OP_MOV_RESULT - [DEBUG]: Result data: [Unknown var:null, type: void], type: void, to [reg 0@c/run]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 59
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <59 IF,NE,r0=r0,r1=r6,extra=index:316> at com.ju6.c/run[]
+OP_CMP - [DEBUG]: r1 data -1
+OP_CMP - [DEBUG]: r1 type void
+OP_CMP - [BB]: Types: void, void
+OP_CMP - [DEBUG]: r0 data [Unknown var:null, type: void]
+OP_CMP - [DEBUG]: r0 type void
+DalvikVM - [BB]: fu.hao.trust.analysis.Taint -> flow set pc to 60
+ATAINT_OP_CMP - [BB]: ret: 54
+ATAINT_OP_CMP - [BB]: cao 
+ATAINT_OP_CMP - [BB]: rii
+ATAINT_OP_CMP - [WARN]: New Simple Branch [Branch: 59--[cond: <59 IF,NE,r0=r0,r1=r6,extra=index:316>][sumpoint: <0 MOV,REG,dst=r0,r0=r9,type=void>]@run]
+ATAINT_OP_CMP - [BB]: Set sum point 316 <0 MOV,REG,dst=r0,r0=r9,type=void>
+ATAINT_OP_CMP - [MSG]: ATAINT_OP_IF:  <59 IF,NE,r0=r0,r1=r6,extra=index:316> 316
+ATAINT_OP_CMP - [BB]: Add <59 IF,NE,r0=r0,r1=r6,extra=index:316> to met of [Branch: 59--[cond: <59 IF,NE,r0=r0,r1=r6,extra=index:316>][sumpoint: <0 MOV,REG,dst=r0,r0=r9,type=void>]@run]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <60 MOV,CONST,dst=r0,type=java.lang.String,extra="Ju6 Ad"> at com.ju6.c/run[]
+Executor - [DEBUG]: Mov const begin <60 MOV,CONST,dst=r0,type=java.lang.String,extra="Ju6 Ad">
+DalvikVM - [WARN]: ar 0 ([Unknown var:null, type: void], void), (Ju6 Ad, java.lang.String)
+Executor - [DEBUG]: data: Ju6 Ad class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 61
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <61 MOV,CONST,dst=r1,type=java.lang.String,extra="Cannot request an ad without Internet permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.INTERNET" />"> at com.ju6.c/run[]
+Executor - [DEBUG]: Mov const begin <61 MOV,CONST,dst=r1,type=java.lang.String,extra="Cannot request an ad without Internet permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.INTERNET" />">
+DalvikVM - [WARN]: ar 1 (android.permission.INTERNET, java.lang.String), (Cannot request an ad without Internet permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.INTERNET" />, java.lang.String)
+Executor - [DEBUG]: data: Cannot request an ad without Internet permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.INTERNET" /> class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 62
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <62 INVOKE,STATIC,extra=[android.util.Log/e[java.lang.String, java.lang.String], [0, 1]]> at com.ju6.c/run[]
+Executor - [DEBUG]: Reflction class android.util.Log
+Executor - [BB]: arg0@reg0: Ju6 Ad
+Executor - [BB]: arg1@reg1: Cannot request an ad without Internet permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.INTERNET" />
+Executor - [BB]: param: Ju6 Ad
+Executor - [BB]: param: Cannot request an ad without Internet permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.INTERNET" />
+DalvikVM - [WARN]: ar -1, (1, int)
+Executor - [MSG]: Reflction invocation public static int android.util.Log.e(java.lang.String,java.lang.String)
+DalvikVM - [BB]: Set reflective call: public static int android.util.Log.e(java.lang.String,java.lang.String)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INVOKE_STATIC -> jump set pc to 63
+TaintSumBranch - [BB]: <android.util.Log: int e(java.lang.String,java.lang.String)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <63 MOV,REG,dst=r0,r0=r5,type=void> at com.ju6.c/run[]
+DalvikVM - [WARN]: ar 0 (Ju6 Ad, java.lang.String), (0, void)
+class fu.hao.trust.dvm.Executor$OP_MOVE_REG - [DEBUG]: mov 0 to 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOVE_REG -> jump set pc to 64
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <64 INSTANCE,IGET,r0=r10,r1=r1,type=java.lang.Object,extra=com.ju6.c.e> at com.ju6.c/run[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Obj [myThread: instance number 1@com.ju6.c]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Fieldinfo com.ju6.c.e
+DalvikVM - [WARN]: ar 1 (Cannot request an ad without Internet permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.INTERNET" />, java.lang.String), ([Unknown var:null, type: android.app.Activity], android.content.Context)
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: [Unknown var:null, type: android.app.Activity]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD -> jump set pc to 65
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <65 MOV,CONST,dst=r2,type=java.lang.String,extra="android.permission.ACCESS_COARSE_LOCATION"> at com.ju6.c/run[]
+Executor - [DEBUG]: Mov const begin <65 MOV,CONST,dst=r2,type=java.lang.String,extra="android.permission.ACCESS_COARSE_LOCATION">
+DalvikVM - [WARN]: ar 2, (android.permission.ACCESS_COARSE_LOCATION, java.lang.String)
+Executor - [DEBUG]: data: android.permission.ACCESS_COARSE_LOCATION class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 66
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <66 HALT,VIRTUAL,extra=[null, [1, 2]]> at com.ju6.c/run[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_HALT -> jump set pc to 67
+Executor - [MSG]: Cannot resolve the invocation
+TaintSumBranch - [BB]: Not a taint op <66 HALT,VIRTUAL,extra=[null, [1, 2]]>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <67 MOV,RESULT,dst=r1,type=void> at com.ju6.c/run[]
+Unknown - [BB]: Unknown created!
+DalvikVM - [WARN]: ar -1, ([Unknown var:null, type: void], void)
+DalvikVM - [WARN]: ar 1 ([Unknown var:null, type: android.app.Activity], android.content.Context), ([Unknown var:null, type: void], void)
+OP_MOV_RESULT - [BB]: Result data: [Unknown var:null, type: void]
+OP_MOV_RESULT - [DEBUG]: Result data: [Unknown var:null, type: void], type: void, to [reg 1@c/run]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 68
+fu.hao.trust.data.Branch - [BB]: Type-old: android.content.Context, Type-new: void
+TaintSumBranch - [BB]: Assigned@[reg 1@c/run]: [Unknown var:null, type: android.app.Activity], [Unknown var:null, type: void]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <68 IF,NE,r0=r1,r1=r6,extra=index:73> at com.ju6.c/run[]
+OP_CMP - [DEBUG]: r1 data -1
+OP_CMP - [DEBUG]: r1 type void
+OP_CMP - [BB]: Types: void, void
+OP_CMP - [DEBUG]: r0 data [Unknown var:null, type: void]
+OP_CMP - [DEBUG]: r0 type void
+DalvikVM - [BB]: fu.hao.trust.analysis.Taint -> flow set pc to 69
+ATAINT_OP_CMP - [BB]: ret: 54
+ATAINT_OP_CMP - [WARN]: New Simple Branch [Branch: 68--[cond: <68 IF,NE,r0=r1,r1=r6,extra=index:73>][sumpoint: <0 INSTANCE,IGET,r0=r10,r1=r1,type=java.lang.Object,extra=com.ju6.c.e>]@run]
+ATAINT_OP_CMP - [BB]: Set sum point 73 <0 INSTANCE,IGET,r0=r10,r1=r1,type=java.lang.Object,extra=com.ju6.c.e>
+ATAINT_OP_CMP - [MSG]: ATAINT_OP_IF:  <68 IF,NE,r0=r1,r1=r6,extra=index:73> 73
+ATAINT_OP_CMP - [BB]: Add <68 IF,NE,r0=r1,r1=r6,extra=index:73> to met of [Branch: 68--[cond: <68 IF,NE,r0=r1,r1=r6,extra=index:73>][sumpoint: <0 INSTANCE,IGET,r0=r10,r1=r1,type=java.lang.Object,extra=com.ju6.c.e>]@run]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <69 MOV,CONST,dst=r0,type=java.lang.String,extra="Ju6 Ad"> at com.ju6.c/run[]
+Executor - [DEBUG]: Mov const begin <69 MOV,CONST,dst=r0,type=java.lang.String,extra="Ju6 Ad">
+DalvikVM - [WARN]: ar 0 (0, void), (Ju6 Ad, java.lang.String)
+Executor - [DEBUG]: data: Ju6 Ad class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 70
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <70 MOV,CONST,dst=r1,type=java.lang.String,extra="Cannot request an ad without ACCESS_COARSE_LOCATION permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />"> at com.ju6.c/run[]
+Executor - [DEBUG]: Mov const begin <70 MOV,CONST,dst=r1,type=java.lang.String,extra="Cannot request an ad without ACCESS_COARSE_LOCATION permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />">
+DalvikVM - [WARN]: ar 1 ([Unknown var:null, type: void], void), (Cannot request an ad without ACCESS_COARSE_LOCATION permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />, java.lang.String)
+Executor - [DEBUG]: data: Cannot request an ad without ACCESS_COARSE_LOCATION permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 71
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <71 INVOKE,STATIC,extra=[android.util.Log/e[java.lang.String, java.lang.String], [0, 1]]> at com.ju6.c/run[]
+Executor - [DEBUG]: Reflction class android.util.Log
+Executor - [BB]: arg0@reg0: Ju6 Ad
+Executor - [BB]: arg1@reg1: Cannot request an ad without ACCESS_COARSE_LOCATION permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+Executor - [BB]: param: Ju6 Ad
+Executor - [BB]: param: Cannot request an ad without ACCESS_COARSE_LOCATION permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+DalvikVM - [WARN]: ar -1, (1, int)
+Executor - [MSG]: Reflction invocation public static int android.util.Log.e(java.lang.String,java.lang.String)
+DalvikVM - [BB]: Set reflective call: public static int android.util.Log.e(java.lang.String,java.lang.String)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INVOKE_STATIC -> jump set pc to 72
+TaintSumBranch - [BB]: <android.util.Log: int e(java.lang.String,java.lang.String)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <72 MOV,REG,dst=r0,r0=r5,type=void> at com.ju6.c/run[]
+DalvikVM - [WARN]: ar 0 (Ju6 Ad, java.lang.String), (0, void)
+class fu.hao.trust.dvm.Executor$OP_MOVE_REG - [DEBUG]: mov 0 to 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOVE_REG -> jump set pc to 73
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <73 INSTANCE,IGET,r0=r10,r1=r1,type=java.lang.Object,extra=com.ju6.c.e> at com.ju6.c/run[]
+fu.hao.trust.data.Branch - [BB]: Begins value combination:[Branch: 68--[cond: <68 IF,NE,r0=r1,r1=r6,extra=index:73>][sumpoint: <73 INSTANCE,IGET,r0=r10,r1=r1,type=java.lang.Object,extra=com.ju6.c.e>]@run]
+fu.hao.trust.data.Branch - [BB]: {}
+TaintSumBranch - [BB]: Remove simple branch [Branch: 68--[cond: <68 IF,NE,r0=r1,r1=r6,extra=index:73>][sumpoint: <73 INSTANCE,IGET,r0=r10,r1=r1,type=java.lang.Object,extra=com.ju6.c.e>]@run]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Obj [myThread: instance number 1@com.ju6.c]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Fieldinfo com.ju6.c.e
+DalvikVM - [WARN]: ar 1 (Cannot request an ad without ACCESS_COARSE_LOCATION permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />, java.lang.String), ([Unknown var:null, type: android.app.Activity], android.content.Context)
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: [Unknown var:null, type: android.app.Activity]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD -> jump set pc to 74
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <74 MOV,CONST,dst=r2,type=java.lang.String,extra="android.permission.WRITE_SMS"> at com.ju6.c/run[]
+Executor - [DEBUG]: Mov const begin <74 MOV,CONST,dst=r2,type=java.lang.String,extra="android.permission.WRITE_SMS">
+DalvikVM - [WARN]: ar 2 (android.permission.ACCESS_COARSE_LOCATION, java.lang.String), (android.permission.WRITE_SMS, java.lang.String)
+Executor - [DEBUG]: data: android.permission.WRITE_SMS class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 75
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <75 HALT,VIRTUAL,extra=[null, [1, 2]]> at com.ju6.c/run[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_HALT -> jump set pc to 76
+Executor - [MSG]: Cannot resolve the invocation
+TaintSumBranch - [BB]: Not a taint op <75 HALT,VIRTUAL,extra=[null, [1, 2]]>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <76 MOV,RESULT,dst=r1,type=void> at com.ju6.c/run[]
+Unknown - [BB]: Unknown created!
+DalvikVM - [WARN]: ar -1, ([Unknown var:null, type: void], void)
+DalvikVM - [WARN]: ar 1 ([Unknown var:null, type: android.app.Activity], android.content.Context), ([Unknown var:null, type: void], void)
+OP_MOV_RESULT - [BB]: Result data: [Unknown var:null, type: void]
+OP_MOV_RESULT - [DEBUG]: Result data: [Unknown var:null, type: void], type: void, to [reg 1@c/run]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 77
+fu.hao.trust.data.Branch - [BB]: Type-old: android.content.Context, Type-new: void
+TaintSumBranch - [BB]: Assigned@[reg 1@c/run]: [Unknown var:null, type: android.app.Activity], [Unknown var:null, type: void]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <77 IF,NE,r0=r1,r1=r6,extra=index:82> at com.ju6.c/run[]
+OP_CMP - [DEBUG]: r1 data -1
+OP_CMP - [DEBUG]: r1 type void
+OP_CMP - [BB]: Types: void, void
+OP_CMP - [DEBUG]: r0 data [Unknown var:null, type: void]
+OP_CMP - [DEBUG]: r0 type void
+DalvikVM - [BB]: fu.hao.trust.analysis.Taint -> flow set pc to 78
+ATAINT_OP_CMP - [BB]: ret: 54
+ATAINT_OP_CMP - [WARN]: New Simple Branch [Branch: 77--[cond: <77 IF,NE,r0=r1,r1=r6,extra=index:82>][sumpoint: <0 INSTANCE,IGET,r0=r10,r1=r1,type=java.lang.Object,extra=com.ju6.c.e>]@run]
+ATAINT_OP_CMP - [BB]: Set sum point 82 <0 INSTANCE,IGET,r0=r10,r1=r1,type=java.lang.Object,extra=com.ju6.c.e>
+ATAINT_OP_CMP - [MSG]: ATAINT_OP_IF:  <77 IF,NE,r0=r1,r1=r6,extra=index:82> 82
+ATAINT_OP_CMP - [BB]: Add <77 IF,NE,r0=r1,r1=r6,extra=index:82> to met of [Branch: 77--[cond: <77 IF,NE,r0=r1,r1=r6,extra=index:82>][sumpoint: <0 INSTANCE,IGET,r0=r10,r1=r1,type=java.lang.Object,extra=com.ju6.c.e>]@run]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <78 MOV,CONST,dst=r0,type=java.lang.String,extra="Ju6 Ad"> at com.ju6.c/run[]
+Executor - [DEBUG]: Mov const begin <78 MOV,CONST,dst=r0,type=java.lang.String,extra="Ju6 Ad">
+DalvikVM - [WARN]: ar 0 (0, void), (Ju6 Ad, java.lang.String)
+Executor - [DEBUG]: data: Ju6 Ad class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 79
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <79 MOV,CONST,dst=r1,type=java.lang.String,extra="Cannot request an ad without WRITE_SMS permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.WRITE_SMS" />"> at com.ju6.c/run[]
+Executor - [DEBUG]: Mov const begin <79 MOV,CONST,dst=r1,type=java.lang.String,extra="Cannot request an ad without WRITE_SMS permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.WRITE_SMS" />">
+DalvikVM - [WARN]: ar 1 ([Unknown var:null, type: void], void), (Cannot request an ad without WRITE_SMS permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.WRITE_SMS" />, java.lang.String)
+Executor - [DEBUG]: data: Cannot request an ad without WRITE_SMS permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.WRITE_SMS" /> class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 80
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <80 INVOKE,STATIC,extra=[android.util.Log/e[java.lang.String, java.lang.String], [0, 1]]> at com.ju6.c/run[]
+Executor - [DEBUG]: Reflction class android.util.Log
+Executor - [BB]: arg0@reg0: Ju6 Ad
+Executor - [BB]: arg1@reg1: Cannot request an ad without WRITE_SMS permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.WRITE_SMS" />
+Executor - [BB]: param: Ju6 Ad
+Executor - [BB]: param: Cannot request an ad without WRITE_SMS permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.WRITE_SMS" />
+DalvikVM - [WARN]: ar -1, (1, int)
+Executor - [MSG]: Reflction invocation public static int android.util.Log.e(java.lang.String,java.lang.String)
+DalvikVM - [BB]: Set reflective call: public static int android.util.Log.e(java.lang.String,java.lang.String)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INVOKE_STATIC -> jump set pc to 81
+TaintSumBranch - [BB]: <android.util.Log: int e(java.lang.String,java.lang.String)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <81 MOV,REG,dst=r0,r0=r5,type=void> at com.ju6.c/run[]
+DalvikVM - [WARN]: ar 0 (Ju6 Ad, java.lang.String), (0, void)
+class fu.hao.trust.dvm.Executor$OP_MOVE_REG - [DEBUG]: mov 0 to 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOVE_REG -> jump set pc to 82
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <82 INSTANCE,IGET,r0=r10,r1=r1,type=java.lang.Object,extra=com.ju6.c.e> at com.ju6.c/run[]
+fu.hao.trust.data.Branch - [BB]: Begins value combination:[Branch: 77--[cond: <77 IF,NE,r0=r1,r1=r6,extra=index:82>][sumpoint: <82 INSTANCE,IGET,r0=r10,r1=r1,type=java.lang.Object,extra=com.ju6.c.e>]@run]
+fu.hao.trust.data.Branch - [BB]: {}
+TaintSumBranch - [BB]: Remove simple branch [Branch: 77--[cond: <77 IF,NE,r0=r1,r1=r6,extra=index:82>][sumpoint: <82 INSTANCE,IGET,r0=r10,r1=r1,type=java.lang.Object,extra=com.ju6.c.e>]@run]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Obj [myThread: instance number 1@com.ju6.c]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Fieldinfo com.ju6.c.e
+DalvikVM - [WARN]: ar 1 (Cannot request an ad without WRITE_SMS permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.WRITE_SMS" />, java.lang.String), ([Unknown var:null, type: android.app.Activity], android.content.Context)
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: [Unknown var:null, type: android.app.Activity]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD -> jump set pc to 83
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <83 MOV,CONST,dst=r2,type=java.lang.String,extra="android.permission.READ_SMS"> at com.ju6.c/run[]
+Executor - [DEBUG]: Mov const begin <83 MOV,CONST,dst=r2,type=java.lang.String,extra="android.permission.READ_SMS">
+DalvikVM - [WARN]: ar 2 (android.permission.WRITE_SMS, java.lang.String), (android.permission.READ_SMS, java.lang.String)
+Executor - [DEBUG]: data: android.permission.READ_SMS class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 84
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <84 HALT,VIRTUAL,extra=[null, [1, 2]]> at com.ju6.c/run[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_HALT -> jump set pc to 85
+Executor - [MSG]: Cannot resolve the invocation
+TaintSumBranch - [BB]: Not a taint op <84 HALT,VIRTUAL,extra=[null, [1, 2]]>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <85 MOV,RESULT,dst=r1,type=void> at com.ju6.c/run[]
+Unknown - [BB]: Unknown created!
+DalvikVM - [WARN]: ar -1, ([Unknown var:null, type: void], void)
+DalvikVM - [WARN]: ar 1 ([Unknown var:null, type: android.app.Activity], android.content.Context), ([Unknown var:null, type: void], void)
+OP_MOV_RESULT - [BB]: Result data: [Unknown var:null, type: void]
+OP_MOV_RESULT - [DEBUG]: Result data: [Unknown var:null, type: void], type: void, to [reg 1@c/run]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 86
+fu.hao.trust.data.Branch - [BB]: Type-old: android.content.Context, Type-new: void
+TaintSumBranch - [BB]: Assigned@[reg 1@c/run]: [Unknown var:null, type: android.app.Activity], [Unknown var:null, type: void]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <86 IF,NE,r0=r1,r1=r6,extra=index:91> at com.ju6.c/run[]
+OP_CMP - [DEBUG]: r1 data -1
+OP_CMP - [DEBUG]: r1 type void
+OP_CMP - [BB]: Types: void, void
+OP_CMP - [DEBUG]: r0 data [Unknown var:null, type: void]
+OP_CMP - [DEBUG]: r0 type void
+DalvikVM - [BB]: fu.hao.trust.analysis.Taint -> flow set pc to 87
+ATAINT_OP_CMP - [BB]: ret: 54
+ATAINT_OP_CMP - [WARN]: New Simple Branch [Branch: 86--[cond: <86 IF,NE,r0=r1,r1=r6,extra=index:91>][sumpoint: <0 INSTANCE,IGET,r0=r10,r1=r1,type=java.lang.Object,extra=com.ju6.c.e>]@run]
+ATAINT_OP_CMP - [BB]: Set sum point 91 <0 INSTANCE,IGET,r0=r10,r1=r1,type=java.lang.Object,extra=com.ju6.c.e>
+ATAINT_OP_CMP - [MSG]: ATAINT_OP_IF:  <86 IF,NE,r0=r1,r1=r6,extra=index:91> 91
+ATAINT_OP_CMP - [BB]: Add <86 IF,NE,r0=r1,r1=r6,extra=index:91> to met of [Branch: 86--[cond: <86 IF,NE,r0=r1,r1=r6,extra=index:91>][sumpoint: <0 INSTANCE,IGET,r0=r10,r1=r1,type=java.lang.Object,extra=com.ju6.c.e>]@run]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <87 MOV,CONST,dst=r0,type=java.lang.String,extra="Ju6 Ad"> at com.ju6.c/run[]
+Executor - [DEBUG]: Mov const begin <87 MOV,CONST,dst=r0,type=java.lang.String,extra="Ju6 Ad">
+DalvikVM - [WARN]: ar 0 (0, void), (Ju6 Ad, java.lang.String)
+Executor - [DEBUG]: data: Ju6 Ad class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 88
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <88 MOV,CONST,dst=r1,type=java.lang.String,extra="Cannot request an ad without READ_SMS permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.READ_SMS" />"> at com.ju6.c/run[]
+Executor - [DEBUG]: Mov const begin <88 MOV,CONST,dst=r1,type=java.lang.String,extra="Cannot request an ad without READ_SMS permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.READ_SMS" />">
+DalvikVM - [WARN]: ar 1 ([Unknown var:null, type: void], void), (Cannot request an ad without READ_SMS permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.READ_SMS" />, java.lang.String)
+Executor - [DEBUG]: data: Cannot request an ad without READ_SMS permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.READ_SMS" /> class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 89
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <89 INVOKE,STATIC,extra=[android.util.Log/e[java.lang.String, java.lang.String], [0, 1]]> at com.ju6.c/run[]
+Executor - [DEBUG]: Reflction class android.util.Log
+Executor - [BB]: arg0@reg0: Ju6 Ad
+Executor - [BB]: arg1@reg1: Cannot request an ad without READ_SMS permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.READ_SMS" />
+Executor - [BB]: param: Ju6 Ad
+Executor - [BB]: param: Cannot request an ad without READ_SMS permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.READ_SMS" />
+DalvikVM - [WARN]: ar -1, (1, int)
+Executor - [MSG]: Reflction invocation public static int android.util.Log.e(java.lang.String,java.lang.String)
+DalvikVM - [BB]: Set reflective call: public static int android.util.Log.e(java.lang.String,java.lang.String)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INVOKE_STATIC -> jump set pc to 90
+TaintSumBranch - [BB]: <android.util.Log: int e(java.lang.String,java.lang.String)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <90 MOV,REG,dst=r0,r0=r5,type=void> at com.ju6.c/run[]
+DalvikVM - [WARN]: ar 0 (Ju6 Ad, java.lang.String), (0, void)
+class fu.hao.trust.dvm.Executor$OP_MOVE_REG - [DEBUG]: mov 0 to 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOVE_REG -> jump set pc to 91
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <91 INSTANCE,IGET,r0=r10,r1=r1,type=java.lang.Object,extra=com.ju6.c.e> at com.ju6.c/run[]
+fu.hao.trust.data.Branch - [BB]: Begins value combination:[Branch: 86--[cond: <86 IF,NE,r0=r1,r1=r6,extra=index:91>][sumpoint: <91 INSTANCE,IGET,r0=r10,r1=r1,type=java.lang.Object,extra=com.ju6.c.e>]@run]
+fu.hao.trust.data.Branch - [BB]: {}
+TaintSumBranch - [BB]: Remove simple branch [Branch: 86--[cond: <86 IF,NE,r0=r1,r1=r6,extra=index:91>][sumpoint: <91 INSTANCE,IGET,r0=r10,r1=r1,type=java.lang.Object,extra=com.ju6.c.e>]@run]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Obj [myThread: instance number 1@com.ju6.c]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Fieldinfo com.ju6.c.e
+DalvikVM - [WARN]: ar 1 (Cannot request an ad without READ_SMS permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.READ_SMS" />, java.lang.String), ([Unknown var:null, type: android.app.Activity], android.content.Context)
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: [Unknown var:null, type: android.app.Activity]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD -> jump set pc to 92
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <92 MOV,CONST,dst=r2,type=java.lang.String,extra="android.permission.READ_PHONE_STATE"> at com.ju6.c/run[]
+Executor - [DEBUG]: Mov const begin <92 MOV,CONST,dst=r2,type=java.lang.String,extra="android.permission.READ_PHONE_STATE">
+DalvikVM - [WARN]: ar 2 (android.permission.READ_SMS, java.lang.String), (android.permission.READ_PHONE_STATE, java.lang.String)
+Executor - [DEBUG]: data: android.permission.READ_PHONE_STATE class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 93
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <93 HALT,VIRTUAL,extra=[null, [1, 2]]> at com.ju6.c/run[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_HALT -> jump set pc to 94
+Executor - [MSG]: Cannot resolve the invocation
+TaintSumBranch - [BB]: Not a taint op <93 HALT,VIRTUAL,extra=[null, [1, 2]]>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <94 MOV,RESULT,dst=r1,type=void> at com.ju6.c/run[]
+Unknown - [BB]: Unknown created!
+DalvikVM - [WARN]: ar -1, ([Unknown var:null, type: void], void)
+DalvikVM - [WARN]: ar 1 ([Unknown var:null, type: android.app.Activity], android.content.Context), ([Unknown var:null, type: void], void)
+OP_MOV_RESULT - [BB]: Result data: [Unknown var:null, type: void]
+OP_MOV_RESULT - [DEBUG]: Result data: [Unknown var:null, type: void], type: void, to [reg 1@c/run]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 95
+fu.hao.trust.data.Branch - [BB]: Type-old: android.content.Context, Type-new: void
+TaintSumBranch - [BB]: Assigned@[reg 1@c/run]: [Unknown var:null, type: android.app.Activity], [Unknown var:null, type: void]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <95 IF,NE,r0=r1,r1=r6,extra=index:100> at com.ju6.c/run[]
+OP_CMP - [DEBUG]: r1 data -1
+OP_CMP - [DEBUG]: r1 type void
+OP_CMP - [BB]: Types: void, void
+OP_CMP - [DEBUG]: r0 data [Unknown var:null, type: void]
+OP_CMP - [DEBUG]: r0 type void
+DalvikVM - [BB]: fu.hao.trust.analysis.Taint -> flow set pc to 96
+ATAINT_OP_CMP - [BB]: ret: 54
+ATAINT_OP_CMP - [WARN]: New Simple Branch [Branch: 95--[cond: <95 IF,NE,r0=r1,r1=r6,extra=index:100>][sumpoint: <0 INSTANCE,IGET,r0=r10,r1=r1,type=java.lang.Object,extra=com.ju6.c.e>]@run]
+ATAINT_OP_CMP - [BB]: Set sum point 100 <0 INSTANCE,IGET,r0=r10,r1=r1,type=java.lang.Object,extra=com.ju6.c.e>
+ATAINT_OP_CMP - [MSG]: ATAINT_OP_IF:  <95 IF,NE,r0=r1,r1=r6,extra=index:100> 100
+ATAINT_OP_CMP - [BB]: Add <95 IF,NE,r0=r1,r1=r6,extra=index:100> to met of [Branch: 95--[cond: <95 IF,NE,r0=r1,r1=r6,extra=index:100>][sumpoint: <0 INSTANCE,IGET,r0=r10,r1=r1,type=java.lang.Object,extra=com.ju6.c.e>]@run]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <96 MOV,CONST,dst=r0,type=java.lang.String,extra="Ju6 Ad"> at com.ju6.c/run[]
+Executor - [DEBUG]: Mov const begin <96 MOV,CONST,dst=r0,type=java.lang.String,extra="Ju6 Ad">
+DalvikVM - [WARN]: ar 0 (0, void), (Ju6 Ad, java.lang.String)
+Executor - [DEBUG]: data: Ju6 Ad class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 97
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <97 MOV,CONST,dst=r1,type=java.lang.String,extra="Cannot request an ad without READ_PHONE_STATE permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.READ_PHONE_STATE" />"> at com.ju6.c/run[]
+Executor - [DEBUG]: Mov const begin <97 MOV,CONST,dst=r1,type=java.lang.String,extra="Cannot request an ad without READ_PHONE_STATE permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.READ_PHONE_STATE" />">
+DalvikVM - [WARN]: ar 1 ([Unknown var:null, type: void], void), (Cannot request an ad without READ_PHONE_STATE permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.READ_PHONE_STATE" />, java.lang.String)
+Executor - [DEBUG]: data: Cannot request an ad without READ_PHONE_STATE permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.READ_PHONE_STATE" /> class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 98
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <98 INVOKE,STATIC,extra=[android.util.Log/e[java.lang.String, java.lang.String], [0, 1]]> at com.ju6.c/run[]
+Executor - [DEBUG]: Reflction class android.util.Log
+Executor - [BB]: arg0@reg0: Ju6 Ad
+Executor - [BB]: arg1@reg1: Cannot request an ad without READ_PHONE_STATE permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+Executor - [BB]: param: Ju6 Ad
+Executor - [BB]: param: Cannot request an ad without READ_PHONE_STATE permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+DalvikVM - [WARN]: ar -1, (1, int)
+Executor - [MSG]: Reflction invocation public static int android.util.Log.e(java.lang.String,java.lang.String)
+DalvikVM - [BB]: Set reflective call: public static int android.util.Log.e(java.lang.String,java.lang.String)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INVOKE_STATIC -> jump set pc to 99
+TaintSumBranch - [BB]: <android.util.Log: int e(java.lang.String,java.lang.String)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <99 MOV,REG,dst=r0,r0=r5,type=void> at com.ju6.c/run[]
+DalvikVM - [WARN]: ar 0 (Ju6 Ad, java.lang.String), (0, void)
+class fu.hao.trust.dvm.Executor$OP_MOVE_REG - [DEBUG]: mov 0 to 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOVE_REG -> jump set pc to 100
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <100 INSTANCE,IGET,r0=r10,r1=r1,type=java.lang.Object,extra=com.ju6.c.e> at com.ju6.c/run[]
+fu.hao.trust.data.Branch - [BB]: Begins value combination:[Branch: 95--[cond: <95 IF,NE,r0=r1,r1=r6,extra=index:100>][sumpoint: <100 INSTANCE,IGET,r0=r10,r1=r1,type=java.lang.Object,extra=com.ju6.c.e>]@run]
+fu.hao.trust.data.Branch - [BB]: {}
+TaintSumBranch - [BB]: Remove simple branch [Branch: 95--[cond: <95 IF,NE,r0=r1,r1=r6,extra=index:100>][sumpoint: <100 INSTANCE,IGET,r0=r10,r1=r1,type=java.lang.Object,extra=com.ju6.c.e>]@run]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Obj [myThread: instance number 1@com.ju6.c]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Fieldinfo com.ju6.c.e
+DalvikVM - [WARN]: ar 1 (Cannot request an ad without READ_PHONE_STATE permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.READ_PHONE_STATE" />, java.lang.String), ([Unknown var:null, type: android.app.Activity], android.content.Context)
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: [Unknown var:null, type: android.app.Activity]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD -> jump set pc to 101
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <101 MOV,CONST,dst=r2,type=java.lang.String,extra="android.permission.ACCESS_NETWORK_STATE"> at com.ju6.c/run[]
+Executor - [DEBUG]: Mov const begin <101 MOV,CONST,dst=r2,type=java.lang.String,extra="android.permission.ACCESS_NETWORK_STATE">
+DalvikVM - [WARN]: ar 2 (android.permission.READ_PHONE_STATE, java.lang.String), (android.permission.ACCESS_NETWORK_STATE, java.lang.String)
+Executor - [DEBUG]: data: android.permission.ACCESS_NETWORK_STATE class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 102
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <102 HALT,VIRTUAL,extra=[null, [1, 2]]> at com.ju6.c/run[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_HALT -> jump set pc to 103
+Executor - [MSG]: Cannot resolve the invocation
+TaintSumBranch - [BB]: Not a taint op <102 HALT,VIRTUAL,extra=[null, [1, 2]]>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <103 MOV,RESULT,dst=r1,type=void> at com.ju6.c/run[]
+Unknown - [BB]: Unknown created!
+DalvikVM - [WARN]: ar -1, ([Unknown var:null, type: void], void)
+DalvikVM - [WARN]: ar 1 ([Unknown var:null, type: android.app.Activity], android.content.Context), ([Unknown var:null, type: void], void)
+OP_MOV_RESULT - [BB]: Result data: [Unknown var:null, type: void]
+OP_MOV_RESULT - [DEBUG]: Result data: [Unknown var:null, type: void], type: void, to [reg 1@c/run]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 104
+fu.hao.trust.data.Branch - [BB]: Type-old: android.content.Context, Type-new: void
+TaintSumBranch - [BB]: Assigned@[reg 1@c/run]: [Unknown var:null, type: android.app.Activity], [Unknown var:null, type: void]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <104 IF,NE,r0=r1,r1=r6,extra=index:109> at com.ju6.c/run[]
+OP_CMP - [DEBUG]: r1 data -1
+OP_CMP - [DEBUG]: r1 type void
+OP_CMP - [BB]: Types: void, void
+OP_CMP - [DEBUG]: r0 data [Unknown var:null, type: void]
+OP_CMP - [DEBUG]: r0 type void
+DalvikVM - [BB]: fu.hao.trust.analysis.Taint -> flow set pc to 105
+ATAINT_OP_CMP - [BB]: ret: 54
+ATAINT_OP_CMP - [WARN]: New Simple Branch [Branch: 104--[cond: <104 IF,NE,r0=r1,r1=r6,extra=index:109>][sumpoint: <0 IF,EQZ,r0=r0,extra=index:54>]@run]
+ATAINT_OP_CMP - [BB]: Set sum point 109 <0 IF,EQZ,r0=r0,extra=index:54>
+ATAINT_OP_CMP - [MSG]: ATAINT_OP_IF:  <104 IF,NE,r0=r1,r1=r6,extra=index:109> 109
+ATAINT_OP_CMP - [BB]: Add <104 IF,NE,r0=r1,r1=r6,extra=index:109> to met of [Branch: 104--[cond: <104 IF,NE,r0=r1,r1=r6,extra=index:109>][sumpoint: <0 IF,EQZ,r0=r0,extra=index:54>]@run]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <105 MOV,CONST,dst=r0,type=java.lang.String,extra="Ju6 Ad"> at com.ju6.c/run[]
+Executor - [DEBUG]: Mov const begin <105 MOV,CONST,dst=r0,type=java.lang.String,extra="Ju6 Ad">
+DalvikVM - [WARN]: ar 0 (0, void), (Ju6 Ad, java.lang.String)
+Executor - [DEBUG]: data: Ju6 Ad class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 106
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <106 MOV,CONST,dst=r1,type=java.lang.String,extra="Cannot request an ad without ACCESS_NETWORK_STATE permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />"> at com.ju6.c/run[]
+Executor - [DEBUG]: Mov const begin <106 MOV,CONST,dst=r1,type=java.lang.String,extra="Cannot request an ad without ACCESS_NETWORK_STATE permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />">
+DalvikVM - [WARN]: ar 1 ([Unknown var:null, type: void], void), (Cannot request an ad without ACCESS_NETWORK_STATE permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />, java.lang.String)
+Executor - [DEBUG]: data: Cannot request an ad without ACCESS_NETWORK_STATE permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 107
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <107 INVOKE,STATIC,extra=[android.util.Log/e[java.lang.String, java.lang.String], [0, 1]]> at com.ju6.c/run[]
+Executor - [DEBUG]: Reflction class android.util.Log
+Executor - [BB]: arg0@reg0: Ju6 Ad
+Executor - [BB]: arg1@reg1: Cannot request an ad without ACCESS_NETWORK_STATE permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+Executor - [BB]: param: Ju6 Ad
+Executor - [BB]: param: Cannot request an ad without ACCESS_NETWORK_STATE permissions!  Open manifest.xml and just before the final </manifest> tag add:  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+DalvikVM - [WARN]: ar -1, (1, int)
+Executor - [MSG]: Reflction invocation public static int android.util.Log.e(java.lang.String,java.lang.String)
+DalvikVM - [BB]: Set reflective call: public static int android.util.Log.e(java.lang.String,java.lang.String)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INVOKE_STATIC -> jump set pc to 108
+TaintSumBranch - [BB]: <android.util.Log: int e(java.lang.String,java.lang.String)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <108 MOV,REG,dst=r0,r0=r5,type=void> at com.ju6.c/run[]
+DalvikVM - [WARN]: ar 0 (Ju6 Ad, java.lang.String), (0, void)
+class fu.hao.trust.dvm.Executor$OP_MOVE_REG - [DEBUG]: mov 0 to 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOVE_REG -> jump set pc to 109
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <109 IF,EQZ,r0=r0,extra=index:54> at com.ju6.c/run[]
+fu.hao.trust.data.Branch - [BB]: Begins value combination:[Branch: 104--[cond: <104 IF,NE,r0=r1,r1=r6,extra=index:109>][sumpoint: <109 IF,EQZ,r0=r0,extra=index:54>]@run]
+fu.hao.trust.data.Branch - [BB]: {}
+TaintSumBranch - [BB]: Remove simple branch [Branch: 104--[cond: <104 IF,NE,r0=r1,r1=r6,extra=index:109>][sumpoint: <109 IF,EQZ,r0=r0,extra=index:54>]@run]
+OP_CMP - [DEBUG]: r0 data 0
+OP_CMP - [DEBUG]: r0 type void
+Executor - [DEBUG]: Ops: 0, 0
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_IF_EQZ -> jump set pc to 54
+Executor - [DEBUG]: equ: <109 IF,EQZ,r0=r0,extra=index:54>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <54 RETURN,VOID> at com.ju6.c/run[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String], StackFrame com.ju6.AdRequester/getAd[]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame com.ju6.AdRequester/getAd[]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame com.ju6.AdRequester/getAd[]
+DalvikVM - [WARN]: ar -1 (1, int), (null, void)
+Executor - [MSG]: Reflction invocation public synchronized void android.myclasses.Thread.start()
+DalvikVM - [BB]: Set reflective call: public synchronized void android.myclasses.Thread.start()
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 6
+TaintSumBranch - [BB]: <java.lang.Thread: void start()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <6 RETURN,VOID> at com.ju6.AdRequester/getAd[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <13 RETURN,VOID> at com.safesys.remover.JmAdV2/initJu6Ad[java.lang.String, java.lang.String]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack []
+DalvikVM - [BB]: Back to the last stack frame.null
+Executor - [MSG]: RUN DONE! The last one is initJu6Ad
+DalvikVM - [MSG]: FINISHED!
+
+main - [MSG]: Analysis has run for 4.90813358 seconds
+

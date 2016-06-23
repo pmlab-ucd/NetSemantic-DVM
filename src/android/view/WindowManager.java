@@ -4,6 +4,7 @@ import android.view.ViewGroup.LayoutParams;
 
 //public abstract interface WindowManager extends ViewManager {
 public class WindowManager implements ViewManager {
+	Display display = new Display();
 
 	@Override
 	public void addView(View paramView, LayoutParams paramLayoutParams) {
@@ -22,5 +23,10 @@ public class WindowManager implements ViewManager {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public Display getDefaultDisplay() {
+		return display;
+	}
+	
 
 }
