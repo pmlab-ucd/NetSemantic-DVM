@@ -209,5 +209,9 @@ public class DVMObject {
 	public ClassInfo getClazz() {
 		return type;
 	}
+	
+	public ClassInfo getClass(int i) {
+		return type;
+	}
 
 }

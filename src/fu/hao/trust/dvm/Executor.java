@@ -394,7 +394,8 @@ public class Executor {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
 			// TODO Auto-generated method stub
-			vm.getReg(inst.rdst).setValue(inst.extra, ClassInfo.findClass(inst.extra.getClass().getName()));
+			vm.getReg(inst.rdst).setValue(inst.extra,
+					ClassInfo.findClass(inst.extra.getClass().getName()));
 			jump(vm, inst, true);
 		}
 	}
@@ -442,20 +443,21 @@ public class Executor {
 			int[] args = (int[]) extra[1];
 
 			vm.getReturnReg().reset();
-			
-			if (Settings.callBlkListHas(inst.toString()) || isNoInvoke(inst.toString())) {
-				vm.getReturnReg().setValue(
-						new Unknown(vm, mi.returnType), mi.returnType);
+
+			if (Settings.callBlkListHas(inst.toString())
+					|| isNoInvoke(inst.toString())) {
+				vm.getReturnReg().setValue(new Unknown(vm, mi.returnType),
+						mi.returnType);
 				jump(vm, inst, true);
 				return;
 			}
-			
+
 			try {
 				// If applicable, directly use reflection to run the method,
 				// the method is inside java.lang
 				Class<?> clazz = Class.forName(mi.myClass.toString());
 				// When the class should not be replaced by my class
-				clazz = getReplacedInvoke(clazz);
+				clazz = getReplacedInvoke(clazz, null);
 				Log.debug(TAG, "Reflction " + clazz);
 				@SuppressWarnings("rawtypes")
 				Class[] argsClass = new Class[mi.paramTypes.length];
@@ -2112,7 +2114,8 @@ public class Executor {
 		public void func(DalvikVM vm, Instruction inst) {
 			jump(vm, inst, true);
 
-			// If operands contain Unknown, directly set the res reg (r0) as unknowon
+			// If operands contain Unknown, directly set the res reg (r0) as
+			// unknowon
 			Unknown op = null;
 
 			if (inst.r0 != -1
@@ -2228,14 +2231,14 @@ public class Executor {
 			vm.setPC(loc);
 		}
 	}
-	
+
 	private boolean isNoInvoke(String inst) {
 		for (String noInvoke : noInvokeList) {
 			if (inst.contains(noInvoke)) {
 				return true;
 			}
 		}
-		
+
 		return false;
 	}
 
@@ -2287,7 +2290,7 @@ public class Executor {
 			}
 
 			// When the class should not be replaced by my class
-			clazz = getReplacedInvoke(clazz);
+			clazz = getReplacedInvoke(clazz, vm.getReg(args[0]).isUsed() ? vm.getReg(args[0]).getData() : null);
 
 			// If args contains a symbolic var, directly set the return val as a
 			// symbolic var.
@@ -2346,6 +2349,7 @@ public class Executor {
 				if (mi.name.equals("getClass")) {
 					mi = ClassInfo.findClass("fu.hao.trust.dvm.DVMObject")
 							.findMethods("getClazz")[0];
+					clazz = DVMObject.class;
 					Log.msg(TAG, "Replaced method " + mi);
 				}
 				if (thisInstance instanceof MultiValueVar) {
@@ -2473,30 +2477,51 @@ public class Executor {
 			jump(vm, inst, true);
 		} catch (Exception e) {
 			e.printStackTrace();
-			// FIXME
-			if (inst.toString().contains("java.util.Random/nextInt[int]")) {
-				Log.warn(TAG, "Reflection error: " + e.getMessage());
-			} else {
-				if (mi.myClass.fullName.startsWith("java.io.ObjectInputStream")) {
-					Log.warn(TAG, "Error in reflection: " + e.getMessage());
-				} else if (mi.isConstructor()
-						&& mi.myClass.fullName.startsWith("java.lang.String")) {
-					Log.warn(TAG, "Error in reflection: " + e.getMessage());
-				} else {
-					Log.err(TAG, "Error in reflection: " + e.getMessage());
-				}
+			String cause = "";
+			if (e.getCause() != null) {
+				cause = e.getCause().getMessage();
 			}
+			switch (cause) {
+				case "Connection refused: connect":
+					vm.getReturnReg().setValue(null, mi.returnType);
+					Log.warn(TAG, cause);
+					break;
+				case "Given final block not properly padded":
+					Log.warn(TAG, "Decryption error: " + cause);
+					break;
+				default:				
+					// FIXME
+					if (inst.toString().contains("java.util.Random/nextInt[int]")) {
+						Log.warn(TAG, "Reflection error: " + e.getMessage());
+					} else {
+						if (mi.myClass.fullName.startsWith("java.io.ObjectInputStream")) {
+							Log.warn(TAG, "Error in reflection: " + e.getMessage());
+						} else if (mi.isConstructor()
+								&& mi.myClass.fullName.startsWith("java.lang.String")) {
+							Log.warn(TAG, "Error in reflection: " + e.getMessage());
+						} else {
+							Log.err(TAG, "Error in reflection: " + e.getMessage());
+						}
+					}
+					break;
+			}
+			
 			jump(vm, inst, true);
 		}
 
 	}
 
-	private Class<?> getReplacedInvoke(Class<?> clazz)
+	private Class<?> getReplacedInvoke(Class<?> clazz, Object instance)
 			throws ClassNotFoundException {
 		String clazzName = clazz.getName();
 		if (replacedInvokeList.containsKey(clazzName)) {
-			Log.msg(TAG, "Replace the clazz.");
-			return Class.forName(replacedInvokeList.get(clazzName));
+			// If the instance is correctly initiazlized.
+			if (clazz.isInstance(instance)) {
+				return clazz;
+			} else {
+				Log.msg(TAG, "Replace the clazz.");
+				return Class.forName(replacedInvokeList.get(clazzName));
+			}
 		}
 
 		return clazz;
@@ -2590,10 +2615,13 @@ public class Executor {
 				Log.debug(TAG, "Real para type: " + argClass + ", value: "
 						+ params[j]);
 				argsClass[j] = argClass;
-			} else if (data != null && data.toString().contains("[Lpatdroid.core.PrimitiveInfo")) {
+			} else if (data != null
+					&& data.toString()
+							.contains("[Lpatdroid.core.PrimitiveInfo")) {
 				// If is an array of PrimitiveInfo
 				Class<?> argClass = Class.forName(mi.paramTypes[j].fullName);
-				params[j] = resolvePrimitiveArray((PrimitiveInfo[])data, argClass);
+				params[j] = resolvePrimitiveArray((PrimitiveInfo[]) data,
+						argClass);
 				argsClass[j] = argClass;
 			} else {
 				String argClass = mi.paramTypes[j].toString();
@@ -2864,11 +2892,11 @@ public class Executor {
 		 * vm.setChainThisObj(stackFrame.getThisObj()); } else {
 		 * stackFrame.setThisObj(vm.getChainThisObj()); } } }
 		 */
-		
+
 		DVMObject thisObj = vm.newVMObject(method.myClass);
 		StackFrame stackFrame = vm.newStackFrame(method.myClass, method);
 		stackFrame.setThisObj(thisObj);
-		
+
 		if (Settings.isRunEntryException()) {
 			// FIXME Enfore to run catch blk;
 			for (TryBlockInfo tryBlk : method.tbs) {
@@ -2889,8 +2917,8 @@ public class Executor {
 					break;
 				}
 			}
-		} 
-		
+		}
+
 		Log.msg(TAG, "BEGIN RUN ENTRY: " + method);
 		run(vm);
 	}
@@ -3228,11 +3256,11 @@ public class Executor {
 		noInvokeList.add("java.io.FileInputStream");
 		noInvokeList.add("java.io.InputStreamReader");
 		noInvokeList.add("java.io.BufferedReader");
-		noInvokeList.add("java.io.File");
+		// noInvokeList.add("java.io.File");
 		// noInvokeList.add("java.io.OutputStream");
 		noInvokeList.add("android.support");
 		noInvokeList.add("HttpResponse/get");
-		//noInvokeList.add("java.net.Socket");
+		// noInvokeList.add("java.net.Socket");
 		// noInvokeList.add("java.io.ByteArrayOutputStream");
 		noInvokeList.add("HttpClient/execute");
 		noInvokeList.add("HttpResponse/getEntity");
@@ -3269,6 +3297,8 @@ public class Executor {
 				"android.myclasses.ByteArrayInputStream");
 		replacedInvokeList.put("java.lang.reflect.Method",
 				"patdroid.core.MethodInfo");
+		replacedInvokeList.put("java.io.File",
+				"android.myclasses.java.io.File");
 	}
 
 	public void exec(DalvikVM vm, Instruction inst, ClassInfo sitClass) {
@@ -3371,14 +3401,19 @@ public class Executor {
 		}
 
 	}
-	
-	public Object resolvePrimitiveArray(PrimitiveInfo[] primArray, Class<?> argClass) {
+
+	public Object resolvePrimitiveArray(PrimitiveInfo[] primArray,
+			Class<?> argClass) {
 		Log.bb(TAG, "ResolvePrimitiveArray: " + argClass);
 		Object res = null;
 		if (argClass.toString().contains("[B")) {
-			res = new byte[primArray.length];			
+			res = new byte[primArray.length];
 			for (int i = 0; i < primArray.length; i++) {
-				Array.setByte(res, i, (byte)primArray[i].intValue());
+				if (primArray[i] == null) {
+					Array.setByte(res, i, (byte) 0);
+				} else {
+					Array.setByte(res, i, (byte) primArray[i].intValue());
+				}
 			}
 		} else if (argClass.toString().contains("[C")) {
 			res = new char[primArray.length];
@@ -3393,7 +3428,7 @@ public class Executor {
 		} else {
 			Log.err(TAG, "Unsupported type!");
 		}
-		
+
 		Log.bb(TAG, "ResolvePrimitiveArray: " + res);
 		return res;
 	}

@@ -22,8 +22,8 @@ public class Test {
 		//t.testMain();
 		// t.testAnve();
 		// t.test00983aad12700be0a440296c6173b18a829e9369_a();
-		t.myDroidKunfu3();
-		//t.DroidKunfu3();
+		//t.myDroidKunfu3();
+		t.DroidKunfu3();
 		// t.testMopub_onCreate();
 		// t.testMopub_loadAd();
 		// t.test7613973();
@@ -36,12 +36,12 @@ public class Test {
 		args[3] = "ATaint";
 		Settings.logLevel = 0;
 		
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/ServiceCommunication1/app/";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/ActivityCommunication7/app/";
 		args[1] = "srcEventChains";
 		Main.main(args);
 		Map<String, String> res = new HashMap<>();
 		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
-				"Tainted: -1266614931");
+				"359874043116909");
 		assertEquals(true, Results.results.contains(res));
 	}
 	
@@ -53,10 +53,6 @@ public class Test {
 		args[0] = "C:/Users/hao/workspace/DroidKungFu3/app/";
 		args[1] = "com.google.update.UpdateService";
 		args[2] = "onCreate";
-		args[4] = "--norun";
-		args[5] = "com.google.update.Utils/checkPermission";
-		args[6] = "--norun";
-		args[7] = "com.google.update.Utils$TCP/isListened";
 		//args[8] = "--runEntryException";
 		Main.main(args);
 		
@@ -76,9 +72,7 @@ public class Test {
 		args[1] = "com.google.update.UpdateService";
 		args[2] = "onCreate";
 		args[4] = "--norun";
-		args[5] = "com.google.update.Utils/checkPermission";
-		args[6] = "--norun";
-		args[7] = "com.google.update.Utils$TCP/isListened";
+		args[5] = "com.google.update.Utils$TCP/startListen";
 		args[8] = "--runEntryException";
 		Main.main(args);
 		

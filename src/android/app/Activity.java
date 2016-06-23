@@ -202,5 +202,5 @@ public class Activity extends ContextWrapper implements LocationListener {
     	   	Log.warn(TAG, "Cannot find the onActivityResult!");
        }
     }
-	
+    
 }
