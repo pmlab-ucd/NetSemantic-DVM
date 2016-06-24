@@ -1,5 +1,6 @@
 package android.view;
 
+import android.view.ViewGroup.LayoutParams;
 import patdroid.core.ClassInfo;
 import patdroid.core.FieldInfo;
 import patdroid.core.MethodInfo;
@@ -98,5 +99,13 @@ public class View extends DVMObject {
     
     public CharSequence getHint() {
        return hint;
+    }
+    
+    private LayoutParams layoutParams;
+    public LayoutParams getLayoutParams() {
+    	if (layoutParams == null) {
+    		layoutParams = new LayoutParams();
+    	}
+    	return layoutParams;
     }
 }

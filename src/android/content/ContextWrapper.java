@@ -130,10 +130,6 @@ public class ContextWrapper extends Context {
 		return preferences.get(name);
     }
 	
-    public String getPackageName() {
-        return Settings.getApkName();
-    }
-	
     public boolean bindService(Intent service, ServiceConnection conn, int flags) {
         throw new RuntimeException("Stub!");
     }

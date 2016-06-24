@@ -253,7 +253,7 @@ public class Main {
 						main.runMethod(pluginManager);
 					}
 				} catch (Exception e) {
-
+					e.printStackTrace();
 				}
 
 				Log.msg(TAG, "Analysis has run for "

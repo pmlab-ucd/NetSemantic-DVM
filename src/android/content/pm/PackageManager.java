@@ -117,7 +117,7 @@ public class PackageManager {
     }
 
     public int checkPermission(String var1, String var2) {
-    	throw new RuntimeException("Stub!");
+    	return 1;
     }
 
     public boolean addPermission(PermissionInfo var1) {

@@ -18,6 +18,10 @@ public class Thread extends DVMObject {
 	public Thread(DalvikVM vm, ClassInfo type) {
 		super(vm, type);
 	}
+	
+	public Thread(String threadName) {
+    	super(Settings.getVM(), ClassInfo.findClass("java.lang.Thread"));
+    }
 
 	public Thread(Runnable runnable) {
 		super(Settings.getVM(), ClassInfo.findClass("java.lang.Thread"));
@@ -60,5 +64,8 @@ public class Thread extends DVMObject {
 	public static void sleep(long time) {
 		Log.warn("Thread", "Sleep duration" + time);
 	}
+	
+    public static void setDefaultUncaughtExceptionHandler(DVMObject handler) {
+    }
 
 }

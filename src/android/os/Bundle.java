@@ -68,7 +68,7 @@ public final class Bundle implements Cloneable {
 	}
 
 	public boolean containsKey(String key) {
-		throw new RuntimeException("Stub!");
+		return mMap.containsKey(key);
 	}
 
 	public Object get(String key) {

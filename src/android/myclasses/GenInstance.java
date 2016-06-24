@@ -47,6 +47,10 @@ public class GenInstance {
 			type = type.getSuperClass();
 		}
 		
+		if (oType == null) {
+			oType = ClassInfo.findClass("android.view.View");
+		}
+		
 		return new View(vm, oType, id);
 	}
 	

@@ -1098,6 +1098,9 @@ public class Taint extends Plugin {
 			for (String tag : ins.keySet()) {
 				Map<Object, Instruction> in = ins.get(tag);
 				Map<Object, Instruction> out = new HashMap<>(in);
+				if (!(vm.getReg(inst.r0).getData() instanceof DVMObject)) {
+					continue;
+				}
 				DVMObject obj = (DVMObject) vm.getReg(inst.r0).getData();
 				FieldInfo fieldInfo = (FieldInfo) inst.getExtra();
 				// TODO

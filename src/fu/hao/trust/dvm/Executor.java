@@ -334,44 +334,55 @@ public class Executor {
 				count = Integer.parseInt(vm.getReg(inst.r0).getData()
 						.toString());
 			}
-
-			Object[] newArray;
-			if (inst.type.getElementClass().isPrimitive()) {
-				if (inst.type.getElementClass().equals(ClassInfo.primitiveInt)) {
-					int[] intArray = new int[count];
-					vm.getReg(inst.rdst).setValue(intArray, inst.type);
-				} else if (inst.type.getElementClass().equals(
-						ClassInfo.primitiveFloat)) {
-					float[] floatArray = new float[count];
-					vm.getReg(inst.rdst).setValue(floatArray, inst.type);
-				} else if (inst.type.getElementClass().equals(
-						ClassInfo.primitiveDouble)) {
-					double[] doubleArray = new double[count];
-					vm.getReg(inst.rdst).setValue(doubleArray, inst.type);
-				} else if (inst.type.getElementClass().equals(
-						ClassInfo.primitiveChar)) {
-					char[] charArray = new char[count];
-					vm.getReg(inst.rdst).setValue(charArray, inst.type);
-				} else if (inst.type.getElementClass().equals(
-						ClassInfo.primitiveShort)) {
-					short[] shortArray = new short[count];
-					vm.getReg(inst.rdst).setValue(shortArray, inst.type);
-				} else if (inst.type.getElementClass().equals(
-						ClassInfo.primitiveLong)) {
-					long[] longArray = new long[count];
-					vm.getReg(inst.rdst).setValue(longArray, inst.type);
-				} else if (inst.type.getElementClass().equals(
-						ClassInfo.primitiveBoolean)) {
-					boolean[] booleanArray = new boolean[count];
-					vm.getReg(inst.rdst).setValue(booleanArray, inst.type);
+			
+			Object newArray;
+			try {
+				Class<?> klass = Class.forName(inst.type.getElementClass().fullName);
+				Class<?> clazz = getReplacedInvoke(klass, null);
+				if (klass.equals(clazz)) {
+					newArray = Array.newInstance(clazz, count);
 				} else {
-					newArray = new PrimitiveInfo[count];
+					newArray = new Object[count];
+				}				
+				vm.getReg(inst.rdst).setValue(newArray, inst.type);
+			} catch (Exception e) {
+				if (inst.type.getElementClass().isPrimitive()) {
+					if (inst.type.getElementClass().equals(ClassInfo.primitiveInt)) {
+						int[] intArray = new int[count];
+						vm.getReg(inst.rdst).setValue(intArray, inst.type);
+					} else if (inst.type.getElementClass().equals(
+							ClassInfo.primitiveFloat)) {
+						float[] floatArray = new float[count];
+						vm.getReg(inst.rdst).setValue(floatArray, inst.type);
+					} else if (inst.type.getElementClass().equals(
+							ClassInfo.primitiveDouble)) {
+						double[] doubleArray = new double[count];
+						vm.getReg(inst.rdst).setValue(doubleArray, inst.type);
+					} else if (inst.type.getElementClass().equals(
+							ClassInfo.primitiveChar)) {
+						char[] charArray = new char[count];
+						vm.getReg(inst.rdst).setValue(charArray, inst.type);
+					} else if (inst.type.getElementClass().equals(
+							ClassInfo.primitiveShort)) {
+						short[] shortArray = new short[count];
+						vm.getReg(inst.rdst).setValue(shortArray, inst.type);
+					} else if (inst.type.getElementClass().equals(
+							ClassInfo.primitiveLong)) {
+						long[] longArray = new long[count];
+						vm.getReg(inst.rdst).setValue(longArray, inst.type);
+					} else if (inst.type.getElementClass().equals(
+							ClassInfo.primitiveBoolean)) {
+						boolean[] booleanArray = new boolean[count];
+						vm.getReg(inst.rdst).setValue(booleanArray, inst.type);
+					} else {
+						newArray = new PrimitiveInfo[count];
+						vm.getReg(inst.rdst).setValue(newArray, inst.type);
+					}
+				} else {
+					newArray = new Object[count];
 					vm.getReg(inst.rdst).setValue(newArray, inst.type);
 				}
-			} else {
-				newArray = new Object[count];
-				vm.getReg(inst.rdst).setValue(newArray, inst.type);
-			}
+			}					
 
 			Log.debug(TAG, "A new array of " + inst.type + " in size " + count
 					+ " created.");
@@ -1841,6 +1852,7 @@ public class Executor {
 			FieldInfo fieldInfo = (FieldInfo) inst.getExtra();
 			Object obj = vm.getReg(inst.r0).getData();
 			if (obj instanceof Unknown) {
+				Log.warn(TAG, "Owner is unknown!");
 				Unknown unknown = (Unknown) obj;
 				if (unknown.getValue() instanceof DVMObject) {
 					obj = unknown.getValue();
@@ -1858,10 +1870,10 @@ public class Executor {
 				if (dvmObj.getFieldObj(fieldInfo) == null) {
 					if (fieldInfo.fieldName.equals("this$0")) {
 						dvmObj.setField(fieldInfo, vm.getChainThisObj());
-					} else {
+					} /*else {
 						dvmObj.setField(fieldInfo,
 								new Unknown(vm, fieldInfo.getFieldType()));
-					}
+					}*/
 				}
 
 				vm.getReg(inst.r1)
@@ -1870,8 +1882,8 @@ public class Executor {
 				Log.debug(TAG, "Get data: " + vm.getReg(inst.r1).getData());
 			} else {
 				Log.warn(TAG, obj + " is not a DVMObject!");
-				Class<?> rclass = obj.getClass();
 				try {
+					Class<?> rclass = obj.getClass();
 					Field rfield = findRField(rclass, fieldInfo.fieldName);
 					vm.getReg(inst.r1).setValue(rfield.get(obj),
 							fieldInfo.owner);
@@ -1879,7 +1891,6 @@ public class Executor {
 					e.printStackTrace();
 					Log.err(TAG, "Cannot get the field!");
 				}
-
 			}
 
 			jump(vm, inst, true);
@@ -1924,11 +1935,11 @@ public class Executor {
 			}
 
 			Log.bb(TAG, "Target obj " + obj);
+			Object data = vm.getReg(inst.r1).getData();
 			if (obj instanceof DVMObject) {
 				DVMObject dvmObj = (DVMObject) obj;
 				vm.getAssigned()[0] = dvmObj;
-				vm.getAssigned()[1] = fieldInfo;
-				Object data = vm.getReg(inst.r1).getData();
+				vm.getAssigned()[1] = fieldInfo;			
 				vm.getAssigned()[2] = data;
 
 				dvmObj.setField(fieldInfo, data);
@@ -1942,7 +1953,16 @@ public class Executor {
 				}
 
 			} else {
-				Log.err(TAG, "obj is not a DVMObject!");
+				Log.warn(TAG, obj + " is not a DVMObject!");
+				try {
+					Class<?> rclass = obj.getClass();
+					Field rfield = findRField(rclass, fieldInfo.fieldName);
+					data = resolvePrimitive(data, vm.getReg(inst.r1).getType());
+					rfield.set(obj, data);
+				} catch (Exception e) {
+					e.printStackTrace();
+					Log.err(TAG, "Cannot get the field!");
+				}
 			}
 			jump(vm, inst, true);
 		}
@@ -2373,10 +2393,12 @@ public class Executor {
 						.getData() : null;
 
 				if (mi.name.equals("getClass")) {
+					if (thisInstance instanceof DVMObject) {
 					mi = ClassInfo.findClass("fu.hao.trust.dvm.DVMObject")
 							.findMethods("getClazz")[0];
 					clazz = DVMObject.class;
 					Log.msg(TAG, "Replaced method " + mi);
+					}
 				}
 				if (thisInstance instanceof MultiValueVar) {
 					// FIXME Herustic, should really handle loop
@@ -3491,7 +3513,10 @@ public class Executor {
 			op1 = (PrimitiveInfo) op;
 		} else if (op != null) {
 			op1 = PrimitiveInfo.fromObject(op);
+		} else {
+			return op;
 		}
+		
 		if (type.equals(ClassInfo.primitiveChar)) {
 			Log.bb(TAG, "Char value " + (op1 == null ? 0 : op1.charValue())
 					+ " resolved.");

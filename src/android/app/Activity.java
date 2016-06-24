@@ -17,6 +17,8 @@ import android.content.Intent;
 import android.location.LocationListener;
 import android.myclasses.GenInstance;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import patdroid.core.ClassInfo;
 import patdroid.core.MethodInfo;
 import fu.hao.trust.dvm.DVMObject;
@@ -98,7 +100,8 @@ public class Activity extends ContextWrapper implements LocationListener {
 			view = GenInstance.getView(vm, widgetPool.get(id), id);
 			view.callDefaultConstructor();
 		} else {
-			Log.err(TAG, "Cannot find the view with id " + id);
+			Log.warn(TAG, "Cannot find the view with id " + id);
+			view = GenInstance.getView(vm, null, id);
 		}
 		
 		views.put(id, view);
@@ -210,6 +213,29 @@ public class Activity extends ContextWrapper implements LocationListener {
     public final void runOnUiThread(DVMObject act) {
     	android.myclasses.Runnable action = (android.myclasses.Runnable)act; 
     	action.run();
+    }
+    
+    public int getRequestedOrientation() {
+        throw new RuntimeException("Stub!");
+    }
+    
+    private Window window; 
+    public Window getWindow() {
+    	if (window == null) {
+    		window = new Window(this); 
+    	}
+    	
+    	return window;
+    }
+    
+    private WindowManager windowManager;
+    
+    public WindowManager getWindowManager() {
+    	if (windowManager == null) {
+    		windowManager = new WindowManager();
+    	}
+    	
+    	return windowManager;
     }
     
 }

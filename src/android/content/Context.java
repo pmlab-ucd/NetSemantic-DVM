@@ -10,6 +10,7 @@ import android.view.WindowManager;
 import patdroid.core.ClassInfo;
 import fu.hao.trust.dvm.DVMObject;
 import fu.hao.trust.dvm.DalvikVM;
+import fu.hao.trust.utils.Settings;
 
 public class Context extends DVMObject {
 
@@ -119,6 +120,10 @@ public class Context extends DVMObject {
     public ContentResolver getContentResolver() {
     	// FIXME
     	return null;
+    }
+    
+    public String getPackageName() {
+        return Settings.getApkName();
     }
 
 	

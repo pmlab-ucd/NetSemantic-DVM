@@ -395,6 +395,7 @@ public class TaintSumBranch extends Taint {
 			Map<String, Map<Object, Instruction>> outs = taintOp.flow(vm, inst,
 					ins);
 
+			if (vm.getReg(inst.r0).getData() instanceof DVMObject) {
 			DVMObject obj = (DVMObject) vm.getReg(inst.r0).getData();
 			FieldInfo fieldInfo = (FieldInfo) inst.getExtra();
 			if (vm.getAssigned() != null) {
@@ -405,6 +406,7 @@ public class TaintSumBranch extends Taint {
 								vm.getAssigned()[2]);
 					}
 				}
+			}
 			}
 
 			return outs;
