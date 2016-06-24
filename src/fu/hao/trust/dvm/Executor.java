@@ -959,10 +959,10 @@ public class Executor {
 			PrimitiveInfo op2 = res[1];
 			if (op1.intValue() > op2.intValue()) {
 				jump(vm, inst, false);
-				Log.debug(TAG, "not equ: " + inst);
+				Log.debug(TAG, "op1 > op2: " + inst);
 			} else {
 				jump(vm, inst, true);
-				Log.debug(TAG, "not equ: " + inst);
+				Log.debug(TAG, "op1 < op2: " + inst);
 			}
 		}
 	}
@@ -1933,7 +1933,7 @@ public class Executor {
 
 				dvmObj.setField(fieldInfo, data);
 				Log.msg(TAG, "Put data " + dvmObj.getFieldObj(fieldInfo)
-						+ " to the field of " + dvmObj);
+						+ " to the " + fieldInfo.fieldName + " of " + dvmObj);
 
 				if (data instanceof DVMObject) {
 					DVMObject fieldData = (DVMObject) data;
@@ -3335,6 +3335,7 @@ public class Executor {
 				"android.myclasses.java.io.File");
 		replacedInvokeList.put("java.util.Timer",
 				"android.myclasses.java.util.Timer");
+		replacedInvokeList.put("java.lang.Enum", "android.myclasses.java.lang.Enum");
 	}
 
 	public void exec(DalvikVM vm, Instruction inst, ClassInfo sitClass) {

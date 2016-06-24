@@ -14,62 +14,57 @@ import fu.hao.trust.utils.Log;
 import fu.hao.trust.utils.Settings;
 
 public class Test {
-	
+
 	TelephonyManager tm = new TelephonyManager();
 
 	public static void main(String[] margs) {
 		Test t = new Test();
-		//t.testMain();
+		t.testMain();
 		// t.testAnve();
 		// t.test00983aad12700be0a440296c6173b18a829e9369_a();
-		t.DroidKunfu4();
+		//t.DroidKunfu4();
 		// t.testMopub_onCreate();
 		// t.testMopub_loadAd();
 		// t.test7613973();
 		// t.testOnReceive_7619303();
 		// t.testWo_();
 	}
-	
+
 	public void testMain() {
 		String[] args = new String[4];
 		args[3] = "ATaint";
 		Settings.logLevel = 0;
-		
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/StartActivityForResult1/app/";
+
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/FactoryMethods1/app/";	
 		args[1] = "srcEventChains";
 		Main.main(args);
+		
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
 		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
-				"Longitude: -121.759603, Latitude: 38.53203");
+				"Latitude: 38.53203");
 		assertEquals(true, Results.results.contains(res));
 	}
-		
+
 	public void DroidKunfu4() {
 		String[] args = new String[9];
 		args[3] = "ATaint";
 		Settings.logLevel = 0;
-		
+
 		args[0] = "D:/malwares/DroidKungFu4/e1c2188a69727bf4ec4a5d72319cfe87428c7f35/";
 		args[1] = "com.safesys.remover.Uninstall";
 		args[2] = "onCreate";
-		Main.main(args);
-		/*args[1] = "com.safesys.remover.JmAdV2";
-		args[2] = "initJu6Ad";
 		args[4] = "--norun";
-		args[5] = "com.google.update.RU$U12/U1";
-		Object[] initArgs = new Object[2];
-		initArgs[0] = "e1c2188a69727bf4ec4a5d72319cfe87428c7f35";
-		initArgs[1] = "c62b31cb3a7041d5:88857ec052e653eb";
-		Main.main(args, initArgs);*/
-		
+		args[5] = "com.safesys.remover.JmAdV2/initAdwo";
+		Main.main(args);
+
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
-		res.put("<org.apache.http.impl.client.CloseableHttpClient: org.apache.http.client.methods.CloseableHttpResponse execute(org.apache.http.client.methods.HttpUriRequest)>",
-				"POST http://search.best188.net:8511/search/newhi.php HTTP/1.1"); // devID
+		res.put("<java.net.URLConnection: void connect()>",
+				"sun.net.www.protocol.http.HttpURLConnection:http://gad.ju6666.com/adserver/android/2.0/GetAd?z=1466736334.517&a=c62b31cb3a7041d5&p=88857ec052e653eb&m=false&v=2.0.2&pt=Android&c=10010&l=95616&cc=0&nc=0&e=359874043116909&s=460004753203051&d=89014103211501404960&t=9384D1CCED112EA7E43B9E8A7FCCC2FD&k=E0EFEBAB8F22E73B48B20007456F80FD&n=wifi&la=38.53203&lo=-121.759603&ac=1.000100016593933&gt=0"); 
 		assertEquals(true, Results.results.contains(res));
 	}
-	
+
 	public void testAnve() {
 		String[] args = new String[4];
 		args[3] = "Full";
@@ -81,7 +76,7 @@ public class Test {
 		args[2] = "d";
 		Main.main(args);
 	}
-	
+
 	public void test91() {
 		String[] args = new String[4];
 		args[3] = "Full";
@@ -91,7 +86,7 @@ public class Test {
 
 		args[1] = "com.mao.view.MainActivity";
 		args[2] = "onCreate";
-		Settings.addCallBlkListElem("com.baidu.appx.g.i"); // log 
+		Settings.addCallBlkListElem("com.baidu.appx.g.i"); // log
 		Settings.addCallBlkListElem("com.baidu.appx.a.b"); // json
 		Settings.addCallBlkListElem("com.baidu.appx.ui.b"); // json
 

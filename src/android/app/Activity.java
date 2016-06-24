@@ -203,4 +203,13 @@ public class Activity extends ContextWrapper implements LocationListener {
        }
     }
     
+    public final void runOnUiThread(Runnable action) {
+        throw new RuntimeException("Stub!");
+    }
+    
+    public final void runOnUiThread(DVMObject act) {
+    	android.myclasses.Runnable action = (android.myclasses.Runnable)act; 
+    	action.run();
+    }
+    
 }

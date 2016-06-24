@@ -107,5 +107,20 @@ public class Context extends DVMObject {
 	public Application getApplication() {
 		return vm.getApplication();
 	}
+	
+	public int checkCallingPermission(String var1) {
+		return 1;
+	}
+
+    public int checkCallingOrSelfPermission(String var1) {
+    	return 1;
+    }
+    
+    public ContentResolver getContentResolver() {
+    	// FIXME
+    	return null;
+    }
+
+	
 
 }

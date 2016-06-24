@@ -53,7 +53,7 @@ public class Main {
 		main(args);
 	}
 
-	public static void main(String[] args) {	
+	public static void main(String[] args) {
 		try {
 			List<String> apkFiles = new ArrayList<>();
 			File apkFile = new File(args[0]);
@@ -112,137 +112,148 @@ public class Main {
 						i++;
 					}
 				}
-				
+
 				long beforeRun = System.nanoTime();
 				Settings.setApkPath(apk);
 				File file = new File(apk);
 				Settings.setApkName(file.getName());
 				Main main = new Main();
 				// Settings.logLevel = 0;
-				
-				if (args[1] != null && args[1].endsWith("EventChains")) {
-					// Run callbacks
-					String csv = Settings.getStaticOutDir()
-							+ Settings.getApkName() + "_" + args[1] + ".csv";
-					if (args[1].contains("src")) {
-						Settings.setRecordTaintedFields(true);
-					} else if (args[1].contains("sink")) {
-						// Settings.setInitTaintedFields(true);
-						// Settings.initTaintedFields();
-					}
-					System.out.println(TAG + csv);
-					file = new File(csv);
-					if (file.exists()) {
-						CSVReader reader = new CSVReader(new FileReader(csv));
-						Queue<List<Pair<String, String>>> eventChains = Settings
-								.getSrcChains();
-						for (String[] chain : reader.readAll()) {
-							List<Pair<String, String>> eventChain = new LinkedList<>();
-							for (String sootMethod : chain) {
-								// sootMethod = sootMethod.replace("<", "");
-								// sootMethod = sootMethod.replace(">", "");
-								String[] splited = sootMethod.split(": ");
-								String sootClass = splited[0];
-								sootMethod = splited[1];
-								Pair<String, String> event = new Pair<>(
-										sootClass, sootMethod);
-								eventChain.add(event);
-							}
-							eventChains.add(eventChain);
+				try {
+					if (args[1] != null && args[1].endsWith("EventChains")) {
+						// Run callbacks
+						String csv = Settings.getStaticOutDir()
+								+ Settings.getApkName() + "_" + args[1]
+								+ ".csv";
+						if (args[1].contains("src")) {
+							Settings.setRecordTaintedFields(true);
+						} else if (args[1].contains("sink")) {
+							// Settings.setInitTaintedFields(true);
+							// Settings.initTaintedFields();
 						}
-						reader.close();
-
-						csv = Settings.getStaticOutDir()
-								+ Settings.getApkName()
-								+ "_sinkEventChains.csv";
-
-						reader = new CSVReader(new FileReader(csv));
-						eventChains = Settings.getSinkChains();
-						for (String[] chain : reader.readAll()) {
-							List<Pair<String, String>> eventChain = new LinkedList<>();
-							for (String sootMethod : chain) {
-								// sootMethod = sootMethod.replace("<", "");
-								// sootMethod = sootMethod.replace(">", "");
-								String[] splited = sootMethod.split(": ");
-								String sootClass = splited[0];
-								sootMethod = splited[1];
-								Pair<String, String> event = new Pair<>(
-										sootClass, sootMethod);
-								eventChain.add(event);
+						System.out.println(TAG + csv);
+						file = new File(csv);
+						if (file.exists()) {
+							CSVReader reader = new CSVReader(
+									new FileReader(csv));
+							Queue<List<Pair<String, String>>> eventChains = Settings
+									.getSrcChains();
+							for (String[] chain : reader.readAll()) {
+								List<Pair<String, String>> eventChain = new LinkedList<>();
+								for (String sootMethod : chain) {
+									// sootMethod = sootMethod.replace("<", "");
+									// sootMethod = sootMethod.replace(">", "");
+									String[] splited = sootMethod.split(": ");
+									String sootClass = splited[0];
+									sootMethod = splited[1];
+									Pair<String, String> event = new Pair<>(
+											sootClass, sootMethod);
+									eventChain.add(event);
+								}
+								eventChains.add(eventChain);
 							}
-							eventChains.add(eventChain);
-						}
-						reader.close();
+							reader.close();
 
-						eventChains = Settings.getSrcChains();
-						while (!eventChains.isEmpty()) {
-							Settings.setCheckNewTaintedHeapLoc(true);
-							Results.reset();
-							List<Pair<String, String>> eventChain = eventChains
-									.poll();
-							Settings.setEventChain(eventChain);
-							if (eventChain.size() > 0) {
-								Pair<String, String> entryEvent = eventChain
-										.remove(0);
-								if (entryEvent.getSecond().startsWith(
-										"onCreate")
-										|| entryEvent.getSecond().startsWith(
-												"onStart")
-										|| entryEvent.getSecond().startsWith(
-												"onReceive")) {
+							csv = Settings.getStaticOutDir()
+									+ Settings.getApkName()
+									+ "_sinkEventChains.csv";
+
+							reader = new CSVReader(new FileReader(csv));
+							eventChains = Settings.getSinkChains();
+							for (String[] chain : reader.readAll()) {
+								List<Pair<String, String>> eventChain = new LinkedList<>();
+								for (String sootMethod : chain) {
+									// sootMethod = sootMethod.replace("<", "");
+									// sootMethod = sootMethod.replace(">", "");
+									String[] splited = sootMethod.split(": ");
+									String sootClass = splited[0];
+									sootMethod = splited[1];
+									Pair<String, String> event = new Pair<>(
+											sootClass, sootMethod);
+									eventChain.add(event);
+								}
+								eventChains.add(eventChain);
+							}
+							reader.close();
+
+							eventChains = Settings.getSrcChains();
+							while (!eventChains.isEmpty()) {
+								Settings.setCheckNewTaintedHeapLoc(true);
+								Results.reset();
+								List<Pair<String, String>> eventChain = eventChains
+										.poll();
+								Settings.setEventChain(eventChain);
+								if (eventChain.size() > 0) {
+									Pair<String, String> entryEvent = eventChain
+											.remove(0);
+									if (entryEvent.getSecond().startsWith(
+											"onCreate")
+											|| entryEvent.getSecond()
+													.startsWith("onStart")
+											|| entryEvent.getSecond()
+													.startsWith("onReceive")) {
+										Settings.setEntryClass(entryEvent
+												.getFirst());
+										Settings.setEntryMethod(entryEvent
+												.getSecond());
+										getResolvedIntents();
+										Log.msg(TAG, "Src Chain: " + eventChain);
+										Log.debug(TAG, "Src Entry event: "
+												+ entryEvent);
+										main.runMethod(pluginManager);
+									} else {
+										throw new RuntimeException(
+												"Entry method "
+														+ entryEvent
+																.getSecond()
+														+ " is not supported!");
+									}
+								}
+								eventChain.clear();
+								// if (Settings.isRecordTaintedFields()) {
+								// writeTaintedFields();
+								// }
+							}
+
+							eventChains = Settings.getEventChains();
+							while (!eventChains.isEmpty()) {
+								Settings.setCheckNewTaintedHeapLoc(false);
+								Results.reset();
+								Log.msg(TAG,
+										"hhas "
+												+ Results
+														.isHasNewTaintedHeapLoc());
+								List<Pair<String, String>> eventChain = eventChains
+										.poll();
+								Settings.setEventChain(eventChain);
+								Log.debug(TAG, "Generated Entry event: "
+										+ eventChain);
+								if (eventChain.size() > 0) {
+									Pair<String, String> entryEvent = eventChain
+											.remove(0);
 									Settings.setEntryClass(entryEvent
 											.getFirst());
 									Settings.setEntryMethod(entryEvent
 											.getSecond());
 									getResolvedIntents();
-									Log.msg(TAG, "Src Chain: " + eventChain);
-									Log.debug(TAG, "Src Entry event: "
-											+ entryEvent);
+
 									main.runMethod(pluginManager);
-								} else {
-									throw new RuntimeException("Entry method "
-											+ entryEvent.getSecond()
-											+ " is not supported!");
+								}
+								eventChain.clear();
+								if (Settings.isRecordTaintedFields()) {
+									writeTaintedFields();
 								}
 							}
-							eventChain.clear();
-							// if (Settings.isRecordTaintedFields()) {
-							// writeTaintedFields();
-							// }
+
 						}
-
-						eventChains = Settings.getEventChains();
-						while (!eventChains.isEmpty()) {
-							Settings.setCheckNewTaintedHeapLoc(false);
-							Results.reset();
-							Log.msg(TAG,
-									"hhas " + Results.isHasNewTaintedHeapLoc());
-							List<Pair<String, String>> eventChain = eventChains
-									.poll();
-							Settings.setEventChain(eventChain);
-							Log.debug(TAG, "Generated Entry event: "
-									+ eventChain);
-							if (eventChain.size() > 0) {
-								Pair<String, String> entryEvent = eventChain
-										.remove(0);
-								Settings.setEntryClass(entryEvent.getFirst());
-								Settings.setEntryMethod(entryEvent.getSecond());
-								getResolvedIntents();
-
-								main.runMethod(pluginManager);
-							}
-							eventChain.clear();
-							if (Settings.isRecordTaintedFields()) {
-								writeTaintedFields();
-							}
-						}
-
+					} else if (args[2] != null && !"".equals(args[2])) {
+						Settings.setEntryClass(args[1]);
+						Settings.setEntryMethod(args[2]);
+						getResolvedIntents();
+						main.runMethod(pluginManager);
 					}
-				} else if (args[2] != null && !"".equals(args[2])) {
-					Settings.setEntryClass(args[1]);
-					Settings.setEntryMethod(args[2]);
-					getResolvedIntents();
-					main.runMethod(pluginManager);
+				} catch (Exception e) {
+
 				}
 
 				Log.msg(TAG, "Analysis has run for "
