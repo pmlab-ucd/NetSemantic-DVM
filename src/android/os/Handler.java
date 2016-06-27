@@ -11,6 +11,10 @@ import fu.hao.trust.utils.Pair;
 import fu.hao.trust.utils.Settings;
 
 public class Handler extends DVMObject {
+	
+	public Handler() {
+		super(Settings.getVM(), ClassInfo.findClass("android.os.Handler"));
+	}
 
 	public Handler(Looper looper) {
 		super(Settings.getVM(), ClassInfo.findClass("android.os.Handler"));
@@ -30,6 +34,18 @@ public class Handler extends DVMObject {
 		MethodInfo run = runner.getType().findMethods("run")[0];
 		Pair[] params = new Pair[1];
 		params[0] = new Pair(runner, runner.getType());
+		StackFrame frame = vm.newStackFrame(runner.getType(), run, params,
+				false);
+		vm.runInstrumentedMethods(frame);
+		return true;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public final boolean post(DVMObject runner) {
+		MethodInfo run = runner.getType().findMethods("run")[0];
+		@SuppressWarnings("rawtypes")
+		Pair[] params = new Pair[1];
+		params[0] = new Pair<DVMObject, ClassInfo>(runner, runner.getType());
 		StackFrame frame = vm.newStackFrame(runner.getType(), run, params,
 				false);
 		vm.runInstrumentedMethods(frame);

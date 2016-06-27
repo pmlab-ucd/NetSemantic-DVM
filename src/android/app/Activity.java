@@ -84,8 +84,14 @@ public class Activity extends ContextWrapper implements LocationListener {
 	
     public Intent getIntent() {
     	if (intent == null) {
-    		// Default is the main
-    		intent = new Intent(Intent.ACTION_MAIN);
+    		Intent in = Settings.getTriggerIntent();
+    		if (in != null) {
+    			Log.warn(TAG, "Get trigger intent from Settigns " + in);
+    			intent = in;
+    		} else {
+    			// Default is the main
+    			intent = new Intent(Intent.ACTION_MAIN);
+    		}
     	}
     	return intent;
     }

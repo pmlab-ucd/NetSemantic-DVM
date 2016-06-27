@@ -214,7 +214,7 @@ public final class Bundle implements Cloneable {
 	}
 
 	public boolean getBoolean(String key, boolean defaultValue) {
-		throw new RuntimeException("Stub!");
+		return defaultValue;
 	}
 
 	public byte getByte(String key) {

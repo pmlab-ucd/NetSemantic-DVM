@@ -12,7 +12,9 @@ public class MyByteArrayOutputStream extends OutputStream {
 
 	@Override
 	public void write(int b) throws IOException {
-		byteArrayOutputStream.write(b);
+		if (byteArrayOutputStream != null) {
+			byteArrayOutputStream.write(b);
+		}
 	}
 	
     public DVMObject toByteArray() {

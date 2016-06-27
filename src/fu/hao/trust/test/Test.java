@@ -20,9 +20,8 @@ public class Test {
 	public static void main(String[] margs) {
 		Test t = new Test();
 		//t.testMain();
-		// t.testAnve();
 		// t.test00983aad12700be0a440296c6173b18a829e9369_a();
-		t.geinimi();
+		t.malware();
 		// t.testMopub_onCreate();
 		// t.testMopub_loadAd();
 		// t.test7613973();
@@ -45,21 +44,29 @@ public class Test {
 		assertEquals(true, Results.results.contains(res));
 	}
 	
-	public void geinimi() {
+	public void malware() {
 		String[] args = new String[9];
 		args[3] = "ATaint";
 		Settings.logLevel = 0;
 
-		args[0] = "D:/malwares/Geinimi/1353bd14e91a53fa1ee54cd51c1db6918eb9f851/";
-		args[1] = "com.geinimi.AdService";
+		args[0] = "D:/malwares/DroidKungFu4/e1c2188a69727bf4ec4a5d72319cfe87428c7f35/";
+		args[1] = "com.adwo.adsdk.AdwoSplashAdActivity";
 		args[2] = "onCreate";
+		args[4] = "--norun";
+		args[5] = "com.safesys.remover.JmAdV2/initJu6Ad";
+		args[6] = "--norun";
+		args[7] = "com.adwo.adsdk.i/c";
+	
+		Intent intent = new Intent();
+		intent.putExtra("Adwo_PID", "ce8a177663264f518fe8727d375d05a7");
+		Settings.setTriggerIntent(intent);
 
 		Main.main(args);
 
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
 		res.put("<java.net.URLConnection: void connect()>",
-				"Connect url:http://www.winpowersoft.com:8080/adserver/getAdXml.do, params:PTID=000004&IMEI=359874043116909&IMSI=460004753203051&CPID=0000"); 
+				"sun.net.www.protocol.http.HttpURLConnection:http://gad.ju6666.com/adserver/android/2.0/GetAd?z=1466736334.517&a=c62b31cb3a7041d5&p=88857ec052e653eb&m=false&v=2.0.2&pt=Android&c=10010&l=95616&cc=0&nc=0&e=359874043116909&s=460004753203051&d=89014103211501404960&t=9384D1CCED112EA7E43B9E8A7FCCC2FD&k=E0EFEBAB8F22E73B48B20007456F80FD&n=wifi&la=38.53203&lo=-121.759603&ac=1.000100016593933&gt=0"); 
 		assertEquals(true, Results.results.contains(res));
 	}
 

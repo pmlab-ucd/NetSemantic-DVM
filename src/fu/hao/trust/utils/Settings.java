@@ -35,6 +35,8 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 
+import android.content.Intent;
+
 import com.opencsv.CSVReader;
 
 import patdroid.util.Pair;
@@ -91,6 +93,8 @@ public class Settings {
 	private static boolean runEntryException = false;
 	
 	private static boolean checkNewTaintedHeapLoc;
+	
+	private static Intent triggerIntent; 
 	
 	static {
 		eventChains = new LinkedList<>();
@@ -358,6 +362,17 @@ public class Settings {
 
 	public static void setFileSystem(EmulatedFS fileSystem) {
 		Settings.fileSystem = fileSystem;
+	}
+
+	public static Intent getTriggerIntent() {
+		// Only once
+		Intent res = triggerIntent;
+		triggerIntent = null;
+		return res;
+	}
+
+	public static void setTriggerIntent(Intent triggerIntent) {
+		Settings.triggerIntent = triggerIntent;
 	}
 
 	private static EmulatedFS fileSystem;

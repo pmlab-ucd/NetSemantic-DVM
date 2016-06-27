@@ -216,7 +216,9 @@ public class Intent {
 
 	public Intent putExtra(String name, String value) {
 		values.put(name, value);
-		bundle = new Bundle(values);
+		if (bundle == null) {
+			bundle = new Bundle(values);
+		}
 		return this;
 	}
 

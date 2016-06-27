@@ -1,5 +1,6 @@
 package android.view;
 
+import android.content.res.Resources;
 import android.view.ViewGroup.LayoutParams;
 import patdroid.core.ClassInfo;
 import patdroid.core.FieldInfo;
@@ -107,5 +108,14 @@ public class View extends DVMObject {
     		layoutParams = new LayoutParams();
     	}
     	return layoutParams;
+    }
+   
+    private Resources resources;
+    public Resources getResources() {
+    	if (resources == null) {
+    		resources = new Resources();
+    	}
+    	
+    	return resources;
     }
 }

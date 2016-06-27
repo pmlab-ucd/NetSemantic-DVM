@@ -142,7 +142,7 @@ public class Executor {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
 			// TODO Auto-generated method stub
-
+			jump(vm, inst, true);
 		}
 	}
 
@@ -150,7 +150,7 @@ public class Executor {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
 			// TODO Auto-generated method stub
-
+			jump(vm, inst, true);
 		}
 	}
 
@@ -1350,7 +1350,14 @@ public class Executor {
 				array[index] = rdst.getData();
 			} else if (vm.getReg(inst.r0).getData().getClass().isArray()) {
 				Object data = resolvePrimitive(rdst.getData(), rdst.getType());
-				Array.set(vm.getReg(inst.r0).getData(), index, data);
+				Object array = vm.getReg(inst.r0).getData();
+				Log.msg(TAG, "APut " + data + " into " + array);
+				if ((!(data instanceof Byte)) && array.toString().startsWith("[B")) {
+					int	d = (int) data;
+					Array.setByte(array, index, (byte) d);
+				} else {
+					Array.set(vm.getReg(inst.r0).getData(), index, data);
+				}
 			} else {
 				Log.err(TAG, "Not an array!");
 			}
@@ -1444,9 +1451,15 @@ public class Executor {
 	class OP_A_MUL implements ByteCode {
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
+			if (!(vm.getReg(inst.r0).getData() instanceof PrimitiveInfo)) {
+				vm.getReg(inst.r0).setValue(PrimitiveInfo.fromObject(vm.getReg(inst.r0).getData()), vm.getReg(inst.r0).getType());
+			}
 			PrimitiveInfo op0 = (PrimitiveInfo) vm.getReg(inst.r0).getData();
 			PrimitiveInfo op1;
 			if (inst.r1 != -1) {
+				if (!(vm.getReg(inst.r1).getData() instanceof PrimitiveInfo)) {
+					vm.getReg(inst.r1).setValue(PrimitiveInfo.fromObject(vm.getReg(inst.r1).getData()), vm.getReg(inst.r1).getType());
+				}
 				op1 = (PrimitiveInfo) vm.getReg(inst.r1).getData();
 			} else {
 				op1 = (PrimitiveInfo) inst.getExtra();
@@ -3573,6 +3586,8 @@ public class Executor {
 			return new Character(op1 == null ? 0 : op1.charValue());
 		} else if (type.equals(ClassInfo.primitiveBoolean)) {
 			return new Boolean(op1 == null ? false : op1.booleanValue());
+		} else if (type.equals(ClassInfo.primitiveByte)) {
+			return new Byte(op1 == null ? 0 : (byte)op1.intValue());
 		} else if (type.equals(ClassInfo.primitiveInt)) {
 			return new Integer(op1 == null ? 0 : op1.intValue());
 		} else if (type.equals(ClassInfo.primitiveLong)) {
@@ -3583,7 +3598,7 @@ public class Executor {
 			return new Double(op1 == null ? 0 : op1.doubleValue());
 		} else if (type.equals(ClassInfo.primitiveVoid)) {
 			return new Integer(op1 == null ? 0 : op1.intValue());
-		}
+		} 
 
 		Log.warn("ResolvePrimitive", "Return null due to " + type);
 		return null;
