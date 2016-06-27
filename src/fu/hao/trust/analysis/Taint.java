@@ -51,7 +51,7 @@ public class Taint extends Plugin {
 			e.printStackTrace();
 		}
 	}
-	
+
 	protected Set<String> thisAsTaintedList;
 
 	class TAINT_OP_MOV_REG implements Rule {
@@ -405,7 +405,8 @@ public class Taint extends Plugin {
 					}
 
 					if (sinks != null && sinks.contains(sootSignature)) {
-						Log.debug(tag, "Found a sink invocation. " + sootSignature);
+						Log.debug(tag, "Found a sink invocation. "
+								+ sootSignature);
 						if (hasTaintedParam == null) {
 							// Double Check
 							hasTaintedParam = hasTaintedParam(vm, args, in);
@@ -423,27 +424,33 @@ public class Taint extends Plugin {
 									vm.getReg(hasTaintedParam.getFirst())
 											.getData().toString());
 							Results.results.add(res);
-
-							if (mi.isConstructor()) {
-								out.put(vm.getReg(args[0]),
-										hasTaintedParam.getSecond());
-								out.put(vm.getReg(args[0]).getData(),
-										hasTaintedParam.getSecond());
-								Log.warn(tag,
-										"A tainted init "
-												+ vm.getReg(args[0]).getData()
-												+ " identified, add reg"
-												+ args[0] + " as tainted");
-							}
 						}
 					}
-					
+
+					// Aggressive taint
+					if (mi.insns == null && mi.isConstructor() && mi.paramTypes.length > 0) {
+						if (hasTaintedParam == null) {
+							// Double Check
+							hasTaintedParam = hasTaintedParam(vm, args, in);
+						}
+						if (hasTaintedParam != null) {
+							out.put(vm.getReg(args[0]),
+									hasTaintedParam.getSecond());
+							out.put(vm.getReg(args[0]).getData(),
+									hasTaintedParam.getSecond());
+							Log.warn(tag, "A tainted init "
+									+ vm.getReg(args[0]).getData()
+									+ " identified, add reg" + args[0]
+									+ " as tainted");
+						}
+					}
+
 					if (Maid.isElem(thisAsTaintedList, mi.toString())) {
 						if (hasTaintedParam == null) {
 							// Double Check
 							hasTaintedParam = hasTaintedParam(vm, args, in);
 						}
-						
+
 						if (hasTaintedParam != null) {
 							out.put(vm.getReg(args[0]),
 									hasTaintedParam.getSecond());
@@ -452,8 +459,8 @@ public class Taint extends Plugin {
 							Log.warn(tag,
 									"A tainted thisObj "
 											+ vm.getReg(args[0]).getData()
-											+ " identified, add reg"
-											+ args[0] + " as tainted");
+											+ " identified, add reg" + args[0]
+											+ " as tainted");
 						}
 					}
 
@@ -468,28 +475,27 @@ public class Taint extends Plugin {
 			return outs;
 		}
 	}
-	
-	private Pair<Integer, Instruction> hasTaintedParam(DalvikVM vm, int[] args, Map<Object, Instruction> in) {
+
+	private Pair<Integer, Instruction> hasTaintedParam(DalvikVM vm, int[] args,
+			Map<Object, Instruction> in) {
 		for (int i = 0; i < args.length; i++) {
 			if (vm.getReg(args[i]).isUsed()) {
 				if (in.containsKey(vm.getReg(args[i]))
-						|| in.containsKey(vm
-								.getReg(args[i]).getData())) {
-					return new Pair<>(args[i],
-							in.get(vm.getReg(args[i])
-									.getData()));
+						|| in.containsKey(vm.getReg(args[i]).getData())) {
+					Log.warn("hasTaintedParam", "Tainted param in r" + args[i]);
+					return new Pair<>(args[i], in.get(vm.getReg(args[i])
+							.getData()));
 				} else if (vm.getReg(args[i]).getData() instanceof List) {
 					List<?> list = (List<?>) vm.getReg(args[i]).getData();
 					for (Object elem : list) {
 						if (in.containsKey(elem)) {
-							return new Pair<>(args[i],
-									in.get(elem));
+							return new Pair<>(args[i], in.get(elem));
 						}
 					}
 				}
 			}
 		}
-		
+
 		return null;
 	}
 
@@ -1361,7 +1367,7 @@ public class Taint extends Plugin {
 
 		preProcessings = new HashMap<>();
 		preProcessings.put(0x0c, new TAINT_PRE_INVOKE());
-		
+
 		thisAsTaintedList = new HashSet<>();
 		thisAsTaintedList.add("HttpEntityEnclosingRequestBase/setEntity");
 	}
@@ -1410,7 +1416,7 @@ public class Taint extends Plugin {
 
 			for (Instruction instr : out.values()) {
 				if (instr == null) {
-					Log.err(tag, "Empty src found at " + inst);
+					Log.err(tag, "Empty src inst found at " + inst);
 				}
 			}
 		}

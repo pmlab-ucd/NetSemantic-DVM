@@ -19,7 +19,7 @@ public class Test {
 
 	public static void main(String[] margs) {
 		Test t = new Test();
-		//t.testMain();
+		//t.droidBench();
 		// t.test00983aad12700be0a440296c6173b18a829e9369_a();
 		t.malware();
 		// t.testMopub_onCreate();
@@ -29,18 +29,18 @@ public class Test {
 		// t.testWo_();
 	}
 
-	public void testMain() {
+	public void droidBench() {
 		String[] args = new String[4];
 		args[3] = "ATaint";
 		Settings.logLevel = 0;
 		
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Reflection3/app/";
+		args[0] = "C:/Users/hao/workspace/DroidBenchProj/ImplicitFlow1/app/";
 		args[1] = "srcEventChains";
 		Main.main(args);
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
 		res.put("<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>",
-				tm.getDeviceId());
+				"dfjiheaedbbgjaj");
 		assertEquals(true, Results.results.contains(res));
 	}
 	
@@ -49,24 +49,16 @@ public class Test {
 		args[3] = "ATaint";
 		Settings.logLevel = 0;
 
-		args[0] = "D:/malwares/DroidKungFu4/e1c2188a69727bf4ec4a5d72319cfe87428c7f35/";
-		args[1] = "com.adwo.adsdk.AdwoSplashAdActivity";
-		args[2] = "onCreate";
-		args[4] = "--norun";
-		args[5] = "com.safesys.remover.JmAdV2/initJu6Ad";
-		args[6] = "--norun";
-		args[7] = "com.adwo.adsdk.i/c";
-	
-		Intent intent = new Intent();
-		intent.putExtra("Adwo_PID", "ce8a177663264f518fe8727d375d05a7");
-		Settings.setTriggerIntent(intent);
+		args[0] = "D:/malwares/GoldDream/1034b746a26e236b9a623a5cebfb67dde52a1d8a/";
+		args[1] = "com.GoldDream.zj.zjService";
+		args[2] = "onStart";
 
 		Main.main(args);
 
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
-		res.put("<java.net.URLConnection: void connect()>",
-				"sun.net.www.protocol.http.HttpURLConnection:http://gad.ju6666.com/adserver/android/2.0/GetAd?z=1466736334.517&a=c62b31cb3a7041d5&p=88857ec052e653eb&m=false&v=2.0.2&pt=Android&c=10010&l=95616&cc=0&nc=0&e=359874043116909&s=460004753203051&d=89014103211501404960&t=9384D1CCED112EA7E43B9E8A7FCCC2FD&k=E0EFEBAB8F22E73B48B20007456F80FD&n=wifi&la=38.53203&lo=-121.759603&ac=1.000100016593933&gt=0"); 
+		res.put("<java.net.URL: java.net.URLConnection openConnection()>",
+				"http://lebar.gicp.net/zj/RegistUid.aspx?pid=9958&cid=1000&imei=359874043116909&sim=460004753203051&imsi=89014103211501404960&ua=unknown"); 
 		assertEquals(true, Results.results.contains(res));
 	}
 
