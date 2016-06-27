@@ -19,10 +19,10 @@ public class Test {
 
 	public static void main(String[] margs) {
 		Test t = new Test();
-		t.testMain();
+		//t.testMain();
 		// t.testAnve();
 		// t.test00983aad12700be0a440296c6173b18a829e9369_a();
-		//t.DroidKunfu4();
+		t.geinimi();
 		// t.testMopub_onCreate();
 		// t.testMopub_loadAd();
 		// t.test7613973();
@@ -34,7 +34,7 @@ public class Test {
 		String[] args = new String[4];
 		args[3] = "ATaint";
 		Settings.logLevel = 0;
-
+		
 		args[0] = "C:/Users/hao/workspace/DroidBenchProj/Reflection3/app/";
 		args[1] = "srcEventChains";
 		Main.main(args);
@@ -44,21 +44,33 @@ public class Test {
 				tm.getDeviceId());
 		assertEquals(true, Results.results.contains(res));
 	}
-
-	public void DroidKunfu4() {
+	
+	public void geinimi() {
 		String[] args = new String[9];
 		args[3] = "ATaint";
 		Settings.logLevel = 0;
 
-		args[0] = "D:/malwares/DroidKungFu4/348c5ca7ae05b6fc960f7ea646a65fc02b6ee7e3/";
-		//args[1] = "com.ju6.AdRequester";
-		//args[2] = "getAd";
-		args[1] = "com.evilsunflower.reader.ui.ZLAndroidActivity";
+		args[0] = "D:/malwares/Geinimi/1353bd14e91a53fa1ee54cd51c1db6918eb9f851/";
+		args[1] = "com.geinimi.AdService";
 		args[2] = "onCreate";
-		args[4] = "--norun";
-		args[5] = "com.guohead.sdk.GuoheAdManager/init";
-		args[6] = "--norun";
-		args[7] = "com.guohead.sdk.GuoheAdLayout/init";
+
+		Main.main(args);
+
+		assertEquals(false, Results.results.isEmpty());
+		Map<String, String> res = new HashMap<>();
+		res.put("<java.net.URLConnection: void connect()>",
+				"Connect url:http://www.winpowersoft.com:8080/adserver/getAdXml.do, params:PTID=000004&IMEI=359874043116909&IMSI=460004753203051&CPID=0000"); 
+		assertEquals(true, Results.results.contains(res));
+	}
+
+	public void AnserverBot() {
+		String[] args = new String[9];
+		args[3] = "ATaint";
+		Settings.logLevel = 0;
+
+		args[0] = "D:/malwares/AnserverBot/753073a72bc14ee1590e8addd6cb6eeb0a0602f1/";
+		args[1] = "com.sec.android.touchScreen.server.FirstAService";
+		args[2] = "onCreate";
 
 		Main.main(args);
 
@@ -67,18 +79,6 @@ public class Test {
 		res.put("<java.net.URLConnection: void connect()>",
 				"sun.net.www.protocol.http.HttpURLConnection:http://gad.ju6666.com/adserver/android/2.0/GetAd?z=1466801309.631&a=f22d2ca694a34427&p=beb1c37f64b12cae&m=false&v=2.0.3&pt=Android&rl=RELEASE&c=10010&l=95616&cc=888&nc=88&e=359874043116909&s=460004753203051&d=89014103211501404960&t=9384D1CCED112EA7E43B9E8A7FCCC2FD&k=6E0D113113544160825E3A5060D43713&mo=Empire&n=wifi&la=38.532030&lo=-121.759603&ac=1.0&gt=0&pk=348c5ca7ae05b6fc960f7ea646a65fc02b6ee7e3.apk"); 
 		assertEquals(true, Results.results.contains(res));
-	}
-
-	public void testAnve() {
-		String[] args = new String[4];
-		args[3] = "Full";
-		Settings.logLevel = 0;
-
-		args[0] = "C:/Users/hao/workspace/DroidBenchProj/apks/bad/malware/AnserverBot/002f537027830303e2205dd0a6106cb1b79fa704/002f537027830303e2205dd0a6106cb1b79fa704.apk";
-
-		args[1] = "com.sec.android.providers.drm.Onion";
-		args[2] = "d";
-		Main.main(args);
 	}
 
 	public void test91() {

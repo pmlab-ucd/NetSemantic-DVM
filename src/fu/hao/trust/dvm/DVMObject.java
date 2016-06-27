@@ -213,5 +213,28 @@ public class DVMObject {
 	public ClassInfo getClass(int i) {
 		return type;
 	}
+	
+	/*
+	 * TO support Enum 
+	 */
+	protected int order;
+	protected String enumName;
+	
+	public void initEnum(String name, int order) {
+		this.enumName = name;
+		this.order = order;
+	}
+	
+	public int ordinal() {
+		return order;
+	}
+	
+	public boolean equals(DVMObject obj) {
+		if (this == obj) {
+			return true;
+		}
+		
+		return false;
+	}
 
 }

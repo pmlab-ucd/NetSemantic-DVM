@@ -334,20 +334,23 @@ public class Executor {
 				count = Integer.parseInt(vm.getReg(inst.r0).getData()
 						.toString());
 			}
-			
+
 			Object newArray;
 			try {
-				Class<?> klass = Class.forName(inst.type.getElementClass().fullName);
+				Class<?> klass = Class
+						.forName(inst.type.getElementClass().fullName);
 				Class<?> clazz = getReplacedInvoke(klass, null);
 				if (klass.equals(clazz)) {
 					newArray = Array.newInstance(clazz, count);
 				} else {
 					newArray = new Object[count];
-				}				
+				}
 				vm.getReg(inst.rdst).setValue(newArray, inst.type);
 			} catch (Exception e) {
+				Log.warn(TAG, e.getMessage());
 				if (inst.type.getElementClass().isPrimitive()) {
-					if (inst.type.getElementClass().equals(ClassInfo.primitiveInt)) {
+					if (inst.type.getElementClass().equals(
+							ClassInfo.primitiveInt)) {
 						int[] intArray = new int[count];
 						vm.getReg(inst.rdst).setValue(intArray, inst.type);
 					} else if (inst.type.getElementClass().equals(
@@ -374,7 +377,11 @@ public class Executor {
 							ClassInfo.primitiveBoolean)) {
 						boolean[] booleanArray = new boolean[count];
 						vm.getReg(inst.rdst).setValue(booleanArray, inst.type);
-					} else {
+					} else if (inst.type.getElementClass().equals(
+							ClassInfo.primitiveByte)) {
+						byte[] byteArray = new byte[count];
+						vm.getReg(inst.rdst).setValue(byteArray, inst.type);
+					}  else {
 						newArray = new PrimitiveInfo[count];
 						vm.getReg(inst.rdst).setValue(newArray, inst.type);
 					}
@@ -382,7 +389,7 @@ public class Executor {
 					newArray = new Object[count];
 					vm.getReg(inst.rdst).setValue(newArray, inst.type);
 				}
-			}					
+			}
 
 			Log.debug(TAG, "A new array of " + inst.type + " in size " + count
 					+ " created.");
@@ -391,6 +398,7 @@ public class Executor {
 	}
 
 	class OP_NEW_FILLED_ARRAY implements ByteCode {
+		private final String TAG = getClass().getSimpleName();
 		/**
 		 * @Title: func
 		 * @Description: filled-new-array {v0,v0},[I // type@0D53 Generates a
@@ -404,9 +412,35 @@ public class Executor {
 		 */
 		@Override
 		public void func(DalvikVM vm, Instruction inst) {
-			// TODO Auto-generated method stub
-			vm.getReg(inst.rdst).setValue(inst.extra,
+			Instruction lastInst = vm.getCurrStackFrame().getInst(vm.getNowPC() - 1);
+			if (lastInst.opcode_aux == Instruction.OP_NEW_ARRAY && lastInst.rdst == inst.rdst) {
+				Object array = vm.getReg(inst.rdst).getData();
+				PrimitiveInfo[] primArray = (PrimitiveInfo[]) inst.extra;
+				Log.bb(TAG, "ResolvePrimitiveArray: " + array);
+				if (array.toString().contains("[B")) {
+					for (int i = 0; i < primArray.length; i++) {
+						if (primArray[i] == null) {
+							Array.setByte(array, i, (byte) 0);
+						} else {
+							Array.setByte(array, i, (byte) primArray[i].intValue());
+						}
+					}
+				} else if (array.toString().contains("[C")) {
+					for (int i = 0; i < primArray.length; i++) {
+						Array.setChar(array, i, primArray[i].charValue());
+					}
+				} else if (array.toString().contains("[I")) {
+					for (int i = 0; i < primArray.length; i++) {
+						Array.setInt(array, i, primArray[i].intValue());
+					}
+				} else {
+					Log.err(TAG, "Unsupported type!");
+				}
+
+			} else {
+				vm.getReg(inst.rdst).setValue(inst.extra,
 					ClassInfo.findClass(inst.extra.getClass().getName()));
+			}
 			jump(vm, inst, true);
 		}
 	}
@@ -1283,7 +1317,7 @@ public class Executor {
 				}
 				vm.getReg(inst.r0).setValue(objs, ClassInfo.primitiveVoid);
 			}
-			
+
 			int index = ((PrimitiveInfo) vm.getReg(inst.r1).getData())
 					.intValue();
 
@@ -1320,7 +1354,7 @@ public class Executor {
 			} else {
 				Log.err(TAG, "Not an array!");
 			}
-			
+
 		}
 	}
 
@@ -1870,10 +1904,10 @@ public class Executor {
 				if (dvmObj.getFieldObj(fieldInfo) == null) {
 					if (fieldInfo.fieldName.equals("this$0")) {
 						dvmObj.setField(fieldInfo, vm.getChainThisObj());
-					} /*else {
-						dvmObj.setField(fieldInfo,
-								new Unknown(vm, fieldInfo.getFieldType()));
-					}*/
+					} /*
+					 * else { dvmObj.setField(fieldInfo, new Unknown(vm,
+					 * fieldInfo.getFieldType())); }
+					 */
 				}
 
 				vm.getReg(inst.r1)
@@ -1939,7 +1973,7 @@ public class Executor {
 			if (obj instanceof DVMObject) {
 				DVMObject dvmObj = (DVMObject) obj;
 				vm.getAssigned()[0] = dvmObj;
-				vm.getAssigned()[1] = fieldInfo;			
+				vm.getAssigned()[1] = fieldInfo;
 				vm.getAssigned()[2] = data;
 
 				dvmObj.setField(fieldInfo, data);
@@ -2346,6 +2380,7 @@ public class Executor {
 				// use DvmObject to replace java.lang.Object
 				if (!clazzName.equals("java.lang.Object")) {
 					// clazz = Class.forName(mi.myClass.toString());
+
 					if (args.length == 1) {
 						if (!clazzName.equals("java.lang.Thread")) {
 							vm.getReg(args[0]).setValue(clazz.newInstance(),
@@ -2360,18 +2395,27 @@ public class Executor {
 						if (normalArg) {
 							normalArg = narg;
 						}
-						Object instance;
-						if (!normalArg) {
-							instance = new Unknown(vm, mi.returnType);
+						if (clazzName.equals("java.lang.Enum")) {
+							((DVMObject) vm.getReg(args[0]).getData())
+									.initEnum((String)params[0], (int)params[1]);
 						} else {
-							instance = clazz.getConstructor(argsClass)
-									.newInstance(params);
+							Object instance;
+							if (!normalArg) {
+								instance = new Unknown(vm, mi.returnType);
+							} else {
+								instance = clazz.getConstructor(argsClass)
+										.newInstance(params);
+							}
+
+							// Overwrite previous declared dvmObj
+							vm.getReg(args[0]).setValue(instance, mi.myClass);
+							Log.debug(TAG,
+									"Init instance: "
+											+ vm.getReg(args[0]).getData()
+											+ " "
+											+ vm.getReg(args[0]).getData()
+													.getClass());
 						}
-						// Overwrite previous declared dvmObj
-						vm.getReg(args[0]).setValue(instance, mi.myClass);
-						Log.debug(TAG, "Init instance: "
-								+ vm.getReg(args[0]).getData() + " "
-								+ vm.getReg(args[0]).getData().getClass());
 					}
 				} else {
 					if (vm.getReg(args[0]).isUsed()) {
@@ -2394,11 +2438,21 @@ public class Executor {
 
 				if (mi.name.equals("getClass")) {
 					if (thisInstance instanceof DVMObject) {
+						mi = ClassInfo.findClass("fu.hao.trust.dvm.DVMObject")
+								.findMethods("getClazz")[0];
+						clazz = DVMObject.class;
+						Log.msg(TAG, "Replaced method " + mi);
+					}
+				} else if (mi.toString().startsWith("java.lang.Enum/ordinal")) {
 					mi = ClassInfo.findClass("fu.hao.trust.dvm.DVMObject")
-							.findMethods("getClazz")[0];
+							.findMethods("ordinal")[0];
 					clazz = DVMObject.class;
 					Log.msg(TAG, "Replaced method " + mi);
-					}
+				} else if (mi.toString().startsWith("java.lang.Enum/equals")) {
+					mi = ClassInfo.findClass("fu.hao.trust.dvm.DVMObject")
+							.findMethods("equals")[0];
+					clazz = DVMObject.class;
+					Log.msg(TAG, "Replaced method " + mi);
 				}
 				if (thisInstance instanceof MultiValueVar) {
 					// FIXME Herustic, should really handle loop
@@ -3320,6 +3374,7 @@ public class Executor {
 		noInvokeList.add("HttpResponse/getEntity");
 		noInvokeList.add("EntityUtils/toString");
 		noInvokeList.add("StatusLine/get");
+		noInvokeList.add("Connection/get");
 
 		noInvokeList2 = new HashSet<>();
 		noInvokeList2.add("equals");
@@ -3357,7 +3412,8 @@ public class Executor {
 				"android.myclasses.java.io.File");
 		replacedInvokeList.put("java.util.Timer",
 				"android.myclasses.java.util.Timer");
-		replacedInvokeList.put("java.lang.Enum", "android.myclasses.java.lang.Enum");
+		// replacedInvokeList.put("java.lang.Enum",
+		// "android.myclasses.java.lang.Enum");
 	}
 
 	public void exec(DalvikVM vm, Instruction inst, ClassInfo sitClass) {
@@ -3396,28 +3452,22 @@ public class Executor {
 			if (!vm.getPluginManager().isEmpty()
 					&& vm.getCurrStackFrame() != null) {
 				vm.getPluginManager().runAnalysis(vm, inst);
-
-				if (inst.opcode != Instruction.OP_SP_ARGUMENTS
-						&& vm.getCurrStackFrame().getThisObj() != null
-						&& !vm.getCurrStackFrame().method.isStatic()
-						&& vm.getCurrStackFrame().getThisReg() != null
-						&& vm.getCurrStackFrame().getThisReg().getData() != vm
-								.getCurrStackFrame().getThisObj()) {
-					Log.warn(TAG, "Inconsistent this obj! "
-							+ vm.getCurrStackFrame().getThisReg().getData()
-							+ ", " + vm.getCurrStackFrame().getThisObj());
-					// If caused by the overwritten instance generated by
-					// reflection
-					if (!(vm.getCurrStackFrame().getThisReg().getData() instanceof DVMObject)) {
-						vm.getCurrStackFrame()
-								.getThisReg()
-								.setValue(
-										vm.getCurrStackFrame().getThisObj(),
-										vm.getCurrStackFrame().getThisReg()
-												.getType());
-					}
-				}
-
+				/*
+				 * if (inst.opcode != Instruction.OP_SP_ARGUMENTS &&
+				 * vm.getCurrStackFrame().getThisObj() != null &&
+				 * !vm.getCurrStackFrame().method.isStatic() &&
+				 * vm.getCurrStackFrame().getThisReg() != null &&
+				 * vm.getCurrStackFrame().getThisReg().getData() != vm
+				 * .getCurrStackFrame().getThisObj()) { Log.warn(TAG,
+				 * "Inconsistent this obj! " +
+				 * vm.getCurrStackFrame().getThisReg().getData() + ", " +
+				 * vm.getCurrStackFrame().getThisObj()); // If caused by the
+				 * overwritten instance generated by // reflection if
+				 * (!(vm.getCurrStackFrame().getThisReg().getData() instanceof
+				 * DVMObject)) { vm.getCurrStackFrame() .getThisReg() .setValue(
+				 * vm.getCurrStackFrame().getThisObj(),
+				 * vm.getCurrStackFrame().getThisReg() .getType()); } }
+				 */
 				if (inst.opcode == Instruction.OP_RETURN) {
 					if (vm.getCurrStackFrame() != null) {
 						// Add new tainted heap objs into the caller's res
@@ -3507,7 +3557,7 @@ public class Executor {
 			type = ((Unknown) op).getType();
 			Log.warn(TAG, "Unknown type " + type);
 		}
-		
+
 		PrimitiveInfo op1 = null;
 		if (op instanceof PrimitiveInfo) {
 			op1 = (PrimitiveInfo) op;
@@ -3516,7 +3566,7 @@ public class Executor {
 		} else {
 			return op;
 		}
-		
+
 		if (type.equals(ClassInfo.primitiveChar)) {
 			Log.bb(TAG, "Char value " + (op1 == null ? 0 : op1.charValue())
 					+ " resolved.");
