@@ -2,6 +2,7 @@ package android.content;
 
 import android.app.Application;
 import android.content.pm.PackageManager;
+import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
@@ -124,6 +125,15 @@ public class Context extends DVMObject {
     
     public String getPackageName() {
         return Settings.getApkName();
+    }
+    
+    AssetManager assets;
+    public AssetManager getAssets() {
+    	if (assets == null) {
+    		assets = new AssetManager();
+    	}
+    	
+    	return assets;
     }
 
 	
