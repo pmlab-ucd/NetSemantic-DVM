@@ -693,7 +693,8 @@ public class Executor {
 				if (vm.getReturnReg().isUsed()
 						&& !(vm.getReturnReg().getData() instanceof PrimitiveInfo)
 						&& vm.getReturnReg().getType() != null
-						&& vm.getReturnReg().getType().isPrimitive()) {
+						&& vm.getReturnReg().getType().isPrimitive()
+						&& !vm.getReturnReg().getType().equals(ClassInfo.primitiveVoid)) {
 					Object obj = vm.getReturnReg().getData();
 					PrimitiveInfo info = PrimitiveInfo.fromObject(obj);
 					vm.getReturnReg().setValue(info,
@@ -2583,8 +2584,11 @@ public class Executor {
 		} catch (java.lang.InstantiationException e) {
 			Log.warn(TAG, "Reflection error: " + e.getMessage());
 			e.printStackTrace();
-			vm.getReg(args[0])
+			// Do not call reflecable super()
+			if (mi.insns != null) {
+				vm.getReg(args[0])
 					.setValue(new Unknown(vm, mi.myClass), mi.myClass);
+			}
 			jump(vm, inst, true);
 		} catch (java.lang.IllegalAccessException e) {
 			e.printStackTrace();
@@ -3374,7 +3378,7 @@ public class Executor {
 		noInvokeList.add("Connection/connect");
 		noInvokeList.add("getResponseCode");
 		noInvokeList.add("getInputStream");
-		noInvokeList.add("java.io.FileInputStream");
+		//noInvokeList.add("java.io.FileInputStream");
 		noInvokeList.add("java.io.InputStreamReader");
 		noInvokeList.add("java.io.BufferedReader");
 		// noInvokeList.add("java.io.File");

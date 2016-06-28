@@ -1,0 +1,102 @@
+DalvikVM - [MSG]: Begin run run at D:\malwares\DroidDreamLight\1a613334f30005925d95bbfd845caa065a15682b\1a613334f30005925d95bbfd845caa065a15682b.apk
+DalvikVM - [MSG]: RUN Method com.passion.lightdd.f/run[]
+DalvikVM - [BB]: Superclass: com.passion.lightdd.f
+DalvikVM - [BB]: Superclass: java.util.TimerTask
+DalvikVM - [BB]: Superclass: java.lang.Object
+Runnable - [BB]: New instance of com.passion.lightdd.f
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.passion.lightdd.f at fu.hao.trust.dvm.VMHeap@6e1513f3
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: New DVMClass representation for com.passion.lightdd.f at fu.hao.trust.dvm.VMHeap@6e1513f3
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.util.TimerTask at fu.hao.trust.dvm.VMHeap@6e1513f3
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: New DVMClass representation for java.util.TimerTask at fu.hao.trust.dvm.VMHeap@6e1513f3
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type java.util.TimerTask
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass java.util.TimerTask at fu.hao.trust.dvm.VMHeap@6e1513f3
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type com.passion.lightdd.f
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.passion.lightdd.f at fu.hao.trust.dvm.VMHeap@6e1513f3
+DalvikVM - [BB]: New method call: com.passion.lightdd.f/run[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[4]>
+DalvikVM - [BB]: [1]<0 INVOKE,STATIC,extra=[java.lang.System/currentTimeMillis[], []]>
+DalvikVM - [BB]: [2]<0 MOV,RESULT,dst=r0,type=AndroidWide>
+DalvikVM - [BB]: [3]<0 INSTANCE,IGET,r0=r4,r1=r2,type=java.lang.Object,extra=com.passion.lightdd.f.a>
+DalvikVM - [BB]: [4]<0 INVOKE,STATIC,extra=[com.passion.lightdd.CoreService/e[com.passion.lightdd.CoreService], [2]]>
+DalvikVM - [BB]: [5]<0 MOV,RESULT,dst=r2,type=java.lang.Object>
+DalvikVM - [BB]: [6]<0 INVOKE,STATIC,extra=[com.passion.lightdd.c/b[android.content.Context], [2]]>
+DalvikVM - [BB]: [7]<0 MOV,RESULT,dst=r2,type=AndroidWide>
+DalvikVM - [BB]: [8]<0 ARITHMETIC,SUB,dst=r0,r0=r0,r1=r2,type=long>
+DalvikVM - [BB]: [9]<8 MOV,CONST,dst=r2,type=AndroidWide,extra=class patdroid.core.PrimitiveInfo?Primitive:0l>
+DalvikVM - [BB]: [10]<0 CMP,CMPLONG,dst=r0,r0=r0,r1=r2,type=long>
+DalvikVM - [BB]: [11]<0 IF,LEZ,r0=r0,extra=index:15>
+DalvikVM - [BB]: [12]<0 NEW,INSTANCE,dst=r0,type=com.passion.lightdd.h>
+DalvikVM - [BB]: [13]<0 INVOKE,DIRECT,extra=[com.passion.lightdd.h/<init>[com.passion.lightdd.f], [0, 4]]>
+DalvikVM - [BB]: [14]<0 INVOKE,VIRTUAL,extra=[java.lang.Thread/start[], [0]]>
+DalvikVM - [BB]: [15]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame com.passion.lightdd.f/run[]
+newStackFrame - [BB]: Add frame StackFrame com.passion.lightdd.f/run[]
+newStackFrame - [BB]: Stack: [StackFrame com.passion.lightdd.f/run[]]
+Executor - [MSG]: BEGIN RUN ENTRY: com.passion.lightdd.f/run[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> execute set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[4]> at com.passion.lightdd.f/run[]
+Executor - [WARN]: NULL CallingCtx!
+DalvikVM - [WARN]: ar 4, ([myRunnable instance number 1@com.passion.lightdd.f], com.passion.lightdd.f)
+Executor - [DEBUG]: args: [myRunnable instance number 1@com.passion.lightdd.f]
+Executor - [BB]: Start param from 1
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 INVOKE,STATIC,extra=[java.lang.System/currentTimeMillis[], []]> at com.passion.lightdd.f/run[]
+Executor - [DEBUG]: Reflction class java.lang.System
+DalvikVM - [WARN]: ar -1, (1467080793503, long)
+Executor - [MSG]: Reflction invocation public static native long java.lang.System.currentTimeMillis()
+DalvikVM - [BB]: Set reflective call: public static native long java.lang.System.currentTimeMillis()
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INVOKE_STATIC -> jump set pc to 2
+TaintSumBranch - [BB]: <java.lang.System: long currentTimeMillis()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 MOV,RESULT,dst=r0,type=AndroidWide> at com.passion.lightdd.f/run[]
+DalvikVM - [WARN]: ar -1 (1467080793503, long), (Primitive:1467080793503l, long)
+DalvikVM - [WARN]: ar 0, (Primitive:1467080793503l, long)
+OP_MOV_RESULT - [BB]: Result data: Primitive:1467080793503l
+OP_MOV_RESULT - [DEBUG]: Result data: Primitive:1467080793503l, type: long, to [reg 0@f/run]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 3
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 INSTANCE,IGET,r0=r4,r1=r2,type=java.lang.Object,extra=com.passion.lightdd.f.a> at com.passion.lightdd.f/run[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Obj [myRunnable instance number 1@com.passion.lightdd.f]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Fieldinfo com.passion.lightdd.f.a
+DalvikVM - [WARN]: ar 2, (null, com.passion.lightdd.CoreService)
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: null
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD -> jump set pc to 4
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <4 INVOKE,STATIC,extra=[com.passion.lightdd.CoreService/e[com.passion.lightdd.CoreService], [2]]> at com.passion.lightdd.f/run[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 5
+DalvikVM - [BB]: New method call: com.passion.lightdd.CoreService/e[com.passion.lightdd.CoreService]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[1]>
+DalvikVM - [BB]: [1]<0 INSTANCE,IGET,r0=r1,r1=r0,type=java.lang.Object,extra=com.passion.lightdd.CoreService.h>
+DalvikVM - [BB]: [2]<0 RETURN,VALUE,r0=r0,type=java.lang.Object>
+newStackFrame - [BB]: New Stack Frame: StackFrame com.passion.lightdd.CoreService/e[com.passion.lightdd.CoreService], pc 5 stored. 
+newStackFrame - [BB]: Add frame StackFrame com.passion.lightdd.CoreService/e[com.passion.lightdd.CoreService]
+newStackFrame - [BB]: Stack: [StackFrame com.passion.lightdd.f/run[], StackFrame com.passion.lightdd.CoreService/e[com.passion.lightdd.CoreService]]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> execute set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[1]> at com.passion.lightdd.CoreService/e[com.passion.lightdd.CoreService]
+DalvikVM - [WARN]: ar 1, (null, com.passion.lightdd.CoreService)
+Executor - [DEBUG]: params: null
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 INSTANCE,IGET,r0=r1,r1=r0,type=java.lang.Object,extra=com.passion.lightdd.CoreService.h> at com.passion.lightdd.CoreService/e[com.passion.lightdd.CoreService]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Obj null
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Fieldinfo com.passion.lightdd.CoreService.h
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [WARN]: null is not a DVMObject!
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [ERROR]: Cannot get the field!
+main - [MSG]: Analysis has run for 2.098461837 seconds
+

@@ -95,8 +95,14 @@ public class PackageManager {
     	
     }
 
+    private PackageInfo pkgInfo;
+    
     public PackageInfo getPackageInfo(String var1, int var2) {
-    	throw new RuntimeException("Stub!");
+    	if (pkgInfo == null) {
+    		pkgInfo = new PackageInfo();
+    	}
+    	
+    	return pkgInfo;
     }
 
     public String[] currentToCanonicalPackageNames(String[] var1) {
@@ -355,5 +361,11 @@ public class PackageManager {
         public NameNotFoundException(String name) {
             throw new RuntimeException("Stub!");
         }
+    }
+    
+    public List<PackageInfo> getInstalledPackages(int var1) {
+    	List<PackageInfo> pkgs = new ArrayList<>();
+    	pkgs.add(new PackageInfo());
+    	return pkgs;
     }
 }

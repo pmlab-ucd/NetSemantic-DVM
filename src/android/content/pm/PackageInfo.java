@@ -1,7 +1,6 @@
 package android.content.pm;
 
-import android.os.Parcel;
-
+import fu.hao.trust.utils.Settings;
 
 public class PackageInfo {
     public String packageName;
@@ -29,18 +28,13 @@ public class PackageInfo {
     //public static final Creator<PackageInfo> CREATOR = null;
 
     public PackageInfo() {
-        throw new RuntimeException("Stub!");
+    	packageName = Settings.getApkName();
+    	applicationInfo = new ApplicationInfo();
     }
 
-    public String toString() {
-        throw new RuntimeException("Stub!");
-    }
 
     public int describeContents() {
         throw new RuntimeException("Stub!");
     }
 
-    public void writeToParcel(Parcel dest, int parcelableFlags) {
-        throw new RuntimeException("Stub!");
-    }
 }

@@ -49,9 +49,9 @@ public class Test {
 		args[3] = "ATaint";
 		Settings.logLevel = 0;
 
-		args[0] = "D:/malwares/KMin/3726cfddc691cb72e7ed6b059bf943ad9b4d1774";
-		args[1] = "com.km.ad.AdService";
-		args[2] = "onStart";
+		args[0] = "D:/malwares/DroidKungFu1/881ee009e90d7d70d2802c3193190d973445d807";
+		args[1] = "com.google.ssearch.SearchService";
+		args[2] = "onCreate";
 
 		Main.main(args);
 

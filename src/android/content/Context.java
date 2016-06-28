@@ -1,5 +1,9 @@
 package android.content;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 import android.app.Application;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
@@ -134,6 +138,12 @@ public class Context extends DVMObject {
     	}
     	
     	return assets;
+    }
+    
+    public FileInputStream openFileInput(String var1) throws FileNotFoundException {
+    	String path = Settings.getOutdir() + File.separator + var1;
+    	FileInputStream stream = new FileInputStream(path);
+    	return stream;
     }
 
 	

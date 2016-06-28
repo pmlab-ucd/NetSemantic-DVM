@@ -1,0 +1,282 @@
+DalvikVM - [MSG]: Begin run a at D:\malwares\DroidDreamLight\1a613334f30005925d95bbfd845caa065a15682b\1a613334f30005925d95bbfd845caa065a15682b.apk
+DalvikVM - [MSG]: RUN Method com.passion.lightdd.a.c/a[[B]
+DalvikVM - [BB]: Superclass: com.passion.lightdd.a.c
+DalvikVM - [BB]: Superclass: java.lang.Object
+DVMObject - [BB]: New instance of com.passion.lightdd.a.c
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.passion.lightdd.a.c at fu.hao.trust.dvm.VMHeap@2f27f2bb
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: New DVMClass representation for com.passion.lightdd.a.c at fu.hao.trust.dvm.VMHeap@2f27f2bb
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type com.passion.lightdd.a.c
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.passion.lightdd.a.c at fu.hao.trust.dvm.VMHeap@2f27f2bb
+DalvikVM - [BB]: New method call: com.passion.lightdd.a.c/a[[B]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[4]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r0,type=java.lang.String,extra="">
+DalvikVM - [BB]: [2]<0 NEW,INSTANCE,dst=r1,type=java.lang.String>
+DalvikVM - [BB]: [3]<2 MOV,CONST,dst=r2,type=java.lang.String,extra="DES">
+DalvikVM - [BB]: [4]<0 INVOKE,STATIC,extra=[com.passion.lightdd.b/a[[B, java.lang.String], [4, 2]]>
+DalvikVM - [BB]: [5]<0 MOV,RESULT,dst=r2,type=java.lang.Object>
+DalvikVM - [BB]: [6]<5 MOV,CONST,dst=r3,type=java.lang.String,extra="utf-8">
+DalvikVM - [BB]: [7]<0 INVOKE,DIRECT,extra=[java.lang.String/<init>[[B, java.lang.String], [1, 2, 3]]>
+DalvikVM - [BB]: [8]<0 MOV,REG,dst=r0,r0=r1,type=java.lang.Object>
+DalvikVM - [BB]: [9]<0 RETURN,VALUE,r0=r0,type=java.lang.Object>
+DalvikVM - [BB]: [10]<0 MOV,EXCETPION,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [11]<0 INVOKE,VIRTUAL,extra=[java.lang.Throwable/printStackTrace[], [1]]>
+DalvikVM - [BB]: [12]<0 GOTO,extra=index:9>
+DalvikVM - [BB]: [13]<0 MOV,EXCETPION,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [14]<0 INVOKE,VIRTUAL,extra=[java.lang.Throwable/printStackTrace[], [1]]>
+DalvikVM - [BB]: [15]<0 GOTO,extra=index:9>
+newStackFrame - [BB]: New Stack Frame: StackFrame com.passion.lightdd.a.c/a[[B]
+newStackFrame - [BB]: Add frame StackFrame com.passion.lightdd.a.c/a[[B]
+newStackFrame - [BB]: Stack: [StackFrame com.passion.lightdd.a.c/a[[B]]
+Executor - [MSG]: BEGIN RUN ENTRY: com.passion.lightdd.a.c/a[[B]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> execute set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[4]> at com.passion.lightdd.a.c/a[[B]
+Executor - [WARN]: NULL CallingCtx!
+Executor - [BB]: Start param from 0
+Executor - [DEBUG]: args: Not avail
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 MOV,CONST,dst=r0,type=java.lang.String,extra=""> at com.passion.lightdd.a.c/a[[B]
+Executor - [DEBUG]: Mov const begin <1 MOV,CONST,dst=r0,type=java.lang.String,extra="">
+DalvikVM - [WARN]: ar 0, (, java.lang.String)
+Executor - [DEBUG]: data:  class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 2
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 NEW,INSTANCE,dst=r1,type=java.lang.String> at com.passion.lightdd.a.c/a[[B]
+OP_NEW_INSTANCE - [DEBUG]: [reg 1@c/a]
+DalvikVM - [WARN]: ar 1, (null, java.lang.String)
+OP_NEW_INSTANCE - [BB]: Reflecable instance.
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_NEW_INSTANCE -> jump set pc to 3
+TaintSumBranch - [BB]: Rdst [reg 1@c/a]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 MOV,CONST,dst=r2,type=java.lang.String,extra="DES"> at com.passion.lightdd.a.c/a[[B]
+Executor - [DEBUG]: Mov const begin <3 MOV,CONST,dst=r2,type=java.lang.String,extra="DES">
+DalvikVM - [WARN]: ar 2, (DES, java.lang.String)
+Executor - [DEBUG]: data: DES class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 4
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <4 INVOKE,STATIC,extra=[com.passion.lightdd.b/a[[B, java.lang.String], [4, 2]]> at com.passion.lightdd.a.c/a[[B]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 5
+DalvikVM - [BB]: New method call: com.passion.lightdd.b/a[[B, java.lang.String]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[4, 5]>
+DalvikVM - [BB]: [1]<0 NEW,INSTANCE,dst=r0,type=java.security.SecureRandom>
+DalvikVM - [BB]: [2]<0 INVOKE,DIRECT,extra=[java.security.SecureRandom/<init>[], [0]]>
+DalvikVM - [BB]: [3]<0 NEW,INSTANCE,dst=r1,type=javax.crypto.spec.DESKeySpec>
+DalvikVM - [BB]: [4]<3 MOV,CONST,dst=r2,type=java.lang.String,extra="DDH#X%LT">
+DalvikVM - [BB]: [5]<0 INVOKE,VIRTUAL,extra=[java.lang.String/getBytes[], [2]]>
+DalvikVM - [BB]: [6]<0 MOV,RESULT,dst=r2,type=java.lang.Object>
+DalvikVM - [BB]: [7]<0 INVOKE,DIRECT,extra=[javax.crypto.spec.DESKeySpec/<init>[[B], [1, 2]]>
+DalvikVM - [BB]: [8]<7 MOV,CONST,dst=r2,type=java.lang.String,extra="DES">
+DalvikVM - [BB]: [9]<0 INVOKE,STATIC,extra=[javax.crypto.SecretKeyFactory/getInstance[java.lang.String], [2]]>
+DalvikVM - [BB]: [10]<0 MOV,RESULT,dst=r2,type=java.lang.Object>
+DalvikVM - [BB]: [11]<0 INVOKE,VIRTUAL,extra=[javax.crypto.SecretKeyFactory/generateSecret[java.security.spec.KeySpec], [2, 1]]>
+DalvikVM - [BB]: [12]<0 MOV,RESULT,dst=r1,type=java.lang.Object>
+DalvikVM - [BB]: [13]<0 INVOKE,STATIC,extra=[javax.crypto.Cipher/getInstance[java.lang.String], [5]]>
+DalvikVM - [BB]: [14]<0 MOV,RESULT,dst=r2,type=java.lang.Object>
+DalvikVM - [BB]: [15]<14 MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?Primitive:2>
+DalvikVM - [BB]: [16]<0 INVOKE,VIRTUAL,extra=[javax.crypto.Cipher/init[int, java.security.Key, java.security.SecureRandom], [2, 3, 1, 0]]>
+DalvikVM - [BB]: [17]<0 INVOKE,VIRTUAL,extra=[javax.crypto.Cipher/doFinal[[B], [2, 4]]>
+DalvikVM - [BB]: [18]<0 MOV,RESULT,dst=r0,type=java.lang.Object>
+DalvikVM - [BB]: [19]<0 RETURN,VALUE,r0=r0,type=java.lang.Object>
+newStackFrame - [BB]: New Stack Frame: StackFrame com.passion.lightdd.b/a[[B, java.lang.String], pc 5 stored. 
+newStackFrame - [BB]: Add frame StackFrame com.passion.lightdd.b/a[[B, java.lang.String]
+newStackFrame - [BB]: Stack: [StackFrame com.passion.lightdd.a.c/a[[B], StackFrame com.passion.lightdd.b/a[[B, java.lang.String]]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> execute set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[4, 5]> at com.passion.lightdd.b/a[[B, java.lang.String]
+Executor - [DEBUG]: params: Empty!
+DalvikVM - [WARN]: ar 5, (DES, java.lang.String)
+Executor - [DEBUG]: params: DES
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 NEW,INSTANCE,dst=r0,type=java.security.SecureRandom> at com.passion.lightdd.b/a[[B, java.lang.String]
+OP_NEW_INSTANCE - [DEBUG]: [reg 0@b/a]
+DalvikVM - [WARN]: ar 0, (null, java.security.SecureRandom)
+OP_NEW_INSTANCE - [BB]: Reflecable instance.
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_NEW_INSTANCE -> jump set pc to 2
+TaintSumBranch - [BB]: Rdst [reg 0@b/a]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 INVOKE,DIRECT,extra=[java.security.SecureRandom/<init>[], [0]]> at com.passion.lightdd.b/a[[B, java.lang.String]
+Executor - [MSG]: arg0 obj: null
+Executor - [BB]: java.security.SecureRandom/<init>[] is a constructor!
+DalvikVM - [WARN]: ar 0 (null, java.security.SecureRandom), (java.security.SecureRandom@26651f73, void)
+Executor - [DEBUG]: Reflected init instance: java.security.SecureRandom@26651f73, class java.security.SecureRandom
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 3
+TaintSumBranch - [BB]: <java.security.SecureRandom: void <init>()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 NEW,INSTANCE,dst=r1,type=javax.crypto.spec.DESKeySpec> at com.passion.lightdd.b/a[[B, java.lang.String]
+OP_NEW_INSTANCE - [DEBUG]: [reg 1@b/a]
+DalvikVM - [WARN]: ar 1, (null, javax.crypto.spec.DESKeySpec)
+OP_NEW_INSTANCE - [BB]: Reflecable instance.
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_NEW_INSTANCE -> jump set pc to 4
+TaintSumBranch - [BB]: Rdst [reg 1@b/a]
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <4 MOV,CONST,dst=r2,type=java.lang.String,extra="DDH#X%LT"> at com.passion.lightdd.b/a[[B, java.lang.String]
+Executor - [DEBUG]: Mov const begin <4 MOV,CONST,dst=r2,type=java.lang.String,extra="DDH#X%LT">
+DalvikVM - [WARN]: ar 2, (DDH#X%LT, java.lang.String)
+Executor - [DEBUG]: data: DDH#X%LT class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 5
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <5 INVOKE,VIRTUAL,extra=[java.lang.String/getBytes[], [2]]> at com.passion.lightdd.b/a[[B, java.lang.String]
+Executor - [MSG]: arg0 obj: DDH#X%LT
+Executor - [DEBUG]: Reflction class: class java.lang.String
+DalvikVM - [WARN]: ar -1, ([B@2f32f43d, [B)
+Executor - [DEBUG]: Return data: [B@2f32f43d ,class [B
+Executor - [MSG]: Reflction invocation public byte[] java.lang.String.getBytes()
+DalvikVM - [BB]: Set reflective call: public byte[] java.lang.String.getBytes()
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 6
+TaintSumBranch - [BB]: <java.lang.String: [B getBytes()>
+TaintSumBranch - [DEBUG]: Not a taint source call: <java.lang.String: [B getBytes()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <6 MOV,RESULT,dst=r2,type=java.lang.Object> at com.passion.lightdd.b/a[[B, java.lang.String]
+DalvikVM - [WARN]: ar 2 (DDH#X%LT, java.lang.String), ([B@2f32f43d, [B)
+OP_MOV_RESULT - [BB]: Result data: [B@2f32f43d
+OP_MOV_RESULT - [DEBUG]: Result data: [B@2f32f43d, type: [B, to [reg 2@b/a]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 7
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <7 INVOKE,DIRECT,extra=[javax.crypto.spec.DESKeySpec/<init>[[B], [1, 2]]> at com.passion.lightdd.b/a[[B, java.lang.String]
+Executor - [MSG]: arg0 obj: null
+Executor - [BB]: javax.crypto.spec.DESKeySpec/<init>[[B] is a constructor!
+Executor - [BB]: arg1@reg2: [B@2f32f43d
+DalvikVM - [WARN]: ar 1 (null, javax.crypto.spec.DESKeySpec), (javax.crypto.spec.DESKeySpec@123f9bb1, javax.crypto.spec.DESKeySpec)
+Executor - [DEBUG]: Init instance: javax.crypto.spec.DESKeySpec@123f9bb1 class javax.crypto.spec.DESKeySpec
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 8
+TaintSumBranch - [BB]: <javax.crypto.spec.DESKeySpec: void <init>([B)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <8 MOV,CONST,dst=r2,type=java.lang.String,extra="DES"> at com.passion.lightdd.b/a[[B, java.lang.String]
+Executor - [DEBUG]: Mov const begin <8 MOV,CONST,dst=r2,type=java.lang.String,extra="DES">
+DalvikVM - [WARN]: ar 2 ([B@2f32f43d, [B), (DES, java.lang.String)
+Executor - [DEBUG]: data: DES class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 9
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <9 INVOKE,STATIC,extra=[javax.crypto.SecretKeyFactory/getInstance[java.lang.String], [2]]> at com.passion.lightdd.b/a[[B, java.lang.String]
+Executor - [DEBUG]: Reflction class javax.crypto.SecretKeyFactory
+Executor - [BB]: arg0@reg2: DES
+Executor - [BB]: param: DES
+DalvikVM - [WARN]: ar -1, (javax.crypto.SecretKeyFactory@2eb6a52e, javax.crypto.SecretKeyFactory)
+Executor - [MSG]: Reflction invocation public static final javax.crypto.SecretKeyFactory javax.crypto.SecretKeyFactory.getInstance(java.lang.String) throws java.security.NoSuchAlgorithmException
+DalvikVM - [BB]: Set reflective call: public static final javax.crypto.SecretKeyFactory javax.crypto.SecretKeyFactory.getInstance(java.lang.String) throws java.security.NoSuchAlgorithmException
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INVOKE_STATIC -> jump set pc to 10
+TaintSumBranch - [BB]: <javax.crypto.SecretKeyFactory: javax.crypto.SecretKeyFactory getInstance(java.lang.String)>
+TaintSumBranch - [DEBUG]: Not a taint source call: <javax.crypto.SecretKeyFactory: javax.crypto.SecretKeyFactory getInstance(java.lang.String)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <10 MOV,RESULT,dst=r2,type=java.lang.Object> at com.passion.lightdd.b/a[[B, java.lang.String]
+DalvikVM - [WARN]: ar 2 (DES, java.lang.String), (javax.crypto.SecretKeyFactory@2eb6a52e, javax.crypto.SecretKeyFactory)
+OP_MOV_RESULT - [BB]: Result data: javax.crypto.SecretKeyFactory@2eb6a52e
+OP_MOV_RESULT - [DEBUG]: Result data: javax.crypto.SecretKeyFactory@2eb6a52e, type: javax.crypto.SecretKeyFactory, to [reg 2@b/a]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 11
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <11 INVOKE,VIRTUAL,extra=[javax.crypto.SecretKeyFactory/generateSecret[java.security.spec.KeySpec], [2, 1]]> at com.passion.lightdd.b/a[[B, java.lang.String]
+Executor - [MSG]: arg0 obj: javax.crypto.SecretKeyFactory@2eb6a52e
+Executor - [DEBUG]: Reflction class: class javax.crypto.SecretKeyFactory
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg1: javax.crypto.spec.DESKeySpec@123f9bb1
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: javax.crypto.SecretKeyFactory@2eb6a52e, from class: class javax.crypto.SecretKeyFactory
+DalvikVM - [WARN]: ar -1, (com.sun.crypto.provider.DESKey@1837f, javax.crypto.SecretKey)
+Executor - [DEBUG]: Return data: com.sun.crypto.provider.DESKey@1837f ,class com.sun.crypto.provider.DESKey
+Executor - [MSG]: Reflction invocation public final javax.crypto.SecretKey javax.crypto.SecretKeyFactory.generateSecret(java.security.spec.KeySpec) throws java.security.spec.InvalidKeySpecException
+DalvikVM - [BB]: Set reflective call: public final javax.crypto.SecretKey javax.crypto.SecretKeyFactory.generateSecret(java.security.spec.KeySpec) throws java.security.spec.InvalidKeySpecException
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 12
+TaintSumBranch - [BB]: <javax.crypto.SecretKeyFactory: javax.crypto.SecretKey generateSecret(java.security.spec.KeySpec)>
+TaintSumBranch - [DEBUG]: Not a taint source call: <javax.crypto.SecretKeyFactory: javax.crypto.SecretKey generateSecret(java.security.spec.KeySpec)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <12 MOV,RESULT,dst=r1,type=java.lang.Object> at com.passion.lightdd.b/a[[B, java.lang.String]
+DalvikVM - [WARN]: ar 1 (javax.crypto.spec.DESKeySpec@123f9bb1, javax.crypto.spec.DESKeySpec), (com.sun.crypto.provider.DESKey@1837f, javax.crypto.SecretKey)
+OP_MOV_RESULT - [BB]: Result data: com.sun.crypto.provider.DESKey@1837f
+OP_MOV_RESULT - [DEBUG]: Result data: com.sun.crypto.provider.DESKey@1837f, type: javax.crypto.SecretKey, to [reg 1@b/a]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 13
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <13 INVOKE,STATIC,extra=[javax.crypto.Cipher/getInstance[java.lang.String], [5]]> at com.passion.lightdd.b/a[[B, java.lang.String]
+Executor - [DEBUG]: Reflction class javax.crypto.Cipher
+Executor - [BB]: arg0@reg5: DES
+Executor - [BB]: param: DES
+DalvikVM - [WARN]: ar -1, (javax.crypto.Cipher@3ba49116, javax.crypto.Cipher)
+Executor - [MSG]: Reflction invocation public static final javax.crypto.Cipher javax.crypto.Cipher.getInstance(java.lang.String) throws java.security.NoSuchAlgorithmException,javax.crypto.NoSuchPaddingException
+DalvikVM - [BB]: Set reflective call: public static final javax.crypto.Cipher javax.crypto.Cipher.getInstance(java.lang.String) throws java.security.NoSuchAlgorithmException,javax.crypto.NoSuchPaddingException
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INVOKE_STATIC -> jump set pc to 14
+TaintSumBranch - [BB]: <javax.crypto.Cipher: javax.crypto.Cipher getInstance(java.lang.String)>
+TaintSumBranch - [DEBUG]: Not a taint source call: <javax.crypto.Cipher: javax.crypto.Cipher getInstance(java.lang.String)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <14 MOV,RESULT,dst=r2,type=java.lang.Object> at com.passion.lightdd.b/a[[B, java.lang.String]
+DalvikVM - [WARN]: ar 2 (javax.crypto.SecretKeyFactory@2eb6a52e, javax.crypto.SecretKeyFactory), (javax.crypto.Cipher@3ba49116, javax.crypto.Cipher)
+OP_MOV_RESULT - [BB]: Result data: javax.crypto.Cipher@3ba49116
+OP_MOV_RESULT - [DEBUG]: Result data: javax.crypto.Cipher@3ba49116, type: javax.crypto.Cipher, to [reg 2@b/a]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 15
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <15 MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?Primitive:2> at com.passion.lightdd.b/a[[B, java.lang.String]
+Executor - [DEBUG]: Mov const begin <15 MOV,CONST,dst=r3,type=void,extra=class patdroid.core.PrimitiveInfo?Primitive:2>
+DalvikVM - [WARN]: ar 3, (Primitive:2, void)
+Executor - [DEBUG]: data: Primitive:2 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 16
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <16 INVOKE,VIRTUAL,extra=[javax.crypto.Cipher/init[int, java.security.Key, java.security.SecureRandom], [2, 3, 1, 0]]> at com.passion.lightdd.b/a[[B, java.lang.String]
+Executor - [MSG]: arg0 obj: javax.crypto.Cipher@3ba49116
+Executor - [DEBUG]: Reflction class: class javax.crypto.Cipher
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg3: Primitive:2
+Executor - [DEBUG]: Expected para type: int
+Executor - [DEBUG]: Real para type: int, value: 2
+Executor - [BB]: arg2@reg1: com.sun.crypto.provider.DESKey@1837f
+Executor - [BB]: arg3@reg0: java.security.SecureRandom@26651f73
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: javax.crypto.Cipher@3ba49116, from class: class javax.crypto.Cipher
+DalvikVM - [WARN]: ar -1, (null, void)
+Executor - [MSG]: Reflction invocation public final void javax.crypto.Cipher.init(int,java.security.Key,java.security.SecureRandom) throws java.security.InvalidKeyException
+DalvikVM - [BB]: Set reflective call: public final void javax.crypto.Cipher.init(int,java.security.Key,java.security.SecureRandom) throws java.security.InvalidKeyException
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 17
+TaintSumBranch - [BB]: <javax.crypto.Cipher: void init(int,java.security.Key,java.security.SecureRandom)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <17 INVOKE,VIRTUAL,extra=[javax.crypto.Cipher/doFinal[[B], [2, 4]]> at com.passion.lightdd.b/a[[B, java.lang.String]
+Executor - [MSG]: arg0 obj: javax.crypto.Cipher@3ba49116
+Executor - [DEBUG]: Reflction class: class javax.crypto.Cipher
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg4: null
+Executor - [ERROR]: Reflection error: null
+main - [MSG]: Analysis has run for 2.786800609 seconds
+
