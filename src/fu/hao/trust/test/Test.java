@@ -51,13 +51,13 @@ public class Test {
 
 		args[0] = "D:/malwares/DroidKungFu1/881ee009e90d7d70d2802c3193190d973445d807";
 		args[1] = "com.google.ssearch.SearchService";
-		args[2] = "onCreate";
+		args[2] = "doSearchReport";
 
 		Main.main(args);
 
 		assertEquals(false, Results.results.isEmpty());
 		Map<String, String> res = new HashMap<>();
-		res.put("<java.net.URL: void <init>(java.lang.String)>",
+		res.put("<org.apache.http.impl.client.CloseableHttpClient: org.apache.http.client.methods.CloseableHttpResponse execute(org.apache.http.client.methods.HttpUriRequest)>",
 				"http://su.5k3g.com/portal/m/c5/3.ashx?ie=359874043116909&is=460004753203051&m=Empire&tp=2&cv=100&r=r=????&nt2=20160627171524"); 
 		assertEquals(true, Results.results.contains(res));
 	}

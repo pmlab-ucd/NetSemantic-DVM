@@ -1,0 +1,660 @@
+DalvikVM - [MSG]: Begin run onCreate at D:\malwares\DroidKungFu1\881ee009e90d7d70d2802c3193190d973445d807\881ee009e90d7d70d2802c3193190d973445d807.apk
+DalvikVM - [MSG]: RUN Method com.google.ssearch.SearchService/onCreate[]
+DalvikVM - [BB]: New method call: com.google.ssearch.SearchService/onCreate[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[11]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r7,type=AndroidWide,extra=class patdroid.core.PrimitiveInfo?Primitive:0l>
+DalvikVM - [BB]: [2]<1 MOV,CONST,dst=r10,type=void,extra=class patdroid.core.PrimitiveInfo?Primitive:0>
+DalvikVM - [BB]: [3]<0 HALT,SUPER,extra=[null, [11]]>
+DalvikVM - [BB]: [4]<3 MOV,CONST,dst=r6,type=java.lang.String,extra="sstimestamp">
+DalvikVM - [BB]: [5]<0 INVOKE,VIRTUAL,extra=[android.content.ContextWrapper/getSharedPreferences[java.lang.String, int], [11, 6, 10]]>
+DalvikVM - [BB]: [6]<0 MOV,RESULT,dst=r5,type=java.lang.Object>
+DalvikVM - [BB]: [7]<6 MOV,CONST,dst=r6,type=java.lang.String,extra="start">
+DalvikVM - [BB]: [8]<0 INVOKE,INTERFACE,extra=[android.content.SharedPreferences/getLong[java.lang.String, long], [5, 6, 7]]>
+DalvikVM - [BB]: [9]<0 MOV,RESULT,dst=r3,type=AndroidWide>
+DalvikVM - [BB]: [10]<0 INVOKE,STATIC,extra=[java.lang.System/currentTimeMillis[], []]>
+DalvikVM - [BB]: [11]<0 MOV,RESULT,dst=r0,type=AndroidWide>
+DalvikVM - [BB]: [12]<0 CMP,CMPLONG,dst=r6,r0=r3,r1=r7,type=long>
+DalvikVM - [BB]: [13]<0 IF,NEZ,r0=r6,extra=index:21>
+DalvikVM - [BB]: [14]<0 INVOKE,INTERFACE,extra=[android.content.SharedPreferences/edit[], [5]]>
+DalvikVM - [BB]: [15]<0 MOV,RESULT,dst=r2,type=java.lang.Object>
+DalvikVM - [BB]: [16]<15 MOV,CONST,dst=r6,type=java.lang.String,extra="start">
+DalvikVM - [BB]: [17]<0 INVOKE,INTERFACE,extra=[android.content.SharedPreferences$Editor/putLong[java.lang.String, long], [2, 6, 0]]>
+DalvikVM - [BB]: [18]<0 INVOKE,INTERFACE,extra=[android.content.SharedPreferences$Editor/commit[], [2]]>
+DalvikVM - [BB]: [19]<0 HALT,VIRTUAL,extra=[null, [11]]>
+DalvikVM - [BB]: [20]<0 RETURN,VOID>
+DalvikVM - [BB]: [21]<0 ARITHMETIC,SUB,dst=r6,r0=r0,r1=r3,type=long>
+DalvikVM - [BB]: [22]<21 MOV,CONST,dst=r8,type=AndroidWide,extra=class patdroid.core.PrimitiveInfo?Primitive:14400000l>
+DalvikVM - [BB]: [23]<0 CMP,CMPLONG,dst=r6,r0=r6,r1=r8,type=long>
+DalvikVM - [BB]: [24]<0 IF,GEZ,r0=r6,extra=index:27>
+DalvikVM - [BB]: [25]<0 HALT,VIRTUAL,extra=[null, [11]]>
+DalvikVM - [BB]: [26]<0 GOTO,extra=index:20>
+DalvikVM - [BB]: [27]<26 MOV,CONST,dst=r6,type=java.lang.String,extra="permission">
+DalvikVM - [BB]: [28]<0 INVOKE,VIRTUAL,extra=[android.content.ContextWrapper/getSharedPreferences[java.lang.String, int], [11, 6, 10]]>
+DalvikVM - [BB]: [29]<0 MOV,RESULT,dst=r6,type=java.lang.Object>
+DalvikVM - [BB]: [30]<0 INSTANCE,IPUT,r0=r11,r1=r6,type=java.lang.Object,extra=com.google.ssearch.SearchService.mPreferences>
+DalvikVM - [BB]: [31]<0 INVOKE,STATIC,extra=[com.google.ssearch.Utils/isConnected[android.content.Context], [11]]>
+DalvikVM - [BB]: [32]<0 MOV,RESULT,dst=r6,type=void>
+DalvikVM - [BB]: [33]<0 IF,EQZ,r0=r6,extra=index:35>
+DalvikVM - [BB]: [34]<0 INVOKE,DIRECT,extra=[com.google.ssearch.SearchService/doSearchReport[], [11]]>
+DalvikVM - [BB]: [35]<0 INVOKE,DIRECT,extra=[com.google.ssearch.SearchService/getPermission[], [11]]>
+DalvikVM - [BB]: [36]<0 INVOKE,DIRECT,extra=[com.google.ssearch.SearchService/provideService[], [11]]>
+DalvikVM - [BB]: [37]<0 GOTO,extra=index:20>
+newStackFrame - [BB]: New Stack Frame: StackFrame com.google.ssearch.SearchService/onCreate[]
+newStackFrame - [BB]: Add frame StackFrame com.google.ssearch.SearchService/onCreate[]
+newStackFrame - [BB]: Stack: [StackFrame com.google.ssearch.SearchService/onCreate[]]
+DalvikVM - [BB]: Superclass: com.google.ssearch.SearchService
+Service - [BB]: New instance of com.google.ssearch.SearchService
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@672330a6
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: New DVMClass representation for com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@672330a6
+DalvikVM - [BB]: New method call: com.google.ssearch.SearchService/<clinit>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r0,type=java.lang.String,extra="devwilson">
+DalvikVM - [BB]: [2]<0 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(com.google.ssearch.SearchService, mIdentifier)>
+DalvikVM - [BB]: [3]<2 MOV,CONST,dst=r0,type=AndroidWide,extra=class patdroid.core.PrimitiveInfo?Primitive:60000l>
+DalvikVM - [BB]: [4]<0 STATIC,SPUT,r0=r0,type=AndroidWide,extra=(com.google.ssearch.SearchService, INTERVAL)>
+DalvikVM - [BB]: [5]<0 RETURN,VOID>
+newStackFrame - [BB]: New Stack Frame: StackFrame com.google.ssearch.SearchService/<clinit>[], pc -1 stored. 
+newStackFrame - [BB]: Stack: [StackFrame com.google.ssearch.SearchService/onCreate[]]
+DalvikVM - [MSG]: Begin run instrumented methods!
+DalvikVM - [BB]: Add frames [StackFrame com.google.ssearch.SearchService/<clinit>[]]
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[]> at com.google.ssearch.SearchService/<clinit>[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 MOV,CONST,dst=r0,type=java.lang.String,extra="devwilson"> at com.google.ssearch.SearchService/<clinit>[]
+Executor - [DEBUG]: Mov const begin <1 MOV,CONST,dst=r0,type=java.lang.String,extra="devwilson">
+DalvikVM - [WARN]: ar 0, (devwilson, java.lang.String)
+Executor - [DEBUG]: data: devwilson class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 2
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(com.google.ssearch.SearchService, mIdentifier)> at com.google.ssearch.SearchService/<clinit>[]
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@672330a6
+Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.google.ssearch.SearchService
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@672330a6
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: ffa:com.google.ssearch.SearchService/<clinit>[]
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: Expect sput mIdentifier from com.google.ssearch.SearchService
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: Real sput devwilson from [DVMClass: com.google.ssearch.SearchService@269504232]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD -> jump set pc to 3
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@672330a6
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.google.ssearch.SearchService
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@672330a6
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 MOV,CONST,dst=r0,type=AndroidWide,extra=class patdroid.core.PrimitiveInfo?Primitive:60000l> at com.google.ssearch.SearchService/<clinit>[]
+Executor - [DEBUG]: Mov const begin <3 MOV,CONST,dst=r0,type=AndroidWide,extra=class patdroid.core.PrimitiveInfo?Primitive:60000l>
+DalvikVM - [WARN]: ar 0 (devwilson, java.lang.String), (Primitive:60000l, AndroidWide)
+Executor - [DEBUG]: data: Primitive:60000l class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 4
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <4 STATIC,SPUT,r0=r0,type=AndroidWide,extra=(com.google.ssearch.SearchService, INTERVAL)> at com.google.ssearch.SearchService/<clinit>[]
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@672330a6
+Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.google.ssearch.SearchService
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@672330a6
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: ffa:com.google.ssearch.SearchService/<clinit>[]
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: Expect sput INTERVAL from com.google.ssearch.SearchService
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: Real sput Primitive:60000l from [DVMClass: com.google.ssearch.SearchService@269504232]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD -> jump set pc to 5
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@672330a6
+Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.google.ssearch.SearchService
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@672330a6
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <5 RETURN,VOID> at com.google.ssearch.SearchService/<clinit>[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame com.google.ssearch.SearchService/onCreate[]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame com.google.ssearch.SearchService/onCreate[]
+DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame com.google.ssearch.SearchService/onCreate[]
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Service at fu.hao.trust.dvm.VMHeap@672330a6
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: New DVMClass representation for android.app.Service at fu.hao.trust.dvm.VMHeap@672330a6
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@672330a6
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: New DVMClass representation for android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@672330a6
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@672330a6
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: New DVMClass representation for android.content.Context at fu.hao.trust.dvm.VMHeap@672330a6
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@672330a6
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: New DVMClass representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@672330a6
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@672330a6
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.Context
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@672330a6
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.ContextWrapper
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@672330a6
+Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.app.Service
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Service at fu.hao.trust.dvm.VMHeap@672330a6
+Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type com.google.ssearch.SearchService
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@672330a6
+Service - [MSG]: Not empty constructor
+DalvikVM - [BB]: New method call: com.google.ssearch.SearchService/<init>[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[3]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?Primitive:0>
+DalvikVM - [BB]: [2]<1 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?Primitive:0>
+DalvikVM - [BB]: [3]<0 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [3]]>
+DalvikVM - [BB]: [4]<0 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.ssearch.SearchService.mPreferences>
+DalvikVM - [BB]: [5]<0 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.ssearch.SearchService.mImei>
+DalvikVM - [BB]: [6]<0 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.ssearch.SearchService.mMobile>
+DalvikVM - [BB]: [7]<0 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.ssearch.SearchService.mModel>
+DalvikVM - [BB]: [8]<0 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.ssearch.SearchService.mOsType>
+DalvikVM - [BB]: [9]<0 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.ssearch.SearchService.mOsAPI>
+DalvikVM - [BB]: [10]<0 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.ssearch.SearchService.mAliaMem>
+DalvikVM - [BB]: [11]<0 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.ssearch.SearchService.mSDMem>
+DalvikVM - [BB]: [12]<0 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.ssearch.SearchService.mNetType>
+DalvikVM - [BB]: [13]<0 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.ssearch.SearchService.mOperater>
+DalvikVM - [BB]: [14]<13 MOV,CONST,dst=r0,type=java.lang.String,extra="">
+DalvikVM - [BB]: [15]<0 INSTANCE,IPUT,r0=r3,r1=r0,type=java.lang.Object,extra=com.google.ssearch.SearchService.mTaskId>
+DalvikVM - [BB]: [16]<0 INSTANCE,IPUT,r0=r3,r1=r1,type=boolean,extra=com.google.ssearch.SearchService.mWaiting>
+DalvikVM - [BB]: [17]<0 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.ssearch.SearchService.mPkgName>
+DalvikVM - [BB]: [18]<0 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.ssearch.SearchService.mRun>
+DalvikVM - [BB]: [19]<0 INSTANCE,IPUT,r0=r3,r1=r1,type=void,extra=com.google.ssearch.SearchService.mPermState>
+DalvikVM - [BB]: [20]<19 MOV,CONST,dst=r0,type=AndroidWide,extra=class patdroid.core.PrimitiveInfo?Primitive:9l>
+DalvikVM - [BB]: [21]<0 INSTANCE,IPUT,r0=r3,r1=r0,type=AndroidWide,extra=com.google.ssearch.SearchService.mTickets>
+DalvikVM - [BB]: [22]<21 MOV,CONST,dst=r0,type=AndroidWide,extra=class patdroid.core.PrimitiveInfo?Primitive:0l>
+DalvikVM - [BB]: [23]<0 INSTANCE,IPUT,r0=r3,r1=r0,type=AndroidWide,extra=com.google.ssearch.SearchService.mLastTickets>
+DalvikVM - [BB]: [24]<0 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.ssearch.SearchService.mTimer>
+DalvikVM - [BB]: [25]<0 RETURN,VOID>
+DalvikVM - [WARN]: ar -2, (instance number 1@com.google.ssearch.SearchService, com.google.ssearch.SearchService)
+newStackFrame - [BB]: New Stack Frame: StackFrame com.google.ssearch.SearchService/<init>[], pc -1 stored. 
+newStackFrame - [BB]: Stack: [StackFrame com.google.ssearch.SearchService/onCreate[]]
+DalvikVM - [MSG]: Begin run instrumented methods!
+DalvikVM - [BB]: Add frames [StackFrame com.google.ssearch.SearchService/<init>[]]
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[3]> at com.google.ssearch.SearchService/<init>[]
+DalvikVM - [WARN]: ar 3, (instance number 1@com.google.ssearch.SearchService, com.google.ssearch.SearchService)
+Executor - [DEBUG]: params: instance number 1@com.google.ssearch.SearchService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?Primitive:0> at com.google.ssearch.SearchService/<init>[]
+Executor - [DEBUG]: Mov const begin <1 MOV,CONST,dst=r1,type=void,extra=class patdroid.core.PrimitiveInfo?Primitive:0>
+DalvikVM - [WARN]: ar 1, (Primitive:0, void)
+Executor - [DEBUG]: data: Primitive:0 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 2
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?Primitive:0> at com.google.ssearch.SearchService/<init>[]
+Executor - [DEBUG]: Mov const begin <2 MOV,CONST,dst=r2,type=void,extra=class patdroid.core.PrimitiveInfo?Primitive:0>
+DalvikVM - [WARN]: ar 2, (Primitive:0, void)
+Executor - [DEBUG]: data: Primitive:0 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 3
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 INVOKE,DIRECT,extra=[java.lang.Object/<init>[], [3]]> at com.google.ssearch.SearchService/<init>[]
+Executor - [MSG]: arg0 obj: instance number 1@com.google.ssearch.SearchService
+Executor - [BB]: java.lang.Object/<init>[] is a constructor!
+Executor - [WARN]: Reflection error: com.google.ssearch.SearchService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 4
+TaintSumBranch - [BB]: <java.lang.Object: void <init>()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <4 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.ssearch.SearchService.mPreferences> at com.google.ssearch.SearchService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.google.ssearch.SearchService.mPreferences
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.google.ssearch.SearchService
+Service - [DEBUG]: put field Primitive:0
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data Primitive:0 to the mPreferences of instance number 1@com.google.ssearch.SearchService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 5
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <5 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.ssearch.SearchService.mImei> at com.google.ssearch.SearchService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.google.ssearch.SearchService.mImei
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.google.ssearch.SearchService
+Service - [DEBUG]: put field Primitive:0
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data Primitive:0 to the mImei of instance number 1@com.google.ssearch.SearchService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 6
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <6 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.ssearch.SearchService.mMobile> at com.google.ssearch.SearchService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.google.ssearch.SearchService.mMobile
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.google.ssearch.SearchService
+Service - [DEBUG]: put field Primitive:0
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data Primitive:0 to the mMobile of instance number 1@com.google.ssearch.SearchService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 7
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <7 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.ssearch.SearchService.mModel> at com.google.ssearch.SearchService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.google.ssearch.SearchService.mModel
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.google.ssearch.SearchService
+Service - [DEBUG]: put field Primitive:0
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data Primitive:0 to the mModel of instance number 1@com.google.ssearch.SearchService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 8
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <8 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.ssearch.SearchService.mOsType> at com.google.ssearch.SearchService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.google.ssearch.SearchService.mOsType
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.google.ssearch.SearchService
+Service - [DEBUG]: put field Primitive:0
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data Primitive:0 to the mOsType of instance number 1@com.google.ssearch.SearchService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 9
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <9 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.ssearch.SearchService.mOsAPI> at com.google.ssearch.SearchService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.google.ssearch.SearchService.mOsAPI
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.google.ssearch.SearchService
+Service - [DEBUG]: put field Primitive:0
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data Primitive:0 to the mOsAPI of instance number 1@com.google.ssearch.SearchService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 10
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <10 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.ssearch.SearchService.mAliaMem> at com.google.ssearch.SearchService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.google.ssearch.SearchService.mAliaMem
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.google.ssearch.SearchService
+Service - [DEBUG]: put field Primitive:0
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data Primitive:0 to the mAliaMem of instance number 1@com.google.ssearch.SearchService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 11
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <11 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.ssearch.SearchService.mSDMem> at com.google.ssearch.SearchService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.google.ssearch.SearchService.mSDMem
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.google.ssearch.SearchService
+Service - [DEBUG]: put field Primitive:0
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data Primitive:0 to the mSDMem of instance number 1@com.google.ssearch.SearchService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 12
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <12 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.ssearch.SearchService.mNetType> at com.google.ssearch.SearchService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.google.ssearch.SearchService.mNetType
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.google.ssearch.SearchService
+Service - [DEBUG]: put field Primitive:0
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data Primitive:0 to the mNetType of instance number 1@com.google.ssearch.SearchService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 13
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <13 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.ssearch.SearchService.mOperater> at com.google.ssearch.SearchService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.google.ssearch.SearchService.mOperater
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.google.ssearch.SearchService
+Service - [DEBUG]: put field Primitive:0
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data Primitive:0 to the mOperater of instance number 1@com.google.ssearch.SearchService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 14
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <14 MOV,CONST,dst=r0,type=java.lang.String,extra=""> at com.google.ssearch.SearchService/<init>[]
+Executor - [DEBUG]: Mov const begin <14 MOV,CONST,dst=r0,type=java.lang.String,extra="">
+DalvikVM - [WARN]: ar 0, (, java.lang.String)
+Executor - [DEBUG]: data:  class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 15
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <15 INSTANCE,IPUT,r0=r3,r1=r0,type=java.lang.Object,extra=com.google.ssearch.SearchService.mTaskId> at com.google.ssearch.SearchService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.google.ssearch.SearchService.mTaskId
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.google.ssearch.SearchService
+Service - [DEBUG]: put field 
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data  to the mTaskId of instance number 1@com.google.ssearch.SearchService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 16
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <16 INSTANCE,IPUT,r0=r3,r1=r1,type=boolean,extra=com.google.ssearch.SearchService.mWaiting> at com.google.ssearch.SearchService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.google.ssearch.SearchService.mWaiting
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.google.ssearch.SearchService
+Service - [DEBUG]: put field Primitive:0
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data Primitive:0 to the mWaiting of instance number 1@com.google.ssearch.SearchService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 17
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <17 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.ssearch.SearchService.mPkgName> at com.google.ssearch.SearchService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.google.ssearch.SearchService.mPkgName
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.google.ssearch.SearchService
+Service - [DEBUG]: put field Primitive:0
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data Primitive:0 to the mPkgName of instance number 1@com.google.ssearch.SearchService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 18
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <18 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.ssearch.SearchService.mRun> at com.google.ssearch.SearchService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.google.ssearch.SearchService.mRun
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.google.ssearch.SearchService
+Service - [DEBUG]: put field Primitive:0
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data Primitive:0 to the mRun of instance number 1@com.google.ssearch.SearchService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 19
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <19 INSTANCE,IPUT,r0=r3,r1=r1,type=void,extra=com.google.ssearch.SearchService.mPermState> at com.google.ssearch.SearchService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.google.ssearch.SearchService.mPermState
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.google.ssearch.SearchService
+Service - [DEBUG]: put field Primitive:0
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data Primitive:0 to the mPermState of instance number 1@com.google.ssearch.SearchService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 20
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <20 MOV,CONST,dst=r0,type=AndroidWide,extra=class patdroid.core.PrimitiveInfo?Primitive:9l> at com.google.ssearch.SearchService/<init>[]
+Executor - [DEBUG]: Mov const begin <20 MOV,CONST,dst=r0,type=AndroidWide,extra=class patdroid.core.PrimitiveInfo?Primitive:9l>
+DalvikVM - [WARN]: ar 0 (, java.lang.String), (Primitive:9l, AndroidWide)
+Executor - [DEBUG]: data: Primitive:9l class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 21
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <21 INSTANCE,IPUT,r0=r3,r1=r0,type=AndroidWide,extra=com.google.ssearch.SearchService.mTickets> at com.google.ssearch.SearchService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.google.ssearch.SearchService.mTickets
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.google.ssearch.SearchService
+Service - [DEBUG]: put field Primitive:9l
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data Primitive:9l to the mTickets of instance number 1@com.google.ssearch.SearchService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 22
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <22 MOV,CONST,dst=r0,type=AndroidWide,extra=class patdroid.core.PrimitiveInfo?Primitive:0l> at com.google.ssearch.SearchService/<init>[]
+Executor - [DEBUG]: Mov const begin <22 MOV,CONST,dst=r0,type=AndroidWide,extra=class patdroid.core.PrimitiveInfo?Primitive:0l>
+DalvikVM - [WARN]: ar 0 (Primitive:9l, AndroidWide), (Primitive:0l, AndroidWide)
+Executor - [DEBUG]: data: Primitive:0l class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 23
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <23 INSTANCE,IPUT,r0=r3,r1=r0,type=AndroidWide,extra=com.google.ssearch.SearchService.mLastTickets> at com.google.ssearch.SearchService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.google.ssearch.SearchService.mLastTickets
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.google.ssearch.SearchService
+Service - [DEBUG]: put field Primitive:0l
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data Primitive:0l to the mLastTickets of instance number 1@com.google.ssearch.SearchService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 24
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <24 INSTANCE,IPUT,r0=r3,r1=r2,type=java.lang.Object,extra=com.google.ssearch.SearchService.mTimer> at com.google.ssearch.SearchService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: field com.google.ssearch.SearchService.mTimer
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [BB]: Target obj instance number 1@com.google.ssearch.SearchService
+Service - [DEBUG]: put field Primitive:0
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data Primitive:0 to the mTimer of instance number 1@com.google.ssearch.SearchService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 25
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <25 RETURN,VOID> at com.google.ssearch.SearchService/<init>[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack [StackFrame com.google.ssearch.SearchService/onCreate[]]
+DalvikVM - [BB]: Back to the last stack frame.StackFrame com.google.ssearch.SearchService/onCreate[]
+DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame com.google.ssearch.SearchService/onCreate[]
+Service - [BB]: New Service Created with type com.google.ssearch.SearchService
+DalvikVM - [BB]: New method call: com.google.ssearch.SearchService/onCreate[]
+DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[11]>
+DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r7,type=AndroidWide,extra=class patdroid.core.PrimitiveInfo?Primitive:0l>
+DalvikVM - [BB]: [2]<1 MOV,CONST,dst=r10,type=void,extra=class patdroid.core.PrimitiveInfo?Primitive:0>
+DalvikVM - [BB]: [3]<0 HALT,SUPER,extra=[null, [11]]>
+DalvikVM - [BB]: [4]<3 MOV,CONST,dst=r6,type=java.lang.String,extra="sstimestamp">
+DalvikVM - [BB]: [5]<0 INVOKE,VIRTUAL,extra=[android.content.ContextWrapper/getSharedPreferences[java.lang.String, int], [11, 6, 10]]>
+DalvikVM - [BB]: [6]<0 MOV,RESULT,dst=r5,type=java.lang.Object>
+DalvikVM - [BB]: [7]<6 MOV,CONST,dst=r6,type=java.lang.String,extra="start">
+DalvikVM - [BB]: [8]<0 INVOKE,INTERFACE,extra=[android.content.SharedPreferences/getLong[java.lang.String, long], [5, 6, 7]]>
+DalvikVM - [BB]: [9]<0 MOV,RESULT,dst=r3,type=AndroidWide>
+DalvikVM - [BB]: [10]<0 INVOKE,STATIC,extra=[java.lang.System/currentTimeMillis[], []]>
+DalvikVM - [BB]: [11]<0 MOV,RESULT,dst=r0,type=AndroidWide>
+DalvikVM - [BB]: [12]<0 CMP,CMPLONG,dst=r6,r0=r3,r1=r7,type=long>
+DalvikVM - [BB]: [13]<0 IF,NEZ,r0=r6,extra=index:21>
+DalvikVM - [BB]: [14]<0 INVOKE,INTERFACE,extra=[android.content.SharedPreferences/edit[], [5]]>
+DalvikVM - [BB]: [15]<0 MOV,RESULT,dst=r2,type=java.lang.Object>
+DalvikVM - [BB]: [16]<15 MOV,CONST,dst=r6,type=java.lang.String,extra="start">
+DalvikVM - [BB]: [17]<0 INVOKE,INTERFACE,extra=[android.content.SharedPreferences$Editor/putLong[java.lang.String, long], [2, 6, 0]]>
+DalvikVM - [BB]: [18]<0 INVOKE,INTERFACE,extra=[android.content.SharedPreferences$Editor/commit[], [2]]>
+DalvikVM - [BB]: [19]<0 HALT,VIRTUAL,extra=[null, [11]]>
+DalvikVM - [BB]: [20]<0 RETURN,VOID>
+DalvikVM - [BB]: [21]<0 ARITHMETIC,SUB,dst=r6,r0=r0,r1=r3,type=long>
+DalvikVM - [BB]: [22]<21 MOV,CONST,dst=r8,type=AndroidWide,extra=class patdroid.core.PrimitiveInfo?Primitive:14400000l>
+DalvikVM - [BB]: [23]<0 CMP,CMPLONG,dst=r6,r0=r6,r1=r8,type=long>
+DalvikVM - [BB]: [24]<0 IF,GEZ,r0=r6,extra=index:27>
+DalvikVM - [BB]: [25]<0 HALT,VIRTUAL,extra=[null, [11]]>
+DalvikVM - [BB]: [26]<0 GOTO,extra=index:20>
+DalvikVM - [BB]: [27]<26 MOV,CONST,dst=r6,type=java.lang.String,extra="permission">
+DalvikVM - [BB]: [28]<0 INVOKE,VIRTUAL,extra=[android.content.ContextWrapper/getSharedPreferences[java.lang.String, int], [11, 6, 10]]>
+DalvikVM - [BB]: [29]<0 MOV,RESULT,dst=r6,type=java.lang.Object>
+DalvikVM - [BB]: [30]<0 INSTANCE,IPUT,r0=r11,r1=r6,type=java.lang.Object,extra=com.google.ssearch.SearchService.mPreferences>
+DalvikVM - [BB]: [31]<0 INVOKE,STATIC,extra=[com.google.ssearch.Utils/isConnected[android.content.Context], [11]]>
+DalvikVM - [BB]: [32]<0 MOV,RESULT,dst=r6,type=void>
+DalvikVM - [BB]: [33]<0 IF,EQZ,r0=r6,extra=index:35>
+DalvikVM - [BB]: [34]<0 INVOKE,DIRECT,extra=[com.google.ssearch.SearchService/doSearchReport[], [11]]>
+DalvikVM - [BB]: [35]<0 INVOKE,DIRECT,extra=[com.google.ssearch.SearchService/getPermission[], [11]]>
+DalvikVM - [BB]: [36]<0 INVOKE,DIRECT,extra=[com.google.ssearch.SearchService/provideService[], [11]]>
+DalvikVM - [BB]: [37]<0 GOTO,extra=index:20>
+DalvikVM - [WARN]: ar -2, (instance number 1@com.google.ssearch.SearchService, com.google.ssearch.SearchService)
+newStackFrame - [BB]: New Stack Frame: StackFrame com.google.ssearch.SearchService/onCreate[]
+newStackFrame - [BB]: Stack: []
+Service - [BB]: Intent null
+DalvikVM - [MSG]: Begin run instrumented methods!
+DalvikVM - [BB]: Add frames [StackFrame com.google.ssearch.SearchService/onCreate[]]
+DalvikVM - [BB]: fu.hao.trust.dvm.DalvikVM -> runInstrumentedMethods set pc to 0
+Executor - [MSG]: 
+
+Executor - [MSG]: <0 SPECIAL,ARGUMENT_SET,extra=[11]> at com.google.ssearch.SearchService/onCreate[]
+DalvikVM - [WARN]: ar 11, (instance number 1@com.google.ssearch.SearchService, com.google.ssearch.SearchService)
+Executor - [DEBUG]: params: instance number 1@com.google.ssearch.SearchService
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_SP_ARGUMENTS -> jump set pc to 1
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <1 MOV,CONST,dst=r7,type=AndroidWide,extra=class patdroid.core.PrimitiveInfo?Primitive:0l> at com.google.ssearch.SearchService/onCreate[]
+Executor - [DEBUG]: Mov const begin <1 MOV,CONST,dst=r7,type=AndroidWide,extra=class patdroid.core.PrimitiveInfo?Primitive:0l>
+DalvikVM - [WARN]: ar 7, (Primitive:0l, AndroidWide)
+Executor - [DEBUG]: data: Primitive:0l class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 2
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <2 MOV,CONST,dst=r10,type=void,extra=class patdroid.core.PrimitiveInfo?Primitive:0> at com.google.ssearch.SearchService/onCreate[]
+Executor - [DEBUG]: Mov const begin <2 MOV,CONST,dst=r10,type=void,extra=class patdroid.core.PrimitiveInfo?Primitive:0>
+DalvikVM - [WARN]: ar 10, (Primitive:0, void)
+Executor - [DEBUG]: data: Primitive:0 class patdroid.core.PrimitiveInfo
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 3
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <3 HALT,SUPER,extra=[null, [11]]> at com.google.ssearch.SearchService/onCreate[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_HALT -> jump set pc to 4
+Executor - [MSG]: Cannot resolve the invocation
+TaintSumBranch - [BB]: Not a taint op <3 HALT,SUPER,extra=[null, [11]]>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <4 MOV,CONST,dst=r6,type=java.lang.String,extra="sstimestamp"> at com.google.ssearch.SearchService/onCreate[]
+Executor - [DEBUG]: Mov const begin <4 MOV,CONST,dst=r6,type=java.lang.String,extra="sstimestamp">
+DalvikVM - [WARN]: ar 6, (sstimestamp, java.lang.String)
+Executor - [DEBUG]: data: sstimestamp class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 5
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <5 INVOKE,VIRTUAL,extra=[android.content.ContextWrapper/getSharedPreferences[java.lang.String, int], [11, 6, 10]]> at com.google.ssearch.SearchService/onCreate[]
+Executor - [MSG]: arg0 obj: instance number 1@com.google.ssearch.SearchService
+Executor - [DEBUG]: Reflction class: class android.content.ContextWrapper
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg6: sstimestamp
+Executor - [BB]: arg2@reg10: Primitive:0
+Executor - [DEBUG]: Expected para type: int
+Executor - [DEBUG]: Real para type: int, value: 0
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: instance number 1@com.google.ssearch.SearchService, from class: class android.app.Service
+DalvikVM - [WARN]: ar -1, (android.content.SharedPreferences@15d1216b, android.content.SharedPreferences)
+Executor - [DEBUG]: Return data: android.content.SharedPreferences@15d1216b ,class android.content.SharedPreferences
+Executor - [MSG]: Reflction invocation public android.content.SharedPreferences android.content.ContextWrapper.getSharedPreferences(java.lang.String,int)
+DalvikVM - [BB]: Set reflective call: public android.content.SharedPreferences android.content.ContextWrapper.getSharedPreferences(java.lang.String,int)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 6
+TaintSumBranch - [BB]: <android.content.ContextWrapper: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>
+TaintSumBranch - [DEBUG]: Not a taint source call: <android.content.ContextWrapper: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <6 MOV,RESULT,dst=r5,type=java.lang.Object> at com.google.ssearch.SearchService/onCreate[]
+DalvikVM - [WARN]: ar 5, (android.content.SharedPreferences@15d1216b, android.content.SharedPreferences)
+OP_MOV_RESULT - [BB]: Result data: android.content.SharedPreferences@15d1216b
+OP_MOV_RESULT - [DEBUG]: Result data: android.content.SharedPreferences@15d1216b, type: android.content.SharedPreferences, to [reg 5@SearchService/onCreate]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 7
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <7 MOV,CONST,dst=r6,type=java.lang.String,extra="start"> at com.google.ssearch.SearchService/onCreate[]
+Executor - [DEBUG]: Mov const begin <7 MOV,CONST,dst=r6,type=java.lang.String,extra="start">
+DalvikVM - [WARN]: ar 6 (sstimestamp, java.lang.String), (start, java.lang.String)
+Executor - [DEBUG]: data: start class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 8
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <8 INVOKE,INTERFACE,extra=[android.content.SharedPreferences/getLong[java.lang.String, long], [5, 6, 7]]> at com.google.ssearch.SearchService/onCreate[]
+Executor - [MSG]: arg0 obj: android.content.SharedPreferences@15d1216b
+Executor - [DEBUG]: Reflction class: class android.content.SharedPreferences
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg6: start
+Executor - [BB]: arg2@reg7: Primitive:0l
+Executor - [DEBUG]: Expected para type: long
+Executor - [DEBUG]: Real para type: long, value: 0
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: android.content.SharedPreferences@15d1216b, from class: class android.content.SharedPreferences
+DalvikVM - [WARN]: ar -1, (0, long)
+Executor - [DEBUG]: Return data: 0 ,class java.lang.Long
+Executor - [MSG]: Reflction invocation public long android.content.SharedPreferences.getLong(java.lang.String,long)
+DalvikVM - [BB]: Set reflective call: public long android.content.SharedPreferences.getLong(java.lang.String,long)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 9
+TaintSumBranch - [BB]: <android.content.SharedPreferences: long getLong(java.lang.String,long)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <9 MOV,RESULT,dst=r3,type=AndroidWide> at com.google.ssearch.SearchService/onCreate[]
+DalvikVM - [WARN]: ar -1 (0, long), (Primitive:0l, long)
+DalvikVM - [WARN]: ar 3, (Primitive:0l, long)
+OP_MOV_RESULT - [BB]: Result data: Primitive:0l
+OP_MOV_RESULT - [DEBUG]: Result data: Primitive:0l, type: long, to [reg 3@SearchService/onCreate]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 10
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <10 INVOKE,STATIC,extra=[java.lang.System/currentTimeMillis[], []]> at com.google.ssearch.SearchService/onCreate[]
+Executor - [DEBUG]: Reflction class java.lang.System
+DalvikVM - [WARN]: ar -1, (1467130077356, long)
+Executor - [MSG]: Reflction invocation public static native long java.lang.System.currentTimeMillis()
+DalvikVM - [BB]: Set reflective call: public static native long java.lang.System.currentTimeMillis()
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INVOKE_STATIC -> jump set pc to 11
+TaintSumBranch - [BB]: <java.lang.System: long currentTimeMillis()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <11 MOV,RESULT,dst=r0,type=AndroidWide> at com.google.ssearch.SearchService/onCreate[]
+DalvikVM - [WARN]: ar -1 (1467130077356, long), (Primitive:1467130077356l, long)
+DalvikVM - [WARN]: ar 0, (Primitive:1467130077356l, long)
+OP_MOV_RESULT - [BB]: Result data: Primitive:1467130077356l
+OP_MOV_RESULT - [DEBUG]: Result data: Primitive:1467130077356l, type: long, to [reg 0@SearchService/onCreate]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 12
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <12 CMP,CMPLONG,dst=r6,r0=r3,r1=r7,type=long> at com.google.ssearch.SearchService/onCreate[]
+Executor - [DEBUG]: Ops: Primitive:0l, Primitive:0
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_CMP_LONG -> jump set pc to 13
+DalvikVM - [WARN]: ar 6 (start, java.lang.String), (Primitive:0, int)
+Executor - [DEBUG]: CMPLong <12 CMP,CMPLONG,dst=r6,r0=r3,r1=r7,type=long>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <13 IF,NEZ,r0=r6,extra=index:21> at com.google.ssearch.SearchService/onCreate[]
+OP_CMP - [DEBUG]: r0 data Primitive:0
+OP_CMP - [DEBUG]: r0 type int
+Executor - [DEBUG]: Ops: Primitive:0, Primitive:0
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_IF_NEZ -> jump set pc to 14
+Executor - [DEBUG]: Equ: <13 IF,NEZ,r0=r6,extra=index:21>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <14 INVOKE,INTERFACE,extra=[android.content.SharedPreferences/edit[], [5]]> at com.google.ssearch.SearchService/onCreate[]
+Executor - [MSG]: arg0 obj: android.content.SharedPreferences@15d1216b
+Executor - [DEBUG]: Reflction class: class android.content.SharedPreferences
+DalvikVM - [WARN]: ar -1, (android.content.SharedPreferences$Editor@4a891e7e, android.content.SharedPreferences$Editor)
+Executor - [DEBUG]: Return data: android.content.SharedPreferences$Editor@4a891e7e ,class android.content.SharedPreferences$Editor
+Executor - [MSG]: Reflction invocation public android.content.SharedPreferences$Editor android.content.SharedPreferences.edit()
+DalvikVM - [BB]: Set reflective call: public android.content.SharedPreferences$Editor android.content.SharedPreferences.edit()
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 15
+TaintSumBranch - [BB]: <android.content.SharedPreferences: android.content.SharedPreferences$Editor edit()>
+TaintSumBranch - [DEBUG]: Not a taint source call: <android.content.SharedPreferences: android.content.SharedPreferences$Editor edit()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <15 MOV,RESULT,dst=r2,type=java.lang.Object> at com.google.ssearch.SearchService/onCreate[]
+DalvikVM - [WARN]: ar 2, (android.content.SharedPreferences$Editor@4a891e7e, android.content.SharedPreferences$Editor)
+OP_MOV_RESULT - [BB]: Result data: android.content.SharedPreferences$Editor@4a891e7e
+OP_MOV_RESULT - [DEBUG]: Result data: android.content.SharedPreferences$Editor@4a891e7e, type: android.content.SharedPreferences$Editor, to [reg 2@SearchService/onCreate]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 16
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <16 MOV,CONST,dst=r6,type=java.lang.String,extra="start"> at com.google.ssearch.SearchService/onCreate[]
+Executor - [DEBUG]: Mov const begin <16 MOV,CONST,dst=r6,type=java.lang.String,extra="start">
+DalvikVM - [WARN]: ar 6 (Primitive:0, int), (start, java.lang.String)
+Executor - [DEBUG]: data: start class java.lang.String
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 17
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <17 INVOKE,INTERFACE,extra=[android.content.SharedPreferences$Editor/putLong[java.lang.String, long], [2, 6, 0]]> at com.google.ssearch.SearchService/onCreate[]
+Executor - [MSG]: arg0 obj: android.content.SharedPreferences$Editor@4a891e7e
+Executor - [DEBUG]: Reflction class: class android.content.SharedPreferences$Editor
+Executor - [BB]: Normal args? true
+Executor - [BB]: arg1@reg6: start
+Executor - [BB]: arg2@reg0: Primitive:1467130077356l
+Executor - [DEBUG]: Expected para type: long
+Executor - [DEBUG]: Real para type: long, value: 1467130077356
+Executor - [BB]: Nargs? true
+Executor - [DEBUG]: Caller obj: android.content.SharedPreferences$Editor@4a891e7e, from class: class android.content.SharedPreferences$Editor
+DalvikVM - [WARN]: ar -1, (android.content.SharedPreferences$Editor@4a891e7e, android.content.SharedPreferences$Editor)
+Executor - [DEBUG]: Return data: android.content.SharedPreferences$Editor@4a891e7e ,class android.content.SharedPreferences$Editor
+Executor - [MSG]: Reflction invocation public android.content.SharedPreferences$Editor android.content.SharedPreferences$Editor.putLong(java.lang.String,long)
+DalvikVM - [BB]: Set reflective call: public android.content.SharedPreferences$Editor android.content.SharedPreferences$Editor.putLong(java.lang.String,long)
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 18
+TaintSumBranch - [BB]: <android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putLong(java.lang.String,long)>
+TaintSumBranch - [DEBUG]: Not a taint source call: <android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putLong(java.lang.String,long)>
+TaintSumBranch - [DEBUG]: Found a sink invocation. <android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putLong(java.lang.String,long)>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <18 INVOKE,INTERFACE,extra=[android.content.SharedPreferences$Editor/commit[], [2]]> at com.google.ssearch.SearchService/onCreate[]
+Executor - [MSG]: arg0 obj: android.content.SharedPreferences$Editor@4a891e7e
+Executor - [DEBUG]: Reflction class: class android.content.SharedPreferences$Editor
+DalvikVM - [WARN]: ar -1, (true, boolean)
+Executor - [DEBUG]: Return data: true ,class java.lang.Boolean
+Executor - [MSG]: Reflction invocation public boolean android.content.SharedPreferences$Editor.commit()
+DalvikVM - [BB]: Set reflective call: public boolean android.content.SharedPreferences$Editor.commit()
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 19
+TaintSumBranch - [BB]: <android.content.SharedPreferences$Editor: boolean commit()>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <19 HALT,VIRTUAL,extra=[null, [11]]> at com.google.ssearch.SearchService/onCreate[]
+DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_HALT -> jump set pc to 20
+Executor - [MSG]: Cannot resolve the invocation
+TaintSumBranch - [BB]: Not a taint op <19 HALT,VIRTUAL,extra=[null, [11]]>
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
+Executor - [MSG]: 
+
+Executor - [MSG]: <20 RETURN,VOID> at com.google.ssearch.SearchService/onCreate[]
+class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
+DalvikVM - [BB]: stack []
+DalvikVM - [BB]: Back to the last stack frame.null
+DalvikVM - [MSG]: Finish running instrumented methods! Back to null
+Executor - [MSG]: BEGIN RUN ENTRY: com.google.ssearch.SearchService/onCreate[]
+Executor - [MSG]: RUN DONE! The last one is null
+DalvikVM - [MSG]: FINISHED!
+
+main - [MSG]: Analysis has run for 1.780248632 seconds
+

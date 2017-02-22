@@ -3018,8 +3018,8 @@ public class Executor {
 		 * stackFrame.setThisObj(vm.getChainThisObj()); } } }
 		 */
 
-		DVMObject thisObj = vm.newVMObject(method.myClass);
 		StackFrame stackFrame = vm.newStackFrame(method.myClass, method);
+		DVMObject thisObj = vm.newVMObject(method.myClass);		
 		stackFrame.setThisObj(thisObj);
 
 		if (Settings.isRunEntryException()) {
