@@ -154,8 +154,8 @@ newStackFrame - [BB]: Add frame StackFrame com.google.ssearch.SearchService/doSe
 newStackFrame - [BB]: Stack: [StackFrame com.google.ssearch.SearchService/doSearchReport[]]
 DalvikVM - [BB]: Superclass: com.google.ssearch.SearchService
 Service - [BB]: New instance of com.google.ssearch.SearchService
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@339e6e00
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: New DVMClass representation for com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@339e6e00
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@24150c2c
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: New DVMClass representation for com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@24150c2c
 DalvikVM - [BB]: New method call: com.google.ssearch.SearchService/<clinit>[]
 DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[]>
 DalvikVM - [BB]: [1]<0 MOV,CONST,dst=r0,type=java.lang.String,extra="devwilson">
@@ -184,16 +184,16 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <2 STATIC,SPUT,r0=r0,type=java.lang.Object,extra=(com.google.ssearch.SearchService, mIdentifier)> at com.google.ssearch.SearchService/<clinit>[]
-Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@339e6e00
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@24150c2c
 Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.google.ssearch.SearchService
-Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@339e6e00
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@24150c2c
 class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: ffa:com.google.ssearch.SearchService/<clinit>[]
 class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: Expect sput mIdentifier from com.google.ssearch.SearchService
-class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: Real sput devwilson from [DVMClass: com.google.ssearch.SearchService@674386055]
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: Real sput devwilson from [DVMClass: com.google.ssearch.SearchService@1806550693]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD -> jump set pc to 3
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@339e6e00
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@24150c2c
 Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.google.ssearch.SearchService
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@339e6e00
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@24150c2c
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
@@ -206,16 +206,16 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <4 STATIC,SPUT,r0=r0,type=AndroidWide,extra=(com.google.ssearch.SearchService, INTERVAL)> at com.google.ssearch.SearchService/<clinit>[]
-Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@339e6e00
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@24150c2c
 Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.google.ssearch.SearchService
-Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@339e6e00
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@24150c2c
 class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [BB]: ffa:com.google.ssearch.SearchService/<clinit>[]
 class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: Expect sput INTERVAL from com.google.ssearch.SearchService
-class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: Real sput Primitive:60000l from [DVMClass: com.google.ssearch.SearchService@674386055]
+class fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD - [DEBUG]: Real sput Primitive:60000l from [DVMClass: com.google.ssearch.SearchService@1806550693]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_PUT_FIELD -> jump set pc to 5
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@339e6e00
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@24150c2c
 Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: Get DVMClass for type com.google.ssearch.SearchService
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@339e6e00
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_PUT_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@24150c2c
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
@@ -224,24 +224,24 @@ class fu.hao.trust.dvm.Executor$OP_RETURN_VOID - [DEBUG]: Return void
 DalvikVM - [BB]: stack [StackFrame com.google.ssearch.SearchService/doSearchReport[]]
 DalvikVM - [BB]: Back to the last stack frame.StackFrame com.google.ssearch.SearchService/doSearchReport[]
 DalvikVM - [MSG]: Finish running instrumented methods! Back to StackFrame com.google.ssearch.SearchService/doSearchReport[]
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Service at fu.hao.trust.dvm.VMHeap@339e6e00
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: New DVMClass representation for android.app.Service at fu.hao.trust.dvm.VMHeap@339e6e00
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@339e6e00
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: New DVMClass representation for android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@339e6e00
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@339e6e00
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: New DVMClass representation for android.content.Context at fu.hao.trust.dvm.VMHeap@339e6e00
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@339e6e00
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: New DVMClass representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@339e6e00
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Service at fu.hao.trust.dvm.VMHeap@24150c2c
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: New DVMClass representation for android.app.Service at fu.hao.trust.dvm.VMHeap@24150c2c
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@24150c2c
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: New DVMClass representation for android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@24150c2c
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@24150c2c
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: New DVMClass representation for android.content.Context at fu.hao.trust.dvm.VMHeap@24150c2c
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@24150c2c
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: New DVMClass representation for fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@24150c2c
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type fu.hao.trust.dvm.DVMObject
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@339e6e00
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass fu.hao.trust.dvm.DVMObject at fu.hao.trust.dvm.VMHeap@24150c2c
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.Context
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@339e6e00
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.Context at fu.hao.trust.dvm.VMHeap@24150c2c
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.content.ContextWrapper
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@339e6e00
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.content.ContextWrapper at fu.hao.trust.dvm.VMHeap@24150c2c
 Caller: <init>@fu.hao.trust.dvm.DVMClass - [BB]: Get DVMClass for type android.app.Service
-Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Service at fu.hao.trust.dvm.VMHeap@339e6e00
+Caller@4: <init>@fu.hao.trust.dvm.DVMClass - [BB]: getClass android.app.Service at fu.hao.trust.dvm.VMHeap@24150c2c
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type com.google.ssearch.SearchService
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@339e6e00
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@24150c2c
 Service - [MSG]: Not empty constructor
 DalvikVM - [BB]: New method call: com.google.ssearch.SearchService/<init>[]
 DalvikVM - [BB]: [0]<0 SPECIAL,ARGUMENT_SET,extra=[3]>
@@ -598,8 +598,8 @@ Executor - [DEBUG]: Expected para type: int
 Executor - [DEBUG]: Real para type: int, value: 0
 Executor - [BB]: Nargs? true
 Executor - [DEBUG]: Caller obj: instance number 1@com.google.ssearch.SearchService, from class: class android.app.Service
-DalvikVM - [WARN]: ar -1, (android.content.SharedPreferences@582178a6, android.content.SharedPreferences)
-Executor - [DEBUG]: Return data: android.content.SharedPreferences@582178a6 ,class android.content.SharedPreferences
+DalvikVM - [WARN]: ar -1, (android.content.SharedPreferences@48655fb6, android.content.SharedPreferences)
+Executor - [DEBUG]: Return data: android.content.SharedPreferences@48655fb6 ,class android.content.SharedPreferences
 Executor - [MSG]: Reflction invocation public android.content.SharedPreferences android.content.ContextWrapper.getSharedPreferences(java.lang.String,int)
 DalvikVM - [BB]: Set reflective call: public android.content.SharedPreferences android.content.ContextWrapper.getSharedPreferences(java.lang.String,int)
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 6
@@ -609,9 +609,9 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <6 MOV,RESULT,dst=r5,type=java.lang.Object> at com.google.ssearch.SearchService/onCreate[]
-DalvikVM - [WARN]: ar 5, (android.content.SharedPreferences@582178a6, android.content.SharedPreferences)
-OP_MOV_RESULT - [BB]: Result data: android.content.SharedPreferences@582178a6
-OP_MOV_RESULT - [DEBUG]: Result data: android.content.SharedPreferences@582178a6, type: android.content.SharedPreferences, to [reg 5@SearchService/onCreate]
+DalvikVM - [WARN]: ar 5, (android.content.SharedPreferences@48655fb6, android.content.SharedPreferences)
+OP_MOV_RESULT - [BB]: Result data: android.content.SharedPreferences@48655fb6
+OP_MOV_RESULT - [DEBUG]: Result data: android.content.SharedPreferences@48655fb6, type: android.content.SharedPreferences, to [reg 5@SearchService/onCreate]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 7
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
@@ -625,7 +625,7 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <8 INVOKE,INTERFACE,extra=[android.content.SharedPreferences/getLong[java.lang.String, long], [5, 6, 7]]> at com.google.ssearch.SearchService/onCreate[]
-Executor - [MSG]: arg0 obj: android.content.SharedPreferences@582178a6
+Executor - [MSG]: arg0 obj: android.content.SharedPreferences@48655fb6
 Executor - [DEBUG]: Reflction class: class android.content.SharedPreferences
 Executor - [BB]: Normal args? true
 Executor - [BB]: arg1@reg6: start
@@ -633,7 +633,7 @@ Executor - [BB]: arg2@reg7: Primitive:0l
 Executor - [DEBUG]: Expected para type: long
 Executor - [DEBUG]: Real para type: long, value: 0
 Executor - [BB]: Nargs? true
-Executor - [DEBUG]: Caller obj: android.content.SharedPreferences@582178a6, from class: class android.content.SharedPreferences
+Executor - [DEBUG]: Caller obj: android.content.SharedPreferences@48655fb6, from class: class android.content.SharedPreferences
 DalvikVM - [WARN]: ar -1, (0, long)
 Executor - [DEBUG]: Return data: 0 ,class java.lang.Long
 Executor - [MSG]: Reflction invocation public long android.content.SharedPreferences.getLong(java.lang.String,long)
@@ -654,7 +654,7 @@ Executor - [MSG]:
 
 Executor - [MSG]: <10 INVOKE,STATIC,extra=[java.lang.System/currentTimeMillis[], []]> at com.google.ssearch.SearchService/onCreate[]
 Executor - [DEBUG]: Reflction class java.lang.System
-DalvikVM - [WARN]: ar -1, (1467130516035, long)
+DalvikVM - [WARN]: ar -1, (1489779733952, long)
 Executor - [MSG]: Reflction invocation public static native long java.lang.System.currentTimeMillis()
 DalvikVM - [BB]: Set reflective call: public static native long java.lang.System.currentTimeMillis()
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INVOKE_STATIC -> jump set pc to 11
@@ -663,10 +663,10 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <11 MOV,RESULT,dst=r0,type=AndroidWide> at com.google.ssearch.SearchService/onCreate[]
-DalvikVM - [WARN]: ar -1 (1467130516035, long), (Primitive:1467130516035l, long)
-DalvikVM - [WARN]: ar 0, (Primitive:1467130516035l, long)
-OP_MOV_RESULT - [BB]: Result data: Primitive:1467130516035l
-OP_MOV_RESULT - [DEBUG]: Result data: Primitive:1467130516035l, type: long, to [reg 0@SearchService/onCreate]
+DalvikVM - [WARN]: ar -1 (1489779733952, long), (Primitive:1489779733952l, long)
+DalvikVM - [WARN]: ar 0, (Primitive:1489779733952l, long)
+OP_MOV_RESULT - [BB]: Result data: Primitive:1489779733952l
+OP_MOV_RESULT - [DEBUG]: Result data: Primitive:1489779733952l, type: long, to [reg 0@SearchService/onCreate]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 12
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
@@ -689,10 +689,10 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <14 INVOKE,INTERFACE,extra=[android.content.SharedPreferences/edit[], [5]]> at com.google.ssearch.SearchService/onCreate[]
-Executor - [MSG]: arg0 obj: android.content.SharedPreferences@582178a6
+Executor - [MSG]: arg0 obj: android.content.SharedPreferences@48655fb6
 Executor - [DEBUG]: Reflction class: class android.content.SharedPreferences
-DalvikVM - [WARN]: ar -1, (android.content.SharedPreferences$Editor@72b05e0f, android.content.SharedPreferences$Editor)
-Executor - [DEBUG]: Return data: android.content.SharedPreferences$Editor@72b05e0f ,class android.content.SharedPreferences$Editor
+DalvikVM - [WARN]: ar -1, (android.content.SharedPreferences$Editor@5c0a53c0, android.content.SharedPreferences$Editor)
+Executor - [DEBUG]: Return data: android.content.SharedPreferences$Editor@5c0a53c0 ,class android.content.SharedPreferences$Editor
 Executor - [MSG]: Reflction invocation public android.content.SharedPreferences$Editor android.content.SharedPreferences.edit()
 DalvikVM - [BB]: Set reflective call: public android.content.SharedPreferences$Editor android.content.SharedPreferences.edit()
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 15
@@ -702,9 +702,9 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <15 MOV,RESULT,dst=r2,type=java.lang.Object> at com.google.ssearch.SearchService/onCreate[]
-DalvikVM - [WARN]: ar 2, (android.content.SharedPreferences$Editor@72b05e0f, android.content.SharedPreferences$Editor)
-OP_MOV_RESULT - [BB]: Result data: android.content.SharedPreferences$Editor@72b05e0f
-OP_MOV_RESULT - [DEBUG]: Result data: android.content.SharedPreferences$Editor@72b05e0f, type: android.content.SharedPreferences$Editor, to [reg 2@SearchService/onCreate]
+DalvikVM - [WARN]: ar 2, (android.content.SharedPreferences$Editor@5c0a53c0, android.content.SharedPreferences$Editor)
+OP_MOV_RESULT - [BB]: Result data: android.content.SharedPreferences$Editor@5c0a53c0
+OP_MOV_RESULT - [DEBUG]: Result data: android.content.SharedPreferences$Editor@5c0a53c0, type: android.content.SharedPreferences$Editor, to [reg 2@SearchService/onCreate]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 16
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
@@ -718,17 +718,17 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <17 INVOKE,INTERFACE,extra=[android.content.SharedPreferences$Editor/putLong[java.lang.String, long], [2, 6, 0]]> at com.google.ssearch.SearchService/onCreate[]
-Executor - [MSG]: arg0 obj: android.content.SharedPreferences$Editor@72b05e0f
+Executor - [MSG]: arg0 obj: android.content.SharedPreferences$Editor@5c0a53c0
 Executor - [DEBUG]: Reflction class: class android.content.SharedPreferences$Editor
 Executor - [BB]: Normal args? true
 Executor - [BB]: arg1@reg6: start
-Executor - [BB]: arg2@reg0: Primitive:1467130516035l
+Executor - [BB]: arg2@reg0: Primitive:1489779733952l
 Executor - [DEBUG]: Expected para type: long
-Executor - [DEBUG]: Real para type: long, value: 1467130516035
+Executor - [DEBUG]: Real para type: long, value: 1489779733952
 Executor - [BB]: Nargs? true
-Executor - [DEBUG]: Caller obj: android.content.SharedPreferences$Editor@72b05e0f, from class: class android.content.SharedPreferences$Editor
-DalvikVM - [WARN]: ar -1, (android.content.SharedPreferences$Editor@72b05e0f, android.content.SharedPreferences$Editor)
-Executor - [DEBUG]: Return data: android.content.SharedPreferences$Editor@72b05e0f ,class android.content.SharedPreferences$Editor
+Executor - [DEBUG]: Caller obj: android.content.SharedPreferences$Editor@5c0a53c0, from class: class android.content.SharedPreferences$Editor
+DalvikVM - [WARN]: ar -1, (android.content.SharedPreferences$Editor@5c0a53c0, android.content.SharedPreferences$Editor)
+Executor - [DEBUG]: Return data: android.content.SharedPreferences$Editor@5c0a53c0 ,class android.content.SharedPreferences$Editor
 Executor - [MSG]: Reflction invocation public android.content.SharedPreferences$Editor android.content.SharedPreferences$Editor.putLong(java.lang.String,long)
 DalvikVM - [BB]: Set reflective call: public android.content.SharedPreferences$Editor android.content.SharedPreferences$Editor.putLong(java.lang.String,long)
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 18
@@ -739,7 +739,7 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <18 INVOKE,INTERFACE,extra=[android.content.SharedPreferences$Editor/commit[], [2]]> at com.google.ssearch.SearchService/onCreate[]
-Executor - [MSG]: arg0 obj: android.content.SharedPreferences$Editor@72b05e0f
+Executor - [MSG]: arg0 obj: android.content.SharedPreferences$Editor@5c0a53c0
 Executor - [DEBUG]: Reflction class: class android.content.SharedPreferences$Editor
 DalvikVM - [WARN]: ar -1, (true, boolean)
 Executor - [DEBUG]: Return data: true ,class java.lang.Boolean
@@ -888,8 +888,8 @@ Executor - [BB]: Normal args? true
 Executor - [BB]: arg1@reg1: phone
 Executor - [BB]: Nargs? true
 Executor - [DEBUG]: Caller obj: instance number 1@com.google.ssearch.SearchService, from class: class android.app.Service
-DalvikVM - [WARN]: ar -1, (android.telephony.TelephonyManager@1df0d7b8, java.lang.Object)
-Executor - [DEBUG]: Return data: android.telephony.TelephonyManager@1df0d7b8 ,class android.telephony.TelephonyManager
+DalvikVM - [WARN]: ar -1, (android.telephony.TelephonyManager@616c54b7, java.lang.Object)
+Executor - [DEBUG]: Return data: android.telephony.TelephonyManager@616c54b7 ,class android.telephony.TelephonyManager
 Executor - [MSG]: Reflction invocation public java.lang.Object android.content.Context.getSystemService(java.lang.String)
 DalvikVM - [BB]: Set reflective call: public java.lang.Object android.content.Context.getSystemService(java.lang.String)
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 3
@@ -899,9 +899,9 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <3 MOV,RESULT,dst=r0,type=java.lang.Object> at com.google.ssearch.Utils$PhoneState/getTelManager[android.content.Context]
-DalvikVM - [WARN]: ar 0, (android.telephony.TelephonyManager@1df0d7b8, java.lang.Object)
-OP_MOV_RESULT - [BB]: Result data: android.telephony.TelephonyManager@1df0d7b8
-OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.TelephonyManager@1df0d7b8, type: java.lang.Object, to [reg 0@Utils$PhoneState/getTelManager]
+DalvikVM - [WARN]: ar 0, (android.telephony.TelephonyManager@616c54b7, java.lang.Object)
+OP_MOV_RESULT - [BB]: Result data: android.telephony.TelephonyManager@616c54b7
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.TelephonyManager@616c54b7, type: java.lang.Object, to [reg 0@Utils$PhoneState/getTelManager]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 4
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
@@ -912,23 +912,23 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <5 RETURN,VALUE,r0=r0,type=java.lang.Object> at com.google.ssearch.Utils$PhoneState/getTelManager[android.content.Context]
-DalvikVM - [WARN]: ar -1 (android.telephony.TelephonyManager@1df0d7b8, java.lang.Object), (android.telephony.TelephonyManager@1df0d7b8, java.lang.Object)
-Executor - [BB]: Return data: android.telephony.TelephonyManager@1df0d7b8
+DalvikVM - [WARN]: ar -1 (android.telephony.TelephonyManager@616c54b7, java.lang.Object), (android.telephony.TelephonyManager@616c54b7, java.lang.Object)
+Executor - [BB]: Return data: android.telephony.TelephonyManager@616c54b7
 DalvikVM - [BB]: stack [StackFrame com.google.ssearch.SearchService/doSearchReport[], StackFrame com.google.ssearch.SearchService/updateInfo[], StackFrame com.google.ssearch.Utils$PhoneState/getImei[android.content.Context]]
 DalvikVM - [BB]: Back to the last stack frame.StackFrame com.google.ssearch.Utils$PhoneState/getImei[android.content.Context]
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <2 MOV,RESULT,dst=r1,type=java.lang.Object> at com.google.ssearch.Utils$PhoneState/getImei[android.content.Context]
-DalvikVM - [WARN]: ar 1, (android.telephony.TelephonyManager@1df0d7b8, java.lang.Object)
-OP_MOV_RESULT - [BB]: Result data: android.telephony.TelephonyManager@1df0d7b8
-OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.TelephonyManager@1df0d7b8, type: java.lang.Object, to [reg 1@Utils$PhoneState/getImei]
+DalvikVM - [WARN]: ar 1, (android.telephony.TelephonyManager@616c54b7, java.lang.Object)
+OP_MOV_RESULT - [BB]: Result data: android.telephony.TelephonyManager@616c54b7
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.TelephonyManager@616c54b7, type: java.lang.Object, to [reg 1@Utils$PhoneState/getImei]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 3
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {}
 Executor - [MSG]: 
 
 Executor - [MSG]: <3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]> at com.google.ssearch.Utils$PhoneState/getImei[android.content.Context]
-Executor - [MSG]: arg0 obj: android.telephony.TelephonyManager@1df0d7b8
+Executor - [MSG]: arg0 obj: android.telephony.TelephonyManager@616c54b7
 Executor - [DEBUG]: Reflction class: class android.telephony.TelephonyManager
 DalvikVM - [WARN]: ar -1, (359874043116909, java.lang.String)
 Executor - [DEBUG]: Return data: 359874043116909 ,class java.lang.String
@@ -966,7 +966,7 @@ OP_MOV_RESULT - [DEBUG]: Result data: 359874043116909, type: java.lang.String, t
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 3
 TaintSumBranch - [BB]: <3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>
 TaintSumBranch - [BB]: Add reg 0 due to ret reg.
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 0@SearchService/updateInfo]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 0@SearchService/updateInfo]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <3 INSTANCE,IPUT,r0=r2,r1=r0,type=java.lang.Object,extra=com.google.ssearch.SearchService.mImei> at com.google.ssearch.SearchService/updateInfo[]
@@ -977,7 +977,7 @@ class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data 35987404
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 4
 TaintSumBranch - [BB]: Add 359874043116909as tainted due to [reg 0@SearchService/updateInfo]
 TaintSumBranch - [MSG]: has false
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 0@SearchService/updateInfo]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 0@SearchService/updateInfo]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <4 INVOKE,STATIC,extra=[com.google.ssearch.Utils$PhoneState/getMobile[android.content.Context], [2]]> at com.google.ssearch.SearchService/updateInfo[]
@@ -1043,8 +1043,8 @@ Executor - [BB]: Normal args? true
 Executor - [BB]: arg1@reg1: phone
 Executor - [BB]: Nargs? true
 Executor - [DEBUG]: Caller obj: instance number 1@com.google.ssearch.SearchService, from class: class android.app.Service
-DalvikVM - [WARN]: ar -1, (android.telephony.TelephonyManager@35a1f05f, java.lang.Object)
-Executor - [DEBUG]: Return data: android.telephony.TelephonyManager@35a1f05f ,class android.telephony.TelephonyManager
+DalvikVM - [WARN]: ar -1, (android.telephony.TelephonyManager@3033e3e0, java.lang.Object)
+Executor - [DEBUG]: Return data: android.telephony.TelephonyManager@3033e3e0 ,class android.telephony.TelephonyManager
 Executor - [MSG]: Reflction invocation public java.lang.Object android.content.Context.getSystemService(java.lang.String)
 DalvikVM - [BB]: Set reflective call: public java.lang.Object android.content.Context.getSystemService(java.lang.String)
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 3
@@ -1054,9 +1054,9 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VI
 Executor - [MSG]: 
 
 Executor - [MSG]: <3 MOV,RESULT,dst=r0,type=java.lang.Object> at com.google.ssearch.Utils$PhoneState/getTelManager[android.content.Context]
-DalvikVM - [WARN]: ar 0, (android.telephony.TelephonyManager@35a1f05f, java.lang.Object)
-OP_MOV_RESULT - [BB]: Result data: android.telephony.TelephonyManager@35a1f05f
-OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.TelephonyManager@35a1f05f, type: java.lang.Object, to [reg 0@Utils$PhoneState/getTelManager]
+DalvikVM - [WARN]: ar 0, (android.telephony.TelephonyManager@3033e3e0, java.lang.Object)
+OP_MOV_RESULT - [BB]: Result data: android.telephony.TelephonyManager@3033e3e0
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.TelephonyManager@3033e3e0, type: java.lang.Object, to [reg 0@Utils$PhoneState/getTelManager]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 4
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
 Executor - [MSG]: 
@@ -1067,23 +1067,23 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VI
 Executor - [MSG]: 
 
 Executor - [MSG]: <5 RETURN,VALUE,r0=r0,type=java.lang.Object> at com.google.ssearch.Utils$PhoneState/getTelManager[android.content.Context]
-DalvikVM - [WARN]: ar -1 (android.telephony.TelephonyManager@35a1f05f, java.lang.Object), (android.telephony.TelephonyManager@35a1f05f, java.lang.Object)
-Executor - [BB]: Return data: android.telephony.TelephonyManager@35a1f05f
+DalvikVM - [WARN]: ar -1 (android.telephony.TelephonyManager@3033e3e0, java.lang.Object), (android.telephony.TelephonyManager@3033e3e0, java.lang.Object)
+Executor - [BB]: Return data: android.telephony.TelephonyManager@3033e3e0
 DalvikVM - [BB]: stack [StackFrame com.google.ssearch.SearchService/doSearchReport[], StackFrame com.google.ssearch.SearchService/updateInfo[], StackFrame com.google.ssearch.Utils$PhoneState/getMobile[android.content.Context]]
 DalvikVM - [BB]: Back to the last stack frame.StackFrame com.google.ssearch.Utils$PhoneState/getMobile[android.content.Context]
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <2 MOV,RESULT,dst=r1,type=java.lang.Object> at com.google.ssearch.Utils$PhoneState/getMobile[android.content.Context]
-DalvikVM - [WARN]: ar 1, (android.telephony.TelephonyManager@35a1f05f, java.lang.Object)
-OP_MOV_RESULT - [BB]: Result data: android.telephony.TelephonyManager@35a1f05f
-OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.TelephonyManager@35a1f05f, type: java.lang.Object, to [reg 1@Utils$PhoneState/getMobile]
+DalvikVM - [WARN]: ar 1, (android.telephony.TelephonyManager@3033e3e0, java.lang.Object)
+OP_MOV_RESULT - [BB]: Result data: android.telephony.TelephonyManager@3033e3e0
+OP_MOV_RESULT - [DEBUG]: Result data: android.telephony.TelephonyManager@3033e3e0, type: java.lang.Object, to [reg 1@Utils$PhoneState/getMobile]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 3
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]> at com.google.ssearch.Utils$PhoneState/getMobile[android.content.Context]
-Executor - [MSG]: arg0 obj: android.telephony.TelephonyManager@35a1f05f
+Executor - [MSG]: arg0 obj: android.telephony.TelephonyManager@3033e3e0
 Executor - [DEBUG]: Reflction class: class android.telephony.TelephonyManager
 DalvikVM - [WARN]: ar -1, (5305745364, java.lang.String)
 Executor - [DEBUG]: Return data: 5305745364 ,class java.lang.String
@@ -1092,7 +1092,7 @@ DalvikVM - [BB]: Set reflective call: public java.lang.String android.telephony.
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 4
 TaintSumBranch - [BB]: <android.telephony.TelephonyManager: java.lang.String getLine1Number()>
 TaintSumBranch - [WARN]: Found a tainted return value!
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Global RetReg]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, [Global RetReg]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <4 MOV,RESULT,dst=r0,type=java.lang.Object> at com.google.ssearch.Utils$PhoneState/getMobile[android.content.Context]
@@ -1111,7 +1111,7 @@ Executor - [BB]: Return data: 5305745364
 DalvikVM - [BB]: stack [StackFrame com.google.ssearch.SearchService/doSearchReport[], StackFrame com.google.ssearch.SearchService/updateInfo[]]
 DalvikVM - [BB]: Back to the last stack frame.StackFrame com.google.ssearch.SearchService/updateInfo[]
 TaintSumBranch - [BB]: Add [Global RetReg] as tainted due to [reg 0@Utils$PhoneState/getMobile]
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 0@SearchService/updateInfo]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [Global RetReg]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, [reg 0@SearchService/updateInfo]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [Global RetReg]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <5 MOV,RESULT,dst=r0,type=java.lang.Object> at com.google.ssearch.SearchService/updateInfo[]
@@ -1121,7 +1121,7 @@ OP_MOV_RESULT - [DEBUG]: Result data: 5305745364, type: java.lang.String, to [re
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 6
 TaintSumBranch - [BB]: <3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>
 TaintSumBranch - [BB]: Add reg 0 due to ret reg.
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 0@SearchService/updateInfo]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, [reg 0@SearchService/updateInfo]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <6 INSTANCE,IPUT,r0=r2,r1=r0,type=java.lang.Object,extra=com.google.ssearch.SearchService.mMobile> at com.google.ssearch.SearchService/updateInfo[]
@@ -1132,7 +1132,7 @@ class fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD - [MSG]: Put data 53057453
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_PUT_FIELD -> jump set pc to 7
 TaintSumBranch - [BB]: Add 5305745364as tainted due to [reg 0@SearchService/updateInfo]
 TaintSumBranch - [MSG]: has false
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 0@SearchService/updateInfo]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, [reg 0@SearchService/updateInfo]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <7 INVOKE,STATIC,extra=[com.google.ssearch.Utils$PhoneState/getModel[], []]> at com.google.ssearch.SearchService/updateInfo[]
@@ -1310,7 +1310,7 @@ DalvikVM - [WARN]: ar -1 (Google Empire, java.lang.String), (Google Empire, java
 Executor - [BB]: Return data: Google Empire
 DalvikVM - [BB]: stack [StackFrame com.google.ssearch.SearchService/doSearchReport[], StackFrame com.google.ssearch.SearchService/updateInfo[]]
 DalvikVM - [BB]: Back to the last stack frame.StackFrame com.google.ssearch.SearchService/updateInfo[]
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 0@SearchService/updateInfo]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, [reg 0@SearchService/updateInfo]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <8 MOV,RESULT,dst=r0,type=java.lang.Object> at com.google.ssearch.SearchService/updateInfo[]
@@ -1367,7 +1367,7 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VI
 Executor - [MSG]: 
 
 Executor - [MSG]: <2 NEW,ARRAY,dst=r0,r0=r1,type=[Ljava.lang.String;> at com.google.ssearch.Utils$PhoneState/getSDKVersion[]
-DalvikVM - [WARN]: ar 0, ([Ljava.lang.String;@53d334a8, [Ljava.lang.String;)
+DalvikVM - [WARN]: ar 0, ([Ljava.lang.String;@282ceded, [Ljava.lang.String;)
 OP_NEW_ARRAY - [DEBUG]: A new array of [Ljava.lang.String; in size 2 created.
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_NEW_ARRAY -> jump set pc to 3
 TaintSumBranch - [BB]: Not a taint op <2 NEW,ARRAY,dst=r0,r0=r1,type=[Ljava.lang.String;>
@@ -1394,7 +1394,7 @@ Executor - [MSG]:
 Executor - [MSG]: <5 ARRAY,APUT,dst=r2,r0=r0,r1=r1,type=java.lang.Object> at com.google.ssearch.Utils$PhoneState/getSDKVersion[]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARRAY_PUT -> jump set pc to 6
 Executor - [BB]: index: 0, length: 2
-Executor - [DEBUG]: data: RELEASE array: [Ljava.lang.String;@53d334a8
+Executor - [DEBUG]: data: RELEASE array: [Ljava.lang.String;@282ceded
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>}
 Executor - [MSG]: 
 
@@ -1418,22 +1418,22 @@ Executor - [MSG]:
 Executor - [MSG]: <8 ARRAY,APUT,dst=r2,r0=r0,r1=r1,type=java.lang.Object> at com.google.ssearch.Utils$PhoneState/getSDKVersion[]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARRAY_PUT -> jump set pc to 9
 Executor - [BB]: index: 1, length: 2
-Executor - [DEBUG]: data: SDK19 array: [Ljava.lang.String;@53d334a8
+Executor - [DEBUG]: data: SDK19 array: [Ljava.lang.String;@282ceded
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <9 RETURN,VALUE,r0=r0,type=java.lang.Object> at com.google.ssearch.Utils$PhoneState/getSDKVersion[]
-DalvikVM - [WARN]: ar -1, ([Ljava.lang.String;@53d334a8, [Ljava.lang.String;)
-Executor - [BB]: Return data: [Ljava.lang.String;@53d334a8
+DalvikVM - [WARN]: ar -1, ([Ljava.lang.String;@282ceded, [Ljava.lang.String;)
+Executor - [BB]: Return data: [Ljava.lang.String;@282ceded
 DalvikVM - [BB]: stack [StackFrame com.google.ssearch.SearchService/doSearchReport[], StackFrame com.google.ssearch.SearchService/updateInfo[]]
 DalvikVM - [BB]: Back to the last stack frame.StackFrame com.google.ssearch.SearchService/updateInfo[]
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <11 MOV,RESULT,dst=r0,type=java.lang.Object> at com.google.ssearch.SearchService/updateInfo[]
-DalvikVM - [WARN]: ar 0 (Google Empire, java.lang.String), ([Ljava.lang.String;@53d334a8, [Ljava.lang.String;)
-OP_MOV_RESULT - [BB]: Result data: [Ljava.lang.String;@53d334a8
-OP_MOV_RESULT - [DEBUG]: Result data: [Ljava.lang.String;@53d334a8, type: [Ljava.lang.String;, to [reg 0@SearchService/updateInfo]
+DalvikVM - [WARN]: ar 0 (Google Empire, java.lang.String), ([Ljava.lang.String;@282ceded, [Ljava.lang.String;)
+OP_MOV_RESULT - [BB]: Result data: [Ljava.lang.String;@282ceded
+OP_MOV_RESULT - [DEBUG]: Result data: [Ljava.lang.String;@282ceded, type: [Ljava.lang.String;, to [reg 0@SearchService/updateInfo]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 12
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>}
 Executor - [MSG]: 
@@ -1448,11 +1448,11 @@ Executor - [MSG]:
 
 Executor - [MSG]: <13 ARRAY,AGET,dst=r0,r0=r0,r1=r1,type=java.lang.Object> at com.google.ssearch.SearchService/updateInfo[]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARRAY_GET -> jump set pc to 14
-Executor - [BB]: Array: [Ljava.lang.String;@53d334a8
+Executor - [BB]: Array: [Ljava.lang.String;@282ceded
 Executor - [BB]: Length: 2
 Executor - [BB]: Index: 0
-Executor - [DEBUG]: Elem: RELEASE at 0 of [Ljava.lang.String;@53d334a8
-DalvikVM - [WARN]: ar 0 ([Ljava.lang.String;@53d334a8, [Ljava.lang.String;), (RELEASE, java.lang.Object)
+Executor - [DEBUG]: Elem: RELEASE at 0 of [Ljava.lang.String;@282ceded
+DalvikVM - [WARN]: ar 0 ([Ljava.lang.String;@282ceded, [Ljava.lang.String;), (RELEASE, java.lang.Object)
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>}
 Executor - [MSG]: 
 
@@ -1501,7 +1501,7 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VI
 Executor - [MSG]: 
 
 Executor - [MSG]: <2 NEW,ARRAY,dst=r0,r0=r1,type=[Ljava.lang.String;> at com.google.ssearch.Utils$PhoneState/getSDKVersion[]
-DalvikVM - [WARN]: ar 0, ([Ljava.lang.String;@12a518fc, [Ljava.lang.String;)
+DalvikVM - [WARN]: ar 0, ([Ljava.lang.String;@26319e5b, [Ljava.lang.String;)
 OP_NEW_ARRAY - [DEBUG]: A new array of [Ljava.lang.String; in size 2 created.
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_NEW_ARRAY -> jump set pc to 3
 TaintSumBranch - [BB]: Not a taint op <2 NEW,ARRAY,dst=r0,r0=r1,type=[Ljava.lang.String;>
@@ -1528,7 +1528,7 @@ Executor - [MSG]:
 Executor - [MSG]: <5 ARRAY,APUT,dst=r2,r0=r0,r1=r1,type=java.lang.Object> at com.google.ssearch.Utils$PhoneState/getSDKVersion[]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARRAY_PUT -> jump set pc to 6
 Executor - [BB]: index: 0, length: 2
-Executor - [DEBUG]: data: RELEASE array: [Ljava.lang.String;@12a518fc
+Executor - [DEBUG]: data: RELEASE array: [Ljava.lang.String;@26319e5b
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>}
 Executor - [MSG]: 
 
@@ -1552,22 +1552,22 @@ Executor - [MSG]:
 Executor - [MSG]: <8 ARRAY,APUT,dst=r2,r0=r0,r1=r1,type=java.lang.Object> at com.google.ssearch.Utils$PhoneState/getSDKVersion[]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARRAY_PUT -> jump set pc to 9
 Executor - [BB]: index: 1, length: 2
-Executor - [DEBUG]: data: SDK19 array: [Ljava.lang.String;@12a518fc
+Executor - [DEBUG]: data: SDK19 array: [Ljava.lang.String;@26319e5b
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <9 RETURN,VALUE,r0=r0,type=java.lang.Object> at com.google.ssearch.Utils$PhoneState/getSDKVersion[]
-DalvikVM - [WARN]: ar -1, ([Ljava.lang.String;@12a518fc, [Ljava.lang.String;)
-Executor - [BB]: Return data: [Ljava.lang.String;@12a518fc
+DalvikVM - [WARN]: ar -1, ([Ljava.lang.String;@26319e5b, [Ljava.lang.String;)
+Executor - [BB]: Return data: [Ljava.lang.String;@26319e5b
 DalvikVM - [BB]: stack [StackFrame com.google.ssearch.SearchService/doSearchReport[], StackFrame com.google.ssearch.SearchService/updateInfo[]]
 DalvikVM - [BB]: Back to the last stack frame.StackFrame com.google.ssearch.SearchService/updateInfo[]
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <16 MOV,RESULT,dst=r0,type=java.lang.Object> at com.google.ssearch.SearchService/updateInfo[]
-DalvikVM - [WARN]: ar 0 (RELEASE, java.lang.Object), ([Ljava.lang.String;@12a518fc, [Ljava.lang.String;)
-OP_MOV_RESULT - [BB]: Result data: [Ljava.lang.String;@12a518fc
-OP_MOV_RESULT - [DEBUG]: Result data: [Ljava.lang.String;@12a518fc, type: [Ljava.lang.String;, to [reg 0@SearchService/updateInfo]
+DalvikVM - [WARN]: ar 0 (RELEASE, java.lang.Object), ([Ljava.lang.String;@26319e5b, [Ljava.lang.String;)
+OP_MOV_RESULT - [BB]: Result data: [Ljava.lang.String;@26319e5b
+OP_MOV_RESULT - [DEBUG]: Result data: [Ljava.lang.String;@26319e5b, type: [Ljava.lang.String;, to [reg 0@SearchService/updateInfo]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 17
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>}
 Executor - [MSG]: 
@@ -1582,11 +1582,11 @@ Executor - [MSG]:
 
 Executor - [MSG]: <18 ARRAY,AGET,dst=r0,r0=r0,r1=r1,type=java.lang.Object> at com.google.ssearch.SearchService/updateInfo[]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_ARRAY_GET -> jump set pc to 19
-Executor - [BB]: Array: [Ljava.lang.String;@12a518fc
+Executor - [BB]: Array: [Ljava.lang.String;@26319e5b
 Executor - [BB]: Length: 2
 Executor - [BB]: Index: 1
-Executor - [DEBUG]: Elem: SDK19 at 1 of [Ljava.lang.String;@12a518fc
-DalvikVM - [WARN]: ar 0 ([Ljava.lang.String;@12a518fc, [Ljava.lang.String;), (SDK19, java.lang.Object)
+Executor - [DEBUG]: Elem: SDK19 at 1 of [Ljava.lang.String;@26319e5b
+DalvikVM - [WARN]: ar 0 ([Ljava.lang.String;@26319e5b, [Ljava.lang.String;), (SDK19, java.lang.Object)
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>}
 Executor - [MSG]: 
 
@@ -1679,8 +1679,8 @@ Executor - [MSG]:
 Executor - [MSG]: <6 INVOKE,DIRECT,extra=[android.app.ActivityManager$MemoryInfo/<init>[], [1]]> at com.google.ssearch.Utils$PhoneState/getAliaMemorySize[android.content.Context]
 Executor - [MSG]: arg0 obj: null
 Executor - [BB]: android.app.ActivityManager$MemoryInfo/<init>[] is a constructor!
-DalvikVM - [WARN]: ar 1 (null, android.app.ActivityManager$MemoryInfo), (android.app.ActivityManager$MemoryInfo@7e6b9547, void)
-Executor - [DEBUG]: Reflected init instance: android.app.ActivityManager$MemoryInfo@7e6b9547, class android.app.ActivityManager$MemoryInfo
+DalvikVM - [WARN]: ar 1 (null, android.app.ActivityManager$MemoryInfo), (android.app.ActivityManager$MemoryInfo@d818ff0, void)
+Executor - [DEBUG]: Reflected init instance: android.app.ActivityManager$MemoryInfo@d818ff0, class android.app.ActivityManager$MemoryInfo
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 7
 TaintSumBranch - [BB]: <android.app.ActivityManager$MemoryInfo: void <init>()>
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>}
@@ -1695,9 +1695,9 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VI
 Executor - [MSG]: 
 
 Executor - [MSG]: <8 INSTANCE,IGET,r0=r1,r1=r3,type=AndroidWide,extra=android.app.ActivityManager$MemoryInfo.availMem> at com.google.ssearch.Utils$PhoneState/getAliaMemorySize[android.content.Context]
-class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Obj android.app.ActivityManager$MemoryInfo@7e6b9547
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Obj android.app.ActivityManager$MemoryInfo@d818ff0
 class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Fieldinfo android.app.ActivityManager$MemoryInfo.availMem
-class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [WARN]: android.app.ActivityManager$MemoryInfo@7e6b9547 is not a DVMObject!
+class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [WARN]: android.app.ActivityManager$MemoryInfo@d818ff0 is not a DVMObject!
 DalvikVM - [WARN]: ar 3 (activity, java.lang.String), (100000, android.app.ActivityManager$MemoryInfo)
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD -> jump set pc to 9
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>}
@@ -1871,31 +1871,31 @@ Executor - [MSG]: <6 INVOKE,DIRECT,extra=[android.os.StatFs/<init>[java.lang.Str
 Executor - [MSG]: arg0 obj: null
 Executor - [BB]: android.os.StatFs/<init>[java.lang.String] is a constructor!
 Executor - [BB]: arg1@reg1: \mnt\sdcard
-DalvikVM - [WARN]: ar 0 (null, android.os.StatFs), (android.os.StatFs@2842e3b, android.os.StatFs)
-Executor - [DEBUG]: Init instance: android.os.StatFs@2842e3b class android.os.StatFs
+DalvikVM - [WARN]: ar 0 (null, android.os.StatFs), (android.os.StatFs@5b714f03, android.os.StatFs)
+Executor - [DEBUG]: Init instance: android.os.StatFs@5b714f03 class android.os.StatFs
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 7
 TaintSumBranch - [BB]: <android.os.StatFs: void <init>(java.lang.String)>
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <7 RETURN,VALUE,r0=r0,type=java.lang.Object> at com.google.ssearch.Utils$PhoneState/getStatFs[]
-DalvikVM - [WARN]: ar -1, (android.os.StatFs@2842e3b, android.os.StatFs)
-Executor - [BB]: Return data: android.os.StatFs@2842e3b
+DalvikVM - [WARN]: ar -1, (android.os.StatFs@5b714f03, android.os.StatFs)
+Executor - [BB]: Return data: android.os.StatFs@5b714f03
 DalvikVM - [BB]: stack [StackFrame com.google.ssearch.SearchService/doSearchReport[], StackFrame com.google.ssearch.SearchService/updateInfo[], StackFrame com.google.ssearch.Utils$PhoneState/getSDAliaMemory[android.content.Context]]
 DalvikVM - [BB]: Back to the last stack frame.StackFrame com.google.ssearch.Utils$PhoneState/getSDAliaMemory[android.content.Context]
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <2 MOV,RESULT,dst=r2,type=java.lang.Object> at com.google.ssearch.Utils$PhoneState/getSDAliaMemory[android.content.Context]
-DalvikVM - [WARN]: ar 2, (android.os.StatFs@2842e3b, android.os.StatFs)
-OP_MOV_RESULT - [BB]: Result data: android.os.StatFs@2842e3b
-OP_MOV_RESULT - [DEBUG]: Result data: android.os.StatFs@2842e3b, type: android.os.StatFs, to [reg 2@Utils$PhoneState/getSDAliaMemory]
+DalvikVM - [WARN]: ar 2, (android.os.StatFs@5b714f03, android.os.StatFs)
+OP_MOV_RESULT - [BB]: Result data: android.os.StatFs@5b714f03
+OP_MOV_RESULT - [DEBUG]: Result data: android.os.StatFs@5b714f03, type: android.os.StatFs, to [reg 2@Utils$PhoneState/getSDAliaMemory]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 3
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <3 INVOKE,VIRTUAL,extra=[android.os.StatFs/getAvailableBlocks[], [2]]> at com.google.ssearch.Utils$PhoneState/getSDAliaMemory[android.content.Context]
-Executor - [MSG]: arg0 obj: android.os.StatFs@2842e3b
+Executor - [MSG]: arg0 obj: android.os.StatFs@5b714f03
 Executor - [DEBUG]: Reflction class: class android.os.StatFs
 DalvikVM - [WARN]: ar -1, (99, int)
 Executor - [DEBUG]: Return data: 99 ,class java.lang.Integer
@@ -2016,31 +2016,31 @@ Executor - [MSG]: <6 INVOKE,DIRECT,extra=[android.os.StatFs/<init>[java.lang.Str
 Executor - [MSG]: arg0 obj: null
 Executor - [BB]: android.os.StatFs/<init>[java.lang.String] is a constructor!
 Executor - [BB]: arg1@reg1: \mnt\sdcard
-DalvikVM - [WARN]: ar 0 (null, android.os.StatFs), (android.os.StatFs@3a7109eb, android.os.StatFs)
-Executor - [DEBUG]: Init instance: android.os.StatFs@3a7109eb class android.os.StatFs
+DalvikVM - [WARN]: ar 0 (null, android.os.StatFs), (android.os.StatFs@22ca9cb5, android.os.StatFs)
+Executor - [DEBUG]: Init instance: android.os.StatFs@22ca9cb5 class android.os.StatFs
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 7
 TaintSumBranch - [BB]: <android.os.StatFs: void <init>(java.lang.String)>
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <7 RETURN,VALUE,r0=r0,type=java.lang.Object> at com.google.ssearch.Utils$PhoneState/getStatFs[]
-DalvikVM - [WARN]: ar -1, (android.os.StatFs@3a7109eb, android.os.StatFs)
-Executor - [BB]: Return data: android.os.StatFs@3a7109eb
+DalvikVM - [WARN]: ar -1, (android.os.StatFs@22ca9cb5, android.os.StatFs)
+Executor - [BB]: Return data: android.os.StatFs@22ca9cb5
 DalvikVM - [BB]: stack [StackFrame com.google.ssearch.SearchService/doSearchReport[], StackFrame com.google.ssearch.SearchService/updateInfo[], StackFrame com.google.ssearch.Utils$PhoneState/getSDAliaMemory[android.content.Context], StackFrame com.google.ssearch.Utils$PhoneState/getBlockSize[]]
 DalvikVM - [BB]: Back to the last stack frame.StackFrame com.google.ssearch.Utils$PhoneState/getBlockSize[]
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <2 MOV,RESULT,dst=r1,type=java.lang.Object> at com.google.ssearch.Utils$PhoneState/getBlockSize[]
-DalvikVM - [WARN]: ar 1, (android.os.StatFs@3a7109eb, android.os.StatFs)
-OP_MOV_RESULT - [BB]: Result data: android.os.StatFs@3a7109eb
-OP_MOV_RESULT - [DEBUG]: Result data: android.os.StatFs@3a7109eb, type: android.os.StatFs, to [reg 1@Utils$PhoneState/getBlockSize]
+DalvikVM - [WARN]: ar 1, (android.os.StatFs@22ca9cb5, android.os.StatFs)
+OP_MOV_RESULT - [BB]: Result data: android.os.StatFs@22ca9cb5
+OP_MOV_RESULT - [DEBUG]: Result data: android.os.StatFs@22ca9cb5, type: android.os.StatFs, to [reg 1@Utils$PhoneState/getBlockSize]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 3
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <3 INVOKE,VIRTUAL,extra=[android.os.StatFs/getBlockSize[], [1]]> at com.google.ssearch.Utils$PhoneState/getBlockSize[]
-Executor - [MSG]: arg0 obj: android.os.StatFs@3a7109eb
+Executor - [MSG]: arg0 obj: android.os.StatFs@22ca9cb5
 Executor - [DEBUG]: Reflction class: class android.os.StatFs
 DalvikVM - [WARN]: ar -1, (99, int)
 Executor - [DEBUG]: Return data: 99 ,class java.lang.Integer
@@ -2291,8 +2291,8 @@ Executor - [BB]: Normal args? true
 Executor - [BB]: arg1@reg1: connectivity
 Executor - [BB]: Nargs? true
 Executor - [DEBUG]: Caller obj: instance number 1@com.google.ssearch.SearchService, from class: class android.app.Service
-DalvikVM - [WARN]: ar -1, (android.net.ConnectivityManager@541114e8, java.lang.Object)
-Executor - [DEBUG]: Return data: android.net.ConnectivityManager@541114e8 ,class android.net.ConnectivityManager
+DalvikVM - [WARN]: ar -1, (android.net.ConnectivityManager@427c8302, java.lang.Object)
+Executor - [DEBUG]: Return data: android.net.ConnectivityManager@427c8302 ,class android.net.ConnectivityManager
 Executor - [MSG]: Reflction invocation public java.lang.Object android.content.Context.getSystemService(java.lang.String)
 DalvikVM - [BB]: Set reflective call: public java.lang.Object android.content.Context.getSystemService(java.lang.String)
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 3
@@ -2302,9 +2302,9 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VI
 Executor - [MSG]: 
 
 Executor - [MSG]: <3 MOV,RESULT,dst=r0,type=java.lang.Object> at com.google.ssearch.Utils$PhoneState/getConnectType[android.content.Context]
-DalvikVM - [WARN]: ar 0, (android.net.ConnectivityManager@541114e8, java.lang.Object)
-OP_MOV_RESULT - [BB]: Result data: android.net.ConnectivityManager@541114e8
-OP_MOV_RESULT - [DEBUG]: Result data: android.net.ConnectivityManager@541114e8, type: java.lang.Object, to [reg 0@Utils$PhoneState/getConnectType]
+DalvikVM - [WARN]: ar 0, (android.net.ConnectivityManager@427c8302, java.lang.Object)
+OP_MOV_RESULT - [BB]: Result data: android.net.ConnectivityManager@427c8302
+OP_MOV_RESULT - [DEBUG]: Result data: android.net.ConnectivityManager@427c8302, type: java.lang.Object, to [reg 0@Utils$PhoneState/getConnectType]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 4
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>}
 Executor - [MSG]: 
@@ -2315,7 +2315,7 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VI
 Executor - [MSG]: 
 
 Executor - [MSG]: <5 IF,EQZ,r0=r0,extra=index:9> at com.google.ssearch.Utils$PhoneState/getConnectType[android.content.Context]
-OP_CMP - [DEBUG]: r0 data android.net.ConnectivityManager@541114e8
+OP_CMP - [DEBUG]: r0 data android.net.ConnectivityManager@427c8302
 OP_CMP - [DEBUG]: r0 type java.lang.Object
 Executor - [DEBUG]: Ops: Primitive:42, Primitive:0
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_IF_EQZ -> jump set pc to 6
@@ -2324,10 +2324,10 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VI
 Executor - [MSG]: 
 
 Executor - [MSG]: <6 INVOKE,VIRTUAL,extra=[android.net.ConnectivityManager/getActiveNetworkInfo[], [0]]> at com.google.ssearch.Utils$PhoneState/getConnectType[android.content.Context]
-Executor - [MSG]: arg0 obj: android.net.ConnectivityManager@541114e8
+Executor - [MSG]: arg0 obj: android.net.ConnectivityManager@427c8302
 Executor - [DEBUG]: Reflction class: class android.net.ConnectivityManager
-DalvikVM - [WARN]: ar -1, (android.net.NetworkInfo@6de40a47, android.net.NetworkInfo)
-Executor - [DEBUG]: Return data: android.net.NetworkInfo@6de40a47 ,class android.net.NetworkInfo
+DalvikVM - [WARN]: ar -1, (android.net.NetworkInfo@1c3b2ebf, android.net.NetworkInfo)
+Executor - [DEBUG]: Return data: android.net.NetworkInfo@1c3b2ebf ,class android.net.NetworkInfo
 Executor - [MSG]: Reflction invocation public android.net.NetworkInfo android.net.ConnectivityManager.getActiveNetworkInfo()
 DalvikVM - [BB]: Set reflective call: public android.net.NetworkInfo android.net.ConnectivityManager.getActiveNetworkInfo()
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 7
@@ -2337,15 +2337,15 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VI
 Executor - [MSG]: 
 
 Executor - [MSG]: <7 MOV,RESULT,dst=r1,type=java.lang.Object> at com.google.ssearch.Utils$PhoneState/getConnectType[android.content.Context]
-DalvikVM - [WARN]: ar 1 (connectivity, java.lang.String), (android.net.NetworkInfo@6de40a47, android.net.NetworkInfo)
-OP_MOV_RESULT - [BB]: Result data: android.net.NetworkInfo@6de40a47
-OP_MOV_RESULT - [DEBUG]: Result data: android.net.NetworkInfo@6de40a47, type: android.net.NetworkInfo, to [reg 1@Utils$PhoneState/getConnectType]
+DalvikVM - [WARN]: ar 1 (connectivity, java.lang.String), (android.net.NetworkInfo@1c3b2ebf, android.net.NetworkInfo)
+OP_MOV_RESULT - [BB]: Result data: android.net.NetworkInfo@1c3b2ebf
+OP_MOV_RESULT - [DEBUG]: Result data: android.net.NetworkInfo@1c3b2ebf, type: android.net.NetworkInfo, to [reg 1@Utils$PhoneState/getConnectType]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 8
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <8 IF,NEZ,r0=r1,extra=index:11> at com.google.ssearch.Utils$PhoneState/getConnectType[android.content.Context]
-OP_CMP - [DEBUG]: r0 data android.net.NetworkInfo@6de40a47
+OP_CMP - [DEBUG]: r0 data android.net.NetworkInfo@1c3b2ebf
 OP_CMP - [DEBUG]: r0 type android.net.NetworkInfo
 Executor - [DEBUG]: Ops: Primitive:42, Primitive:0
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_IF_NEZ -> jump set pc to 11
@@ -2354,10 +2354,10 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VI
 Executor - [MSG]: 
 
 Executor - [MSG]: <11 INVOKE,VIRTUAL,extra=[android.net.ConnectivityManager/getActiveNetworkInfo[], [0]]> at com.google.ssearch.Utils$PhoneState/getConnectType[android.content.Context]
-Executor - [MSG]: arg0 obj: android.net.ConnectivityManager@541114e8
+Executor - [MSG]: arg0 obj: android.net.ConnectivityManager@427c8302
 Executor - [DEBUG]: Reflction class: class android.net.ConnectivityManager
-DalvikVM - [WARN]: ar -1, (android.net.NetworkInfo@6de40a47, android.net.NetworkInfo)
-Executor - [DEBUG]: Return data: android.net.NetworkInfo@6de40a47 ,class android.net.NetworkInfo
+DalvikVM - [WARN]: ar -1, (android.net.NetworkInfo@1c3b2ebf, android.net.NetworkInfo)
+Executor - [DEBUG]: Return data: android.net.NetworkInfo@1c3b2ebf ,class android.net.NetworkInfo
 Executor - [MSG]: Reflction invocation public android.net.NetworkInfo android.net.ConnectivityManager.getActiveNetworkInfo()
 DalvikVM - [BB]: Set reflective call: public android.net.NetworkInfo android.net.ConnectivityManager.getActiveNetworkInfo()
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 12
@@ -2367,15 +2367,15 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VI
 Executor - [MSG]: 
 
 Executor - [MSG]: <12 MOV,RESULT,dst=r1,type=java.lang.Object> at com.google.ssearch.Utils$PhoneState/getConnectType[android.content.Context]
-DalvikVM - [WARN]: ar 1 (android.net.NetworkInfo@6de40a47, android.net.NetworkInfo), (android.net.NetworkInfo@6de40a47, android.net.NetworkInfo)
-OP_MOV_RESULT - [BB]: Result data: android.net.NetworkInfo@6de40a47
-OP_MOV_RESULT - [DEBUG]: Result data: android.net.NetworkInfo@6de40a47, type: android.net.NetworkInfo, to [reg 1@Utils$PhoneState/getConnectType]
+DalvikVM - [WARN]: ar 1 (android.net.NetworkInfo@1c3b2ebf, android.net.NetworkInfo), (android.net.NetworkInfo@1c3b2ebf, android.net.NetworkInfo)
+OP_MOV_RESULT - [BB]: Result data: android.net.NetworkInfo@1c3b2ebf
+OP_MOV_RESULT - [DEBUG]: Result data: android.net.NetworkInfo@1c3b2ebf, type: android.net.NetworkInfo, to [reg 1@Utils$PhoneState/getConnectType]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 13
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <13 INVOKE,VIRTUAL,extra=[android.net.NetworkInfo/getTypeName[], [1]]> at com.google.ssearch.Utils$PhoneState/getConnectType[android.content.Context]
-Executor - [MSG]: arg0 obj: android.net.NetworkInfo@6de40a47
+Executor - [MSG]: arg0 obj: android.net.NetworkInfo@1c3b2ebf
 Executor - [DEBUG]: Reflction class: class android.net.NetworkInfo
 DalvikVM - [WARN]: ar -1, (WIFI, java.lang.String)
 Executor - [DEBUG]: Return data: WIFI ,class java.lang.String
@@ -2388,7 +2388,7 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VI
 Executor - [MSG]: 
 
 Executor - [MSG]: <14 MOV,RESULT,dst=r1,type=java.lang.Object> at com.google.ssearch.Utils$PhoneState/getConnectType[android.content.Context]
-DalvikVM - [WARN]: ar 1 (android.net.NetworkInfo@6de40a47, android.net.NetworkInfo), (WIFI, java.lang.String)
+DalvikVM - [WARN]: ar 1 (android.net.NetworkInfo@1c3b2ebf, android.net.NetworkInfo), (WIFI, java.lang.String)
 OP_MOV_RESULT - [BB]: Result data: WIFI
 OP_MOV_RESULT - [DEBUG]: Result data: WIFI, type: java.lang.String, to [reg 1@Utils$PhoneState/getConnectType]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 15
@@ -2476,8 +2476,8 @@ Executor - [BB]: Normal args? true
 Executor - [BB]: arg1@reg1: connectivity
 Executor - [BB]: Nargs? true
 Executor - [DEBUG]: Caller obj: instance number 1@com.google.ssearch.SearchService, from class: class android.app.Service
-DalvikVM - [WARN]: ar -1, (android.net.ConnectivityManager@69cb7fc, java.lang.Object)
-Executor - [DEBUG]: Return data: android.net.ConnectivityManager@69cb7fc ,class android.net.ConnectivityManager
+DalvikVM - [WARN]: ar -1, (android.net.ConnectivityManager@76b3a078, java.lang.Object)
+Executor - [DEBUG]: Return data: android.net.ConnectivityManager@76b3a078 ,class android.net.ConnectivityManager
 Executor - [MSG]: Reflction invocation public java.lang.Object android.content.Context.getSystemService(java.lang.String)
 DalvikVM - [BB]: Set reflective call: public java.lang.Object android.content.Context.getSystemService(java.lang.String)
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 3
@@ -2487,9 +2487,9 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VI
 Executor - [MSG]: 
 
 Executor - [MSG]: <3 MOV,RESULT,dst=r0,type=java.lang.Object> at com.google.ssearch.Utils$PhoneState/getNetOperater[android.content.Context]
-DalvikVM - [WARN]: ar 0, (android.net.ConnectivityManager@69cb7fc, java.lang.Object)
-OP_MOV_RESULT - [BB]: Result data: android.net.ConnectivityManager@69cb7fc
-OP_MOV_RESULT - [DEBUG]: Result data: android.net.ConnectivityManager@69cb7fc, type: java.lang.Object, to [reg 0@Utils$PhoneState/getNetOperater]
+DalvikVM - [WARN]: ar 0, (android.net.ConnectivityManager@76b3a078, java.lang.Object)
+OP_MOV_RESULT - [BB]: Result data: android.net.ConnectivityManager@76b3a078
+OP_MOV_RESULT - [DEBUG]: Result data: android.net.ConnectivityManager@76b3a078, type: java.lang.Object, to [reg 0@Utils$PhoneState/getNetOperater]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 4
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>}
 Executor - [MSG]: 
@@ -2500,7 +2500,7 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VI
 Executor - [MSG]: 
 
 Executor - [MSG]: <5 IF,EQZ,r0=r0,extra=index:9> at com.google.ssearch.Utils$PhoneState/getNetOperater[android.content.Context]
-OP_CMP - [DEBUG]: r0 data android.net.ConnectivityManager@69cb7fc
+OP_CMP - [DEBUG]: r0 data android.net.ConnectivityManager@76b3a078
 OP_CMP - [DEBUG]: r0 type java.lang.Object
 Executor - [DEBUG]: Ops: Primitive:42, Primitive:0
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_IF_EQZ -> jump set pc to 6
@@ -2509,10 +2509,10 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VI
 Executor - [MSG]: 
 
 Executor - [MSG]: <6 INVOKE,VIRTUAL,extra=[android.net.ConnectivityManager/getActiveNetworkInfo[], [0]]> at com.google.ssearch.Utils$PhoneState/getNetOperater[android.content.Context]
-Executor - [MSG]: arg0 obj: android.net.ConnectivityManager@69cb7fc
+Executor - [MSG]: arg0 obj: android.net.ConnectivityManager@76b3a078
 Executor - [DEBUG]: Reflction class: class android.net.ConnectivityManager
-DalvikVM - [WARN]: ar -1, (android.net.NetworkInfo@70984b95, android.net.NetworkInfo)
-Executor - [DEBUG]: Return data: android.net.NetworkInfo@70984b95 ,class android.net.NetworkInfo
+DalvikVM - [WARN]: ar -1, (android.net.NetworkInfo@5d8cb32c, android.net.NetworkInfo)
+Executor - [DEBUG]: Return data: android.net.NetworkInfo@5d8cb32c ,class android.net.NetworkInfo
 Executor - [MSG]: Reflction invocation public android.net.NetworkInfo android.net.ConnectivityManager.getActiveNetworkInfo()
 DalvikVM - [BB]: Set reflective call: public android.net.NetworkInfo android.net.ConnectivityManager.getActiveNetworkInfo()
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 7
@@ -2522,15 +2522,15 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VI
 Executor - [MSG]: 
 
 Executor - [MSG]: <7 MOV,RESULT,dst=r1,type=java.lang.Object> at com.google.ssearch.Utils$PhoneState/getNetOperater[android.content.Context]
-DalvikVM - [WARN]: ar 1 (connectivity, java.lang.String), (android.net.NetworkInfo@70984b95, android.net.NetworkInfo)
-OP_MOV_RESULT - [BB]: Result data: android.net.NetworkInfo@70984b95
-OP_MOV_RESULT - [DEBUG]: Result data: android.net.NetworkInfo@70984b95, type: android.net.NetworkInfo, to [reg 1@Utils$PhoneState/getNetOperater]
+DalvikVM - [WARN]: ar 1 (connectivity, java.lang.String), (android.net.NetworkInfo@5d8cb32c, android.net.NetworkInfo)
+OP_MOV_RESULT - [BB]: Result data: android.net.NetworkInfo@5d8cb32c
+OP_MOV_RESULT - [DEBUG]: Result data: android.net.NetworkInfo@5d8cb32c, type: android.net.NetworkInfo, to [reg 1@Utils$PhoneState/getNetOperater]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 8
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <8 IF,NEZ,r0=r1,extra=index:11> at com.google.ssearch.Utils$PhoneState/getNetOperater[android.content.Context]
-OP_CMP - [DEBUG]: r0 data android.net.NetworkInfo@70984b95
+OP_CMP - [DEBUG]: r0 data android.net.NetworkInfo@5d8cb32c
 OP_CMP - [DEBUG]: r0 type android.net.NetworkInfo
 Executor - [DEBUG]: Ops: Primitive:42, Primitive:0
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_IF_NEZ -> jump set pc to 11
@@ -2539,10 +2539,10 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VI
 Executor - [MSG]: 
 
 Executor - [MSG]: <11 INVOKE,VIRTUAL,extra=[android.net.ConnectivityManager/getActiveNetworkInfo[], [0]]> at com.google.ssearch.Utils$PhoneState/getNetOperater[android.content.Context]
-Executor - [MSG]: arg0 obj: android.net.ConnectivityManager@69cb7fc
+Executor - [MSG]: arg0 obj: android.net.ConnectivityManager@76b3a078
 Executor - [DEBUG]: Reflction class: class android.net.ConnectivityManager
-DalvikVM - [WARN]: ar -1, (android.net.NetworkInfo@70984b95, android.net.NetworkInfo)
-Executor - [DEBUG]: Return data: android.net.NetworkInfo@70984b95 ,class android.net.NetworkInfo
+DalvikVM - [WARN]: ar -1, (android.net.NetworkInfo@5d8cb32c, android.net.NetworkInfo)
+Executor - [DEBUG]: Return data: android.net.NetworkInfo@5d8cb32c ,class android.net.NetworkInfo
 Executor - [MSG]: Reflction invocation public android.net.NetworkInfo android.net.ConnectivityManager.getActiveNetworkInfo()
 DalvikVM - [BB]: Set reflective call: public android.net.NetworkInfo android.net.ConnectivityManager.getActiveNetworkInfo()
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 12
@@ -2552,15 +2552,15 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VI
 Executor - [MSG]: 
 
 Executor - [MSG]: <12 MOV,RESULT,dst=r1,type=java.lang.Object> at com.google.ssearch.Utils$PhoneState/getNetOperater[android.content.Context]
-DalvikVM - [WARN]: ar 1 (android.net.NetworkInfo@70984b95, android.net.NetworkInfo), (android.net.NetworkInfo@70984b95, android.net.NetworkInfo)
-OP_MOV_RESULT - [BB]: Result data: android.net.NetworkInfo@70984b95
-OP_MOV_RESULT - [DEBUG]: Result data: android.net.NetworkInfo@70984b95, type: android.net.NetworkInfo, to [reg 1@Utils$PhoneState/getNetOperater]
+DalvikVM - [WARN]: ar 1 (android.net.NetworkInfo@5d8cb32c, android.net.NetworkInfo), (android.net.NetworkInfo@5d8cb32c, android.net.NetworkInfo)
+OP_MOV_RESULT - [BB]: Result data: android.net.NetworkInfo@5d8cb32c
+OP_MOV_RESULT - [DEBUG]: Result data: android.net.NetworkInfo@5d8cb32c, type: android.net.NetworkInfo, to [reg 1@Utils$PhoneState/getNetOperater]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 13
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <13 INVOKE,VIRTUAL,extra=[android.net.NetworkInfo/getExtraInfo[], [1]]> at com.google.ssearch.Utils$PhoneState/getNetOperater[android.content.Context]
-Executor - [MSG]: arg0 obj: android.net.NetworkInfo@70984b95
+Executor - [MSG]: arg0 obj: android.net.NetworkInfo@5d8cb32c
 Executor - [DEBUG]: Reflction class: class android.net.NetworkInfo
 DalvikVM - [WARN]: ar -1, (, java.lang.String)
 Executor - [DEBUG]: Return data:  ,class java.lang.String
@@ -2573,7 +2573,7 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VI
 Executor - [MSG]: 
 
 Executor - [MSG]: <14 MOV,RESULT,dst=r1,type=java.lang.Object> at com.google.ssearch.Utils$PhoneState/getNetOperater[android.content.Context]
-DalvikVM - [WARN]: ar 1 (android.net.NetworkInfo@70984b95, android.net.NetworkInfo), (, java.lang.String)
+DalvikVM - [WARN]: ar 1 (android.net.NetworkInfo@5d8cb32c, android.net.NetworkInfo), (, java.lang.String)
 OP_MOV_RESULT - [BB]: Result data: 
 OP_MOV_RESULT - [DEBUG]: Result data: , type: java.lang.String, to [reg 1@Utils$PhoneState/getNetOperater]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 15
@@ -2685,7 +2685,7 @@ TaintSumBranch - [DEBUG]: Found a sink invocation. <org.apache.http.message.Basi
 hasTaintedParam - [WARN]: Tainted param in r6
 TaintSumBranch - [WARN]: Found a tainted sink <org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)> leaking data [359874043116909] at reg 6!!!
 TaintSumBranch - [WARN]: A tainted init imei=359874043116909 identified, add reg4 as tainted
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 4@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, [reg 6@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 4@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 6@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <9 INVOKE,INTERFACE,extra=[java.util.List/add[java.lang.Object], [3, 4]]> at com.google.ssearch.SearchService/doSearchReport[]
@@ -2701,7 +2701,7 @@ Executor - [MSG]: Reflction invocation public abstract boolean java.util.List.ad
 DalvikVM - [BB]: Set reflective call: public abstract boolean java.util.List.add(java.lang.Object)
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 10
 TaintSumBranch - [BB]: <java.util.List: boolean add(java.lang.Object)>
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 4@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, [reg 6@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 4@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 6@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <10 INSTANCE,IGET,r0=r7,r1=r4,type=java.lang.Object,extra=com.google.ssearch.SearchService.mOsType> at com.google.ssearch.SearchService/doSearchReport[]
@@ -2719,7 +2719,7 @@ OP_CMP - [DEBUG]: r0 type java.lang.String
 Executor - [DEBUG]: Ops: Primitive:42, Primitive:0
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_IF_EQZ -> jump set pc to 12
 Executor - [DEBUG]: not equ: <11 IF,EQZ,r0=r4,extra=index:22>
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, [reg 6@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 6@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <12 MOV,CONST,dst=r4,type=java.lang.String,extra=""> at com.google.ssearch.SearchService/doSearchReport[]
@@ -2736,7 +2736,7 @@ class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Fieldinfo com.goog
 DalvikVM - [WARN]: ar 5 (imei, java.lang.String), (RELEASE, java.lang.String)
 class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: RELEASE
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD -> jump set pc to 14
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, [reg 6@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 6@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <14 INVOKE,VIRTUAL,extra=[java.lang.String/equals[java.lang.Object], [4, 5]]> at com.google.ssearch.SearchService/doSearchReport[]
@@ -2752,7 +2752,7 @@ Executor - [MSG]: Reflction invocation public boolean java.lang.String.equals(ja
 DalvikVM - [BB]: Set reflective call: public boolean java.lang.String.equals(java.lang.Object)
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 15
 TaintSumBranch - [BB]: <java.lang.String: boolean equals(java.lang.Object)>
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, [reg 6@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 6@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <15 MOV,RESULT,dst=r4,type=void> at com.google.ssearch.SearchService/doSearchReport[]
@@ -2770,7 +2770,7 @@ OP_CMP - [DEBUG]: r0 type boolean
 Executor - [DEBUG]: Ops: Primitive:false, Primitive:0
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_IF_NEZ -> jump set pc to 17
 Executor - [DEBUG]: Equ: <16 IF,NEZ,r0=r4,extra=index:22>
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, [reg 6@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 6@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <17 NEW,INSTANCE,dst=r4,type=org.apache.http.message.BasicNameValuePair> at com.google.ssearch.SearchService/doSearchReport[]
@@ -2787,7 +2787,7 @@ Executor - [DEBUG]: Mov const begin <18 MOV,CONST,dst=r5,type=java.lang.String,e
 DalvikVM - [WARN]: ar 5 (RELEASE, java.lang.String), (ostype, java.lang.String)
 Executor - [DEBUG]: data: ostype class java.lang.String
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 19
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, [reg 6@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 6@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <19 INSTANCE,IGET,r0=r7,r1=r6,type=java.lang.Object,extra=com.google.ssearch.SearchService.mOsType> at com.google.ssearch.SearchService/doSearchReport[]
@@ -3088,7 +3088,7 @@ class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [BB]: Fieldinfo com.goog
 DalvikVM - [WARN]: ar 4 (mobile=5305745364, org.apache.http.message.BasicNameValuePair), (Google Empire, java.lang.String)
 class fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD - [DEBUG]: Get data: Google Empire
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_INSTANCE_GET_FIELD -> jump set pc to 47
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {mobile=5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, [reg 6@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {mobile=5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 6@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <47 IF,EQZ,r0=r4,extra=index:58> at com.google.ssearch.SearchService/doSearchReport[]
@@ -3105,7 +3105,7 @@ Executor - [DEBUG]: Mov const begin <48 MOV,CONST,dst=r4,type=java.lang.String,e
 DalvikVM - [WARN]: ar 4 (Google Empire, java.lang.String), (, java.lang.String)
 Executor - [DEBUG]: data:  class java.lang.String
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_CONST -> jump set pc to 49
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {mobile=5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, [reg 6@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {mobile=5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 6@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <49 INSTANCE,IGET,r0=r7,r1=r5,type=java.lang.Object,extra=com.google.ssearch.SearchService.mModel> at com.google.ssearch.SearchService/doSearchReport[]
@@ -3139,7 +3139,7 @@ DalvikVM - [WARN]: ar 4 (, java.lang.String), (Primitive:false, boolean)
 OP_MOV_RESULT - [BB]: Result data: Primitive:false
 OP_MOV_RESULT - [DEBUG]: Result data: Primitive:false, type: boolean, to [reg 4@SearchService/doSearchReport]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 52
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {mobile=5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, [reg 6@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {mobile=5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 6@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <52 IF,NEZ,r0=r4,extra=index:58> at com.google.ssearch.SearchService/doSearchReport[]
@@ -3157,7 +3157,7 @@ DalvikVM - [WARN]: ar 4 (Primitive:false, boolean), (null, org.apache.http.messa
 OP_NEW_INSTANCE - [BB]: Reflecable instance.
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_NEW_INSTANCE -> jump set pc to 54
 TaintSumBranch - [BB]: Rdst [reg 4@SearchService/doSearchReport]
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {mobile=5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, [reg 6@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {mobile=5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 6@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <54 MOV,CONST,dst=r5,type=java.lang.String,extra="mobilemodel"> at com.google.ssearch.SearchService/doSearchReport[]
@@ -3400,16 +3400,16 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {mobile=5305745364=<3 INVOKE,
 Executor - [MSG]: 
 
 Executor - [MSG]: <82 STATIC,SGET,r0=r4,type=java.lang.Object,extra=(com.google.ssearch.SearchService, mIdentifier)> at com.google.ssearch.SearchService/doSearchReport[]
-Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@339e6e00
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@24150c2c
 Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.google.ssearch.SearchService
-Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@339e6e00
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@24150c2c
 DalvikVM - [WARN]: ar 4 (nettype=WIFI, org.apache.http.message.BasicNameValuePair), (devwilson, java.lang.String)
-OP_STATIC_GET_FIELD - [DEBUG]: Sget devwilson, from [DVMClass: com.google.ssearch.SearchService@674386055]
+OP_STATIC_GET_FIELD - [DEBUG]: Sget devwilson, from [DVMClass: com.google.ssearch.SearchService@1806550693]
 OP_STATIC_GET_FIELD - [DEBUG]: Expect sget mIdentifier, a java.lang.String from com.google.ssearch.SearchService
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD -> jump set pc to 83
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@339e6e00
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@24150c2c
 Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.google.ssearch.SearchService
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@339e6e00
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@24150c2c
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {mobile=5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
 Executor - [MSG]: 
 
@@ -3431,16 +3431,16 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {mobile=5305745364=<3 INVOKE,
 Executor - [MSG]: 
 
 Executor - [MSG]: <85 STATIC,SGET,r0=r5,type=java.lang.Object,extra=(com.google.ssearch.SearchService, mIdentifier)> at com.google.ssearch.SearchService/doSearchReport[]
-Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@339e6e00
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@24150c2c
 Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.google.ssearch.SearchService
-Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@339e6e00
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@24150c2c
 DalvikVM - [WARN]: ar 5 (nettype, java.lang.String), (devwilson, java.lang.String)
-OP_STATIC_GET_FIELD - [DEBUG]: Sget devwilson, from [DVMClass: com.google.ssearch.SearchService@674386055]
+OP_STATIC_GET_FIELD - [DEBUG]: Sget devwilson, from [DVMClass: com.google.ssearch.SearchService@1806550693]
 OP_STATIC_GET_FIELD - [DEBUG]: Expect sget mIdentifier, a java.lang.String from com.google.ssearch.SearchService
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD -> jump set pc to 86
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@339e6e00
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@24150c2c
 Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.google.ssearch.SearchService
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@339e6e00
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@24150c2c
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {mobile=5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
 Executor - [MSG]: 
 
@@ -3496,16 +3496,16 @@ PluginManager - [MSG]: TaintSumBranch Tainted Res: {mobile=5305745364=<3 INVOKE,
 Executor - [MSG]: 
 
 Executor - [MSG]: <91 STATIC,SGET,r0=r6,type=java.lang.Object,extra=(com.google.ssearch.SearchService, mIdentifier)> at com.google.ssearch.SearchService/doSearchReport[]
-Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@339e6e00
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@24150c2c
 Caller: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.google.ssearch.SearchService
-Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@339e6e00
+Caller@4: func@fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@24150c2c
 DalvikVM - [WARN]: ar 6 (WIFI, java.lang.String), (devwilson, java.lang.String)
-OP_STATIC_GET_FIELD - [DEBUG]: Sget devwilson, from [DVMClass: com.google.ssearch.SearchService@674386055]
+OP_STATIC_GET_FIELD - [DEBUG]: Sget devwilson, from [DVMClass: com.google.ssearch.SearchService@1806550693]
 OP_STATIC_GET_FIELD - [DEBUG]: Expect sget mIdentifier, a java.lang.String from com.google.ssearch.SearchService
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_STATIC_GET_FIELD -> jump set pc to 92
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@339e6e00
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@24150c2c
 Caller: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: Get DVMClass for type com.google.ssearch.SearchService
-Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@339e6e00
+Caller@4: flow@fu.hao.trust.analysis.Taint$TAINT_OP_STATIC_GET_FIELD - [BB]: getClass com.google.ssearch.SearchService at fu.hao.trust.dvm.VMHeap@24150c2c
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {mobile=5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
 Executor - [MSG]: 
 
@@ -3871,15 +3871,15 @@ Executor - [MSG]: arg0 obj: null
 Executor - [MSG]: Replace the clazz.
 Executor - [BB]: java.io.File/<init>[java.lang.String] is a constructor!
 Executor - [BB]: arg1@reg1: /system/bin/gjsvr
-DalvikVM - [WARN]: ar 0 (null, java.io.File), (android.myclasses.java.io.File@1639f9e3, java.io.File)
-Executor - [DEBUG]: Init instance: android.myclasses.java.io.File@1639f9e3 class android.myclasses.java.io.File
+DalvikVM - [WARN]: ar 0 (null, java.io.File), (android.myclasses.java.io.File@1135363a, java.io.File)
+Executor - [DEBUG]: Init instance: android.myclasses.java.io.File@1135363a class android.myclasses.java.io.File
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 4
 TaintSumBranch - [BB]: <java.io.File: void <init>(java.lang.String)>
 PluginManager - [MSG]: TaintSumBranch Tainted Res: {mobile=5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <4 INVOKE,VIRTUAL,extra=[java.io.File/exists[], [0]]> at com.google.ssearch.Utils/checkPermission[]
-Executor - [MSG]: arg0 obj: android.myclasses.java.io.File@1639f9e3
+Executor - [MSG]: arg0 obj: android.myclasses.java.io.File@1135363a
 Executor - [MSG]: Replace the clazz.
 Executor - [DEBUG]: Reflction class: class android.myclasses.java.io.File
 DalvikVM - [WARN]: ar -1, (false, boolean)
@@ -3893,7 +3893,7 @@ Executor - [MSG]:
 
 Executor - [MSG]: <5 MOV,RESULT,dst=r0,type=void> at com.google.ssearch.Utils/checkPermission[]
 DalvikVM - [WARN]: ar -1 (false, boolean), (Primitive:false, boolean)
-DalvikVM - [WARN]: ar 0 (android.myclasses.java.io.File@1639f9e3, java.io.File), (Primitive:false, boolean)
+DalvikVM - [WARN]: ar 0 (android.myclasses.java.io.File@1135363a, java.io.File), (Primitive:false, boolean)
 OP_MOV_RESULT - [BB]: Result data: Primitive:false
 OP_MOV_RESULT - [DEBUG]: Result data: Primitive:false, type: boolean, to [reg 0@Utils/checkPermission]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 6
@@ -4096,7 +4096,7 @@ TaintSumBranch - [BB]: <org.apache.http.client.entity.UrlEncodedFormEntity: void
 TaintSumBranch - [DEBUG]: Found a sink invocation. <org.apache.http.client.entity.UrlEncodedFormEntity: void <init>(java.util.List,java.lang.String)>
 TaintSumBranch - [WARN]: Found a tainted sink <org.apache.http.client.entity.UrlEncodedFormEntity: void <init>(java.util.List,java.lang.String)> leaking data [[imei=359874043116909, ostype=RELEASE, osapi=SDK19, mobile=5305745364, mobilemodel=Google Empire, nettype=WIFI, managerid=devwilson, sdmemory=9801, aliamemory=100000, root=0]] at reg 3!!!
 TaintSumBranch - [WARN]: A tainted init [Content-Type: application/x-www-form-urlencoded; charset=UTF-8,Content-Length: 163,Chunked: false] identified, add reg4 as tainted
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {mobile=5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, [reg 4@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [Content-Type: application/x-www-form-urlencoded; charset=UTF-8,Content-Length: 163,Chunked: false]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Content-Type: application/x-www-form-urlencoded; charset=UTF-8,Content-Length: 163,Chunked: false]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, mobile=5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, [reg 4@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <131 INVOKE,VIRTUAL,extra=[org.apache.http.client.methods.HttpEntityEnclosingRequestBase/setEntity[org.apache.http.HttpEntity], [1, 4]]> at com.google.ssearch.SearchService/doSearchReport[]
@@ -4113,7 +4113,7 @@ DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 132
 TaintSumBranch - [BB]: <org.apache.http.client.methods.HttpEntityEnclosingRequestBase: void setEntity(org.apache.http.HttpEntity)>
 hasTaintedParam - [WARN]: Tainted param in r4
 TaintSumBranch - [WARN]: A tainted thisObj POST http://search.gongfu-android.com:8511/search/sayhi.php HTTP/1.1 identified, add reg1 as tainted
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 1@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, mobile=5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, [reg 4@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [Content-Type: application/x-www-form-urlencoded; charset=UTF-8,Content-Length: 163,Chunked: false]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, POST http://search.gongfu-android.com:8511/search/sayhi.php HTTP/1.1=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Content-Type: application/x-www-form-urlencoded; charset=UTF-8,Content-Length: 163,Chunked: false]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, mobile=5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, [reg 1@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 4@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, POST http://search.gongfu-android.com:8511/search/sayhi.php HTTP/1.1=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <132 NEW,INSTANCE,dst=r4,type=org.apache.http.impl.client.DefaultHttpClient> at com.google.ssearch.SearchService/doSearchReport[]
@@ -4123,21 +4123,21 @@ OP_NEW_INSTANCE - [BB]: Reflecable instance.
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_NEW_INSTANCE -> jump set pc to 133
 TaintSumBranch - [BB]: Rdst [reg 4@SearchService/doSearchReport]
 TaintSumBranch - [BB]: Rm [reg 4@SearchService/doSearchReport]
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {mobile=5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, [reg 1@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, [Content-Type: application/x-www-form-urlencoded; charset=UTF-8,Content-Length: 163,Chunked: false]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, POST http://search.gongfu-android.com:8511/search/sayhi.php HTTP/1.1=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Content-Type: application/x-www-form-urlencoded; charset=UTF-8,Content-Length: 163,Chunked: false]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, mobile=5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 1@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, POST http://search.gongfu-android.com:8511/search/sayhi.php HTTP/1.1=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <133 INVOKE,DIRECT,extra=[org.apache.http.impl.client.DefaultHttpClient/<init>[], [4]]> at com.google.ssearch.SearchService/doSearchReport[]
 Executor - [MSG]: arg0 obj: null
 Executor - [BB]: org.apache.http.impl.client.DefaultHttpClient/<init>[] is a constructor!
-DalvikVM - [WARN]: ar 4 (null, org.apache.http.impl.client.DefaultHttpClient), (org.apache.http.impl.client.DefaultHttpClient@63292d35, void)
-Executor - [DEBUG]: Reflected init instance: org.apache.http.impl.client.DefaultHttpClient@63292d35, class org.apache.http.impl.client.DefaultHttpClient
+DalvikVM - [WARN]: ar 4 (null, org.apache.http.impl.client.DefaultHttpClient), (org.apache.http.impl.client.DefaultHttpClient@325b4296, void)
+Executor - [DEBUG]: Reflected init instance: org.apache.http.impl.client.DefaultHttpClient@325b4296, class org.apache.http.impl.client.DefaultHttpClient
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 134
 TaintSumBranch - [BB]: <org.apache.http.impl.client.DefaultHttpClient: void <init>()>
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {mobile=5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, [reg 1@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, [Content-Type: application/x-www-form-urlencoded; charset=UTF-8,Content-Length: 163,Chunked: false]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, POST http://search.gongfu-android.com:8511/search/sayhi.php HTTP/1.1=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Content-Type: application/x-www-form-urlencoded; charset=UTF-8,Content-Length: 163,Chunked: false]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, mobile=5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 1@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, POST http://search.gongfu-android.com:8511/search/sayhi.php HTTP/1.1=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <134 INVOKE,VIRTUAL,extra=[org.apache.http.impl.client.CloseableHttpClient/execute[org.apache.http.client.methods.HttpUriRequest], [4, 1]]> at com.google.ssearch.SearchService/doSearchReport[]
-Executor - [MSG]: arg0 obj: org.apache.http.impl.client.DefaultHttpClient@63292d35
+Executor - [MSG]: arg0 obj: org.apache.http.impl.client.DefaultHttpClient@325b4296
 Executor - [DEBUG]: Reflction class: class org.apache.http.impl.client.CloseableHttpClient
 Executor - [BB]: Normal args? false
 Executor - [BB]: arg1@reg1: POST http://search.gongfu-android.com:8511/search/sayhi.php HTTP/1.1
@@ -4145,10 +4145,10 @@ Executor - [BB]: Nargs? true
 DalvikVM - [BB]: Superclass: org.apache.http.client.methods.CloseableHttpResponse
 DalvikVM - [BB]: Superclass: java.lang.Object
 DVMObject - [BB]: New instance of org.apache.http.client.methods.CloseableHttpResponse
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass org.apache.http.client.methods.CloseableHttpResponse at fu.hao.trust.dvm.VMHeap@339e6e00
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: New DVMClass representation for org.apache.http.client.methods.CloseableHttpResponse at fu.hao.trust.dvm.VMHeap@339e6e00
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass org.apache.http.client.methods.CloseableHttpResponse at fu.hao.trust.dvm.VMHeap@24150c2c
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: New DVMClass representation for org.apache.http.client.methods.CloseableHttpResponse at fu.hao.trust.dvm.VMHeap@24150c2c
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type org.apache.http.client.methods.CloseableHttpResponse
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass org.apache.http.client.methods.CloseableHttpResponse at fu.hao.trust.dvm.VMHeap@339e6e00
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass org.apache.http.client.methods.CloseableHttpResponse at fu.hao.trust.dvm.VMHeap@24150c2c
 Unknown - [BB]: Unknown created!
 DalvikVM - [WARN]: ar -1, ([Unknown var:instance number 1@org.apache.http.client.methods.CloseableHttpResponse, type: org.apache.http.client.methods.CloseableHttpResponse], org.apache.http.client.methods.CloseableHttpResponse)
 Executor - [DEBUG]: Return data: [Unknown var:instance number 1@org.apache.http.client.methods.CloseableHttpResponse, type: org.apache.http.client.methods.CloseableHttpResponse] ,class fu.hao.trust.solver.Unknown
@@ -4161,7 +4161,7 @@ TaintSumBranch - [DEBUG]: Not a taint source call: <org.apache.http.impl.client.
 TaintSumBranch - [WARN]: Found a tainted return val!
 TaintSumBranch - [DEBUG]: Found a sink invocation. <org.apache.http.impl.client.CloseableHttpClient: org.apache.http.client.methods.CloseableHttpResponse execute(org.apache.http.client.methods.HttpUriRequest)>
 TaintSumBranch - [WARN]: Found a tainted sink <org.apache.http.impl.client.CloseableHttpClient: org.apache.http.client.methods.CloseableHttpResponse execute(org.apache.http.client.methods.HttpUriRequest)> leaking data [POST http://search.gongfu-android.com:8511/search/sayhi.php HTTP/1.1] at reg 1!!!
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {mobile=5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, [reg 1@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [Global RetReg]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, [Content-Type: application/x-www-form-urlencoded; charset=UTF-8,Content-Length: 163,Chunked: false]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [Unknown var:instance number 1@org.apache.http.client.methods.CloseableHttpResponse, type: org.apache.http.client.methods.CloseableHttpResponse]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, POST http://search.gongfu-android.com:8511/search/sayhi.php HTTP/1.1=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Content-Type: application/x-www-form-urlencoded; charset=UTF-8,Content-Length: 163,Chunked: false]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, mobile=5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 1@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [Unknown var:instance number 1@org.apache.http.client.methods.CloseableHttpResponse, type: org.apache.http.client.methods.CloseableHttpResponse]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, POST http://search.gongfu-android.com:8511/search/sayhi.php HTTP/1.1=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [Global RetReg]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <135 MOV,RESULT,dst=r2,type=java.lang.Object> at com.google.ssearch.SearchService/doSearchReport[]
@@ -4171,7 +4171,7 @@ OP_MOV_RESULT - [DEBUG]: Result data: [Unknown var:instance number 1@org.apache.
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 136
 TaintSumBranch - [BB]: <3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>
 TaintSumBranch - [BB]: Add reg 2 due to ret reg.
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 1@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, mobile=5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, [reg 2@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [Content-Type: application/x-www-form-urlencoded; charset=UTF-8,Content-Length: 163,Chunked: false]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, POST http://search.gongfu-android.com:8511/search/sayhi.php HTTP/1.1=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [Unknown var:instance number 1@org.apache.http.client.methods.CloseableHttpResponse, type: org.apache.http.client.methods.CloseableHttpResponse]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Content-Type: application/x-www-form-urlencoded; charset=UTF-8,Content-Length: 163,Chunked: false]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, mobile=5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, [reg 1@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, POST http://search.gongfu-android.com:8511/search/sayhi.php HTTP/1.1=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, [Unknown var:instance number 1@org.apache.http.client.methods.CloseableHttpResponse, type: org.apache.http.client.methods.CloseableHttpResponse]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 2@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <136 INVOKE,INTERFACE,extra=[org.apache.http.HttpResponse/getStatusLine[], [2]]> at com.google.ssearch.SearchService/doSearchReport[]
@@ -4180,10 +4180,10 @@ Executor - [DEBUG]: Reflction class: interface org.apache.http.HttpResponse
 DalvikVM - [BB]: Superclass: org.apache.http.StatusLine
 DalvikVM - [BB]: Superclass: java.lang.Object
 DVMObject - [BB]: New instance of org.apache.http.StatusLine
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass org.apache.http.StatusLine at fu.hao.trust.dvm.VMHeap@339e6e00
-Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: New DVMClass representation for org.apache.http.StatusLine at fu.hao.trust.dvm.VMHeap@339e6e00
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass org.apache.http.StatusLine at fu.hao.trust.dvm.VMHeap@24150c2c
+Caller: getClass@fu.hao.trust.dvm.VMHeap - [BB]: New DVMClass representation for org.apache.http.StatusLine at fu.hao.trust.dvm.VMHeap@24150c2c
 Caller: <init>@fu.hao.trust.dvm.DVMObject - [BB]: Get DVMClass for type org.apache.http.StatusLine
-Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass org.apache.http.StatusLine at fu.hao.trust.dvm.VMHeap@339e6e00
+Caller@4: <init>@fu.hao.trust.dvm.DVMObject - [BB]: getClass org.apache.http.StatusLine at fu.hao.trust.dvm.VMHeap@24150c2c
 Unknown - [BB]: Unknown created!
 DalvikVM - [WARN]: ar -1, ([Unknown var:instance number 1@org.apache.http.StatusLine, type: org.apache.http.StatusLine], org.apache.http.StatusLine)
 Executor - [WARN]: Found noInvokeMethod public abstract org.apache.http.StatusLine org.apache.http.HttpResponse.getStatusLine()
@@ -4195,17 +4195,17 @@ DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 137
 TaintSumBranch - [BB]: <org.apache.http.HttpResponse: org.apache.http.StatusLine getStatusLine()>
 TaintSumBranch - [DEBUG]: Not a taint source call: <org.apache.http.HttpResponse: org.apache.http.StatusLine getStatusLine()>
 TaintSumBranch - [WARN]: Found a tainted return val!
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {[reg 1@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, mobile=5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, [reg 2@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [Global RetReg]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [Unknown var:instance number 1@org.apache.http.StatusLine, type: org.apache.http.StatusLine]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [Content-Type: application/x-www-form-urlencoded; charset=UTF-8,Content-Length: 163,Chunked: false]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, POST http://search.gongfu-android.com:8511/search/sayhi.php HTTP/1.1=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [Unknown var:instance number 1@org.apache.http.client.methods.CloseableHttpResponse, type: org.apache.http.client.methods.CloseableHttpResponse]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Content-Type: application/x-www-form-urlencoded; charset=UTF-8,Content-Length: 163,Chunked: false]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, mobile=5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, [reg 1@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, POST http://search.gongfu-android.com:8511/search/sayhi.php HTTP/1.1=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, [Unknown var:instance number 1@org.apache.http.client.methods.CloseableHttpResponse, type: org.apache.http.client.methods.CloseableHttpResponse]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [Unknown var:instance number 1@org.apache.http.StatusLine, type: org.apache.http.StatusLine]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [Global RetReg]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 2@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <137 MOV,RESULT,dst=r4,type=java.lang.Object> at com.google.ssearch.SearchService/doSearchReport[]
-DalvikVM - [WARN]: ar 4 (org.apache.http.impl.client.DefaultHttpClient@63292d35, void), ([Unknown var:instance number 1@org.apache.http.StatusLine, type: org.apache.http.StatusLine], org.apache.http.StatusLine)
+DalvikVM - [WARN]: ar 4 (org.apache.http.impl.client.DefaultHttpClient@325b4296, void), ([Unknown var:instance number 1@org.apache.http.StatusLine, type: org.apache.http.StatusLine], org.apache.http.StatusLine)
 OP_MOV_RESULT - [BB]: Result data: [Unknown var:instance number 1@org.apache.http.StatusLine, type: org.apache.http.StatusLine]
 OP_MOV_RESULT - [DEBUG]: Result data: [Unknown var:instance number 1@org.apache.http.StatusLine, type: org.apache.http.StatusLine], type: org.apache.http.StatusLine, to [reg 4@SearchService/doSearchReport]
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor$OP_MOV_RESULT -> jump set pc to 138
 TaintSumBranch - [BB]: <3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>
 TaintSumBranch - [BB]: Add reg 4 due to ret reg.
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {mobile=5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, [reg 1@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 2@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 4@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, [Content-Type: application/x-www-form-urlencoded; charset=UTF-8,Content-Length: 163,Chunked: false]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [Unknown var:instance number 1@org.apache.http.StatusLine, type: org.apache.http.StatusLine]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [Unknown var:instance number 1@org.apache.http.client.methods.CloseableHttpResponse, type: org.apache.http.client.methods.CloseableHttpResponse]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, POST http://search.gongfu-android.com:8511/search/sayhi.php HTTP/1.1=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Content-Type: application/x-www-form-urlencoded; charset=UTF-8,Content-Length: 163,Chunked: false]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, mobile=5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, [reg 4@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 1@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [Unknown var:instance number 1@org.apache.http.client.methods.CloseableHttpResponse, type: org.apache.http.client.methods.CloseableHttpResponse]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, POST http://search.gongfu-android.com:8511/search/sayhi.php HTTP/1.1=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [Unknown var:instance number 1@org.apache.http.StatusLine, type: org.apache.http.StatusLine]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 2@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <138 INVOKE,INTERFACE,extra=[org.apache.http.StatusLine/getStatusCode[], [4]]> at com.google.ssearch.SearchService/doSearchReport[]
@@ -4220,7 +4220,7 @@ Executor - [WARN]: Abnormal args, contain abstract value.
 DalvikVM - [BB]: Set reflective call: public abstract int org.apache.http.StatusLine.getStatusCode()
 DalvikVM - [BB]: fu.hao.trust.dvm.Executor -> jump set pc to 139
 TaintSumBranch - [BB]: <org.apache.http.StatusLine: int getStatusCode()>
-PluginManager - [MSG]: TaintSumBranch Tainted Res: {mobile=5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, [reg 1@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 2@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 4@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, [Content-Type: application/x-www-form-urlencoded; charset=UTF-8,Content-Length: 163,Chunked: false]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [Unknown var:instance number 1@org.apache.http.StatusLine, type: org.apache.http.StatusLine]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [Unknown var:instance number 1@org.apache.http.client.methods.CloseableHttpResponse, type: org.apache.http.client.methods.CloseableHttpResponse]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, POST http://search.gongfu-android.com:8511/search/sayhi.php HTTP/1.1=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
+PluginManager - [MSG]: TaintSumBranch Tainted Res: {[Content-Type: application/x-www-form-urlencoded; charset=UTF-8,Content-Length: 163,Chunked: false]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, mobile=5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, [reg 4@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 1@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [Unknown var:instance number 1@org.apache.http.client.methods.CloseableHttpResponse, type: org.apache.http.client.methods.CloseableHttpResponse]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, 5305745364=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getLine1Number[], [1]]>, POST http://search.gongfu-android.com:8511/search/sayhi.php HTTP/1.1=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [Unknown var:instance number 1@org.apache.http.StatusLine, type: org.apache.http.StatusLine]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, imei=359874043116909=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>, [reg 2@SearchService/doSearchReport]=<3 INVOKE,VIRTUAL,extra=[android.telephony.TelephonyManager/getDeviceId[], [1]]>}
 Executor - [MSG]: 
 
 Executor - [MSG]: <139 RETURN,VOID> at com.google.ssearch.SearchService/doSearchReport[]
@@ -4230,5 +4230,5 @@ DalvikVM - [BB]: Back to the last stack frame.null
 Executor - [MSG]: RUN DONE! The last one is doSearchReport
 DalvikVM - [MSG]: FINISHED!
 
-main - [MSG]: Analysis has run for 5.45711407 seconds
+main - [MSG]: Analysis has run for 17.165459468 seconds
 

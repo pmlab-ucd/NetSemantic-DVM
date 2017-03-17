@@ -19,14 +19,27 @@ public class Test {
 
 	public static void main(String[] margs) {
 		Test t = new Test();
+		t.testSlicer();
 		//t.droidBench();
 		// t.test00983aad12700be0a440296c6173b18a829e9369_a();
-		t.malware();
+		//t.malware();
 		// t.testMopub_onCreate();
 		// t.testMopub_loadAd();
 		// t.test7613973();
 		// t.testOnReceive_7619303();
 		// t.testWo_();
+	}
+
+	public void testSlicer() {
+		String[] args = new String[4];
+		args[3] = "Full";
+		Settings.logLevel = 0;
+
+		args[0] = "D:\\workspace\\TestSlicer\\app\\test";
+		args[1] = "fu.hao.android.testslicer.MainActivity";
+		args[2] = "onCreate";
+
+		Main.main(args);
 	}
 
 	public void droidBench() {
